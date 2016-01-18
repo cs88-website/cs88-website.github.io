@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Quiz 2 | CS 88 Spring 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <li><a href="/articles/using-ok.html">Using OK</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Quiz 2</span></h1>
+    </div>
+
+    <p><em>Due by 11:59pm on Monday, 10/12</em></p>
+
+<h2>Instructions</h2>
+
+<p>Download <a href="quiz02.zip">
+  quiz02.zip</a>.  Inside the archive, you will
+find a file called
+<a href="quiz02.py">
+  quiz02.py</a>,
+along with a copy of the <a href="ok">OK</a> autograder.</p>
+
+<p>Complete the quiz and submit it before 11:59pm on Monday, 10/12. <strong>You must
+work alone</strong>, but you may talk to the course staff (see <strong>Asking
+Questions</strong> below). You may use any course materials, including an
+interpreter, course videos, slides, and readings. Please <strong>do
+not</strong> discuss these specific questions with your classmates, and
+<strong>do not</strong> scour the web for answers or post your answers
+online.</p>
+
+<p>Your submission will be graded automatically for correctness. Your
+implementations <strong>do not</strong> need to be efficient, as long as they
+are correct. We will apply additional correctness tests as well as the ones
+provided. Passing these tests does not guarantee a perfect score.</p>
+
+<p><strong>Asking Questions:</strong> If you believe you need clarification on
+a question, <strong>make a private post</strong> on Piazza.  Please do not post
+publicly about the quiz contents.  If the staff discovers a problem with the
+quiz or needs to clarify a question, we will email the class via Piazza. You
+can also come to office hours to ask questions about the quiz or any other
+course material, but no answers or hints will be provided in office hours.</p>
+
+<p><strong>Submission:</strong> When you are done, submit with
+<code>python3 ok --submit</code>. You may submit more than once before
+the deadline; only the final submission will be scored.</p>
+
+<h2>Using OK</h2>
+
+<p>The <code>ok</code> program helps you test your code and track your progress.
+The first time you run the autograder, you will be asked to log in with your
+@berkeley.edu account using your web browser. Please do so. Each time you run
+ok, it will back up your work and progress on our servers.
+
+You can run all the doctests with the following command:</p>
+
+<pre><code>python3 ok</code></pre>
+
+<p>To test a specific question, use the <code>-q</code> option with the
+name of the function:</p>
+
+<pre><code>python3 ok -q &lt;function&gt;</code></pre>
+
+<p>By default, only tests that <strong>fail</strong> will appear. If you
+want to see how you did on all tests, you can use the <code>-v</code>
+option:</p>
+
+<pre><code>python3 ok -v</code></pre>
+
+<p>If you do not want to send your progress to our server or you have any
+problems logging in, add the <code>--local</code> flag to block all
+communication:</p>
+
+<pre><code>python3 ok --local</code></pre>
+
+<p>When you are ready to submit, run <code>ok</code> with the
+<code>--submit</code> option:</p>
+
+<pre><code>python3 ok --submit</code></pre>
+
+<p><strong>Readings:</strong> You might find the following references
+useful:</p>
+
+<ul>
+  <li><a href="http://composingprograms.com/pages/24-mutable-data.html">Section 2.4.1 - 2.4.3</a></li>
+  <li><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">Section 2.5</a></li>
+</ul>
+
+
+    
+
+<p><strong>Reminder.</strong> Every node in a tree <code>t</code> is the root value of some subtree of
+<code>t</code>.</p>
+
+<p><strong>Definition.</strong>  A subset <code>S</code> of nodes is <em>tree-consistent</em> if, for every node
+<code>n</code> included in <code>S</code>, <code>S</code> also includes <strong>all</strong> nodes in the subtree for which
+<code>n</code> is the root value. In other words, a <em>tree-consistent</em> subset of nodes
+contains all the nodes in a collection of subtrees.</p>
+
+<p>For any tree, the set of all nodes and the empty set are both tree-consistent.</p>
+
+<p>Examples:</p>
+
+<pre><code>x = tree(&#x2d;1, [tree(1),
+              tree(&#x2d;2),
+              tree(3, [tree(&#x2d;4),
+                       tree(&#x2d;5)])])
+y = tree(1, [tree(&#x2d;1, [tree(2)]),
+             tree( 8, [tree(&#x2d;7)]),
+             tree(&#x2d;3, [tree(&#x2d;3)]),
+             tree(&#x2d;4, [tree(3),
+                       tree(&#x2d;5),
+                       tree(7, [tree(&#x2d;4),
+                                tree(&#x2d;2)])])])</code></pre>
+
+<p>In <code>x</code>, if 3 is included then -4 and -5 must be included because 3 is the root
+value of a subtree containing -4 and -5. Therefore, the set of nodes <code>{3, &#x2d;4,
+&#x2d;5}</code> is tree-consistent, but <code>{3}</code> and <code>{3, &#x2d;4}</code> are not. The tree-consistent
+subset with the highest sum is <code>{1}</code>.</p>
+
+<p>In <code>y</code>, the tree-consistent subset with the highest sum is <code>{2, 8, &#x2d;7, 3, 7,
+&#x2d;4, &#x2d;2}</code>:</p>
+
+<img class="img-responsive center-block" src="assets/subtreesum.png" width="480">
+
+<h3 class="question" id="q1">Question 1: Subtree Sum</h3>
+
+<p>Implement <code>subtreesum</code>, which takes a tree <code>t</code> as an argument. It returns the
+maximum sum of a <em>tree-consistent subset</em> of the nodes in <code>t</code>.</p>
+
+<pre><code>def subtreesum(t):
+    &quot;&quot;&quot;Return the maximum sum of any tree&#x2d;consistent subset of nodes in t.
+
+    &gt;&gt;&gt; subtreesum(tree(5))
+    5
+    &gt;&gt;&gt; subtreesum(tree(&#x2d;5, [tree(6)]))
+    6
+    &gt;&gt;&gt; subtreesum(tree(&#x2d;5, [tree(6, [tree(&#x2d;2)])]))
+    4
+    &gt;&gt;&gt; subtreesum(tree(&#x2d;2))
+    0
+
+    &gt;&gt;&gt; subtreesum(x)
+    1
+    &gt;&gt;&gt; subtreesum(y)
+    7
+    &gt;&gt;&gt; subtreesum(tree(20, branches(y))) # Max sum includes all nodes
+    11
+
+
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+
+def treesum(t):
+    &quot;&quot;&quot;Return the sum of all node values in t.&quot;&quot;&quot;
+    return root(t) + sum([treesum(b) for b in branches(t)])</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q subtreesum</code></pre>
+
+<h3 class="question" id="q2">Question 2: Mint</h3>
+
+<p>Complete the <code>Mint</code> and <code>Coin</code> classes so that the coins created by a mint have
+the correct year and worth.</p>
+
+<ul>
+  <li>Each <code>Mint</code> instance has a <code>year</code> stamp. The <code>update</code> method sets the
+  <code>year</code> stamp to the <code>current_year</code> class attribute of the <code>Mint</code> class.</li>
+  <li>The <code>create</code> method takes a subclass of <code>Coin</code> and returns an instance of
+  that class stamped with the <code>mint</code>'s year (which may be different from
+  <code>Mint.current_year</code> if it has not been updated.)</li>
+  <li>A <code>Coin</code>'s <code>worth</code> method returns the <code>cents</code> value of the coin plus one
+  extra cent for each year of age beyond 50. A coin's age can be determined
+  by subtracting the coin's year from the <code>current_year</code> class attribute of
+  the <code>Mint</code> class.</li>
+</ul>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Mint</code></pre>
+
+<pre><code>class Mint:
+    &quot;&quot;&quot;A mint creates coins by stamping on years.
+
+    The update method sets the mint&#x27;s stamp to Mint.current_year.
+
+    &gt;&gt;&gt; mint = Mint()
+    &gt;&gt;&gt; mint.year
+    2015
+    &gt;&gt;&gt; dime = mint.create(Dime)
+    &gt;&gt;&gt; dime.year
+    2015
+    &gt;&gt;&gt; Mint.current_year = 2100  # Time passes
+    &gt;&gt;&gt; nickel = mint.create(Nickel)
+    &gt;&gt;&gt; nickel.year     # The mint has not updated its stamp yet
+    2015
+    &gt;&gt;&gt; nickel.worth()  # 5 cents + (85 &#x2d; 50 years)
+    40
+    &gt;&gt;&gt; mint.update()   # The mint&#x27;s year is updated to 2100
+    &gt;&gt;&gt; Mint.current_year = 2175     # More time passes
+    &gt;&gt;&gt; mint.create(Dime).worth()    # 10 cents + (75 &#x2d; 50 years)
+    35
+    &gt;&gt;&gt; Mint().create(Dime).worth()  # A new mint has the current year
+    10
+    &gt;&gt;&gt; dime.worth()     # 10 cents + (160 &#x2d; 50 years)
+    120
+    &gt;&gt;&gt; Dime.cents = 20  # Upgrade all dimes!
+    &gt;&gt;&gt; dime.worth()     # 20 cents + (160 &#x2d; 50 years)
+    130
+
+
+    &quot;&quot;&quot;
+    current_year = 2015
+
+    def __init__(self):
+        self.update()
+
+    def create(self, kind):
+        "*** YOUR CODE HERE ***"
+
+    def update(self):
+        "*** YOUR CODE HERE ***"
+
+class Coin:
+    def __init__(self, year):
+        self.year = year
+
+    def worth(self):
+        &quot;The worth is a coin&#x27;s face value + 1 cent for each year over age 50.&quot;
+        "*** YOUR CODE HERE ***"
+
+class Nickel(Coin):
+    cents = 5
+
+class Dime(Coin):
+    cents = 10</code></pre>
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Question 1: Subtree Sum</a></li>
+  <li><a href="#q2">Question 2: Mint</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>

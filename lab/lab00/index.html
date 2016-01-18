@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 0: Setting up a productive workflow | CS 88 Spring 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <li><a href="/articles/using-ok.html">Using OK</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 0</span>: Setting up a productive workflow</h1>
+    </div>
+
+    <p><i>Due at 11:59pm on 01/28/2016.</i></p>
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab00.zip">lab00.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the <a href="ok">OK</a> autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab with
+<code>python3 ok --submit</code>. You may submit more than once before the
+deadline; only the final submission will be graded.</p>
+
+
+<ul>
+  <li>For the purpose of tracking participation, please complete 
+  the question <code>twenty_sixteen</code> in <a href="lab00.py">lab00.py</a>. Submit using OK.</li>
+  <li>Question 2 (What Would Python Print?) is designed to help
+  introduce concepts and test your understanding.
+  You do not need to submit anything for Question 2.</li>
+</ul>
+
+
+    
+
+
+<h2 id="introduction">Introduction</h2>
+
+
+<p>This lab explains how to use your own computer to complete assignments for CS 88. 
+If you are using a school computer, most of the instructions are the same,
+except you won't have to install anything.</p>
+
+
+<h2 id="setting-up">Setting up</h2>
+
+
+
+<h3 id="installing-a-terminal">Installing a terminal</h3>
+
+
+<p>The terminal is a program that allows you to interact with your computer
+by entering commands. No matter what operating system you use (Windows,
+MacOS, Linux), the terminal will be an essential tool for CS 88.</p>
+
+<blockquote class='help-mac'>
+
+<p>If you're on a Mac or are using a form of Linux (such as Ubuntu), you already
+have a program called <code>Terminal</code> on your computer.  Open that up and you should
+be good to go.</p>
+
+</blockquote>
+
+<blockquote class='help-windows'>
+
+<p>For Windows users, we recommend downloading a terminal called <a href="http://git-scm.com/downloads">GitBash</a>.</p>
+
+</blockquote>
+
+
+<h3 id="installing-python-3">Installing Python 3</h3>
+
+
+<p>Python 3 is our primary programming language. You can get Python
+<a href="https://www.python.org/downloads/release/python-343/">here</a>. Download one of the installers (for example, "Windows x86-64
+MSI installer" or "Mac OS X 64-bit installer"). If your computer is a 64-bit
+machine, you should download the 64-bit installer. (In general, if your computer
+is new within the past 2 years, it is likely 64-bit. Ask a TA or
+lab assistant if you're not sure.)</p>
+
+<blockquote class='help-mac'>
+
+<p>MacOS users can refer to this <a href="https://www.youtube.com/watch?v=smHuBHxJdK8">video</a> for additional help on setting
+up Python.</p>
+
+<p>If you're having trouble opening the installer, you can right-click the icon and
+select "Open".</p>
+
+</blockquote>
+
+<blockquote class='help-windows'>
+For Windows users, if you're installing a more recent version of Python, you
+should make sure to specify during setup to 'Add python.exe to Path', which
+will allow you to execute the <code>python</code> command from your terminal.
+
+<p><img class="img-responsive center-block" src="assets/python-windows-install-path.png" alt="Windows PATH at setup"></p>
+
+<p>You can also refer to this <a href="https://www.youtube.com/watch?v=54-wuFsPi0w">video</a> for additional help on setting up
+Python (up to 1:09 into the video).</p>
+
+<p>If you did not see the aforementioned option during setup, then you will need
+to manually configure your <code>PATH</code> environment variable; the same
+<a href="https://www.youtube.com/watch?v=54-wuFsPi0w#t=300">video</a> describes how to do this from 5:00 to 5:54.</p>
+
+</blockquote>
+
+
+<h3 id="installing-a-text-editor">Installing a text editor</h3>
+
+
+<p>The <strong>Python interpreter</strong> that you installed earlier allows you to <em>run</em> Python
+code. You will also need a <strong>text editor</strong>, which will help you <em>write</em> Python
+code.</p>
+
+<p>A text editor is a program that allows you to edit text files, and often comes
+with tools to help you customize your experience. You will be using a text editor
+ to create, modify, and save files.</p>
+
+<p>There are many editors out there, each with its own set of features.  We find
+that <a href="http://www.sublimetext.com/2">Sublime Text 2</a> and <a href="https://atom.io/">Atom</a>
+are popular choices among students, but you are free to use other text editors.</p>
+
+<blockquote><p><strong>Note</strong>: Please, please, <em>please</em> do not use Microsoft Word to edit
+programs. Word is designed to edit natural languages like English &mdash; trouble
+will ensue if you try to write Python with Word!</p></blockquote>
+
+<p>For your reference, we've also written some guides on using popular text
+editors. After you're done with lab, you can take a look if you're interested:</p>
+
+<ul>
+  <li><a href="/articles/atom.html">Atom</a></li>
+  <li><a href="/articles/sublime.html">Sublime Text 2</a></li>
+  <li><a href="/articles/emacs.html">Emacs</a></li>
+  <li><a href="/articles/vim.html">Vim</a></li>
+</ul>
+
+
+<h2 id="open-a-terminal">Open a terminal</h2>
+
+
+<p>First, open a terminal, if you haven't already.</p>
+
+<p><img class="img-responsive center-block" src="assets/terminal.png" alt="starting the terminal"></p>
+
+<p>Right now, I'm in my home directory. The <strong>home directory</strong> is represented
+by the <code>~</code> symbol. When you first open your terminal, you will start in
+the home directory.</p>
+
+<blockquote><p>Don't worry if your terminal window doesn't look exactly the same; the
+important part is that the text on the left hand side is relatively the same
+(with a different name) and you should definitely see a <code>~</code> (tilde).</p></blockquote>
+
+
+<h2 id="organize-your-files">Organize your files</h2>
+
+
+<p>In this section, we will be learning terminal commands to manage our files.</p>
+
+
+<h3 id="directories">Directories</h3>
+
+
+<p>The first command we'll use is <code>ls</code>. Try typing it in the terminal:</p>
+
+<pre><code>ls</code></pre>
+
+<p>The <code>ls</code> command <strong>l</strong>i<strong>s</strong>ts all the files and folders in the current
+directory. A <strong>directory</strong> is another name for a folder (such as the
+<code>Documents</code> folder). Since we're in the home directory right now, you
+should see the contents of your home directory.</p>
+
+
+<h3 id="making-new-directories">Making new directories</h3>
+
+
+<p>Our next command is called <code>mkdir</code>, which <strong>m</strong>a<strong>k</strong>es new
+<strong>dir</strong>ectories. Let's make a directory called <code>cs88</code> to store all of
+the assignments for this class:</p>
+
+<pre><code>mkdir cs88</code></pre>
+
+<p>A folder called <code>cs88</code> will appear in our home directory.</p>
+
+
+<h3 id="changing-directories">Changing directories</h3>
+
+
+<p>To move into another directory, we use the <code>cd</code> command. Try typing the
+following command into your terminal:</p>
+
+<pre><code>cd cs88</code></pre>
+
+<p>The <code>cd</code> command will <strong>c</strong>hange <strong>d</strong>irectories &mdash; in other words, it
+moves you into the specified folder. In the example above, we chose to
+move into the <code>cs88</code> directory.</p>
+
+<p>If we want to go back to our home directory, there are a few ways to do
+so:</p>
+
+<ul>
+  <li>Type <code>cd ..</code> (two dots). The <code>..</code> means "the parent directory". In
+  this case, the parent directory of <code>cs88</code> happens to be our home
+  directory, so we can use <code>cd ..</code> to go up one directory.</li>
+  <li>Type <code>cd ~</code> (the tilde). Remember that <code>~</code> means home directory, so
+  this command tells your terminal to change to the home directory,
+  no matter where you currently are.</li>
+  <li>Type <code>cd</code> (that is, the <code>cd</code> command with no arguments),
+  typing just <code>cd</code> is a shortcut for typing <code>cd ~</code>.</li>
+</ul>
+
+<p>At this point, let's create some more directories. Make sure you are in
+the <code>~/cs88</code> directory, using the necessary <code>cd</code> commands. Then create
+<code>projects</code> and <code>lab</code>folders inside of our <code>cs88</code> folder:</p>
+
+<pre><code>cd ~/cs88
+mkdir projects
+mkdir lab</code></pre>
+
+<p>Now if we list the contents of the directory (using <code>ls</code>), we'll see two
+folders, <code>projects</code> and <code>lab</code>.</p>
+
+
+<h3 id="downloading-the-assignment">Downloading the assignment</h3>
+
+
+<p>Next download the zip archive, <a href="lab00.zip">lab00.zip</a>, which contains all the
+files that we'll need for this lab. Once you've done that, let's find our
+downloaded file.  On most computers, <code>lab00.zip</code> is probably located in a
+directory called <code>Downloads</code> in your home directory. Let's use the <code>ls</code> command
+to check:</p>
+
+<pre><code>ls ~/Downloads</code></pre>
+
+<p>If you don't see <code>lab00.zip</code>, ask a TA or lab assistant for help.</p>
+
+
+<h3 id="extracting-starter-files">Extracting starter files</h3>
+
+
+<p>We'll then need to extract the files in the zip archive before we can start
+working. Different operating systems and different browsers have different ways
+of unzipping. If you don't know how, you can search onine</p>
+
+<blockquote><p>Using terminal or Gitbash, you can unzip from the command line
+(hooray!), you can use the <code>unzip</code> command:</p>
+
+<pre><code>unzip lab00.zip</code></pre>
+
+<p>Make sure you are in the <code>Downloads</code> directory in your terminal.</p></blockquote>
+
+<p>Once you unzip <code>lab00.zip</code>, you should have a new folder in called <code>lab00</code> which
+contains the following files:</p>
+
+<ul>
+  <li><code>lab00.py</code>: The template file you'll be adding your code to</li>
+  <li><code>ok</code>: A program used to test and submit assignments</li>
+  <li><code>lab00.ok</code>: A configuration file for <code>ok</code></li>
+</ul>
+
+
+<h3 id="moving-files">Moving files</h3>
+
+
+<p>Let's move our starter files into our new lab directory. From the
+terminal use the following command:</p>
+
+<pre><code>mv ~/Downloads/lab00 ~/cs88/lab</code></pre>
+
+<p>The <code>mv</code> command will <strong>m</strong>o<strong>v</strong>e the <code>~/Downloads/lab00</code> folder
+into the <code>~/cs88/lab</code> folder.</p>
+
+<p>Now, go to the <code>lab00</code> folder that we just moved. Try using <code>cd</code> to navigate
+your own way! If you get stuck, you can use the following command:</p>
+
+<pre><code>cd ~/cs88/lab/lab00</code></pre>
+
+<p>We're ready to start editing a file. Don't worry if this seems
+complicated &mdash; it will get much easier over time.  Just keep
+practicing! You can also take a look at our <a href="/articles/unix.html">UNIX tutorial</a> for a more detailed explanation of terminal commands.</p>
+
+
+<h2 id="run-python">Run python</h2>
+
+
+<p>In your terminal window, run python.</p>
+
+<ul>
+  <li><p>Run python3 from the command line.</p>
+
+<pre><code>python3</code></pre></li>
+</ul>
+
+<p>You should see something like</p>
+
+
+
+<pre><code>   Python 3.4.3 (v3.4.3:9b73f1c3e601, Feb 23 2015, 02:52:03) 
+   Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+   &gt;&gt;&gt;</code></pre>
+
+<solution>
+
+<p>The '>>>' is the prompt.  If you type an python expression, it will evaluate it
+and print the answer. Since you have already seen cells in a jupyter notebook,
+you may think of this as a super duper cell.  (Well, actually its the other way
+around - the shell came first.)  Type some expressions at it and see what it does.</p>
+
+<pre><code>    &gt;&gt;&gt; 2016
+    2016
+    &gt;&gt;&gt; 2016+1
+    2017
+    &gt;&gt;&gt; 2016*2
+    4032
+    &gt;&gt;&gt; </code></pre>
+
+<ul>
+  <li><p>Type expressions using numbers, '+', and '*' and see how fancy you can get that returns 2016</p>
+
+<pre><code>&gt;&gt;&gt;(2016+2)*2&#x2d;2020
+2016</code></pre></li>
+  <li><p>To exit, type <code>exit()</code> into the interpreter prompt. You
+  can also use the keyboard shortcut <code>Ctrl&#x2d;D</code> on Linux/Mac machines or <code>Ctrl&#x2d;Z
+  Enter</code> on Windows.</p>
+
+<pre><code>&gt;&gt;&gt; exit()</code></pre></li>
+</ul>
+
+<p>In your c8 course you work entirely in jupyter computational documents and avoid dealing 
+with programs, files and many other aspects of software development.
+That is where cs88 differs. In this course, you will
+learn to write whole programs! Those programs are files of code. You can execute a python
+program by passing it to the python intepreter on the command line.
+<br/>
+
+<ul>
+  <li><p>Run the code in the file you provide and return to the command line.</p>
+
+<pre><code>python3 lab00.py</code></pre></li>
+</ul></p>
+
+<p>Well, that didn't seem to do anything.  Let's see what is going on.</p>
+
+
+<h2 id="understand-the-question">Understand the question</h2>
+
+
+<p>Open up <code>lab00.py</code> in your text editor. You should see something like this:</p>
+
+<solution>
+
+<pre><code>def twenty_sixteen():
+    &quot;&quot;&quot;Come up with the most creative expression that evaluates to 2016,
+    using only numbers and the +, *, and &#x2d; operators.
+
+    &gt;&gt;&gt; twenty_sixteen()
+    2016
+    &quot;&quot;&quot;
+<div class="alt 1">    return ______
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x28;&#x31;&#x33;&#x20;&#x2a;&#x20;&#x33;&#x31;&#x20;&#x2b;&#x20;&#x31;&#x30;&#x30;&#x29;&#x20;&#x2a;&#x20;&#x34;&#x29;&#x20;&#x2b;&#x20;&#x34;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>The lines in the triple-quotes <code>&quot;&quot;&quot;</code> are called a <strong>docstring</strong>, which is a
+description of what the function is supposed to do.  When writing code in cs88,
+you should always read the docstring!</p>
+
+<p>The lines that begin with <code>&gt;&gt;&gt;</code> are called <strong>doctests</strong>. Doctests explain what the
+function does by showing actual Python code: "if we input this Python code (the
+lines that say <code>&gt;&gt;&gt;</code>), what should the expected output be (the lines underneath
+the <code>&gt;&gt;&gt;</code>)?"</p>
+
+<p>In <code>twenty_sixteen</code>,</p>
+
+<ul>
+  <li>The docstring tells us to "come up with the most creative expression that
+  evaluates to 2016," but that we can only use numbers and arithmetic operators
+  <code>+</code> (add), <code>*</code> (multiply), and <code>&#x2d;</code> (subtract).</li>
+  <li>The doctest for <code>twenty_sixteen()</code> checks that no matter how we do our
+  calculation, <code>twenty_sixteen</code> should return the number 2016.</li>
+</ul>
+
+<blockquote><p>You should never change the doctests in your assignments!  The only
+part of your assignments that you'll need to edit is the code.</p></blockquote>
+
+
+<h2 id="write-code">Write code</h2>
+
+
+<p>Once you understand what the question is asking, you're ready to start writing
+code! You should replace the underscores in <code>return ______</code> with an expression that
+evaluates to 2016.  What's the most creative expression you can come up with?</p>
+
+<ul>
+  <li>Open lab00.py in your text editor.  Start by simply returning 2016.  This is not
+  very creative, but it gives the right answer.</li>
+  <li><p>Run Python on your code in lab00.py using the interactive flag.  When you
+  get the prompt, type the name of the function, just like in the doc string.  Did
+  you get the right answer?</p>
+
+<pre><code>python3 &#x2d;i lab00.py
+&gt;&gt;&gt; twenty_sixteen()
+2016
+&gt;&gt;&gt; exit()</code></pre></li>
+  <li>Exit Python to get back to your terminal shell.  You will need to do that each time you
+  run Python interactively.</li>
+</ul>
+
+<p>You are going to want to learn to test your code before submitting it to the autograder.  This 
+always begins with reading it, thinking about it and convincing yourself it should work.  Come
+up with examples that verify it really does what it should.  That is what goes into the docstring.</p>
+
+<ul>
+  <li><p>When you run Python with the <strong><code>&#x2d;m doctest</code></strong> flag it runs doctests in a particular file. Doctests are
+  marked by triple quotes (<code>&quot;&quot;&quot;</code>) and are usually located within
+  functions.</p>
+
+<pre><code>python3 &#x2d;m doctest lab00.py</code></pre></li>
+</ul>
+
+<p>If it does not complain, congratulations you made it work.  But wait, one of the most important
+things you need to learn is how to deal with things when they go wrong.</p>
+
+<ul>
+  <li><p>Edit your code on more time, but this time have it return the wrong answer.  Run doctest again.
+  <br/>
+  Look and see what it figures out.</p>
+
+<pre><code>python3 &#x2d;m doctest lab00.py
+**********************************************************************
+File &quot;/Users/mee/cs88/lab/lab00/lab00.py&quot;, line 5, in lab00.twenty_sixteen
+Failed example:
+    twenty_sixteen()
+Expected:
+    2016
+Got:
+    2015
+**********************************************************************
+1 items had failures:
+   1 of   1 in lab00.twenty_sixteen
+***Test Failed*** 1 failures.</code></pre></li>
+</ul>
+
+
+<h2 id="run-tests">Run tests</h2>
+
+
+<p>In cs88, we will use a program called <code>ok</code> to test our code. <code>ok</code> will be
+included in every assignment in this class.</p>
+
+<p>Back to the terminal! Make sure you are in the <code>lab00</code> directory we created
+earlier (remember, the <code>cd</code> command lets you <a href="#changing-directories">change
+directories</a>).</p>
+
+<p>In that directory, you can type <code>ls</code> to verify that there are the following
+three files:</p>
+
+<ul>
+  <li><code>lab00.py</code>: the starter file you just edited</li>
+  <li><code>ok</code>: our testing program</li>
+  <li><code>lab00.ok</code>: a configuration file for OK</li>
+</ul>
+
+<p>Now, let's test our code to make sure it works. You can run <code>ok</code> with this
+command:</p>
+
+<pre><code>python3 ok</code></pre>
+
+<blockquote class='help-windows'>
+
+<p>If you are using Windows and the <code>python3</code> command doesn't work, try using just
+<code>python</code> or <code>py</code>. If neither of those work, take another look at the video in
+the section on <a href="#installing-python">installing Python</a> to make sure you are
+setting up your PATH correctly. Ask a TA or lab assistant for help if you get
+stuck!</p>
+
+</blockquote>
+
+<blockquote><p><em>Note</em>: The first time you run OK, you will be prompted for your bCourses
+email. We use this information to associate your code with you when grading.</p>
+
+<p>Every time you run OK, OK will try to back up your work. Don't worry if it
+says that the "Connection timed out." We won't use your backups for grading.</p></blockquote>
+
+<p>If you wrote your code correctly, we should see a successful test:</p>
+
+<pre><code>=====================================================================
+Assignment: Lab 0
+OK, version v1.4.1
+=====================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Running tests
+
+&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;
+Test summary
+    Passed: 1
+    Failed: 0
+[ooooooooook] 100.0% passed</code></pre>
+
+<p>If you didn't pass the tests, <code>ok</code> will instead show you something like this:</p>
+
+<pre><code>&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;
+Doctests for twenty_sixteen
+
+&gt;&gt;&gt; from lab00 import *
+&gt;&gt;&gt; twenty_sixteen()
+2013
+
+# Error: expected
+#     2016
+# but got
+#     ...
+
+&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;
+Test summary
+    Passed: 0
+    Failed: 1
+[k..........] 0.0% passed</code></pre>
+
+<p>Fix your code in your text editor until the test passes.</p>
+
+
+<h2 id="wppp-primitive-expressions">WPPP Primitive Expressions</h2>
+
+
+<h3 class="question" id="q2">Question 2: What would Python print?</h3>
+
+<p>Think about what the output of each of the following expressions will
+be. Then type them into Python to verify your answers!</p>
+
+
+    <pre><code>&gt;&gt;&gt; 3
+<div class="alt 2">______</div><div class="solution 2">&#x33;</div>
+&gt;&gt;&gt; 2 + 3
+<div class="alt 2">______</div><div class="solution 2">&#x35;</div>
+&gt;&gt;&gt; &#x2d;16 &#x2d; &#x2d;16
+<div class="alt 2">______</div><div class="solution 2">&#x30;</div>
+&gt;&gt;&gt; 3 * 4 + 1
+<div class="alt 2">______</div><div class="solution 2">&#x31;&#x33;</div>
+&gt;&gt;&gt; 3 * (4 + 1)
+<div class="alt 2">______</div><div class="solution 2">&#x31;&#x35;</div>
+&gt;&gt;&gt; 2 ** 3
+<div class="alt 2">______</div><div class="solution 2">&#x38;</div></code></pre>
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+
+    <pre><code>&gt;&gt;&gt; x = 4
+&gt;&gt;&gt; 3 + x
+<div class="alt 3">______</div><div class="solution 3">&#x37;</div>
+&gt;&gt;&gt; x + y
+<div class="alt 3">______</div><div class="solution 3">&#x4e;&#x61;&#x6d;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;</div>
+&gt;&gt;&gt; x, y = 1, 2
+&gt;&gt;&gt; 3 + x
+<div class="alt 3">______</div><div class="solution 3">&#x34;</div>
+&gt;&gt;&gt; x + y
+<div class="alt 3">______</div><div class="solution 3">&#x33;</div></code></pre>
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+
+<h2 id="submitting-assignments">Submitting assignments</h2>
+
+
+<p>Now that you have completed your first CS88 lab assignment, it's time to turn it
+in.</p>
+
+
+<h3 id="step-1-submit-with-ok">Step 1: Submit with <code>ok</code></h3>
+
+
+<p>From your terminal, make sure you are in the directory that contains <code>ok</code>. If
+you aren't there yet, you can use this command:</p>
+
+<pre><code>cd ~/cs88/lab/lab00</code></pre>
+
+<p>Next, use <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
+
+<p>This will prompt you for an email address if you haven't run OK before, 
+please use your berkeley email address.
+After that, OK will print out a message like the following:</p>
+
+<pre><code>Submitting... 100% complete
+Backup successful for user: ...
+URL: https://ok&#x2d;server.appspot.com/#/...</code></pre>
+
+<p>You can follow the URL to view your submission.</p>
+
+
+<h3 id="step-2-verifying-your-submission">Step 2: Verifying your submission</h3>
+
+
+<p>You can follow the link that OK provides to see your final submission, or you
+can go to <a href="https://okpy.org">okpy.org</a>. You will be able to view your
+submission after you log in.</p>
+
+<blockquote><p>Make sure you login with the same email you provided when running <code>ok</code> from
+your terminal!</p></blockquote>
+
+<p>You should see a successful submission for lab00.</p>
+
+<p><strong>Congratulations</strong>, you just submitted your first CS88 assignment!</p>
+
+
+<h2 id="setting-up-class-account">Setting up class account</h2>
+
+
+
+<h2 id="using-class-account">Appendix: Using your class account</h2>
+
+
+<p>If you plan to use your own laptop for this class, you can ignore this appendix.</p>
+
+
+<h3 id="logging-into-your-class-account">Logging into your class account</h3>
+
+
+
+<h4 id="from-your-laptop">From your laptop</h4>
+
+
+<p>At the start of your first lab section, you should have received a
+class account form. At the top left of the form should be your
+<strong>username</strong> and your temporary <strong>password</strong>:</p>
+
+<pre><code>Login: cs88&#x2d;aaa
+Password: ...</code></pre>
+
+<p>Most of the work in this class can be done without logging into your account.
+However, there may be times when you'll find working from an instructional
+account to be easier.</p>
+
+<p>Let's login in now. Open up your terminal and type in the following
+command:</p>
+
+<pre><code>ssh cs88&#x2d;?@cory.eecs.berkeley.edu</code></pre>
+
+<p>where <code>?</code> is replaced with the rest of your username.</p>
+
+<blockquote><p>If you're interested, here's an explanation of what the command does:</p>
+
+<ol>
+  <li><code>ssh</code> is a <strong>s</strong>ecure <strong>sh</strong>ell (i.e. terminal) that connects to other
+  computers over a network.</li>
+  <li><code>cs88&#x2d;?</code> is the username on the remote computer.</li>
+  <li><code>cory.eecs.berkeley.edu</code> is the domain name of the remote computer.
+  For our purposes it can be any of the <a href="http://inst.eecs.berkeley.edu/cgi-bin/clients.cgi?choice=13&string=">servers</a> that belong to Berkeley's CS department.</li>
+</ol></blockquote>
+
+<p>You can also watch this <a href="http://www.youtube.com/watch?v=irwlU7esODA">video</a> for help.</p>
+
+<p>The first time you attempt to <code>ssh</code> to a new server, the following message will
+appear:</p>
+
+<pre><code>The authenticity of host &#x27;cory.eecs.berkeley.edu&#x27; can&#x27;t be established.
+RSA key fingerprint is ...
+Are you sure you want to continue connecting (yes/no)?</code></pre>
+
+<p>Say yes. Your computer will remember the remote server, and won't ask you again.</p>
+
+<p>Once you confirm, you will be prompted for your password. If you haven't
+changed your password yet, use the temporary password printed on your class
+account form.</p>
+
+<blockquote><p>When you type your password, nothing will show up! This is a security
+feature, not a bug. Continue typing and press enter to login.</p></blockquote>
+
+
+<h4 id="from-an-instructional-machine">From an instructional machine</h4>
+
+
+<p>Most of our instructional computers use Ubuntu, a version of the Linux operating
+system. To login, just find lab computer and enter your username and password.</p>
+
+<p>Once you login, you'll want to open a terminal. On Ubuntu, you can open a
+terminal with <code>Ctrl&#x2d;Alt&#x2d;T</code>.</p>
+
+
+<h3 id="changing-your-password">Changing your password</h3>
+
+
+<p>The temporary password is not the easiest thing to remember. While
+still logged in, you should change with the command:</p>
+
+<pre><code>ssh update</code></pre>
+
+
+<h3 id="registering-your-account">Registering your account</h3>
+
+
+<p>The first time you login to your class account, your terminal will ask
+you some registration questions about the following:</p>
+
+<ul>
+  <li>Last name</li>
+  <li>First name</li>
+  <li>Student ID</li>
+  <li>Email (please use your berkeley.edu email!)</li>
+  <li>Code name (we don't use this information, you can enter anything you
+  want)</li>
+</ul>
+
+<blockquote><p>If your terminal doesn't prompt you for this information the first
+time you login, you can type <code>register</code> to begin the process. You
+don't need to do this again if you've already registered before.</p></blockquote>
+
+<p>If you find errors (e.g. you typed your last name as "ssh update"), fix them
+immediately by running the command:</p>
+
+<pre><code>re&#x2d;register</code></pre>
+
+
+<h3 id="logging-out">Logging out</h3>
+
+
+<p>Once you've registered your account and changed your password, you can
+log out by pressing <code>Ctrl&#x2d;D</code>, or with the command <code>exit</code>.</p>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#setting-up">Setting up</a></li>
+  <ul>
+  <li><a href="#installing-a-terminal">Installing a terminal</a></li>
+  <li><a href="#installing-python-3">Installing Python 3</a></li>
+  <li><a href="#installing-a-text-editor">Installing a text editor</a></li>
+</ul>
+
+  <li><a href="#open-a-terminal">Open a terminal</a></li>
+  <li><a href="#organize-your-files">Organize your files</a></li>
+  <ul>
+  <li><a href="#directories">Directories</a></li>
+  <li><a href="#making-new-directories">Making new directories</a></li>
+  <li><a href="#changing-directories">Changing directories</a></li>
+  <li><a href="#downloading-the-assignment">Downloading the assignment</a></li>
+  <li><a href="#extracting-starter-files">Extracting starter files</a></li>
+  <li><a href="#moving-files">Moving files</a></li>
+</ul>
+
+  <li><a href="#run-python">Run python</a></li>
+  <li><a href="#understand-the-question">Understand the question</a></li>
+  <li><a href="#write-code">Write code</a></li>
+  <li><a href="#run-tests">Run tests</a></li>
+  <li><a href="#wppp-primitive-expressions">WPPP Primitive Expressions</a></li>
+  <ul>
+  <li><a href="#q2">Question 2: What would Python print?</a></li>
+</ul>
+
+  <li><a href="#submitting-assignments">Submitting assignments</a></li>
+  <ul>
+  <li><a href="#step-1-submit-with-ok">Step 1: Submit with <code>ok</code></a></li>
+  <li><a href="#step-2-verifying-your-submission">Step 2: Verifying your submission</a></li>
+</ul>
+
+  <li><a href="#setting-up-class-account">Setting up class account</a></li>
+  <li><a href="#using-class-account">Appendix: Using your class account</a></li>
+  <ul>
+  <li><a href="#logging-into-your-class-account">Logging into your class account</a></li>
+  <ul>
+  <li><a href="#from-your-laptop">From your laptop</a></li>
+  <li><a href="#from-an-instructional-machine">From an instructional machine</a></li>
+</ul>
+
+  <li><a href="#changing-your-password">Changing your password</a></li>
+  <li><a href="#registering-your-account">Registering your account</a></li>
+  <li><a href="#logging-out">Logging out</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(function() {
+    if (new Date("12/1/2016") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+</html>

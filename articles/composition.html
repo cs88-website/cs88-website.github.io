@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+
+    <title>Composition | CS 88 Spring 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <li><a href="/articles/using-ok.html">Using OK</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1>Composition</h1>
+    </div>
+
+     <p>The ease by which other <em>people</em> can read and understand a program
+(often called "readability" in software engineering) is perhaps the
+most important quality of a program. Readable programs are used and
+extended by others, sometimes for decades. For this reason, we often
+repeat in 61A that programs are written to be read by humans, and only
+incidentally to be interpreted by computers.</p>
+
+<p>A program is composed well if it is concise, well-named, understandable, and
+easy to follow.</p>
+
+<p>Excellent composition does not mean adhering strictly to prescribed
+style conventions.  There are many ways to program well, just as there
+are many styles of effective communication.  However, the following
+guiding principles universally lead to better composition of programs:</p>
+
+<ul>
+  <li><strong>Names</strong>. To a computer, names are arbitrary symbols: "xegyawebpi"
+  and "foo" are just as meaningful as "tally" and "denominator".  To
+  humans, comprehensible names aid immensely in comprehending programs.
+  Choose names for your functions and values that indicate their use,
+  purpose, and meaning.  See the lecture notes section on
+  <a href="http://www.composingprograms.com/pages/13-defining-new-functions.html#choosing-names">choosing names</a>
+  for more suggestions.</li>
+  <li><strong>Functions</strong>. Functions are our primary mechanism for abstraction,
+  and so each function should ideally have a single job that can be
+  used throughout a program.  When given the choice between calling a
+  function or copying and pasting its body, strive to call the function
+  and maintain abstraction in your program.  See the lecture notes
+  section on
+  <a href="http://www.composingprograms.com/pages/14-designing-functions.html#designing-functions">composing functions</a>
+  for more suggestions.</li>
+  <li><strong>Purpose</strong>. Each line of code in a program should have a purpose.
+  Statements should be removed if they no longer have any effect
+  (perhaps because they were useful for a previous version of the
+  program, but are no longer needed). Large blocks of unused code, even
+  when turned into comments, are confusing to readers.  Feel free to
+  keep your old implementations in a separate file for your own use,
+  but don't turn them in as your finished product.</li>
+  <li><strong>Brevity</strong>. An idea expressed in four lines of code is often clearer
+  than the same idea expressed in forty.  You do not need to try to
+  minimize the length of your program, but look for opportunities to
+  reduce the size of your program substantially by reusing functions
+  you have already defined.</li>
+</ul>
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>

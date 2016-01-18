@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Quiz 1 Solutions | CS 88 Spring 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <li><a href="/articles/using-ok.html">Using OK</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Quiz 1</span> Solutions</h1>
+    </div>
+
+    <p><strong>Solutions:</strong> You can find the file with solutions for all
+questions <a href="quiz01.py">here</a>.</p>
+
+<p>Quiz submissions were graded automatically for correctness.
+Implementations <strong>did not</strong> need to be efficient, as long
+as they were correct.</p>
+
+<p>In addition to the doctests provided to students, we also used
+extra doctests to check for corner cases. These extra test cases are
+highlighted below.</p>
+
+    
+
+<h3 class="question" id="q1">Question 1: Diff</h3>
+
+<p>Implement a function <code>diff</code> that takes three integers <code>x</code>, <code>y</code>, and <code>z</code>. It
+returns whether subtracting one of these numbers from another gives the third.</p>
+
+<solution>
+
+<pre><code>def diff(x, y, z):
+    &quot;&quot;&quot;Return whether one argument is the difference between the other two.
+
+    x, y, and z are all integers.
+
+    &gt;&gt;&gt; diff(5, 3, 2) # 5 &#x2d; 3 is 2
+    True
+    &gt;&gt;&gt; diff(2, 3, 5) # 5 &#x2d; 3 is 2
+    True
+    &gt;&gt;&gt; diff(2, 5, 3) # 5 &#x2d; 3 is 2
+    True
+    &gt;&gt;&gt; diff(&#x2d;2, 3, 5) # 3 &#x2d; 5 is &#x2d;2
+    True
+    &gt;&gt;&gt; diff(&#x2d;5, &#x2d;3, &#x2d;2) # &#x2d;5 &#x2d; &#x2d;2 is &#x2d;3
+    True
+    &gt;&gt;&gt; diff(&#x2d;2, 3, &#x2d;5) # &#x2d;2 &#x2d; 3 is &#x2d;5
+    True
+    &gt;&gt;&gt; diff(2, 3, &#x2d;5)
+    False
+    &gt;&gt;&gt; diff(10, 6, 4)
+    True
+    &gt;&gt;&gt; diff(10, 6, 3)
+    False
+
+<span class="sol-highlight">    &gt;&gt;&gt; diff(9, 3, 6)
+    True
+    &gt;&gt;&gt; diff(6, 3, &#x2d;9)
+    False
+</span>
+    &quot;&quot;&quot;
+<span class="sol-highlight">    return x&#x2d;y==z or y&#x2d;z==x or z&#x2d;x==y</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q diff</code></pre>
+
+<h3 class="question" id="q2">Question 2: Abundant</h3>
+
+<p>Implement a function <code>abundant</code> that takes a positive integer <code>n</code>. It prints
+all ways of multiplying two positive integers to make <code>n</code>. It returns
+whether <code>n</code> is an <em>abundant</em> number, meaning that the sum of its proper
+divisors is greater than <code>n</code>. A proper divisor of <code>n</code> is an integer smaller
+than <code>n</code> that evenly divides <code>n</code>.</p>
+
+<p><em>Hint</em>: To print <code>1 * 2</code>, use the expression <code>print(1, &#x27;*&#x27;, 2)</code></p>
+
+<solution>
+
+<pre><code>def abundant(n):
+    &quot;&quot;&quot;Print all ways of forming positive integer n by multiplying two positive
+    integers together, ordered by the first term. Then, return whether the sum
+    of the proper divisors of n is greater than n.
+
+    A proper divisor of n evenly divides n but is less than n.
+
+    &gt;&gt;&gt; abundant(12) # 1 + 2 + 3 + 4 + 6 is 16, which is larger than 12
+    1 * 12
+    2 * 6
+    3 * 4
+    True
+    &gt;&gt;&gt; abundant(14) # 1 + 2 + 7 is 10, which is not larger than 14
+    1 * 14
+    2 * 7
+    False
+    &gt;&gt;&gt; abundant(16)
+    1 * 16
+    2 * 8
+    4 * 4
+    False
+    &gt;&gt;&gt; abundant(20)
+    1 * 20
+    2 * 10
+    4 * 5
+    True
+    &gt;&gt;&gt; abundant(22)
+    1 * 22
+    2 * 11
+    False
+    &gt;&gt;&gt; r = abundant(24)
+    1 * 24
+    2 * 12
+    3 * 8
+    4 * 6
+    &gt;&gt;&gt; r
+    True
+
+<span class="sol-highlight">    &gt;&gt;&gt; r = abundant(25)
+    1 * 25
+    5 * 5
+    &gt;&gt;&gt; r
+    False
+    &gt;&gt;&gt; r = abundant(156)
+    1 * 156
+    2 * 78
+    3 * 52
+    4 * 39
+    6 * 26
+    12 * 13
+    &gt;&gt;&gt; r
+    True
+</span>
+    &quot;&quot;&quot;
+<span class="sol-highlight">    d, total = 1, 0
+    while d*d &lt;= n:
+        if n % d == 0:
+            print(d, &#x27;*&#x27;, n//d)
+            total = total + d
+            if d &gt; 1 and d*d &lt; n:
+                total = total + n//d
+        d = d + 1
+    return total &gt; n</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q abundant</code></pre>
+
+<h3 class="question" id="q3">Question 3: Amicable</h3>
+
+<p>Implement a function <code>amicable</code> that takes a positive integer <code>n</code>. It returns
+the smallest amicable number greater than <code>n</code>.</p>
+
+<p>Two <strong>different</strong> numbers are both amicable if the sum of the proper divisors
+of each is equal to the other. Any number that's part of such a pair is an
+amicable number.</p>
+
+<p><em>Hint</em>: You may want to create a separate function to sum proper divisors.</p>
+
+<solution>
+
+<pre><code>def amicable(n):
+    &quot;&quot;&quot;Return the smallest amicable number greater than positive integer n.
+
+    Every amicable number x has a buddy y different from x, such that
+    the sum of the proper divisors of x equals y, and
+    the sum of the proper divisors of y equals x.
+
+    For example, 220 and 284 are both amicable because
+    1 + 2 + 4 + 5 + 10 + 11 + 20 + 22 + 44 + 55 + 110 is 284, and
+    1 + 2 + 4 + 71 + 142 is 220
+
+    &gt;&gt;&gt; amicable(5)
+    220
+    &gt;&gt;&gt; amicable(220)
+    284
+    &gt;&gt;&gt; amicable(284)
+    1184
+    &gt;&gt;&gt; r = amicable(5000)
+    &gt;&gt;&gt; r
+    5020
+
+<span class="sol-highlight">    &gt;&gt;&gt; amicable(100483)
+    100485
+</span>
+    &quot;&quot;&quot;
+<span class="sol-highlight">    n = n + 1
+    while True:
+        m = sum_divisors(n)
+        if m != n and sum_divisors(m) == n:
+            return n
+        n = n + 1
+
+def sum_divisors(n):
+    d, total = 1, 0
+    while d &lt; n:
+        if n % d == 0:
+            total = total + d
+        d = d + 1
+    return total</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q amicable</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Question 1: Diff</a></li>
+  <li><a href="#q2">Question 2: Abundant</a></li>
+  <li><a href="#q3">Question 3: Amicable</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>

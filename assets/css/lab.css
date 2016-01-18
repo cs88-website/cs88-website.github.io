@@ -1,0 +1,18 @@
+/* CS 61A Lab Stylesheet */
+
+th {
+  background-color:#eee;
+}
+
+th, tr {
+  padding:0px 10px;
+}
+
+.toggleButton {
+  display:none;
+}
+
+.solution {
+  display:none;
+}
+
