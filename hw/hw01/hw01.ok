@@ -1,0 +1,26 @@
+{
+    "name": "Homework 1",
+    "endpoint": "cal/cs88/sp16/hw01",
+    "src": [
+        "hw01.py"
+    ],
+    "tests": {
+        "tests/primitive_expressions.py": "ok_test",
+        "tests/call-expressions.py": "ok_test",
+        "hw01.py:temperature_converter": "doctest",
+        "hw01.py:pythagorean_triple": "doctest",
+        "hw01.py:diff": "doctest",
+        "hw01.py:distance": "doctest",
+        "hw01.py:distance3d": "doctest",
+        "hw01.py:quadratic": "doctest"
+        
+    },
+    "protocols": [
+    	"restore",
+        "file_contents",
+        "grading",
+        "analytics",
+	"unlock",
+        "backup"
+    ]
+}
