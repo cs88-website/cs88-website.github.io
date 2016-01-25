@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
-    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang, Nishant Desai" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -249,7 +249,7 @@ else:
 <p>This can be written more concisely as <code>return x &gt; 3</code>. If your code looks like
 the code above, see if you can rewrite it more clearly!</p></blockquote>
 
-<h3 class="question" id="q2">Question 2: WWPP: What If?</h3>
+<h3 class="question" id="q1">Question 1: WWPP: What If?</h3>
 
 <blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
 questions:</p>
@@ -376,7 +376,7 @@ following way:</p>
 <code>False</code>). Other Python values can be considered "false-y," including <code>0</code>,
 <code>None</code>, and <code>&#x27;&#x27;</code> (the empty string). All other values are considered "truth-y."</p>
 
-<h3 class="question" id="q3">Question 3: WWPP: Truthiness</h3>
+<h3 class="question" id="q2">Question 2: WWPP: Truthiness</h3>
 
 <blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
 questions:</p>
@@ -442,7 +442,7 @@ and false-y values.</p>
     &quot;&quot;&quot;
     return x and y % x == 0</code></pre>
 
-<h3 class="question" id="q4">Question 4: WWPP: Veritasiness</h3>
+<h3 class="question" id="q3">Question 3: WWPP: Veritasiness</h3>
 
 <blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
 questions:</p>
@@ -485,7 +485,7 @@ questions:</p>
     </button>
     
 
-<h3 class="question" id="q5">Question 5: Fix the Bug</h3>
+<h3 class="question" id="q4">Question 4: Fix the Bug</h3>
 
 <p>The following snippet of code doesn't work! Figure out what is wrong
 and fix the bugs.</p>
@@ -680,7 +680,7 @@ for that.  One of them is <code>range</code>.
 <p>You can review 'range' in <a href="http://composingprograms.com/pages/23-sequences.html">Section 2.3</a>
 of Composing Programs.</p>
 
-<h3 class="question" id="q6">Question 6: Classify the elements</h3>
+<h3 class="question" id="q5">Question 5: Classify the elements</h3>
 
 <p>Complete the function that classifies an number as either 'odd' or 'even' and the one
 that applies this to classify all the elements in a list.</p>
@@ -740,7 +740,7 @@ the <code>for statement</code> introduces a second essential design pattern for 
 analysis, <em>reduce</em>.  You will find that map-reduce is an important computational
 structure in data science.</p>
 
-<h3 class="question" id="q7">Question 7</h3>
+<h3 class="question" id="q6">Question 6</h3>
 
 <p>Complete the function to compute the sum of squares.</p>
 
@@ -779,7 +779,7 @@ predicate will compute a boolean expression involving that state.  And
 the body of the loop will advance the state, thereby iterating until
 the predicate is satisfied.</p>
 
-<h3 class="question" id="q8">Question 8: WWPP: Loops</h3>
+<h3 class="question" id="q7">Question 7: WWPP: Loops</h3>
 
 <blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
 questions:</p>
@@ -867,7 +867,7 @@ Is 5 your number? [y/n] n
 
 <p>Randomly guessing works, but you can create an even better guessing strategy.</p>
 
-<h3 class="question" id="q9">Question 9: Guess Linear</h3>
+<h3 class="question" id="q8">Question 8: Guess Linear</h3>
 
 <p>One weakness in the <code>guess_random</code> strategy is that it can repeat (incorrect)
 guesses. Rather than guessing wildly, let's guess numbers in increasing order.</p>
@@ -895,7 +895,7 @@ the correct number. Feel free to reference the implementation of
 <p>The best way to test this function is by playing with it interactively. See if
 your algorithm does what you expect!</p>
 
-<h3 class="question" id="q10">Question 10: Guess Binary</h3>
+<h3 class="question" id="q9">Question 9: Guess Binary</h3>
 
 <p><strong>Challenge question.</strong> The <code>guess_linear</code> function can take a long time if
 your number is large. However, a strategy called <em>binary search</em> can find the
@@ -984,7 +984,7 @@ correct number of guesses!</p>
 <blockquote><p>It's ok if you don't finish these questions during lab. However, we strongly
 encourage you to try them out on your own time for extra practice.</p></blockquote>
 
-<h3 class="question" id="q11">Question 11: Factor This!</h3>
+<h3 class="question" id="q10">Question 10: Factor This!</h3>
 
 <p>Implement a function <code>factors</code> which takes in a number <code>n</code> and prints out (in
 descending order) all of the numbers that divide <code>n</code> evenly. For example, the
@@ -1014,7 +1014,7 @@ factors of 20 are 20, 10, 5, 4, 2, 1.</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q factors</code></pre>
 
-<h3 class="question" id="q12">Question 12: Falling factorial</h3>
+<h3 class="question" id="q11">Question 11: Falling factorial</h3>
 
 <p>Let's write a function <code>falling</code>, which is a "falling" factorial
 that takes two arguments, <code>n</code> and <code>k</code>, and returns the product of <code>k</code>
@@ -1168,45 +1168,45 @@ log out by pressing <code>Ctrl&#x2d;D</code>, or with the command <code>exit</co
   <li><a href="#order-of-evaluation">Order of evaluation</a></li>
   <li><a href="#if-statements">If Statements</a></li>
   <ul>
-  <li><a href="#q2">Question 2: WWPP: What If?</a></li>
+  <li><a href="#q1">Question 1: WWPP: What If?</a></li>
 </ul>
 
   <li><a href="#boolean-operators">Boolean Operators</a></li>
   <ul>
-  <li><a href="#q3">Question 3: WWPP: Truthiness</a></li>
+  <li><a href="#q2">Question 2: WWPP: Truthiness</a></li>
   <li><a href="#short-circuiting">Short Circuiting</a></li>
-  <li><a href="#q4">Question 4: WWPP: Veritasiness</a></li>
-  <li><a href="#q5">Question 5: Fix the Bug</a></li>
+  <li><a href="#q3">Question 3: WWPP: Veritasiness</a></li>
+  <li><a href="#q4">Question 4: Fix the Bug</a></li>
 </ul>
 
   <li><a href="#error-messages">Error Messages</a></li>
   <li><a href="#lists">Lists</a></li>
   <li><a href="#list-comprehensions">List comprehensions</a></li>
   <ul>
-  <li><a href="#q6">Question 6: Classify the elements</a></li>
+  <li><a href="#q5">Question 5: Classify the elements</a></li>
 </ul>
 
   <li><a href="#for-statements">For statements</a></li>
   <ul>
-  <li><a href="#q7">Question 7</a></li>
+  <li><a href="#q6">Question 6</a></li>
 </ul>
 
   <li><a href="#while-loops">While Loops</a></li>
   <ul>
-  <li><a href="#q8">Question 8: WWPP: Loops</a></li>
+  <li><a href="#q7">Question 7: WWPP: Loops</a></li>
 </ul>
 
   <li><a href="#i-want-to-play-a-game">I Want to Play a Game</a></li>
   <ul>
-  <li><a href="#q9">Question 9: Guess Linear</a></li>
-  <li><a href="#q10">Question 10: Guess Binary</a></li>
+  <li><a href="#q8">Question 8: Guess Linear</a></li>
+  <li><a href="#q9">Question 9: Guess Binary</a></li>
   <li><a href="#a-second-look">A Second Look</a></li>
 </ul>
 
   <li><a href="#coding-practice">Coding Practice</a></li>
   <ul>
-  <li><a href="#q11">Question 11: Factor This!</a></li>
-  <li><a href="#q12">Question 12: Falling factorial</a></li>
+  <li><a href="#q10">Question 10: Factor This!</a></li>
+  <li><a href="#q11">Question 11: Falling factorial</a></li>
 </ul>
 
   <li><a href="#using-class-account">Appendix: Using your class account</a></li>
