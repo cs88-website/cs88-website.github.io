@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
-    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang, Nishant Desai" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -113,18 +113,20 @@ strings are all primitive expressions.</p>
 
 <p>Like getting to Carnegie Hall, becoming proficient in programming takes practice.  The
 start of this assignment is intended to give you practice working with values and
-expressions, while pointing out some of the subtleties that are good to have tucked
+expressions while pointing out some of the subtleties that are good to have tucked
 away in your brain somewhere.</p>
 
 <p>Start the python interpreter in a terminal window.  Open the
-<em><a href="https://data8.berkeley.edu/hub/interact?repo=cs-connector&path=HW01-connect.ipynb">HW01-connect</a>
+<a href="https://data8.berkeley.edu/hub/interact?repo=cs-connector&path=HW01-connect.ipynb">HW01-connect</a>
 notebook on data8 and put them side by side.  Run the cells as you type
-the expressions into the python interpreter So you can get a feel for
-the relationship between the two.  (Those of you with some programming
+the expressions into the python interpreter so you can get a feel for
+the relationship between the two.</p>
+
+<p>Please note that while those of you with some programming
 experience may find this to be a rather basic review, others may find
 it completely new.  Either way, bear with us; we want everyone to have
 the basics.  And there are some subtleties that we want to be sure you
-learn.</p>
+learn!</p>
 
 
 <h3 id="arithmetic-operations-on-integers">Arithmetic operations on integers</h3>
@@ -206,7 +208,7 @@ ZeroDivisionError
 </table>
 </div>
 
-<p>Note that floor division and modulo both return an integer while _true division always returns a floating point number_.</p>
+<p>Note that floor division and modulo both return an integer while <em>true division always returns a floating point number</em>.</p>
 
 <p>One useful technique involving the <code>%</code> operator is to check
 whether a number <code>x</code> is divisible by another number <code>y</code>:</p>
@@ -221,7 +223,7 @@ whether a number <code>x</code> is divisible by another number <code>y</code>:</
 <h2 id="floats-and-precedence">Floats and precedence</h2>
 
 
-<p>Floating point numbers (floats) behave a lot like real numbers.  You can identify a float by the decimal point. </em><em>All floats have decimal points.</em>*  To write a floating point number (as a literal) you must add a decimal point!</p>
+<p>Floating point numbers (floats) behave a lot like real numbers.  You can identify a float by the decimal point. <strong>All floats have decimal points.</strong>  To write a floating point number (as a literal) you must add a decimal point!</p>
 
 <pre><code>&gt;&gt;&gt; 3.141592
 3.141592
@@ -468,7 +470,7 @@ False</code></pre>
 of operations</em></strong>.  We assigned the value <code>2</code> to the variable named <code>two</code> and then
 we later assigned the value <code>3</code> to this same variable.</p>
 
-<p>We also have logic operators on booleans: "and", "or", and "not":</p>
+<p>We also have logic operators on booleans: <code>and</code>, <code>or</code>, and <code>not</code>:</p>
 
 <pre><code>&gt;&gt;&gt; x = 2
 &gt;&gt;&gt; x &gt; 1 or x != 0
@@ -542,7 +544,7 @@ Fahrenheit <code>f_temp</code> and returns the same temperature in Celsius.</p>
 <h3 class="question" id="q4">Question 4: Pythagorean Triple</h3>
 
 <p>Define <code>pythagorean_triple</code>, which takes a three numbers, <code>a</code>, <code>b</code>, and <code>c</code> and returns <code>True</code> if and only if
-these numbers form a Pytagorean Triplet, ie., the sum of the squares of the first two is equal to the
+these numbers form a Pythagorean Triplet, ie., the sum of the squares of the first two is equal to the
 square of the last.</p>
 
 <pre><code>def pythagorean_triple(a,b,c):
@@ -652,7 +654,7 @@ arguments and compute the following:</p>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q distance-3d</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q distance3d</code></pre>
 
 <h3 class="question" id="q8">Question 8: Quadratic formula</h3>
 

@@ -84,8 +84,8 @@ highlighted below.</p>
 
 <h3 class="question" id="q1">Question 1: Diff</h3>
 
-<p>Implement a function <code>diff</code> that takes three integers <code>x</code>, <code>y</code>, and <code>z</code>. It
-returns whether subtracting one of these numbers from another gives the third.</p>
+<p>Implement a function <code>diff</code> that takes as input three integers <code>x</code>, <code>y</code>, and <code>z</code>. It should
+return whether subtracting one of these numbers from another gives the third.</p>
 
 <solution>
 
@@ -119,7 +119,7 @@ returns whether subtracting one of these numbers from another gives the third.</
     False
 </span>
     &quot;&quot;&quot;
-<span class="sol-highlight">    return x&#x2d;y==z or y&#x2d;z==x or z&#x2d;x==y</span></code></pre>
+<span class="sol-highlight">    return x&#x2d;y==z or y&#x2d;x==z or y&#x2d;z==x or z&#x2d;y==x or x&#x2d;z==y or z&#x2d;x==y</span></code></pre>
 
 </solution>
 
