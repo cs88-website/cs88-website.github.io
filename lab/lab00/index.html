@@ -87,9 +87,6 @@ deadline; only the final submission will be graded.</p>
 <ul>
   <li>For the purpose of tracking participation, please complete 
   Question 1, <code>twenty_sixteen</code> in <a href="lab00.py">lab00.py</a>. Submit using OK.</li>
-  <li>Question 2 (What Would Python Print?) is designed to help
-  introduce concepts and test your understanding.
-  You do not need to submit anything for Question 2.</li>
 </ul>
 
 
@@ -588,57 +585,6 @@ Test summary
 <p>Fix your code in your text editor until the test passes.</p>
 
 
-<h2 id="wppp-primitive-expressions">WPPP Primitive Expressions</h2>
-
-
-<h3 class="question" id="q2">Question 2: What would Python print?</h3>
-
-<blockquote><p>Use OK to test your knowledge with the some "What Would Python Print?"
-questions:</p>
-
-<pre><code>python3 ok &#x2d;q primitive_expressions &#x2d;u</code></pre></blockquote>
-
-<p><strong>Note:</strong> If you think any of the expressions would cause Python to throw an error, type "Error" (without quotes) when prompted.</p>
-
-<!-- 
-    <pre><code>&gt;&gt;&gt; 3
-<div class="alt 2">______</div><div class="solution 2">&#x33;</div>
-&gt;&gt;&gt; 2 + 3
-<div class="alt 2">______</div><div class="solution 2">&#x35;</div>
-&gt;&gt;&gt; &#x2d;16 &#x2d; &#x2d;16
-<div class="alt 2">______</div><div class="solution 2">&#x30;</div>
-&gt;&gt;&gt; 3 * 4 + 1
-<div class="alt 2">______</div><div class="solution 2">&#x31;&#x33;</div>
-&gt;&gt;&gt; 3 * (4 + 1)
-<div class="alt 2">______</div><div class="solution 2">&#x31;&#x35;</div>
-&gt;&gt;&gt; 2 ** 3
-<div class="alt 2">______</div><div class="solution 2">&#x38;</div></code></pre>
-
-    <button id='2' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Now let's try using variables:</p>
-
-
-    <pre><code>&gt;&gt;&gt; x = 4
-&gt;&gt;&gt; 3 + x
-<div class="alt 3">______</div><div class="solution 3">&#x37;</div>
-&gt;&gt;&gt; x + y
-<div class="alt 3">______</div><div class="solution 3">&#x4e;&#x61;&#x6d;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;</div>
-&gt;&gt;&gt; x, y = 1, 2
-&gt;&gt;&gt; 3 + x
-<div class="alt 3">______</div><div class="solution 3">&#x34;</div>
-&gt;&gt;&gt; x + y
-<div class="alt 3">______</div><div class="solution 3">&#x33;</div></code></pre>
-
-    <button id='3' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-     -->
-
-
 <h2 id="submitting-assignments">Submitting assignments</h2>
 
 
@@ -682,10 +628,6 @@ your terminal!</p></blockquote>
 <p>You should see a successful submission for lab00.</p>
 
 <p><strong>Congratulations</strong>, you just submitted your first CS88 assignment!</p>
-
-
-<h2 id="setting-up-class-account">Setting up class account</h2>
-
 
 
 <h2 id="using-class-account">Appendix: Using your class account</h2>
@@ -831,18 +773,12 @@ log out by pressing <code>Ctrl&#x2d;D</code>, or with the command <code>exit</co
 
   <li><a href="#write-code">Write code</a></li>
   <li><a href="#run-tests">Run tests</a></li>
-  <li><a href="#wppp-primitive-expressions">WPPP Primitive Expressions</a></li>
-  <ul>
-  <li><a href="#q2">Question 2: What would Python print?</a></li>
-</ul>
-
   <li><a href="#submitting-assignments">Submitting assignments</a></li>
   <ul>
   <li><a href="#step-1-submit-with-ok">Step 1: Submit with <code>ok</code></a></li>
   <li><a href="#step-2-verifying-your-submission">Step 2: Verifying your submission</a></li>
 </ul>
 
-  <li><a href="#setting-up-class-account">Setting up class account</a></li>
   <li><a href="#using-class-account">Appendix: Using your class account</a></li>
   <ul>
   <li><a href="#logging-into-your-class-account">Logging into your class account</a></li>
@@ -874,7 +810,7 @@ log out by pressing <code>Ctrl&#x2d;D</code>, or with the command <code>exit</co
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script>
   $(function() {
-    if (new Date("12/1/2016") < new Date()) {
+    if (new Date("01/29/2016") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');
