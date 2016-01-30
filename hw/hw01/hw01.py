@@ -82,7 +82,6 @@ def quadratic(a,b,c):
     (-1.0, -1.0)
     >>> quadratic(1,3,-4)
     (-4.0, 1.0)
-    >>> 
     """
     "*** YOUR CODE HERE ***"
 
