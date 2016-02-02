@@ -85,14 +85,14 @@ deadline; only the final submission will be graded.</p>
 
 
 <ul>
-  <li>Questions 1-4 (What Would Python Print?) are designed to help
+  <li>Questions 1-3 and 7 (What Would Python Print?) are designed to help
   introduce concepts and test your understanding.</li>
   <li>For the purpose of tracking participation, please complete at least
   questions 4, 5 and 6 in <a href="lab01.py">lab01.py</a>. Submit using OK.</li>
+  <li>Questions 4-7 are in <a href="lab01.py">lab01.py</a>.</li>
   <li>Questions 8 and 9 are completely optional <strong>coding practice</strong>.</li>
-  <li>Questions 4-7 are in <a href="lab01.py">lab01.py</a> and Questions 11 and 12 are
-  in <a href="lab01_extra.py">lab01_extra.py</a>. It is
-  recommended that you complete these problems on your own time.</li>
+  <li>Questions 11 and 12 are in <a href="lab01_extra.py">lab01_extra.py</a>.
+  It is recommended that you complete these problems on your own time.</li>
 </ul>
 
 
@@ -168,15 +168,13 @@ show all tests, including successful ones:</p>
 <h2 id="order-of-evaluation">Order of Evaluation</h2>
 
 
-<p>In the previous lab you learned about the order of evaluation; in
-order to evaluate an expression, first evaluate the operand
+<p>In order to evaluate an expression, first evaluate the operand
 expressions to yield a value, then evaluate the operator on the
 operand values.  The same holds for operands to a function; evaluate
 the operands and then evaluate the function on the resulting
 values. This naturally recursive definition is one of the most
 essential concepts in computing.  It allows you to think about your
-program from the computer's point of view.  It goes beyond syntax -
-how are things written - to semantics - what do things mean.</p>
+program from the computer's point of view.  It goes beyond syntax (how are things written) to semantics (what do things mean).</p>
 
 <p>In this lab you will see how constructs in the programming language
 control the order of evaluation in order to make it more natural to
@@ -198,10 +196,9 @@ later expressions to statements by simply refering to the variable.  For example
 
 <p>You can review the syntax and behavior of <code>if</code> statements in
 <a href="http://composingprograms.com/pages/15-control.html#conditional-statements">Section 1.5.4</a>
-of Composing Programs.
-<br/>
+of Composing Programs.</p>
 
-The <code>conditional statement</code> is a statement, not an expression; it does
+<p>The <code>conditional statement</code> is a statement, not an expression; it does
 not return a value.  The <code>if&#x2d;expression</code> (or predicate) is evaluated
 first, before any other part of the statement, to determine whether to
 evaluate an <code>arm</code>.  If the <code>if&#x2d;expression</code> evaluates to a True value
@@ -590,11 +587,13 @@ TypeError: square() takes 1 positional argument but 2 were given</code></pre>
 <h2 id="lists">Lists</h2>
 
 
-<p>In your c8 course, you have recently met <code>Tables</code>'.  Tables are an extremely useful and powerful 
+<p>In your c8 course, you have recently met <code>Tables</code>.  Tables are an extremely useful and powerful 
 abstract data type.  In CS88 we will learn how to create such powerful tools.  Python provides
 several important primitives that we can build from.  So far, you have met scalar
 data types (ints, floats, and booleans) and one sequence type (strings) that behaved a lot like
-a scalar.  Lists are a very flexible sequence type.  <strong>A list contains a sequence of values of any type.</strong>*  You can specify one just by placing the values, separated by commas, within square
+a scalar.  Lists are a very flexible sequence type.  <strong>A list contains a sequence of values of any type.</strong></p>
+
+<p>You can specify one just by placing the values, separated by commas, within square
 brackets.  Data often comes as some kind of list.  Here's some examples.</p>
 
 <pre><code>&gt;&gt;&gt; [1,2,3]
@@ -622,7 +621,7 @@ perform on it.  What can you do with lists?</p>
 &gt;&gt;&gt; [1,2]*[3,4]    # what&#x27;s this?
 TypeError: can&#x27;t multiply sequence by non&#x2d;int of type &#x27;list&#x27;</code></pre>
 
-<p>The <code>in</code> operator is very cool.  It operates on the entire list and produces a boolean.</p>
+<p>The <code>in</code> operator is very cool.  It operates on the entire list and produces a boolean that answers the question, "Is this item in the list?".</p>
 
 <pre><code>&gt;&gt;&gt; 2 in [1,2,3]
 True
@@ -677,13 +676,12 @@ for that.  One of them is <code>range</code>.
 <pre><code>&gt;&gt;&gt; [x*x for x in range(10)]
 [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre></p>
 
-<p>You can review 'range' in <a href="http://composingprograms.com/pages/23-sequences.html">Section 2.3</a>
+<p>You can review <code>range</code> in <a href="http://composingprograms.com/pages/23-sequences.html">Section 2.3</a>
 of Composing Programs.</p>
 
 <h3 class="question" id="q5">Question 5: Classify the elements</h3>
 
-<p>Complete the function that classifies an number as either 'odd' or 'even' and the one
-that applies this to classify all the elements in a list.</p>
+<p>Complete the function <code>odd_even</code> that classifies an number as either <code>&#x27;odd&#x27;</code> or <code>&#x27;even&#x27;</code> and the function <code>classify</code> that takes in a list and applies <code>odd_even</code> to all elements in the list.</p>
 
 
 
