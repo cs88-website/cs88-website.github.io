@@ -13,7 +13,7 @@
         "hw02.py:a_plus_abs_b": "doctest",
         "hw02.py:largest_factor": "doctest",
 	"hw02.py:if_function": "doctest",
-        "hw02.py:hailstone": "doctest"
+        "hw02.py:hailstone": "doctest",
     },
     "protocols": [
         "file_contents",
