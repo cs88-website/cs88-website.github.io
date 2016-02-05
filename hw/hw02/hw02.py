@@ -27,9 +27,9 @@ def minmax(s):
     """Return the minimum and maximum elements of a sequence.
 
     >>> minmax([1, 2, -3])
-    (-3,2)
+    (-3, 2)
     >>> minmax([2])
-    (2,2)
+    (2, 2)
     >>> minmax([])
     (None, None)
     """
