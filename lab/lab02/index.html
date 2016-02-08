@@ -85,61 +85,17 @@ deadline; only the final submission will be graded.</p>
 
 
 <ul>
-  <li>Questions 1-4 are designed to review concepts and test understandings.</li>
-  <li>Question 5-12 are in <a href="lab02.py">lab02.py</a>.  Submit using OK.</li>
-  <li>Questions 13-16 are <a href="lab02_extra.py">lab02_extra.py</a>.  It is recommended that
+  <li>Questions 1-3 are designed to review concepts and test understandings.</li>
+  <li>Question 4-10 are in <a href="lab02.py">lab02.py</a>.  Submit using OK.</li>
+  <li>Questions 12-16 are <a href="lab02_extra.py">lab02_extra.py</a>.  It is recommended that
   you complete these problems on your own time</li>
+  <li>You may want to scan ahead and start downloading anaconda early in the lab
+  so you can create a virtual environment in the background while you are doing 
+  the lab.  This will let us do development using Tables.</li>
 </ul>
 
 
     
-
-
-<h2 id="updating-your-work-environment-with-datascience-tools">Updating your work environment with datascience tools</h2>
-
-
-<p>In c8 you are doing all your development in the cloud on data8.berkeley.edu, but all of
-you appear to be using your personal computer for cs88.  If you are using the instructional
-machine in the lab you can ignore this section. We would like to be able to use the
-<code>datascience</code> module in cs88 as well, to make the most of what you learn in c8 and
-vice versa.  You should start the download at the beginning of lab so it can run while
-your TA is leading discussion and while you are doing your lab.  Come back to this at the
-end to complete the setup.</p>
-
-
-<h3 id="install-anaconda">Install anaconda</h3>
-
-
-<p>Go to <a href="http://docs.continuum.io/anaconda/install">http://docs.continuum.io/anaconda/install</a>
-and download Anacoda for PYTHON 3.5.  Follow the installation instructions.
-<br/>
-
-This builds the conda package manager on your computer.  You can use this to create virtual environments in which to do your work.  Once it is installed, create the cs88 environment.  In a terminal
-window:</p>
-
-<pre><code>conda create &#x2d;&#x2d;name cs88 python=3 scipy numpy matplotlib jupyter pandas</code></pre>
-
-<p>Whenever you are working in this environment you will need to run in the terminal window</p>
-
-<pre><code>source activate cs88</code></pre>
-
-<p>Verify the python version is 3.4 or greater</p>
-
-<pre><code>python &#x2d;&#x2d;version</code></pre>
-
-<p>This first time, you will need to build the datascience tools in this environment.</p>
-
-<pre><code>git clone https://github.com/dsten/datascience
-cd datascience
-source activate cs88
-make install</code></pre>
-
-<p>Once some bugs are fixed, this would all be replaced by</p>
-
-<pre><code>pip install datascience</code></pre>
-
-<p>At least this appears to be what works on a Mac.  We'll learn in lab of there are changes
-needed for windows.</p>
 
 
 <h2 id="more-experience-with-functions">More experience with functions</h2>
@@ -163,9 +119,9 @@ predicting what Python will output:</p>
 ...     return x + x
 &gt;&gt;&gt; a = square(double(4))
 &gt;&gt;&gt; a
-<div class="alt 19">______</div><div class="solution 19">&#x36;&#x34;</div></code></pre>
+<div class="alt 20">______</div><div class="solution 20">&#x36;&#x34;</div></code></pre>
 
-    <button id='19' class='toggleButton'>
+    <button id='20' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -177,11 +133,11 @@ predicting what Python will output:</p>
 ...     y = arg2
 &gt;&gt;&gt; reassign(5, 6)
 &gt;&gt;&gt; x
-<div class="alt 20">______</div><div class="solution 20">&#x34;</div>
+<div class="alt 21">______</div><div class="solution 21">&#x34;</div>
 &gt;&gt;&gt; y
-<div class="alt 20">______</div><div class="solution 20">&#x33;</div></code></pre>
+<div class="alt 21">______</div><div class="solution 21">&#x33;</div></code></pre>
 
-    <button id='20' class='toggleButton'>
+    <button id='21' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -191,15 +147,15 @@ predicting what Python will output:</p>
 ...     f(x)
 &gt;&gt;&gt; print, f = f, print
 &gt;&gt;&gt; a = f(4)
-<div class="alt 21">______</div><div class="solution 21">&#x34;</div>
+<div class="alt 22">______</div><div class="solution 22">&#x34;</div>
 &gt;&gt;&gt; a
-<div class="alt 21">______</div><div class="solution 21">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x73;&#x68;&#x6f;&#x77;&#x73;&#x20;&#x75;&#x70;&#x2c;&#x20;&#x62;&#x65;&#x63;&#x61;&#x75;&#x73;&#x65;&#x20;&#x61;&#x20;&#x3d;&#x20;&#x4e;&#x6f;&#x6e;&#x65;</div>
+<div class="alt 22">______</div><div class="solution 22">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x73;&#x68;&#x6f;&#x77;&#x73;&#x20;&#x75;&#x70;&#x2c;&#x20;&#x62;&#x65;&#x63;&#x61;&#x75;&#x73;&#x65;&#x20;&#x61;&#x20;&#x3d;&#x20;&#x4e;&#x6f;&#x6e;&#x65;</div>
 &gt;&gt;&gt; b = print(4)
-<div class="alt 21">______</div><div class="solution 21">&#x34;</div>
+<div class="alt 22">______</div><div class="solution 22">&#x34;</div>
 &gt;&gt;&gt; b
-<div class="alt 21">______</div><div class="solution 21">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x73;&#x68;&#x6f;&#x77;&#x73;&#x20;&#x75;&#x70;&#x2c;&#x20;&#x62;&#x65;&#x63;&#x61;&#x75;&#x73;&#x65;&#x20;&#x62;&#x20;&#x3d;&#x20;&#x4e;&#x6f;&#x6e;&#x65;</div></code></pre>
+<div class="alt 22">______</div><div class="solution 22">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x73;&#x68;&#x6f;&#x77;&#x73;&#x20;&#x75;&#x70;&#x2c;&#x20;&#x62;&#x65;&#x63;&#x61;&#x75;&#x73;&#x65;&#x20;&#x62;&#x20;&#x3d;&#x20;&#x4e;&#x6f;&#x6e;&#x65;</div></code></pre>
 
-    <button id='21' class='toggleButton'>
+    <button id='22' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -269,10 +225,10 @@ have local scope?  What is it local to?</p>
 
 
     <pre><code>&gt;&gt;&gt; area_circle(3)
-<div class="alt 22">______</div><div class="solution 22">&#x32;&#x37;</div>
+<div class="alt 23">______</div><div class="solution 23">&#x32;&#x37;</div>
 &gt;&gt;&gt;</code></pre>
 
-    <button id='22' class='toggleButton'>
+    <button id='23' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -355,54 +311,6 @@ values.  Here's some examples to give you some experience with that.</p>
 <p>Use OK to test your code:</p><pre><code>python3 ok -q uarea_rectangle
 python3 ok -q uarea_triangle</code></pre>
 
-<h3 class="question" id="q4">Question 4: The funny thing about global scope</h3>
-
-<p>Try running the following code in Python:</p>
-
-<pre><code>x, y = 42, 0
-def swap(a, b):
-    &quot;&quot;&quot;Reassigns variables x and y to b and a, respectively.&quot;&quot;&quot;
-    x, y = b, a
-
-swap(x, y)
-result = x / y</code></pre>
-
-<p>You should see an error occur on the last line:</p>
-
-<pre><code>ZeroDivisionError: division by zero</code></pre>
-
-<p>It seems like calling <code>swap(x, y)</code> didn't actually swap the variables! Why?</p>
-
-<div class="solution 4">
-
-<p>When <code>swap</code> is called, Python creates a new frame (let's call it <code>f1</code>). When
-Python executes the line <code>x, y = b, a</code>, it sees that <code>f1</code> doesn't contain
-variables called <code>x</code> and <code>y</code>, so it creates local variables <code>x</code> and <code>y</code> in
-<code>f1</code>. It <strong>does not reassign</strong> variables in the global frame.</p>
-
-</div>
-    <button id='4' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>What happens if we change the definition of <code>swap</code> to</p>
-
-<pre><code>def swap(a, b):
-    a, b = b, a</code></pre>
-
-<div class="solution 5">
-
-<p>A <code>ZeroDivisionError</code> still occurs. Instead of creating two new local variables
-<code>x</code> and <code>y</code> in <code>f1</code>, now Python just reassigns the local variables <code>a</code> and <code>b</code>.
-The global variables <code>x</code> and <code>y</code> remain untouched.</p>
-
-</div>
-    <button id='5' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
 
 <h2 id="functions-as-values-and-arguments">Functions as values and arguments</h2>
 
@@ -431,7 +339,7 @@ lab.</p>
 16
 &gt;&gt;&gt; </code></pre>
 
-<h3 class="question" id="q5">Question 5: What would Python print?</h3>
+<h3 class="question" id="q4">Question 4: What would Python print?</h3>
 
 
     <pre><code>&gt;&gt;&gt; def square(x):
@@ -441,9 +349,9 @@ lab.</p>
 ...     return &#x2d;f(x)
 ...
 &gt;&gt;&gt; neg(square, 4)
-<div class="alt 23">______</div><div class="solution 23">&#x2d;&#x31;&#x36;</div></code></pre>
+<div class="alt 24">______</div><div class="solution 24">&#x2d;&#x31;&#x36;</div></code></pre>
 
-    <button id='23' class='toggleButton'>
+    <button id='24' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -451,7 +359,7 @@ lab.</p>
 <p>Use OK to test your code:</p><pre><code>python3 ok -q square
 python3 ok -q -u</code></pre>
 
-<h3 class="question" id="q6">Question 6: Composing Function Arguments</h3>
+<h3 class="question" id="q5">Question 5: Composing Function Arguments</h3>
 
 
 
@@ -460,11 +368,11 @@ python3 ok -q -u</code></pre>
     &gt;&gt;&gt; twice(square,3)
     81
     &quot;&quot;&quot;
-<div class="alt 6">    "*** YOUR CODE HERE ***"
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x66;&#x28;&#x78;&#x29;&#x29;</div></code></pre>
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x66;&#x28;&#x78;&#x29;&#x29;</div></code></pre>
 
 
-    <button id='6' class='toggleButton'>
+    <button id='4' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -479,11 +387,11 @@ python3 ok -q -u</code></pre>
     &gt;&gt;&gt; apply_n(increment, 2, 10)
     12
     &quot;&quot;&quot;
-<div class="alt 7">    "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6e;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x66;&#x28;&#x72;&#x65;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;</div></code></pre>
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6e;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x66;&#x28;&#x72;&#x65;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;</div></code></pre>
 
 
-    <button id='7' class='toggleButton'>
+    <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -494,7 +402,7 @@ python3 ok -q -u</code></pre>
 <h2 id="mapping-functions-over-data">Mapping functions over data</h2>
 
 
-<h3 class="question" id="q7">Question 7: Variants of map</h3>
+<h3 class="question" id="q6">Question 6: Variants of map</h3>
 
 <p>In data8 you saw examples of applying a function to every element in a column
 of a table, for example to decode the <code>sex</code> number code into a useful string.
@@ -532,11 +440,11 @@ sequence from 0 to <code>n&#x2d;1</code>.</p>
     &gt;&gt;&gt; mapn(square,4)
     [0, 1, 4, 9]
     &quot;&quot;&quot;
-<div class="alt 8">    "*** YOUR CODE HERE ***"
-</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x66;&#x28;&#x78;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6e;&#x29;&#x5d;</div></code></pre>
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x66;&#x28;&#x78;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6e;&#x29;&#x5d;</div></code></pre>
 
 
-    <button id='8' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -554,11 +462,11 @@ returns the maximum of these for each of the values from <code>low</code> to <co
     &gt;&gt;&gt; maxfun(four,square,&#x2d;4,4)
     [16, 9, 4, 4, 4, 4, 4, 9]
     &quot;&quot;&quot;
-<div class="alt 9">    "*** YOUR CODE HERE ***"
-</div><div class="solution 9">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6d;&#x61;&#x78;&#x28;&#x66;&#x28;&#x69;&#x29;&#x2c;&#x67;&#x28;&#x69;&#x29;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x6f;&#x77;&#x2c;&#x20;&#x68;&#x69;&#x67;&#x68;&#x29;&#x5d;</div></code></pre>
+<div class="alt 7">    "*** YOUR CODE HERE ***"
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6d;&#x61;&#x78;&#x28;&#x66;&#x28;&#x69;&#x29;&#x2c;&#x67;&#x28;&#x69;&#x29;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x6f;&#x77;&#x2c;&#x20;&#x68;&#x69;&#x67;&#x68;&#x29;&#x5d;</div></code></pre>
 
 
-    <button id='9' class='toggleButton'>
+    <button id='7' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -569,7 +477,7 @@ returns the maximum of these for each of the values from <code>low</code> to <co
 <h2 id="reducing-data-using-aggregation-functions">Reducing data using aggregation functions</h2>
 
 
-<h3 class="question" id="q8">Question 8: Using aggregation function</h3>
+<h3 class="question" id="q7">Question 7: Using aggregation function</h3>
 
 <p>Write the higher order function <code>reduce</code> which takes</p>
 
@@ -591,11 +499,11 @@ returns the maximum of these for each of the values from <code>low</code> to <co
     &gt;&gt;&gt; reduce(mul, [1,2,3,4], 1)
     24
     &quot;&quot;&quot;
-<div class="alt 10">    "*** YOUR CODE HERE ***"
-</div><div class="solution 10">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#x72;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2c;&#x20;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
+<div class="alt 8">    "*** YOUR CODE HERE ***"
+</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#x72;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2c;&#x20;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
 
 
-    <button id='10' class='toggleButton'>
+    <button id='8' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -610,7 +518,7 @@ returns the maximum of these for each of the values from <code>low</code> to <co
 
 <p>Try out some more.</p>
 
-<h3 class="question" id="q9">Question 9: Accumulate</h3>
+<h3 class="question" id="q8">Question 8: Accumulate</h3>
 
 <p>Putting some of these ideas together, we could write
 a general function, called <code>accumulate</code>, with the following signature:</p>
@@ -649,8 +557,8 @@ def accumulate(combiner, base, n, term):
     &gt;&gt;&gt; accumulate(mul, 2, 3, square)   # 2 * 1^2 * 2^2 * 3^2
     72
     &quot;&quot;&quot;
-<div class="alt 11">    "*** YOUR CODE HERE ***"
-</div><div class="solution 11">&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#x2c;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6b;&#x20;&#x3c;&#x3d;&#x20;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x6d;&#x62;&#x69;&#x6e;&#x65;&#x72;&#x28;&#x74;&#x65;&#x72;&#x6d;&#x28;&#x6b;&#x29;&#x2c;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x29;&#x2c;&#x20;&#x6b;&#x20;&#x2b;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;</div></code></pre>
+<div class="alt 9">    "*** YOUR CODE HERE ***"
+</div><div class="solution 9">&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#x2c;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6b;&#x20;&#x3c;&#x3d;&#x20;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x6d;&#x62;&#x69;&#x6e;&#x65;&#x72;&#x28;&#x74;&#x65;&#x72;&#x6d;&#x28;&#x6b;&#x29;&#x2c;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x29;&#x2c;&#x20;&#x6b;&#x20;&#x2b;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;</div></code></pre>
 
 <solution>
 
@@ -664,8 +572,8 @@ def accumulate(combiner, base, n, term):
     &gt;&gt;&gt; summation_using_accumulate(5, triple)
     45
     &quot;&quot;&quot;
-<div class="alt 11">    "*** YOUR CODE HERE ***"
-</div><div class="solution 11">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x63;&#x63;&#x75;&#x6d;&#x75;&#x6c;&#x61;&#x74;&#x65;&#x28;&#x61;&#x64;&#x64;&#x2c;&#x20;&#x30;&#x2c;&#x20;&#x6e;&#x2c;&#x20;&#x74;&#x65;&#x72;&#x6d;&#x29;</div>
+<div class="alt 9">    "*** YOUR CODE HERE ***"
+</div><div class="solution 9">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x63;&#x63;&#x75;&#x6d;&#x75;&#x6c;&#x61;&#x74;&#x65;&#x28;&#x61;&#x64;&#x64;&#x2c;&#x20;&#x30;&#x2c;&#x20;&#x6e;&#x2c;&#x20;&#x74;&#x65;&#x72;&#x6d;&#x29;</div>
 def product_using_accumulate(n, term):
     &quot;&quot;&quot;An implementation of product using accumulate.
 
@@ -674,11 +582,11 @@ def product_using_accumulate(n, term):
     &gt;&gt;&gt; product_using_accumulate(6, triple)
     524880
     &quot;&quot;&quot;
-<div class="alt 11">    "*** YOUR CODE HERE ***"
-</div><div class="solution 11">&#x20;&#x20;&#x20;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x6f;&#x70;&#x65;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x20;&#x69;&#x6d;&#x70;&#x6f;&#x72;&#x74;&#x20;&#x6d;&#x75;&#x6c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x63;&#x63;&#x75;&#x6d;&#x75;&#x6c;&#x61;&#x74;&#x65;&#x28;&#x6d;&#x75;&#x6c;&#x2c;&#x20;&#x31;&#x2c;&#x20;&#x6e;&#x2c;&#x20;&#x74;&#x65;&#x72;&#x6d;&#x29;</div></code></pre>
+<div class="alt 9">    "*** YOUR CODE HERE ***"
+</div><div class="solution 9">&#x20;&#x20;&#x20;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x6f;&#x70;&#x65;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x20;&#x69;&#x6d;&#x70;&#x6f;&#x72;&#x74;&#x20;&#x6d;&#x75;&#x6c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x63;&#x63;&#x75;&#x6d;&#x75;&#x6c;&#x61;&#x74;&#x65;&#x28;&#x6d;&#x75;&#x6c;&#x2c;&#x20;&#x31;&#x2c;&#x20;&#x6e;&#x2c;&#x20;&#x74;&#x65;&#x72;&#x6d;&#x29;</div></code></pre>
 
 
-    <button id='11' class='toggleButton'>
+    <button id='9' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -695,7 +603,7 @@ python3 ok -q product_using_accumulate</code></pre>
 in functions as arguments, returning a function, or both. We will be exploring
 many applications of higher order functions.</p>
 
-<h3 class="question" id="q10">Question 10: Dispatch and Higher Order Functions</h3>
+<h3 class="question" id="q9">Question 9: Dispatch and Higher Order Functions</h3>
 
 <p>They say "all problems in Computer Science can be solved by a level of indirection".  We'll
 talk more about what that all means, but one of the best examples is the ability to
@@ -730,11 +638,11 @@ def int_to_gender(i):
     2.49                                                                                      
     &gt;&gt;&gt; lookup(&#x27;banana&#x27;, [(&#x27;apple&#x27;, 1.29),(&#x27;grape&#x27;, 2.49),(&#x27;orange&#x27;, 1.79)])   
     &quot;&quot;&quot;
-<div class="alt 12">    "*** YOUR CODE HERE ***"
-</div><div class="solution 12">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x5f;&#x6b;&#x65;&#x79;&#x2c;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x5f;&#x76;&#x61;&#x6c;&#x20;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x61;&#x62;&#x6c;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x28;&#x6b;&#x65;&#x79;&#x20;&#x3d;&#x3d;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x5f;&#x6b;&#x65;&#x79;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x5f;&#x76;&#x61;&#x6c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4e;&#x6f;&#x6e;&#x65;</div></code></pre>
+<div class="alt 10">    "*** YOUR CODE HERE ***"
+</div><div class="solution 10">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x5f;&#x6b;&#x65;&#x79;&#x2c;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x5f;&#x76;&#x61;&#x6c;&#x20;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x61;&#x62;&#x6c;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x28;&#x6b;&#x65;&#x79;&#x20;&#x3d;&#x3d;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x5f;&#x6b;&#x65;&#x79;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x5f;&#x76;&#x61;&#x6c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4e;&#x6f;&#x6e;&#x65;</div></code></pre>
 
 
-    <button id='12' class='toggleButton'>
+    <button id='10' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -779,16 +687,76 @@ sequences of <code>SEX</code> values to produce a sequence of gender strings.</p
 
 
 
-<pre><code><div class="alt 13">"*** YOUR CODE HERE ***"
-</div><div class="solution 13">&#x64;&#x65;&#x63;&#x6f;&#x64;&#x65;&#x5f;&#x67;&#x65;&#x6e;&#x64;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x74;&#x72;&#x61;&#x6e;&#x73;&#x6c;&#x61;&#x74;&#x65;&#x72;&#x5f;&#x6d;&#x61;&#x6b;&#x65;&#x72;&#x28;&#x67;&#x65;&#x6e;&#x64;&#x65;&#x72;&#x5f;&#x74;&#x61;&#x62;&#x6c;&#x65;&#x29;&#xa;&#x3e;&#x3e;&#x3e;&#x20;&#x6d;&#x61;&#x70;&#x28;&#x64;&#x65;&#x63;&#x6f;&#x64;&#x65;&#x5f;&#x67;&#x65;&#x6e;&#x64;&#x65;&#x72;&#x2c;&#x20;&#x5b;&#x30;&#x2c;&#x32;&#x2c;&#x31;&#x2c;&#x31;&#x2c;&#x32;&#x5d;&#x29;&#xa;&#x5b;&#x27;&#x61;&#x6c;&#x6c;&#x27;&#x2c;&#x20;&#x27;&#x66;&#x65;&#x6d;&#x61;&#x6c;&#x65;&#x27;&#x2c;&#x20;&#x27;&#x6d;&#x61;&#x6c;&#x65;&#x27;&#x2c;&#x20;&#x27;&#x6d;&#x61;&#x6c;&#x65;&#x27;&#x2c;&#x20;&#x27;&#x66;&#x65;&#x6d;&#x61;&#x6c;&#x65;&#x27;&#x5d;&#xa;&#x3e;&#x3e;&#x3e;</div></code></pre>
+<pre><code><div class="alt 11">"*** YOUR CODE HERE ***"
+</div><div class="solution 11">&#x64;&#x65;&#x63;&#x6f;&#x64;&#x65;&#x5f;&#x67;&#x65;&#x6e;&#x64;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x74;&#x72;&#x61;&#x6e;&#x73;&#x6c;&#x61;&#x74;&#x65;&#x72;&#x5f;&#x6d;&#x61;&#x6b;&#x65;&#x72;&#x28;&#x67;&#x65;&#x6e;&#x64;&#x65;&#x72;&#x5f;&#x74;&#x61;&#x62;&#x6c;&#x65;&#x29;&#xa;&#x3e;&#x3e;&#x3e;&#x20;&#x6d;&#x61;&#x70;&#x28;&#x64;&#x65;&#x63;&#x6f;&#x64;&#x65;&#x5f;&#x67;&#x65;&#x6e;&#x64;&#x65;&#x72;&#x2c;&#x20;&#x5b;&#x30;&#x2c;&#x32;&#x2c;&#x31;&#x2c;&#x31;&#x2c;&#x32;&#x5d;&#x29;&#xa;&#x5b;&#x27;&#x61;&#x6c;&#x6c;&#x27;&#x2c;&#x20;&#x27;&#x66;&#x65;&#x6d;&#x61;&#x6c;&#x65;&#x27;&#x2c;&#x20;&#x27;&#x6d;&#x61;&#x6c;&#x65;&#x27;&#x2c;&#x20;&#x27;&#x6d;&#x61;&#x6c;&#x65;&#x27;&#x2c;&#x20;&#x27;&#x66;&#x65;&#x6d;&#x61;&#x6c;&#x65;&#x27;&#x5d;&#xa;&#x3e;&#x3e;&#x3e;</div></code></pre>
 
 
-    <button id='13' class='toggleButton'>
+    <button id='11' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
-<h3 class="question" id="q11">Question 11: WWPP: Higher Order Functions</h3>
+<p>When <code>lookup</code> is used with higher-order functions it provides a <em>dispatch</em>
+software design pattern.  Consider the following example.  We start up with a
+table of <code>(key, function)</code> tuples.</p>
+
+<pre><code>area_funs = [(&quot;square&quot;,    uarea_square),
+             (&quot;rectangle&quot;, uarea_rectangle),
+             (&quot;circle&quot;,    uarea_circle),
+             (&quot;triangle&quot;,  uarea_triangle)
+            ]</code></pre>
+
+<p>This allows us to write a generic table-driven <code>area</code> function.</p>
+
+<pre><code>def area(shape_type, descriptor):
+    area_fun = lookup(shape_type, area_funs)
+    return area_fun(descriptor)</code></pre>
+
+<p>Here's an example of using this.
+<br/>
+
+<pre><code>shapes = [(&quot;square&quot;, 2),
+          (&quot;rectangle&quot;, (3, 4)),
+          (&quot;rectangle&quot;, (5, 4)),
+          (&quot;circle&quot;, 1),
+          (&quot;triangle&quot;, (1, 1, sqrt(2)))
+         ]
+
+def render_areas(shapes):
+    for shape_type, shape_desc in shapes:
+        print(&quot;{0}({1}) =&gt; {2}&quot;.format(shape_type, shape_desc, area(shape_type, shape_desc)))</code></pre></p>
+
+<p>Try this out and convince yourself that it works and that you understand how it
+works.</p>
+
+<p>Now put these ideas together.  Complete the <code>area_maker</code> function so that it
+returns a generic area function based on a table that it is provided.  You can
+test it yourself on the larger set of <code>uarea</code> functions than is in the docstring  
+<br/>
+
+</p>
+
+<pre><code>def area_maker(afuns):
+    &quot;&quot;&quot;Return a function that computes area based on shape and descriptor built from
+    a list of (shape function tuples).
+
+    &gt;&gt;&gt; afun = area_maker([(&quot;square&quot;,uarea_square),(&quot;rectangle&quot;, uarea_rectangle)])
+    &gt;&gt;&gt; afun(&quot;square&quot;,2)
+    4
+    &gt;&gt;&gt; afun(&quot;rectangle&quot;,(2,3))
+    6
+
+    &quot;&quot;&quot;
+<div class="alt 12">    "*** YOUR CODE HERE ***"
+</div><div class="solution 12">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x66;&#x75;&#x6e;&#x28;&#x73;&#x68;&#x61;&#x70;&#x65;&#x5f;&#x74;&#x79;&#x70;&#x65;&#x2c;&#x20;&#x64;&#x65;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x6f;&#x72;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x6f;&#x6f;&#x6b;&#x75;&#x70;&#x28;&#x73;&#x68;&#x61;&#x70;&#x65;&#x5f;&#x74;&#x79;&#x70;&#x65;&#x2c;&#x20;&#x61;&#x66;&#x75;&#x6e;&#x73;&#x29;&#x28;&#x64;&#x65;&#x73;&#x63;&#x72;&#x69;&#x70;&#x74;&#x6f;&#x72;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x75;&#x6e;</div></code></pre>
+
+
+    <button id='12' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<h3 class="question" id="q10">Question 10: WWPP: Higher Order Functions</h3>
 
 <blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
 questions:</p>
@@ -798,6 +766,108 @@ questions:</p>
 <p>For WWPP questions, input <code>Function</code> if you believe the
 answer is <code>&lt;function...&gt;</code>, <code>Error</code> if it errors, and <code>Nothing</code> if nothing
 happens.</p></blockquote>
+
+
+<h2 id="updating-your-work-environment-with-datascience-tools">Updating your work environment with datascience tools</h2>
+
+
+<p>In c8 you are doing all your development in the cloud on data8.berkeley.edu, but all of
+you appear to be using your personal computer for cs88.  If you are using the instructional
+machine in the lab you can ignore this section. We would like to be able to use the
+<code>datascience</code> module in cs88 as well, to make the most of what you learn in c8 and
+vice versa.  You should start the download at the beginning of lab so it can run while
+your TA is leading discussion and while you are doing your lab.  Come back to this at the
+end to complete the setup.</p>
+
+
+<h3 id="install-anaconda">Install anaconda</h3>
+
+
+<p>Go to <a href="http://docs.continuum.io/anaconda/install">http://docs.continuum.io/anaconda/install</a>
+and download Anacoda for PYTHON 3.5.  Follow the installation instructions.
+<br/>
+
+This builds the conda package manager on your computer.  You can use this to create virtual environments in which to do your work.  Once it is installed, create the cs88 environment.  In a terminal
+window:</p>
+
+<pre><code>conda create &#x2d;&#x2d;name cs88 python=3 scipy numpy matplotlib jupyter pandas</code></pre>
+
+<p>Whenever you are working in this environment you will need to run in the terminal window</p>
+
+<pre><code>source activate cs88</code></pre>
+
+<p>Verify the python version is 3.4 or greater</p>
+
+<pre><code>python &#x2d;&#x2d;version</code></pre>
+
+<p>This first time, you will need to build the datascience tools in this environment.</p>
+
+<pre><code>git clone https://github.com/dsten/datascience
+cd datascience
+source activate cs88
+make install</code></pre>
+
+<p>Once some bugs are fixed, this would all be replaced by</p>
+
+<pre><code>pip install datascience</code></pre>
+
+<p>At least this appears to be what works on a Mac.  We'll learn in lab of there are changes
+needed for windows.</p>
+
+
+<h2 id="coding-practice">Coding Practice</h2>
+
+
+<blockquote><p>It's ok if you don't finish these questions during lab. However, we strongly
+encourage you to try them out on your own time for extra practice.</p></blockquote>
+
+<h3 class="question" id="q11">Question 11: The funny thing about global scope</h3>
+
+<p>Try running the following code in Python:</p>
+
+<pre><code>x, y = 42, 0
+def swap(a, b):
+    &quot;&quot;&quot;Reassigns variables x and y to b and a, respectively.&quot;&quot;&quot;
+    x, y = b, a
+
+swap(x, y)
+result = x / y</code></pre>
+
+<p>You should see an error occur on the last line:</p>
+
+<pre><code>ZeroDivisionError: division by zero</code></pre>
+
+<p>It seems like calling <code>swap(x, y)</code> didn't actually swap the variables! Why?</p>
+
+<div class="solution 13">
+
+<p>When <code>swap</code> is called, Python creates a new frame (let's call it <code>f1</code>). When
+Python executes the line <code>x, y = b, a</code>, it sees that <code>f1</code> doesn't contain
+variables called <code>x</code> and <code>y</code>, so it creates local variables <code>x</code> and <code>y</code> in
+<code>f1</code>. It <strong>does not reassign</strong> variables in the global frame.</p>
+
+</div>
+    <button id='13' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>What happens if we change the definition of <code>swap</code> to</p>
+
+<pre><code>def swap(a, b):
+    a, b = b, a</code></pre>
+
+<div class="solution 14">
+
+<p>A <code>ZeroDivisionError</code> still occurs. Instead of creating two new local variables
+<code>x</code> and <code>y</code> in <code>f1</code>, now Python just reassigns the local variables <code>a</code> and <code>b</code>.
+The global variables <code>x</code> and <code>y</code> remain untouched.</p>
+
+</div>
+    <button id='14' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
 
 <h3 class="question" id="q12">Question 12: This Question is so Derivative</h3>
 
@@ -828,23 +898,16 @@ derivative will be.</p>
     &gt;&gt;&gt; round(result, 3) # approximately 2*3
     6.0
     &quot;&quot;&quot;
-<div class="alt 14">    "*** YOUR CODE HERE ***"
-</div><div class="solution 14">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x66;&#x28;&#x78;&#x20;&#x2b;&#x20;&#x68;&#x29;&#x20;&#x2d;&#x20;&#x66;&#x28;&#x78;&#x29;&#x29;&#x20;&#x2f;&#x20;&#x68;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;</div></code></pre>
+<div class="alt 15">    "*** YOUR CODE HERE ***"
+</div><div class="solution 15">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x66;&#x28;&#x78;&#x20;&#x2b;&#x20;&#x68;&#x29;&#x20;&#x2d;&#x20;&#x66;&#x28;&#x78;&#x29;&#x29;&#x20;&#x2f;&#x20;&#x68;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;</div></code></pre>
 
 
-    <button id='14' class='toggleButton'>
+    <button id='15' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q make_derivative</code></pre>
-
-
-<h2 id="coding-practice">Coding Practice</h2>
-
-
-<blockquote><p>It's ok if you don't finish these questions during lab. However, we strongly
-encourage you to try them out on your own time for extra practice.</p></blockquote>
 
 <h3 class="question" id="q13">Question 13: WWPP: Fun with nested functions</h3>
 
@@ -862,13 +925,13 @@ questions:</p>
 ...     print(&#x27;first&#x27;)
 ...     return second
 &gt;&gt;&gt; f = first(15)
-<div class="alt 24">______</div><div class="solution 24">&#x66;&#x69;&#x72;&#x73;&#x74;</div>
+<div class="alt 25">______</div><div class="solution 25">&#x66;&#x69;&#x72;&#x73;&#x74;</div>
 &gt;&gt;&gt; f
-<div class="alt 24">______</div><div class="solution 24">&#x3c;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
+<div class="alt 25">______</div><div class="solution 25">&#x3c;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
 &gt;&gt;&gt; f(16)
-<div class="alt 24">______</div><div class="solution 24">&#x73;&#x65;&#x63;&#x6f;&#x6e;&#x64;&#xa;&#x33;&#x39;</div></code></pre>
+<div class="alt 25">______</div><div class="solution 25">&#x73;&#x65;&#x63;&#x6f;&#x6e;&#x64;&#xa;&#x33;&#x39;</div></code></pre>
 
-    <button id='24' class='toggleButton'>
+    <button id='25' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -887,18 +950,18 @@ questions:</p>
 ...     return bar
 &gt;&gt;&gt; boom = foo(23)
 &gt;&gt;&gt; boom(42)
-<div class="alt 25">______</div><div class="solution 25">&#x36;&#x35;</div>
+<div class="alt 26">______</div><div class="solution 26">&#x36;&#x35;</div>
 &gt;&gt;&gt; foo(6)(7)
-<div class="alt 25">______</div><div class="solution 25">&#x31;&#x33;</div>
+<div class="alt 26">______</div><div class="solution 26">&#x31;&#x33;</div>
 &gt;&gt;&gt; func = boom
 &gt;&gt;&gt; # &quot;a is b&quot; returns whether a and b are different names for the same thing
 &gt;&gt;&gt; func is boom
-<div class="alt 25">______</div><div class="solution 25">&#x54;&#x72;&#x75;&#x65;</div>
+<div class="alt 26">______</div><div class="solution 26">&#x54;&#x72;&#x75;&#x65;</div>
 &gt;&gt;&gt; func = foo(23)
 &gt;&gt;&gt; func is boom
-<div class="alt 25">______</div><div class="solution 25">&#x46;&#x61;&#x6c;&#x73;&#x65;</div></code></pre>
+<div class="alt 26">______</div><div class="solution 26">&#x46;&#x61;&#x6c;&#x73;&#x65;</div></code></pre>
 
-    <button id='25' class='toggleButton'>
+    <button id='26' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -918,11 +981,11 @@ element.</p>
     &gt;&gt;&gt; max_list([1,3,&#x2d;1])
     3
     &quot;&quot;&quot;
-<div class="alt 15">    "*** YOUR CODE HERE ***"
-</div><div class="solution 15">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x72;&#x67;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x73;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x3e;&#x20;&#x6c;&#x61;&#x72;&#x67;&#x65;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x72;&#x67;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x61;&#x72;&#x67;&#x65;&#x73;&#x74;</div></code></pre>
+<div class="alt 16">    "*** YOUR CODE HERE ***"
+</div><div class="solution 16">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x72;&#x67;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x73;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x3e;&#x20;&#x6c;&#x61;&#x72;&#x67;&#x65;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x72;&#x67;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x61;&#x72;&#x67;&#x65;&#x73;&#x74;</div></code></pre>
 
 
-    <button id='15' class='toggleButton'>
+    <button id='16' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -939,11 +1002,11 @@ not equal to <code>exclude</code>.</p>
     &gt;&gt;&gt; remove_element([1, 3, &#x2d;1], 1)
     [3, &#x2d;1]
     &quot;&quot;&quot;
-<div class="alt 16">    "*** YOUR CODE HERE ***"
-</div><div class="solution 16">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x21;&#x3d;&#x20;&#x65;&#x78;&#x63;&#x6c;&#x75;&#x64;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x2b;&#x20;&#x5b;&#x76;&#x61;&#x6c;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
+<div class="alt 17">    "*** YOUR CODE HERE ***"
+</div><div class="solution 17">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x21;&#x3d;&#x20;&#x65;&#x78;&#x63;&#x6c;&#x75;&#x64;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x2b;&#x20;&#x5b;&#x76;&#x61;&#x6c;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
 
 
-    <button id='16' class='toggleButton'>
+    <button id='17' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -959,11 +1022,11 @@ and returns the same list with its last element removed.</p>
     &gt;&gt;&gt; remove_max([1, 3, &#x2d;1, 3])
     [1, &#x2d;1]
     &quot;&quot;&quot;
-<div class="alt 17">    "*** YOUR CODE HERE ***"
-</div><div class="solution 17">&#x20;&#x20;&#x20;&#x20;&#x6d;&#x61;&#x78;&#x69;&#x6d;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x6d;&#x6f;&#x76;&#x65;&#x5f;&#x65;&#x6c;&#x65;&#x6d;&#x65;&#x6e;&#x74;&#x28;&#x73;&#x2c;&#x20;&#x6d;&#x61;&#x78;&#x69;&#x6d;&#x75;&#x6d;&#x29;</div></code></pre>
+<div class="alt 18">    "*** YOUR CODE HERE ***"
+</div><div class="solution 18">&#x20;&#x20;&#x20;&#x20;&#x6d;&#x61;&#x78;&#x69;&#x6d;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x6d;&#x6f;&#x76;&#x65;&#x5f;&#x65;&#x6c;&#x65;&#x6d;&#x65;&#x6e;&#x74;&#x28;&#x73;&#x2c;&#x20;&#x6d;&#x61;&#x78;&#x69;&#x6d;&#x75;&#x6d;&#x29;</div></code></pre>
 
 
-    <button id='17' class='toggleButton'>
+    <button id='18' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -1028,11 +1091,11 @@ i)</code>. <code>count_cond</code> returns a count of all the numbers from 1 to 
     &gt;&gt;&gt; count_cond(is_prime, 20) # 2, 3, 5, 7, 11, 13, 17, 19
     8
     &quot;&quot;&quot;
-<div class="alt 18">    "*** YOUR CODE HERE ***"
-</div><div class="solution 18">&#x20;&#x20;&#x20;&#x20;&#x69;&#x2c;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x20;&#x3d;&#x20;&#x31;&#x2c;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x20;&#x3c;&#x3d;&#x20;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x63;&#x6f;&#x6e;&#x64;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x28;&#x6e;&#x2c;&#x20;&#x69;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;</div></code></pre>
+<div class="alt 19">    "*** YOUR CODE HERE ***"
+</div><div class="solution 19">&#x20;&#x20;&#x20;&#x20;&#x69;&#x2c;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x20;&#x3d;&#x20;&#x31;&#x2c;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x20;&#x3c;&#x3d;&#x20;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x63;&#x6f;&#x6e;&#x64;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x28;&#x6e;&#x2c;&#x20;&#x69;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;</div></code></pre>
 
 
-    <button id='18' class='toggleButton'>
+    <button id='19' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -1045,45 +1108,45 @@ i)</code>. <code>count_cond</code> returns a count of all the numbers from 1 to 
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
-  <li><a href="#updating-your-work-environment-with-datascience-tools">Updating your work environment with datascience tools</a></li>
-  <ul>
-  <li><a href="#install-anaconda">Install anaconda</a></li>
-</ul>
-
   <li><a href="#more-experience-with-functions">More experience with functions</a></li>
   <ul>
   <li><a href="#q1">Question 1: Environment diagrams</a></li>
   <li><a href="#q2">Question 2: Local and Global Scope - area examples</a></li>
   <li><a href="#q3">Question 3: Tuples as function arguments</a></li>
-  <li><a href="#q4">Question 4: The funny thing about global scope</a></li>
 </ul>
 
   <li><a href="#functions-as-values-and-arguments">Functions as values and arguments</a></li>
   <ul>
-  <li><a href="#q5">Question 5: What would Python print?</a></li>
-  <li><a href="#q6">Question 6: Composing Function Arguments</a></li>
+  <li><a href="#q4">Question 4: What would Python print?</a></li>
+  <li><a href="#q5">Question 5: Composing Function Arguments</a></li>
 </ul>
 
   <li><a href="#mapping-functions-over-data">Mapping functions over data</a></li>
   <ul>
-  <li><a href="#q7">Question 7: Variants of map</a></li>
+  <li><a href="#q6">Question 6: Variants of map</a></li>
 </ul>
 
   <li><a href="#reducing-data-using-aggregation-functions">Reducing data using aggregation functions</a></li>
   <ul>
-  <li><a href="#q8">Question 8: Using aggregation function</a></li>
-  <li><a href="#q9">Question 9: Accumulate</a></li>
+  <li><a href="#q7">Question 7: Using aggregation function</a></li>
+  <li><a href="#q8">Question 8: Accumulate</a></li>
 </ul>
 
   <li><a href="#higher-order-functions">Higher Order Functions</a></li>
   <ul>
-  <li><a href="#q10">Question 10: Dispatch and Higher Order Functions</a></li>
-  <li><a href="#q11">Question 11: WWPP: Higher Order Functions</a></li>
-  <li><a href="#q12">Question 12: This Question is so Derivative</a></li>
+  <li><a href="#q9">Question 9: Dispatch and Higher Order Functions</a></li>
+  <li><a href="#q10">Question 10: WWPP: Higher Order Functions</a></li>
+</ul>
+
+  <li><a href="#updating-your-work-environment-with-datascience-tools">Updating your work environment with datascience tools</a></li>
+  <ul>
+  <li><a href="#install-anaconda">Install anaconda</a></li>
 </ul>
 
   <li><a href="#coding-practice">Coding Practice</a></li>
   <ul>
+  <li><a href="#q11">Question 11: The funny thing about global scope</a></li>
+  <li><a href="#q12">Question 12: This Question is so Derivative</a></li>
   <li><a href="#q13">Question 13: WWPP: Fun with nested functions</a></li>
   <li><a href="#q14">Question 14: WWPP: More fun with nested functions!</a></li>
   <li><a href="#q15">Question 15: More Practice with Loops and Conditionals</a></li>
