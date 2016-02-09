@@ -53,3 +53,18 @@ def count_cond(condition, n):
     """
     "*** YOUR CODE HERE ***"
 
+
+def make_derivative(f, h=1e-5):
+    """Returns a function that approximates the derivative of f.
+
+    Recall that f'(a) = (f(a + h) - f(a)) / h as h approaches 0. We will
+    approximate the derivative by choosing a very small value for h.
+
+    >>> square = lambda x: x*x
+    >>> derivative = make_derivative(square)
+    >>> result = derivative(3)
+    >>> round(result, 3) # approximately 2*3
+    6.0
+    """
+    "*** YOUR CODE HERE ***"
+

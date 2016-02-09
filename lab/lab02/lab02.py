@@ -194,32 +194,44 @@ def product_using_accumulate(n, term):
 
 # Higher order functions
 
-def make_derivative(f, h=1e-5):
-    """Returns a function that approximates the derivative of f.
 
-    Recall that f'(a) = (f(a + h) - f(a)) / h as h approaches 0. We will
-    approximate the derivative by choosing a very small value for h.
+def lookup(key, table):
+    """Return the val associated with the key in a table.                                     
 
-    >>> square = lambda x: x*x
-    >>> derivative = make_derivative(square)
-    >>> result = derivative(3)
-    >>> round(result, 3) # approximately 2*3
-    6.0
+    >>> lookup('grape', [('apple', 1.29),('grape', 2.49),('orange', 1.79)])                   
+    2.49                                                                                      
+    >>> lookup('banana', [('apple', 1.29),('grape', 2.49),('orange', 1.79)])   
     """
     "*** YOUR CODE HERE ***"
 
 
+gender_table = ((0, "all"),
+                (1, "male"),
+                (2, "female"))
+
+def int_to_gender(i):
+    return lookup(i, gender_table)
 
 
 
-#from utils import letter_to_num, num_to_letter, looper, mirror_letter
+def translater_maker(table):
+    def lookup_fun(key):
+        return lookup(key, table)
+    return lookup_fun
 
-# <include prob/topics/hof/easy/derivative.py>
 
-# String Transformers
 
-#<include prob/topics/lambdas/easy/encdec-rotators.py>
+def area_maker(afuns):
+    """Return a function that computes area based on shape and descriptor built from
+    a list of (shape function tuples).
 
-# Encryption and Decryption
+    >>> afun = area_maker([("square",uarea_square),("rectangle", uarea_rectangle)])
+    >>> afun("square",2)
+    4
+    >>> afun("rectangle",(2,3))
+    6
 
-#<include prob/topics/hof/easy/encdec-utilities.py>
+    """
+    "*** YOUR CODE HERE ***"
+
+
