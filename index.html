@@ -89,6 +89,32 @@
                 </a>
             </li>
             <li>
+                <span class="announcement-date">Thursday, 02/11</span>
+            </li>
+            <li class='announcement-btn-older'>
+                <a>
+                    older
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                </a>
+            </li>
+        </ul>
+        
+        <p>Project 1 Cucumber released. Get started and have fun. 
+No Professor Culler office hours Friday 2/12 or Tues. 2/16
+due to travel.  No class Monday 2/15 - Holiday</p>
+    </div>
+    
+
+    <div class="announcement" id='announcement-1'>
+        
+        <ul class="pager">
+            <li class='announcement-btn-newer'>
+                <a>
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    newer
+                </a>
+            </li>
+            <li>
                 <span class="announcement-date">Thursday, 01/28</span>
             </li>
             <li class='announcement-btn-older'>
@@ -110,7 +136,7 @@ line, so you can also drop in at your convenience.</p>
     </div>
     
 
-    <div class="announcement" id='announcement-1'>
+    <div class="announcement" id='announcement-2'>
         
         <ul class="pager">
             <li class='announcement-btn-newer'>
@@ -135,7 +161,7 @@ Soda) on Mondays 5-7pm.</p>
     </div>
     
 
-    <div class="announcement" id='announcement-2'>
+    <div class="announcement" id='announcement-3'>
         
         <ul class="pager">
             <li class='announcement-btn-newer'>
@@ -451,7 +477,7 @@ Soda) on Mondays 5-7pm.</p>
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="hw/hw02/">Homework 2</a></td>
+            <td class='resource-name'><a href="hw/hw02/">Homework 2</a> (Solutions)</td>
             <td class='resource-type'>Homework</td>
             <td class='resource-tags'></td>
         </tr>
@@ -499,7 +525,7 @@ Soda) on Mondays 5-7pm.</p>
         </tr>
 
         <tr>
-            <td class='resource-name'>Cuke</td>
+            <td class='resource-name'><a href="proj/cuke/">Cuke</a></td>
             <td class='resource-type'>Project</td>
             <td class='resource-tags'></td>
         </tr>
@@ -768,7 +794,7 @@ No Lecture: MLK Day</td>
 <td><a href="http://composingprograms.com/pages/14-designing-functions.html">1.4</a><br/>
 <a href="http://composingprograms.com/pages/15-control.html">1.5</a></td>
 <td><a href="lab/lab01/">Lab 1: Control Structures</a><br/>(due Fri 2/5)</td>
-<td><a href="hw/hw02/">Homework 2</a><br/>(due Tue 2/9)</td>
+<td><a href="hw/hw02/">Homework 2</a><br/>(due Tue 2/9) (Solutions)</td>
 <td></td>
 </tr>
 <tr>
@@ -784,12 +810,12 @@ No Lecture: MLK Day</td>
 <td></td>
 </tr>
 <tr>
-<td>Tue 2/9</td>
+<td>Thu 2/11</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
-<td>Cuke<br/>(due Tue 2/23)</td>
+<td><a href="proj/cuke/">Cuke</a><br/>(due Wed 2/24)</td>
 </tr>
 <tr>
 <td rowspan="1" class="weeknum odd">5</td>
@@ -1005,7 +1031,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "2/3/16", "link": "lab/lab00/", "name": "Lab 0: Workflow", "release": "1/25/16"}, {"due": "2/5/16", "link": "lab/lab01/", "name": "Lab 1: Control Structures", "release": "2/1/16"}, {"due": "2/12/16", "link": "lab/lab02/", "name": "Lab 2: Funargs and Higher Order Functions", "release": "2/8/16"}, {"due": "2/3/16", "link": "hw/hw01/", "name": "Homework 1", "release": "1/25/16"}, {"due": "2/9/16", "link": "hw/hw02/", "name": "Homework 2", "release": "2/1/16"}, {"due": "2/28/16", "link": "hw/hw03/", "name": "Homework 3", "release": "2/22/16"}, {"due": "3/3/16", "link": "hw/hw04/", "name": "Homework 4", "release": "2/29/16"}, {"due": "3/13/16", "link": "hw/hw05/", "name": "Homework 5", "release": "3/7/16"}, {"due": "4/3/16", "link": "hw/hw06/", "name": "Homework 6", "release": "3/28/16"}, {"due": "4/10/16", "link": "hw/hw07/", "name": "Homework 7", "release": "4/4/16"}, {"due": "4/17/16", "link": "hw/hw08/", "name": "Homework 8", "release": "4/11/16"}, {"due": "5/3/16", "link": "hw/hw09/", "name": "Homework 9", "release": "4/25/16"}, {"due": "2/23/16", "link": "proj/cuke/", "name": "Cuke", "release": "2/9/16"}, {"due": "3/19/16", "link": "proj/maps/", "name": "Maps", "release": "2/29/16"}, {"due": "4/24/16", "link": "proj/TBD/", "name": "TBD", "release": "3/28/16"}];
+  var assignments = [{"due": "2/3/16", "link": "lab/lab00/", "name": "Lab 0: Workflow", "release": "1/25/16"}, {"due": "2/5/16", "link": "lab/lab01/", "name": "Lab 1: Control Structures", "release": "2/1/16"}, {"due": "2/12/16", "link": "lab/lab02/", "name": "Lab 2: Funargs and Higher Order Functions", "release": "2/8/16"}, {"due": "2/3/16", "link": "hw/hw01/", "name": "Homework 1", "release": "1/25/16"}, {"due": "2/9/16", "link": "hw/hw02/", "name": "Homework 2", "release": "2/1/16"}, {"due": "2/28/16", "link": "hw/hw03/", "name": "Homework 3", "release": "2/22/16"}, {"due": "3/3/16", "link": "hw/hw04/", "name": "Homework 4", "release": "2/29/16"}, {"due": "3/13/16", "link": "hw/hw05/", "name": "Homework 5", "release": "3/7/16"}, {"due": "4/3/16", "link": "hw/hw06/", "name": "Homework 6", "release": "3/28/16"}, {"due": "4/10/16", "link": "hw/hw07/", "name": "Homework 7", "release": "4/4/16"}, {"due": "4/17/16", "link": "hw/hw08/", "name": "Homework 8", "release": "4/11/16"}, {"due": "5/3/16", "link": "hw/hw09/", "name": "Homework 9", "release": "4/25/16"}, {"due": "2/24/16", "link": "proj/cuke/", "name": "Cuke", "release": "2/11/16"}, {"due": "3/19/16", "link": "proj/maps/", "name": "Maps", "release": "2/29/16"}, {"due": "4/24/16", "link": "proj/TBD/", "name": "TBD", "release": "3/28/16"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
