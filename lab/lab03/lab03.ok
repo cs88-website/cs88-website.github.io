@@ -6,9 +6,18 @@
         "lab03_extra.py"
     ],
     "tests": {
-        "lab03.py": "doctest",
-        "lab03_extra.py": "doctest"
+        "lab03.py:skip_add": "doctest",
+        "lab03.py:gcd": "doctest",
+        "lab03.py:remove": "doctest",
+        "lab03.py:rsort": "doctest",
+        "lab03_extra.py:interleaved_sum": "doctest"
     },
+    "default_tests": [
+        "skip_add",
+        "gcd",
+        "remove",
+        "rsort"
+    ],
     "protocols": [
         "restore",
         "file_contents",
