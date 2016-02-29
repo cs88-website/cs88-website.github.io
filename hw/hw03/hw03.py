@@ -3,7 +3,7 @@
 ######################
 
 def sine(x):
-	"""Returns the value of sine(x), where x is a value in radians.
+    """Returns the value of sine(x), where x is a value in radians.
 
     >>> from math import pi
     >>> sine(pi) #Notice how the value is very small but not quite 0.
@@ -13,7 +13,7 @@ def sine(x):
     >>> sine((7 * pi)/2)
     -1.0
     >>> sine(1.5)
-	0.9974949867067586
+    0.9974949867067586
     """
     "*** YOUR CODE HERE ***"
 

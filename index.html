@@ -211,7 +211,7 @@ Soda) on Mondays 5-7pm.</p>
         <tbody class="list">
             
         <tr>
-            <td class='resource-name'>Midterm 1</td>
+            <td class='resource-name'>Midterm: 5-7pm, 405 Soda</td>
             <td class='resource-type'>Exam</td>
             <td class='resource-tags'></td>
         </tr>
@@ -488,42 +488,6 @@ Soda) on Mondays 5-7pm.</p>
         </tr>
 
         <tr>
-            <td class='resource-name'>Homework 4</td>
-            <td class='resource-type'>Homework</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'>Homework 5</td>
-            <td class='resource-type'>Homework</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'>Homework 6</td>
-            <td class='resource-type'>Homework</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'>Homework 7</td>
-            <td class='resource-type'>Homework</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'>Homework 8</td>
-            <td class='resource-type'>Homework</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'>Homework 9</td>
-            <td class='resource-type'>Homework</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
             <td class='resource-name'><a href="proj/cuke/">Cuke</a></td>
             <td class='resource-type'>Project</td>
             <td class='resource-tags'></td>
@@ -561,6 +525,12 @@ Soda) on Mondays 5-7pm.</p>
 
         <tr>
             <td class='resource-name'><a href="lab/lab03/">Lab 3: Recursion</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab04/">Lab 4: Midterm Review</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
@@ -848,13 +818,13 @@ No Lecture: MLK Day</td>
 <br/>
 (1pp) (4pps)</td>
 <td><a href="http://composingprograms.com/pages/17-recursive-functions.html">1.7</a></td>
+<td><a href="lab/lab04/">Lab 4: Midterm Review</a><br/>(due Wed 3/2)</td>
 <td></td>
-<td>Homework 4<br/>(due Thu 3/3)</td>
-<td>Maps<br/>(due Sat 3/19)</td>
+<td></td>
 </tr>
 <tr>
 <td>Fri 3/4</td>
-<td>Midterm 1</td>
+<td>Midterm: 5-7pm, 405 Soda</td>
 <td></td>
 <td></td>
 <td></td>
@@ -869,8 +839,8 @@ No Lecture: MLK Day</td>
 <td><a href="http://composingprograms.com/pages/22-data-abstraction.html">2.2</a><br/>
 <a href="http://composingprograms.com/pages/24-mutable-data.html">2.4</a></td>
 <td></td>
-<td>Homework 5<br/>(due Sun 3/13)</td>
 <td></td>
+<td>Maps<br/>(due Sat 3/19)</td>
 </tr>
 <tr>
 <td rowspan="1" class="weeknum odd">9</td>
@@ -900,7 +870,7 @@ No Lecture: MLK Day</td>
 (1pp) (4pps)</td>
 <td><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">2.5</a></td>
 <td></td>
-<td>Homework 6<br/>(due Sun 4/3)</td>
+<td></td>
 <td>TBD<br/>(due Sun 4/24)</td>
 </tr>
 <tr>
@@ -912,7 +882,7 @@ No Lecture: MLK Day</td>
 <td><a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">2.6</a><br/>
 <a href="http://composingprograms.com/pages/27-object-abstraction.html">2.7</a></td>
 <td></td>
-<td>Homework 7<br/>(due Sun 4/10)</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -923,7 +893,7 @@ No Lecture: MLK Day</td>
 (1pp) (4pps)</td>
 <td><a href="http://composingprograms.com/pages/33-exceptions.html">3.3</a></td>
 <td></td>
-<td>Homework 8<br/>(due Sun 4/17)</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -949,7 +919,7 @@ No Lecture: MLK Day</td>
 <a href="http://composingprograms.com/pages/46-distributed-computing.html">4.6</a><br/>
 <a href="http://composingprograms.com/pages/47-distributed-data-processing.html">4.7</a></td>
 <td></td>
-<td>Homework 9<br/>(due Tue 5/3)</td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -1034,7 +1004,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "2/3/16", "link": "lab/lab00/", "name": "Lab 0: Workflow", "release": "1/25/16"}, {"due": "2/5/16", "link": "lab/lab01/", "name": "Lab 1: Control Structures", "release": "2/1/16"}, {"due": "2/12/16", "link": "lab/lab02/", "name": "Lab 2: Funargs and Higher Order Functions", "release": "2/8/16"}, {"due": "2/26/16", "link": "lab/lab03/", "name": "Lab 3: Recursion", "release": "2/22/16"}, {"due": "2/3/16", "link": "hw/hw01/", "name": "Homework 1", "release": "1/25/16"}, {"due": "2/9/16", "link": "hw/hw02/", "name": "Homework 2", "release": "2/1/16"}, {"due": "2/29/16", "link": "hw/hw03/", "name": "Homework 3", "release": "2/22/16"}, {"due": "3/3/16", "link": "hw/hw04/", "name": "Homework 4", "release": "2/29/16"}, {"due": "3/13/16", "link": "hw/hw05/", "name": "Homework 5", "release": "3/7/16"}, {"due": "4/3/16", "link": "hw/hw06/", "name": "Homework 6", "release": "3/28/16"}, {"due": "4/10/16", "link": "hw/hw07/", "name": "Homework 7", "release": "4/4/16"}, {"due": "4/17/16", "link": "hw/hw08/", "name": "Homework 8", "release": "4/11/16"}, {"due": "5/3/16", "link": "hw/hw09/", "name": "Homework 9", "release": "4/25/16"}, {"due": "2/24/16", "link": "proj/cuke/", "name": "Cuke", "release": "2/11/16"}, {"due": "3/19/16", "link": "proj/maps/", "name": "Maps", "release": "2/29/16"}, {"due": "4/24/16", "link": "proj/TBD/", "name": "TBD", "release": "3/28/16"}];
+  var assignments = [{"due": "2/3/16", "link": "lab/lab00/", "name": "Lab 0: Workflow", "release": "1/25/16"}, {"due": "2/5/16", "link": "lab/lab01/", "name": "Lab 1: Control Structures", "release": "2/1/16"}, {"due": "2/12/16", "link": "lab/lab02/", "name": "Lab 2: Funargs and Higher Order Functions", "release": "2/8/16"}, {"due": "2/26/16", "link": "lab/lab03/", "name": "Lab 3: Recursion", "release": "2/22/16"}, {"due": "3/2/16", "link": "lab/lab04/", "name": "Lab 4: Midterm Review", "release": "2/29/16"}, {"due": "2/3/16", "link": "hw/hw01/", "name": "Homework 1", "release": "1/25/16"}, {"due": "2/9/16", "link": "hw/hw02/", "name": "Homework 2", "release": "2/1/16"}, {"due": "2/29/16", "link": "hw/hw03/", "name": "Homework 3", "release": "2/22/16"}, {"due": "2/24/16", "link": "proj/cuke/", "name": "Cuke", "release": "2/11/16"}, {"due": "3/19/16", "link": "proj/maps/", "name": "Maps", "release": "3/7/16"}, {"due": "4/24/16", "link": "proj/TBD/", "name": "TBD", "release": "3/28/16"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
