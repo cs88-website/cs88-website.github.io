@@ -3,8 +3,7 @@
     "endpoint": "cal/cs88/sp16/lab04",
     "src": [
         "lab04.py",
-	"lab04_extra.py",
-	"utils.py"
+	      "utils.py"
     ],
     "tests": {
         "tests/slicing.py": "ok_test",
@@ -22,8 +21,7 @@
         "lab04.py:next_sentence": "doctest",
         "lab04.py:split_sentences": "doctest",
         "lab04.py:concat_sentences": "doctest",
-        "lab04.py:code_document": "doctest",
-        "lab04_extra.py": "doctest"
+        "lab04.py:code_document": "doctest"
     },
     "protocols": [
 	"restore",
