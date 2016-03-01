@@ -47,7 +47,7 @@ def reverse_iter_for(lst):
 def reverse_iter_while(lst):
     """Returns the reverse of the given list.
 
-    >>> reverse_iter([1, 2, 3, 4])
+    >>> reverse_iter_while([1, 2, 3, 4])
     [4, 3, 2, 1]
     """
     rev_lst, i = [], 0
