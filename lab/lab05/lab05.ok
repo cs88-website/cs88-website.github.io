@@ -1,0 +1,36 @@
+{
+    "name": "Lab 5",
+    "endpoint": "cal/cs88/sp16/lab05",
+    "src": [
+        "lab05.py",
+        "lab05_extra.py"
+    ],
+    "tests": {
+        "lab05.py:closer_city": "doctest",
+        "lab05.py:tree_map": "doctest",
+        "lab05.py:replace_all": "doctest",
+        "lab05.py:create_row": "doctest",
+        "lab05.py:create_board": "doctest",
+        "lab05.py:replace_elem": "doctest",
+        "lab05.py:get_piece": "doctest",
+        "lab05.py:put_piece": "doctest",
+        "lab05.py:make_move": "doctest",
+        "lab05.py:print_board": "doctest",
+        "lab05.py:check_win_row": "doctest",
+        "lab05.py:check_win_column": "doctest",
+        "lab05.py:check_win": "doctest",
+        "lab05_extra.py:make_pytunes": "doctest",
+        "lab05_extra.py:num_songs": "doctest",
+        "lab05_extra.py:find": "doctest",
+        "lab05_extra.py:add_song": "doctest",
+        "lab05_extra.py:delete": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
