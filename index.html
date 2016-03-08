@@ -488,6 +488,12 @@ Soda) on Mondays 5-7pm.</p>
         </tr>
 
         <tr>
+            <td class='resource-name'>Homework 4 (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
             <td class='resource-name'><a href="proj/cuke/">Cuke</a></td>
             <td class='resource-type'>Project</td>
             <td class='resource-tags'></td>
@@ -537,6 +543,12 @@ Soda) on Mondays 5-7pm.</p>
 
         <tr>
             <td class='resource-name'><a href="lab/lab04/">Lab 4: Midterm Review</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab05/">Lab 5: Data Abstraction and Dictionaries</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
@@ -825,7 +837,7 @@ No Lecture: MLK Day</td>
 (1pp) (4pps) (<a href="assets/slides/06-Midterm_Review.ipynb">ipynb</a>)</td>
 <td><a href="http://composingprograms.com/pages/17-recursive-functions.html">1.7</a></td>
 <td><a href="lab/lab04/">Lab 4: Midterm Review</a><br/>(due Wed 3/2)</td>
-<td></td>
+<td>Homework 4<br/>(due Thu 3/3) (Solutions)</td>
 <td></td>
 </tr>
 <tr>
@@ -844,7 +856,7 @@ No Lecture: MLK Day</td>
 (<a href="assets/slides/07-Abstract_Data_Types_1pp.pdf">1pp</a>) (<a href="assets/slides/07-Abstract_Data_Types_4pps.pdf">4pps</a>) (ipynb)</td>
 <td><a href="http://composingprograms.com/pages/22-data-abstraction.html">2.2</a><br/>
 <a href="http://composingprograms.com/pages/24-mutable-data.html">2.4</a></td>
-<td></td>
+<td><a href="lab/lab05/">Lab 5: Data Abstraction and Dictionaries</a><br/>(due Fri 3/11)</td>
 <td></td>
 <td><a href="proj/maps/">Maps Part 1</a><br/>(due Mon 3/14)<br/>
 <a href="proj/maps/">Maps Part 2</a><br/>(due Wed 3/30)</td>
@@ -1011,7 +1023,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "2/3/16", "link": "lab/lab00/", "name": "Lab 0: Workflow", "release": "1/25/16"}, {"due": "2/5/16", "link": "lab/lab01/", "name": "Lab 1: Control Structures", "release": "2/1/16"}, {"due": "2/12/16", "link": "lab/lab02/", "name": "Lab 2: Funargs and Higher Order Functions", "release": "2/8/16"}, {"due": "2/26/16", "link": "lab/lab03/", "name": "Lab 3: Recursion", "release": "2/22/16"}, {"due": "3/2/16", "link": "lab/lab04/", "name": "Lab 4: Midterm Review", "release": "2/29/16"}, {"due": "2/3/16", "link": "hw/hw01/", "name": "Homework 1", "release": "1/25/16"}, {"due": "2/9/16", "link": "hw/hw02/", "name": "Homework 2", "release": "2/1/16"}, {"due": "2/29/16", "link": "hw/hw03/", "name": "Homework 3", "release": "2/22/16"}, {"due": "2/24/16", "link": "proj/cuke/", "name": "Cuke", "release": "2/11/16"}, {"due": "3/14/16", "link": "proj/maps/", "name": "Maps Part 1", "release": "3/7/16"}, {"due": "3/30/16", "link": "proj/maps/", "name": "Maps Part 2", "release": "3/7/16"}, {"due": "4/24/16", "link": "proj/TBD/", "name": "TBD", "release": "3/28/16"}];
+  var assignments = [{"due": "2/3/16", "link": "lab/lab00/", "name": "Lab 0: Workflow", "release": "1/25/16"}, {"due": "2/5/16", "link": "lab/lab01/", "name": "Lab 1: Control Structures", "release": "2/1/16"}, {"due": "2/12/16", "link": "lab/lab02/", "name": "Lab 2: Funargs and Higher Order Functions", "release": "2/8/16"}, {"due": "2/26/16", "link": "lab/lab03/", "name": "Lab 3: Recursion", "release": "2/22/16"}, {"due": "3/2/16", "link": "lab/lab04/", "name": "Lab 4: Midterm Review", "release": "2/29/16"}, {"due": "3/11/16", "link": "lab/lab05/", "name": "Lab 5: Data Abstraction and Dictionaries", "release": "3/7/16"}, {"due": "2/3/16", "link": "hw/hw01/", "name": "Homework 1", "release": "1/25/16"}, {"due": "2/9/16", "link": "hw/hw02/", "name": "Homework 2", "release": "2/1/16"}, {"due": "2/29/16", "link": "hw/hw03/", "name": "Homework 3", "release": "2/22/16"}, {"due": "3/3/16", "link": "hw/hw04/", "name": "Homework 4", "release": "2/29/16"}, {"due": "2/24/16", "link": "proj/cuke/", "name": "Cuke", "release": "2/11/16"}, {"due": "3/14/16", "link": "proj/maps/", "name": "Maps Part 1", "release": "3/7/16"}, {"due": "3/30/16", "link": "proj/maps/", "name": "Maps Part 2", "release": "3/7/16"}, {"due": "4/24/16", "link": "proj/TBD/", "name": "TBD", "release": "3/28/16"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
