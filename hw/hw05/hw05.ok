@@ -5,13 +5,13 @@
         "hw05.py"
     ],
     "tests": {
-        "lab05.py:make_pytunes": "doctest",
-        "lab05.py:num_songs": "doctest",
-        "lab05.py:find": "doctest",
-        "lab05.py:add_song": "doctest",
-        "lab05.py:delete": "doctest",
-        "lab05.py:make_withdraw": "doctest",
-        "lab05.py:make_joint": "doctest"
+        "hw05.py:make_pytunes": "doctest",
+        "hw05.py:num_songs": "doctest",
+        "hw05.py:find": "doctest",
+        "hw05.py:add_song": "doctest",
+        "hw05.py:delete": "doctest",
+        "hw05.py:make_withdraw": "doctest",
+        "hw05.py:make_joint": "doctest"
     },
     "protocols": [
         "restore",
