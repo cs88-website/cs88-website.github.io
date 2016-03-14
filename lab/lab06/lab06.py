@@ -82,7 +82,7 @@ def word_count_list(word_list):
     """ Returns a list of lists where each inner list is equal to
     [word, count].
 
-    >>> lists = word_count_list(word_generator(shakespeare_list)
+    >>> lists = word_count_list(shakespeare_list)
     >>> lists[0]
     ['the', 51]
     >>> lists[183]
@@ -122,10 +122,8 @@ def word_count_fun(word_list):
     """
     lists = []
     def add_word(word):
-    "*** YOUR CODE HERE ***"
-        
+        "*** YOUR CODE HERE ***"
     for word in word_list:
         add_word(word)
     return lists
-
 

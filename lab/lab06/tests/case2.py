@@ -3,27 +3,34 @@ test = {
   'points': 0,
   'suites': [
     {
-      'type': 'wwpp',
       'cases': [
         {
-          'code': """
+          'code': r"""
           >>> x = [[0, 'a'],  [1, 'b'], [2, 'c']]
           >>> y = x[:]
           >>> y[0][1] = 'z'
           >>> y
-          [[0, 'z'],  [1, 'b'], [2, 'c']]
+          be63cd44cf224729cfc55922ab561c3d
+          # locked
           >>> x
-          [[0, 'z'],  [1, 'b'], [2, 'c']]
+          be63cd44cf224729cfc55922ab561c3d
+          # locked
           >>> x = [[0, 'a'],  [1, 'b'], [2, 'c']]
           >>> z = list(x)
           >>> z[0][1] = 'z'
           >>> z
-          [[0, 'z'],  [1, 'b'], [2, 'c']]
+          be63cd44cf224729cfc55922ab561c3d
+          # locked
           >>> x
-          [[0, 'z'],  [1, 'b'], [2, 'c']] 
+          be63cd44cf224729cfc55922ab561c3d
+          # locked
           """,
-        },
-      ]
+          'hidden': False,
+          'locked': True
+        }
+      ],
+      'scored': False,
+      'type': 'wwpp'
     }
   ]
 }

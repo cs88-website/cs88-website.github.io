@@ -274,7 +274,7 @@ to counts (i.e. entries in the dictionary should look like <code>{word: count}</
     &quot;&quot;&quot; Returns a list of lists where each inner list is equal to
     [word, count].
 
-    &gt;&gt;&gt; lists = word_count_list(word_generator(shakespeare_list)
+    &gt;&gt;&gt; lists = word_count_list(shakespeare_list)
     &gt;&gt;&gt; lists[0]
     [&#x27;the&#x27;, 51]
     &gt;&gt;&gt; lists[183]
@@ -361,19 +361,19 @@ a dictionary).</p>
 <h3 class="question" id="q6">Question 6: Mutant function</h3>
 
 <p>You have seen how careful mutation of a data structure within an abstraction can
-be an essential part of contructing an object oriented abstraction.  You probably
+be an essential part of constructing an object oriented abstraction.  You probably
 also discovered that the control structure was more complicated that when working
 in a purely functional style.  Because modifications are made to objects, there is
-a need to break out of loops and such when the appropiate actions are taken.  At
+a need to break out of loops and such when the appropriate actions are taken.  At
 times the judicious use of mutating functions can provide a clean solution.  We
 have given you a start at this with a version of <code>word_count_list</code> that uses an
 internal mutating <code>add_word</code> function to make the necessary update to the list
-of <code>[word, count]</code> entries.  The outer loop is now very simple.  Your task, cs88
-detective, is to write the rest of the <code>add_word</code> function.  You will need to use 
+of <code>[word, count]</code> entries.  The outer loop is now very simple.  Your task, CS88
+detective, is to write the rest of the <code>add_word</code> function.  You will need to use
 <code>nonlocal</code>.  You will see that you do not need the complicated <code>for ... else</code> sorts
 of concepts that you probably used in <code>word_count_list</code>.  The <code>add_word</code> function can
 simply return when it has completed its task.  (Calling <code>add_word</code> a function is a
-bit of a minomer, but a common one.  It isn't a function in the mathematical sense
+bit of a misnomer, but a common one.  It isn't a function in the mathematical sense
 because it has no result value and its behavior depends on its history (i.e., <code>lists</code>), not just its
 input (<code>word</code>).  It is defined with a <code>def</code> and from a programming point of
 view it is a <code></code>function''.</p>
@@ -391,9 +391,8 @@ def word_count_fun(word_list):
     &quot;&quot;&quot;
     lists = []
     def add_word(word):
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x6f;&#x6e;&#x6c;&#x6f;&#x63;&#x61;&#x6c;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6c;&#x73;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x20;&#x3d;&#x3d;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x20;&#x2b;&#x3d;&#x20;&#x5b;&#x5b;&#x77;&#x6f;&#x72;&#x64;&#x2c;&#x20;&#x31;&#x5d;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;</div>
-    for word in word_list:
+<div class="alt 5">        "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x6f;&#x6e;&#x6c;&#x6f;&#x63;&#x61;&#x6c;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6c;&#x73;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x20;&#x3d;&#x3d;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x20;&#x2b;&#x3d;&#x20;&#x5b;&#x5b;&#x77;&#x6f;&#x72;&#x64;&#x2c;&#x20;&#x31;&#x5d;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;</div>    for word in word_list:
         add_word(word)
     return lists</code></pre>
 

@@ -3,26 +3,33 @@ test = {
   'points': 0,
   'suites': [
     {
-      'type': 'wwpp',
       'cases': [
         {
-          'code': """
+          'code': r"""
           >>> x = [5, 'hello', [1, 1]]
           >>> y = x[:]
           >>> y[0] = 10
           >>> y
-          [10, 'hello', [1, 1]]
+          eb83c745c788b11d8b2f79b7a9b1d1b2
+          # locked
           >>> x
-          [5, 'hello', [1, 1]]
+          0d60954a21987c37cb052aa22a9bdd59
+          # locked
           >>> z = x[:]
           >>> z[2][1] = 5
           >>> z
-          [5, 'hello', [1, 5]]
+          1387c2bec605e3cff03f59e29dafc72b
+          # locked
           >>> x
-          [5, 'hello', [1, 5]] 
+          1387c2bec605e3cff03f59e29dafc72b
+          # locked
           """,
-        },
-      ]
+          'hidden': False,
+          'locked': True
+        }
+      ],
+      'scored': False,
+      'type': 'wwpp'
     }
   ]
 }
