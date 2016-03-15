@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang, Nishant Desai" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+
+    <title>Using OK | CS 88 Spring 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <li><a href="/articles/using-ok.html">Using OK</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <!-- <li><a href="/weekly.html">Weekly Schedule</a></li> -->
+                <!-- <li><a href="/extra.html">Extra Lectures</a></li> -->
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1>Using OK</h1>
+    </div>
+
+     <p>CS88 uses a program called <code>ok</code> to test and submit homework
+assignments, labs, and projects.</p>
+
+<p>Every programming assignment will include a <code>.zip</code> archive that
+contains the following:</p>
+
+<ul>
+  <li>Starter code</li>
+  <li>A copy of <code>ok</code></li>
+</ul>
+
+<p>After extracting the contents of the archive, you can begin your
+assignment.</p>
+
+
+<h2 id="signing-in-with-ok">Signing in with OK</h2>
+
+
+<p>To get started, open your terminal, and <code>cd</code> into the right directory
+(you should see a file called <code>ok</code> when you <code>ls</code> in the right
+directory).</p>
+
+<p>Try the following command:</p>
+
+<pre><code>python3 ok</code></pre>
+
+<p>This runs the tests (don't worry if the tests fail at first; you
+haven't written code yet!).</p>
+
+<p>The first time you run <code>ok</code>, you will be asked your
+<a href="http://bcourses.berkeley.edu">bCourses</a> email address.</p>
+
+<blockquote><p>Make sure you use your bCourses email address. We use this email
+address to post grades on bCourses.</p></blockquote>
+
+<p>After typing in your email, your web browser will open an
+authentication page. Click "Accept" to authenticate <code>ok</code>.</p>
+
+
+<h3 id="wrong-email">Wrong email?</h3>
+
+
+<p>If you typed your email incorrectly, you can re-authenticate with the
+following command:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;authenticate</code></pre>
+
+
+<h2 id="testing-with-ok">Testing with OK</h2>
+
+
+<p>After writing some code, you can test your code with <code>ok</code> in various
+ways.</p>
+
+
+<h3 id="test-specific-questions">Test specific questions</h3>
+
+
+<p>To test a specific question, use the <code>&#x2d;q</code> option with the name of the
+function:</p>
+
+<pre><code>python3 ok &#x2d;q &lt;function&gt;</code></pre>
+
+
+<h3 id="test-all-questions">Test all questions</h3>
+
+
+<p>You can run all the tests with the following command:</p>
+
+<pre><code>python3 ok</code></pre>
+
+
+<h3 id="display-all-tests">Display all tests</h3>
+
+
+<p>By default, only tests that <strong>fail</strong> will appear. If you want to see
+how you did on all tests, you can use the <code>&#x2d;v</code> option:</p>
+
+<pre><code>python3 ok &#x2d;v</code></pre>
+
+
+<h3 id="test-locally">Test locally</h3>
+
+
+<p>If you do not want to send your progress to our server or you have any
+problems logging in, add the <code>&#x2d;&#x2d;local</code> flag to block all communication:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;local</code></pre>
+
+
+<h3 id="submit-assignment">Submit assignment</h3>
+
+
+<p>When you are ready to submit, run <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
+
+<p>After submitting, <code>ok</code> will display a submission URL, with which you
+can view your submission on <a href="https://okpy.org">okpy.org</a>.</p>
+
+
+<h2 id="viewing-submissions">Viewing submissions</h2>
+
+
+<p>You can go to <a href="https://okpy.org">okpy.org</a> to check your submissions and backups. Make
+sure you sign in with your bCourses email.</p>
+
+
+<h2 id="faq">FAQ</h2>
+
+
+
+<h3 id="i-can-t-authenticate">I can't authenticate!</h3>
+
+
+<ul>
+  <li>Double check your internet connection.</li>
+  <li><code>ok</code> is known to have problems on Airbears. If you're on campus, try
+  using <a href="https://ist.berkeley.edu/airbears/">Airbears2</a></li>
+</ul>
+
+
+<h3 id="adding-partners-on-okpy-org">Adding partners on okpy.org</h3>
+
+
+<p>This <a href="https://youtu.be/HyFzFGoIERk">video</a> walks through adding partners on
+<a href="https://okpy.org">okpy.org</a>.</p>
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#signing-in-with-ok">Signing in with OK</a></li>
+  <ul>
+  <li><a href="#wrong-email">Wrong email?</a></li>
+</ul>
+
+  <li><a href="#testing-with-ok">Testing with OK</a></li>
+  <ul>
+  <li><a href="#test-specific-questions">Test specific questions</a></li>
+  <li><a href="#test-all-questions">Test all questions</a></li>
+  <li><a href="#display-all-tests">Display all tests</a></li>
+  <li><a href="#test-locally">Test locally</a></li>
+  <li><a href="#submit-assignment">Submit assignment</a></li>
+</ul>
+
+  <li><a href="#viewing-submissions">Viewing submissions</a></li>
+  <li><a href="#faq">FAQ</a></li>
+  <ul>
+  <li><a href="#i-can-t-authenticate">I can't authenticate!</a></li>
+  <li><a href="#adding-partners-on-okpy-org">Adding partners on okpy.org</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>
