@@ -1,0 +1,22 @@
+{
+    "name": "Homework 6",
+    "endpoint": "cal/cs88/sp16/hw06",
+    "src": [
+        "hw06.py"
+    ],
+    "tests": {
+        "tests/pet.py": "ok_test",
+        "hw06.py:Cat": "doctest",
+        "hw06.py:Person": "doctest",
+        "hw06.py:CheckingAccount": "doctest",
+        "hw06.py:VendingMachine": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup",
+        "unlock"
+    ]
+}
