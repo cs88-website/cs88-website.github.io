@@ -82,7 +82,7 @@
 
 
 <p>In this project you will develop a simulator and multiple strategy bots for
-the card game Cucumber. You can read lots about the game online, e.g., 
+the card game Cucumber. You can read lots about the game online, e.g.,
 <a href="http://www.pagat.com/last/cucumber.html">here</a>.  It goes by many names
 and seems to be largely a scandinavian drinking game.  You play the <em>game</em>
 by playing <em>hands</em> out as a sequence of <em>tricks</em>, much like hearts or bridge.
@@ -91,13 +91,13 @@ highest point count.  But the only trick that really matters is the last one.
 You don't want to win the last trick of a hand!  If you do, you get points -
 and points are bad.  So you play tricks with a strategy that seeks to avoid
 getting yourself "into a pickle" (hence <em>cucumber</em>) of being forced to play
-a high card in the last hand.  The "drinking game" part is that you get to 
+a high card in the last hand.  The "drinking game" part is that you get to
 talk all you want and colude with other players - and you can even lie to
 them.  Our bots are not real good at that, but perhaps you can try it out
 with real cards and some friends.</p>
 
 <p>You should complete problems 1-13 by Thursday 2/18.  These are all quite
-short functions, mostly 1-3 lines.  That will give you nearly a week to 
+short functions, mostly 1-3 lines.  That will give you nearly a week to
 do the two larger functions and your strategy function development.
 You will receive additional instructions
 for submitting your final strategy function before the project due date.
@@ -105,7 +105,7 @@ We will have a tournament play-off of all the c88 strategy bots.  And
 extra-credit point will be given for each round of play that your bot
 advances.  In the tournment groups of 4 bots will play thousands of games.
 Based on these outcomes, some of the bots will advance to additional rounds.
-We'll do the final palyoff round in a class pizza party.  So, go build your 
+We'll do the final palyoff round in a class pizza party.  So, go build your
 basic game, have fun, and go build a great bot.</p>
 
 <p><strong>Note:</strong> Please ignore the information regarding unlocking test cases in the "Testing" section below. We planned to have test cases locked but did not end up locking them. Therefore, you DO NOT need to run the <code>python3 ok -u</code> command. The test cases are already unlocked, you can simply run ok to test. But make sure you understand the doctests before you begin writing code! Also, make sure you follow the download instructions in lab2 and then activate your cs88 environment using the following command:
@@ -152,6 +152,8 @@ result in your code failing our autograder tests. Also, please do not
 change any function signatures (names, argument order, or number of
 arguments).</p>
 
+
+<p>None</p>
 
 
 <h2>Testing</h2>
@@ -236,7 +238,7 @@ will need to start unlocking from scratch.</p>
   trick (suit does not matter) or, if they have no such card, they must
   play the lowest point count card in their hand. Points are 2 - 14 with
   numbered cards counting their number, jacks=10, up to Ace=14.  (Ace
-  high).  (Forcing out other players low cards is what you are trying to 
+  high).  (Forcing out other players low cards is what you are trying to
   do so that they are stuck with a big card in the last trick of the hand.)
   The last high card <em>wins</em> the trick and get the lead.</li>
   <li><strong>Scoring a hand</strong>. The <em>winner</em> of last trick of the hand adds the point
@@ -256,7 +258,7 @@ game, but for the project we are going to stick to an old school text interface.
 
 <ul>
   <li><strong>Cucumbers</strong>. The way the game is really supposed to end is by getting
-  two <em>cucumbers</em>.  The first time a player's score reaches 21, they get 
+  two <em>cucumbers</em>.  The first time a player's score reaches 21, they get
   a cucumber, their score is reset to the highest score of the other
   players and play continues.  The game terminates when one player gets two cucumbers.</li>
   <li>Initial deal.  Haven't worked that in yet. Starting with player 0.</li>
@@ -341,7 +343,7 @@ need a couple of utilities.  So let's build them now.</p>
 
 
 <p>Implement the function <code>remove_item</code> which takes as input a list of elements and
-a particular element.  It returns a lists with the first occurence of the 
+a particular element.  It returns a lists with the first occurence of the
 designated element removed.  This is used when removing a card that is played from
 a hand.</p>
 
@@ -356,7 +358,7 @@ rotation of a list of items.</p>
 <h2 id="hands-full-of-cards">Hands full of cards</h2>
 
 
-<p>Each player's hand is represented by a list of cards.  As the play progresses 
+<p>Each player's hand is represented by a list of cards.  As the play progresses
 cards are removed from the hand and played to the board.</p>
 
 <h3 id="problem-4---highest-and-lowest-cards">Problem 4 - Highest and lowest cards</h3>
@@ -415,10 +417,10 @@ stick to emulating the actual card game.  We have made the function a bot more
 general than the actual rules of the name by allowing the number of cards to
 be specified by a parameter.  This way during your testing you can play some
 really small hands.  We have also inclduded a <code>shuffle</code> flag.  During testing you will
-want to avoid shuffling so that the behavior of your code is repeatable. 
+want to avoid shuffling so that the behavior of your code is repeatable.
 Many of the doctests we have provided depend on this.  This function returns
 a list of hands, one for each player in order.  You should test it yourself.
-We haven't provided a specific doctest.  But later ones do rely on the 
+We haven't provided a specific doctest.  But later ones do rely on the
 deal working correctly.</p>
 
 
@@ -429,7 +431,7 @@ deal working correctly.</p>
 table.  In cucumber you are supposed to keep the cards that you have
 played in front of you on the table for all to see.  That way you can
 make inferences (yes, inferential thinking just like in data8) about
-cards are likely to be in other player's hands.  We will use another 
+cards are likely to be in other player's hands.  We will use another
 Table to hold the board.  It has a column for each player and a row for
 each trick.  In addition, it keeps track of who leads each trick.  The
 player with the lead plays the first card.  He/she/it can play any
@@ -520,7 +522,7 @@ as its legal).  You have already built that part.  Here we are playing hands
 and hands full of tricks until somebody loses (by winning too many last tricks).</p>
 
 <p>We have given you a little function <code>test_game</code> that lets you play against some
-silly bots.  Check this out.  Have fun with it.  Ultimately, you will be 
+silly bots.  Check this out.  Have fun with it.  Ultimately, you will be
 showing your working game to your all of us teaching the course.  More on that
 later.
 <br/>
@@ -549,7 +551,7 @@ function <code>fimp</code>.</p>
 
 <p>After playing Cucumber with a recent Bio grad who like to play Magic and just
 decided to go the the AppAcademy (yikes), I asked
-him what strategy he would build.  He suggested, "Lead with your 
+him what strategy he would build.  He suggested, "Lead with your
 second largest card and follow low."  Remember, you don't want to win the
 last hand.  Winning the second to last hand and having a low card to follow
 is getting somewhere.</p>
