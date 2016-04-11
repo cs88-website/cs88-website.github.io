@@ -2,11 +2,11 @@
 
 class Board:
     """Board for hangman with attributes board and guessed.
-    Attributes: 
+    Attributes:
        board - list of correct characters or "_" in the secret word
        guessed - list of characters guessed so far
 
-    >>> from secret import SecretWord 
+    >>> from secret import SecretWord
     >>> b = Board(SecretWord("bookkeeper"))
     >>> len(b)
     10
@@ -70,6 +70,15 @@ class Board:
 
     def misses(self):
         """Return a list of characters incorrectly guessed."""
+        # BEGIN
+        "*** REPLACE THIS LINE ***"
+        # END
+
+    def guess(self, char):
+        """Update the board to reflect the guess of char.
+        Return the number of indices in the secret word where char occurs.
+        If char does not appear in the word, this will be 0.
+        """
         # BEGIN
         "*** REPLACE THIS LINE ***"
         # END
