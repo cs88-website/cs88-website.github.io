@@ -442,7 +442,7 @@ Each word should appear only once in the <code>WordSet</code>, i.e., eliminate t
 
 The <code>words</code> method returns a sorted list of the words in the WordSet.
 This does not mean that they are represented internally as a sorted
-list, but that is cetainly one option.  The <code>__contains__</code> special
+list, but that is certainly one option.  The <code>__contains__</code> special
 method tests whether a word is in the <code>WordSet</code>.  This allows the <code>in</code>
 operator to be used in expressions with a <code>WordSet</code> as shown in the
 doctest.  You are to implement the three methods.  You can use
@@ -578,7 +578,7 @@ be the secret word.  The
 <code>frequency</code> method computes the number of times each lowercase character occurs in all the words
 contained in the WordSet. The <code>filter</code> method discards all the words that don't satisfy some
 predicate, as specified by the higher order function that is passed to it.  It applies the
-function to every word, keeps the ones that come out Truesy and discards the others, thereby
+function to every word, keeps the ones that come out Truth-y and discards the others, thereby
 narrowing down the possibilities.</p>
 
 
@@ -590,7 +590,7 @@ initialization receives the player objects - the picker and all the guessers.  T
 method carries out the logic of the game.  It has the picker pick a word.  Makes a secret
 out of it.  Creates the initial board with this secret.  It then cycles through the guessers,
 giving each a chance to guess repeatedly until it misses.  The <code>winner</code> method returns
-the player that won the game afer it is done.</p>
+the player that won the game after it is done.</p>
 
 
 <h2 id="problems">Problems</h2>
@@ -617,7 +617,7 @@ read the file again or ask a question on Piazza.</p>
   <li>How does <code>Dictionary</code> invoke the initializer for its superclass?</li>
   <li>Do <code>Players</code> ever access the <code>SecretWord</code> object?  What does <code>Board</code>
   reveal about the secret word?</li>
-  <li>How will object methods of subclasses of <code>Player</code> access the <code>all_words</code> class attriute?</li>
+  <li>How will object methods of subclasses of <code>Player</code> access the <code>all_words</code> class attribute?</li>
   <li>Why does the <code>Player</code> base class define methods that don't do anything?</li>
 </ul>
 
@@ -647,7 +647,7 @@ python3 ok &#x2d;q SecretWord</code></pre>
 python3 ok &#x2d;q WordSet</code></pre>
 
 <p>Now that you have a <code>WordSet</code>, verify that you also have a working <code>Dictionary</code> that inherits
-from this.  Youd didn't have to build the Dictionary, but you need to make sure that the
+from this.  You didn't have to build the Dictionary, but you need to make sure that the
 one we provided works with your <code>WordSet</code>.</p>
 
 <p>Test our implementation before moving on:</p>
@@ -739,7 +739,7 @@ that has not been guessed.  Try this out using.</p>
 
 <pre><code>python computer.py</code></pre>
 
-<p>You get to pick words and see what this algorith has trouble with.  Observe how many
+<p>You get to pick words and see what this algorithm has trouble with.  Observe how many
 guesses it takes to guess words that you give it.</p>
 
 <p>Next, filter out all the words in the dictionary that are not the correct length.  You can use
