@@ -221,7 +221,7 @@ will need to start unlocking from scratch.</p>
 <h2 id="core-concepts">Core Concepts</h2>
 
 
-<p>This project will give you a chance to work with classes as a means of 
+<p>This project will give you a chance to work with classes as a means of
 composing large software out of well-designed components.  You get to build
 a computerized version of the children's game <em>hangman</em> using object oriented
 programming.  Although the whole project is not very large, we want to give
@@ -236,7 +236,7 @@ the attributes and methods on the class itself.</p>
 <h2 id="the-game">The game</h2>
 
 
-<p>The following shows a little example of playing the game where the computer 
+<p>The following shows a little example of playing the game where the computer
 picks the word and the human guesses.</p>
 
 <pre><code>  |     
@@ -269,7 +269,7 @@ t
 Please enter a single character not yet guessed
 w
 ([&#x27;w&#x27;, &#x27;h&#x27;, &#x27;a&#x27;, &#x27;t&#x27;], 6)
-&gt;&gt;&gt; </code></pre>
+&gt;&gt;&gt;</code></pre>
 
 <p>Of course, why should it be played that way.  You might want to pick the word
 and have the computer do the guessing.  Ahh, that would require some data8
@@ -382,14 +382,14 @@ if __name__ == &quot;__main__&quot;:
     human_plays()</code></pre>
 
 <p>The <code>Dictionary</code> class takes a path for a file, reads in the file and extracts all
-the words in it to build a set of words to be used for the game. (Here we are using 
+the words in it to build a set of words to be used for the game. (Here we are using
 Lincoln's Gettysburg address.)</p>
 
 <p><code>Player</code> is a base player class defines the interface used by all type of players.  In constructing it,
 a common dictionary is made available to all the player objects that may be involved
 in the game. Two player classes are derived from <code>Player</code>; they are <code>HumanPlayer</code> and
 <code>ComputerPlayer</code>.  We will look at these in more detail below.  One player <em>picks</em> the
-word.  The other player (or players when we extend from hangman to wheel of fortune) 
+word.  The other player (or players when we extend from hangman to wheel of fortune)
 take turns guessing.  Here, like a conventional computer game, the <code>ComputerPlayer</code>
 object picks the word and the <code>HumanPlayer</code> object guesses - by allowing you to type
 to it.
@@ -564,15 +564,15 @@ guessed so far, looking at the dictionary, in order to make a good guess.
 You get to have fun with how it might pick words for you to guess.</p>
 
 
-<h3 id="wordmunge">WordMunge</h3>
+<h3 id="wordmunch">WordMunch</h3>
 
 
-<p>The <code>WordMunge</code> class is also in <code>wordset.py</code>.  This is designed to help your ComputerPlayer.
+<p>The <code>WordMunch</code> class is also in <code>wordset.py</code>.  This is designed to help your ComputerPlayer.
 Think about how you are going to guess characters from looking at the board and looking
 at the dictionary.  What are the tricks that you use when you guess?  Generally you start with
 <code>e</code> because it is the most frequently used character in the English language.
 <br/>
-<code>WordMunge</code> inherits from <code>WordSet</code> and is intended to hold smaller and smaller set of words, typically
+<code>WordMunch</code> inherits from <code>WordSet</code> and is intended to hold smaller and smaller set of words, typically
 starting with the full dictionary, as the guesses narrow down the possible words that could
 be the secret word.  The
 <code>frequency</code> method computes the number of times each lowercase character occurs in all the words
@@ -596,7 +596,7 @@ the player that won the game afer it is done.</p>
 <h2 id="problems">Problems</h2>
 
 
-<p>Now that we have introduced you to the design of all the classes, it's time to 
+<p>Now that we have introduced you to the design of all the classes, it's time to
 get to work building the game.</p>
 
 
@@ -661,14 +661,14 @@ python3 ok &#x2d;q Dictionary</code></pre>
 
 <p>Complete the implementation of <code>Board</code>.  Please note that this has several small methods that
 work together.  The doctest tests them in combination.  It does not depend on the representation
-that you choose to use for the board and for keeping track of the letters than have been 
+that you choose to use for the board and for keeping track of the letters than have been
 guessed, hits, or misses.  You will need to decide on the representation.  And you will likely
 want to produce tests for your individual methods.</p>
 
 <p>Test your implementation before moving on:</p>
 
 <pre><code>python3 ok &#x2d;q Board &#x2d;u
-python3 ok &#x2d;q Board </code></pre>
+python3 ok &#x2d;q Board</code></pre>
 
 
 <h3 id="problem-4-3-pt">Problem 4 (3 pt)</h3>
@@ -687,7 +687,7 @@ need the (much bigger) guess method.</p>
 
 <p>Test your implementation before moving on.  This you will have to do by exercising
 your <code>ComputerPlayer.pick_word</code>.  Since it needs to yield a random word, it is hard
-to test deterministically.  It is very simple, but make sure it works.  Hint: you 
+to test deterministically.  It is very simple, but make sure it works.  Hint: you
 will want to look at <code>random.sample</code>.</p>
 
 <p>Complete the implementation of the <code>Game</code> class in <code>game.py</code>.
@@ -731,9 +731,9 @@ Have fun.</p>
 <h3 id="problem-5-4-pt">Problem 5 (4 pt)</h3>
 
 
-<p>Now you get to turn the tables and build the computer guesser.  You will do 
+<p>Now you get to turn the tables and build the computer guesser.  You will do
 a sequence of implementations of the <code>guess</code> method in <code>ComputerPlayer</code>.  The
-first step is to use the dictionary in the board and WordMunge to get a set of
+first step is to use the dictionary in the board and WordMunch to get a set of
 words to work with in making guesses.  As a start, guess the most frequent letter
 that has not been guessed.  Try this out using.</p>
 
@@ -797,7 +797,7 @@ much better these perform than simply filtering on length and match.</p>
   <li><a href="#player">Player</a></li>
   <li><a href="#humanplayer">HumanPlayer</a></li>
   <li><a href="#computerplayer">ComputerPlayer</a></li>
-  <li><a href="#wordmunge">WordMunge</a></li>
+  <li><a href="#wordmunch">WordMunch</a></li>
   <li><a href="#game">Game</a></li>
 </ul>
 
