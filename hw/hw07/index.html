@@ -154,8 +154,7 @@ given iterable <code>s</code>, scaled by <code>k</code>.</p>
 
 <p>Implement <code>merge(s0, s1)</code>, which takes two iterables <code>s0</code> and <code>s1</code> whose
 elements are ordered. <code>merge</code> yields elements from <code>s0</code> and <code>s1</code> in sorted
-order, eliminating repetition.  You may assume <code>s0</code> and <code>s1</code> themselves do not
-contain repeats. <strong>You may also assume <code>s0</code> and <code>s1</code> represent infinite
+order, eliminating repetition. <strong>You may also assume <code>s0</code> and <code>s1</code> represent infinite
 sequences; that is, their iterators never raise <code>StopIteration</code></strong>.</p>
 
 <p>See the doctests for example behavior.</p>
@@ -163,9 +162,9 @@ sequences; that is, their iterators never raise <code>StopIteration</code></stro
 <solution>
 
 <pre><code>def merge(s0, s1):
-    &quot;&quot;&quot;Yield the elements of strictly increasing iterables s0 and s1, removing
-    repeats. Assume that s0 and s1 have no repeats. You can also assume that s0
-    and s1 represent infinite sequences.
+    &quot;&quot;&quot;Yield the elements of strictly increasing iterables s0 and s1 and 
+    make sure to remove the repeated values in both. 
+    You can also assume that s0 and s1 represent infinite sequences.
 
     &gt;&gt;&gt; twos = scale(naturals(), 2)
     &gt;&gt;&gt; threes = scale(naturals(), 3)

@@ -32,9 +32,9 @@ def scale(s, k):
 
 
 def merge(s0, s1):
-    """Yield the elements of strictly increasing iterables s0 and s1, removing
-    repeats. Assume that s0 and s1 have no repeats. You can also assume that s0
-    and s1 represent infinite sequences.
+    """Yield the elements of strictly increasing iterables s0 and s1 and 
+    make sure to remove the repeated values in both. 
+    You can also assume that s0 and s1 represent infinite sequences.
 
     >>> twos = scale(naturals(), 2)
     >>> threes = scale(naturals(), 3)
