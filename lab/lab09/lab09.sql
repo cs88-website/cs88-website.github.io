@@ -24,8 +24,8 @@ create table sizes as
   select "standard",    45,        60;
 
 
-# Comment out the unfinished questions while you
-# are working so as to avoid errors in the tests.
+-- Comment out the unfinished questions while you
+-- are working so as to avoid errors in the tests.
 
 -- All short dogs
 create table short_dogs as
