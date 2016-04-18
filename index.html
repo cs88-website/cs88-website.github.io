@@ -400,7 +400,20 @@ Soda) on Mondays 5-7pm.</p>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 11: Exceptions, Iterators, and Generators
+            <td class='resource-name'>Lecture 11: Iterators, and Generators
+(1pp) (4pps) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/42-implicit-sequences.html">Readings: section 4.2</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 12: Exceptions and Declarative Programming
 (1pp) (4pps) (ipynb)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
@@ -408,25 +421,6 @@ Soda) on Mondays 5-7pm.</p>
 
         <tr>
             <td class='resource-name'><a href="http://composingprograms.com/pages/33-exceptions.html">Readings: section 3.3</a></td>
-            <td class='resource-type'>Reading</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'>Lecture 12: SQL and Declarative Programming
-(1pp) (4pps) (ipynb)</td>
-            <td class='resource-type'>Lecture</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'><a href="http://composingprograms.com/pages/41-introduction.html">Readings: section 4.1</a></td>
-            <td class='resource-type'>Reading</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'><a href="http://composingprograms.com/pages/42-implicit-sequences.html">Readings: section 4.2</a></td>
             <td class='resource-type'>Reading</td>
             <td class='resource-tags'></td>
         </tr>
@@ -585,6 +579,12 @@ Soda) on Mondays 5-7pm.</p>
 
         <tr>
             <td class='resource-name'><a href="lab/lab08/">Lab 8: Iterators and Generators</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab09/">Lab 9: Exceptions and SQL</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
@@ -943,10 +943,10 @@ No Lecture: MLK Day</td>
 <tr>
 <td rowspan="1" class="weeknum odd">13</td>
 <td>Mon 4/11</td>
-<td>Exceptions, Iterators, and Generators
+<td>Iterators, and Generators
 <br/>
 (1pp) (4pps) (ipynb)</td>
-<td><a href="http://composingprograms.com/pages/33-exceptions.html">3.3</a></td>
+<td><a href="http://composingprograms.com/pages/42-implicit-sequences.html">4.2</a></td>
 <td><a href="lab/lab08/">Lab 8: Iterators and Generators</a><br/>(due Fri 4/15)</td>
 <td><a href="hw/hw07/">Homework 7</a><br/>(due Mon 4/18)</td>
 <td></td>
@@ -954,13 +954,12 @@ No Lecture: MLK Day</td>
 <tr>
 <td rowspan="1" class="weeknum even">14</td>
 <td>Mon 4/18</td>
-<td>SQL and Declarative Programming
+<td>Exceptions and Declarative Programming
 <br/>
 (1pp) (4pps) (ipynb)</td>
-<td><a href="http://composingprograms.com/pages/41-introduction.html">4.1</a><br/>
-<a href="http://composingprograms.com/pages/42-implicit-sequences.html">4.2</a><br/>
+<td><a href="http://composingprograms.com/pages/33-exceptions.html">3.3</a><br/>
 <a href="http://composingprograms.com/pages/43-declarative-programming.html">4.3</a></td>
-<td></td>
+<td><a href="lab/lab09/">Lab 9: Exceptions and SQL</a><br/>(due Fri 4/22)</td>
 <td></td>
 <td></td>
 </tr>
@@ -1059,7 +1058,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "2/3/16", "link": "lab/lab00/", "name": "Lab 0: Workflow", "release": "1/25/16"}, {"due": "2/5/16", "link": "lab/lab01/", "name": "Lab 1: Control Structures", "release": "2/1/16"}, {"due": "2/12/16", "link": "lab/lab02/", "name": "Lab 2: Funargs and Higher Order Functions", "release": "2/8/16"}, {"due": "2/26/16", "link": "lab/lab03/", "name": "Lab 3: Recursion", "release": "2/22/16"}, {"due": "3/2/16", "link": "lab/lab04/", "name": "Lab 4: Midterm Review", "release": "2/29/16"}, {"due": "3/11/16", "link": "lab/lab05/", "name": "Lab 5: Data Abstraction and Dictionaries", "release": "3/7/16"}, {"due": "3/18/16", "link": "lab/lab06/", "name": "Lab 6: Mutation", "release": "3/14/16"}, {"due": "4/1/16", "link": "lab/lab07/", "name": "Lab 7: Objects and Inheritance", "release": "3/28/16"}, {"due": "4/15/16", "link": "lab/lab08/", "name": "Lab 8: Iterators and Generators", "release": "4/11/16"}, {"due": "2/3/16", "link": "hw/hw01/", "name": "Homework 1", "release": "1/25/16"}, {"due": "2/9/16", "link": "hw/hw02/", "name": "Homework 2", "release": "2/1/16"}, {"due": "2/29/16", "link": "hw/hw03/", "name": "Homework 3", "release": "2/22/16"}, {"due": "3/3/16", "link": "hw/hw04/", "name": "Homework 4", "release": "2/29/16"}, {"due": "3/28/16", "link": "hw/hw05/", "name": "Homework 5", "release": "3/14/16"}, {"due": "4/4/16", "link": "hw/hw06/", "name": "Homework 6", "release": "3/28/16"}, {"due": "4/18/16", "link": "hw/hw07/", "name": "Homework 7", "release": "4/11/16"}, {"due": "2/24/16", "link": "proj/cuke/", "name": "Cuke", "release": "2/11/16"}, {"due": "3/14/16", "link": "proj/maps/", "name": "Maps Part 1", "release": "3/7/16"}, {"due": "3/30/16", "link": "proj/maps/", "name": "Maps Part 2", "release": "3/7/16"}, {"due": "4/24/16", "link": "proj/hangman/", "name": "Hangman", "release": "4/4/16"}];
+  var assignments = [{"due": "2/3/16", "link": "lab/lab00/", "name": "Lab 0: Workflow", "release": "1/25/16"}, {"due": "2/5/16", "link": "lab/lab01/", "name": "Lab 1: Control Structures", "release": "2/1/16"}, {"due": "2/12/16", "link": "lab/lab02/", "name": "Lab 2: Funargs and Higher Order Functions", "release": "2/8/16"}, {"due": "2/26/16", "link": "lab/lab03/", "name": "Lab 3: Recursion", "release": "2/22/16"}, {"due": "3/2/16", "link": "lab/lab04/", "name": "Lab 4: Midterm Review", "release": "2/29/16"}, {"due": "3/11/16", "link": "lab/lab05/", "name": "Lab 5: Data Abstraction and Dictionaries", "release": "3/7/16"}, {"due": "3/18/16", "link": "lab/lab06/", "name": "Lab 6: Mutation", "release": "3/14/16"}, {"due": "4/1/16", "link": "lab/lab07/", "name": "Lab 7: Objects and Inheritance", "release": "3/28/16"}, {"due": "4/15/16", "link": "lab/lab08/", "name": "Lab 8: Iterators and Generators", "release": "4/11/16"}, {"due": "4/22/16", "link": "lab/lab09/", "name": "Lab 9: Exceptions and SQL", "release": "4/18/16"}, {"due": "2/3/16", "link": "hw/hw01/", "name": "Homework 1", "release": "1/25/16"}, {"due": "2/9/16", "link": "hw/hw02/", "name": "Homework 2", "release": "2/1/16"}, {"due": "2/29/16", "link": "hw/hw03/", "name": "Homework 3", "release": "2/22/16"}, {"due": "3/3/16", "link": "hw/hw04/", "name": "Homework 4", "release": "2/29/16"}, {"due": "3/28/16", "link": "hw/hw05/", "name": "Homework 5", "release": "3/14/16"}, {"due": "4/4/16", "link": "hw/hw06/", "name": "Homework 6", "release": "3/28/16"}, {"due": "4/18/16", "link": "hw/hw07/", "name": "Homework 7", "release": "4/11/16"}, {"due": "2/24/16", "link": "proj/cuke/", "name": "Cuke", "release": "2/11/16"}, {"due": "3/14/16", "link": "proj/maps/", "name": "Maps Part 1", "release": "3/7/16"}, {"due": "3/30/16", "link": "proj/maps/", "name": "Maps Part 2", "release": "3/7/16"}, {"due": "4/24/16", "link": "proj/hangman/", "name": "Hangman", "release": "4/4/16"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
