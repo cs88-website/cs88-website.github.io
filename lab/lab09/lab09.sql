@@ -22,17 +22,28 @@ create table sizes as
   select "mini",        28,        35        union
   select "medium",      35,        45        union
   select "standard",    45,        60;
+
+
+# Comment out the unfinished questions while you
+# are working so as to avoid errors in the tests.
+
 -- All short dogs
 create table short_dogs as
 -- REPLACE THIS LINE
+
 -- The size of each dog
 create table size_of_dogs as
 -- REPLACE THIS LINE
+
 
 -- All dogs with parents ordered by decreasing height of their parent
 create table by_height as
 -- REPLACE THIS LINE
 
+
+-- Height and name of every dog that shares height 10's digit  
+-- with at least one other dog and has the highest 1's digit of all dogs 
+-- that have the same 10's digit
 create table tallest as
 -- REPLACE THIS LINE
 

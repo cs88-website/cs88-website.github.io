@@ -5,13 +5,13 @@
         "lab09.py"
     ],
     "tests": {
-        "lab09.py/quiet_get": "doctest",
-        "lab09.py/avoid_keyerror": "doctest",
-        "lab09.py/safe_sum": "doctest",
-	"tests/short.py": "ok_test",
-	"tests/small.py": "ok_test",
-	"tests/parent_height.py": "ok_test",
-	"tests/tallest.py": "ok_test"
+        "lab09.py:quiet_get": "doctest",
+        "lab09.py:avoid_keyerror": "doctest",
+        "lab09.py:safe_sum": "doctest",
+    	"tests/short.py": "ok_test",
+    	"tests/small.py": "ok_test",
+    	"tests/parent_height.py": "ok_test",
+    	"tests/tallest.py": "ok_test"
     },
     "protocols": [
         "restore",

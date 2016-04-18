@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 9: Exceptions | CS 88 Spring 2016</title>
+    <title>Lab 9: Exceptions and SQL | CS 88 Spring 2016</title>
 
   </head>
 
@@ -66,7 +66,7 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Lab 9</span>: Exceptions</h1>
+      <h1><span class="content-title-brand">Lab 9</span>: Exceptions and SQL</h1>
     </div>
 
     <p><i>Due at 11:59pm on 04/22/2016.</i></p>
@@ -136,7 +136,7 @@ out.</p>
 <h3 class="question" id="q1">Question 1: Quiet get</h3>
 
 <p>You have seen that indexing a list with an index that is not contained in the list
-generates and exception, as does looking up a key that does not index in a dictionary.
+generates and exception, as does looking up a key that does not exist in a dictionary.
 However, the <code>get</code> method of <code>dict</code> is more forgiving. If the key is not in the
 dictionary it returns a value that you provide, defaulting to <code>None</code>.  Use
 exception handling in the function <code>quiet_get</code> to obtain similar behavior
@@ -156,10 +156,8 @@ statement using indexing, rather than get.  You need to write the <code>except</
     &gt;&gt;&gt; quiet_get({&#x27;a&#x27;:2, &#x27;b&#x27;:5}, &#x27;d&#x27;, &#x2d;1)
     &#x2d;1
     &quot;&quot;&quot;
-    try:
-        return data[selector]
 <div class="alt 1">    "*** YOUR CODE HERE ***"
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x28;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;</div></code></pre>
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x61;&#x74;&#x61;&#x5b;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x6f;&#x72;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x28;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;</div></code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -663,7 +661,7 @@ select * from by_height;
 
 <p>Test your solution with OK:</p>
 
-<pre><code>python3 ok &#x2d;q parent&#x2d;height</code></pre>
+<pre><code>python3 ok &#x2d;q parent_height</code></pre>
 
 <h3 class="question" id="q7">Question 7</h3>
 
@@ -673,7 +671,10 @@ the highest 1's digit of all dogs that have the same 10's digit.</p>
 
 
 
-<pre><code>create table tallest as
+<pre><code>&#x2d;&#x2d; Height and name of every dog that shares height 10&#x27;s digit  
+&#x2d;&#x2d; with at least one other dog and has the highest 1&#x27;s digit of all dogs 
+&#x2d;&#x2d; that have the same 10&#x27;s digit
+create table tallest as
 <div class="alt 7">-- REPLACE THIS LINE
 </div><div class="solution 7">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x29;&#x2c;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x67;&#x72;&#x6f;&#x75;&#x70;&#x20;&#x62;&#x79;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2f;&#x31;&#x30;&#x20;&#x68;&#x61;&#x76;&#x69;&#x6e;&#x67;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x28;&#x2a;&#x29;&#x20;&#x3e;&#x20;&#x31;&#x3b;</div></code></pre>
 
