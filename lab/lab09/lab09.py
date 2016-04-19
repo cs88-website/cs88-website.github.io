@@ -13,6 +13,8 @@ def quiet_get(data, selector, missing=None):
     >>> quiet_get({'a':2, 'b':5}, 'd', -1)
     -1
     """
+    try:
+        return data[selector]
     "*** YOUR CODE HERE ***"
 
 

@@ -156,8 +156,10 @@ statement using indexing, rather than get.  You need to write the <code>except</
     &gt;&gt;&gt; quiet_get({&#x27;a&#x27;:2, &#x27;b&#x27;:5}, &#x27;d&#x27;, &#x2d;1)
     &#x2d;1
     &quot;&quot;&quot;
+    try:
+        return data[selector]
 <div class="alt 1">    "*** YOUR CODE HERE ***"
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x61;&#x74;&#x61;&#x5b;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x6f;&#x72;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x28;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;</div></code></pre>
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x28;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;</div></code></pre>
 
 
     <button id='1' class='toggleButton'>
