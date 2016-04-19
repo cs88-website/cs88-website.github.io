@@ -1,0 +1,24 @@
+{
+    "name": "Homework 8",
+    "endpoint": "cal/cs88/sp16/hw08",
+    "src": [
+        "hw08.sql"
+    ],
+    "tests": {
+        "tests/pricing.py": "ok_test",
+        "tests/long.py": "ok_test",
+        "tests/largest.py": "ok_test",
+        "tests/long_album.py": "ok_test",
+        "tests/track_count.py": "ok_test",
+        "tests/album_count.py": "ok_test",
+        "tests/busiest_artists.py": "ok_test"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
