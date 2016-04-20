@@ -366,7 +366,7 @@ tracks are on each album (identified by albumId):</p>
 group, we perform aggregation by MAXing over the attribute <code>milliseconds</code>. By selecting <code>albumId</code> and <code>MAX(milliseconds)</code>,
 we then can see the greatest <code>milliseconds</code> for any track for a given <code>albumId</code>.</p>
 
-<p>NOTE: Any column in the aggregate function must also be in the <code>GROUP BY</code> statement.</p>
+<blockquote><p>When using an aggregate function in your <code>SELECT</code> statement, any other columns in the <code>SELECT</code> statement <em>must</em> be in the <code>GROUP BY</code> statement!</p></blockquote>
 
 <h3 class="question" id="q6">Question 6: Number of songs on each album</h3>
 
