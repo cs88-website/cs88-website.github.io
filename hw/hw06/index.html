@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang, Nishant Desai" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Homework 6 | CS 88 Spring 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <li><a href="/articles/using-ok.html">Using OK</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <!-- <li><a href="/weekly.html">Weekly Schedule</a></li> -->
+                <!-- <li><a href="/extra.html">Extra Lectures</a></li> -->
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Homework 6</span></h1>
+    </div>
+
+    <p><em>Due by 11:59pm on Monday, 4/4</em></p>
+
+<h2>Instructions</h2>
+
+<p>Download <a href="hw06.zip">
+  hw06.zip</a>.  Inside the archive, you will
+find a file called <a href="hw06.py">
+  hw06.py</a>, along with a copy
+of the <a href="ok">OK</a> autograder.</p>
+
+<p><strong>Submission:</strong> When you are done, submit with <code>python3 ok
+  --submit</code>. You may submit more than once before the deadline; only the
+final submission will be scored. See <a href="/lab/lab01#submitting-assignments">Lab 1</a> for instructions on submitting
+assignments.</p>
+
+<p><strong>Using OK:</strong> If you have any questions about using OK, please
+refer to <a href="/articles/using-ok.html">this guide.</a>
+
+<p><strong>Readings:</strong> This homework relies on following references:</p>
+
+<ul>
+  <li><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">Section 2.5</a></li>
+</ul>
+
+    
+
+<h3 class="question" id="q1">Question 1: Vending Machine</h3>
+
+<p>Create a class called <code>VendingMachine</code> that represents a vending
+machine for some product. A <code>VendingMachine</code> object returns strings
+describing its interactions.  See the doctest below for examples:</p>
+
+<solution>
+
+<pre><code>class VendingMachine:
+    &quot;&quot;&quot;A vending machine that vends some product for some price.
+
+    &gt;&gt;&gt; v = VendingMachine(&#x27;candy&#x27;, 10)
+    &gt;&gt;&gt; v.vend()
+    &#x27;Machine is out of stock.&#x27;
+    &gt;&gt;&gt; v.restock(2)
+    &#x27;Current candy stock: 2&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;You must deposit $10 more.&#x27;
+    &gt;&gt;&gt; v.deposit(7)
+    &#x27;Current balance: $7&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;You must deposit $3 more.&#x27;
+    &gt;&gt;&gt; v.deposit(5)
+    &#x27;Current balance: $12&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;Here is your candy and $2 change.&#x27;
+    &gt;&gt;&gt; v.deposit(10)
+    &#x27;Current balance: $10&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;Here is your candy.&#x27;
+    &gt;&gt;&gt; v.deposit(15)
+    &#x27;Machine is out of stock. Here is your $15.&#x27;
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q VendingMachine</code></pre>
+
+<h3 class="question" id="q2">Question 2: Person</h3>
+
+<p>Modify the following <code>Person</code> class to add a <code>repeat</code> method, which
+repeats the last thing said. See the doctests for an example of its
+use.</p>
+
+<blockquote><p><em>Hint</em>: you will have to modify other methods as well, not just the
+<code>repeat</code> method.</p></blockquote>
+
+<solution>
+
+<pre><code>class Person(object):
+    &quot;&quot;&quot;Person class.
+
+    &gt;&gt;&gt; steven = Person(&quot;Steven&quot;)
+    &gt;&gt;&gt; steven.repeat()       # starts at whatever value you&#x27;d like
+    &#x27;I squirreled it away before it could catch on fire.&#x27;
+    &gt;&gt;&gt; steven.say(&quot;Hello&quot;)
+    &#x27;Hello&#x27;
+    &gt;&gt;&gt; steven.repeat()
+    &#x27;Hello&#x27;
+    &gt;&gt;&gt; steven.greet()
+    &#x27;Hello, my name is Steven&#x27;
+    &gt;&gt;&gt; steven.repeat()
+    &#x27;Hello, my name is Steven&#x27;
+    &gt;&gt;&gt; steven.ask(&quot;preserve abstraction barriers&quot;)
+    &#x27;Would you please preserve abstraction barriers&#x27;
+    &gt;&gt;&gt; steven.repeat()
+    &#x27;Would you please preserve abstraction barriers&#x27;
+    &quot;&quot;&quot;
+    def __init__(self, name):
+        self.name = name
+        "*** YOUR CODE HERE ***"
+
+    def say(self, stuff):
+        "*** YOUR CODE HERE ***"
+        return stuff
+
+    def ask(self, stuff):
+        return self.say(&quot;Would you please &quot; + stuff)
+
+    def greet(self):
+        return self.say(&quot;Hello, my name is &quot; + self.name)
+
+    def repeat(self):
+        "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Person</code></pre>
+
+<h3 class="question" id="q3">Question 3: What would Python print</h3>
+
+<p>Consider the following code:</p>
+
+<pre><code>CURRENT_YEAR = 2016
+
+class Animal(object):
+    def __init__(self):
+        self.is_alive = True  # It&#x27;s alive!!
+
+class Pet(Animal):
+    def __init__(self, name, year_of_birth, owner=None):
+        Animal.__init__(self)   # call the parent&#x27;s constructor
+        self.name = name
+        self.age = CURRENT_YEAR &#x2d; year_of_birth
+        self.owner = owner
+
+    def eat(self, thing):
+        self.talk()
+        if thing == &quot;poison&quot;:
+            self.lose_life()
+        print(self.name + &quot; ate a &quot; + str(thing) + &quot;!&quot;)
+
+    def talk(self):
+        print(&quot;..&quot;)</code></pre>
+
+<blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
+questions:</p>
+
+<pre><code>python3 ok &#x2d;q pet &#x2d;u</code></pre>
+
+<p><em>Hint</em>: Remember for all WWPP questions, enter <code>Function</code> if you believe the
+answer is <code>&lt;function ...&gt;</code> and <code>Error</code> if it errors.</p></blockquote>
+
+<h3 class="question" id="q4">Question 4: Cat</h3>
+
+<p>Implement a <code>Cat</code> class that inherits from <code>Pet</code>. Use superclass
+methods wherever possible.</p>
+
+<solution>
+
+<pre><code>class Cat(Pet):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; my_cat = Cat(&quot;Furball&quot;, 2011, &quot;Me&quot;, lives=2)
+    &gt;&gt;&gt; my_cat.talk()
+    Meow!
+    &gt;&gt;&gt; my_cat.name
+    &#x27;Furball&#x27;
+    &gt;&gt;&gt; my_cat.lose_life()
+    &gt;&gt;&gt; my_cat.is_alive
+    True
+    &gt;&gt;&gt; my_cat.eat(&quot;poison&quot;)
+    Meow!
+    Furball ate a poison!
+    &gt;&gt;&gt; my_cat.is_alive
+    False
+    &gt;&gt;&gt; my_cat.lose_life()
+    &#x27;Cat is dead x_x&#x27;
+    &quot;&quot;&quot;
+    def __init__(self, name, year_of_birth, owner, lives=9):
+        assert type(lives) == int and  lives &gt; 0
+        "*** YOUR CODE HERE ***"
+
+    def talk(self):
+        &quot;&quot;&quot;A cat says &#x27;Meow!&#x27; when asked to talk.&quot;&quot;&quot;
+        "*** YOUR CODE HERE ***"
+
+    def lose_life(self):
+        &quot;&quot;&quot;A cat can only lose a life if it has at least one
+        life. When there are zero lives left, the &#x27;is_alive&#x27;
+        variable becomes False.
+        &quot;&quot;&quot;
+        "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Cat</code></pre>
+
+<h3 class="question" id="q5">Question 5: Checking account</h3>
+
+<p>We'd like to be able to cash checks, so let's add a <code>deposit_check</code>
+method to our <code>CheckingAccount</code> class. It will take a <code>Check</code> object
+as an argument, and check to see if the <code>payable_to</code> attribute matches
+the <code>CheckingAccount</code>'s holder. If so, it marks the <code>Check</code> as
+deposited, and adds the amount specified to the <code>CheckingAccount</code>'s
+total.</p>
+
+<p>Write an appropriate <code>Check</code> class, and add the <code>deposit_check</code> method
+to the <code>CheckingAccount</code> class. Make sure not to copy and paste code!
+Use inheritance whenever possible.</p>
+
+<p>See the doctests for examples of how this code should work.</p>
+
+<solution>
+
+<pre><code>class CheckingAccount(Account):
+    &quot;&quot;&quot;A bank account that charges for withdrawals.
+
+    &gt;&gt;&gt; check = Check(&quot;Steven&quot;, 42)  # 42 dollars, payable to Steven
+    &gt;&gt;&gt; steven_account = CheckingAccount(&quot;Steven&quot;)
+    &gt;&gt;&gt; eric_account = CheckingAccount(&quot;Eric&quot;)
+    &gt;&gt;&gt; eric_account.deposit_check(check)  # trying to steal steven&#x27;s money
+    The police have been notified.
+    &gt;&gt;&gt; eric_account.balance
+    0
+    &gt;&gt;&gt; check.deposited
+    False
+    &gt;&gt;&gt; steven_account.balance
+    0
+    &gt;&gt;&gt; steven_account.deposit_check(check)
+    42
+    &gt;&gt;&gt; check.deposited
+    True
+    &gt;&gt;&gt; steven_account.deposit_check(check)  # can&#x27;t cash check twice
+    The police have been notified.
+    &quot;&quot;&quot;
+    withdraw_fee = 1
+    interest = 0.01
+
+    def withdraw(self, amount):
+        return Account.withdraw(self, amount + self.withdraw_fee)
+
+
+
+class Check(object):
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q CheckingAccount</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Question 1: Vending Machine</a></li>
+  <li><a href="#q2">Question 2: Person</a></li>
+  <li><a href="#q3">Question 3: What would Python print</a></li>
+  <li><a href="#q4">Question 4: Cat</a></li>
+  <li><a href="#q5">Question 5: Checking account</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>

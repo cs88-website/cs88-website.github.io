@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang, Nishant Desai" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link href="../../assets/css/project.css" rel="stylesheet" type="text/css">
+
+    <title>Project 1: The Game of Cucumber | CS 88 Spring 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <li><a href="/articles/using-ok.html">Using OK</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <!-- <li><a href="/weekly.html">Weekly Schedule</a></li> -->
+                <!-- <li><a href="/extra.html">Extra Lectures</a></li> -->
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Project 1</span>: The Game of Cucumber</h1>
+    </div>
+
+    <div id="haiku">
+  
+<blockquote><cite>
+  I know! I'll use my<br/>
+  Higher-order functions to<br/>
+  Order higher cards.
+</cite></blockquote>
+
+</div>
+
+    <h2>Introduction</h2>
+
+
+<p>In this project you will develop a simulator and multiple strategy bots for
+the card game Cucumber. You can read lots about the game online, e.g.,
+<a href="http://www.pagat.com/last/cucumber.html">here</a>.  It goes by many names
+and seems to be largely a scandinavian drinking game.  You play the <em>game</em>
+by playing <em>hands</em> out as a sequence of <em>tricks</em>, much like hearts or bridge.
+In each trick, the winner is the last player who plays a card with the
+highest point count.  But the only trick that really matters is the last one.
+You don't want to win the last trick of a hand!  If you do, you get points -
+and points are bad.  So you play tricks with a strategy that seeks to avoid
+getting yourself "into a pickle" (hence <em>cucumber</em>) of being forced to play
+a high card in the last hand.  The "drinking game" part is that you get to
+talk all you want and colude with other players - and you can even lie to
+them.  Our bots are not real good at that, but perhaps you can try it out
+with real cards and some friends.</p>
+
+<p>You should complete problems 1-13 by Thursday 2/18.  These are all quite
+short functions, mostly 1-3 lines.  That will give you nearly a week to
+do the two larger functions and your strategy function development.
+You will receive additional instructions
+for submitting your final strategy function before the project due date.
+We will have a tournament play-off of all the c88 strategy bots.  And
+extra-credit point will be given for each round of play that your bot
+advances.  In the tournment groups of 4 bots will play thousands of games.
+Based on these outcomes, some of the bots will advance to additional rounds.
+We'll do the final palyoff round in a class pizza party.  So, go build your
+basic game, have fun, and go build a great bot.</p>
+
+<p><strong>Note:</strong> Please ignore the information regarding unlocking test cases in the "Testing" section below. We planned to have test cases locked but did not end up locking them. Therefore, you DO NOT need to run the <code>python3 ok -u</code> command. The test cases are already unlocked, you can simply run ok to test. But make sure you understand the doctests before you begin writing code! Also, make sure you follow the download instructions in lab2 and then activate your cs88 environment using the following command:
+<pre><code>source activate cs88</code></pre></p>
+
+
+
+<p>You can obtain all the files needed for this project by downloading this <a href="cuke.zip">zip archive</a>.</p>
+
+<h2>Logistics</h2>
+
+<p>This is a 2-week project. You may work with one other
+partner.  You should not share your code with students who are not your
+partner or copy from anyone else's solutions.</p>
+
+<p>In the end, you will submit one project for both partners. The
+project is worth 20 points. 18 points are
+assigned for correctness, and 2 points for the overall <a
+  href="../../articles/composition.html">composition</a> of your program.</p>
+
+<p>You will turn in the following files:</p>
+
+
+<ul>
+  <li><code>cuke.py</code></li>
+</ul>
+
+
+<p>You do not need to modify or turn in any other files to complete the
+project. To submit the project, run the following command:
+
+<pre><code>python3 ok --submit</code></pre>
+
+<p>You will be able to view your submissions on the <a
+  href="http://ok.cs88.org">OK dashboard</a>.</p>
+
+<p>For the functions that we ask you to complete, there may be some
+initial code that we provide. If you would rather not use that code,
+feel free to delete it and start from scratch. You may also add new
+function definitions as you see fit.</p>
+
+<p>However, please do <b>not</b> modify any other functions.  Doing so may
+result in your code failing our autograder tests. Also, please do not
+change any function signatures (names, argument order, or number of
+arguments).</p>
+
+
+<p>None</p>
+
+
+<h2>Testing</h2>
+
+<p>Throughout this project, you should be testing the correctness of your
+code.  It is good practice to test often, so that it is easy to isolate
+any problems.</p>
+
+<p>We have provided an <b>autograder</b> called <code>ok</code> to help you with
+testing your code and tracking your progress. The first time you run
+the autograder, you will be asked to <b>log in with your OK account using your web browser</b>. Please do so. Each time you run
+<code>ok</code>, it will back up your work and progress on our
+servers.</p>
+
+<p>The primary purpose of <code>ok</code> is to test your implementations, but there
+is a catch. At first, the test cases are <i>locked</i>. To unlock tests,
+run the following command from your terminal:</p>
+
+<pre><code>python3 ok -u</code></pre>
+
+<p>This command will start an interactive prompt that looks like:</p>
+
+<pre>
+=====================================================================
+Assignment: The Game of Cucumber
+OK, version ...
+=====================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unlocking tests
+
+At each "? ", type what you would expect the output to be.
+Type exit() to quit
+
+---------------------------------------------------------------------
+Question 0 &gt; Suite 1 &gt; Case 1
+(cases remaining: 1)
+
+&gt;&gt;&gt; Code here
+?
+</pre>
+
+<p>At the <code>?</code>, you can type what you expect the output to be.
+If you are correct, then this test case will be available the next time
+you run the autograder.</p>
+
+<p>The idea is to understand <i>conceptually</i> what your program should do
+first, before you start writing any code.</p>
+
+<p>Once you have unlocked some tests and written some code, you can check
+the correctness of your program using the tests that you have
+unlocked:</p>
+
+<pre>python3 ok</pre>
+
+<p>Most of the time, you will want to focus on a particular question.
+Use the <code>-q</code> option as directed in the problems below.</p>
+
+<p>The <code>tests</code> folder is used to store autograder tests, so make sure
+<b>not to modify it</b>. You may lose all your unlocking progress if you
+do. If you need to get a fresh copy, you can download the
+<a href="cuke.zip">zip archive</a> and copy it over, but you
+will need to start unlocking from scratch.</p>
+
+
+
+
+<h1 id="rules-of-our-game">Rules of our game</h1>
+
+
+<ul>
+  <li><strong>Dealing</strong>. The initial dealer of a game is determined by dealing a
+  card to each player.  The player with the highest numbered card, with the
+  ordering of Clubs < Diamonds < Hearts < Spades is the initial dealer; after that
+  point the deal moves to the player to the left (next larger number modulo number
+  of players) after each hand.  Each player is dealt 7 cards to form the hand.</li>
+  <li><strong>Leading</strong>.  After the deal, the player to the left of the dealer
+  leads the first trick.  For the remaining tricks of the hand, the
+  winner of the previous trick leads.</li>
+  <li><strong>Trick play</strong>.  Each player must play a card from their hand that
+  has a point count greater or equal to the highest played so far in the
+  trick (suit does not matter) or, if they have no such card, they must
+  play the lowest point count card in their hand. Points are 2 - 14 with
+  numbered cards counting their number, jacks=10, up to Ace=14.  (Ace
+  high).  (Forcing out other players low cards is what you are trying to
+  do so that they are stuck with a big card in the last trick of the hand.)
+  The last high card <em>wins</em> the trick and get the lead.</li>
+  <li><strong>Scoring a hand</strong>. The <em>winner</em> of last trick of the hand adds the point
+  count of their card to their score.  (Points are bad.)</li>
+  <li><strong>Bonus points</strong>. The non-winning players of cards with value equal to the
+  winning card <em>subtract</em> the point count from their score! The score can only be
+  reduced to zero.</li>
+  <li><strong>End of game</strong>. When one player reaches a point count of 21 or more our game ends.</li>
+</ul>
+
+<p>Hopefully we will have a fancy GUI for you to try out and have fun playing the
+game, but for the project we are going to stick to an old school text interface.</p>
+
+
+<h3 id="extra-options">Extra options</h3>
+
+
+<ul>
+  <li><strong>Cucumbers</strong>. The way the game is really supposed to end is by getting
+  two <em>cucumbers</em>.  The first time a player's score reaches 21, they get
+  a cucumber, their score is reset to the highest score of the other
+  players and play continues.  The game terminates when one player gets two cucumbers.</li>
+  <li>Initial deal.  Haven't worked that in yet. Starting with player 0.</li>
+</ul>
+
+
+<h2 id="a-little-example">A little example</h2>
+
+
+<p>Here's a little example of what your first hand of <code>test_game</code> might look like, with
+<code>you</code> playing manually against three silly bots with 3 trick hands.</p>
+
+<pre><code>&gt;&gt;&gt; test_game()
+You current hand [&#x27;2 Hearts&#x27;, &#x27;Ace Clubs&#x27;, &#x27;6 Clubs&#x27;]
+Current board
+lead | You          | Bot1      | Bot2        | Bot3
+1    | *NOT PLAYED* | 10 Hearts | Jack Hearts | Jack Diamond
+Card to play: 3 Hearts
+Sorry.  3 Hearts is not a legal play.
+Please enter a card in your hand.
+Card to play: 6 Clubs
+Sorry.  6 Clubs is not a legal play.
+Please play as high as previous or lowest in hand.
+Card to play: Ace Clubs
+You current hand [&#x27;2 Hearts&#x27;, &#x27;6 Clubs&#x27;]
+Current board
+lead | You          | Bot1         | Bot2         | Bot3
+1    | Ace Clubs    | 10 Hearts    | Jack Hearts  | Jack Diamond
+0    | *NOT PLAYED* | *NOT PLAYED* | *NOT PLAYED* | *NOT PLAYED*
+Card to play: 6 Clubs
+You current hand [&#x27;2 Hearts&#x27;]
+Current board
+lead | You          | Bot1         | Bot2         | Bot3
+1    | Ace Clubs    | 10 Hearts    | Jack Hearts  | Jack Diamond
+0    | 6 Clubs      | 10 Clubs     | 10 Spades    | 6 Diamonds
+2    | *NOT PLAYED* | *NOT PLAYED* | Queen Spades | 7 Spades
+Card to play: 2 Hearts
+lead | You       | Bot1      | Bot2         | Bot3
+1    | Ace Clubs | 10 Hearts | Jack Hearts  | Jack Diamond
+0    | 6 Clubs   | 10 Clubs  | 10 Spades    | 6 Diamonds
+2    | 2 Hearts  | 9 Clubs   | Queen Spades | 7 Spades
+Winner: Bot2 with Queen Spades
+Scores [0, 0, 12, 0]
+[0, 0, 12, 0]</code></pre>
+
+
+<h1 id="creating-the-game">Creating the game</h1>
+
+
+<p>The are four primary data structures in our game: the deck of cards, cards
+forming a hand, the board, and the players and their scores.  We have
+broken this down into several small pieces so you can build the entire
+game one step at a time.  It will give you experience as well in test-driven
+development.  As you build the pieces you can test them and make sure they
+work before you build more complex parts on top.</p>
+
+
+<h2 id="cards">Cards</h2>
+
+
+
+<h3 id="problem-1---card-value">Problem 1 - Card value</h3>
+
+
+<p>Complete the function <code>card_value</code> to return the numerical value of a card
+represented as a string.  You are welcome to use <code>str</code> methods, such as <code>str.split</code>
+that you saw on the first data of data8.</p>
+
+<ul>
+  <li>Test with...</li>
+</ul>
+
+
+<h2 id="list-utilities">List utilities</h2>
+
+
+<p>Hands, player names, and player scores will all be represented as lists.  You will
+need a couple of utilities.  So let's build them now.</p>
+
+
+<h3 id="problem-2---remove-item-from-a-list">Problem 2 - Remove item from a list</h3>
+
+
+<p>Implement the function <code>remove_item</code> which takes as input a list of elements and
+a particular element.  It returns a lists with the first occurence of the
+designated element removed.  This is used when removing a card that is played from
+a hand.</p>
+
+
+<h3 id="problem-3---rotate-a-list">Problem 3 - Rotate a list</h3>
+
+
+<p>Implement the function <code>rotate_list</code> which performs a circular
+rotation of a list of items.</p>
+
+
+<h2 id="hands-full-of-cards">Hands full of cards</h2>
+
+
+<p>Each player's hand is represented by a list of cards.  As the play progresses
+cards are removed from the hand and played to the board.</p>
+
+<h3 id="problem-4---highest-and-lowest-cards">Problem 4 - Highest and lowest cards</h3>
+
+
+<p>Implement the functions <code>highest_card</code> and <code>lowest_card</code> that return a card
+with the higher or lowest card_value, respectively.</p>
+
+
+<h3 id="problem-5---playable-cards">Problem 5 - Playable cards</h3>
+
+
+<p>In your strategy functions, you will need to look over all the cards that
+are "playable" according to the rules of the game and choose what you
+think is the best one to play.  Implement the function <code>playable</code>.</p>
+
+
+<h3 id="problem-6---legal-play">Problem 6 - Legal play</h3>
+
+
+<p>Implement the function <code>legal_play</code> which is a predicate that determines if
+playing a card from a hand is legal according to the rules of the game.</p>
+
+
+<h2 id="deck-of-cards">Deck of cards</h2>
+
+
+<p>For our deck of cards we will use Tables - the same module that you have used
+every day in data8.  It has some especially nice methods to take random samples
+and permutations, which you will use later in your data8 course.  The function
+<code>shuffle_deck</code> permutes all the cards in the deck.  It is all implemented for you</p>
+
+
+<h3 id="problem-7---build-the-deck">Problem 7 - Build the deck</h3>
+
+
+<p>Implement the function <code>new_deck</code> that creates a deck of cards in a particular
+order: Clubs, Diamonds, Hearts, Spades (like Bridge) and 2 through Ace in eaac
+suit.  Having a specific order makes testing much easier.</p>
+
+
+<h2 id="deal-the-hands">Deal the hands</h2>
+
+
+<p>Now we are ready to put the two abstractions we've seen so far, decks and hands,
+together.</p>
+
+
+<h3 id="problem-8---deal-the-cards">Problem 8 - Deal the cards</h3>
+
+
+<p>Implement the function <code>deal</code> which deals cards one at a time to each of the
+players hands starting with the player indexed by dealer.  One might argue that
+for virtual cards it does not matter where the deal starts, but hey let's
+stick to emulating the actual card game.  We have made the function a bot more
+general than the actual rules of the name by allowing the number of cards to
+be specified by a parameter.  This way during your testing you can play some
+really small hands.  We have also inclduded a <code>shuffle</code> flag.  During testing you will
+want to avoid shuffling so that the behavior of your code is repeatable.
+Many of the doctests we have provided depend on this.  This function returns
+a list of hands, one for each player in order.  You should test it yourself.
+We haven't provided a specific doctest.  But later ones do rely on the
+deal working correctly.</p>
+
+
+<h2 id="the-board">The Board</h2>
+
+
+<p>When you are playing the game for real, you see the cards on the
+table.  In cucumber you are supposed to keep the cards that you have
+played in front of you on the table for all to see.  That way you can
+make inferences (yes, inferential thinking just like in data8) about
+cards are likely to be in other player's hands.  We will use another
+Table to hold the board.  It has a column for each player and a row for
+each trick.  In addition, it keeps track of who leads each trick.  The
+player with the lead plays the first card.  He/she/it can play any
+card in their hand they choose.  The remaining players must play according to
+the legal play rules.  As they play the row for the trick is filled in -
+in cyclic order.</p>
+
+
+<h3 id="problem-9---create-a-new-board">Problem 9 - Create a new board</h3>
+
+
+<p>Implement the function <code>new_board</code> which creates a fresh board for a set of
+players, ready for the first trick in the hand.</p>
+
+
+<h3 id="problem-10---trick-or-treat">Problem 10 - Trick or treat</h3>
+
+
+<p>Implement the function <code>start_trick</code> that initializes a row in the board
+table to indicate which player will lead off the trick.  This is also
+important in determining who wins the trick, since it is the last player
+with a highest card.  Remember, the rules are greater or equal.</p>
+
+
+<h3 id="problem-11---play-a-card-finally">Problem 11 - Play a card (finally!)</h3>
+
+
+<p>Implement the function <code>play_card</code> to update the board to reflect a
+player playing a card.  This is bascially what drives the game.  Your
+strategy function will pick a card from the hand and - drumroll please -
+play it.</p>
+
+
+<h3 id="problem-12-trick-helper">Problem 12 Trick helper</h3>
+
+
+<p>Implement <code>get_trick</code> which looks at the board and determines which
+row is being used for the current trick.</p>
+
+
+<h3 id="problem-13-more-help">Problem 13 More help</h3>
+
+
+<p>Implement <code>get_highest_in_trick</code> which determines the card value of the highest
+card played in the current trick so far.</p>
+
+
+<h2 id="strategy-functions">Strategy Functions</h2>
+
+
+<p>We have provided you with two strategy functions - a really silly one that
+just plays the first playable card in the hand (in the order of the deal).
+This is not going to win many games, but lets you test the rest of the apparatus
+so you can get on with the <em>inferential thinking</em> part - "what should I
+play?"</p>
+
+<p>The second one <code>manual</code> allows you to play the game yourself.  You can play
+every player if you like.  Or you can play against some bots that you write.
+(I bet you can beat <code>play_first</code> hands down.)</p>
+
+
+<h2 id="let-the-game-begin">Let the game begin</h2>
+
+
+<p>Now we are ready to put together all the pieces and play the game.
+Once more we build from the bottom up.  First play a trick.  And then
+put that into playing a bunch of tricks in a game.</p>
+
+
+<h3 id="problem-14---play-a-whole-trick">Problem 14 - Play a whole trick</h3>
+
+
+<p>Implement the function <code>play_trick</code>.  This is the first big function
+that you have to write.  Think about all the pieces you've created and
+how they fit together.  It's just like the real game.  Clear out a nice
+clean place (row) to play the trick.  The lead plays first and then all the
+rest in order according to their strategy.  The doctest give you some ideas.
+Once everyone has played, this function return <em>the winner</em>.</p>
+
+
+<h3 id="problem-15---play-a-whole-game-really">Problem 15 - Play a whole game (really)</h3>
+
+
+<p>Implement <code>play_game</code>.  You are given a list of players and for each a function (yep,
+that's those higher-order functions again) that is the strategy for that player.
+Basically, it gets to look at its hand and the board and choose what to play (as long
+as its legal).  You have already built that part.  Here we are playing hands
+and hands full of tricks until somebody loses (by winning too many last tricks).</p>
+
+<p>We have given you a little function <code>test_game</code> that lets you play against some
+silly bots.  Check this out.  Have fun with it.  Ultimately, you will be
+showing your working game to your all of us teaching the course.  More on that
+later.
+<br/>
+
+For now, Congratulations - you have built your computer game from scratch.  Not exactly
+a video game, but it's all set to have some fancy graphics stuck on top.</p>
+
+
+<h2 id="advanced-strategies-of-play">Advanced strategies of play</h2>
+
+
+<p>Now that you have a working game, its time to go Hog Wild.  Oh, sorry, that is the
+cs61a project.  You get to get all strategic and analytic.  It's time to go write
+some great strategy functions.</p>
+
+<h3 id="problem-16---fimping">Problem 16 - Fimping</h3>
+
+
+<p>The first one you should build is "fimping" (see
+http://www.pagat.com/last/cucumber.html). It basically plays the
+lowest playable card on every turn.  Implement a strategy
+function <code>fimp</code>.</p>
+
+<h3 id="problem-17---magic">Problem 17 - Magic</h3>
+
+
+<p>After playing Cucumber with a recent Bio grad who like to play Magic and just
+decided to go the the AppAcademy (yikes), I asked
+him what strategy he would build.  He suggested, "Lead with your
+second largest card and follow low."  Remember, you don't want to win the
+last hand.  Winning the second to last hand and having a low card to follow
+is getting somewhere.</p>
+
+
+<h3 id="problem-18---byos">Problem 18 - BYOS</h3>
+
+
+<p>Develop you own strategy function.  You can do all the computing you want.
+<br/>
+Estimate what's out there.  Get special about the latter tricks.  Get
+tricky.  You'll want to build yourself a little jig for playing bots against
+each other and doing the data analysis.</p>
+
+<h1 id="pickle-tourney-ahead">Pickle Tourney ahead</h1>
+
+
+<p>We will put together a little tournament to play you very best strategy
+bots against each other.  More on that later.  For now, have fun and don't
+wait.  You might get yourself in a pickle.</p>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#rules-of-our-game">Rules of our game</a></li>
+  <ul>
+  <li><a href="#extra-options">Extra options</a></li>
+</ul>
+
+  <ul>
+  <li><a href="#a-little-example">A little example</a></li>
+</ul>
+
+  <li><a href="#creating-the-game">Creating the game</a></li>
+  <ul>
+  <li><a href="#cards">Cards</a></li>
+  <ul>
+  <li><a href="#problem-1---card-value">Problem 1 - Card value</a></li>
+</ul>
+
+  <li><a href="#list-utilities">List utilities</a></li>
+  <ul>
+  <li><a href="#problem-2---remove-item-from-a-list">Problem 2 - Remove item from a list</a></li>
+  <li><a href="#problem-3---rotate-a-list">Problem 3 - Rotate a list</a></li>
+</ul>
+
+  <li><a href="#hands-full-of-cards">Hands full of cards</a></li>
+  <ul>
+  <li><a href="#problem-4---highest-and-lowest-cards">Problem 4 - Highest and lowest cards</a></li>
+  <li><a href="#problem-5---playable-cards">Problem 5 - Playable cards</a></li>
+  <li><a href="#problem-6---legal-play">Problem 6 - Legal play</a></li>
+</ul>
+
+  <li><a href="#deck-of-cards">Deck of cards</a></li>
+  <ul>
+  <li><a href="#problem-7---build-the-deck">Problem 7 - Build the deck</a></li>
+</ul>
+
+  <li><a href="#deal-the-hands">Deal the hands</a></li>
+  <ul>
+  <li><a href="#problem-8---deal-the-cards">Problem 8 - Deal the cards</a></li>
+</ul>
+
+  <li><a href="#the-board">The Board</a></li>
+  <ul>
+  <li><a href="#problem-9---create-a-new-board">Problem 9 - Create a new board</a></li>
+  <li><a href="#problem-10---trick-or-treat">Problem 10 - Trick or treat</a></li>
+  <li><a href="#problem-11---play-a-card-finally">Problem 11 - Play a card (finally!)</a></li>
+  <li><a href="#problem-12-trick-helper">Problem 12 Trick helper</a></li>
+  <li><a href="#problem-13-more-help">Problem 13 More help</a></li>
+</ul>
+
+  <li><a href="#strategy-functions">Strategy Functions</a></li>
+  <li><a href="#let-the-game-begin">Let the game begin</a></li>
+  <ul>
+  <li><a href="#problem-14---play-a-whole-trick">Problem 14 - Play a whole trick</a></li>
+  <li><a href="#problem-15---play-a-whole-game-really">Problem 15 - Play a whole game (really)</a></li>
+</ul>
+
+  <li><a href="#advanced-strategies-of-play">Advanced strategies of play</a></li>
+  <ul>
+  <li><a href="#problem-16---fimping">Problem 16 - Fimping</a></li>
+  <li><a href="#problem-17---magic">Problem 17 - Magic</a></li>
+  <li><a href="#problem-18---byos">Problem 18 - BYOS</a></li>
+</ul>
+
+</ul>
+
+  <li><a href="#pickle-tourney-ahead">Pickle Tourney ahead</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>

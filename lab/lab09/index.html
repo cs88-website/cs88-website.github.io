@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, David Culler, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Garrett Tan, Gunjan Baid, Richard Liang, Nishant Desai" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 9: Exceptions and SQL | CS 88 Spring 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <li><a href="/articles/using-ok.html">Using OK</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <!-- <li><a href="/weekly.html">Weekly Schedule</a></li> -->
+                <!-- <li><a href="/extra.html">Extra Lectures</a></li> -->
+              </ul>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 9</span>: Exceptions and SQL</h1>
+    </div>
+
+    <p><i>Due at 11:59pm on 04/22/2016.</i></p>
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab09.zip">lab09.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the <a href="ok">OK</a> autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab with
+<code>python3 ok --submit</code>. You may submit more than once before the
+deadline; only the final submission will be graded.</p>
+
+
+<ul>
+  <li>To receive credit for this lab, you must complete Questions 1-3
+  in <a href="lab09.py">lab09.py</a> and 4-7 in <a href="lab09.sql">lab09.sql</a> and submit through OK.</li>
+  <li>Question 8 is <em>extra practice</em>. It can be found in the
+  <a href="lab09_extra.py">lab09_extra.py</a> file. It is recommended that you
+  complete this problem on your own time.</li>
+</ul>
+
+
+    
+
+
+<h2 id="exceptions">Exceptions</h2>
+
+
+<p>Exceptions allow us to try a chunk of code, and then catch any errors
+that might come up. If we do catch an exception, we can run an
+alternative set of instructions. This construct is very useful in many
+situations.</p>
+
+<pre><code>try:
+    &lt;try suite&gt;
+except Exception as e:
+    &lt;except suite&gt;
+else:
+    &lt;else suite&gt;
+finally:
+    &lt;finally suite&gt;</code></pre>
+
+<p>Notice that we can catch the exception as e. This assigns the name e to
+the exception object.  This can be helpful when we want to give extra
+information on what happened. For example, we can <code>print(e)</code> inside the
+except clause.</p>
+
+<p>Also, we have an optional else case. The else suite is executed if the
+<code>try</code> suite finishes without any exceptions.</p>
+
+<p>We also have an optional finally clause, which is always executed,
+whether or not an exception is thrown. We generally don't need to use
+the else and finally controls in this class.</p>
+
+<p>When we write exception statements, we generally don't just use the
+word Exception as above. Rather, we figure out the specific type of
+exception that we want to handle, such as TypeError or
+ZeroDivisionError. To figure out which type of exception you are trying
+to handle, you can type purposely wrong things into the interpreter
+(such as 'hi' + 5 or 1 / 0) and see what kind of exception Python spits
+out.</p>
+
+<h3 class="question" id="q1">Question 1: Quiet get</h3>
+
+<p>You have seen that indexing a list with an index that is not contained in the list
+generates and exception, as does looking up a key that does not exist in a dictionary.
+However, the <code>get</code> method of <code>dict</code> is more forgiving. If the key is not in the
+dictionary it returns a value that you provide, defaulting to <code>None</code>.  Use
+exception handling in the function <code>quiet_get</code> to obtain similar behavior
+for both lists and dictionaries.  We have provide the <code>try</code> part of the 
+statement using indexing, rather than get.  You need to write the <code>except</code> clause.</p>
+
+
+
+<pre><code>def quiet_get(data, selector, missing=None):
+    &quot;&quot;&quot;Return data[selector] if it exists, otherwise missing.
+
+    &gt;&gt;&gt; quiet_get([1,2,3], 1)
+    2
+    &gt;&gt;&gt; quiet_get([1,2,3], 4)
+    &gt;&gt;&gt; quiet_get({&#x27;a&#x27;:2, &#x27;b&#x27;:5}, &#x27;a&#x27;, &#x2d;1)
+    2
+    &gt;&gt;&gt; quiet_get({&#x27;a&#x27;:2, &#x27;b&#x27;:5}, &#x27;d&#x27;, &#x2d;1)
+    &#x2d;1
+    &quot;&quot;&quot;
+    try:
+        return data[selector]
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x28;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q quiet_get</code></pre>
+
+<h3 class="question" id="q2">Question 2: No KeyErrors Allowed</h3>
+
+<p>If we try to look up a key that does not exist in a dictionary, then
+Python will raise a <code>KeyError</code>. Write the function <code>avoid_keyerror</code> which returns
+returns the value mapped to <code>key</code> in the <code>dictionary</code>. If <code>key</code> does
+not exist, print 'Avoid Exception' and map <code>key</code> to the string 'no value'.</p>
+
+
+
+<pre><code>def avoid_keyerror(dictionary, key):
+    &quot;&quot;&quot; Returns the value associated with key in dictionary. If key 
+    does not exist in the dictionary, print out &#x27;Avoid Exception&#x27; and
+    map it to the string &#x27;no value&#x27;.
+
+    &gt;&gt;&gt; d = {1: &#x27;one&#x27;, 3: &#x27;three&#x27;, 5: &#x27;five&#x27;}
+    &gt;&gt;&gt; avoid_keyerror(d, 3)
+    &#x27;three&#x27;
+    &gt;&gt;&gt; avoid_keyerror(d, 4)
+    Avoid Exception
+    &gt;&gt;&gt; d[4]
+    &#x27;no value&#x27;
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x41;&#x76;&#x6f;&#x69;&#x64;&#x20;&#x45;&#x78;&#x63;&#x65;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x22;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x27;&#x6e;&#x6f;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x27;</div></code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q avoid_keyerror</code></pre>
+
+<h3 class="question" id="q3">Question 3: Safe use of higher order functions</h3>
+
+<p>When writing higher order functions that take functions as arguments, there
+is always the possibility that the function that is passed in may have an
+error that results in an exception.  In this problem we will use exception
+handling to deal with that.  The function <code>safe_sum</code> is passed a function
+and a sequence; it is to return the sum of the results of applyng the function
+to the elements in the sequence.  However, for elements in the sequence where
+the function throws an exception, the <code>missing</code> value is added into the 
+partial sum.</p>
+
+<p>We have started the solution by writing a wrapper function that is used to
+catch the exception. Complete it.</p>
+
+
+
+<pre><code>def safe_sum(fun, seq, missing=0):
+    &quot;&quot;&quot;Return the sum of fun applied to elements in seq using missing as a replacement
+    for those elements on which fun throws an exception
+
+    &gt;&gt;&gt; safe_sum(lambda x: 1/x, [1, 2, 0, 3, None, &quot;bad&quot;])
+    1.8333333333333333
+    &quot;&quot;&quot;
+    def wrap(fun, x):
+<div class="alt 3">        "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x75;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x28;&#x5a;&#x65;&#x72;&#x6f;&#x44;&#x69;&#x76;&#x69;&#x73;&#x69;&#x6f;&#x6e;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x54;&#x79;&#x70;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x56;&#x61;&#x6c;&#x75;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;&#x20;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;</div>
+    psum = 0
+    for x in seq:
+        psum += wrap(fun, x)
+    return psum</code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q safe_sum</code></pre>
+
+
+<h2 id="sql">SQL</h2>
+
+
+
+<h2 id="setup">Setup</h2>
+
+
+<p>The simplest way to start using SQLite is to download a precompiled
+binary from the <a href="http://www.sqlite.org/download.html">SQLite website</a>.
+The latest version of SQLite at the time of writing is 3.9.2, but you
+can check for additional updates on the website.</p>
+
+
+<h3 id="windows">Windows</h3>
+
+
+<ol>
+  <li>Visit the download page linked above and navigate to the section
+  Precompiled Binaries for Windows. Click on the link
+  <strong>sqlite-shell-win32-x86-*.zip</strong> to download the binary.</li>
+  <li>Unzip the file. There should be a <code>sqlite3.exe</code> file in the
+  directory after extraction.</li>
+  <li><p>Navigate to the folder containing the <code>sqlite3.exe</code> file and check
+  that the version is at least 3.8.3:</p>
+
+<pre><code>$ cd path/to/sqlite
+$ ./sqlite3 &#x2d;&#x2d;version
+3.9.2 2015&#x2d;11&#x2d;02 18:31:15 bda77dda9697c463c3d0704014d51627fceee328</code></pre></li>
+</ol>
+
+
+<h3 id="mac-os-x-yosemite-10-10-or-el-capitan-10-11">Mac OS X Yosemite (10.10) or El Capitan (10.11)</h3>
+
+
+<p>SQLite comes pre-installed. Check that you have a version that's greater than 3.8.3:</p>
+
+<pre><code>    $ sqlite3
+    SQLite version 3.8.5</code></pre>
+
+
+<h3 id="mac-os-x-mavericks-10-9-or-older">Mac OS X Mavericks (10.9) or older</h3>
+
+
+<p>SQLite comes pre-installed, but it is the wrong version.</p>
+
+<ol>
+  <li>Visit the download page linked above and navigate to the section
+  <strong>Precompiled Binaries for Mac OS X (x86)</strong>. Click on
+  the link <strong>sqlite-shell-osx-x86-*.zip</strong> to download the
+  binary.</li>
+  <li>Unzip the file. There should be a <code>sqlite3</code> file in the directory
+  after extraction.</li>
+  <li><p>Navigate to the folder containing the <code>sqlite3</code> file and check that
+  the version is at least 3.8.3:</p>
+
+<pre><code>$ cd path/to/sqlite
+$ ./sqlite3 &#x2d;&#x2d;version
+3.9.2 2015&#x2d;11&#x2d;02 18:31:15 bda77dda9697c463c3d0704014d51627fceee328</code></pre></li>
+</ol>
+
+
+<h3 id="ubuntu">Ubuntu</h3>
+
+
+<p>The easiest way to use SQLite on Ubuntu is to install it straight from
+the native repositories (the version will be slightly behind the most
+recent release):</p>
+
+<pre><code>$ sudo apt&#x2d;get install sqlite3
+$ sqlite3 &#x2d;&#x2d;version
+3.8.6 2014&#x2d;08&#x2d;15 11:46:33 9491ba7d738528f168657adb43a198238abde19e</code></pre>
+
+
+<h2 id="usage">Usage</h2>
+
+
+<blockquote><p><em>Note:</em> If you downloaded a precompiled binary above, make sure that 
+<code>sqlite3.exe</code> file is in the same directory as your
+<code>.sql</code> file. (Extract and move it out from the zip file you
+  downloaded.)</p></blockquote>
+
+<p>After writing your code in the <code>.sql</code> file, you can test and verify
+your output in Terminal or Git Bash with one of the two following
+commands.</p>
+
+<p>1.) Runs your code and then exits SQLite immediately afterwards.</p>
+
+<ul>
+  <li><p>Ubuntu / Mac OS X (Yosemite or newer)</p>
+
+<pre><code>sqlite3 &lt; lab09.sql</code></pre></li>
+  <li><p>Windows / Mac OS X (Mavericks or older)</p>
+
+<pre><code>./sqlite3 &lt; lab09.sql</code></pre></li>
+</ul>
+
+<p>2.) Runs your code and keeps SQLite open for further commands, which
+is similar to running Python code with the interactive <code>&#x2d;i</code> flag.
+You can type <code>.help</code> to see some of the commands you can run.</p>
+
+<ul>
+  <li><p>Ubuntu / Mac OS X (Yosemite or newer)</p>
+
+<pre><code>sqlite3 &#x2d;&#x2d;init lab09.sql</code></pre></li>
+  <li><p>Windows / Mac OS X (Mavericks or older)</p>
+
+<pre><code>./sqlite3 &#x2d;&#x2d;init lab09.sql</code></pre></li>
+</ul>
+
+<p>To exit out of SQLite after using the second command, you can hit 
+<code>Ctrl&#x2d;D</code> type <code>.exit</code> or <code>.quit</code>.</p>
+
+
+<h2 id="sql-basics">SQL Basics</h2>
+
+
+
+<h3 id="creating-tables">Creating Tables</h3>
+
+
+<p>Two ways of creating tables in SQL are from scratch or from
+existing tables.</p>
+
+<p>Below creates the table from scratch, without referencing any
+other existing tables.</p>
+
+<pre><code>CREATE TABLE [table_name] as
+  SELECT [val1] as [column1], [val2] as [column2], ... UNION
+  SELECT [val3]             , [val4]             , ... UNION
+  SELECT [val5]             , [val6]             , ...;</code></pre>
+
+<blockquote><p><em>Note:</em> You do not need to repeat the <code>as</code> keyword in subsequent
+SELECT statements when creating the table.</p></blockquote>
+
+<p>Here is an example where we construct a table with the <code>CREATE TABLE</code>
+statement:</p>
+
+<pre><code>CREATE TABLE Football as
+  SELECT 30 as Berkeley, 7 as Stanford, 2002 as Year UNION
+  SELECT 28,             16,            2003         UNION
+  SELECT 17,             38,            2014;</code></pre>
+
+<p><img class="img-responsive center-block" src="assets/football.png" alt="football"></p>
+
+<p>Here we have created a table called <code>Football</code>, which has three attributes
+(columns): <code>Berkeley</code>, <code>Stanford</code>, and <code>Year</code>. We can later access the
+values from this table by referencing the table's columns.</p>
+
+<p>To create tables from existing tables, the <code>SELECT</code> command references
+another table.</p>
+
+
+<h3 id="selecting-from-tables">Selecting From Tables</h3>
+
+<p>More commonly, we will create new tables by selecting specific columns
+that we want from existing tables. <code>SELECT</code> statements can include optional
+clauses such as:</p>
+
+<ul>
+  <li><code>FROM</code>: tells SQL which tables to select values from</li>
+  <li><code>WHERE</code>: filters by some condition</li>
+  <li><code>ORDER BY</code>: enforces an ordering by some attribute or attributes (usually a column or columns)</li>
+  <li><p><code>LIMIT</code>: limits the number of rows in the output table</p>
+
+<pre><code>SELECT [columns] FROM [tables] WHERE [condition] ORDER BY [attributes] LIMIT [limit]</code></pre></li>
+</ul>
+
+<p>Notes about the arguments:</p>
+
+<ul>
+  <li><code>[columns]</code>: a comma separated list of the columns to select, <code>*</code> can
+  be used to select all of them</li>
+  <li><code>[tables]</code>: a comma separated list of tables to select values from</li>
+  <li><code>[condition]</code>: a Boolean expression</li>
+  <li><code>[attributes]</code>: a comma separated list of attributes, which are usually
+  columns, but could also be named aggregates (which we will learn later)</li>
+  <li><code>[limit]</code>: an integer</li>
+</ul>
+
+<p>We can select all the values of an attribute from a table with the <code>SELECT</code>
+statement. In addition, we can apply a filter using the <code>WHERE</code> clause. Here,
+we filter by <code>Year &gt; 2002</code>, which makes the <code>SELECT</code> statement keep only the
+rows in the table whose <code>Year</code> value is greater than 2002.</p>
+
+<pre><code>sqlite&gt; SELECT Berkeley FROM Football WHERE Year &gt; 2002;
+17
+28</code></pre>
+
+<p>Here we selected Berkeley's score for all years after 2002.</p>
+
+
+<h3 id="expressions-in-sql">Expressions in SQL</h3>
+
+<p>Here are some fundamental operations you can perform:</p>
+
+<ul>
+  <li>comparisons: <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;&gt;</code> ("not equal")</li>
+  <li>booleans: <code>and</code>, <code>or</code></li>
+  <li>arithmatic: <code>+</code>, <code>&#x2d;</code>, <code>*</code>, <code>/</code></li>
+</ul>
+
+<p>We can also perform string concatenation using <code>||</code>, which behaves
+similarly to <code>+</code> on strings in Python.</p>
+
+<pre><code>sqlite&gt; select &quot;hello&quot; || &quot; &quot; || &quot;world&quot;
+hello world</code></pre>
+
+
+<h3 id="data">Data</h3>
+
+
+<p>In each question below, you will define a new table based on the following
+tables.</p>
+
+<pre><code>create table parents as
+  select &quot;abraham&quot; as parent, &quot;barack&quot; as child union
+  select &quot;abraham&quot;          , &quot;clinton&quot;         union
+  select &quot;delano&quot;           , &quot;herbert&quot;         union
+  select &quot;fillmore&quot;         , &quot;abraham&quot;         union
+  select &quot;fillmore&quot;         , &quot;delano&quot;          union
+  select &quot;fillmore&quot;         , &quot;grover&quot;          union
+  select &quot;eisenhower&quot;       , &quot;fillmore&quot;;
+
+create table dogs as
+  select &quot;abraham&quot; as name, &quot;long&quot; as fur, 26 as height union
+  select &quot;barack&quot;         , &quot;short&quot;      , 52           union
+  select &quot;clinton&quot;        , &quot;long&quot;       , 47           union
+  select &quot;delano&quot;         , &quot;long&quot;       , 46           union
+  select &quot;eisenhower&quot;     , &quot;short&quot;      , 35           union
+  select &quot;fillmore&quot;       , &quot;curly&quot;      , 32           union
+  select &quot;grover&quot;         , &quot;short&quot;      , 28           union
+  select &quot;herbert&quot;        , &quot;curly&quot;      , 31;
+
+create table sizes as
+  select &quot;toy&quot; as size, 24 as min, 28 as max union
+  select &quot;mini&quot;,        28,        35        union
+  select &quot;medium&quot;,      35,        45        union
+  select &quot;standard&quot;,    45,        60;</code></pre>
+
+<p>Your tables should still perform correctly even if the values in these tables
+change. For example, if you are asked to list all dogs with a name that starts
+with h, you should write:</p>
+
+<pre><code>select name from dogs where &quot;h&quot; &lt;= name and name &lt; &quot;i&quot;;</code></pre>
+
+<p>Instead of assuming that the <code>dogs</code> table has only the data above and writing</p>
+
+<pre><code>select &quot;herbert&quot;;</code></pre>
+
+<p>The former query would still be correct if the name <code>grover</code> were changed to
+<code>hoover</code> or a row was added with the name <code>harry</code>.</p>
+
+<h3 id="get-started-with-sqlite">Get started with sqlite</h3>
+
+
+<p>Following the instructions in the <em>usage</em> section
+above, start up <code>sqlite3</code> initializing it with <code>lab09.sql</code>. Try
+out <code>.help</code> and then <code>.tables</code> and <code>.schema parents</code>.  These <code>.</code>
+commands are particular to <code>.sqlite</code>; they are not part of SQL.
+Try out some <code>SQL</code> statements.</p>
+
+<p>How do you get the whole parents table? Give it a try.</p>
+
+
+    <button id='8' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 8">
+
+<pre><code>select * from parents;</code></pre>
+
+</div>
+
+<p>Looking at the data, which dogs are children of "abraham" ?</p>
+
+
+    <button id='9' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 9">
+
+<pre><code>&quot;barack&quot; and &quot;clinton&quot;</code></pre>
+
+</div>
+
+<p>Write a SQL statement to get the children of the dog "abraham".</p>
+
+
+    <button id='10' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 10">
+
+<pre><code>select child from parents where parent = &quot;abraham&quot;;</code></pre>
+
+</div>
+
+<p>Write a SQL statement to select the parents of curly-furred dogs.</p>
+
+
+    <button id='11' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 11">
+
+<pre><code>select parent from parents, dogs
+   where child = name and fur = &quot;curly&quot;;</code></pre>
+
+</div>
+
+<p>Try it out.  Did you get:</p>
+
+<pre><code>eisenhower
+delano</code></pre>
+
+<p>In the following questions, update <code>lab09.sql</code> with your
+solution.</p>
+
+<h3 class="question" id="q4">Question 4</h3>
+Some people just love little dogs.  Create a <code>short_dogs</code> table with
+three columns, <code>name</code>, <code>fur</code>, and <code>size</code>, containing the dogs of
+height < 40 cm.
+
+
+
+<pre><code>&#x2d;&#x2d; All short dogs
+create table short_dogs as
+<div class="alt 4">-- REPLACE THIS LINE
+</div><div class="solution 4">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x66;&#x75;&#x72;&#x2c;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x61;&#x73;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x20;&#x34;&#x30;&#x3b;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<pre><code>&#x2d;&#x2d; Example:
+select name from short_dogs;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   abraham
+&#x2d;&#x2d;   eisenhower
+&#x2d;&#x2d;   fillmore
+&#x2d;&#x2d;   grover
+&#x2d;&#x2d;   herbert</code></pre>
+
+<p>Test your solution with OK:</p>
+
+<pre><code>python3 ok &#x2d;q short</code></pre>
+
+<h3 class="question" id="q5">Question 5</h3>
+The Fédération Cynologique Internationale classifies a standard poodle as over
+45 cm and up to 60 cm. The <code>sizes</code> table describes this and other such
+classifications, where a dog must be over the <code>min</code> and less than or equal to
+the <code>max</code> in height to qualify as a <code>size</code>.
+
+<p>Create a <code>size_of_dogs</code> table with two columns, one for each dog's <code>name</code> and
+another for its <code>size</code>.</p>
+
+
+
+<pre><code>&#x2d;&#x2d; The size of each dog
+create table size_of_dogs as
+<div class="alt 5">-- REPLACE THIS LINE
+</div><div class="solution 5">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3e;&#x20;&#x6d;&#x69;&#x6e;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x3b;</div></code></pre>
+
+
+    <button id='5' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<pre><code>&#x2d;&#x2d; Example:
+select name from size_of_dogs where size=&quot;toy&quot; or size=&quot;mini&quot;;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   abraham
+&#x2d;&#x2d;   eisenhower
+&#x2d;&#x2d;   fillmore
+&#x2d;&#x2d;   grover
+&#x2d;&#x2d;   herbert</code></pre>
+
+<p>Test your solution with OK:</p>
+
+<pre><code>python3 ok &#x2d;q small</code></pre>
+
+<h3 class="question" id="q6">Question 6</h3>
+Create a table <code>by_height</code> that has a column of the names of all dogs that have
+a <code>parent</code>, ordered by the height of the parent from tallest parent to shortest
+parent.
+
+
+
+<pre><code>&#x2d;&#x2d; All dogs with parents ordered by decreasing height of their parent
+create table by_height as
+<div class="alt 6">-- REPLACE THIS LINE
+</div><div class="solution 6">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x2c;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x20;&#x6f;&#x72;&#x64;&#x65;&#x72;&#x20;&#x62;&#x79;&#x20;&#x2d;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x3b;</div></code></pre>
+
+
+    <button id='6' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>For example, <code>fillmore</code> has a parent (<code>eisenhower</code>) with height 35, and so
+should appear before <code>grover</code> who has a parent (<code>fillmore</code>) with height 32.
+The names of dogs with parents of the same height should appear together in any
+order. For example, <code>barack</code> and <code>clinton</code> should both appear at the end, but
+either one can come before the other.</p>
+
+<pre><code>&#x2d;&#x2d; Example:
+select * from by_height;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   herbert
+&#x2d;&#x2d;   fillmore
+&#x2d;&#x2d;   abraham
+&#x2d;&#x2d;   delano
+&#x2d;&#x2d;   grover
+&#x2d;&#x2d;   barack
+&#x2d;&#x2d;   clinton</code></pre>
+
+<p>Test your solution with OK:</p>
+
+<pre><code>python3 ok &#x2d;q parent_height</code></pre>
+
+<h3 class="question" id="q7">Question 7</h3>
+
+<p>Create a table <code>tallest</code> that includes the <code>height</code> and <code>name</code> of every dog
+that shares the 10's digit of its <code>height</code> with at least one other dog and has
+the highest 1's digit of all dogs that have the same 10's digit.</p>
+
+
+
+<pre><code>&#x2d;&#x2d; Height and name of every dog that shares height 10&#x27;s digit  
+&#x2d;&#x2d; with at least one other dog and has the highest 1&#x27;s digit of all dogs 
+&#x2d;&#x2d; that have the same 10&#x27;s digit
+create table tallest as
+<div class="alt 7">-- REPLACE THIS LINE
+</div><div class="solution 7">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x29;&#x2c;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x67;&#x72;&#x6f;&#x75;&#x70;&#x20;&#x62;&#x79;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2f;&#x31;&#x30;&#x20;&#x68;&#x61;&#x76;&#x69;&#x6e;&#x67;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x28;&#x2a;&#x29;&#x20;&#x3e;&#x20;&#x31;&#x3b;</div></code></pre>
+
+
+    <button id='7' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<pre><code>&#x2d;&#x2d; Example:
+select * from tallest;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   28|grover
+&#x2d;&#x2d;   35|eisenhower
+&#x2d;&#x2d;   47|clinton</code></pre>
+
+<p><em>Explanation</em>: <code>grover</code> is the tallest 20-something dog. <code>eisenhower</code> is the
+tallest 30-something dog. <code>clinton</code> is the tallest 40-something dog. <code>barack</code>
+is not included because there are no other 50-something dogs.</p>
+
+<p>Test your solution with OK:</p>
+
+<pre><code>python3 ok &#x2d;q tallest</code></pre>
+
+
+<h2 id="extra-questions">Extra Questions</h2>
+
+
+<blockquote><p>The following questions are for <strong>extra practice</strong> &mdash; they can be
+found in the the <a href="lab09_extra.py">lab09_extra.py</a> file. It is
+recommended that you complete these problems on your own time.</p></blockquote>
+
+<h3 class="question" id="q8">Question 8: Back to Newton</h3>
+
+<p>Way back in the book in <a href="http://composingprograms.com/pages/16-higher-order-functions.html#example-newton-s-method">Section 1.6.5</a> there was a lovely section on using
+higher order functions to implement Newton's method for finding a zero of a 
+function.  Go back and read that.  Newton's method reappears in 
+<a href="http://composingprograms.com/pages/33-exceptions.html">Section 3.3.1</a>
+using exception handling to deal with the case where the
+method attempts to evaluate the function or its derivative at points
+where it is undefined and throws an error.  Implement the <code>IterImproveError</code>
+and the suggested updates to the code for Newton's method.
+<br/>
+
+Try this technique out for the function <code>sqrt(x)</code>.  Does it still provide a
+reasonable approximation?  Can you find a much better way of approaching the 
+zero of the function while dealing with errors outside the domain?</p>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#exceptions">Exceptions</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Quiet get</a></li>
+  <li><a href="#q2">Question 2: No KeyErrors Allowed</a></li>
+  <li><a href="#q3">Question 3: Safe use of higher order functions</a></li>
+</ul>
+
+  <li><a href="#sql">SQL</a></li>
+  <li><a href="#setup">Setup</a></li>
+  <ul>
+  <li><a href="#windows">Windows</a></li>
+  <li><a href="#mac-os-x-yosemite-10-10-or-el-capitan-10-11">Mac OS X Yosemite (10.10) or El Capitan (10.11)</a></li>
+  <li><a href="#mac-os-x-mavericks-10-9-or-older">Mac OS X Mavericks (10.9) or older</a></li>
+  <li><a href="#ubuntu">Ubuntu</a></li>
+</ul>
+
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#sql-basics">SQL Basics</a></li>
+  <ul>
+  <li><a href="#creating-tables">Creating Tables</a></li>
+  <li><a href="#selecting-from-tables">Selecting From Tables</a></li>
+  <li><a href="#expressions-in-sql">Expressions in SQL</a></li>
+  <li><a href="#data">Data</a></li>
+  <li><a href="#get-started-with-sqlite">Get started with sqlite</a></li>
+  <li><a href="#q4">Question 4</a></li>
+  <li><a href="#q5">Question 5</a></li>
+  <li><a href="#q6">Question 6</a></li>
+  <li><a href="#q7">Question 7</a></li>
+</ul>
+
+  <li><a href="#extra-questions">Extra Questions</a></li>
+  <ul>
+  <li><a href="#q8">Question 8: Back to Newton</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(function() {
+    if (new Date("04/23/2016") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+</html>
