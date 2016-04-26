@@ -23,8 +23,8 @@ test = {
           Alice In Chains|1
           Amy Winehouse|2
           Anne-Sophie Mutter, Herbert Von Karajan & Wiener Philharmoniker|1
-          Antal Doráti & London Symphony Orchestra|1
-          Antônio Carlos Jobim|2
+          Antal Dorati & London Symphony Orchestra|1
+          Antonio Carlos Jobim|2
           Apocalyptica|1
           Aquaman|1
           Audioslave|3

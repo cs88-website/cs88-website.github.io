@@ -32,7 +32,7 @@ test = {
           How Many More Times
           Advance Romance
           Only A Dream In Rio
-          Só Tinha De Ser Com Você
+          So Tinha De Ser Com Voce
           Sabbra Cadabra
           Turn The Page
           Loverman

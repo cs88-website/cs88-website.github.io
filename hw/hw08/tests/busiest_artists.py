@@ -12,7 +12,7 @@ test = {
           Aerosmith|15
           Alanis Morissette|13
           Alice In Chains|12
-          Antônio Carlos Jobim|17
+          Antonio Carlos Jobim|17
           Apocalyptica|8
           Audioslave|26
           BackBeat|12
@@ -21,7 +21,7 @@ test = {
           Bruce Dickinson|11
           Buddy Guy|11
           Caetano Veloso|18
-          Chico Science & Nação Zumbi|23
+          Chico Science & Nacao Zumbi|23
           Cidade Negra|31
           David Coverdale|12
           Frank Zappa & Captain Beefheart|9
