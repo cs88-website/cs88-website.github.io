@@ -69,7 +69,7 @@
       <h1><span class="content-title-brand">Homework 8</span></h1>
     </div>
 
-    <p><em>Due by 04/26/2016</em></p>
+    <p><em>Due by 04/29/2016</em></p>
 
 <h2>Instructions</h2>
 
@@ -170,9 +170,9 @@ query is looking for, then try running the query yourself and see!</p>
 
 <pre><code>sqlite&gt; SELECT * FROM artists; &#x2d;&#x2d; This is a comment. * is shorthand for all columns!
 selects all records from artists;
-sqlite&gt; SELECT name FROM students WHERE bytes &gt; 3000000; &#x2d;&#x2d; There are 1000000 bytes in a megabyte.
+sqlite&gt; SELECT name FROM tracks WHERE bytes &gt; 3000000; &#x2d;&#x2d; There are 1000000 bytes in a megabyte.
 selects the name of all tracks that are larger than 3 Mb
-sqlite&gt; SELECT name, composer FROM students WHERE albumId = 57 AND milliseconds &gt; 180000; &#x2d;&#x2d; How many milliseconds are in a minute?
+sqlite&gt; SELECT name, composer FROM tracks WHERE albumId = 57 AND milliseconds &gt; 180000; &#x2d;&#x2d; How many milliseconds are in a minute?
 selects the name and composer of all tracks longer than 3 minutes on the album with albumID = 57</code></pre>
 
 </prompt>
@@ -395,7 +395,7 @@ number of rows in each group of a <code>GROUP BY</code> statement.</p>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q long_album</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q track_count</code></pre>
 
 <h3 class="question" id="q7">Question 7: Counting albums</h3>
 
@@ -437,7 +437,7 @@ containing artists' names and the number of tracks that they're produced
 
 <p>You should get the following output:</p>
 
-<pre><code>sqlite&gt; SELECT * FROM busiest_artists;
+<pre><code>sqlite&gt; SELECT * FROM busiest_artists LIMIT 10;
 AC/DC|18
 Accept|3
 Aerosmith|15
