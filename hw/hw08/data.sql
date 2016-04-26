@@ -4,7 +4,7 @@ create table artists as
 	select 3, 'Aerosmith' union
 	select 4, 'Alanis Morissette' union
 	select 5, 'Alice In Chains' union
-	select 6, 'Antônio Carlos Jobim' union
+	select 6, 'Antonio Carlos Jobim' union
 	select 7, 'Apocalyptica' union
 	select 8, 'Audioslave' union
 	select 9, 'BackBeat' union
@@ -16,9 +16,9 @@ create table artists as
 	select 15, 'Buddy Guy' union
 	select 16, 'Caetano Veloso' union
 	select 17, 'Chico Buarque' union
-	select 18, 'Chico Science & Nação Zumbi' union
+	select 18, 'Chico Science & Nacao Zumbi' union
 	select 19, 'Cidade Negra' union
-	select 20, 'Cláudio Zoli' union
+	select 20, 'Claudio Zoli' union
 	select 21, 'Various Artists' union
 	select 22, 'Led Zeppelin' union
 	select 23, 'Frank Zappa & Captain Beefheart' union
@@ -26,14 +26,14 @@ create table artists as
 	select 25, 'Milton Nascimento & Bebeto' union
 	select 26, 'Azymuth' union
 	select 27, 'Gilberto Gil' union
-	select 28, 'João Gilberto' union
+	select 28, 'Joao Gilberto' union
 	select 29, 'Bebel Gilberto' union
 	select 30, 'Jorge Vercilo' union
 	select 31, 'Baby Consuelo' union
 	select 32, 'Ney Matogrosso' union
 	select 33, 'Luiz Melodia' union
 	select 34, 'Nando Reis' union
-	select 35, 'Pedro Luís & A Parede' union
+	select 35, 'Pedro Luis & A Parede' union
 	select 36, 'O Rappa' union
 	select 37, 'Ed Motta' union
 	select 38, 'Banda Black Rio' union
@@ -43,10 +43,10 @@ create table artists as
 	select 42, 'Milton Nascimento' union
 	select 43, 'A Cor Do Som' union
 	select 44, 'Kid Abelha' union
-	select 45, 'Sandra De Sá' union
+	select 45, 'Sandra De Sa' union
 	select 46, 'Jorge Ben' union
 	select 47, 'Hermeto Pascoal' union
-	select 48, 'Barão Vermelho' union
+	select 48, 'Barao Vermelho' union
 	select 49, 'Edson, DJ Marky & DJ Patife Featuring Fernanda Porto' union
 	select 50, 'Metallica' union
 	select 51, 'Queen' union
@@ -63,19 +63,19 @@ create table artists as
 	select 62, 'Santana Feat. Rob Thomas' union
 	select 63, 'Santana Feat. Lauryn Hill & Cee-Lo' union
 	select 64, 'Santana Feat. The Project G&B' union
-	select 65, 'Santana Feat. Maná' union
+	select 65, 'Santana Feat. Mana' union
 	select 66, 'Santana Feat. Eagle-Eye Cherry' union
 	select 67, 'Santana Feat. Eric Clapton' union
 	select 68, 'Miles Davis' union
 	select 69, 'Gene Krupa' union
-	select 70, 'Toquinho & Vinícius' union
-	select 71, 'Vinícius De Moraes & Baden Powell' union
-	select 72, 'Vinícius De Moraes' union
-	select 73, 'Vinícius E Qurteto Em Cy' union
-	select 74, 'Vinícius E Odette Lara' union
+	select 70, 'Toquinho & Vinicius' union
+	select 71, 'Vinicius De Moraes & Baden Powell' union
+	select 72, 'Vinicius De Moraes' union
+	select 73, 'Vinicius E Qurteto Em Cy' union
+	select 74, 'Vinicius E Odette Lara' union
 	select 75, 'Vinicius, Toquinho & Quarteto Em Cy' union
 	select 76, 'Creedence Clearwater Revival' union
-	select 77, 'Cássia Eller' union
+	select 77, 'Cassia Eller' union
 	select 78, 'Def Leppard' union
 	select 79, 'Dennis Chambers' union
 	select 80, 'Djavan' union
@@ -95,21 +95,21 @@ create table artists as
 	select 94, 'Jimi Hendrix' union
 	select 95, 'Joe Satriani' union
 	select 96, 'Jota Quest' union
-	select 97, 'João Suplicy' union
+	select 97, 'Joao Suplicy' union
 	select 98, 'Judas Priest' union
-	select 99, 'Legião Urbana' union
+	select 99, 'Legiao Urbana' union
 	select 100, 'Lenny Kravitz' union
 	select 101, 'Lulu Santos' union
 	select 102, 'Marillion' union
 	select 103, 'Marisa Monte' union
 	select 104, 'Marvin Gaye' union
 	select 105, 'Men At Work' union
-	select 106, 'Motörhead' union
-	select 107, 'Motörhead & Girlschool' union
-	select 108, 'Mônica Marianno' union
-	select 109, 'Mötley Crüe' union
+	select 106, 'Motorhead' union
+	select 107, 'Motorhead & Girlschool' union
+	select 108, 'Monica Marianno' union
+	select 109, 'Motley Crue' union
 	select 110, 'Nirvana' union
-	select 111, 'O Terço' union
+	select 111, 'O Terco' union
 	select 112, 'Olodum' union
 	select 113, 'Os Paralamas Do Sucesso' union
 	select 114, 'Ozzy Osbourne' union
@@ -144,7 +144,7 @@ create table artists as
 	select 143, 'The Tea Party' union
 	select 144, 'The Who' union
 	select 145, 'Tim Maia' union
-	select 146, 'Titãs' union
+	select 146, 'Titas' union
 	select 147, 'Battlestar Galactica' union
 	select 148, 'Heroes' union
 	select 149, 'Lost' union
@@ -184,19 +184,19 @@ create table artists as
 	select 183, 'Gustavo & Andres Veiga & Salazar' union
 	select 184, 'Rodox' union
 	select 185, 'Charlie Brown Jr.' union
-	select 186, 'Pedro Luís E A Parede' union
+	select 186, 'Pedro Luis E A Parede' union
 	select 187, 'Los Hermanos' union
 	select 188, 'Mundo Livre S/A' union
 	select 189, 'Otto' union
 	select 190, 'Instituto' union
-	select 191, 'Nação Zumbi' union
+	select 191, 'Nacao Zumbi' union
 	select 192, 'DJ Dolores & Orchestra Santa Massa' union
 	select 193, 'Seu Jorge' union
 	select 194, 'Sabotage E Instituto' union
 	select 195, 'Stereo Maracana' union
 	select 196, 'Cake' union
 	select 197, 'Aisha Duo' union
-	select 198, 'Habib Koité and Bamada' union
+	select 198, 'Habib Koite and Bamada' union
 	select 199, 'Karsh Kale' union
 	select 200, 'The Posies' union
 	select 201, 'Luciana Souza/Romero Lubambo' union
@@ -216,7 +216,7 @@ create table artists as
 	select 215, 'Academy of St. Martin in the Fields Chamber Ensemble & Sir Neville Marriner' union
 	select 216, 'Berliner Philharmoniker, Claudio Abbado & Sabine Meyer' union
 	select 217, 'Royal Philharmonic Orchestra & Sir Thomas Beecham' union
-	select 218, 'Orchestre Révolutionnaire et Romantique & John Eliot Gardiner' union
+	select 218, 'Orchestre Revolutionnaire et Romantique & John Eliot Gardiner' union
 	select 219, 'Britten Sinfonia, Ivor Bolton & Lesley Garrett' union
 	select 220, 'Chicago Symphony Chorus, Chicago Symphony Orchestra & Sir Georg Solti' union
 	select 221, 'Sir Georg Solti & Wiener Philharmoniker' union
@@ -239,9 +239,9 @@ create table artists as
 	select 238, 'Maurizio Pollini' union
 	select 239, 'Academy of St. Martin in the Fields, Sir Neville Marriner & William Bennett' union
 	select 240, 'Gustav Mahler' union
-	select 241, 'Felix Schmidt, London Symphony Orchestra & Rafael Frühbeck de Burgos' union
+	select 241, 'Felix Schmidt, London Symphony Orchestra & Rafael Fruhbeck de Burgos' union
 	select 242, 'Edo de Waart & San Francisco Symphony' union
-	select 243, 'Antal Doráti & London Symphony Orchestra' union
+	select 243, 'Antal Dorati & London Symphony Orchestra' union
 	select 244, 'Choir Of Westminster Abbey & Simon Preston' union
 	select 245, 'Michael Tilson Thomas & San Francisco Symphony' union
 	select 246, 'Chor der Wiener Staatsoper, Herbert Von Karajan & Wiener Philharmoniker' union
@@ -260,12 +260,12 @@ create table artists as
 	select 259, 'The 12 Cellists of The Berlin Philharmonic' union
 	select 260, 'Adrian Leaper & Doreen de Feis' union
 	select 261, 'Roger Norrington, London Classical Players' union
-	select 262, 'Charles Dutoit & L''Orchestre Symphonique de Montréal' union
+	select 262, 'Charles Dutoit & L''Orchestre Symphonique de Montreal' union
 	select 263, 'Equale Brass Ensemble, John Eliot Gardiner & Munich Monteverdi Orchestra and Choir' union
-	select 264, 'Kent Nagano and Orchestre de l''Opéra de Lyon' union
+	select 264, 'Kent Nagano and Orchestre de l''Opera de Lyon' union
 	select 265, 'Julian Bream' union
 	select 266, 'Martin Roscoe' union
-	select 267, 'Göteborgs Symfoniker & Neeme Järvi' union
+	select 267, 'Goteborgs Symfoniker & Neeme Jarvi' union
 	select 268, 'Itzhak Perlman' union
 	select 269, 'Michele Campanella' union
 	select 270, 'Gerald Moore' union
@@ -301,10 +301,10 @@ create table albums as
 	select 23, 'Minha Historia', 17 union
 	select 24, 'Afrociberdelia', 18 union
 	select 25, 'Da Lama Ao Caos', 18 union
-	select 26, 'Acústico MTV [Live]', 19 union
+	select 26, 'Acustico MTV [Live]', 19 union
 	select 27, 'Cidade Negra - Hits', 19 union
 	select 28, 'Na Pista', 20 union
-	select 29, 'Axé Bahia 2001', 21 union
+	select 29, 'Axe Bahia 2001', 21 union
 	select 30, 'BBC Sessions [Disc 1] [Live]', 22 union
 	select 31, 'Bongo Fury', 23 union
 	select 32, 'Carnaval 2001', 21 union
@@ -317,7 +317,7 @@ create table albums as
 	select 39, 'International Superhits', 54 union
 	select 40, 'Into The Light', 55 union
 	select 41, 'Meus Momentos', 56 union
-	select 42, 'Minha História', 57 union
+	select 42, 'Minha Historia', 57 union
 	select 43, 'MK III The Final Concerts [Disc 1]', 58 union
 	select 44, 'Physical Graffiti [Disc 1]', 22 union
 	select 45, 'Sambas De Enredo 2001', 21 union
@@ -327,12 +327,12 @@ create table albums as
 	select 49, 'The Essential Miles Davis [Disc 2]', 68 union
 	select 50, 'The Final Concerts (Disc 2)', 58 union
 	select 51, 'Up An'' Atom', 69 union
-	select 52, 'Vinícius De Moraes - Sem Limite', 70 union
+	select 52, 'Vinicius De Moraes - Sem Limite', 70 union
 	select 53, 'Vozes do MPB', 21 union
 	select 54, 'Chronicle, Vol. 1', 76 union
 	select 55, 'Chronicle, Vol. 2', 76 union
-	select 56, 'Cássia Eller - Coleção Sem Limite [Disc 2]', 77 union
-	select 57, 'Cássia Eller - Sem Limite [Disc 1]', 77 union
+	select 56, 'Cassia Eller - Colecao Sem Limite [Disc 2]', 77 union
+	select 57, 'Cassia Eller - Sem Limite [Disc 1]', 77 union
 	select 58, 'Come Taste The Band', 58 union
 	select 59, 'Deep Purple In Rock', 58 union
 	select 60, 'Fireball', 58 union
@@ -346,7 +346,7 @@ create table albums as
 	select 68, 'Outbreak', 79 union
 	select 69, 'Djavan Ao Vivo - Vol. 02', 80 union
 	select 70, 'Djavan Ao Vivo - Vol. 1', 80 union
-	select 71, 'Elis Regina-Minha História', 41 union
+	select 71, 'Elis Regina-Minha Historia', 41 union
 	select 72, 'The Cream Of Clapton', 81 union
 	select 73, 'Unplugged', 81 union
 	select 74, 'Album Of The Year', 82 union
@@ -360,9 +360,9 @@ create table albums as
 	select 82, 'The Colour And The Shape', 84 union
 	select 83, 'My Way: The Best Of Frank Sinatra [Disc 1]', 85 union
 	select 84, 'Roda De Funk', 86 union
-	select 85, 'As Canções de Eu Tu Eles', 27 union
+	select 85, 'As Cancoes de Eu Tu Eles', 27 union
 	select 86, 'Quanta Gente Veio Ver (Live)', 27 union
-	select 87, 'Quanta Gente Veio ver--Bônus De Carnaval', 27 union
+	select 87, 'Quanta Gente Veio ver--Bonus De Carnaval', 27 union
 	select 88, 'Faceless', 87 union
 	select 89, 'American Idiot', 54 union
 	select 90, 'Appetite for Destruction', 88 union
@@ -417,8 +417,8 @@ create table albums as
 	select 139, 'A TempestadeTempestade Ou O Livro Dos Dias', 99 union
 	select 140, 'Mais Do Mesmo', 99 union
 	select 141, 'Greatest Hits', 100 union
-	select 142, 'Lulu Santos - RCA 100 Anos De Música - Álbum 01', 101 union
-	select 143, 'Lulu Santos - RCA 100 Anos De Música - Álbum 02', 101 union
+	select 142, 'Lulu Santos - RCA 100 Anos De Musica - Album 01', 101 union
+	select 143, 'Lulu Santos - RCA 100 Anos De Musica - Album 02', 101 union
 	select 144, 'Misplaced Childhood', 102 union
 	select 145, 'Barulhinho Bom', 103 union
 	select 146, 'Seek And Shall Find: More Of The Best (1963-1981)', 104 union
@@ -442,7 +442,7 @@ create table albums as
 	select 164, 'Nevermind', 110 union
 	select 165, 'Compositores', 111 union
 	select 166, 'Olodum', 112 union
-	select 167, 'Acústico MTV', 113 union
+	select 167, 'Acustico MTV', 113 union
 	select 168, 'Arquivo II', 113 union
 	select 169, 'Arquivo Os Paralamas Do Sucesso', 113 union
 	select 170, 'Bark at the Moon (Remastered)', 114 union
@@ -459,14 +459,14 @@ create table albums as
 	select 181, 'Ten', 118 union
 	select 182, 'Vs.', 118 union
 	select 183, 'Dark Side Of The Moon', 120 union
-	select 184, 'Os Cães Ladram Mas A Caravana Não Pára', 121 union
+	select 184, 'Os Caes Ladram Mas A Caravana Nao Para', 121 union
 	select 185, 'Greatest Hits I', 51 union
 	select 186, 'News Of The World', 51 union
 	select 187, 'Out Of Time', 122 union
 	select 188, 'Green', 124 union
 	select 189, 'New Adventures In Hi-Fi', 124 union
 	select 190, 'The Best Of R.E.M.: The IRS Years', 124 union
-	select 191, 'Cesta Básica', 125 union
+	select 191, 'Cesta Basica', 125 union
 	select 192, 'Raul Seixas', 126 union
 	select 193, 'Blood Sugar Sex Magik', 127 union
 	select 194, 'By The Way', 127 union
@@ -475,7 +475,7 @@ create table albums as
 	select 197, 'Santana - As Years Go By', 59 union
 	select 198, 'Santana Live', 59 union
 	select 199, 'Maquinarama', 130 union
-	select 200, 'O Samba Poconé', 130 union
+	select 200, 'O Samba Pocone', 130 union
 	select 201, 'Judas 0: B-Sides and Rarities', 131 union
 	select 202, 'Rotten Apples: Greatest Hits', 131 union
 	select 203, 'A-Sides', 132 union
@@ -499,7 +499,7 @@ create table albums as
 	select 221, 'My Generation - The Very Best Of The Who', 144 union
 	select 222, 'Serie Sem Limite (Disc 1)', 145 union
 	select 223, 'Serie Sem Limite (Disc 2)', 145 union
-	select 224, 'Acústico', 146 union
+	select 224, 'Acustico', 146 union
 	select 225, 'Volume Dois', 146 union
 	select 226, 'Battlestar Galactica: The Story So Far', 147 union
 	select 227, 'Battlestar Galactica, Season 3', 147 union
@@ -563,7 +563,7 @@ create table albums as
 	select 285, 'A Soprano Inspired', 219 union
 	select 286, 'Great Opera Choruses', 220 union
 	select 287, 'Wagner: Favourite Overtures', 221 union
-	select 288, 'Fauré: Requiem, Ravel: Pavane & Others', 222 union
+	select 288, 'Faure: Requiem, Ravel: Pavane & Others', 222 union
 	select 289, 'Tchaikovsky: The Nutcracker', 223 union
 	select 290, 'The Last Night of the Proms', 224 union
 	select 291, 'Puccini: Madama Butterfly - Highlights', 225 union
@@ -591,7 +591,7 @@ create table albums as
 	select 313, 'Bizet: Carmen Highlights', 246 union
 	select 314, 'English Renaissance', 247 union
 	select 315, 'Handel: Music for the Royal Fireworks (Original Version 1749)', 208 union
-	select 316, 'Grieg: Peer Gynt Suites & Sibelius: Pelléas et Mélisande', 248 union
+	select 316, 'Grieg: Peer Gynt Suites & Sibelius: Pelleas et Melisande', 248 union
 	select 317, 'Mozart Gala: Famous Arias', 249 union
 	select 318, 'SCRIABIN: Vers la flamme', 250 union
 	select 319, 'Armada: Music from the Courts of England and Spain', 251 union
@@ -605,7 +605,7 @@ create table albums as
 	select 327, 'Bach: Orchestral Suites Nos. 1 - 4', 257 union
 	select 328, 'Charpentier: Divertissements, Airs & Concerts', 258 union
 	select 329, 'South American Getaway', 259 union
-	select 330, 'Górecki: Symphony No. 3', 260 union
+	select 330, 'Gorecki: Symphony No. 3', 260 union
 	select 331, 'Purcell: The Fairy Queen', 261 union
 	select 332, 'The Ultimate Relexation Album', 262 union
 	select 333, 'Purcell: Music for the Queen Mary', 263 union
@@ -615,7 +615,7 @@ create table albums as
 	select 337, 'Szymanowski: Piano Works, Vol. 1', 266 union
 	select 338, 'Nielsen: The Six Symphonies', 267 union
 	select 339, 'Great Recordings of the Century: Paganini''s 24 Caprices', 268 union
-	select 340, 'Liszt - 12 Études D''Execution Transcendante', 269 union
+	select 340, 'Liszt - 12 Etudes D''Execution Transcendante', 269 union
 	select 341, 'Great Recordings of the Century - Shubert: Schwanengesang, 4 Lieder', 270 union
 	select 342, 'Locatelli: Concertos for Violin, Strings and Continuo, Vol. 3', 271 union
 	select 343, 'Respighi:Pines of Rome', 226 union
@@ -772,66 +772,66 @@ create table albums as
 	  select 202, 'My Time After Awhile', 20, 1, 6, 'Robert Geddins/Ron Badger/Sheldon Feinberg', 182491, 6022698, 0.99 union
 	  select 203, 'Too Many Ways (Alternate)', 20, 1, 6, 'Willie Dixon', 135053, 4459946, 0.99 union
 	  select 204, 'Talkin'' ''Bout Women Obviously', 20, 1, 6, 'Amos Blakemore/Buddy Guy', 589531, 19161377, 0.99 union
-	  select 205, 'Jorge Da Capadócia', 21, 1, 7, 'Jorge Ben', 177397, 5842196, 0.99 union
+	  select 205, 'Jorge Da Capadocia', 21, 1, 7, 'Jorge Ben', 177397, 5842196, 0.99 union
 	  select 206, 'Prenda Minha', 21, 1, 7, 'Tradicional', 99369, 3225364, 0.99 union
-	  select 207, 'Meditação', 21, 1, 7, 'Tom Jobim - Newton Mendoça', 148793, 4865597, 0.99 union
+	  select 207, 'Meditacao', 21, 1, 7, 'Tom Jobim - Newton Mendoca', 148793, 4865597, 0.99 union
 	  select 208, 'Terra', 21, 1, 7, 'Caetano Veloso', 482429, 15889054, 0.99 union
 	  select 209, 'Eclipse Oculto', 21, 1, 7, 'Caetano Veloso', 221936, 7382703, 0.99 union
 	  select 210, 'Texto "Verdade Tropical"', 21, 1, 7, 'Caetano Veloso', 84088, 2752161, 0.99 union
 	  select 211, 'Bem Devagar', 21, 1, 7, 'Gilberto Gil', 133172, 4333651, 0.99 union
-	  select 212, 'Drão', 21, 1, 7, 'Gilberto Gil', 156264, 5065932, 0.99 union
+	  select 212, 'Drao', 21, 1, 7, 'Gilberto Gil', 156264, 5065932, 0.99 union
 	  select 213, 'Saudosismo', 21, 1, 7, 'Caetano Veloso', 144326, 4726981, 0.99 union
 	  select 214, 'Carolina', 21, 1, 7, 'Chico Buarque', 181812, 5924159, 0.99 union
 	  select 215, 'Sozinho', 21, 1, 7, 'Peninha', 190589, 6253200, 0.99 union
 	  select 216, 'Esse Cara', 21, 1, 7, 'Caetano Veloso', 223111, 7217126, 0.99 union
-	  select 217, 'Mel', 21, 1, 7, 'Caetano Veloso - Waly Salomão', 294765, 9854062, 0.99 union
+	  select 217, 'Mel', 21, 1, 7, 'Caetano Veloso - Waly Salomao', 294765, 9854062, 0.99 union
 	  select 218, 'Linha Do Equador', 21, 1, 7, 'Caetano Veloso - Djavan', 299337, 10003747, 0.99 union
 	  select 219, 'Odara', 21, 1, 7, 'Caetano Veloso', 141270, 4704104, 0.99 union
 	  select 220, 'A Luz De Tieta', 21, 1, 7, 'Caetano Veloso', 251742, 8507446, 0.99 union
-	  select 221, 'Atrás Da Verd-E-Rosa Só Não Vai Quem Já Morreu', 21, 1, 7, 'David Corrêa - Paulinho Carvalho - Carlos Sena - Bira do Ponto', 307252, 10364247, 0.99 union
+	  select 221, 'Atras Da Verd-E-Rosa So Nao Vai Quem Ja Morreu', 21, 1, 7, 'David Correa - Paulinho Carvalho - Carlos Sena - Bira do Ponto', 307252, 10364247, 0.99 union
 	  select 222, 'Vida Boa', 21, 1, 7, 'Fausto Nilo - Armandinho', 281730, 9411272, 0.99 union
 	  select 246, 'Mateus Enter', 24, 1, 7, 'Chico Science', 33149, 1103013, 0.99 union
-	  select 247, 'O Cidadão Do Mundo', 24, 1, 7, 'Chico Science', 200933, 6724966, 0.99 union
+	  select 247, 'O Cidadao Do Mundo', 24, 1, 7, 'Chico Science', 200933, 6724966, 0.99 union
 	  select 248, 'Etnia', 24, 1, 7, 'Chico Science', 152555, 5061413, 0.99 union
 	  select 249, 'Quilombo Groove [Instrumental]', 24, 1, 7, 'Chico Science', 151823, 5042447, 0.99 union
-	  select 250, 'Macô', 24, 1, 7, 'Chico Science', 249600, 8253934, 0.99 union
+	  select 250, 'Maco', 24, 1, 7, 'Chico Science', 249600, 8253934, 0.99 union
 	  select 251, 'Um Passeio No Mundo Livre', 24, 1, 7, 'Chico Science', 240091, 7984291, 0.99 union
 	  select 252, 'Samba Do Lado', 24, 1, 7, 'Chico Science', 227317, 7541688, 0.99 union
-	  select 253, 'Maracatu Atômico', 24, 1, 7, 'Chico Science', 284264, 9670057, 0.99 union
-	  select 254, 'O Encontro De Isaac Asimov Com Santos Dumont No Céu', 24, 1, 7, 'Chico Science', 99108, 3240816, 0.99 union
+	  select 253, 'Maracatu Atomico', 24, 1, 7, 'Chico Science', 284264, 9670057, 0.99 union
+	  select 254, 'O Encontro De Isaac Asimov Com Santos Dumont No Ceu', 24, 1, 7, 'Chico Science', 99108, 3240816, 0.99 union
 	  select 255, 'Corpo De Lama', 24, 1, 7, 'Chico Science', 232672, 7714954, 0.99 union
 	  select 256, 'Sobremesa', 24, 1, 7, 'Chico Science', 240091, 7960868, 0.99 union
 	  select 257, 'Manguetown', 24, 1, 7, 'Chico Science', 194560, 6475159, 0.99 union
-	  select 258, 'Um Satélite Na Cabeça', 24, 1, 7, 'Chico Science', 126615, 4272821, 0.99 union
-	  select 259, 'Baião Ambiental [Instrumental]', 24, 1, 7, 'Chico Science', 152659, 5198539, 0.99 union
+	  select 258, 'Um Satelite Na Cabeca', 24, 1, 7, 'Chico Science', 126615, 4272821, 0.99 union
+	  select 259, 'Baiao Ambiental [Instrumental]', 24, 1, 7, 'Chico Science', 152659, 5198539, 0.99 union
 	  select 260, 'Sangue De Bairro', 24, 1, 7, 'Chico Science', 132231, 4415557, 0.99 union
 	  select 261, 'Enquanto O Mundo Explode', 24, 1, 7, 'Chico Science', 88764, 2968650, 0.99 union
 	  select 262, 'Interlude Zumbi', 24, 1, 7, 'Chico Science', 71627, 2408550, 0.99 union
-	  select 263, 'Criança De Domingo', 24, 1, 7, 'Chico Science', 208222, 6984813, 0.99 union
+	  select 263, 'Crianca De Domingo', 24, 1, 7, 'Chico Science', 208222, 6984813, 0.99 union
 	  select 264, 'Amor De Muito', 24, 1, 7, 'Chico Science', 175333, 5881293, 0.99 union
 	  select 265, 'Samidarish [Instrumental]', 24, 1, 7, 'Chico Science', 272431, 8911641, 0.99 union
-	  select 266, 'Maracatu Atômico [Atomic Version]', 24, 1, 7, 'Chico Science', 273084, 9019677, 0.99 union
-	  select 267, 'Maracatu Atômico [Ragga Mix]', 24, 1, 7, 'Chico Science', 210155, 6986421, 0.99 union
-	  select 268, 'Maracatu Atômico [Trip Hop]', 24, 1, 7, 'Chico Science', 221492, 7380787, 0.99 union
-	  select 282, 'Girassol', 26, 1, 8, 'Bino Farias/Da Gama/Lazão/Pedro Luis/Toni Garrido', 249808, 8327676, 0.99 union
+	  select 266, 'Maracatu Atomico [Atomic Version]', 24, 1, 7, 'Chico Science', 273084, 9019677, 0.99 union
+	  select 267, 'Maracatu Atomico [Ragga Mix]', 24, 1, 7, 'Chico Science', 210155, 6986421, 0.99 union
+	  select 268, 'Maracatu Atomico [Trip Hop]', 24, 1, 7, 'Chico Science', 221492, 7380787, 0.99 union
+	  select 282, 'Girassol', 26, 1, 8, 'Bino Farias/Da Gama/Lazao/Pedro Luis/Toni Garrido', 249808, 8327676, 0.99 union
 	  select 283, 'A Sombra Da Maldade', 26, 1, 8, 'Da Gama/Toni Garrido', 230922, 7697230, 0.99 union
 	  select 284, 'Johnny B. Goode', 26, 1, 8, 'Chuck Berry', 254615, 8505985, 0.99 union
 	  select 285, 'Soldado Da Paz', 26, 1, 8, 'Herbert Vianna', 194220, 6455080, 0.99 union
-	  select 286, 'Firmamento', 26, 1, 8, 'Bino Farias/Da Gama/Henry Lawes/Lazão/Toni Garrido/Winston Foser-Vers', 222145, 7402658, 0.99 union
+	  select 286, 'Firmamento', 26, 1, 8, 'Bino Farias/Da Gama/Henry Lawes/Lazao/Toni Garrido/Winston Foser-Vers', 222145, 7402658, 0.99 union
 	  select 287, 'Extra', 26, 1, 8, 'Gilberto Gil', 304352, 10078050, 0.99 union
-	  select 288, 'O Erê', 26, 1, 8, 'Bernardo Vilhena/Bino Farias/Da Gama/Lazão/Toni Garrido', 236382, 7866924, 0.99 union
-	  select 289, 'Podes Crer', 26, 1, 8, 'Bino Farias/Da Gama/Lazão/Toni Garrido', 232280, 7747747, 0.99 union
-	  select 290, 'A Estrada', 26, 1, 8, 'Bino Farias/Da Gama/Lazão/Toni Garrido', 248842, 8275673, 0.99 union
+	  select 288, 'O Ere', 26, 1, 8, 'Bernardo Vilhena/Bino Farias/Da Gama/Lazao/Toni Garrido', 236382, 7866924, 0.99 union
+	  select 289, 'Podes Crer', 26, 1, 8, 'Bino Farias/Da Gama/Lazao/Toni Garrido', 232280, 7747747, 0.99 union
+	  select 290, 'A Estrada', 26, 1, 8, 'Bino Farias/Da Gama/Lazao/Toni Garrido', 248842, 8275673, 0.99 union
 	  select 291, 'Berlim', 26, 1, 8, 'Da Gama/Toni Garrido', 207542, 6920424, 0.99 union
-	  select 292, 'Já Foi', 26, 1, 8, 'Bino Farias/Da Gama/Lazão/Toni Garrido', 221544, 7388466, 0.99 union
-	  select 293, 'Onde Você Mora?', 26, 1, 8, 'Marisa Monte/Nando Reis', 256026, 8502588, 0.99 union
-	  select 294, 'Pensamento', 26, 1, 8, 'Bino Farias/Da Gamma/Lazão/Rás Bernard', 173008, 5748424, 0.99 union
-	  select 295, 'Conciliação', 26, 1, 8, 'Da Gama/Lazão/Rás Bernardo', 257619, 8552474, 0.99 union
-	  select 296, 'Realidade Virtual', 26, 1, 8, 'Bino Farias/Da Gama/Lazão/Toni Garrido', 195239, 6503533, 0.99 union
-	  select 297, 'Mensagem', 26, 1, 8, 'Bino Farias/Da Gama/Lazão/Rás Bernardo', 225332, 7488852, 0.99 union
-	  select 298, 'A Cor Do Sol', 26, 1, 8, 'Bernardo Vilhena/Da Gama/Lazão', 231392, 7663348, 0.99 union
-	  select 299, 'Onde Você Mora?', 27, 1, 8, 'Marisa Monte/Nando Reis', 298396, 10056970, 0.99 union
-	  select 300, 'O Erê', 27, 1, 8, 'Bernardo Vilhena/Bino/Da Gama/Lazao/Toni Garrido', 206942, 6950332, 0.99 union
+	  select 292, 'Ja Foi', 26, 1, 8, 'Bino Farias/Da Gama/Lazao/Toni Garrido', 221544, 7388466, 0.99 union
+	  select 293, 'Onde Voce Mora?', 26, 1, 8, 'Marisa Monte/Nando Reis', 256026, 8502588, 0.99 union
+	  select 294, 'Pensamento', 26, 1, 8, 'Bino Farias/Da Gamma/Lazao/Ras Bernard', 173008, 5748424, 0.99 union
+	  select 295, 'Conciliacao', 26, 1, 8, 'Da Gama/Lazao/Ras Bernardo', 257619, 8552474, 0.99 union
+	  select 296, 'Realidade Virtual', 26, 1, 8, 'Bino Farias/Da Gama/Lazao/Toni Garrido', 195239, 6503533, 0.99 union
+	  select 297, 'Mensagem', 26, 1, 8, 'Bino Farias/Da Gama/Lazao/Ras Bernardo', 225332, 7488852, 0.99 union
+	  select 298, 'A Cor Do Sol', 26, 1, 8, 'Bernardo Vilhena/Da Gama/Lazao', 231392, 7663348, 0.99 union
+	  select 299, 'Onde Voce Mora?', 27, 1, 8, 'Marisa Monte/Nando Reis', 298396, 10056970, 0.99 union
+	  select 300, 'O Ere', 27, 1, 8, 'Bernardo Vilhena/Bino/Da Gama/Lazao/Toni Garrido', 206942, 6950332, 0.99 union
 	  select 301, 'A Sombra Da Maldade', 27, 1, 8, 'Da Gama/Toni Garrido', 285231, 9544383, 0.99 union
 	  select 302, 'A Estrada', 27, 1, 8, 'Da Gama/Lazao/Toni Garrido', 282174, 9344477, 0.99 union
 	  select 303, 'Falar A Verdade', 27, 1, 8, 'Bino/Da Gama/Ras Bernardo', 244950, 8189093, 0.99 union
@@ -841,22 +841,22 @@ create table albums as
 	  select 307, 'Doutor', 27, 1, 8, 'Bino/Da Gama/Toni Garrido', 178155, 5950952, 0.99 union
 	  select 308, 'Na Frente Da TV', 27, 1, 8, 'Bino/Da Gama/Lazao/Ras Bernardo', 289750, 9633659, 0.99 union
 	  select 309, 'Downtown', 27, 1, 8, 'Cidade Negra', 239725, 8024386, 0.99 union
-	  select 310, 'Sábado A Noite', 27, 1, 8, 'Lulu Santos', 267363, 8895073, 0.99 union
+	  select 310, 'Sabado A Noite', 27, 1, 8, 'Lulu Santos', 267363, 8895073, 0.99 union
 	  select 311, 'A Cor Do Sol', 27, 1, 8, 'Bernardo Vilhena/Da Gama/Lazao', 273031, 9142937, 0.99 union
-	  select 312, 'Eu Também Quero Beijar', 27, 1, 8, 'Fausto Nilo/Moraes Moreira/Pepeu Gomes', 211147, 7029400, 0.99 union
+	  select 312, 'Eu Tambem Quero Beijar', 27, 1, 8, 'Fausto Nilo/Moraes Moreira/Pepeu Gomes', 211147, 7029400, 0.99 union
 	  select 323, 'Dig-Dig, Lambe-Lambe (Ao Vivo)', 29, 1, 9, 'Cassiano Costa/Cintia Maviane/J.F./Lucas Costa', 205479, 6892516, 0.99 union
-	  select 324, 'Pererê', 29, 1, 9, 'Augusto Conceição/Chiclete Com Banana', 198661, 6643207, 0.99 union
+	  select 324, 'Perere', 29, 1, 9, 'Augusto Conceicao/Chiclete Com Banana', 198661, 6643207, 0.99 union
 	  select 325, 'TriboTchan', 29, 1, 9, 'Cal Adan/Paulo Levi', 194194, 6507950, 0.99 union
 	  select 326, 'Tapa Aqui, Descobre Ali', 29, 1, 9, 'Paulo Levi/W. Rangel', 188630, 6327391, 0.99 union
 	  select 327, 'Daniela', 29, 1, 9, 'Jorge Cardoso/Pierre Onasis', 230791, 7748006, 0.99 union
-	  select 328, 'Bate Lata', 29, 1, 9, 'Fábio Nolasco/Gal Sales/Ivan Brasil', 206733, 7034985, 0.99 union
-	  select 329, 'Garotas do Brasil', 29, 1, 9, 'Garay, Ricardo Engels/Luca Predabom/Ludwig, Carlos Henrique/Maurício Vieira', 210155, 6973625, 0.99 union
+	  select 328, 'Bate Lata', 29, 1, 9, 'Fabio Nolasco/Gal Sales/Ivan Brasil', 206733, 7034985, 0.99 union
+	  select 329, 'Garotas do Brasil', 29, 1, 9, 'Garay, Ricardo Engels/Luca Predabom/Ludwig, Carlos Henrique/Mauricio Vieira', 210155, 6973625, 0.99 union
 	  select 330, 'Levada do Amor (Ailoviu)', 29, 1, 9, 'Luiz Wanderley/Paulo Levi', 190093, 6457752, 0.99 union
 	  select 331, 'Lavadeira', 29, 1, 9, 'Do Vale, Valverde/Gal Oliveira/Luciano Pinto', 214256, 7254147, 0.99 union
-	  select 332, 'Reboladeira', 29, 1, 9, 'Cal Adan/Ferrugem/Julinho Carioca/Tríona Ní Dhomhnaill', 210599, 7027525, 0.99 union
-	  select 333, 'É que Nessa Encarnação Eu Nasci Manga', 29, 1, 9, 'Lucina/Luli', 196519, 6568081, 0.99 union
+	  select 332, 'Reboladeira', 29, 1, 9, 'Cal Adan/Ferrugem/Julinho Carioca/Triona Ni Dhomhnaill', 210599, 7027525, 0.99 union
+	  select 333, 'E que Nessa Encarnacao Eu Nasci Manga', 29, 1, 9, 'Lucina/Luli', 196519, 6568081, 0.99 union
 	  select 334, 'Reggae Tchan', 29, 1, 9, 'Cal Adan/Del Rey, Tension/Edu Casanova', 206654, 6931328, 0.99 union
-	  select 335, 'My Love', 29, 1, 9, 'Jauperi/Zeu Góes', 203493, 6772813, 0.99 union
+	  select 335, 'My Love', 29, 1, 9, 'Jauperi/Zeu Goes', 203493, 6772813, 0.99 union
 	  select 336, 'Latinha de Cerveja', 29, 1, 9, 'Adriano Bernandes/Edmar Neves', 166687, 5532564, 0.99 union
 	  select 337, 'You Shook Me', 30, 1, 1, 'J B Lenoir/Willie Dixon', 315951, 10249958, 0.99 union
 	  select 338, 'I Can''t Quit You Baby', 30, 1, 1, 'Willie Dixon', 263836, 8581414, 0.99 union
@@ -883,38 +883,38 @@ create table albums as
 	  select 359, 'Muffin Man', 31, 1, 1, 'Frank Zappa', 332878, 10891682, 0.99 union
 	  select 374, 'Guanabara', 33, 1, 7, 'Marcos Valle', 247614, 8499591, 0.99 union
 	  select 375, 'Mas Que Nada', 33, 1, 7, 'Jorge Ben', 248398, 8255254, 0.99 union
-	  select 376, 'Vôo Sobre o Horizonte', 33, 1, 7, 'J.r.Bertami/Parana', 225097, 7528825, 0.99 union
+	  select 376, 'Voo Sobre o Horizonte', 33, 1, 7, 'J.r.Bertami/Parana', 225097, 7528825, 0.99 union
 	  select 377, 'A Paz', 33, 1, 7, 'Donato/Gilberto Gil', 263183, 8619173, 0.99 union
 	  select 378, 'Wave (Vou te Contar)', 33, 1, 7, 'Antonio Carlos Jobim', 271647, 9057557, 0.99 union
-	  select 379, 'Água de Beber', 33, 1, 7, 'Antonio Carlos Jobim/Vinicius de Moraes', 146677, 4866476, 0.99 union
-	  select 380, 'Samba da Bençaco', 33, 1, 7, 'Baden Powell/Vinicius de Moraes', 282200, 9440676, 0.99 union
+	  select 379, 'Agua de Beber', 33, 1, 7, 'Antonio Carlos Jobim/Vinicius de Moraes', 146677, 4866476, 0.99 union
+	  select 380, 'Samba da Bencaco', 33, 1, 7, 'Baden Powell/Vinicius de Moraes', 282200, 9440676, 0.99 union
 	  select 381, 'Pode Parar', 33, 1, 7, 'Jorge Vercilo/Jota Maranhao', 179408, 6046678, 0.99 union
 	  select 382, 'Menino do Rio', 33, 1, 7, 'Caetano Veloso', 262713, 8737489, 0.99 union
 	  select 383, 'Ando Meio Desligado', 33, 1, 7, 'Caetano Veloso', 195813, 6547648, 0.99 union
-	  select 384, 'Mistério da Raça', 33, 1, 7, 'Luiz Melodia/Ricardo Augusto', 184320, 6191752, 0.99 union
+	  select 384, 'Misterio da Raca', 33, 1, 7, 'Luiz Melodia/Ricardo Augusto', 184320, 6191752, 0.99 union
 	  select 385, 'All Star', 33, 1, 7, 'Nando Reis', 176326, 5891697, 0.99 union
 	  select 386, 'Menina Bonita', 33, 1, 7, 'Alexandre Brazil/Pedro Luis/Rodrigo Cabelo', 237087, 7938246, 0.99 union
-	  select 387, 'Pescador de Ilusões', 33, 1, 7, 'Macelo Yuka/O Rappa', 245524, 8267067, 0.99 union
-	  select 388, 'À Vontade (Live Mix)', 33, 1, 7, 'Bombom/Ed Motta', 180636, 5972430, 0.99 union
-	  select 389, 'Maria Fumaça', 33, 1, 7, 'Luiz Carlos/Oberdan', 141008, 4743149, 0.99 union
+	  select 387, 'Pescador de Ilusoes', 33, 1, 7, 'Macelo Yuka/O Rappa', 245524, 8267067, 0.99 union
+	  select 388, 'A Vontade (Live Mix)', 33, 1, 7, 'Bombom/Ed Motta', 180636, 5972430, 0.99 union
+	  select 389, 'Maria Fumaca', 33, 1, 7, 'Luiz Carlos/Oberdan', 141008, 4743149, 0.99 union
 	  select 390, 'Sambassim (dj patife remix)', 33, 1, 7, 'Alba Carvalho/Fernando Porto', 213655, 7243166, 0.99 union
-	  select 391, 'Garota De Ipanema', 34, 1, 7, 'Vários', 279536, 9141343, 0.99 union
-	  select 392, 'Tim Tim Por Tim Tim', 34, 1, 7, 'Vários', 213237, 7143328, 0.99 union
-	  select 393, 'Tarde Em Itapoã', 34, 1, 7, 'Vários', 313704, 10344491, 0.99 union
-	  select 394, 'Tanto Tempo', 34, 1, 7, 'Vários', 170292, 5572240, 0.99 union
-	  select 395, 'Eu Vim Da Bahia - Live', 34, 1, 7, 'Vários', 157988, 5115428, 0.99 union
-	  select 396, 'Alô Alô Marciano', 34, 1, 7, 'Vários', 238106, 8013065, 0.99 union
-	  select 397, 'Linha Do Horizonte', 34, 1, 7, 'Vários', 279484, 9275929, 0.99 union
-	  select 398, 'Only A Dream In Rio', 34, 1, 7, 'Vários', 371356, 12192989, 0.99 union
-	  select 399, 'Abrir A Porta', 34, 1, 7, 'Vários', 271960, 8991141, 0.99 union
-	  select 400, 'Alice', 34, 1, 7, 'Vários', 165982, 5594341, 0.99 union
-	  select 401, 'Momentos Que Marcam', 34, 1, 7, 'Vários', 280137, 9313740, 0.99 union
-	  select 402, 'Um Jantar Pra Dois', 34, 1, 7, 'Vários', 237714, 7819755, 0.99 union
-	  select 403, 'Bumbo Da Mangueira', 34, 1, 7, 'Vários', 270158, 9073350, 0.99 union
-	  select 404, 'Mr Funk Samba', 34, 1, 7, 'Vários', 213890, 7102545, 0.99 union
-	  select 405, 'Santo Antonio', 34, 1, 7, 'Vários', 162716, 5492069, 0.99 union
-	  select 406, 'Por Você', 34, 1, 7, 'Vários', 205557, 6792493, 0.99 union
-	  select 407, 'Só Tinha De Ser Com Você', 34, 1, 7, 'Vários', 389642, 13085596, 0.99 union
+	  select 391, 'Garota De Ipanema', 34, 1, 7, 'Varios', 279536, 9141343, 0.99 union
+	  select 392, 'Tim Tim Por Tim Tim', 34, 1, 7, 'Varios', 213237, 7143328, 0.99 union
+	  select 393, 'Tarde Em Itapoa', 34, 1, 7, 'Varios', 313704, 10344491, 0.99 union
+	  select 394, 'Tanto Tempo', 34, 1, 7, 'Varios', 170292, 5572240, 0.99 union
+	  select 395, 'Eu Vim Da Bahia - Live', 34, 1, 7, 'Varios', 157988, 5115428, 0.99 union
+	  select 396, 'Alo Alo Marciano', 34, 1, 7, 'Varios', 238106, 8013065, 0.99 union
+	  select 397, 'Linha Do Horizonte', 34, 1, 7, 'Varios', 279484, 9275929, 0.99 union
+	  select 398, 'Only A Dream In Rio', 34, 1, 7, 'Varios', 371356, 12192989, 0.99 union
+	  select 399, 'Abrir A Porta', 34, 1, 7, 'Varios', 271960, 8991141, 0.99 union
+	  select 400, 'Alice', 34, 1, 7, 'Varios', 165982, 5594341, 0.99 union
+	  select 401, 'Momentos Que Marcam', 34, 1, 7, 'Varios', 280137, 9313740, 0.99 union
+	  select 402, 'Um Jantar Pra Dois', 34, 1, 7, 'Varios', 237714, 7819755, 0.99 union
+	  select 403, 'Bumbo Da Mangueira', 34, 1, 7, 'Varios', 270158, 9073350, 0.99 union
+	  select 404, 'Mr Funk Samba', 34, 1, 7, 'Varios', 213890, 7102545, 0.99 union
+	  select 405, 'Santo Antonio', 34, 1, 7, 'Varios', 162716, 5492069, 0.99 union
+	  select 406, 'Por Voce', 34, 1, 7, 'Varios', 205557, 6792493, 0.99 union
+	  select 407, 'So Tinha De Ser Com Voce', 34, 1, 7, 'Varios', 389642, 13085596, 0.99 union
 	  select 408, 'Free Speech For The Dumb', 35, 1, 3, 'Molaney/Morris/Roberts/Wainwright', 155428, 5076048, 0.99 union
 	  select 409, 'It''s Electric', 35, 1, 3, 'Harris/Tatler', 213995, 6978601, 0.99 union
 	  select 410, 'Sabbra Cadabra', 35, 1, 3, 'Black Sabbath', 380342, 12418147, 0.99 union
