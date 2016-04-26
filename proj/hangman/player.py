@@ -80,9 +80,10 @@ class ComputerPlayer(Player):
     
     >>> from wordset import WordSet    # Basic test including total character frequency
     >>> from board import Board
+    >>> from secret import SecretWord
     >>> p = Player(WordSet(['one','two','three']))   # Player superclass with the dictionary
     >>> c = ComputerPlayer()
-    >>> b = Board('three')
+    >>> b = Board(SecretWord('three'))
     >>> c.guess(b)
     'e'
     """
