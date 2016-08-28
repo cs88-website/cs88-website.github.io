@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Gunjan Baid" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 4: Midterm Review | CS 88 Fall 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 4</span>: Midterm Review</h1>
+    </div>
+
+    <p><i>Due at 11:59pm on 03/02/2016.</i></p>
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab04.zip">lab04.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the <a href="ok">OK</a> autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab with
+<code>python3 ok --submit</code>. You may submit more than once before the
+deadline; only the final submission will be graded.</p>
+
+
+<ul>
+  <li>Questions 1 and 2 are to refine your understanding of lists and indexing.</li>
+  <li>To receive credit for this lab, you must complete Questions 3-8
+  in <a href="lab04.py">lab04.py</a> and submit through OK. It imports <a href="utils.py">utils.py</a>.</li>
+  <li>Question 9 and 10 are <em>extra practice</em>. They can be found in the
+  <a href="lab04_extra.py">lab04_extra.py</a> file. It is recommended that you complete
+  this problem on your own time.</li>
+  <li>Please note the early deadline for this lab (Wednesday night) so that we
+  can make the solutions available by Thursday.</li>
+</ul>
+
+
+    
+
+
+<h2 id="lists-in-a-little-more-depth">Lists in a little more depth</h2>
+
+
+<h3 class="question" id="q1">Question 1: Get Seven</h3>
+
+<p>In each of following, what does the list indexing look like to get the number 7? For example, if <code>x = [7]</code>, the answer would be <code>x[0]</code>. Think about each one and try your code in the lab. Then check your solution with the toggle button.</p>
+
+
+
+<pre><code>def get_seven_a(x):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; x = [1, 3, [5, 7], 9]
+    &gt;&gt;&gt; get_seven_a(x)
+    7
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#x5b;&#x32;&#x5d;&#x5b;&#x31;&#x5d;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+
+    <button id='19' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 19">
+
+<pre><code>def get_seven_a(x):
+    return x[2][1]</code></pre>
+
+</div>
+
+
+
+<pre><code>def get_seven_b(x):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; x = [[7]]
+    &gt;&gt;&gt; get_seven_b(x)
+    7
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#x5b;&#x30;&#x5d;&#x5b;&#x30;&#x5d;</div></code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+
+    <button id='20' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 20">
+
+<pre><code>def get_seven_b(x):
+    return x[0][0]</code></pre>
+
+</div>
+
+
+
+<pre><code>def get_seven_c(x):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; x = [1, [2, [3, [4, [5, [6, [7]]]]]]]
+    &gt;&gt;&gt; get_seven_c(x)
+    7
+    &quot;&quot;&quot;
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#x5b;&#x31;&#x5d;&#x5b;&#x31;&#x5d;&#x5b;&#x31;&#x5d;&#x5b;&#x31;&#x5d;&#x5b;&#x31;&#x5d;&#x5b;&#x31;&#x5d;&#x5b;&#x30;&#x5d;</div></code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+
+    <button id='21' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 21">
+
+<pre><code>def get_seven_c(x):
+    return x[1][1][1][1][1][1][0]</code></pre>
+
+</div>
+
+<h3 class="question" id="q2">Question 2: WWPP: List slicing</h3>
+
+<p>Predict what Python will display when you type the following into the
+interpreter. Then try it to check your answers.</p>
+
+<blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
+questions:</p>
+
+<pre><code>python3 ok &#x2d;q slicing &#x2d;u</code></pre></blockquote>
+
+
+    <pre><code>&gt;&gt;&gt; x = [1, 2, 3, 4]
+&gt;&gt;&gt; x[1:3]
+<div class="alt 18">______</div><div class="solution 18">&#x5b;&#x32;&#x2c;&#x20;&#x33;&#x5d;</div>
+&gt;&gt;&gt; x[:2]
+<div class="alt 18">______</div><div class="solution 18">&#x5b;&#x31;&#x2c;&#x20;&#x32;&#x5d;</div>
+&gt;&gt;&gt; x[1:]
+<div class="alt 18">______</div><div class="solution 18">&#x5b;&#x32;&#x2c;&#x20;&#x33;&#x2c;&#x20;&#x34;&#x5d;</div>
+&gt;&gt;&gt; x[&#x2d;2:3]
+<div class="alt 18">______</div><div class="solution 18">&#x5b;&#x33;&#x5d;</div>
+&gt;&gt;&gt; x[&#x2d;2:4]
+<div class="alt 18">______</div><div class="solution 18">&#x5b;&#x33;&#x2c;&#x20;&#x34;&#x5d;</div>
+&gt;&gt;&gt; x[0:4:2]
+<div class="alt 18">______</div><div class="solution 18">&#x5b;&#x31;&#x2c;&#x20;&#x33;&#x5d;</div>
+&gt;&gt;&gt; x[::&#x2d;1]
+<div class="alt 18">______</div><div class="solution 18">&#x5b;&#x34;&#x2c;&#x20;&#x33;&#x2c;&#x20;&#x32;&#x2c;&#x20;&#x31;&#x5d;</div></code></pre>
+
+    <button id='18' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Python can retrieve part of a list by <em>slicing</em>.</p>
+
+<p>We can write <code>[start:end:step]</code> to slice a list.</p>
+
+<ul>
+  <li><code>start</code>: the index for the beginning of the slice</li>
+  <li><code>end</code>: the index for the end of the slice</li>
+  <li><code>step</code>: how big your step size is</li>
+</ul>
+
+<p>Using negative indices for <code>start</code> and <code>end</code> behaves the same way
+as indexing into negative indices. Negative <code>step</code> means to move 
+backwards.</p>
+
+<p>Slicing a list <em>creates a new</em> list, without modifying
+the original list.</p>
+
+
+<h2 id="reverse-list---recursion-vs-iteration">Reverse List - Recursion vs Iteration</h2>
+
+
+<h3 class="question" id="q3">Question 3: Reverse (recursively)</h3>
+
+<p>Write a function <code>reverse_recursive</code> that takes a list and returns a
+new list that is the reverse of the original. Use recursion! You may
+also use slicing notation. Do not use <code>lst[::&#x2d;1]</code>!</p>
+
+
+
+<pre><code>def reverse_recursive(lst):
+    &quot;&quot;&quot;Returns the reverse of the given list.
+
+    &gt;&gt;&gt; reverse_recursive([1, 2, 3, 4])
+    [4, 3, 2, 1]
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x5f;&#x72;&#x65;&#x63;&#x75;&#x72;&#x73;&#x69;&#x76;&#x65;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x5d;&#x29;&#x20;&#x2b;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x5d;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q reverse_recursive</code></pre>
+
+<h3 class="question" id="q4">Question 4: Reverse (iteratively)</h3>
+
+<p>Write a function <code>reverse_iter_for</code> that takes a list and returns a new
+list that is the reverse of the original using a <code>for</code> loop. You should not
+need any indexing notation.</p>
+
+
+
+<pre><code>def reverse_iter_for(lst):
+    &quot;&quot;&quot;Returns the reverse of the given list.
+
+    &gt;&gt;&gt; reverse_iter_for([1, 2, 3, 4])
+    [4, 3, 2, 1]
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x76;&#x5f;&#x6c;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x76;&#x5f;&#x6c;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x65;&#x5d;&#x20;&#x2b;&#x20;&#x72;&#x65;&#x76;&#x5f;&#x6c;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x76;&#x5f;&#x6c;&#x73;&#x74;</div></code></pre>
+
+
+    <button id='5' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q reverse_iter_for</code></pre>
+
+<p>Complete the function <code>reverse_iter_while</code> that behaves identically to
+<code>reverse_iter_for</code> but is implemented as using a <code>while</code> loop.
+You may use indexing or slicing notation. Do not use <code>lst[::&#x2d;1]</code>!</p>
+
+
+
+<pre><code>def reverse_iter_while(lst):
+    &quot;&quot;&quot;Returns the reverse of the given list.
+
+    &gt;&gt;&gt; reverse_iter_while([1, 2, 3, 4])
+    [4, 3, 2, 1]
+    &quot;&quot;&quot;
+    rev_lst, i = [], 0
+    while i &lt; len(lst):
+<div class="alt 6">        "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x76;&#x5f;&#x6c;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x5b;&#x69;&#x5d;&#x5d;&#x20;&#x2b;&#x20;&#x72;&#x65;&#x76;&#x5f;&#x6c;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x76;&#x5f;&#x6c;&#x73;&#x74;</div></code></pre>
+
+
+    <button id='6' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q reverse_iter_while</code></pre>
+
+
+<h2 id="traversing-deep">Traversing Deep</h2>
+
+
+<h3 class="question" id="q5">Question 5: Flatten</h3>
+
+<p>A list that contains one or more lists as elements is called a <em>deep</em>
+list. For example, <code>[1, [2, 3], 4]</code> is a deep list.
+Write a function <code>flatten</code> that takes a (possibly deep) list and "flattens" it.
+For example:</p>
+
+<pre><code>&gt;&gt;&gt; lst = [1, [[2], 3], 4, [5, 6]]
+&gt;&gt;&gt; flatten(lst)
+[1, 2, 3, 4, 5, 6]</code></pre>
+
+<p><em>Hint</em>: you can check if something is a list by using the built-in function <code>isinstance</code>.  For
+example:</p>
+
+<pre><code>&gt;&gt;&gt; isinstance([1,2,3],list)
+True
+&gt;&gt;&gt; isinstance(3,list)
+False</code></pre>
+
+<p>or using the builtin function <code>type</code>.</p>
+
+<pre><code>&gt;&gt;&gt; type([1, 2, 3]) == list
+True</code></pre>
+
+
+
+<pre><code>def flatten(lst):
+    &quot;&quot;&quot;Returns a flattened version of lst.
+
+    &gt;&gt;&gt; flatten([1, 2, 3])     # normal list
+    [1, 2, 3]
+    &gt;&gt;&gt; x = [1, [2, 3], 4]      # deep list
+    &gt;&gt;&gt; flatten(x)
+    [1, 2, 3, 4]
+    &gt;&gt;&gt; x = [[1, [1, 1]], 1, [1, 1]] # deep list
+    &gt;&gt;&gt; flatten(x)
+    [1, 1, 1, 1, 1, 1]
+    &quot;&quot;&quot;
+<div class="alt 7">    "*** YOUR CODE HERE ***"
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x74;&#x79;&#x70;&#x65;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x6c;&#x61;&#x74;&#x74;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x29;&#x20;&#x2b;&#x20;&#x66;&#x6c;&#x61;&#x74;&#x74;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x5d;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x5d;&#x20;&#x2b;&#x20;&#x66;&#x6c;&#x61;&#x74;&#x74;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x5d;&#x29;</div></code></pre>
+
+
+    <button id='7' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q flatten</code></pre>
+
+
+<h2 id="merging-and-sorting">Merging and Sorting</h2>
+
+
+<h3 class="question" id="q6">Question 6: Merge</h3>
+
+<p>Write a recursive function <code>merge</code> that takes 2 <em>sorted</em> lists <code>lst1</code> and <code>lst2</code>,
+and returns a new list that contains all the elements in the two lists
+in sorted order.</p>
+
+
+
+<pre><code>def merge(lst1, lst2):
+    &quot;&quot;&quot;Merges two sorted lists.
+
+    &gt;&gt;&gt; merge([1, 3, 5], [2, 4, 6])
+    [1, 2, 3, 4, 5, 6]
+    &gt;&gt;&gt; merge([], [2, 4, 6])
+    [2, 4, 6]
+    &gt;&gt;&gt; merge([1, 2, 3], [])
+    [1, 2, 3]
+    &gt;&gt;&gt; merge([5, 7], [2, 4, 6])
+    [2, 4, 5, 6, 7]
+    &quot;&quot;&quot;
+    # recursive
+<div class="alt 8">    "*** YOUR CODE HERE ***"
+</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x20;&#x6f;&#x72;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x20;&#x2b;&#x20;&#x6c;&#x73;&#x74;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x30;&#x5d;&#x20;&#x3c;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x30;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x30;&#x5d;&#x5d;&#x20;&#x2b;&#x20;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x28;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x31;&#x3a;&#x5d;&#x2c;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x30;&#x5d;&#x5d;&#x20;&#x2b;&#x20;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x28;&#x6c;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x31;&#x3a;&#x5d;&#x29;</div></code></pre>
+
+
+    <button id='8' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q merge</code></pre>
+
+<p>Write an iterative function <code>merge_iter</code> that behaves like <code>merge</code> but is
+implemented using loop.  (There are many ways to do this, but none are
+obvious.  You'll need to think about whether to use <code>for</code> or <code>while</code>, whether
+it needs a nested loop or not.</p>
+
+
+
+<pre><code># Iterative solution 
+def merge_iter(lst1, lst2):
+    &quot;&quot;&quot;Merges two sorted lists.
+
+    &gt;&gt;&gt; merge_iter([1, 3, 5], [2, 4, 6])
+    [1, 2, 3, 4, 5, 6]
+    &gt;&gt;&gt; merge_iter([], [2, 4, 6])
+    [2, 4, 6]
+    &gt;&gt;&gt; merge_iter([1, 2, 3], [])
+    [1, 2, 3]
+    &gt;&gt;&gt; merge_iter([5, 7], [2, 4, 6])
+    [2, 4, 5, 6, 7]
+    &quot;&quot;&quot;
+<div class="alt 9">    "*** YOUR CODE HERE ***"
+</div><div class="solution 9">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x30;&#x5d;&#x20;&#x3c;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x30;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x2b;&#x3d;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x30;&#x5d;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x20;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x31;&#x3a;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x2b;&#x3d;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x30;&#x5d;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x20;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x31;&#x3a;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x2b;&#x20;&#x6c;&#x73;&#x74;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x2b;&#x20;&#x6c;&#x73;&#x74;&#x32;</div></code></pre>
+
+
+    <button id='9' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q merge_iter</code></pre>
+
+<p>Now we have what we need for a third sorting algorithm - <code>merge_sort</code>.  The idea
+is to split the input list into two essentially equal length pieces, sort them
+both and then merge them.  Another elegant recursive formulation.  This algorithm
+is also extremely fast.  It runs in time proportional to <em>n log(n)</em> regardless of
+the data.  That is, as fast as <code>quick_sort</code> when that sort gets lucky and picks
+a perfect pivot every time.</p>
+
+
+
+<pre><code>def merge_sort(lst):
+    &quot;&quot;&quot;Return sorted list using a merge sort.
+    Split the list into two halves (i.e., lengths differ by &lt;= 1)
+    Sort each and merge.
+
+    &gt;&gt;&gt; merge_sort([1,2,3,4,5])
+    [1, 2, 3, 4, 5]
+    &gt;&gt;&gt; merge_sort([1,4,5,2,3])
+    [1, 2, 3, 4, 5]
+    &quot;&quot;&quot;
+<div class="alt 10">    "*** YOUR CODE HERE ***"
+</div><div class="solution 10">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x3c;&#x20;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x69;&#x64;&#x20;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x29;&#x2f;&#x2f;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x65;&#x66;&#x74;&#x20;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x3a;&#x6d;&#x69;&#x64;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x6d;&#x69;&#x64;&#x3a;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x28;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x5f;&#x73;&#x6f;&#x72;&#x74;&#x28;&#x6c;&#x65;&#x66;&#x74;&#x29;&#x2c;&#x20;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x5f;&#x73;&#x6f;&#x72;&#x74;&#x28;&#x72;&#x69;&#x67;&#x68;&#x74;&#x29;&#x29;</div></code></pre>
+
+
+    <button id='10' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q merge_sort</code></pre>
+
+
+<h2 id="secret-codes">Secret Codes</h2>
+
+
+<h3 class="question" id="q7">Question 7: Top secret coded message</h3>
+
+<p>Now that you are rockin with your new coding skills, let's do some coding.  Coding secret
+messages that is...  When you are done, you'll have the answer to the following:</p>
+
+<pre><code>&gt;&gt;&gt; enc, dec = make_coders(11)
+&gt;&gt;&gt; code_document(dec, &#x27;esp xtoEpCx lyDHpCD lCp ty EstD oznFxpyE. Oz yzE wzzv. awplDp.&#x27;)</code></pre>
+
+<p>This question and the next will make use of the following functions from lecture.</p>
+
+<pre><code>def first(s):
+    return s[0]
+
+def rest(s):
+    return s[1:]
+
+def last(s):
+    return s[&#x2d;1]
+
+def index(s, value):
+    &quot;&quot;&quot;Return the index of value in sequence s, None if not present&quot;&quot;&quot;
+    for i,element in zip(range(len(s)),s):
+        if element == value:
+            return i
+
+def map(f, s):
+    return [f(x) for x in s]</code></pre>
+
+<p>All our messages will use the ascii letters - no numbers or punctuation.  Note that
+we have a variable in global scope that is the reference string for our character set.
+<br/>
+
+To get warmed up, your first task as a secret agent is to complete
+<code>char_index</code> that obtains the index of a character in the reference
+set.</p>
+
+
+
+<pre><code>from utils import *
+import string
+
+characters = string.ascii_letters
+
+def char_index(c):
+    &quot;&quot;&quot;Return the index of character c in the characters reference string.
+
+    &gt;&gt;&gt; char_index(&#x27;a&#x27;)
+    0
+    &gt;&gt;&gt; char_index(&#x27;m&#x27;)
+    12
+    &quot;&quot;&quot;
+<div class="alt 11">    "*** YOUR CODE HERE ***"
+</div><div class="solution 11">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x28;&#x63;&#x68;&#x61;&#x72;&#x61;&#x63;&#x74;&#x65;&#x72;&#x73;&#x2c;&#x63;&#x29;</div>
+def make_coders(shift):
+    &quot;&quot;&quot;Return a encoder,decoder function pair where the encoder shifts every char by
+    a specified rotation of the reference character array and the decoder shifts it back.
+
+    &gt;&gt;&gt; enc, dec = make_coders(0)
+    &gt;&gt;&gt; enc(&quot;Quick&quot;)
+    &#x27;Quick&#x27;
+    &gt;&gt;&gt; dec(&quot;Quick&quot;)
+    &#x27;Quick&#x27;
+    &gt;&gt;&gt; enc7, dec7 = make_coders(7)
+    &gt;&gt;&gt; enc7(&quot;Quick&quot;)
+    &#x27;XBpjr&#x27;
+    &gt;&gt;&gt; dec7(&#x27;XBpjr&#x27;)
+    &#x27;Quick&#x27;
+    &quot;&quot;&quot;
+    def make_coder(shift):
+<div class="alt 11">        "*** YOUR CODE HERE ***"
+</div><div class="solution 11">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x63;&#x6f;&#x64;&#x65;&#x72;&#x5f;&#x66;&#x75;&#x6e;&#x28;&#x77;&#x6f;&#x72;&#x64;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#x20;&#x3d;&#x20;&#x22;&#x22;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x20;&#x69;&#x6e;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#x20;&#x2b;&#x3d;&#x20;&#x63;&#x68;&#x61;&#x72;&#x61;&#x63;&#x74;&#x65;&#x72;&#x73;&#x5b;&#x28;&#x63;&#x68;&#x61;&#x72;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x28;&#x63;&#x29;&#x20;&#x2b;&#x20;&#x73;&#x68;&#x69;&#x66;&#x74;&#x29;&#x20;&#x25;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x63;&#x68;&#x61;&#x72;&#x61;&#x63;&#x74;&#x65;&#x72;&#x73;&#x29;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x63;&#x6f;&#x64;&#x65;&#x72;&#x5f;&#x66;&#x75;&#x6e;</div>
+    return make_coder(shift), make_coder(&#x2d;shift)
+
+def code_message(coder, message):
+    &quot;&quot;&quot;Return message coded by a coder function applied to each word.
+    message: string containing words in the reference character set separated by spaces
+    coder: function that take a word and returns its coded form.
+
+    &gt;&gt;&gt; enc7, dec7 = make_coders(7)
+    &gt;&gt;&gt; code_message(enc7, &quot;The quick brown fox&quot;)
+    &#x27;aol xBpjr iyvDu mvE&#x27;
+    &gt;&gt;&gt; code_message(dec7, &#x27;aol xBpjr iyvDu mvE&#x27;)
+    &#x27;The quick brown fox&#x27;
+    &quot;&quot;&quot;
+<div class="alt 11">    "*** YOUR CODE HERE ***"
+</div><div class="solution 11">&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#x5f;&#x6d;&#x65;&#x73;&#x73;&#x61;&#x67;&#x65;&#x20;&#x3d;&#x20;&#x22;&#x22;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x73;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x73;&#x73;&#x61;&#x67;&#x65;&#x2e;&#x73;&#x70;&#x6c;&#x69;&#x74;&#x28;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x77;&#x6f;&#x72;&#x64;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x22;&#x22;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x77;&#x6f;&#x72;&#x64;&#x73;&#x29;&#x20;&#x3e;&#x20;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x20;&#x69;&#x6e;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x73;&#x5b;&#x30;&#x3a;&#x2d;&#x31;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#x5f;&#x6d;&#x65;&#x73;&#x73;&#x61;&#x67;&#x65;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#x5f;&#x6d;&#x65;&#x73;&#x73;&#x61;&#x67;&#x65;&#x20;&#x2b;&#x20;&#x63;&#x6f;&#x64;&#x65;&#x72;&#x28;&#x77;&#x6f;&#x72;&#x64;&#x29;&#x20;&#x2b;&#x20;&#x22;&#x20;&#x22;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#x5f;&#x6d;&#x65;&#x73;&#x73;&#x61;&#x67;&#x65;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#x5f;&#x6d;&#x65;&#x73;&#x73;&#x61;&#x67;&#x65;&#x20;&#x2b;&#x20;&#x63;&#x6f;&#x64;&#x65;&#x72;&#x28;&#x6c;&#x61;&#x73;&#x74;&#x28;&#x77;&#x6f;&#x72;&#x64;&#x73;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x63;&#x6f;&#x64;&#x65;&#x64;&#x5f;&#x6d;&#x65;&#x73;&#x73;&#x61;&#x67;&#x65;</div></code></pre>
+
+
+    <button id='11' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q char_index</code></pre>
+
+<p>Now for the hard part.  Write the function <code>make_coders</code> that returns a
+encoder/decoder pair.  Since we are still early in the secret agent game, we are using
+a fairly simple coding scheme.  Encode each letter in the message by replacing it by the
+one <code>shift</code> elements ahead in the character set, wrapping around.  Decode shifts them all
+back.  Coding with a shift of <code>0</code> is not very secret, but it is good for debugging.</p>
+
+<p>Clearly, this is a higher order function opportunity - since we need to return some newly
+minted functions.  You are likely to be tempted to write two functions to return.  Ahh, but
+these two have a lot in common.  We have filled in the last line for you so you have
+to be even trickier.  You can comment this out and do it your own way to figure it out,
+but the central agency wants this final line back in for your final solution.</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q make_coders</code></pre>
+
+<p>Now that you have got a coder function factory, put it to use coding a message.  Write
+the function <code>code_message</code>.</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q code_message</code></pre>
+
+<h3 class="question" id="q8">Question 8: Coded document</h3>
+
+<p>Good work agent.  That was the hard part.  The rest of this is some more coding 
+practice to sharpen your skiils before the big test.  We want to code documents
+full of messages.  First we will need some tools for the job.
+<br/>
+
+</p>
+
+<pre><code>def trim_leading(text, char):
+    &quot;&quot;&quot;Return trimmed text leading instances of char removed.
+
+    &gt;&gt;&gt; trim_leading(&quot;***quick**&quot;, &quot;*&quot;)
+    &#x27;quick**&#x27;
+    &gt;&gt;&gt; trim_leading(&quot;    quick  &quot;, &quot; &quot;)
+    &#x27;quick  &#x27;
+    &quot;&quot;&quot;
+<div class="alt 12">    "*** YOUR CODE HERE ***"
+</div><div class="solution 12">&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x74;&#x65;&#x78;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x63;&#x68;&#x61;&#x72;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x74;&#x65;&#x78;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x20;&#x20;</div>
+def next_sentence(text):
+    &quot;&quot;&quot;Return a tuple of the chars up to &#x27;.&#x27; and the remainder sans &#x27;.&#x27; and leading spaces.
+
+    &gt;&gt;&gt; next_sentence(&quot;This. And that. The other thing.&quot;)
+    (&#x27;This&#x27;, &#x27;And that. The other thing.&#x27;)
+    &gt;&gt;&gt; next_sentence(&quot;And that. The other thing.&quot;)
+    (&#x27;And that&#x27;, &#x27;The other thing.&#x27;)
+    &quot;&quot;&quot;
+<div class="alt 12">    "*** YOUR CODE HERE ***"
+</div><div class="solution 12">&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x20;&#x3d;&#x20;&#x22;&#x22;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x74;&#x65;&#x78;&#x74;&#x29;&#x20;&#x21;&#x3d;&#x20;&#x22;&#x2e;&#x22;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x20;&#x2b;&#x3d;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x74;&#x65;&#x78;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x74;&#x65;&#x78;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x2c;&#x20;&#x74;&#x72;&#x69;&#x6d;&#x5f;&#x6c;&#x65;&#x61;&#x64;&#x69;&#x6e;&#x67;&#x28;&#x72;&#x65;&#x73;&#x74;&#x28;&#x74;&#x65;&#x78;&#x74;&#x29;&#x2c;&#x20;&#x22;&#x20;&#x22;&#x29;</div>
+def split_sentences(text):
+    &quot;&quot;&quot;Return a list of the sentences in text with no periods and no leading spaces.
+
+    &gt;&gt;&gt; split_sentences(&quot;This. And that. The other thing.&quot;)
+    [&#x27;This&#x27;, &#x27;And that&#x27;, &#x27;The other thing&#x27;]
+    &quot;&quot;&quot;
+<div class="alt 12">    "*** YOUR CODE HERE ***"
+</div><div class="solution 12">&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x74;&#x65;&#x78;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x2c;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x3d;&#x20;&#x6e;&#x65;&#x78;&#x74;&#x5f;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x28;&#x74;&#x65;&#x78;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x73;&#x20;&#x2b;&#x3d;&#x20;&#x5b;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x73;</div>
+def concat_sentences(sentence_sequence):
+    &quot;&quot;&quot;Concatenate a list of sentences, putting in missing periods and space.
+
+    &gt;&gt;&gt; concat_sentences([&#x27;This&#x27;, &#x27;And that&#x27;, &#x27;The other thing&#x27;])
+    &#x27;This. And that. The other thing.&#x27;
+    &quot;&quot;&quot;
+<div class="alt 12">    "*** YOUR CODE HERE ***"
+</div><div class="solution 12">&#x20;&#x20;&#x20;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x3d;&#x20;&#x22;&#x22;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x2c;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x7a;&#x69;&#x70;&#x28;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x5f;&#x73;&#x65;&#x71;&#x75;&#x65;&#x6e;&#x63;&#x65;&#x2c;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x5f;&#x73;&#x65;&#x71;&#x75;&#x65;&#x6e;&#x63;&#x65;&#x29;&#x29;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x3d;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x2b;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x20;&#x2b;&#x20;&#x22;&#x2e;&#x22;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x20;&#x3c;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x5f;&#x73;&#x65;&#x71;&#x75;&#x65;&#x6e;&#x63;&#x65;&#x29;&#x2d;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x3d;&#x20;&#x74;&#x65;&#x78;&#x74;&#x20;&#x2b;&#x20;&#x22;&#x20;&#x22;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x65;&#x78;&#x74;</div>
+def code_document(coder, document):
+    &quot;&quot;&quot;Return a coded form of document.
+
+    &gt;&gt;&gt; enc9, dec9 = make_coders(9)
+    &gt;&gt;&gt; code_document(enc9, &#x27;This. And that. The other thing.&#x27;)
+    &#x27;cqrB. Jwm CqjC. cqn xCqnA Cqrwp.&#x27;
+    &gt;&gt;&gt; code_document(dec9, &#x27;cqrB. Jwm CqjC. cqn xCqnA Cqrwp.&#x27;)
+    &#x27;This. And that. The other thing.&#x27;
+    &quot;&quot;&quot;
+<div class="alt 12">    "*** YOUR CODE HERE ***"
+</div><div class="solution 12">&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x73;&#x70;&#x6c;&#x69;&#x74;&#x5f;&#x73;&#x65;&#x6e;&#x74;&#x65;&#x6e;&#x63;&#x65;&#x73;&#x28;&#x64;&#x6f;&#x63;&#x75;&#x6d;&#x65;&#x6e;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x6d;&#x73;&#x67;&#x5f;&#x63;&#x6f;&#x64;&#x65;&#x72;&#x28;&#x6d;&#x73;&#x67;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x63;&#x6f;&#x64;&#x65;&#x5f;&#x6d;&#x65;&#x73;&#x73;&#x61;&#x67;&#x65;&#x28;&#x63;&#x6f;&#x64;&#x65;&#x72;&#x2c;&#x20;&#x6d;&#x73;&#x67;&#x29;</div>    coded_sentences = map(msg_coder, sentences)
+    return concat_sentences(coded_sentences)</code></pre>
+
+
+    <button id='12' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Write the function <code>trim_leading</code> (an exercise in logical ops and loops).</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q trim_leading</code></pre>
+
+<p>Write the function <code>next_sentence</code> to pry the first sentence off the front of
+a document (it ends in a period) and return it along with the rest of the document
+as a tuple.  This is sneaking up on a concept that we'll see later in the course
+called <em>iterators</em>.  You have actually seen some in the field already.  <code>range</code> and
+<code>zip</code> don't actually return lists, they just act like they do.  Pretty sneaky.</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q next_sentence</code></pre>
+
+<p>With this tool in hand, we can split a document into a list of message to encode.  But then
+we will also need to put them back together again.  Write <code>split_sentences</code> and 
+<code>concat_sentences</code> - two special agents that are highly complementary.</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q split_sentences</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q concat_sentences</code></pre>
+
+<p>Now you are ready.  Write <code>code_document</code>.  To put it to use, you will need coder functions
+from the previous question. Psst.  Don't tell.</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q code_document</code></pre>
+
+
+<h2 id="extra-questions">Extra Questions</h2>
+
+
+<blockquote><p>Questions in this section are not required for submission. However,
+we encourage you to try them out on your own time for extra practice.</p></blockquote>
+
+<p>You have now developed three different sorting algorithms - <code>min sort</code>,
+<code>quick sort</code> and <code>merge sort</code>. In data science you often work with large
+amounts of data and you often have to sort it to work on it.  So your
+sort function needs to be fast and robust.  You can easily generate
+large trial data</p>
+
+<pre><code>list(range(1000000))</code></pre>
+
+<p>Try out the min, quick, and merge sorts that you've got so far on increasingly
+large lists of ordered and random data.  (You can easily write a loop to do this.)</p>
+
+<ul>
+  <li>Do you notice the increasing delay?</li>
+  <li>At what data size to your algorithms using linear recursion break?</li>
+  <li>At what size does the tree recursion in quick sort break on ordered data?  Why
+  not on random data?</li>
+</ul>
+
+<p>Let's see if a more tightly coded <code>minsort</code> can compete with the balanced tree
+recursion in <code>merge_sort</code>.</p>
+
+<h3 class="question" id="q9">Question 9: Iterative min sort</h3>
+
+<p>Write an iterative version if <code>imin</code>. (It should be 4 lines of code.)</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q imin</code></pre>
+
+<p>Write an iterative version of <code>iremove</code>. This is a little trickier than its
+recursive cousin.  (7 lines of code.  Or 6)</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q iremove</code></pre>
+
+<p>Write an iterative version of <code>minsort</code>. (6 lines of code.  Or 5)</p>
+
+
+
+<pre><code># Iterative min sort
+def first(s):
+    return s[0]
+
+def rest(s):
+    return s[1:]
+
+def imin(s):
+    &quot;&quot;&quot;Return the minimum value in a sequence.
+
+    &gt;&gt;&gt; imin([3,1,2])
+    1
+    &quot;&quot;&quot;
+<div class="alt 13">    "*** YOUR CODE HERE ***"
+</div><div class="solution 13">&#x20;&#x20;&#x20;&#x20;&#x70;&#x6d;&#x69;&#x6e;&#x20;&#x3d;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x73;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x6d;&#x69;&#x6e;&#x20;&#x3d;&#x20;&#x6d;&#x69;&#x6e;&#x28;&#x70;&#x6d;&#x69;&#x6e;&#x2c;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6d;&#x69;&#x6e;</div>
+def iremove(x, s):
+    &quot;&quot;&quot;Remove first element equal to x from sequence s.
+
+    &gt;&gt;&gt; iremove(1,[])
+    []
+    &gt;&gt;&gt; iremove(1,[1])
+    []
+    &gt;&gt;&gt; iremove(1,[1,1])
+    [1]
+    &gt;&gt;&gt; iremove(1,[2,1])
+    [2]
+    &gt;&gt;&gt; iremove(1,[3,1,2])
+    [3, 2]
+    &gt;&gt;&gt; iremove(1,[3,1,2,1])
+    [3, 2, 1]
+    &gt;&gt;&gt; iremove(5, [3, 5, 2, 5, 11])
+    [3, 2, 5, 11]
+    &quot;&quot;&quot;
+<div class="alt 13">    "*** YOUR CODE HERE ***"
+</div><div class="solution 13">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x73;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x73;&#x29;&#x20;&#x21;&#x3d;&#x20;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x73;&#x20;&#x2b;&#x20;&#x5b;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x73;&#x29;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x20;&#x2b;&#x20;&#x73;</div>
+def minsort(s):
+    &quot;&quot;&quot;Sort sequence s in ascending order.
+
+    &gt;&gt;&gt; minsort([])
+    []
+    &gt;&gt;&gt; minsort([1])
+    [1]
+    &gt;&gt;&gt; minsort([1, 1, 1])
+    [1, 1, 1]
+    &gt;&gt;&gt; minsort([1, 2, 3])
+    [1, 2, 3]
+    &gt;&gt;&gt; minsort([3, 2, 1])
+    [1, 2, 3]
+    &gt;&gt;&gt; minsort([1, 2, 1])
+    [1, 1, 2]
+    &gt;&gt;&gt; minsort([1,2,3, 2, 1])
+    [1, 1, 2, 2, 3]
+    &quot;&quot;&quot;
+<div class="alt 13">    "*** YOUR CODE HERE ***"
+</div><div class="solution 13">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x69;&#x6e;&#x5f;&#x76;&#x61;&#x6c;&#x20;&#x3d;&#x20;&#x69;&#x6d;&#x69;&#x6e;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x20;&#x3d;&#x20;&#x69;&#x72;&#x65;&#x6d;&#x6f;&#x76;&#x65;&#x28;&#x6d;&#x69;&#x6e;&#x5f;&#x76;&#x61;&#x6c;&#x2c;&#x20;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x73;&#x20;&#x2b;&#x20;&#x5b;&#x6d;&#x69;&#x6e;&#x5f;&#x76;&#x61;&#x6c;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;</div></code></pre>
+
+
+    <button id='13' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<h3 class="question" id="q10">Question 10: HOF Merge</h3>
+
+<p>You have written various functions to sort lists of values using the <code>&lt;=</code> primitive
+to order the elements.  But in many situations the lists contain data structures as
+elements.  These might be deep lists with tuples as elements.  We can use higher
+order functions to give us the flexibility to use a generic sorting method, but provide
+a function to compare elements.  The function we pass in is suited to the type
+of elements in the list and what we want to do with them, e.g., sort in ascending order
+or descending.</p>
+
+<p>First, complete the <em>less than or equal</em> function factory that returns a function
+that compares the <code>i</code>th element of two tuples or lists.</p>
+
+
+
+<pre><code>def leq_maker(i):
+    &quot;&quot;&quot;Return a less_equal function that compares the i&#x2d;th elements of two sequences.
+
+    &gt;&gt;&gt; leq_maker(0)((1,3),(2,2))
+    True
+    &gt;&gt;&gt; leq_maker(1)((1,3),(2,2))
+    False
+    &quot;&quot;&quot;
+<div class="alt 14">    "*** YOUR CODE HERE ***"
+</div><div class="solution 14">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x6c;&#x65;&#x71;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x28;&#x78;&#x2c;&#x20;&#x79;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#x5b;&#x69;&#x5d;&#x20;&#x3c;&#x3d;&#x20;&#x79;&#x5b;&#x69;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x65;&#x71;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;</div></code></pre>
+
+
+    <button id='14' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q leq_maker</code></pre>
+
+<p>Modify your recursive function <code>merge</code> to complete <code>merge_hof</code>
+which takes 2 <em>sorted</em> lists <code>lst1</code> and <code>lst2</code>
+AND a <code>less_or_equal</code> function that compares elements of the lists.  It
+returns a new list that contains all the elements in the two lists
+in sorted order according to the comparison function.
+<br/>
+
+</p>
+
+<pre><code>def merge_hof(lst1, lst2, leq):
+    &quot;&quot;&quot;Merge two sorted lists using the leq function to compare elements.
+
+    &gt;&gt;&gt; merge_hof([(1,2),(3,1)], [(2,4),(3,2),(4,5)], leq_maker(0))
+    [(1, 2), (2, 4), (3, 1), (3, 2), (4, 5)]
+    &gt;&gt;&gt; merge_hof([(3, 1), (1, 2)],  [(3, 2), (2, 4), (4, 5)], leq_maker(1))
+    [(3, 1), (1, 2), (3, 2), (2, 4), (4, 5)]
+    &gt;&gt;&gt; merge_hof([], [2, 4, 6], lambda x,y: x&lt;=y )
+    [2, 4, 6]
+    &gt;&gt;&gt; merge_hof([1, 2, 3], [], lambda x,y: x&lt;=y )
+    [1, 2, 3]
+    &quot;&quot;&quot;
+    # recursive
+<div class="alt 15">    "*** YOUR CODE HERE ***"
+</div><div class="solution 15">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x20;&#x6f;&#x72;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x20;&#x2b;&#x20;&#x6c;&#x73;&#x74;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x71;&#x28;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x6c;&#x73;&#x74;&#x31;&#x29;&#x2c;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x6c;&#x73;&#x74;&#x32;&#x29;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x6c;&#x73;&#x74;&#x31;&#x29;&#x5d;&#x20;&#x2b;&#x20;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x5f;&#x68;&#x6f;&#x66;&#x28;&#x72;&#x65;&#x73;&#x74;&#x28;&#x6c;&#x73;&#x74;&#x31;&#x29;&#x2c;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x2c;&#x20;&#x6c;&#x65;&#x71;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x6c;&#x73;&#x74;&#x32;&#x29;&#x5d;&#x20;&#x2b;&#x20;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x5f;&#x68;&#x6f;&#x66;&#x28;&#x6c;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x6c;&#x73;&#x74;&#x32;&#x29;&#x2c;&#x20;&#x6c;&#x65;&#x71;&#x29;</div></code></pre>
+
+
+    <button id='15' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q merge_hof</code></pre>
+
+<p>You probably noticed that in the doctest we used a <code>lambda</code> expression.  We will talk
+about this after the midterm.  Where <code>def</code> is a function definition statement, <code>lambda</code>
+is a function definition expression.  Sometimes it is called an <em>anonymous function</em>,
+as no name is declared.  It creates a function object that can be passed around and
+invoked, much like what is returned from our function factories, such as <code>leq_maker</code>.</p>
+
+<p>Similarly, write an iterative function <code>merge_hof_iter</code> that behaves like <code>merge_hof</code> but is
+implemented using loop.
+<br/>
+
+</p>
+
+<pre><code># Iterative solution 
+def merge_hof_iter(lst1, lst2, leq):
+    &quot;&quot;&quot;Merge two sorted lists using the leq function to compare element.
+
+    &gt;&gt;&gt; merge_hof_iter([(1,2),(3,1)], [(2,4),(3,2),(4,5)], leq_maker(0))
+    [(1, 2), (2, 4), (3, 1), (3, 2), (4, 5)]
+    &gt;&gt;&gt; merge_hof_iter([(3, 1), (1, 2)],  [(3, 2), (2, 4), (4, 5)], leq_maker(1))
+    [(3, 1), (1, 2), (3, 2), (2, 4), (4, 5)]
+    &gt;&gt;&gt; merge_hof_iter([], [2, 4, 6], lambda x,y: x&lt;=y )
+    [2, 4, 6]
+    &gt;&gt;&gt; merge_hof_iter([1, 2, 3], [], lambda x,y: x&lt;=y )
+    [1, 2, 3]
+    &quot;&quot;&quot;
+<div class="alt 16">    "*** YOUR CODE HERE ***"
+</div><div class="solution 16">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x71;&#x28;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x30;&#x5d;&#x2c;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x30;&#x5d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x2b;&#x3d;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x30;&#x5d;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x20;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x5b;&#x31;&#x3a;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x2b;&#x3d;&#x20;&#x5b;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x30;&#x5d;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x20;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x32;&#x5b;&#x31;&#x3a;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x73;&#x74;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x2b;&#x20;&#x6c;&#x73;&#x74;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x2b;&#x20;&#x6c;&#x73;&#x74;&#x32;</div></code></pre>
+
+
+    <button id='16' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q merge_hof_iter</code></pre>
+
+<p>Finally, modify your <code>merge_sort</code> to take the comparator function that is passed in and
+pass it into the recursive process.</p>
+
+
+
+<pre><code>def merge_hof_sort(lst, leq):
+    &quot;&quot;&quot;Return sorted list using a merge sort.
+    Split the list into two halves (i.e., lengths differ by &lt;= 1)
+    Sort each and merge.
+
+    &gt;&gt;&gt; merge_hof_sort([(2, &quot;hi&quot;), (1, &quot;how&quot;), (5, &quot;goes&quot;), (7, &quot;I&quot;)], leq_maker(0)) 
+    [(1, &#x27;how&#x27;), (2, &#x27;hi&#x27;), (5, &#x27;goes&#x27;), (7, &#x27;I&#x27;)]
+    &gt;&gt;&gt; merge_hof_sort([(2, &quot;hi&quot;), (1, &quot;how&quot;), (5, &quot;goes&quot;), (7, &quot;I&quot;)], leq_maker(1)) 
+    [(7, &#x27;I&#x27;), (5, &#x27;goes&#x27;), (2, &#x27;hi&#x27;), (1, &#x27;how&#x27;)]
+    &gt;&gt;&gt; merge_hof_sort([1,2,3,4,5], lambda x,y: x&lt;=y)
+    [1, 2, 3, 4, 5]
+    &gt;&gt;&gt; merge_hof_sort([1,2,3,4,5], lambda x,y: x&gt;=y)
+    [5, 4, 3, 2, 1]
+    &gt;&gt;&gt; merge_hof_sort([(2, &quot;hi&quot;), (1, &quot;how&quot;), (5, &quot;goes&quot;), (7, &quot;I&quot;)], lambda x,y: len(x[1]) &lt;= len(y[1]))
+    [(7, &#x27;I&#x27;), (2, &#x27;hi&#x27;), (1, &#x27;how&#x27;), (5, &#x27;goes&#x27;)]
+    &quot;&quot;&quot;
+<div class="alt 17">    "*** YOUR CODE HERE ***"
+</div><div class="solution 17">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x3c;&#x20;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x69;&#x64;&#x20;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x29;&#x2f;&#x2f;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x65;&#x66;&#x74;&#x20;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x3a;&#x6d;&#x69;&#x64;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x6d;&#x69;&#x64;&#x3a;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x5f;&#x68;&#x6f;&#x66;&#x28;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x5f;&#x68;&#x6f;&#x66;&#x5f;&#x73;&#x6f;&#x72;&#x74;&#x28;&#x6c;&#x65;&#x66;&#x74;&#x2c;&#x20;&#x6c;&#x65;&#x71;&#x29;&#x2c;&#x6d;&#x65;&#x72;&#x67;&#x65;&#x5f;&#x68;&#x6f;&#x66;&#x5f;&#x73;&#x6f;&#x72;&#x74;&#x28;&#x72;&#x69;&#x67;&#x68;&#x74;&#x2c;&#x20;&#x6c;&#x65;&#x71;&#x29;&#x2c;&#x20;&#x6c;&#x65;&#x71;&#x29;</div></code></pre>
+
+
+    <button id='17' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q merge_hof_sort</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#lists-in-a-little-more-depth">Lists in a little more depth</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Get Seven</a></li>
+  <li><a href="#q2">Question 2: WWPP: List slicing</a></li>
+</ul>
+
+  <li><a href="#reverse-list---recursion-vs-iteration">Reverse List - Recursion vs Iteration</a></li>
+  <ul>
+  <li><a href="#q3">Question 3: Reverse (recursively)</a></li>
+  <li><a href="#q4">Question 4: Reverse (iteratively)</a></li>
+</ul>
+
+  <li><a href="#traversing-deep">Traversing Deep</a></li>
+  <ul>
+  <li><a href="#q5">Question 5: Flatten</a></li>
+</ul>
+
+  <li><a href="#merging-and-sorting">Merging and Sorting</a></li>
+  <ul>
+  <li><a href="#q6">Question 6: Merge</a></li>
+</ul>
+
+  <li><a href="#secret-codes">Secret Codes</a></li>
+  <ul>
+  <li><a href="#q7">Question 7: Top secret coded message</a></li>
+  <li><a href="#q8">Question 8: Coded document</a></li>
+</ul>
+
+  <li><a href="#extra-questions">Extra Questions</a></li>
+  <ul>
+  <li><a href="#q9">Question 9: Iterative min sort</a></li>
+  <li><a href="#q10">Question 10: HOF Merge</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(function() {
+    if (new Date("03/02/2016") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+</html>

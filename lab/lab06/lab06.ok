@@ -1,0 +1,27 @@
+{
+    "name": "Lab 6",
+    "endpoint": "cal/cs88/sp16/lab06",
+    "src": [
+        "lab06.py"
+    ],
+    "tests": {
+        "tests/case1.py": "ok_test",
+        "tests/case1-solved.py": "ok_test",
+        "tests/case2.py": "ok_test",
+        "lab06.py:deep_copy": "doctest",
+        "tests/case3.py": "ok_test",
+        "lab06.py:word_count_dictionary": "doctest",
+        "lab06.py:word_count_tuple": "doctest",
+        "lab06.py:word_count_list": "doctest",
+        "lab06.py:get_word_count": "doctest",
+        "lab06.py:word_count_fun": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "unlock",
+        "backup"
+    ]
+}

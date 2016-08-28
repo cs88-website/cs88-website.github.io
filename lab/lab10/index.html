@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Gunjan Baid" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 10: Spark | CS 88 Fall 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 10</span>: Spark</h1>
+    </div>
+
+    <p><i>Due at 11:59pm on 04/29/2016.</i></p>
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab10.zip">lab10.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the <a href="ok">OK</a> autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab with
+<code>python3 ok --submit</code>. You may submit more than once before the
+deadline; only the final submission will be graded.</p>
+
+
+<ul>
+  <li>To receive credit for this lab, you must complete Questions 1-3
+  in the <a href="https://accounts.cloud.databricks.com/registration.html#signup/">Databricks Spark platform</a>.</li>
+  <li>After completing each question on Databricks, copy a token into <a href="lab10.py">lab10.py</a>.</li>
+  <li>After finishing the lab, submit as usual.</li>
+</ul>
+
+
+    
+
+
+<h2 id="mapreduce">MapReduce</h2>
+
+
+<p>In this lab, we'll be working with MapReduce, a programming paradigm
+developed by Google, which allows a programmer to process large amounts
+of data in parallel on many computers. We will use Apache Spark to write
+our MapReduce application.</p>
+
+<p>A MapReduce application consists two components: the <strong>mapper</strong> and
+the <strong>reducer</strong>.</p>
+
+<ul>
+  <li>The <strong>mapper</strong> takes an input file and returns a list of
+  key-value pairs.</li>
+  <li>The <strong>reducer</strong> takes an iterable over all values for a common key 
+  and outputs a single value.</li>
+</ul>
+
+<p>The following diagram summarizes the entire MapReduce pipeline:</p>
+
+<p><img class="img-responsive center-block" src="assets/mapreduce_diag.png" alt="Mapreduce Diagram"></p>
+
+
+<h3 id="example-counting-reviews">Example: Counting Reviews</h3>
+
+
+<p>In this lab, we will be revisiting the Maps project by analyzing the
+<a href="https://www.yelp.com/dataset_challenge">Yelp academic dataset</a>.</p>
+
+<p>Let's take a look at how we could count the number of reviews
+for a particular restaurant. Intuitively, if we are given a giant list
+of restaurant reviews in the format <code>(restaurant_name, review)</code>, we would
+just loop over the list and increase the restaurant <code>restaurant_name</code>'s' count by 1
+(perhaps in a dictionary mapping <code>restaurant_name</code>s to a <code>count</code>). When we reach
+the end of the list, we will have processed every review and tallied up the
+number of reviews for each restaurant.</p>
+
+<p>To formulate this as a MapReduce problem, we need to define an
+appropriate <code>mapper</code> and <code>reducer</code> function.</p>
+
+<p>What should the <strong>mapper</strong> do? For each <code>(restaurant_name, review)</code> tuple,
+the mapper outputs a key-value pair. What should our key-value pairs be for
+our review counting example?</p>
+
+<ul>
+  <li><strong>key</strong>: We want to uniquely identify each review. We could
+  use the restaurant name contained in each review.</li>
+  <li><strong>value</strong>: We want to count each review exactly once. Thus, our value
+  can just be the number 1.</li>
+</ul>
+
+<p>For example, the mapper will take in an input file like:</p>
+
+<pre><code>(&quot;ShareTea&quot;, &quot;2 stars for sharetea...&quot;)
+(&quot;ShareTea&quot;, &quot;I love sharetea!&quot;)
+(&quot;UCafe&quot;, &quot;I prefer sharetea!&quot;)
+(&quot;OCha&quot;, &quot;I like sharetea better :)&quot;)
+(&quot;ShareTea&quot;, &quot;Sharetea is great&quot;)
+(&quot;OCha&quot;, &quot;ocha is pretty great too. their tea is awesome!&quot;)</code></pre>
+
+<p>It then outputs a sequence of key-value pairs like this:</p>
+
+<pre><code>&#x27;ShareTea&#x27;  1
+&#x27;ShareTea&#x27;  1
+&#x27;UCafe&#x27;  1
+&#x27;OCha&#x27;  1
+&#x27;ShareTea&#x27;  1
+&#x27;OCha&#x27;  1</code></pre>
+
+<p>The <strong>reducer</strong> takes this sequence and simply adds up all the values
+that are associated with each key:</p>
+
+<pre><code>&#x27;ShareTea&#x27;  3
+&#x27;UCafe&#x27;  1
+&#x27;OCha&#x27;  2</code></pre>
+
+<p>A simple example of three reviews for ShareTea is illustrated by the following diagram:</p>
+
+<p><img class="img-responsive center-block" src="assets/mapreduce_reviewcount.png" alt="Reviewcount example"></p>
+
+<p>You will see this example in action as Question 0 when you load up the Databricks server.</p>
+
+
+<h2 id="apache-spark-and-databricks">Apache Spark and Databricks</h2>
+
+
+<p><a href="https://spark.apache.org/research.html">Spark</a> is a framework that builds on MapReduce. The <a href="http://amplab.cs.berkeley.edu/">AMPLab</a> (here at Cal!) first developed this framework to improve an open source implementation of MapReduce that ran on <a href="https://hadoop.apache.org/">Hadoop</a>. In this lab, we will run Spark on the <a href="https://databricks.com/">Databricks</a> platfrom, which will demonstrate how you can write programs that can harness parallel processing on Big Data.</p>
+
+<p>Databricks is a company that was founded out of UC Berkeley by the creators of Spark. They have been generous enough to donate computing resources for the entire class to write Spark code in Databricks notebooks. A Databricks notebook is very similar to an IPython notebook, which you all have had experience with in Data 8.</p>
+
+
+<h2 id="getting-started">Getting Started</h2>
+
+
+<p>To create a Databricks Community Edition account, visit this spreadsheet <a href="https://docs.google.com/a/berkeley.edu/spreadsheets/d/1l00Yhb0XWxaavS3ptSCdxlEOMjVn4NwJXN0LfPU2WCk/edit?usp=sharing">here</a>, find your name, and sign up for an account with the link associated with your name.</p>
+
+
+<h3 id="setting-up-your-workspace">Setting up Your Workspace</h3>
+
+
+<p>After activating your account, you will see a toolbar on the left. To grab the files,</p>
+
+<ul>
+  <li>Press Workspace</li>
+  <li>Press the down arrow OR right-click on the Workspace bar that slided out</li>
+  <li>Select "Import"</li>
+  <li>Drag-and-drop the lab10.dbc file that was included in <a href="http://cs88-website.github.io/lab/lab10/lab10.zip">lab10.zip</a></li>
+  <li>Get started on Q0!</li>
+</ul>
+
+<p>For questions 1-3, once you complete the questions and pass the tests, copy the token that is shown in the last cell into your lab10.py. Make sure the token is a string.</p>
+
+
+<h3 id="creating-a-cluster">Creating a Cluster</h3>
+
+
+<p>If your notebook says "Detached" (on the top left), you should attach a cluster. If no cluster exists, then you should create one with the name "cs88".</p>
+
+<p>To create a cluster, click on "Detached" and then click "Create a Cluster". Enter in "cs88" for the Cluster Name. Then click the blue "Create Cluster" button.</p>
+
+<p>The cluster may take a few minutes to spin up and get ready.</p>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#mapreduce">MapReduce</a></li>
+  <ul>
+  <li><a href="#example-counting-reviews">Example: Counting Reviews</a></li>
+</ul>
+
+  <li><a href="#apache-spark-and-databricks">Apache Spark and Databricks</a></li>
+  <li><a href="#getting-started">Getting Started</a></li>
+  <ul>
+  <li><a href="#setting-up-your-workspace">Setting up Your Workspace</a></li>
+  <li><a href="#creating-a-cluster">Creating a Cluster</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(function() {
+    if (new Date("04/30/2016") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+</html>
