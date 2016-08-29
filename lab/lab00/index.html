@@ -81,8 +81,7 @@ Inside the archive, you will find starter files for the questions in this lab,
 
 <h2 id='submission'>Submission</h2>
 
-<p>By the end of this lab, you should have submitted the lab with
-<code>python ok --submit</code>. You may submit more than once before the
+<p>By the end of this lab, you should have submitted the lab using <code>ok</code>. You may submit more than once before the
 deadline; only the final submission will be graded.</p>
 
 
@@ -207,9 +206,7 @@ This zip file contains all the files that we'll need for this lab.</p>
 <h3 id="uploading-the-assignment">Uploading the assignment</h3>
 
 
-<p>To upload the file, you will need to switch from the terminal tab to the homepage tab. 
-Upload the zip file to the <code>cs88</code> directory you created earlier. 
-Don't unzip the file just yet, we will do that after uploading it.</p>
+<p>The lab must be uploaded to Jupyter as a zip file; uploading a folder will not work. Switch from the terminal to the homepage and upload the zip file into the <code>cs88</code> directory you created earlier.</p>
 
 
 <h3 id="extracting-starter-files">Extracting starter files</h3>
@@ -380,13 +377,7 @@ three files:</p>
 <p>Now, let's test our code to make sure it works. You can run <code>ok</code> with this
 command:</p>
 
-<pre><code>python ok</code></pre>
-
-<blockquote><p><em>Note</em>: The first time you run OK, you will be prompted for your bCourses
-email. We use this information to associate your code with you when grading.</p>
-
-<p>Every time you run OK, OK will try to back up your work. Don't worry if it
-says that the "Connection timed out." We won't use your backups for grading.</p></blockquote>
+<pre><code>python ok &#x2d;&#x2d;local</code></pre>
 
 <p>If you wrote your code correctly, we should see a successful test:</p>
 
@@ -433,41 +424,11 @@ Test summary
 <p>Now that you have completed your first CS88 lab assignment, it's time to turn it
 in.</p>
 
+<p>Download the <code>lab00.py</code> file to your computer. Go to <a href="https://okpy.org">okpy.org</a> 
+and find the Lab 0 assignment under the CS 88 course. Click on <code>Create a new
+submission</code> and upload the <code>lab00.py</code> file.</p>
 
-<h3 id="step-1-submit-with-ok">Step 1: Submit with <code>ok</code></h3>
-
-
-<p>From your terminal, make sure you are in the directory that contains <code>ok</code>. If
-you aren't there yet, you can use this command:</p>
-
-<pre><code>cd ~/cs88/lab/lab00</code></pre>
-
-<p>Next, use <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
-
-<pre><code>python ok &#x2d;&#x2d;submit</code></pre>
-
-<p>This will prompt you for an email address if you haven't run OK before, 
-please use your Berkeley email address.
-After that, OK will print out a message like the following:</p>
-
-<pre><code>Submitting... 100% complete
-Backup successful for user: ...
-URL: https://ok&#x2d;server.appspot.com/#/...</code></pre>
-
-<p>You can follow the URL to view your submission.</p>
-
-
-<h3 id="step-2-verifying-your-submission">Step 2: Verifying your submission</h3>
-
-
-<p>You can follow the link that OK provides to see your final submission, or you
-can go to <a href="https://okpy.org">okpy.org</a>. You will be able to view your
-submission after you log in.</p>
-
-<blockquote><p>Make sure you login with the same email you provided when running <code>ok</code> from
-your terminal!</p></blockquote>
-
-<p>You should see a successful submission for lab00.</p>
+<p>Verify that your submission worked. You should see a successful submission for lab00.</p>
 
 <p><strong>Congratulations</strong>, you just submitted your first CS 88 lab!</p>
 
@@ -497,11 +458,6 @@ your terminal!</p></blockquote>
   <li><a href="#write-your-own-code">Write your own code</a></li>
   <li><a href="#test-your-code">Test your code</a></li>
   <li><a href="#submitting-assignments">Submitting assignments</a></li>
-  <ul>
-  <li><a href="#step-1-submit-with-ok">Step 1: Submit with <code>ok</code></a></li>
-  <li><a href="#step-2-verifying-your-submission">Step 2: Verifying your submission</a></li>
-</ul>
-
 </ul>
 
     </nav>
