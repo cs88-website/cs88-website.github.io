@@ -1,0 +1,24 @@
+{
+    "name": "Homework 1",
+    "endpoint": "cal/cs88/fa16/hw01",
+    "src": [
+        "hw01.py"
+    ],
+    "tests": {
+        "tests/primitive_expressions.py": "ok_test",
+        "tests/call_expressions.py": "ok_test",
+        "tests/short_circuiting.py": "ok_test",
+        "tests/truthiness.py": "ok_test",
+        "tests/what_if.py": "ok_test",
+        "hw01.py:both_positive": "doctest",
+        "hw01.py:a_plus_abs_b": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
