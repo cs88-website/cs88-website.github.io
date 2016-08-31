@@ -78,16 +78,16 @@
 <p>Download <a href="hw01.zip">
   hw01.zip</a>.  Inside the archive, you will
 find a file called <a href="hw01.py">
-  hw01.py</a>, along with a copy
-of the <a href="ok">OK</a> autograder.</p>
+hw01.py</a>, along with a copy
+of the <a href="ok">OK</a> autograder. Upload the zip file to Jupyter
+to complete the assignment. See <a href="/lab/lab00#submitting-assignments">Lab 0</a> for instructions on
+using Jupyter to complete assignments.</p>
 
-<p><strong>Submission:</strong> When you are done, submit with <code>python3 ok
-  --submit</code>. You may submit more than once before the deadline; only the
-final submission will be scored. See <a href="/lab/lab01#submitting-assignments">Lab 1</a> for instructions on submitting
+<p><strong>Submission:</strong> When you are done, submit the assignment
+by uploading the .py file to <a href="https://okpy.org">okpy.org</a>. 
+You may submit more than once before the deadline; only the
+final submission will be scored. See <a href="/lab/lab00#submitting-assignments">Lab 0</a> for instructions on submitting
 assignments.</p>
-
-<p><strong>Using OK:</strong> If you have any questions about using OK, please
-refer to <a href="/articles/using-ok.html">this guide.</a>
 
 <p><strong>Readings:</strong> This homework relies on following references:</p>
 
@@ -103,6 +103,19 @@ refer to <a href="/articles/using-ok.html">this guide.</a>
 <h2 id="develop-your-understanding">Develop your understanding</h2>
 
 
+<p>Like getting to Carnegie Hall, becoming proficient in programming takes practice.  The
+start of this assignment is intended to give you practice working with values and
+expressions while pointing out some of the subtleties that are good to have tucked
+away in your brain somewhere.</p>
+
+<p>Please note that while those of you with some programming
+experience may find this to be a rather basic review, others may find
+it completely new.  Either way, bear with us; we want everyone to have
+the basics.</p>
+
+<h3 id="primitive-expressions">Primitive expressions</h3>
+
+
 <p>A <strong>primitive expression</strong> requires only a single evaluation
 step: use the literal value directly. For example, numbers, names, and
 strings are all primitive expressions.</p>
@@ -111,23 +124,6 @@ strings are all primitive expressions.</p>
 2
 &gt;&gt;&gt; &#x27;Hello World!&#x27;
 &#x27;Hello World!&#x27;</code></pre>
-
-<p>Like getting to Carnegie Hall, becoming proficient in programming takes practice.  The
-start of this assignment is intended to give you practice working with values and
-expressions while pointing out some of the subtleties that are good to have tucked
-away in your brain somewhere.</p>
-
-<p>Start the python interpreter in a terminal window.  Open the
-<a href="https://data8.berkeley.edu/hub/interact?repo=cs-connector&path=HW01-connect.ipynb">HW01-connect</a>
-notebook on data8 and put them side by side.  Run the cells as you type
-the expressions into the python interpreter so you can get a feel for
-the relationship between the two.</p>
-
-<p>Please note that while those of you with some programming
-experience may find this to be a rather basic review, others may find
-it completely new.  Either way, bear with us; we want everyone to have
-the basics.  And there are some subtleties that we want to be sure you
-learn!</p>
 
 
 <h3 id="arithmetic-operations-on-integers">Arithmetic operations on integers</h3>
@@ -145,8 +141,8 @@ learn!</p>
 8</code></pre>
 
 <p>All of these operators took integers as inputs and produced integers as outputs.
-There are, of course, other important data types, such as Booleans and things that behave
-like decimal numbers (called floats):</p>
+There are other operators that take integers as inputs and
+produce other data types, such as booleans or decimal numbers (called floats), as outputs.</p>
 
 <pre><code>&gt;&gt;&gt; 2 == 1
 False
@@ -613,7 +609,7 @@ bring those names into our local namespace using an <code>import</code> statemen
 <blockquote><p>Use OK to test your knowledge with the some "What Would Python Print?"
 questions:</p>
 
-<pre><code>python ok &#x2d;q call&#x2d;expressions &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
+<pre><code>python ok &#x2d;q call_expressions &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
 
 <!-- <prompt>
 
@@ -843,7 +839,7 @@ def a_plus_abs_b(a, b):
         f = _____
     else:
         f = _____
-    return f(a, b)</code></pre>
+    return f(a, b) # You can replace this line, but don&#x27;t have to.</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q a_plus_abs_b</code></pre>
 
@@ -857,6 +853,7 @@ def a_plus_abs_b(a, b):
       <ul>
   <li><a href="#develop-your-understanding">Develop your understanding</a></li>
   <ul>
+  <li><a href="#primitive-expressions">Primitive expressions</a></li>
   <li><a href="#arithmetic-operations-on-integers">Arithmetic operations on integers</a></li>
 </ul>
 
