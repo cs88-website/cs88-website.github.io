@@ -1,3 +1,5 @@
+# Question 2
+
 def sum_of_squares(n):
     """
     return the sum of squares from 1 to n
@@ -7,6 +9,8 @@ def sum_of_squares(n):
     "*** YOUR CODE HERE ***"
 
 
+
+# Question 3
 
 def factors(n):
     """Prints out all of the numbers that divide `n` evenly.
@@ -21,6 +25,8 @@ def factors(n):
     """
     "*** YOUR CODE HERE ***"
 
+
+# Question 4
 
 def max_list(s):
     """Return the largest value in a sequence.  None if empty.
@@ -48,6 +54,8 @@ def remove_max(s):
     "*** YOUR CODE HERE ***"
 
 
+# Question 5
+
 def reverse(s):
     """Return a list that is the reverse of sequence s.
 
@@ -60,6 +68,8 @@ def reverse(s):
     return rs
 
 
+# Question 6
+
 def pythagorean_triple(a,b,c):
     """
     >>> pythagorean_triple(3,4,5)
@@ -70,6 +80,8 @@ def pythagorean_triple(a,b,c):
     "*** YOUR CODE HERE ***"
 
 
+# Question 7
+
 def temperature_converter(f_temp):
     """
     >>> celsius_temp1 = temperature_converter(32)
@@ -78,6 +90,8 @@ def temperature_converter(f_temp):
     """
     "*** YOUR CODE HERE ***"
 
+
+# Question 8
 
 def largest_factor(n):
     """Return the largest factor of n*n-1 that is smaller than n.
@@ -89,6 +103,8 @@ def largest_factor(n):
     """
     "*** YOUR CODE HERE ***"
 
+
+# Questions 9, 10
 
 from random import randint
 
