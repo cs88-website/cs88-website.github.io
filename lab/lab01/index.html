@@ -86,9 +86,9 @@ deadline; only the final submission will be graded.</p>
 
 
 <ul>
-  <li>To receive credit for this lab, you must complete all questions
-  in the "Required Questions" section. However, if you complete the challenge
-  problem, you can skip one of the required questions.</li>
+  <li>To receive credit for this lab, you must complete questions 
+  1, 2, 3, 4, 7. If you complete the challenge
+  problem, you can skip one of the required questions and still receive full credit.</li>
 </ul>
 
 
@@ -282,8 +282,7 @@ cases:</p>
 <pre><code>G(n) = n,                                       if n &lt;= 3
 G(n) = G(n &#x2d; 1) + 2 * G(n &#x2d; 2) + 3 * G(n &#x2d; 3),  if n &gt; 3</code></pre>
 
-<p>Write a recursive function <code>g</code> that computes <code>G(n)</code>. Then, write an
-iterative function <code>g_iter</code> that also computes <code>G(n)</code>:</p>
+<p>Write a recursive function <code>g</code> that computes <code>G(n)</code>.</p>
 
 
 
@@ -303,6 +302,7 @@ iterative function <code>g_iter</code> that also computes <code>G(n)</code>:</p>
     &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
 </div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x69;&#x6e;&#x20;&#x28;&#x31;&#x2c;&#x20;&#x32;&#x2c;&#x20;&#x33;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x28;&#x6e;&#x2d;&#x31;&#x29;&#x20;&#x2b;&#x20;&#x32;&#x2a;&#x67;&#x28;&#x6e;&#x2d;&#x32;&#x29;&#x20;&#x2b;&#x20;&#x33;&#x2a;&#x67;&#x28;&#x6e;&#x2d;&#x33;&#x29;</div>
+# Iterative solution, if you&#x27;re curious
 def g_iter(n):
     &quot;&quot;&quot;Return the value of G(n), computed iteratively.
 
@@ -317,8 +317,13 @@ def g_iter(n):
     &gt;&gt;&gt; g_iter(5)
     22
     &quot;&quot;&quot;
-<div class="alt 2">    "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x31;&#x20;&#x6f;&#x72;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x32;&#x20;&#x6f;&#x72;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x33;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x61;&#x2c;&#x20;&#x62;&#x2c;&#x20;&#x63;&#x20;&#x3d;&#x20;&#x31;&#x2c;&#x20;&#x32;&#x2c;&#x20;&#x33;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6e;&#x20;&#x3e;&#x20;&#x33;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x61;&#x2c;&#x20;&#x62;&#x2c;&#x20;&#x63;&#x20;&#x3d;&#x20;&#x62;&#x2c;&#x20;&#x63;&#x2c;&#x20;&#x63;&#x20;&#x2b;&#x20;&#x32;&#x2a;&#x62;&#x20;&#x2b;&#x20;&#x33;&#x2a;&#x61;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x20;&#x3d;&#x20;&#x6e;&#x20;&#x2d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x63;</div></code></pre>
+    if n == 1 or n == 2 or n == 3:
+        return n
+    a, b, c = 1, 2, 3
+    while n &gt; 3:
+        a, b, c = b, c, c + 2*b + 3*a
+        n = n &#x2d; 1
+    return c</code></pre>
 
 
     <button id='2' class='toggleButton'>
@@ -326,8 +331,7 @@ def g_iter(n):
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python ok -q g --local
-python ok -q g_iter --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python ok -q g --local</code></pre>
 
 <h3 class="question" id="q3">Question 3: Hailstone</h3>
 
@@ -501,45 +505,7 @@ happen.</p>
 
 </div>
 
-<h3 class="question" id="q7">Question 7: Common Misconception</h3>
-
-<p>The following recursive function appears to work, in that it returns
-a list <code>[1, ..., n]</code>.  (Try it out.) But just because it happens to 
-work doesn't make it right.  What is wrong with it?</p>
-
-<pre><code>i = 0
-def count_up(n):
-    global i
-    if n == 0:
-        return []
-    else:
-        i = i+1
-        return [i] + count_up(n&#x2d;1)
-
-count_up(5)</code></pre>
-
-
-    <button id='8' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 8">
-
-<p>The use of global variable i throughout the recursion to count up
-is extremely error prone.  Who knows what value <code>i</code> has when this is
-called.  It just happens to be set to <code>0</code> in this case. This was
-probaby what was intended.</p>
-
-<pre><code>def count_up(i, n):
-    if i &gt; n:
-        return []
-    else:
-        return [i] + count_up(i+1, n)
-
-count_up(1,5)</code></pre>
-
-</div>
-
-<h3 class="question" id="q8">Question 8: GCD</h3>
+<h3 class="question" id="q7">Question 7: GCD</h3>
 
 <p>The greatest common divisor of two positive integers <code>a</code> and <code>b</code> is the
 largest integer which evenly divides both numbers (with no remainder).
@@ -617,7 +583,7 @@ def gcd_iter(a, b):
 if you do a challenge question, you can skip another question on the lab
 without losing points.</p></blockquote>
 
-<h3 class="question" id="q9">Question 9: Interleaved Sum</h3>
+<h3 class="question" id="q8">Question 8: Interleaved Sum</h3>
 
 <p>Recall that the <code>summation</code> function computes the sum of a sequence of
 terms from 1 to <code>n</code>:</p>
@@ -745,13 +711,12 @@ number is equal to 0, 1, or <code>n</code>.)</p>
   <li><a href="#q4">Question 4: Remove from sequence</a></li>
   <li><a href="#q5">Question 5: Common Misconception</a></li>
   <li><a href="#q6">Question 6: Common Misconception</a></li>
-  <li><a href="#q7">Question 7: Common Misconception</a></li>
-  <li><a href="#q8">Question 8: GCD</a></li>
+  <li><a href="#q7">Question 7: GCD</a></li>
 </ul>
 
   <li><a href="#challenge-question">Challenge Question</a></li>
   <ul>
-  <li><a href="#q9">Question 9: Interleaved Sum</a></li>
+  <li><a href="#q8">Question 8: Interleaved Sum</a></li>
 </ul>
 
   <li><a href="#environment-diagram-rules">Environment Diagram Rules</a></li>

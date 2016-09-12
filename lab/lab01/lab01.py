@@ -34,6 +34,8 @@ def g(n):
     """
     "*** YOUR CODE HERE ***"
 
+
+# Iterative solution, if you're curious
 def g_iter(n):
     """Return the value of G(n), computed iteratively.
 
@@ -48,7 +50,13 @@ def g_iter(n):
     >>> g_iter(5)
     22
     """
-    "*** YOUR CODE HERE ***"
+    if n == 1 or n == 2 or n == 3:
+        return n
+    a, b, c = 1, 2, 3
+    while n > 3:
+        a, b, c = b, c, c + 2*b + 3*a
+        n = n - 1
+    return c
 
 
 def hailstone_iterative(n):

@@ -7,7 +7,6 @@
     "tests": {
         "lab01.py:sine": "doctest",
         "lab01.py:g": "doctest",
-        "lab01.py:g_iter": "doctest",
         "lab01.py:hailstone_recursive": "doctest",
         "lab01.py:hailstone_iterative": "doctest",        
         "lab01.py:gcd": "doctest",
