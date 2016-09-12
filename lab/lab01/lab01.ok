@@ -1,0 +1,25 @@
+{
+    "name": "Lab 1",
+    "endpoint": "cal/cs88/fa16/lab01",
+    "src": [
+        "lab01.py"
+    ],
+    "tests": {
+        "lab01.py:sine": "doctest",
+        "lab01.py:g": "doctest",
+        "lab01.py:g_iter": "doctest",
+        "lab01.py:hailstone_recursive": "doctest",
+        "lab01.py:hailstone_iterative": "doctest",        
+        "lab01.py:gcd": "doctest",
+        "lab01.py:remove": "doctest",
+        "lab01.py:interleaved_sum": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
