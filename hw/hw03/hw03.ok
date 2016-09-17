@@ -9,7 +9,7 @@
         "hw03.py:skip_add": "doctest",
         "hw03.py:move_stack": "doctest",
         "hw03.py:count_change":"doctest",
-        "lab03.py:rsort": "doctest"
+        "hw03.py:rsort": "doctest"
     },
     "protocols": [
         "restore",
