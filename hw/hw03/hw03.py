@@ -52,6 +52,16 @@ def rmin(s):
     else:
         return min(first(s), rmin(rest(s)))
 
+# Helper function
+def remove(to_remove, s):
+    """Returns the sequence s with the first occurrence of to_remove taken out."""
+    if s == []:
+        return []
+    if first(s) == to_remove:
+        return rest(s)
+    else:
+        return [first(s)] + remove(to_remove, rest(s))
+
 def rsort(s):
     """Sort sequence s in ascending order.
     
