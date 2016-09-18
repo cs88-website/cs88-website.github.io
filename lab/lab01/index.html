@@ -608,7 +608,7 @@ Here we are using it just for testing. It is simpler than something like:</p>
 &gt;&gt;&gt; summation(5, cube)
 225</code></pre>
 
-<p>Secondly, this is showing a <code>while</code> loop to do what we would do in a more 
+<p>Secondly, this is using a <code>while</code> loop to do what we would do in a more 
 structured fashion with a <code>for</code> loop.</p>
 
 <pre><code>def summation(n,term):
@@ -617,16 +617,16 @@ structured fashion with a <code>for</code> loop.</p>
         total = total + term(k)
     return total</code></pre>
 
-<p>At this point, you should be able to read (or write) either one.  However,
-you should write the one that reads most clearly.</p>
+<p>At this point, you should be able to read (or write) either one.  For a given question,
+you should use the one that reads most clearly.</p>
 
 <p>Write a function <code>interleaved_sum</code> that similarly computes the sum of a
-sequence of terms from 1 to <code>n</code>, but uses different function to compute
+sequence of terms from 1 to <code>n</code>, but uses different functions to compute
 the terms for odd and even numbers. Do so without using any loops or
 testing in any way if a number is odd or even. (You may test if a
 number is equal to 0, 1, or <code>n</code>.)</p>
 
-<blockquote><p><em>Hint</em>: Use recursion and a helper function!</p></blockquote>
+<blockquote><p><em>Hint</em>: Use a recursive helper function!</p></blockquote>
 
 
 
