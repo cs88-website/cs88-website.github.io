@@ -1,0 +1,25 @@
+{
+    "name": "Lab 2",
+    "endpoint": "cal/cs88/fa16/lab02",
+    "src": [
+        "lab02.py",
+        "lab02_extra.py"
+    ],
+    "tests": {
+        "lab02.py:compose": "doctest",
+        "lab02.py:intersects": "doctest",
+        "lab02.py:piecewise": "doctest",
+        "lab02.py:buzzer": "doctest",
+        "lab02.py:mapn": "doctest",
+        "lab02.py:maxfun": "doctest",
+        "lab02.py:reduce": "doctest",
+        "lab02.py:accumulate": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
