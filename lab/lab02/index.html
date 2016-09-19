@@ -180,6 +180,8 @@ along with a number <code>b</code>. It returns a new function that takes a numbe
 returns either <code>f(x)</code> if <code>x</code> is less than <code>b</code>, or <code>g(x)</code> if <code>x</code> is greater than
 or equal to <code>b</code>.</p>
 
+
+
 <pre><code>def piecewise(f, g, b):
     &quot;&quot;&quot;Returns the piecewise function h where:
 
@@ -194,13 +196,14 @@ or equal to <code>b</code>.</p>
     &gt;&gt;&gt; abs_value(&#x2d;1)
     1
     &quot;&quot;&quot;
-    # BEGIN SOLUTION
-    def h(x):
-        if x &lt; b:
-            return f(x)
-        return g(x)
-    return h
-    # END SOLUTION</code></pre>
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x68;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x78;&#x20;&#x3c;&#x20;&#x62;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x68;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
 
 <p>Use OK to test your code:</p><pre><code>python ok -q piecewise --local</code></pre>
 
@@ -230,11 +233,11 @@ instead for all the numbers that are divisible by <code>n</code>.</p>
     8
     9
     &quot;&quot;&quot;
-<div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x62;&#x75;&#x7a;&#x7a;&#x28;&#x6d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x20;&#x3c;&#x20;&#x6d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x20;&#x25;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x27;&#x42;&#x75;&#x7a;&#x7a;&#x21;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x69;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x62;&#x75;&#x7a;&#x7a;</div></code></pre>
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x62;&#x75;&#x7a;&#x7a;&#x28;&#x6d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x20;&#x3c;&#x20;&#x6d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x20;&#x25;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x27;&#x42;&#x75;&#x7a;&#x7a;&#x21;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x69;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x62;&#x75;&#x7a;&#x7a;</div></code></pre>
 
 
-    <button id='4' class='toggleButton'>
+    <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -291,11 +294,11 @@ sequence from 0 to <code>n&#x2d;1</code>.</p>
     &gt;&gt;&gt; mapn(square,4)
     [0, 1, 4, 9]
     &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x66;&#x28;&#x78;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6e;&#x29;&#x5d;</div></code></pre>
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x66;&#x28;&#x78;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6e;&#x29;&#x5d;</div></code></pre>
 
 
-    <button id='5' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -313,11 +316,11 @@ returns the maximum of these for each of the values from <code>low</code> to <co
     &gt;&gt;&gt; maxfun(four,square,&#x2d;4,4)
     [16, 9, 4, 4, 4, 4, 4, 9]
     &quot;&quot;&quot;
-<div class="alt 6">    "*** YOUR CODE HERE ***"
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6d;&#x61;&#x78;&#x28;&#x66;&#x28;&#x69;&#x29;&#x2c;&#x67;&#x28;&#x69;&#x29;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x6f;&#x77;&#x2c;&#x20;&#x68;&#x69;&#x67;&#x68;&#x29;&#x5d;</div></code></pre>
+<div class="alt 7">    "*** YOUR CODE HERE ***"
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6d;&#x61;&#x78;&#x28;&#x66;&#x28;&#x69;&#x29;&#x2c;&#x67;&#x28;&#x69;&#x29;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x6f;&#x77;&#x2c;&#x20;&#x68;&#x69;&#x67;&#x68;&#x29;&#x5d;</div></code></pre>
 
 
-    <button id='6' class='toggleButton'>
+    <button id='7' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -350,11 +353,11 @@ returns the maximum of these for each of the values from <code>low</code> to <co
     &gt;&gt;&gt; reduce(mul, [1,2,3,4], 1)
     24
     &quot;&quot;&quot;
-<div class="alt 7">    "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#x72;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2c;&#x20;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
+<div class="alt 8">    "*** YOUR CODE HERE ***"
+</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#x72;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2c;&#x20;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
 
 
-    <button id='7' class='toggleButton'>
+    <button id='8' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -400,8 +403,8 @@ def accumulate(combiner, base, n, term):
     &gt;&gt;&gt; accumulate(mul, 2, 3, square)   # 2 * 1^2 * 2^2 * 3^2
     72
     &quot;&quot;&quot;
-<div class="alt 8">    "*** YOUR CODE HERE ***"
-</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#x2c;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6b;&#x20;&#x3c;&#x3d;&#x20;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x6d;&#x62;&#x69;&#x6e;&#x65;&#x72;&#x28;&#x74;&#x65;&#x72;&#x6d;&#x28;&#x6b;&#x29;&#x2c;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x29;&#x2c;&#x20;&#x6b;&#x20;&#x2b;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;</div></code></pre>
+<div class="alt 9">    "*** YOUR CODE HERE ***"
+</div><div class="solution 9">&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#x2c;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6b;&#x20;&#x3c;&#x3d;&#x20;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x6d;&#x62;&#x69;&#x6e;&#x65;&#x72;&#x28;&#x74;&#x65;&#x72;&#x6d;&#x28;&#x6b;&#x29;&#x2c;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x29;&#x2c;&#x20;&#x6b;&#x20;&#x2b;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;</div></code></pre>
 
 <solution>
 
@@ -415,8 +418,8 @@ def accumulate(combiner, base, n, term):
     &gt;&gt;&gt; summation_using_accumulate(5, triple)
     45
     &quot;&quot;&quot;
-<div class="alt 8">    "*** YOUR CODE HERE ***"
-</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x63;&#x63;&#x75;&#x6d;&#x75;&#x6c;&#x61;&#x74;&#x65;&#x28;&#x61;&#x64;&#x64;&#x2c;&#x20;&#x30;&#x2c;&#x20;&#x6e;&#x2c;&#x20;&#x74;&#x65;&#x72;&#x6d;&#x29;</div>
+<div class="alt 9">    "*** YOUR CODE HERE ***"
+</div><div class="solution 9">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x63;&#x63;&#x75;&#x6d;&#x75;&#x6c;&#x61;&#x74;&#x65;&#x28;&#x61;&#x64;&#x64;&#x2c;&#x20;&#x30;&#x2c;&#x20;&#x6e;&#x2c;&#x20;&#x74;&#x65;&#x72;&#x6d;&#x29;</div>
 def product_using_accumulate(n, term):
     &quot;&quot;&quot;An implementation of product using accumulate.
 
@@ -425,11 +428,11 @@ def product_using_accumulate(n, term):
     &gt;&gt;&gt; product_using_accumulate(6, triple)
     524880
     &quot;&quot;&quot;
-<div class="alt 8">    "*** YOUR CODE HERE ***"
-</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x6f;&#x70;&#x65;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x20;&#x69;&#x6d;&#x70;&#x6f;&#x72;&#x74;&#x20;&#x6d;&#x75;&#x6c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x63;&#x63;&#x75;&#x6d;&#x75;&#x6c;&#x61;&#x74;&#x65;&#x28;&#x6d;&#x75;&#x6c;&#x2c;&#x20;&#x31;&#x2c;&#x20;&#x6e;&#x2c;&#x20;&#x74;&#x65;&#x72;&#x6d;&#x29;</div></code></pre>
+<div class="alt 9">    "*** YOUR CODE HERE ***"
+</div><div class="solution 9">&#x20;&#x20;&#x20;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x6f;&#x70;&#x65;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x20;&#x69;&#x6d;&#x70;&#x6f;&#x72;&#x74;&#x20;&#x6d;&#x75;&#x6c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x63;&#x63;&#x75;&#x6d;&#x75;&#x6c;&#x61;&#x74;&#x65;&#x28;&#x6d;&#x75;&#x6c;&#x2c;&#x20;&#x31;&#x2c;&#x20;&#x6e;&#x2c;&#x20;&#x74;&#x65;&#x72;&#x6d;&#x29;</div></code></pre>
 
 
-    <button id='8' class='toggleButton'>
+    <button id='9' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
