@@ -152,3 +152,27 @@ def product_using_accumulate(n, term):
     """
     "*** YOUR CODE HERE ***"
 
+
+## Helper Functions for Doctests
+
+def identity(x):
+    return x
+
+def four(x):
+    return 4
+
+def increment(x):
+    return x + 1
+
+def triple(x):
+    return 3 * x
+
+def square(x):
+    return x * x
+
+def sqrt(x):
+    return x**(1/2)
+
+
+
+
