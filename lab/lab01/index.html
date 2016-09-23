@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid" />
+    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -608,7 +608,7 @@ Here we are using it just for testing. It is simpler than something like:</p>
 &gt;&gt;&gt; summation(5, cube)
 225</code></pre>
 
-<p>Secondly, this is using a <code>while</code> loop to do what we would do in a more 
+<p>Secondly, this is showing a <code>while</code> loop to do what we would do in a more 
 structured fashion with a <code>for</code> loop.</p>
 
 <pre><code>def summation(n,term):
@@ -617,18 +617,16 @@ structured fashion with a <code>for</code> loop.</p>
         total = total + term(k)
     return total</code></pre>
 
-<p>At this point, you should be able to read (or write) either one.  For a given question,
-you can usually use either type of loop. Depending on the context, 
-one type of loop may be more clear than the other. 
-Another way to write such functions is using recursion.</p>
+<p>At this point, you should be able to read (or write) either one.  However,
+you should write the one that reads most clearlyn</p>
 
-<p>Write a function <code>interleaved_sum</code> using recursion that similarly computes the sum of a
-sequence of terms from 1 to <code>n</code>, but uses different functions to compute
+<p>Write a function <code>interleaved_sum</code> that similarly computes the sum of a
+sequence of terms from 1 to <code>n</code>, but uses different function to compute
 the terms for odd and even numbers. Do so without using any loops or
 testing in any way if a number is odd or even. (You may test if a
 number is equal to 0, 1, or <code>n</code>.)</p>
 
-<blockquote><p><em>Hint</em>: Use a recursive helper function!</p></blockquote>
+<blockquote><p><em>Hint</em>: Use recursion and a helper function!</p></blockquote>
 
 
 
@@ -740,7 +738,7 @@ number is equal to 0, 1, or <code>n</code>.)</p>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script>
   $(function() {
-    if (new Date("09/22/2016") < new Date()) {
+    if (new Date("01/01/2017") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');
