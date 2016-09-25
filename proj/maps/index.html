@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link href="../../assets/css/project.css" rel="stylesheet" type="text/css">
+
+    <title>Project 1: Yelp Maps | CS 88 Fall 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Project 1</span>: Yelp Maps</h1>
+    </div>
+
+    <div id="haiku">
+  
+
+<p><img class="img-responsive center-block" src="visualize/voronoi.png" alt="voronoi"></p>
+
+<blockquote><cite>
+  Let's go out to eat!</br>
+  Show me places I would like</br>
+  By learning my tastes.</br>
+</cite></blockquote>
+
+</div>
+
+    <h2>Introduction</h2>
+
+
+<p>In this project, you will create a visualization of restaurant ratings using
+machine learning and the <a href="https://www.yelp.com/academic_dataset">Yelp academic dataset</a>. In this visualization,
+Berkeley is segmented into regions, where each region is shaded by the predicted
+rating of the closest restaurant (yellow is 5 stars, blue is 1
+star). Specifically, the visualization you will be constructing is a
+<a href="https://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a>.</p>
+
+<p>In the map above, each dot represents a restaurant. The color of the dot is
+determined by the restaurant's location. For example, downtown restaurants are
+colored green. The user that generated this map has a strong preference for
+Southside restaurants, and so the southern regions are colored yellow.</p>
+
+<p>This project uses concepts from Sections <a href="http://composingprograms.com/pages/21-introduction.html">2.1</a>, <a href="http://composingprograms.com/pages/22-data-abstraction.html">2.2</a>, <a href="http://composingprograms.com/pages/23-sequences.html">2.3</a>, and
+<a href="http://composingprograms.com/pages/24-mutable-data.html#dictionaries">2.4.3</a> of <a href="http://composingprograms.com/">Composing Programs</a>. It also introduces techniques and
+concepts from <em>machine learning</em>, a growing field at the intersection of
+computer science and statistics that analyzes data to find patterns and make
+predictions.</p>
+
+<p>The <a href="maps.zip">maps.zip</a> archive contains all the starter code and data sets.
+The project uses several files, but all of your changes will be made to
+<code>utils.py</code>, <code>abstractions.py</code>, and <code>recommend.py</code>.</p>
+
+<ul>
+  <li><code>abstractions.py</code>: Data abstractions used in the project</li>
+  <li><code>recommend.py</code>: Machine learning algorithms and data processing</li>
+  <li><code>utils.py</code>: Utility functions for data processing</li>
+  <li><code>ucb.py</code>: Utility functions for miscellaneous and debugging</li>
+  <li><code>data</code>: A directory of Yelp users, restaurants, and reviews</li>
+  <li><code>ok</code>: The autograder</li>
+  <li><code>proj2.ok</code>: The <code>ok</code> configuration file</li>
+  <li><code>tests</code>:  A directory of tests used by <code>ok</code></li>
+  <li><code>users</code>: A directory of user files</li>
+  <li><code>visualize</code>: A directory of tools for drawing the final visualization</li>
+</ul>
+
+
+<p>You can obtain all the files needed for this project by downloading this <a href="maps.zip">zip archive</a>.</p>
+
+<h2>Logistics</h2>
+
+<p>This is a 1-week project. You may work with one other
+partner.  You should not share your code with students who are not your
+partner or copy from anyone else's solutions.</p>
+
+<p>In the end, you will submit one project for both partners. The
+project is worth 20 points. 18 points are
+assigned for correctness, and 2 points for the overall <a
+  href="../../articles/composition.html">composition</a> of your program.</p>
+
+<p>You will turn in the following files:</p>
+
+
+<ul>
+  <li><code>utils.py</code></li>
+  <li><code>abstractions.py</code></li>
+  <li><code>recommend.py</code></li>
+</ul>
+
+
+<p>You do not need to modify or turn in any other files to complete the
+project. To submit the project, run the following command:
+
+<pre><code>python3 ok --submit</code></pre>
+
+<p>You will be able to view your submissions on the <a
+  href="http://ok.cs88.org">OK dashboard</a>.</p>
+
+<p>For the functions that we ask you to complete, there may be some
+initial code that we provide. If you would rather not use that code,
+feel free to delete it and start from scratch. You may also add new
+function definitions as you see fit.</p>
+
+<p>However, please do <b>not</b> modify any other functions.  Doing so may
+result in your code failing our autograder tests. Also, please do not
+change any function signatures (names, argument order, or number of
+arguments).</p>
+
+
+
+<p>Make sure you have added your partner on OK before submitting the project.</p>
+
+
+
+<h2>Testing</h2>
+
+<p>Throughout this project, you should be testing the correctness of your
+code.  It is good practice to test often, so that it is easy to isolate
+any problems.</p>
+
+<p>We have provided an <b>autograder</b> called <code>ok</code> to help you with
+testing your code and tracking your progress. The first time you run
+the autograder, you will be asked to <b>log in with your OK account using your web browser</b>. Please do so. Each time you run
+<code>ok</code>, it will back up your work and progress on our
+servers.</p>
+
+<p>The primary purpose of <code>ok</code> is to test your implementations, but there
+is a catch. At first, the test cases are <i>locked</i>. To unlock tests,
+run the following command from your terminal:</p>
+
+<pre><code>python3 ok -u</code></pre>
+
+<p>This command will start an interactive prompt that looks like:</p>
+
+<pre>
+=====================================================================
+Assignment: Yelp Maps
+OK, version ...
+=====================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unlocking tests
+
+At each "? ", type what you would expect the output to be.
+Type exit() to quit
+
+---------------------------------------------------------------------
+Question 0 &gt; Suite 1 &gt; Case 1
+(cases remaining: 1)
+
+&gt;&gt;&gt; Code here
+?
+</pre>
+
+<p>At the <code>?</code>, you can type what you expect the output to be.
+If you are correct, then this test case will be available the next time
+you run the autograder.</p>
+
+<p>The idea is to understand <i>conceptually</i> what your program should do
+first, before you start writing any code.</p>
+
+<p>Once you have unlocked some tests and written some code, you can check
+the correctness of your program using the tests that you have
+unlocked:</p>
+
+<pre>python3 ok</pre>
+
+<p>Most of the time, you will want to focus on a particular question.
+Use the <code>-q</code> option as directed in the problems below.</p>
+
+<p>The <code>tests</code> folder is used to store autograder tests, so make sure
+<b>not to modify it</b>. You may lose all your unlocking progress if you
+do. If you need to get a fresh copy, you can download the
+<a href="maps.zip">zip archive</a> and copy it over, but you
+will need to start unlocking from scratch.</p>
+
+
+
+
+<h2 id="phase-0-utilities">Phase 0: Utilities</h2>
+
+
+<blockquote><p>All changes in this phase will be made to <code>utils.py</code>.</p></blockquote>
+
+
+<h3 id="problem-0-2-pt">Problem 0 (2 pt)</h3>
+
+
+<p>Before starting the core project, familiarize yourself with some Python features
+by completing <code>utils.py</code>. Each function described below can be implemented in
+one line. As you work through this phase, you can unlock the test cases for these
+exercises and check your solutions by running <code>ok</code>:</p>
+
+<pre><code>python ok -q 00 -u --local
+python ok -q 00 --local</code></pre>
+
+
+<h4 id="note-on-lambdas">Note on Lambdas</h4>
+
+
+<p>Lambdas are anonymous function definitions. They allow us to define a function
+and use it without explicitly giving it a name. They are useful because they
+allow us to define functions for one-time use without clogging up our namespace.
+<em>(Coming up with new names is hard, you know?)</em> A lambda takes in a number of arguments.
+It evaluates a single expression using those arguments, and returns the value that the
+expression evaluates to. Lambdas have the following syntax:</p>
+
+<pre><code>lambda &lt;arguments&gt;: &lt;expression using arguments&gt;</code></pre>
+
+<p>Below are a couple of examples of lambda expressions:</p>
+
+<pre><code>&gt;&gt;&gt; square = lambda x: x * x
+&gt;&gt;&gt; square(4)
+16
+&gt;&gt;&gt; plus = lambda x,y: x + y
+&gt;&gt;&gt; plus(2, 3)
+5
+&gt;&gt;&gt; (lambda x: x[0])([1, 2, 3])
+1</code></pre>
+
+<p><em>Note that as with other functions, a lambda function's lexical parent is the frame
+in which it was defined.</em></p>
+
+
+<h4 id="problem-0-1-using-list-comprehensions">Problem 0.1: Using list comprehensions</h4>
+
+
+<p>Recall that a list comprehension constructs a new list from an existing sequence by
+first filtering the given sequence, and then computing an element of the result
+for each remaining element that is not filtered out. A list comprehension has
+the following syntax:</p>
+
+<pre><code>[&lt;map expression&gt; for &lt;name&gt; in &lt;sequence expression&gt; if &lt;filter expression&gt;]</code></pre>
+
+<p>For example, if we wanted to square every even integer in <code>range(10)</code>, we could
+write:</p>
+
+<pre><code>&gt;&gt;&gt; [x * x for x in range(10) if x % 2 == 0]
+[0, 4, 16, 36, 64]</code></pre>
+
+<p>In <code>utils.py</code>, implement <code>map_and_filter</code>. This function takes in a sequence
+<code>s</code>, a one-argument function <code>map_fn</code>, and a one-argument function <code>filter_fn</code>.
+It returns a new list containing the result of calling <code>map_fn</code> on each element
+of <code>s</code> for which <code>filter_fn</code> returns a true value. <em>Make sure your solution is
+only one line and uses a list comprehension.</em></p>
+
+
+<h4 id="problem-0-2-using-min">Problem 0.2: Using <code>min</code></h4>
+
+
+<p>The built-in <code>min</code> function takes a sequence (such as a list or a dictionary)
+and returns the sequence's smallest element. The <code>min</code> function can also take a
+keyword argument called <code>key</code>, which must be a one-argument function. The <code>key</code>
+function is called with each element of the list, and the return values are used
+for comparison. For example:</p>
+
+<pre><code>&gt;&gt;&gt; min([&#x2d;1, 0, 1]) # no key argument; smallest input
+&#x2d;1
+&gt;&gt;&gt; min([&#x2d;1, 0, 1], key=lambda x: x*x) # input with the smallest square
+0</code></pre>
+
+<p>In <code>utils.py</code>, implement <code>key_of_min_value</code>, which takes in a dictionary <code>d</code> and
+returns the key that corresponds to the minimum value in <code>d</code>. This behavior
+differs from just calling <code>min</code> on a dictionary, which would return the smallest
+key. <em>Make sure your solution is only one line and uses the <code>min</code> function.</em></p>
+
+
+<h4 id="problem-0-3-using-zip">Problem 0.3: Using <code>zip</code></h4>
+
+
+<p>The <code>zip</code> function defined in <code>utils.py</code> takes multiple sequences as arguments
+and returns a list of lists, where the i-th list contains the i-th element
+of each original list. For example:</p>
+
+<pre><code>&gt;&gt;&gt; zip([1, 2, 3], [4, 5, 6])
+[[1, 4], [2, 5], [3, 6]]
+&gt;&gt;&gt; for triple in zip([&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;], [1, 2, 3], [&#x27;do&#x27;, &#x27;re&#x27;, &#x27;mi&#x27;]):
+...     print(triple)
+[&#x27;a&#x27;, 1, &#x27;do&#x27;]
+[&#x27;b&#x27;, 2, &#x27;re&#x27;]
+[&#x27;c&#x27;, 3, &#x27;mi&#x27;]</code></pre>
+
+<p>In <code>utils.py</code>, use the <code>zip</code> function to implement <code>enumerate</code>, which takes a
+sequence <code>s</code> and a starting index <code>start</code>. It returns a list of pairs, in which
+the i-th element is <code>i+start</code> paired with the i-th element of <code>s</code>. <em>Make sure
+your solution is only one line and uses the <code>zip</code> function and a <code>range</code></em>.</p>
+
+<p><em>Note</em>: <code>zip</code> and <code>enumerate</code> are also built-in Python functions, but their
+behavior is slightly different than the versions provided in <code>utils.py</code>.</p>
+
+
+<h2 id="phase-1-data-abstraction">Phase 1: Data Abstraction</h2>
+
+
+<blockquote><p>All changes in this phase will be made to <code>abstraction.py</code>.</p></blockquote>
+
+<p>Complete the data abstractions in <code>abstractions.py</code>. Two of the data
+abstractions have already been completed for you: the <em>review</em> data abstraction
+and the <em>user</em> data abstraction. Make sure that you understand how they work.</p>
+
+
+<h3 id="problem-1-1-pt">Problem 1 (1 pt)</h3>
+
+
+<p>Complete the implementations of the constructor and selectors for the
+<em>restaurant</em> data abstraction. You can use any implementation you choose, but
+the constructor and selectors must be defined together to satisfy the following
+description. A starter implementation using a dictionary is provided.</p>
+
+<ul>
+  <li><p><code>make_restaurant</code>: return a restaurant constructed from five arguments:</p>
+
+  <ul>
+    <li><code>name</code> (a string)</li>
+    <li><code>location</code> (a list containing latitude and longitude)</li>
+    <li><code>categories</code> (a list of strings)</li>
+    <li><code>price</code> (a number)</li>
+    <li><code>reviews</code> (a list of review data abstractions created by <code>make_review</code>)</li>
+  </ul></li>
+  <li><code>restaurant_name</code>: return the name of a <code>restaurant</code></li>
+  <li><code>restaurant_location</code>: return the location of a <code>restaurant</code></li>
+  <li><code>restaurant_categories</code>: return the categories of a <code>restaurant</code></li>
+  <li><code>restaurant_price</code>: return the price of a <code>restaurant</code></li>
+  <li><code>restaurant_ratings</code>: return a list of ratings (numbers)</li>
+</ul>
+
+<p>Use OK to unlock and test your code:</p><pre><code>python ok -q 01 -u --local
+python ok -q 01 --local</code></pre>
+
+
+<h3 id="problem-2-1-pt">Problem 2 (1 pt)</h3>
+
+
+<p>Implement the <code>restaurant_num_ratings</code> and <code>restaurant_mean_rating</code> functions,
+<em>without assuming any particular implementation of a restaurant</em>.</p>
+
+<p>Be sure not to violate abstraction barriers! Test your implementation before
+moving on:</p>
+
+<pre><code>python ok -q 02 -u --local
+python ok -q 02 --local</code></pre>
+
+<p>When you finish, you should be able to generate a visualization of all
+restaurants rated by a user. Use <code>&#x2d;u</code> to select a user from the <code>users</code>
+directory. You can even create your own.</p>
+
+<pre><code>python3 recommend.py
+python3 recommend.py &#x2d;u one_cluster</code></pre>
+
+<p><em>Note</em>: You may have to refresh your browser to update the visualization.</p>
+
+
+<h2 id="phase-2-unsupervised-learning">Phase 2: Unsupervised Learning</h2>
+
+
+<blockquote><p>All changes in this phase will be made to <code>recommend.py</code>.</p></blockquote>
+
+<p>Restaurants tend to appear in clusters (e.g. Southside restaurants, <a href="http://www.gourmetghetto.org/">Gourmet
+Ghetto</a>).  In this phase, we will devise a way
+to group together restaurants that are close to each other.</p>
+
+<p>The <strong>k-means algorithm</strong> is a method for discovering the centers of clusters. It
+is called an <em>unsupervised</em> learning method because the algorithm is not told
+what the correct clusters are; it must infer the clusters from the data alone.</p>
+
+<p>The k-means algorithm finds <code>k</code> <em>centroids</em> within a dataset that each
+correspond to a cluster of inputs. To do so, k-means begins by choosing <code>k</code>
+centroids at random, then alternates between the following two steps:</p>
+
+<ol>
+  <li>Group the restaurants into clusters, where each cluster contains all
+  restaurants that are closest to the same centroid.</li>
+  <li>Compute a new centroid (average position) for each new cluster.</li>
+</ol>
+
+<p>This <a href="http://tech.nitoyon.com/en/blog/2013/11/07/k-means/">visualization</a> is a good way to understand how the algorithm
+works.</p>
+
+
+<h3 id="glossary">Glossary</h3>
+
+
+<p>As you complete the remaining questions, you will encounter the following
+terminology. Be sure to refer back here if you're ever confused about what a
+question is asking.</p>
+
+<ul>
+  <li><strong>location</strong>: A pair containing latitude and longitude</li>
+  <li><strong>centroid</strong>: A location (see above) that represents the center of a cluster</li>
+  <li><strong>restaurant</strong>: A restaurant data abstraction, as defined in <code>abstractions.py</code></li>
+  <li><strong>cluster</strong>: A list of restaurants</li>
+  <li><strong>user</strong>: A user data abstraction, as defined in <code>abstractions.py</code></li>
+  <li><strong>review</strong>: A review data abstraction, as defined in <code>abstractions.py</code></li>
+  <li><strong>feature function</strong>: A single-argument function that takes a restaurant
+  and returns a number, such as its mean rating or price</li>
+</ul>
+
+
+<h3 id="problem-3-1-pt">Problem 3 (1 pt)</h3>
+
+
+<p>Implement <code>find_closest</code>, which takes a <code>location</code> and a sequence of <code>centroids</code>
+(locations). It returns the element of <code>centroids</code> closest to <code>location</code>.</p>
+
+<p>You should use the <code>distance</code> function from <code>utils.py</code> to measure distance
+between locations. The <code>distance</code> function calculates the <a href="http://mathworld.wolfram.com/Distance.html">Euclidean
+distance</a> between two locations.</p>
+
+<p>If two centroids are equally close, return the one that occurs first in the
+sequence of <code>centroids</code>.</p>
+
+<blockquote><p><em>Hint</em>: Use the <code>min</code> function.</p></blockquote>
+
+<p>Use OK to unlock and test your code:</p><pre><code>python ok -q 03 -u --local
+python ok -q 03 --local</code></pre>
+
+
+<h3 id="problem-4-2-pt">Problem 4 (2 pt)</h3>
+
+
+<p>Implement <code>group_by_centroid</code>, which takes a sequence of <code>restaurants</code> and a
+sequence of <code>centroids</code> (locations) and returns a list of <a href="#glossary">clusters</a>. Each cluster of the result is a list of restaurants that are closer to a specific centroid in <code>centroids</code> than any other centroid. The order of the list of clusters returned does not matter.</p>
+
+<p>If a restaurant is equally close to two centroids, it is associated with the
+centroid that appears first in the sequence of <code>centroids</code>.</p>
+
+<blockquote><p><em>Hint</em>: Use the provided <code>group_by_first</code> function to group together all values
+for the same key in a list of <code>[key, value]</code> pairs. You can look at the doctests
+to see how to use it.</p></blockquote>
+
+<p>Be sure not violate abstraction barriers! Test your implementation before
+moving on:</p>
+
+<pre><code>python ok -q 04 -u --local
+python ok -q 04 --local</code></pre>
+
+
+<h3 id="problem-5-2-pt">Problem 5 (2 pt)</h3>
+
+
+<p>Implement <code>find_centroid</code>, which finds the centroid of a <code>cluster</code> (a list of
+restaurants) based on the locations of the restaurants. The centroid latitude is
+computed by averaging the latitudes of the restaurant locations. The centroid
+longitude is computed by averaging the longitudes.</p>
+
+<blockquote><p><em>Hint</em>: Use the <code>mean</code> function from <code>utils.py</code> to compute the average value of
+a sequence of numbers.</p></blockquote>
+
+<p>Be sure not violate abstraction barriers! Test your implementation before
+moving on:</p>
+
+<pre><code>python ok -q 05 -u --local
+python ok -q 05 --local</code></pre>
+
+
+<h3 id="problem-6-1-pt">Problem 6 (1 pt)</h3>
+
+
+<p>Complete the implementation of <code>k_means</code>. In each iteration of the <code>while</code>
+statement,</p>
+
+<ol>
+  <li>Group <code>restaurants</code> into clusters, where each cluster contains all
+  restaurants closest to the same centroid. (<em>Hint</em>: Use <code>group_by_centroid</code>)</li>
+  <li>Bind <code>centroids</code> to a new list of the centroids of all the clusters.
+  (<em>Hint</em>: Use <code>find_centroid</code>)</li>
+</ol>
+
+<p>Use OK to unlock and test your code:</p><pre><code>python ok -q 06 -u --local
+python ok -q 06 --local</code></pre>
+
+<p>Your visualization can indicate which restaurants are close to each other (e.g.
+Southside restaurants, Northside restaurants).  Dots that have the same color
+on your map belong to the same cluster of restaurants. You can get more
+fine-grained groupings by increasing the number of clusters with the <code>&#x2d;k</code>
+option.</p>
+
+<pre><code>python3 recommend.py &#x2d;k 2
+python3 recommend.py &#x2d;u likes_everything &#x2d;k 3</code></pre>
+
+<p>Congratulations! You've now implemented an unsupervised learning algorithm.</p>
+
+
+<h2 id="phase-3-supervised-learning">Phase 3: Supervised Learning</h2>
+
+
+<blockquote><p>All changes in this phase will be made to <code>recommend.py</code>.</p></blockquote>
+
+<p>In this phase, you will predict what rating a user would give for a
+restaurant. You will implement a <em>supervised</em> learning algorithm that attempts
+to generalize from examples for which the correct rating is known, which are
+all of the restaurants that the user has already rated. By analyzing a user's
+past ratings, we can then try to predict what rating the user might give to a
+new restaurant. When you complete this phase, your visualization will include
+all restaurants, not just the restaurants that were rated by a user.</p>
+
+<p>To predict ratings, you will implement <strong>simple least-squares linear
+regression</strong>, a widely used statistical method that approximates a relationship
+between some input feature (such as price) and an output value (the rating) with
+a line. The algorithm takes a sequence of input-output pairs and computes the
+slope and intercept of the line that minimizes the mean of the squared
+difference between the line and the outputs.</p>
+
+
+<h3 id="problem-7-3-pt">Problem 7 (3 pt)</h3>
+
+
+<p>Implement the <code>find_predictor</code> function, which takes in a <code>user</code>, a sequence of
+<code>restaurants</code>, and a <a href="#glossary">feature function</a> called <code>feature_fn</code>.
+<code>find_predictor</code> returns two values: a <code>predictor</code> function and an <code>r_squared</code>
+value.</p>
+
+<p>Use least-squares linear regression to compute the <code>predictor</code> and <code>r_squared</code>.
+This method, described below, computes the coefficients <code>a</code> and <code>b</code> for the
+<code>predictor</code> line <code>y = a + bx</code>. The <code>r_squared</code> value measures how accurately
+this line describes the original data.</p>
+
+<p>One method of computing these values is by calculating the sums of squares,
+<code>S_xx</code>, <code>S_yy</code>, and <code>S_xy</code>:</p>
+
+<ul>
+  <li><em>S<sub>xx</sub></em> = &Sigma;<em><sub>i</sub></em> (<em>x<sub>i</sub></em> - mean(<em>x</em>))<sup>2</sup></li>
+  <li><em>S<sub>yy</sub></em> = &Sigma;<em><sub>i</sub></em> (<em>y<sub>i</sub></em> - mean(<em>y</em>))<sup>2</sup></li>
+  <li><em>S<sub>xy</sub></em> = &Sigma;<em><sub>i</sub></em> (<em>x<sub>i</sub></em> - mean(<em>x</em>))
+  (<em>y<sub>i</sub></em> - mean(<em>y</em>))</li>
+</ul>
+
+<p>After calculating the sums of squares, the regression coefficients (<code>a</code> and <code>b</code>)
+and <code>r_squared</code> are defined as follows:</p>
+
+<ul>
+  <li><em>b</em> = <em>S<sub>xy</sub></em> / <em>S<sub>xx</sub></em></li>
+  <li><em>a</em> = mean(<em>y</em>) - <em>b</em> * mean(<em>x</em>)</li>
+  <li><em>R</em><sup>2</sup> = <em>S<sub>xy</sub></em><sup>2</sup> / (<em>S<sub>xx</sub> S<sub>yy</sub></em>)</li>
+</ul>
+
+<blockquote><p><em>Hint</em>: The <code>mean</code> function can be helpful here.</p></blockquote>
+
+<p>Use OK to unlock and test your code:</p><pre><code>python ok -q 07 -u --local
+python ok -q 07 --local</code></pre>
+
+
+<h3 id="problem-8-2-pt">Problem 8 (2 pt)</h3>
+
+
+<p>Implement <code>best_predictor</code>, which takes a <code>user</code>, a list of <code>restaurants</code>,
+and a sequence of <code>feature_fns</code>. It uses each feature function to compute a
+predictor function, then returns the predictor that has the highest <code>r_squared</code>
+value.  All predictors are learned from the subset of <code>restaurants</code> reviewed by
+the user (called <code>reviewed</code> in the starter implementation).</p>
+
+<blockquote><p><em>Hint</em>: The <code>max</code> function can also take a <code>key</code> argument, just like <code>min</code>.</p></blockquote>
+
+<p>Use OK to unlock and test your code:</p><pre><code>python ok -q 08 -u --local
+python ok -q 08 --local</code></pre>
+
+
+<h3 id="problem-9-2-pt">Problem 9 (2 pt)</h3>
+
+
+<p>Implement <code>rate_all</code>, which takes a <code>user</code> and list of <code>restaurants</code>. It
+returns a dictionary where the keys are the names of each restaurant in
+<code>restaurants</code>. Its values are ratings (numbers).</p>
+
+<p>If a restaurant was already rated by the user, <code>rate_all</code> will assign the
+restaurant the user's rating.  Otherwise, <code>rate_all</code> will assign the restaurant
+the rating computed by the best predictor for the user. The best predictor is
+chosen using a sequence of <code>feature_fns</code>.</p>
+
+<blockquote><p><em>Hint</em>: You may find the <code>user_rating</code> function in <code>abstractions.py</code> useful.</p></blockquote>
+
+<p>Be sure not violate abstraction barriers! Test your implementation before
+moving on:</p>
+
+<pre><code>python ok -q 09 -u --local
+python ok -q 09 --local</code></pre>
+
+<p>In your visualization, you can now predict what rating a user would give a
+restaurant, even if they haven't rated the restaurant before. To do this, add
+the <code>&#x2d;p</code> option:</p>
+
+<pre><code>python3 recommend.py &#x2d;u likes_southside &#x2d;k 5 &#x2d;p</code></pre>
+
+<p>If you hover over each dot (a restaurant) in the visualization, you'll see a
+rating in parentheses next to the restaurant name.</p>
+
+
+<h3 id="problem-10-1-pt">Problem 10 (1 pt)</h3>
+
+
+<p>To focus the visualization on a particular restaurant category, implement
+<code>search</code>. The <code>search</code> function takes a category <code>query</code> and a sequence of
+restaurants. It returns all restaurants that have <code>query</code> as a category.</p>
+
+<blockquote><p><em>Hint</em>: you might find a list comprehension useful here.</p></blockquote>
+
+<p>Be sure not violate abstraction barriers! Test your implementation:</p>
+
+<pre><code>python ok -q 10 -u --local
+python ok -q 10 --local</code></pre>
+
+<p>Congratulations, you've completed the project! The <code>&#x2d;q</code> option allows you to
+filter based on a category. For example, the following command visualizes all
+sandwich restaurants and their predicted ratings for the user who
+<code>likes_expensive</code> restaurants:</p>
+
+<pre><code>python3 recommend.py &#x2d;u likes_expensive &#x2d;k 2 &#x2d;p &#x2d;q Sandwiches</code></pre>
+
+
+<h2 id="predicting-your-own-ratings">Predicting your own ratings</h2>
+
+
+<p>Once you're done, you can use your project to predict your own ratings too!
+Here's how:</p>
+
+<ol>
+  <li>In the <code>users</code> directory, you'll see a couple of <code>.dat</code> files. Copy one of
+  them and rename the new file to <code>yourname.dat</code> (for example, <code>john.dat</code>).</li>
+  <li><p>In the new file (e.g. <code>john.dat</code>), you'll see something like the following:</p>
+
+<pre><code>make_user(
+    &#x27;John DoeNero&#x27;,     # name
+    [                   # reviews
+        make_review(&#x27;Jasmine Thai&#x27;, 4.0),
+        ...
+    ]</code></pre>
+
+  <p>Replace the second line with your name (as a string).</p></li>
+  <li><p>Replace the existing reviews with reviews of your own! You can get a list of
+  Berkeley restaurants with the following command:</p>
+
+<pre><code>python3 recommend.py &#x2d;r</code></pre>
+
+  <p>Rate a couple of your favorite (or least favorite) restaurants.</p></li>
+  <li><p>Use <code>recommend.py</code> to predict ratings for you:</p>
+
+<pre><code>python3 recommend.py &#x2d;u john &#x2d;k 2 &#x2d;p &#x2d;q Sandwiches</code></pre>
+
+  <p>(Replace <code>john</code> with your name.) Play around with the number of clusters
+  (the <code>&#x2d;k</code> option) and try different queries (with the <code>&#x2d;q</code> option)!</p></li>
+</ol>
+
+<p>How accurate is your predictor?</p>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#phase-0-utilities">Phase 0: Utilities</a></li>
+  <ul>
+  <li><a href="#problem-0-2-pt">Problem 0 (2 pt)</a></li>
+  <ul>
+  <li><a href="#note-on-lambdas">Note on Lambdas</a></li>
+  <li><a href="#problem-0-1-using-list-comprehensions">Problem 0.1: Using list comprehensions</a></li>
+  <li><a href="#problem-0-2-using-min">Problem 0.2: Using <code>min</code></a></li>
+  <li><a href="#problem-0-3-using-zip">Problem 0.3: Using <code>zip</code></a></li>
+</ul>
+
+</ul>
+
+  <li><a href="#phase-1-data-abstraction">Phase 1: Data Abstraction</a></li>
+  <ul>
+  <li><a href="#problem-1-1-pt">Problem 1 (1 pt)</a></li>
+  <li><a href="#problem-2-1-pt">Problem 2 (1 pt)</a></li>
+</ul>
+
+  <li><a href="#phase-2-unsupervised-learning">Phase 2: Unsupervised Learning</a></li>
+  <ul>
+  <li><a href="#glossary">Glossary</a></li>
+  <li><a href="#problem-3-1-pt">Problem 3 (1 pt)</a></li>
+  <li><a href="#problem-4-2-pt">Problem 4 (2 pt)</a></li>
+  <li><a href="#problem-5-2-pt">Problem 5 (2 pt)</a></li>
+  <li><a href="#problem-6-1-pt">Problem 6 (1 pt)</a></li>
+</ul>
+
+  <li><a href="#phase-3-supervised-learning">Phase 3: Supervised Learning</a></li>
+  <ul>
+  <li><a href="#problem-7-3-pt">Problem 7 (3 pt)</a></li>
+  <li><a href="#problem-8-2-pt">Problem 8 (2 pt)</a></li>
+  <li><a href="#problem-9-2-pt">Problem 9 (2 pt)</a></li>
+  <li><a href="#problem-10-1-pt">Problem 10 (1 pt)</a></li>
+</ul>
+
+  <li><a href="#predicting-your-own-ratings">Predicting your own ratings</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>
