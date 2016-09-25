@@ -145,10 +145,7 @@ assigned for correctness, and 2 points for the overall <a
 </ul>
 
 
-<p>You do not need to modify or turn in any other files to complete the
-project. To submit the project, run the following command:
-
-<pre><code>python3 ok --submit</code></pre>
+<p>You can submit by uploading these files to OK.</p>
 
 <p>You will be able to view your submissions on the <a
   href="http://ok.cs88.org">OK dashboard</a>.</p>
@@ -185,7 +182,7 @@ servers.</p>
 is a catch. At first, the test cases are <i>locked</i>. To unlock tests,
 run the following command from your terminal:</p>
 
-<pre><code>python3 ok -u</code></pre>
+<pre><code>python ok -u --local</code></pre>
 
 <p>This command will start an interactive prompt that looks like:</p>
 
@@ -220,7 +217,7 @@ first, before you start writing any code.</p>
 the correctness of your program using the tests that you have
 unlocked:</p>
 
-<pre>python3 ok</pre>
+<pre>python ok --local</pre>
 
 <p>Most of the time, you will want to focus on a particular question.
 Use the <code>-q</code> option as directed in the problems below.</p>
