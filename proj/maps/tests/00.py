@@ -36,8 +36,8 @@ test = {
         },
         {
           'code': r"""
-          >>> enumerate([6, 'one', 'a'], 3)[1]
-          736a16a06f9e289bf5bcd4cd6f238b2c
+          >>> list(enumerate([6, 'one', 'a'], 3))[1]
+          23685bfbbb9363eb65642aad32ed7064
           # locked
           """,
           'hidden': False,
