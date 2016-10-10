@@ -1,5 +1,3 @@
-from utils import *
-
 ## Data Abstraction ##
 
 def make_city(name, lat, lon):
