@@ -69,6 +69,57 @@ def closer_city(lat, lon, city1, city2):
 
 ## ADT: Trees ##
 
+def tree(root, branches=[]):
+    for branch in branches:
+        assert is_tree(branch), 'branches must be trees'
+    return [root] + list(branches)
+
+
+def root(tree):
+    return tree[0]
+
+
+def branches(tree):
+    return tree[1:]
+
+
+def is_tree(tree):
+    if type(tree) != list or len(tree) < 1:
+        return False
+    for branch in branches(tree):
+        if not is_tree(branch):
+            return False
+    return True
+
+
+def is_leaf(tree):
+    return not branches(tree)
+
+numbers = tree(1, [tree(2), tree(3, [tree(4), tree(5)]), tree(6, [tree(7)])])
+
+def print_tree(t, indent=0):
+    """Print a representation of this tree in which each node is
+    indented by two spaces times its depth from the root.
+
+    >>> print_tree(tree(1))
+    1
+    >>> print_tree(tree(1, [tree(2)]))
+    1
+      2
+    >>> print_tree(numbers)
+    1
+      2
+      3
+        4
+        5
+      6
+        7
+    """
+    print('  ' * indent + str(root(t)))
+    for branch in branches(t):
+        print_tree(branch, indent + 1)
+
+
 def tree_map(fn, t):
     """Maps the function fn over the entries of tree and returns the
     result in a new tree.
