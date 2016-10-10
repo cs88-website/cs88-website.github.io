@@ -2,7 +2,6 @@ from utils import *
 
 ## Data Abstraction ##
 
-#q1
 def make_city(name, lat, lon):
     """
     >>> city = make_city('Berkeley', 0, 1)
@@ -70,7 +69,6 @@ def closer_city(lat, lon, city1, city2):
 
 ## ADT: Trees ##
 
-#q2
 def tree_map(fn, t):
     """Maps the function fn over the entries of tree and returns the
     result in a new tree.
@@ -95,40 +93,10 @@ def tree_map(fn, t):
     """
     "*** YOUR CODE HERE ***"
 
-def depth(t, v):
-    """Returns the depth of value v in tree t if v is contained in t.
-    If v is not in t, return None.
-
-    >>> test_tree = tree(1,
-    ...                  (tree(2,
-    ...                        (tree(3,
-    ...                              (tree(4),
-    ...                               tree(5))),
-    ...                         tree(6,
-    ...                              (tree(7),
-    ...                               tree(8))))),
-    ...                  (tree(9,
-    ...                        (tree(10,
-    ...                              (tree(11),
-    ...                               tree(12))),
-    ...                         tree(13,
-    ...                              (tree(14),
-    ...                               tree(15))))))))
-    >>> depth(test_tree, 1)
-    0
-    >>> depth(test_tree, 42) # Returns None
-    >>> depth(test_tree, 6)
-    2
-    >>> depth(test_tree, 15)
-    3
-    """
-    "*** YOUR CODE HERE ***"
-
 
 
 ## ADT: Rational Numbers ##
 
-#q3
 def make_rat(num, den):
     """Creates a rational number, given a numerator and
     denominator.
@@ -231,4 +199,37 @@ def eq_rat(a, b):
     "*** YOUR CODE HERE ***"
 
 
+
+
+
+## Challenge Question ##
+
+def depth(t, v):
+    """Returns the depth of value v in tree t if v is contained in t.
+    If v is not in t, return None.
+
+    >>> test_tree = tree(1,
+    ...                  (tree(2,
+    ...                        (tree(3,
+    ...                              (tree(4),
+    ...                               tree(5))),
+    ...                         tree(6,
+    ...                              (tree(7),
+    ...                               tree(8))))),
+    ...                  (tree(9,
+    ...                        (tree(10,
+    ...                              (tree(11),
+    ...                               tree(12))),
+    ...                         tree(13,
+    ...                              (tree(14),
+    ...                               tree(15))))))))
+    >>> depth(test_tree, 1)
+    0
+    >>> depth(test_tree, 42) # Returns None
+    >>> depth(test_tree, 6)
+    2
+    >>> depth(test_tree, 15)
+    3
+    """
+    "*** YOUR CODE HERE ***"
 

@@ -2,25 +2,24 @@
     "name": "Lab 3",
     "endpoint": "cal/cs88/fa16/lab03",
     "src": [
-        "lab03.py",
+        "lab03.py"
     ],
     "tests": {
-        "lab05.py:closer_city": "doctest",
-        "lab05.py:tree_map": "doctest",
-        "lab05.py:depth": "doctest",
-        "lab05.py:make_rat": "doctest",
-        "lab05.py:num": "doctest",
-        "lab05.py:den": "doctest",
-        "lab05.py:add_rat": "doctest",
-        "lab05.py:sub_rat": "doctest",
-        "lab05.py:mul_rat": "doctest",
-        "lab05.py:div_rat": "doctest",
-        "lab05.py:eq_rat": "doctest",
+        "lab03.py:closer_city": "doctest",
+        "lab03.py:tree_map": "doctest",
+        "lab03.py:depth": "doctest",
+        "lab03.py:make_rat": "doctest",
+        "lab03.py:num": "doctest",
+        "lab03.py:den": "doctest",
+        "lab03.py:add_rat": "doctest",
+        "lab03.py:sub_rat": "doctest",
+        "lab03.py:mul_rat": "doctest",
+        "lab03.py:div_rat": "doctest",
+        "lab03.py:eq_rat": "doctest"
     },
     "protocols": [
         "restore",
         "file_contents",
-        "analytics",
         "unlock",
         "grading",
         "backup"

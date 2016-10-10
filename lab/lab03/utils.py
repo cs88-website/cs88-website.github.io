@@ -1,4 +1,5 @@
 ## City ADT ##
+
 def make_city(name, lat, lon):
     """
     >>> city = make_city('Berkeley', 0, 1)
@@ -48,6 +49,7 @@ def distance(city_1, city_2):
     return sqrt((lat_1 - lat_2)**2 + (lon_1 - lon_2)**2)
 
 ## Tree ADT ##
+
 def tree(root, branches=[]):
     for branch in branches:
         assert is_tree(branch), 'branches must be trees'

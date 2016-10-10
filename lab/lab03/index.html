@@ -301,58 +301,8 @@ result of mapping the function over the entries of the input tree.</p>
 
 <p>Use OK to test your code:</p><pre><code>python ok -q tree_map --local</code></pre>
 
-<h3 class="question" id="q3">Question 3: Depth</h3>
-
-<p>Define a function <code>depth</code> that, given a tree, <code>t</code>, and a value, <code>v</code>,
-finds the depth at which <code>v</code> appears as a datum in the tree. Depth here
-refers to distance from the root, <code>t</code>. The node <code>t</code> itself is at depth
-0; its children are at depth 1, etc. Assume that <code>v</code> appears at most
-once in the tree.  Return <code>None</code> if it does not appear.</p>
-
-
-
-<pre><code>def depth(t, v):
-    &quot;&quot;&quot;Returns the depth of value v in tree t if v is contained in t.
-    If v is not in t, return None.
-
-    &gt;&gt;&gt; test_tree = tree(1,
-    ...                  (tree(2,
-    ...                        (tree(3,
-    ...                              (tree(4),
-    ...                               tree(5))),
-    ...                         tree(6,
-    ...                              (tree(7),
-    ...                               tree(8))))),
-    ...                  (tree(9,
-    ...                        (tree(10,
-    ...                              (tree(11),
-    ...                               tree(12))),
-    ...                         tree(13,
-    ...                              (tree(14),
-    ...                               tree(15))))))))
-    &gt;&gt;&gt; depth(test_tree, 1)
-    0
-    &gt;&gt;&gt; depth(test_tree, 42) # Returns None
-    &gt;&gt;&gt; depth(test_tree, 6)
-    2
-    &gt;&gt;&gt; depth(test_tree, 15)
-    3
-    &quot;&quot;&quot;
-<div class="alt 3">    "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x28;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x76;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x5f;&#x64;&#x65;&#x70;&#x74;&#x68;&#x73;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x70;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x63;&#x3a;&#x20;&#x64;&#x65;&#x70;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x76;&#x29;&#x2c;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x28;&#x74;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x74;&#x75;&#x70;&#x6c;&#x65;&#x28;&#x66;&#x69;&#x6c;&#x74;&#x65;&#x72;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x78;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x5f;&#x64;&#x65;&#x70;&#x74;&#x68;&#x73;&#x29;&#x29;&#x5b;&#x30;&#x5d;</div></code></pre>
-
-
-    <button id='3' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
 
 <h2 id="adt-rational-numbers">ADT: Rational Numbers</h2>
-
-
-
-<h2 id="data-abstraction">Data Abstraction</h2>
 
 
 
@@ -390,7 +340,7 @@ def den(rat):
 function <em>is supposed to do</em>, you can write your code. This is called
 <strong>data abstraction</strong>.</p>
 
-<h3 class="question" id="q4">Question 4</h3>
+<h3 class="question" id="q3">Question 3</h3>
 
 <p>Implement addition and subtraction for rational numbers (remember that you can 
 use your solution for <code>add_rat</code> in <code>sub_rat</code>):</p>
@@ -408,8 +358,8 @@ use your solution for <code>add_rat</code> in <code>sub_rat</code>):</p>
     &gt;&gt;&gt; den(c)
     12
     &quot;&quot;&quot;
-<div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x20;&#x2b;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x20;&#x3d;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x29;</div>
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x20;&#x2b;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x20;&#x3d;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x29;</div>
 def sub_rat(a, b):
     &quot;&quot;&quot;Subtracts two rational numbers A and B. For example,
     (3 / 4) &#x2d; (5 / 3) = (&#x2d;11 / 12)
@@ -421,16 +371,16 @@ def sub_rat(a, b):
     &gt;&gt;&gt; den(c)
     12
     &quot;&quot;&quot;
-<div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x67;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x2d;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x64;&#x64;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x61;&#x2c;&#x20;&#x6e;&#x65;&#x67;&#x29;&#xa;&#xa;&#x23;&#x20;&#x61;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x73;&#x75;&#x62;&#x5f;&#x72;&#x61;&#x74;&#x5f;&#x61;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x20;&#x2d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x20;&#x3d;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x29;</div></code></pre>
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x67;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x2d;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x64;&#x64;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x61;&#x2c;&#x20;&#x6e;&#x65;&#x67;&#x29;&#xa;&#xa;&#x23;&#x20;&#x61;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x73;&#x75;&#x62;&#x5f;&#x72;&#x61;&#x74;&#x5f;&#x61;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x20;&#x2d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x20;&#x3d;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x29;</div></code></pre>
 
 
-    <button id='4' class='toggleButton'>
+    <button id='3' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
-<h3 class="question" id="q5">Question 5</h3>
+<h3 class="question" id="q4">Question 4</h3>
 
 <p>Implement multiplication and division for rational numbers:</p>
 
@@ -447,8 +397,8 @@ def sub_rat(a, b):
     &gt;&gt;&gt; den(c)
     12
     &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x20;&#x3d;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x29;</div>
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x20;&#x3d;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x29;</div>
 def div_rat(a, b):
     &quot;&quot;&quot;Divides two rational numbers A and B. Keep in mind that A / B
     is equivalent to A * (1 / B). For example,
@@ -461,16 +411,16 @@ def div_rat(a, b):
     &gt;&gt;&gt; den(c)
     20
     &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x29;&#xa;&#xa;&#x23;&#x20;&#x41;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x64;&#x69;&#x76;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x76;&#x65;&#x72;&#x73;&#x65;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x2c;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x75;&#x6c;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x61;&#x2c;&#x20;&#x69;&#x6e;&#x76;&#x65;&#x72;&#x73;&#x65;&#x29;</div></code></pre>
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x64;&#x65;&#x6e;&#x29;&#xa;&#xa;&#x23;&#x20;&#x41;&#x6c;&#x74;&#x65;&#x72;&#x6e;&#x61;&#x74;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x64;&#x69;&#x76;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x76;&#x65;&#x72;&#x73;&#x65;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x2c;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x75;&#x6c;&#x5f;&#x72;&#x61;&#x74;&#x28;&#x61;&#x2c;&#x20;&#x69;&#x6e;&#x76;&#x65;&#x72;&#x73;&#x65;&#x29;</div></code></pre>
 
 
-    <button id='5' class='toggleButton'>
+    <button id='4' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
-<h3 class="question" id="q6">Question 6</h3>
+<h3 class="question" id="q5">Question 5</h3>
 
 <p>Implement a function <code>eq_rat</code>, which checks if two rational numbers
 are equal. This isn't as straightforward as it seems.</p>
@@ -490,11 +440,11 @@ are equal. This isn't as straightforward as it seems.</p>
     &gt;&gt;&gt; eq_rat(c, d)
     False
     &quot;&quot;&quot;
-<div class="alt 6">    "*** YOUR CODE HERE ***"
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;</div></code></pre>
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x61;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x62;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x28;&#x62;&#x29;&#x20;&#x2a;&#x20;&#x64;&#x65;&#x6e;&#x28;&#x61;&#x29;</div></code></pre>
 
 
-    <button id='6' class='toggleButton'>
+    <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -520,7 +470,7 @@ def den(rat):
     &quot;&quot;&quot;Extracts the denominator from a rational number.&quot;&quot;&quot;
     return rat(8, 5)[0]() &#x2d; 8</code></pre>
 
-<h3 class="question" id="q7">Question 7</h3>
+<h3 class="question" id="q6">Question 6</h3>
 
 <p>The code your friend wrote will work, but it is very hard to understand
 (luckily, you respected data abstraction, so your own code doesn't
@@ -555,18 +505,18 @@ def make_rat(num, den):
     &gt;&gt;&gt; den(a)
     2
     &quot;&quot;&quot;
-<div class="alt 7">    "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x3d;&#x20;&#x67;&#x63;&#x64;&#x28;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x6e;&#x75;&#x6d;&#x20;&#x2f;&#x2f;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x20;&#x2f;&#x2f;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x29;</div>
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x3d;&#x20;&#x67;&#x63;&#x64;&#x28;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x6e;&#x75;&#x6d;&#x20;&#x2f;&#x2f;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x20;&#x2f;&#x2f;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x29;</div>
 def num(rat):
     &quot;&quot;&quot;Extracts the numerator from a rational number.&quot;&quot;&quot;
-<div class="alt 7">    "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x61;&#x74;&#x5b;&#x30;&#x5d;</div>
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x61;&#x74;&#x5b;&#x30;&#x5d;</div>
 def den(rat):
     &quot;&quot;&quot;Extracts the denominator from a rational number.&quot;&quot;&quot;
-<div class="alt 7">    "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x61;&#x74;&#x5b;&#x31;&#x5d;</div></code></pre>
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x61;&#x74;&#x5b;&#x31;&#x5d;</div></code></pre>
 
-<div class="solution 7">
+<div class="solution 6">
 
 <p>There are multiple possible answers. As long as your selectors are
 consistent with your constructor, your solution should work.</p>
@@ -574,13 +524,67 @@ consistent with your constructor, your solution should work.</p>
 </div>
 
 
-    <button id='7' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
 <p>Now check your solutions again to the previous exercises. Do they still
 work? If you didn't violate data abstraction, they should!</p>
+
+
+<h2 id="challenge-question">Challenge Question</h2>
+
+
+<blockquote><p>Questions in this section are not required for submission. However,
+if you do a challenge question, you can skip another question on the lab
+without losing points.</p></blockquote>
+
+<h3 class="question" id="q7">Question 7: Depth</h3>
+
+<p>Define a function <code>depth</code> that, given a tree, <code>t</code>, and a value, <code>v</code>,
+finds the depth at which <code>v</code> appears as a datum in the tree. Depth here
+refers to distance from the root, <code>t</code>. The node <code>t</code> itself is at depth
+0; its children are at depth 1, etc. Assume that <code>v</code> appears at most
+once in the tree.  Return <code>None</code> if it does not appear.</p>
+
+
+
+<pre><code>def depth(t, v):
+    &quot;&quot;&quot;Returns the depth of value v in tree t if v is contained in t.
+    If v is not in t, return None.
+
+    &gt;&gt;&gt; test_tree = tree(1,
+    ...                  (tree(2,
+    ...                        (tree(3,
+    ...                              (tree(4),
+    ...                               tree(5))),
+    ...                         tree(6,
+    ...                              (tree(7),
+    ...                               tree(8))))),
+    ...                  (tree(9,
+    ...                        (tree(10,
+    ...                              (tree(11),
+    ...                               tree(12))),
+    ...                         tree(13,
+    ...                              (tree(14),
+    ...                               tree(15))))))))
+    &gt;&gt;&gt; depth(test_tree, 1)
+    0
+    &gt;&gt;&gt; depth(test_tree, 42) # Returns None
+    &gt;&gt;&gt; depth(test_tree, 6)
+    2
+    &gt;&gt;&gt; depth(test_tree, 15)
+    3
+    &quot;&quot;&quot;
+<div class="alt 7">    "*** YOUR CODE HERE ***"
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x28;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x76;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x5f;&#x64;&#x65;&#x70;&#x74;&#x68;&#x73;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x70;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x63;&#x3a;&#x20;&#x64;&#x65;&#x70;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x76;&#x29;&#x2c;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x28;&#x74;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x74;&#x75;&#x70;&#x6c;&#x65;&#x28;&#x66;&#x69;&#x6c;&#x74;&#x65;&#x72;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x78;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x5f;&#x64;&#x65;&#x70;&#x74;&#x68;&#x73;&#x29;&#x29;&#x5b;&#x30;&#x5d;</div></code></pre>
+
+
+    <button id='7' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
 
 
   </div>
@@ -596,21 +600,24 @@ work? If you didn't violate data abstraction, they should!</p>
   <li><a href="#adt-trees">ADT: Trees</a></li>
   <ul>
   <li><a href="#q2">Question 2: Map</a></li>
-  <li><a href="#q3">Question 3: Depth</a></li>
 </ul>
 
   <li><a href="#adt-rational-numbers">ADT: Rational Numbers</a></li>
-  <li><a href="#data-abstraction">Data Abstraction</a></li>
   <li><a href="#using-abstractions">Using Abstractions</a></li>
   <ul>
+  <li><a href="#q3">Question 3</a></li>
   <li><a href="#q4">Question 4</a></li>
   <li><a href="#q5">Question 5</a></li>
-  <li><a href="#q6">Question 6</a></li>
 </ul>
 
   <li><a href="#defining-abstractions">Defining Abstractions</a></li>
   <ul>
-  <li><a href="#q7">Question 7</a></li>
+  <li><a href="#q6">Question 6</a></li>
+</ul>
+
+  <li><a href="#challenge-question">Challenge Question</a></li>
+  <ul>
+  <li><a href="#q7">Question 7: Depth</a></li>
 </ul>
 
 </ul>
@@ -631,7 +638,7 @@ work? If you didn't violate data abstraction, they should!</p>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script>
   $(function() {
-    if (new Date("01/01/2017") < new Date()) {
+    if (new Date("10/20/2016") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');
