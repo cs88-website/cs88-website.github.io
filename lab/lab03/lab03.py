@@ -111,27 +111,6 @@ def den(rat):
     """Extracts the denominator from a rational number."""
     return rat(8, 5)[0]() - 8
 
-from fractions import gcd
-
-def make_rat(num, den):
-    """Creates a rational number, given a numerator and denominator.
-
-    >>> a = make_rat(2, 4)
-    >>> num(a)
-    1
-    >>> den(a)
-    2
-    """
-    "*** YOUR CODE HERE ***"
-
-def num(rat):
-    """Extracts the numerator from a rational number."""
-    "*** YOUR CODE HERE ***"
-
-def den(rat):
-    """Extracts the denominator from a rational number."""
-    "*** YOUR CODE HERE ***"
-
 def add_rat(a, b):
     """Adds two rational numbers A and B. For example,
     (3 / 4) + (5 / 3) = (29 / 12)
@@ -197,8 +176,6 @@ def eq_rat(a, b):
     False
     """
     "*** YOUR CODE HERE ***"
-
-
 
 
 

@@ -316,29 +316,28 @@ is any number that can be expressed as <em>p / q</em>, where <em>p</em>
 and <em>q</em> are integers.</p>
 
 <p>Your friend gets to work implementing an <em>abstract data type</em>
-(ADT for short) to represent rational numbers. In the meantime, you
-will be writing functions that perform mathematical operations on
-rational numbers. You and your friend agree on a set of
-<em>constructors</em> and <em>selectors</em>:</p>
+(ADT for short) to represent rational numbers and comes up with the 
+following constructors and selectors.</p>
 
 <pre><code>def make_rat(num, den):
     &quot;&quot;&quot;Creates a rational number, given a numerator and
     denominator.
     &quot;&quot;&quot;
+    return lambda x, y: [lambda: den + x, lambda: num + y]
 
 def num(rat):
     &quot;&quot;&quot;Extracts the numerator from a rational number.&quot;&quot;&quot;
+    return rat(2, 3)[1]() &#x2d; 3
 
 def den(rat):
-    &quot;&quot;&quot;Extracts the denominator from a rational number.&quot;&quot;&quot;</code></pre>
+    &quot;&quot;&quot;Extracts the denominator from a rational number.&quot;&quot;&quot;
+    return rat(8, 5)[0]() &#x2d; 8</code></pre>
 
-<p><code>make_rat</code> is the <em>constructor</em>, and <code>num</code> and <code>den</code> are the
-<em>selectors</em>.</p>
-
-<p>Notice that the functions don't have any bodies yet, so you won't know
-<em>how</em> they work &mdash; but that's okay! As long as you know what each
-function <em>is supposed to do</em>, you can write your code. This is called
-<strong>data abstraction</strong>.</p>
+<p>The code your friend wrote will work, but it is very hard to understand.
+Luckily, you respected data abstraction, so your own code doesn't
+depend on how your friend's works. You can write all your functions
+without having to worry about how exactly your friend's code works &mdash; that
+is the power of abstraction!</p>
 
 <h3 class="question" id="q3">Question 3</h3>
 
@@ -380,6 +379,9 @@ def sub_rat(a, b):
     </button>
     
 
+<p>Use OK to test your code:</p><pre><code>python ok -q add-rat --local
+python ok -q sub-rat --local</code></pre>
+
 <h3 class="question" id="q4">Question 4</h3>
 
 <p>Implement multiplication and division for rational numbers:</p>
@@ -420,6 +422,9 @@ def div_rat(a, b):
     </button>
     
 
+<p>Use OK to test your code:</p><pre><code>python ok -q mul-rat --local
+python ok -q div-rat --local</code></pre>
+
 <h3 class="question" id="q5">Question 5</h3>
 
 <p>Implement a function <code>eq_rat</code>, which checks if two rational numbers
@@ -449,88 +454,7 @@ are equal. This isn't as straightforward as it seems.</p>
     </button>
     
 
-
-<h2 id="defining-abstractions">Defining Abstractions</h2>
-
-
-<p>Your friend finally finished implementing the constructors and
-selectors for the Rational Number ADT:</p>
-
-<pre><code>def make_rat(num, den):
-    &quot;&quot;&quot;Creates a rational number, given a numerator and
-    denominator.
-    &quot;&quot;&quot;
-    return lambda x, y: [lambda: den + x, lambda: num + y]
-
-def num(rat):
-    &quot;&quot;&quot;Extracts the numerator from a rational number.&quot;&quot;&quot;
-    return rat(2, 3)[1]() &#x2d; 3
-
-def den(rat):
-    &quot;&quot;&quot;Extracts the denominator from a rational number.&quot;&quot;&quot;
-    return rat(8, 5)[0]() &#x2d; 8</code></pre>
-
-<h3 class="question" id="q6">Question 6</h3>
-
-<p>The code your friend wrote will work, but it is very hard to understand
-(luckily, you respected data abstraction, so your own code doesn't
-depend on how your friend's works).</p>
-
-<p>Not only that, but your friend's doesn't simplify fractions in the
-constructor! Consider the following rational:</p>
-
-<pre><code>&gt;&gt;&gt; a = make_rat(6, 9)
-&gt;&gt;&gt; num(a)
-6
-&gt;&gt;&gt; den(a)
-9</code></pre>
-
-<p>We would like to <em>simplify</em> the rational number so that it becomes (2 /
-3). Write the <code>make_rat</code> function so that it does this, and write the
-two selectors <code>num</code> and <code>den</code> to be consistent with your constructor.</p>
-
-<p><em>Hint</em>: you can write your own Greatest Common Divisor function, or you
-can use Python's built-in <code>gcd</code> function.</p>
-
-
-
-<pre><code>from fractions import gcd
-
-def make_rat(num, den):
-    &quot;&quot;&quot;Creates a rational number, given a numerator and denominator.
-
-    &gt;&gt;&gt; a = make_rat(2, 4)
-    &gt;&gt;&gt; num(a)
-    1
-    &gt;&gt;&gt; den(a)
-    2
-    &quot;&quot;&quot;
-<div class="alt 6">    "*** YOUR CODE HERE ***"
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x3d;&#x20;&#x67;&#x63;&#x64;&#x28;&#x6e;&#x75;&#x6d;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x6e;&#x75;&#x6d;&#x20;&#x2f;&#x2f;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x20;&#x2f;&#x2f;&#x20;&#x67;&#x63;&#x64;&#x5f;&#x66;&#x72;&#x61;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x29;</div>
-def num(rat):
-    &quot;&quot;&quot;Extracts the numerator from a rational number.&quot;&quot;&quot;
-<div class="alt 6">    "*** YOUR CODE HERE ***"
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x61;&#x74;&#x5b;&#x30;&#x5d;</div>
-def den(rat):
-    &quot;&quot;&quot;Extracts the denominator from a rational number.&quot;&quot;&quot;
-<div class="alt 6">    "*** YOUR CODE HERE ***"
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x61;&#x74;&#x5b;&#x31;&#x5d;</div></code></pre>
-
-<div class="solution 6">
-
-<p>There are multiple possible answers. As long as your selectors are
-consistent with your constructor, your solution should work.</p>
-
-</div>
-
-
-    <button id='6' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Now check your solutions again to the previous exercises. Do they still
-work? If you didn't violate data abstraction, they should!</p>
+<p>Use OK to test your code:</p><pre><code>python ok -q eq-rat --local</code></pre>
 
 
 <h2 id="challenge-question">Challenge Question</h2>
@@ -540,7 +464,7 @@ work? If you didn't violate data abstraction, they should!</p>
 if you do a challenge question, you can skip another question on the lab
 without losing points.</p></blockquote>
 
-<h3 class="question" id="q7">Question 7: Depth</h3>
+<h3 class="question" id="q6">Question 6: Depth</h3>
 
 <p>Define a function <code>depth</code> that, given a tree, <code>t</code>, and a value, <code>v</code>,
 finds the depth at which <code>v</code> appears as a datum in the tree. Depth here
@@ -577,11 +501,11 @@ once in the tree.  Return <code>None</code> if it does not appear.</p>
     &gt;&gt;&gt; depth(test_tree, 15)
     3
     &quot;&quot;&quot;
-<div class="alt 7">    "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x28;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x76;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x5f;&#x64;&#x65;&#x70;&#x74;&#x68;&#x73;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x70;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x63;&#x3a;&#x20;&#x64;&#x65;&#x70;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x76;&#x29;&#x2c;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x28;&#x74;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x74;&#x75;&#x70;&#x6c;&#x65;&#x28;&#x66;&#x69;&#x6c;&#x74;&#x65;&#x72;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x78;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x5f;&#x64;&#x65;&#x70;&#x74;&#x68;&#x73;&#x29;&#x29;&#x5b;&#x30;&#x5d;</div></code></pre>
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x6e;&#x74;&#x72;&#x79;&#x28;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x76;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x28;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x5f;&#x64;&#x65;&#x70;&#x74;&#x68;&#x73;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x70;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x63;&#x3a;&#x20;&#x64;&#x65;&#x70;&#x74;&#x68;&#x28;&#x63;&#x2c;&#x20;&#x76;&#x29;&#x2c;&#x20;&#x73;&#x75;&#x62;&#x74;&#x72;&#x65;&#x65;&#x73;&#x28;&#x74;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x74;&#x75;&#x70;&#x6c;&#x65;&#x28;&#x66;&#x69;&#x6c;&#x74;&#x65;&#x72;&#x28;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x78;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x5f;&#x64;&#x65;&#x70;&#x74;&#x68;&#x73;&#x29;&#x29;&#x5b;&#x30;&#x5d;</div></code></pre>
 
 
-    <button id='7' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -610,14 +534,9 @@ once in the tree.  Return <code>None</code> if it does not appear.</p>
   <li><a href="#q5">Question 5</a></li>
 </ul>
 
-  <li><a href="#defining-abstractions">Defining Abstractions</a></li>
-  <ul>
-  <li><a href="#q6">Question 6</a></li>
-</ul>
-
   <li><a href="#challenge-question">Challenge Question</a></li>
   <ul>
-  <li><a href="#q7">Question 7: Depth</a></li>
+  <li><a href="#q6">Question 6: Depth</a></li>
 </ul>
 
 </ul>
