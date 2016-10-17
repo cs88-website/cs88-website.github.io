@@ -1,0 +1,26 @@
+{
+    "name": "Lab 4",
+    "endpoint": "cal/cs88/fa16/lab04",
+    "src": [
+        "lab04.py"
+    ],
+    "tests": {
+        "tests/case1.py": "ok_test",
+        "tests/case1-solved.py": "ok_test",
+        "tests/case2.py": "ok_test",
+        "lab04.py:deep_copy": "doctest",
+        "tests/case3.py": "ok_test",
+        "lab04.py:word_count_dictionary": "doctest",
+        "lab04.py:word_count_tuple": "doctest",
+        "lab04.py:word_count_list": "doctest",
+        "lab04.py:get_word_count": "doctest",
+        "lab04.py:word_count_fun": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "unlock",
+        "backup"
+    ]
+}
