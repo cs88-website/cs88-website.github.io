@@ -1,0 +1,22 @@
+{
+    "name": "Lab 5",
+    "endpoint": "cal/cs88/fa16/lab05",
+    "src": [
+        "lab08.py"
+    ],
+    "tests": {
+        "lab05.py:char_gen": "doctest",
+        "lab05.py:countdown": "doctest",
+        "lab05.py:is_prime": "doctest",
+        "lab05.py:primes": "doctest",
+        "lab05.py:scale": "doctest",
+        "lab05.py:count_palindromes": "doctest" 
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}

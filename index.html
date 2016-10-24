@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+
+    <title> CS 88 Fall 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='page-header'>
+  <h1><span class="content-title-brand">CS 88</span>:
+  Computational Structures in Data Science</h1>
+
+  Fall 2016<br/>
+  Instructor: Gerald Friedland<br/>
+  F 11-12 in 306 Soda, HP Auditorium
+
+</div>
+
+
+<h2>Announcements</h2>
+
+<div id="assignment-quick-list">
+</div>
+
+<div id='announcements'>
+  
+    <div class="announcement" id='announcement-0'>
+        
+        <ul class="pager">
+            <li class='announcement-btn-newer'>
+                <a>
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    newer
+                </a>
+            </li>
+            <li>
+                <span class="announcement-date">Tuesday, 08/23</span>
+            </li>
+            <li class='announcement-btn-older'>
+                <a>
+                    older
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                </a>
+            </li>
+        </ul>
+        
+        <p>Welcome to CS88!</p>
+
+<ul>
+  <li>Lectures will start on Friday 8/26 in HP auditorium, 306 Soda.</li>
+  <li>Labs will start on Monday 8/29 in 105 Cory.</li>
+  <li>Please sign up for the CS 88 <a href="https://piazza.com/berkeley/fall2016/cs88">Piazza</a> forum.</li>
+  <li>Labs will not have computers available, students must bring a laptop. Data Science students can borrow laptops from the library. See Piazza for more information.</li>
+  <li>You cannot get credit for CS 88 if you have already taken CS 61A.</li>
+</ul>
+
+<p>If you're joining the class late, no need to worry! If you missed the first lecture, look over the slides posted on the calendar. If you missed the first lab, let the staff know on Piazza and complete Lab 0 on your own time or at office hours.</p>
+    </div>
+    
+
+    <div class="announcement" id='announcement-1'>
+        
+        <ul class="pager">
+            <li class='announcement-btn-newer'>
+                <a>
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    newer
+                </a>
+            </li>
+            <li>
+                <span class="announcement-date">Tuesday, 08/02</span>
+            </li>
+            <li class='announcement-btn-older'>
+                <a>
+                    older
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                </a>
+            </li>
+        </ul>
+        
+        <p>Welcome to CS88! Lecture will be held F 11-12pm in HP Auditorium and labs will be held M 11-1pm and 1-3pm in 105 Cory. Students will be required to attend the lecture and one lab section. This connector course will provide a deeper introduction to computer science concepts such as functional programming, data abstraction, and object-oriented programming. The calendar below has not yet been updated with the final dates and topics. Check back soon for a fully updated version.</p>
+    </div>
+    
+</div>
+
+<hr/>
+
+<!-- <div id='resources'>
+  <div id='resources-description'>
+    Resource/Piazza Search <br/>
+    <small>Search for terms like "recursion", "homework 3", or "practice"</small>
+  </div>
+
+  <div id='resources-input'>
+    <input type='text' id='resources-search-box' class='search' placeholder='Search for resources/posts on Piazza'>
+  </div>
+
+  <div id='resources-display'>
+    
+    <table id='resource-table' class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody class="list">
+            
+        <tr>
+            <td class='resource-name'>Final Exam: 11:30-2pm</td>
+            <td class='resource-type'>Exam</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 1: Introduction, Abstraction
+(<a href="assets/slides/01-Introduction,_Abstraction_1pp.pdf">1pp</a>) (<a href="assets/slides/01-Introduction,_Abstraction_6pps.pdf">6pps</a>) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/11-getting-started.html">Readings: section 1.1</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/12-elements-of-programming.html">Readings: section 1.2</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/21-introduction.html">Readings: section 2.1</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 2: Algorithms, Data, Functions, Iteration
+(<a href="assets/slides/02-Algorithms,_Data,_Functions,_Iteration_1pp.pdf">1pp</a>) (<a href="assets/slides/02-Algorithms,_Data,_Functions,_Iteration_6pps.pdf">6pps</a>) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/13-defining-new-functions.html">Readings: section 1.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/14-designing-functions.html">Readings: section 1.4</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/15-control.html">Readings: section 1.5</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/23-sequences.html">Readings: section 2.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 3: Scope, Recursion
+(<a href="assets/slides/03-Scope,_Recursion_1pp.pdf">1pp</a>) (<a href="assets/slides/03-Scope,_Recursion_6pps.pdf">6pps</a>) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/13-defining-new-functions.html">Readings: section 1.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/17-recursive-functions.html">Readings: section 1.7</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 4: Higher Order Functions
+(<a href="assets/slides/04-Higher_Order_Functions_1pp.pdf">1pp</a>) (6pps) (<a href="assets/slides/04-Higher_Order_Functions.ipynb">ipynb</a>)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/16-higher-order-functions.html">Readings: section 1.6</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 5: Abstract Data Types
+(<a href="assets/slides/05-Abstract_Data_Types_1pp.pdf">1pp</a>) (<a href="assets/slides/05-Abstract_Data_Types_6pps.pdf">6pps</a>) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/22-data-abstraction.html">Readings: section 2.2</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 6: Large Scale Multimedia Retrieval
+(1pp) (<a href="assets/slides/06-Large_Scale_Multimedia_Retrieval_6pps.pdf">6pps</a>) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 7: MT Review in class, Exam in evening
+(1pp) (<a href="assets/slides/07-MT_Review_in_class,_Exam_in_evening_6pps.pdf">6pps</a>) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 8: Mutability, Nonlocal, Exceptions
+(<a href="assets/slides/08-Mutability,_Nonlocal,_Exceptions_1pp.pdf">1pp</a>) (6pps) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/24-mutable-data.html">Readings: section 2.4</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/33-exceptions.html">Readings: section 3.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 9: Sequences, Generators
+(1pp) (6pps) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/23-sequences.html">Readings: section 2.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/42-implicit-sequences.html">Readings: section 4.2</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 10: Object Oriented Programming (OOP I)
+(1pp) (6pps) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">Readings: section 2.5</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">Readings: section 2.6</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 11: Classes, Inheritance (OOP II)
+(1pp) (6pps) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">Readings: section 2.5</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">Readings: section 2.6</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 12: Databases, SQL
+(1pp) (6pps) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 13: Performance, Distributed Computing
+(1pp) (6pps) (ipynb)</td>
+            <td class='resource-type'>Lecture</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/28-efficiency.html">Readings: section 2.8</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw01/">Homework 1</a> (<a href="hw/sol-hw01/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw02/">Homework 2</a> (<a href="hw/sol-hw02/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw03/">Homework 3</a> (<a href="hw/sol-hw03/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw04/">Homework 4</a> (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw05/">Homework 5</a> (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="proj/maps/">Maps</a></td>
+            <td class='resource-type'>Project</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab00/">Lab 0: Setup</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab01/">Lab 1: Environments and Recursion</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab02/">Lab 2: Higher Order Functions</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab03/">Lab 3: Data Abstraction and Trees</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab04/">Lab 4: Mutation</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab05/">Lab 5: Sequences and Generators</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/about.html">Syllabus</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/composition.html">Composition Guide</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Programming</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/debugging.html">Debugging Guide</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Programming</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/using-ok.html">Using OK</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>OK</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/unix.html">UNIX Tutorial</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>UNIX</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/sublime.html">Sublime Text</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Text Editors</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/vim.html">Vim</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Text Editors</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/emacs.html">Emacs</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Text Editors</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="weekly.html">Weekly Schedule</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="staff.html">Staff</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="office-hours.html">Office Hours</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://www.youtube.com/watch?v=54-wuFsPi0w">Windows: set up Python</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Setting up</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://www.youtube.com/watch?v=gDDaz6Sb8jo">Windows: connecting from home (video)</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Setting up</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://inst.eecs.berkeley.edu/~cs61a/fa13/pdfs/connect-windows.pdf">Windows: connecting form home (pdf)</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Setting up</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://www.youtube.com/watch?v=smHuBHxJdK8">Mac: set up Python</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Setting up</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://www.youtube.com/watch?v=6tQx-J4nBSY">Mac: set up Emacs</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Setting up</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://www.youtube.com/watch?v=irwlU7esODA">Mac: connecting from home (video)</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Setting up</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://inst.eecs.berkeley.edu/~cs61a/fa13/pdfs/connect-mac.pdf">Mac: connecting from home (pdf)</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Setting up</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://tutor.composingprograms.com/visualize.html">Online Python tutor</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Environment Diagrams</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="https://www.youtube.com/playlist?list=PL-XXv-cvA_iBM29DgZsGaQihJp8lLQn3J">Spring 2015 screencasts</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Video, John DeNero</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="https://www.youtube.com/playlist?list=PL-XXv-cvA_iDbsAvTYyJnMkObr12IIkyg">Fall 2014 screencasts</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Video, John DeNero</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://www.youtube.com/view_play_list?p=-XXv-cvA_iCIEwJhyDVdyLMCiimv6Tup">Fall 2013 screencasts</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>Video, John DeNero</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://www.ee.surrey.ac.uk/Teaching/Unix/">Another UNIX tutorial</a></td>
+            <td class='resource-type'>Article</td>
+            <td class='resource-tags'>UNIX</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://albertwu.org/cs61a/">Albert Wu's practice problems</a></td>
+            <td class='resource-type'>Practice</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://markmiyashita.com/cs61a/sp14/practice/">Mark Miyashita's practice problems</a></td>
+            <td class='resource-type'>Practice</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Functions and expressions practice problems</td>
+            <td class='resource-type'>Practice</td>
+            <td class='resource-tags'>Functions</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Control structures practice problems</td>
+            <td class='resource-type'>Practice</td>
+            <td class='resource-tags'>Control Structures</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Higher Order Functions practice problems</td>
+            <td class='resource-type'>Practice</td>
+            <td class='resource-tags'>Higher Order Functions</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lambda expressions practice problems</td>
+            <td class='resource-type'>Practice</td>
+            <td class='resource-tags'>Lambdas</td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Recursion practice problems</td>
+            <td class='resource-type'>Practice</td>
+            <td class='resource-tags'>Recursion, Tree Recursion</td>
+        </tr>
+        </tbody>
+    </table>
+  </div>
+</div> -->
+
+<div>
+  <h2>Calendar</h2>
+
+  <div class="table-responsive">
+
+  <table id="calendar">
+<tr>
+<th>Week</th>
+<th>Date</th>
+<th>Lecture</th>
+<th>Reading</th>
+<th>Lab/Handout</th>
+<th>Homework</th>
+<th>Project</th>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">1</td>
+<td>Fri 8/26</td>
+<td>Introduction, Abstraction
+<br/>
+(<a href="assets/slides/01-Introduction,_Abstraction_1pp.pdf">1pp</a>) (<a href="assets/slides/01-Introduction,_Abstraction_6pps.pdf">6pps</a>) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/11-getting-started.html">1.1</a><br/>
+<a href="http://composingprograms.com/pages/12-elements-of-programming.html">1.2</a><br/>
+<a href="http://composingprograms.com/pages/21-introduction.html">2.1</a></td>
+<td><a href="lab/lab00/">Lab 0: Setup</a><br/>(due Sun 9/4)</td>
+<td><a href="hw/hw01/">Homework 1</a><br/>(due Tue 9/6) (<a href="hw/sol-hw01/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum even">2</td>
+<td>Fri 9/2</td>
+<td>Algorithms, Data, Functions, Iteration
+<br/>
+(<a href="assets/slides/02-Algorithms,_Data,_Functions,_Iteration_1pp.pdf">1pp</a>) (<a href="assets/slides/02-Algorithms,_Data,_Functions,_Iteration_6pps.pdf">6pps</a>) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/13-defining-new-functions.html">1.3</a><br/>
+<a href="http://composingprograms.com/pages/14-designing-functions.html">1.4</a><br/>
+<a href="http://composingprograms.com/pages/15-control.html">1.5</a><br/>
+<a href="http://composingprograms.com/pages/23-sequences.html">2.3</a></td>
+<td></td>
+<td><a href="hw/hw02/">Homework 2</a><br/>(due Thu 9/15) (<a href="hw/sol-hw02/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">3</td>
+<td>Fri 9/9</td>
+<td>Scope, Recursion
+<br/>
+(<a href="assets/slides/03-Scope,_Recursion_1pp.pdf">1pp</a>) (<a href="assets/slides/03-Scope,_Recursion_6pps.pdf">6pps</a>) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/13-defining-new-functions.html">1.3</a><br/>
+<a href="http://composingprograms.com/pages/17-recursive-functions.html">1.7</a></td>
+<td><a href="lab/lab01/">Lab 1: Environments and Recursion</a><br/>(due Sun 9/18)</td>
+<td><a href="hw/hw03/">Homework 3</a><br/>(due Thu 9/22) (<a href="hw/sol-hw03/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum even">4</td>
+<td>Fri 9/16</td>
+<td>Higher Order Functions
+<br/>
+(<a href="assets/slides/04-Higher_Order_Functions_1pp.pdf">1pp</a>) (6pps) (<a href="assets/slides/04-Higher_Order_Functions.ipynb">ipynb</a>)</td>
+<td><a href="http://composingprograms.com/pages/16-higher-order-functions.html">1.6</a></td>
+<td><a href="lab/lab02/">Lab 2: Higher Order Functions</a><br/>(due Sun 9/25)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">5</td>
+<td>Fri 9/23</td>
+<td>Abstract Data Types
+<br/>
+(<a href="assets/slides/05-Abstract_Data_Types_1pp.pdf">1pp</a>) (<a href="assets/slides/05-Abstract_Data_Types_6pps.pdf">6pps</a>) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/22-data-abstraction.html">2.2</a></td>
+<td></td>
+<td></td>
+<td><a href="proj/maps/">Maps</a><br/>(due Sun 10/2)</td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum even">6</td>
+<td>Fri 9/30</td>
+<td>Large Scale Multimedia Retrieval
+<br/>
+(1pp) (<a href="assets/slides/06-Large_Scale_Multimedia_Retrieval_6pps.pdf">6pps</a>) (ipynb)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">7</td>
+<td>Fri 10/7</td>
+<td>MT Review in class, Exam in evening
+<br/>
+(1pp) (<a href="assets/slides/07-MT_Review_in_class,_Exam_in_evening_6pps.pdf">6pps</a>) (ipynb)</td>
+<td></td>
+<td><a href="lab/lab03/">Lab 3: Data Abstraction and Trees</a><br/>(due Sun 10/16)</td>
+<td><a href="hw/hw04/">Homework 4</a><br/>(due Sun 10/16) (Solutions)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum even">8</td>
+<td>Fri 10/14</td>
+<td>Mutability, Nonlocal, Exceptions
+<br/>
+(<a href="assets/slides/08-Mutability,_Nonlocal,_Exceptions_1pp.pdf">1pp</a>) (6pps) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/24-mutable-data.html">2.4</a><br/>
+<a href="http://composingprograms.com/pages/33-exceptions.html">3.3</a></td>
+<td><a href="lab/lab04/">Lab 4: Mutation</a><br/>(due Sun 10/23)</td>
+<td><a href="hw/hw05/">Homework 5</a><br/>(due Sun 10/23) (Solutions)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">9</td>
+<td>Fri 10/21</td>
+<td>Sequences, Generators
+<br/>
+(1pp) (6pps) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/23-sequences.html">2.3</a><br/>
+<a href="http://composingprograms.com/pages/42-implicit-sequences.html">4.2</a></td>
+<td><a href="lab/lab05/">Lab 5: Sequences and Generators</a><br/>(due Sun 10/30)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum even">10</td>
+<td>Fri 10/28</td>
+<td>Object Oriented Programming (OOP I)
+<br/>
+(1pp) (6pps) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">2.5</a><br/>
+<a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">2.6</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">11</td>
+<td>Fri 11/4</td>
+<td>Classes, Inheritance (OOP II)
+<br/>
+(1pp) (6pps) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">2.5</a><br/>
+<a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">2.6</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum even">12</td>
+<td>Fri 11/11</td>
+<td>Databases, SQL
+<br/>
+(1pp) (6pps) (ipynb)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">13</td>
+<td>Fri 11/18</td>
+<td>Performance, Distributed Computing
+<br/>
+(1pp) (6pps) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/28-efficiency.html">2.8</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum even">14</td>
+<td>Fri 11/25</td>
+<td>No Lecture: Thanksgiving Holiday</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">15</td>
+<td>Mon 12/12</td>
+<td>Final Exam: 11:30-2pm</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.1.1/list.min.js"></script>
+<script>
+$(document).ready(function() {
+  // Resource search
+  var options = {
+    valueNames: ['resource-name', 'resource-type', 'resource-tags']
+  };
+  var resourceList = new List('resources', options);
+
+  // Piazza search
+  var client = $.algolia.Client('LHANIWJEIC', '968c2f288acce3b95639b2af4ff66250');
+  var index = client.initIndex('CS61A Fa15 Piazza'); // Change this depending on semester
+  var piazzaResultLimit = 5;
+  var piazzaCache = {};
+
+  function piazzaSearchCallback(err, content) {
+    if (err || content.hits.length === 0) {
+      return;
+    }
+    // Scan all hits and display them
+    for (var i = 0; i < Math.min(content.hits.length, piazzaResultLimit); ++i) {
+
+      var hit = content.hits[i];
+      if (hit.qid in piazzaCache) {
+        piazzaCache[hit.qid].show();
+        continue;
+      }
+
+
+      newPost = resourceList.add({
+          'resource-name': '<a href="' + hit.urlto + '">'
+                           + '@' + hit.qid.toString() + ': ' + hit.subject
+                           + '</a>',
+          'resource-type': 'Piazza post',
+          'resource-tags': hit.tags.join(', ')
+        });
+      newPost[0].show();
+      piazzaCache[hit.qid] = newPost[0];
+
+
+    }
+  }
+
+  function urlExists(url, callback) {
+      // adapted from http://stackoverflow.com/a/1591653
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function() {
+          xhr.readyState === 4 && callback(xhr.status < 400);
+      };
+      xhr.open('HEAD', url);
+      xhr.send();
+  }
+
+  // Assignment quick list
+  var assignments = [{"due": "9/4/16", "link": "lab/lab00/", "name": "Lab 0: Setup", "release": "8/26/16"}, {"due": "9/18/16", "link": "lab/lab01/", "name": "Lab 1: Environments and Recursion", "release": "9/9/16"}, {"due": "9/25/16", "link": "lab/lab02/", "name": "Lab 2: Higher Order Functions", "release": "9/16/16"}, {"due": "10/16/16", "link": "lab/lab03/", "name": "Lab 3: Data Abstraction and Trees", "release": "10/7/16"}, {"due": "10/23/16", "link": "lab/lab04/", "name": "Lab 4: Mutation", "release": "10/14/16"}, {"due": "10/30/16", "link": "lab/lab05/", "name": "Lab 5: Sequences and Generators", "release": "10/21/16"}, {"due": "9/6/16", "link": "hw/hw01/", "name": "Homework 1", "release": "8/26/16"}, {"due": "9/15/16", "link": "hw/hw02/", "name": "Homework 2", "release": "9/2/16"}, {"due": "9/22/16", "link": "hw/hw03/", "name": "Homework 3", "release": "9/9/16"}, {"due": "10/16/16", "link": "hw/hw04/", "name": "Homework 4", "release": "10/7/16"}, {"due": "10/23/16", "link": "hw/hw05/", "name": "Homework 5", "release": "10/14/16"}, {"due": "10/2/16", "link": "proj/maps/", "name": "Maps", "release": "9/23/16"}];
+
+  $(document).ready(function() {
+    $("#resources-search-box").keyup(function() {
+      if (!this.value) {
+        $('#resources-display').hide();
+      } else {
+        index.search($("#resources-search-box").val(), piazzaSearchCallback);
+        $('#resources-display').show();
+      }
+    });
+
+    var currentTime = Date.now();
+    var quickListCount = 0;
+    assignments.forEach(function(assignment) {
+      var due = new Date(assignment.due);
+      due.setDate(due.getDate() + 1);
+      if (currentTime <= due) {
+        urlExists(assignment.link, function(exists) {
+          if (!exists) return;
+        if (quickListCount % 4 === 0) {
+          $('#assignment-quick-list').append('<div class="row"></div>');
+          quickListCount++;
+        }
+        $('#assignment-quick-list > div').last().append(
+            '<div class="col-xs-6 col-md-3">'
+            + '<div class="quick-list-item">'
+            + '<a href="' + assignment.link + '"><span class="quick-list-item-link"></span></a>'
+            + assignment.name
+            + '<hr/>Due '
+            + assignment.due
+            + '</div></div>');
+        });
+      }
+    });
+  });
+
+  // Announcements
+  var announcementIndex = 0;
+
+  function setAnnouncements(offset) {
+    var newIndex = announcementIndex  + offset;
+    var announcementNumber = $('.announcement').length;
+
+    if (newIndex < 0 || newIndex >= announcementNumber) {
+      return;
+    }
+
+    $('#announcement-' + announcementIndex).hide(0, function() {
+      $('#announcement-' + newIndex).show(0);
+    });
+
+    announcementIndex = newIndex;
+
+    if (announcementIndex >= announcementNumber - 1) {
+      $('#announcement-' + announcementIndex + ' .announcement-btn-older')
+        .addClass('disabled');
+    }
+    if (announcementIndex === 0) {
+      $('#announcement-' + announcementIndex + ' .announcement-btn-newer')
+        .addClass('disabled');
+    }
+  }
+  setAnnouncements(0);
+
+  $('.announcement-btn-newer > a').click(function() {
+    setAnnouncements(-1);
+  });
+  $('.announcement-btn-older > a').click(function() {
+    setAnnouncements(1);
+  });
+});
+</script>
+</html>
