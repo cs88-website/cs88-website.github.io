@@ -2,7 +2,7 @@
     "name": "Lab 5",
     "endpoint": "cal/cs88/fa16/lab05",
     "src": [
-        "lab08.py"
+        "lab05.py"
     ],
     "tests": {
         "lab05.py:char_gen": "doctest",
