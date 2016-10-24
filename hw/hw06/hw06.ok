@@ -7,6 +7,7 @@
     ],
     "tests": {
         "hw06.py:hailstone": "doctest",
+        "hw06.py:scale": "doctest",
         "hw06.py:merge": "doctest",
         "hw06.py:remainders_generator": "doctest"
     },
