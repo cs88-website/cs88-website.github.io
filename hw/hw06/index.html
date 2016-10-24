@@ -135,39 +135,7 @@ assignments.</p>
 
 <p>Use OK to test your code:</p><pre><code>python ok -q hailstone --local</code></pre>
 
-<h3 class="question" id="q2">Question 2: Church generator</h3>
-
-<p>Implement <code>church_generator</code>, a generator function that takes in a function <code>f</code>
-as an argument. <code>church_generator</code> yields functions that apply <code>f</code> to their
-argument one more time than the previously generated function. (The yielded
-functions are known as <a href="http://en.wikipedia.org/wiki/Church_encoding#Church_numerals">Church
-numerals</a>.)</p>
-
-<solution>
-
-<pre><code>def church_generator(f):
-    &quot;&quot;&quot;Takes in a function f and yields functions which apply f
-    to their argument one more time than the previously generated
-    function.
-
-    &gt;&gt;&gt; increment = lambda x: x + 1
-    &gt;&gt;&gt; church = church_generator(increment)
-    &gt;&gt;&gt; for _ in range(5):
-    ...     fn = next(church)
-    ...     print(fn(0))
-    0
-    1
-    2
-    3
-    4
-    &quot;&quot;&quot;
-    func = lambda x: x
-    while True:
-        "*** YOUR CODE HERE ***"</code></pre>
-
-</solution>
-
-<h3 class="question" id="q3">Question 3: Merge</h3>
+<h3 class="question" id="q2">Question 2: Merge</h3>
 
 <p>Implement <code>merge(s0, s1)</code>, which takes two iterables <code>s0</code> and <code>s1</code> whose
 elements are ordered. <code>merge</code> yields elements from <code>s0</code> and <code>s1</code> in sorted
@@ -199,7 +167,7 @@ sequences; that is, their iterators never raise <code>StopIteration</code></stro
 
 <p>Use OK to test your code:</p><pre><code>python ok -q merge --local</code></pre>
 
-<h3 class="question" id="q4">Question 4: Remainder generator</h3>
+<h3 class="question" id="q3">Question 3: Remainder generator</h3>
 
 <p>Like functions, generators can also be <em>higher-order</em>. For this
 problem, we will be writing <code>remainders_generator</code>, which yields a
@@ -258,9 +226,8 @@ should it take in? Where should you call it?</p>
   <li><a href="#generators">Generators</a></li>
   <ul>
   <li><a href="#q1">Question 1: Hailstone</a></li>
-  <li><a href="#q2">Question 2: Church generator</a></li>
-  <li><a href="#q3">Question 3: Merge</a></li>
-  <li><a href="#q4">Question 4: Remainder generator</a></li>
+  <li><a href="#q2">Question 2: Merge</a></li>
+  <li><a href="#q3">Question 3: Remainder generator</a></li>
 </ul>
 
 </ul>

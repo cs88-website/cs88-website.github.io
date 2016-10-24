@@ -1,4 +1,34 @@
 # generators
+def naturals():
+    """A generator function that yields the infinite sequence of natural
+    numbers, starting at 1.
+
+    >>> m = naturals()
+    >>> type(m)
+    <class 'generator'>
+    >>> [next(m) for _ in range(10)]
+    [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    """
+    i = 1
+    while True:
+        yield i
+        i += 1
+
+
+def scale(s, k):
+    """Yield elements of the iterable s scaled by a number k.
+
+    >>> s = scale([1, 5, 2], 5)
+    >>> type(s)
+    <class 'generator'>
+    >>> list(s)
+    [5, 25, 10]
+
+    >>> m = scale(naturals(), 2)
+    >>> [next(m) for _ in range(5)]
+    [2, 4, 6, 8, 10]
+    """
+    "*** YOUR CODE HERE ***"
 
 
 def hailstone(n):
@@ -15,27 +45,6 @@ def hailstone(n):
     1
     """
     "*** YOUR CODE HERE ***"
-
-
-def church_generator(f):
-    """Takes in a function f and yields functions which apply f
-    to their argument one more time than the previously generated
-    function.
-
-    >>> increment = lambda x: x + 1
-    >>> church = church_generator(increment)
-    >>> for _ in range(5):
-    ...     fn = next(church)
-    ...     print(fn(0))
-    0
-    1
-    2
-    3
-    4
-    """
-    func = lambda x: x
-    while True:
-        "*** YOUR CODE HERE ***"
 
 
 def merge(s0, s1):
