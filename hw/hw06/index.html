@@ -135,7 +135,33 @@ assignments.</p>
 
 <p>Use OK to test your code:</p><pre><code>python ok -q hailstone --local</code></pre>
 
-<h3 class="question" id="q2">Question 2: Merge</h3>
+<h3 class="question" id="q2">Question 2: Scale</h3>
+
+<p>Implement the generator function <code>scale(s, k)</code>, which yields elements of the
+given iterable <code>s</code>, scaled by <code>k</code>.</p>
+
+<solution>
+
+<pre><code>def scale(s, k):
+    &quot;&quot;&quot;Yield elements of the iterable s scaled by a number k.
+
+    &gt;&gt;&gt; s = scale([1, 5, 2], 5)
+    &gt;&gt;&gt; type(s)
+    &lt;class &#x27;generator&#x27;&gt;
+    &gt;&gt;&gt; list(s)
+    [5, 25, 10]
+
+    &gt;&gt;&gt; m = scale(naturals(), 2)
+    &gt;&gt;&gt; [next(m) for _ in range(5)]
+    [2, 4, 6, 8, 10]
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python ok -q scale --local</code></pre>
+
+<h3 class="question" id="q3">Question 3: Merge</h3>
 
 <p>Implement <code>merge(s0, s1)</code>, which takes two iterables <code>s0</code> and <code>s1</code> whose
 elements are ordered. <code>merge</code> yields elements from <code>s0</code> and <code>s1</code> in sorted
@@ -167,7 +193,7 @@ sequences; that is, their iterators never raise <code>StopIteration</code></stro
 
 <p>Use OK to test your code:</p><pre><code>python ok -q merge --local</code></pre>
 
-<h3 class="question" id="q3">Question 3: Remainder generator</h3>
+<h3 class="question" id="q4">Question 4: Remainder generator</h3>
 
 <p>Like functions, generators can also be <em>higher-order</em>. For this
 problem, we will be writing <code>remainders_generator</code>, which yields a
@@ -226,8 +252,9 @@ should it take in? Where should you call it?</p>
   <li><a href="#generators">Generators</a></li>
   <ul>
   <li><a href="#q1">Question 1: Hailstone</a></li>
-  <li><a href="#q2">Question 2: Merge</a></li>
-  <li><a href="#q3">Question 3: Remainder generator</a></li>
+  <li><a href="#q2">Question 2: Scale</a></li>
+  <li><a href="#q3">Question 3: Merge</a></li>
+  <li><a href="#q4">Question 4: Remainder generator</a></li>
 </ul>
 
 </ul>
