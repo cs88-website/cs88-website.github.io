@@ -1,0 +1,21 @@
+
+{
+    "name": "Homework 6",
+    "endpoint": "cal/cs88/fa16/hw06",
+    "src": [
+        "hw06.py"
+    ],
+    "tests": {
+        "hw06.py:hailstone": "doctest",
+        "hw06.py:church_generator": "doctest",
+        "hw06.py:merge": "doctest",
+        "hw06.py:remainders_generator": "doctest",
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup"
+    ]
+}
