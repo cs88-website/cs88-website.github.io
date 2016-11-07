@@ -1,0 +1,25 @@
+{
+    "name": "Lab 7",
+    "endpoint": "cal/cs88/fa16/lab07",
+    "src": [
+        "lab07.py"
+    ],
+    "tests": {
+        "tests/link.py": "ok_test",
+        "lab07.py:list_to_link": "doctest",
+        "lab07.py:link_to_list": "doctest",
+        "lab07.py:insert": "doctest",
+        "lab07.py:reverse": "doctest",
+        "lab07.py:deep_map": "doctest",
+        "lab07.py:has_cycle": "doctest",
+        "lab07.py:has_cycle_constant": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup",
+        "scoring"
+    ]
+}
