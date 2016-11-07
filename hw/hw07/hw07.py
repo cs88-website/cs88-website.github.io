@@ -1,3 +1,22 @@
+class Tree:
+    def __init__(self, entry, branches=()):
+        self.entry = entry
+        for branch in branches:
+            assert isinstance(branch, Tree)
+        self.branches = list(branches)
+
+    def __repr__(self):
+        if self.branches:
+            branches_str = ', ' + repr(self.branches)
+        else:
+            branches_str = ''
+        return 'Tree({0}{1})'.format(self.entry, branches_str)
+
+    def is_leaf(self):
+        return not self.branches
+
+
+
 def leaves(t):
     """Returns a list of all the entries of the leaf nodes of the Tree t.
 
