@@ -412,7 +412,13 @@
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="hw/hw06/">Homework 6</a> (Solutions)</td>
+            <td class='resource-name'><a href="hw/hw06/">Homework 6</a> (<a href="hw/sol-hw06/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw07/">Homework 7</a></td>
             <td class='resource-type'>Homework</td>
             <td class='resource-tags'></td>
         </tr>
@@ -780,7 +786,7 @@
 <td><a href="http://composingprograms.com/pages/23-sequences.html">2.3</a><br/>
 <a href="http://composingprograms.com/pages/42-implicit-sequences.html">4.2</a></td>
 <td><a href="lab/lab05/">Lab 5: Sequences and Generators</a><br/>(due Sun 10/30)</td>
-<td><a href="hw/hw06/">Homework 6</a><br/>(due Sun 10/30) (Solutions)</td>
+<td><a href="hw/hw06/">Homework 6</a><br/>(due Sun 10/30) (<a href="hw/sol-hw06/">Solutions</a>)</td>
 <td></td>
 </tr>
 <tr>
@@ -804,7 +810,7 @@
 <td><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">2.5</a><br/>
 <a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">2.6</a></td>
 <td><a href="lab/lab07/">Lab 7: Linked Lists</a><br/>(due Sun 11/13)</td>
-<td></td>
+<td><a href="hw/hw07/">Homework 7</a><br/>(due Sun 11/13)</td>
 <td></td>
 </tr>
 <tr>
@@ -909,7 +915,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "9/4/16", "link": "lab/lab00/", "name": "Lab 0: Setup", "release": "8/26/16"}, {"due": "9/18/16", "link": "lab/lab01/", "name": "Lab 1: Environments and Recursion", "release": "9/9/16"}, {"due": "9/25/16", "link": "lab/lab02/", "name": "Lab 2: Higher Order Functions", "release": "9/16/16"}, {"due": "10/16/16", "link": "lab/lab03/", "name": "Lab 3: Data Abstraction and Trees", "release": "10/7/16"}, {"due": "10/23/16", "link": "lab/lab04/", "name": "Lab 4: Mutation", "release": "10/14/16"}, {"due": "10/30/16", "link": "lab/lab05/", "name": "Lab 5: Sequences and Generators", "release": "10/21/16"}, {"due": "11/6/16", "link": "lab/lab06/", "name": "Lab 6: Object-Oriented Programming", "release": "10/28/16"}, {"due": "11/13/16", "link": "lab/lab07/", "name": "Lab 7: Linked Lists", "release": "11/4/16"}, {"due": "9/6/16", "link": "hw/hw01/", "name": "Homework 1", "release": "8/26/16"}, {"due": "9/15/16", "link": "hw/hw02/", "name": "Homework 2", "release": "9/2/16"}, {"due": "9/22/16", "link": "hw/hw03/", "name": "Homework 3", "release": "9/9/16"}, {"due": "10/16/16", "link": "hw/hw04/", "name": "Homework 4", "release": "10/7/16"}, {"due": "10/23/16", "link": "hw/hw05/", "name": "Homework 5", "release": "10/14/16"}, {"due": "10/30/16", "link": "hw/hw06/", "name": "Homework 6", "release": "10/21/16"}, {"due": "10/2/16", "link": "proj/maps/", "name": "Maps", "release": "9/23/16"}, {"due": "11/20/16", "link": "proj/wheel/", "name": "Wheel of Fortune", "release": "10/28/16"}];
+  var assignments = [{"due": "9/4/16", "link": "lab/lab00/", "name": "Lab 0: Setup", "release": "8/26/16"}, {"due": "9/18/16", "link": "lab/lab01/", "name": "Lab 1: Environments and Recursion", "release": "9/9/16"}, {"due": "9/25/16", "link": "lab/lab02/", "name": "Lab 2: Higher Order Functions", "release": "9/16/16"}, {"due": "10/16/16", "link": "lab/lab03/", "name": "Lab 3: Data Abstraction and Trees", "release": "10/7/16"}, {"due": "10/23/16", "link": "lab/lab04/", "name": "Lab 4: Mutation", "release": "10/14/16"}, {"due": "10/30/16", "link": "lab/lab05/", "name": "Lab 5: Sequences and Generators", "release": "10/21/16"}, {"due": "11/6/16", "link": "lab/lab06/", "name": "Lab 6: Object-Oriented Programming", "release": "10/28/16"}, {"due": "11/13/16", "link": "lab/lab07/", "name": "Lab 7: Linked Lists", "release": "11/4/16"}, {"due": "9/6/16", "link": "hw/hw01/", "name": "Homework 1", "release": "8/26/16"}, {"due": "9/15/16", "link": "hw/hw02/", "name": "Homework 2", "release": "9/2/16"}, {"due": "9/22/16", "link": "hw/hw03/", "name": "Homework 3", "release": "9/9/16"}, {"due": "10/16/16", "link": "hw/hw04/", "name": "Homework 4", "release": "10/7/16"}, {"due": "10/23/16", "link": "hw/hw05/", "name": "Homework 5", "release": "10/14/16"}, {"due": "10/30/16", "link": "hw/hw06/", "name": "Homework 6", "release": "10/21/16"}, {"due": "11/13/16", "link": "hw/hw07/", "name": "Homework 7", "release": "11/4/16"}, {"due": "10/2/16", "link": "proj/maps/", "name": "Maps", "release": "9/23/16"}, {"due": "11/20/16", "link": "proj/wheel/", "name": "Wheel of Fortune", "release": "10/28/16"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
