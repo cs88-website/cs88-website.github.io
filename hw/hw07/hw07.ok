@@ -1,0 +1,22 @@
+{
+    "name": "Homework 7",
+    "endpoint": "cal/cs88/fa16/hw07",
+    "src": [
+        "hw07.py"
+    ],
+    "tests": {
+        "hw07.py:leaves": "doctest",
+        "hw07.py:Person": "doctest",
+        "hw07.py:Keyboard": "doctest",
+        "hw07.py:VendingMachine": "doctest",
+        "hw07.py:MissManners": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup",
+        "unlock"
+    ]
+}
