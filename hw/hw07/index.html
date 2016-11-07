@@ -220,7 +220,46 @@ class Button:
 
 </solution>
 
-<h3 class="question" id="q4">Question 4</h3>
+<h3 class="question" id="q4">Question 4: Vending Machine</h3>
+
+<p>Create a class called <code>VendingMachine</code> that represents a vending
+machine for some product. A <code>VendingMachine</code> object returns strings
+describing its interactions.  See the doctest below for examples:</p>
+
+<solution>
+
+<pre><code>class VendingMachine:
+    &quot;&quot;&quot;A vending machine that vends some product for some price.
+
+    &gt;&gt;&gt; v = VendingMachine(&#x27;candy&#x27;, 10)
+    &gt;&gt;&gt; v.vend()
+    &#x27;Machine is out of stock.&#x27;
+    &gt;&gt;&gt; v.restock(2)
+    &#x27;Current candy stock: 2&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;You must deposit $10 more.&#x27;
+    &gt;&gt;&gt; v.deposit(7)
+    &#x27;Current balance: $7&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;You must deposit $3 more.&#x27;
+    &gt;&gt;&gt; v.deposit(5)
+    &#x27;Current balance: $12&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;Here is your candy and $2 change.&#x27;
+    &gt;&gt;&gt; v.deposit(10)
+    &#x27;Current balance: $10&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;Here is your candy.&#x27;
+    &gt;&gt;&gt; v.deposit(15)
+    &#x27;Machine is out of stock. Here is your $15.&#x27;
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python ok -q VendingMachine --local</code></pre>
+
+<h3 class="question" id="q5">Question 5</h3>
 
 <p>Create a class called <code>MissManners</code> that promotes politeness among our
 objects. A <code>MissManners</code> object takes another object on construction.
@@ -271,45 +310,6 @@ allows functions to take a flexible number of arguments.</p>
 
 <p>Use OK to test your code:</p><pre><code>python ok -q MissManners --local</code></pre>
 
-<h3 class="question" id="q5">Question 5: Vending Machine</h3>
-
-<p>Create a class called <code>VendingMachine</code> that represents a vending
-machine for some product. A <code>VendingMachine</code> object returns strings
-describing its interactions.  See the doctest below for examples:</p>
-
-<solution>
-
-<pre><code>class VendingMachine:
-    &quot;&quot;&quot;A vending machine that vends some product for some price.
-
-    &gt;&gt;&gt; v = VendingMachine(&#x27;candy&#x27;, 10)
-    &gt;&gt;&gt; v.vend()
-    &#x27;Machine is out of stock.&#x27;
-    &gt;&gt;&gt; v.restock(2)
-    &#x27;Current candy stock: 2&#x27;
-    &gt;&gt;&gt; v.vend()
-    &#x27;You must deposit $10 more.&#x27;
-    &gt;&gt;&gt; v.deposit(7)
-    &#x27;Current balance: $7&#x27;
-    &gt;&gt;&gt; v.vend()
-    &#x27;You must deposit $3 more.&#x27;
-    &gt;&gt;&gt; v.deposit(5)
-    &#x27;Current balance: $12&#x27;
-    &gt;&gt;&gt; v.vend()
-    &#x27;Here is your candy and $2 change.&#x27;
-    &gt;&gt;&gt; v.deposit(10)
-    &#x27;Current balance: $10&#x27;
-    &gt;&gt;&gt; v.vend()
-    &#x27;Here is your candy.&#x27;
-    &gt;&gt;&gt; v.deposit(15)
-    &#x27;Machine is out of stock. Here is your $15.&#x27;
-    &quot;&quot;&quot;
-    "*** YOUR CODE HERE ***"</code></pre>
-
-</solution>
-
-<p>Use OK to test your code:</p><pre><code>python ok -q VendingMachine --local</code></pre>
-
 
   </div>
 
@@ -319,8 +319,8 @@ describing its interactions.  See the doctest below for examples:</p>
   <li><a href="#q1">Question 1: Leaves</a></li>
   <li><a href="#q2">Question 2: Person</a></li>
   <li><a href="#q3">Question 3: Keyboard</a></li>
-  <li><a href="#q4">Question 4</a></li>
-  <li><a href="#q5">Question 5: Vending Machine</a></li>
+  <li><a href="#q4">Question 4: Vending Machine</a></li>
+  <li><a href="#q5">Question 5</a></li>
 </ul>
 
     </nav>
