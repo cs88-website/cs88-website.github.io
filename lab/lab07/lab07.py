@@ -102,7 +102,7 @@ def reverse(link):
     "*** YOUR CODE HERE ***"
 
 
-## Q5
+## Q6
 def deep_map(f, link):
     """Return a Link with the same structure as link but with fn mapped over
     its elements. If an element is an instance of a linked list, recursively
@@ -119,7 +119,7 @@ def deep_map(f, link):
     "*** YOUR CODE HERE ***"
 
 
-## Q6 (Challenge)
+## Q7 (Challenge)
 def has_cycle(link):
     """Return whether link contains a cycle.
 
