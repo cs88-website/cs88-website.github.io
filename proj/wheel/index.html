@@ -381,7 +381,7 @@ You will implement most of them, testing as you go.</p>
 
 <p>To start a human player version of text-based game, run</p>
 
-<pre><code>python3 human.py</code></pre>
+<pre><code>python human.py</code></pre>
 
 
 <h3 id="secret-words">Secret Words</h3>
@@ -605,8 +605,7 @@ the <code>SecretWord</code> class in file <code>secret.py</code>.</p>
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python3 ok &#x2d;q SecretWord &#x2d;u
-python3 ok &#x2d;q SecretWord</code></pre>
+<pre><code>python ok &#x2d;q SecretWord &#x2d;&#x2d;local</code></pre>
 
 
 <h3 id="problem-2-2-pt">Problem 2 (2 pt)</h3>
@@ -616,8 +615,7 @@ python3 ok &#x2d;q SecretWord</code></pre>
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python3 ok &#x2d;q WordSet &#x2d;u
-python3 ok &#x2d;q WordSet</code></pre>
+<pre><code>python ok &#x2d;q WordSet &#x2d;&#x2d;local</code></pre>
 
 <p>Now that you have a <code>WordSet</code>, verify that you also have a working <code>Dictionary</code> that inherits
 from this.  You didn't have to build the Dictionary, but you need to make sure that the
@@ -625,8 +623,7 @@ one we provided works with your <code>WordSet</code>.</p>
 
 <p>Test our implementation before moving on:</p>
 
-<pre><code>python3 ok &#x2d;q Dictionary &#x2d;u
-python3 ok &#x2d;q Dictionary</code></pre>
+<pre><code>python ok &#x2d;q Dictionary &#x2d;&#x2d;local</code></pre>
 
 
 <h3 id="problem-3-3-pt">Problem 3 (3 pt)</h3>
@@ -640,8 +637,7 @@ want to produce tests for your individual methods.</p>
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python3 ok &#x2d;q Board &#x2d;u
-python3 ok &#x2d;q Board</code></pre>
+<pre><code>python ok &#x2d;q Board &#x2d;&#x2d;local</code></pre>
 
 
 <h3 id="problem-4-3-pt">Problem 4 (3 pt)</h3>
@@ -652,8 +648,7 @@ initialization method to set the class attribute.</p>
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python3 ok &#x2d;q Player &#x2d;u
-python3 ok &#x2d;q Player</code></pre>
+<pre><code>python ok &#x2d;q Player &#x2d;&#x2d;local</code></pre>
 
 <p>Complete the implementation of the <code>pick_word</code> method of <code>ComputerPlayer</code>.  You don't
 need the (much bigger) guess method.</p>
@@ -685,8 +680,7 @@ connect your <code>HumanPlayer</code> and picker-only version of <code>ComputerP
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python3 ok &#x2d;q Game &#x2d;u
-python3 ok &#x2d;q Game</code></pre>
+<pre><code>python ok &#x2d;q Game &#x2d;&#x2d;local</code></pre>
 
 <p>At this point you should have a complete human player game.  Run:</p>
 
@@ -739,20 +733,20 @@ these characters.</p>
 
 <h3 id="extra-credit-2-pts">Extra Credit (2 pts)</h3>
 
+<p>You can choose one of the options below to receive 2 additional points for the project. The tasks below are fairly open-ended, we want you to get creative! If you choose to complete the extra credit, please submit a text file called <code>extra_credit.txt</code> to the <code>Wheel of Fortune (Extra Credit)</code> assignment on OK. Please make sure you submit to the extra credit assignment (not the <code>Wheel of Fortune</code> assignment) in order to get credit. This text file should contain a description of the code you wrote, sample output from the game (if that helps explain the improvements), and a list of the files where the extra credit code is located. Make sure to add your partner to the extra credit assignment as well. 
+<br/>
 
-<p>Implement a multiplayer version of computer player.</p>
-
-<p>Instead of character frequencies for all unused characters in the possible words,
-look at character frequencies for the specific unguessed slots.  Build a frequency
-per slot and use that in making the guess.</p>
-
-<p>While it might seem wise to make the most likely guess, a rather different choice is the guess that
-will put you on the shortest path (fewest misses) to a unique determination.  Once you know the
-word you should not miss at all.  This approach introduces a bit of a search tree.</p>
-
-<p>Come up with better ways of guessing, such as looking at character combinations.  Show how
-much better these perform than simply filtering on length and match.</p>
-
+<ul>
+  <li>Implement a multiplayer version of computer player.</li>
+  <li>Instead of character frequencies for all unused characters in the possible words,
+  look at character frequencies for the specific unguessed slots.  Build a frequency
+  per slot and use that in making the guess.</li>
+  <li>While it might seem wise to make the most likely guess, a rather different choice is the guess that
+  will put you on the shortest path (fewest misses) to a unique determination.  Once you know the
+  word you should not miss at all.  This approach introduces a bit of a search tree.</li>
+  <li>Come up with better ways of guessing, such as looking at character combinations.  Show how
+  much better these perform than simply filtering on length and match.</li>
+</ul></p>
 
   </div>
 
