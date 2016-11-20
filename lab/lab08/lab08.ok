@@ -1,0 +1,22 @@
+{
+    "name": "Lab 08",
+    "endpoint": "cal/cs88/fa16/lab08",
+    "src": [
+        "lab08.py"
+    ],
+    "tests": {
+        "lab08.py:avoid_indexerror": "doctest",
+        "lab08.py:avoid_keyerror": "doctest",
+    	"tests/short.py": "ok_test",
+    	"tests/small.py": "ok_test",
+    	"tests/parent_height.py": "ok_test",
+    	"tests/tallest.py": "ok_test"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
