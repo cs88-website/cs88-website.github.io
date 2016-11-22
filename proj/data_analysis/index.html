@@ -76,17 +76,12 @@
 
 <h2>Introduction</h2>
 
-<p>In this project you will curate and process actual public data to answer questions of your choice. The goal of the project is to apply data science to answer actual questions using data and the techniques you've learned in CS88 and Data 8.</p>
+<p>In this project you will process and analyze actual public data to answer questions of your choice. The goal of the project is to answer meaningful questions using data and the techniques you've learned in CS 88 and Data 8.</p>
 
 
 <h2>Logistics</h2>
 
-<p>This is a 14-day project. You may work with one other
-partner.  You should not share your code with students who are not your
-partner or copy from anyone else's solutions.</p>
-
-<p>In the end, you will submit one project for both partners. The
-project is worth 20 points. 
+<p>This project is worth 20 points and is due on Monday, 12/5/16. You may work with one other partner. You should not share your code with students who are not your partner or copy from anyone else's solutions. In the end, you will submit one project for both partners. Make sure to add your partner on OK.</p>
 
 <p>You will turn in the following files:</p>
 
@@ -101,29 +96,26 @@ project is worth 20 points.
   href="http://ok.cs88.org">OK dashboard</a>.</p>
 
 
-<h2 id="logistics">Logistics</h2>
-
-
-<p>This is a 14-day project. You may work with one other partner. You should not share your code with students who are not your partner or copy from anyone else's solutions. In the end, you will submit one project for both partners. The project is worth 20 points.</p>
-
-
 <h2 id="task-1-obtain-the-data">Task 1: Obtain the Data</h2>
 
 
-<p>Go to http://catalog.data.gov/dataset and select one or more dataset(s) of your choice in the format(s) of your choice. We suggest working with data that is available in .csv or excel formats as these can be easily processed. You are allowed to work with other data types as well, as long as you know how to read and process the data. Please save a link to your dataset and submit that as part of your Jupyter notebook.</p>
+<p>Go to http://catalog.data.gov/dataset and select one or more dataset(s) of your choice in the format(s) of your choice. We suggest working with data that is available in csv format as it can be easily processed. You are allowed to work with other data types as well, as long as you know how to read and process the data.
+<br/>
 
-<p>You may also work with multiple datasets in order to explore relationships between the two datasets, or to just have a greater amount of data to work with. We suggest that you use no more than a few datasets. Rather than adding complexity through the volume of data, we suggest adding complexity through your analysis of the data.</p>
+You may also work with multiple datasets in order to explore relationships between the two datasets, or to just have a greater amount of data to work with. We suggest that you use no more than a few datasets. Rather than adding complexity through the volume of data, we suggest adding complexity through your analysis of the data. Save a link to each of your datasets and include all links in the final Jupyter notebook.</p>
 
 
 <h2 id="task-2-pose-three-questions">Task 2: Pose Three Questions</h2>
 
 
-<p>Ask three questions of varying complexity (easy, medium, difficult) that you want to answer with the dataset. An easy question is something that can be answered by looking at one column of the data (i.e. what is the mean value of some column?). The medium questions should require complex processing of the data in order to arrive at an answer. The hard questions should also require complex processing. With more difficult questions, it's okay if you're unable to arrive at concrete answers. The emphasis is on the process used to process the data and arrive at some sort of conclusion. These guidelines leave a lot of room to exercise creativity and interest. We encourage you to come up with ideas by the final lab meeting (11/28/16) and discuss your ideas with a TA. As you are processing the data (next task), you may find that you want to change your questions, which is fine. These questions should be written up in the text portion of the Jupyter notebook.</p>
+<p>Ask three questions of varying complexity (easy, medium, difficult) that you want to answer with the dataset. An easy question is something that can be answered by looking at one column of the data (i.e. what is the mean value of some column?). The medium and difficult questions should require complex processing of the data in order to arrive at some sort of answer. Many of the more difficult questions may not have concrete answers. You will not be penalized for not providing concrete answers. You should still give sophisticated insight into the question and explain what makes it difficult to answer.</p>
+
+<p>These guidelines leave a lot of room to exercise creativity and interest. We encourage you to come up with ideas by the final lab meeting (11/28/16) and discuss your ideas with a TA. As you are processing the data (next task), you may find that you want to change your questions, which is fine. Clearly state all three questions in the Jupyter notebook.</p>
 
 
 <h2 id="task-3-read-in-the-data">Task 3: Read in the Data</h2>
 
-<p>Process the dataset through methods of your choice. You should start by reading the data into some sort of data structure. One great choice would be to use the Tables module used in Data 8. You can take a look at readings and assignments for <a href="data8.org">Data 8</a> to see examples of data processing. You are also welcome to use external Python libraries to analyze the data. Feel free to look up methods of reading and processing data files. Some helpful links are listed below.</p>
+<p>Process the dataset through methods of your choice. You should start by reading the data into some sort of data structure. A great choice is the Tables module used in Data 8. You can take a look at readings and assignments for <a href="data8.org">Data 8</a> to see examples of Tables. You are also welcome to use external Python libraries to work with the data. Feel free to look up methods for reading and processing data files. Some helpful links are listed below.</p>
 
 <ul>
   <li><a href="https://docs.python.org/2/library/csv.html">Python CSV tools</a></li>
@@ -131,10 +123,10 @@ project is worth 20 points.
 </ul>
 
 
-<h2 id="task-4-analyze-the-data">Task 4: Analyze the Data</h2>
+<h2 id="task-4-process-and-analyze-the-data">Task 4: Process and Analyze the Data</h2>
 
 
-<p>We expect to see some use of techniques you have learned in Data 8 and CS88, listed below. However, you are not limited to these techniques. You can use other techniques that were not taught in cs interpret the data. All techniques used be part of the Jupyter notebook you submit. Code and appropriate captions/explanations should be part of the notebook.</p>
+<p>Once you have read the data into some sort of data structure, the next task is to process and analyze this data. You may want to remove unnecessary columns, adding in additional columns, etc. We expect the analysis to be based on techniques you have learned in Data 8 and CS88, listed below. However, you are not limited to these techniques. You may also use other techniques that were not taught in these courses. Describe all tecniques used near relevant code cells in the Jupyter notebook. You should have both code and appropriate captions/explanations in your notebook.</p>
 
 <ul>
   <li>Map/reduce/filter</li>
@@ -154,7 +146,7 @@ project is worth 20 points.
 <h2 id="task-5-answer-the-questions">Task 5: Answer the Questions</h2>
 
 
-<p>Answer the questions you posed in task 2 as best as you can with the data and your current knowledge of data science. As mentioned above, you are not expected to provide concrete answers to all questions. However, you are expected to provide a greater level of understanding and insight to the questions through data analysis. Please write your answers out in the text portion of the Jupyter notebook.</p>
+<p>Answer the questions you posed in task 2. As mentioned above, you are not expected to provide concrete answers to all questions. However, you are expected to provide a greater level of understanding and insight to the questions through data analysis. You should also explain what makes some of these questions difficult to answer. Clearly write out your answers out in a text cell of the Jupyter notebook. It should be clear which answer corresponds to which question.</p>
 
 
 <h2 id="grading">Grading</h2>
@@ -192,7 +184,7 @@ project is worth 20 points.
   <li><a href="#task-1-obtain-the-data">Task 1: Obtain the Data</a></li>
   <li><a href="#task-2-pose-three-questions">Task 2: Pose Three Questions</a></li>
   <li><a href="#task-3-read-in-the-data">Task 3: Read in the Data</a></li>
-  <li><a href="#task-4-analyze-the-data">Task 4: Analyze the Data</a></li>
+  <li><a href="#task-4-process-and-analyze-the-data">Task 4: Process and Analyze the Data</a></li>
   <li><a href="#task-5-answer-the-questions">Task 5: Answer the Questions</a></li>
   <li><a href="#grading">Grading</a></li>
   <li><a href="#submission">Submission</a></li>
