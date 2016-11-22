@@ -448,6 +448,12 @@
         </tr>
 
         <tr>
+            <td class='resource-name'><a href="proj/data_analysis/">Data Analysis</a></td>
+            <td class='resource-type'>Project</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
             <td class='resource-name'><a href="lab/lab00/">Lab 0: Setup</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
@@ -852,7 +858,7 @@
 <td><a href="http://composingprograms.com/pages/28-efficiency.html">2.8</a></td>
 <td><a href="lab/lab08/">Lab 8: Exceptions and SQL</a><br/>(due Tue 11/29)</td>
 <td><a href="hw/hw08/">Homework 8</a><br/>(due Tue 11/29)</td>
-<td></td>
+<td><a href="proj/data_analysis/">Data Analysis</a><br/>(due Tue 12/6)</td>
 </tr>
 <tr>
 <td rowspan="1" class="weeknum even">14</td>
@@ -934,7 +940,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "9/4/16", "link": "lab/lab00/", "name": "Lab 0: Setup", "release": "8/26/16"}, {"due": "9/18/16", "link": "lab/lab01/", "name": "Lab 1: Environments and Recursion", "release": "9/9/16"}, {"due": "9/25/16", "link": "lab/lab02/", "name": "Lab 2: Higher Order Functions", "release": "9/16/16"}, {"due": "10/16/16", "link": "lab/lab03/", "name": "Lab 3: Data Abstraction and Trees", "release": "10/7/16"}, {"due": "10/23/16", "link": "lab/lab04/", "name": "Lab 4: Mutation", "release": "10/14/16"}, {"due": "10/30/16", "link": "lab/lab05/", "name": "Lab 5: Sequences and Generators", "release": "10/21/16"}, {"due": "11/6/16", "link": "lab/lab06/", "name": "Lab 6: Object-Oriented Programming", "release": "10/28/16"}, {"due": "11/13/16", "link": "lab/lab07/", "name": "Lab 7: Linked Lists", "release": "11/4/16"}, {"due": "11/29/16", "link": "lab/lab08/", "name": "Lab 8: Exceptions and SQL", "release": "11/18/16"}, {"due": "9/6/16", "link": "hw/hw01/", "name": "Homework 1", "release": "8/26/16"}, {"due": "9/15/16", "link": "hw/hw02/", "name": "Homework 2", "release": "9/2/16"}, {"due": "9/22/16", "link": "hw/hw03/", "name": "Homework 3", "release": "9/9/16"}, {"due": "10/16/16", "link": "hw/hw04/", "name": "Homework 4", "release": "10/7/16"}, {"due": "10/23/16", "link": "hw/hw05/", "name": "Homework 5", "release": "10/14/16"}, {"due": "10/30/16", "link": "hw/hw06/", "name": "Homework 6", "release": "10/21/16"}, {"due": "11/13/16", "link": "hw/hw07/", "name": "Homework 7", "release": "11/4/16"}, {"due": "11/29/16", "link": "hw/hw08/", "name": "Homework 8", "release": "11/18/16"}, {"due": "10/2/16", "link": "proj/maps/", "name": "Maps", "release": "9/23/16"}, {"due": "11/20/16", "link": "proj/wheel/", "name": "Wheel of Fortune", "release": "10/28/16"}];
+  var assignments = [{"due": "9/4/16", "link": "lab/lab00/", "name": "Lab 0: Setup", "release": "8/26/16"}, {"due": "9/18/16", "link": "lab/lab01/", "name": "Lab 1: Environments and Recursion", "release": "9/9/16"}, {"due": "9/25/16", "link": "lab/lab02/", "name": "Lab 2: Higher Order Functions", "release": "9/16/16"}, {"due": "10/16/16", "link": "lab/lab03/", "name": "Lab 3: Data Abstraction and Trees", "release": "10/7/16"}, {"due": "10/23/16", "link": "lab/lab04/", "name": "Lab 4: Mutation", "release": "10/14/16"}, {"due": "10/30/16", "link": "lab/lab05/", "name": "Lab 5: Sequences and Generators", "release": "10/21/16"}, {"due": "11/6/16", "link": "lab/lab06/", "name": "Lab 6: Object-Oriented Programming", "release": "10/28/16"}, {"due": "11/13/16", "link": "lab/lab07/", "name": "Lab 7: Linked Lists", "release": "11/4/16"}, {"due": "11/29/16", "link": "lab/lab08/", "name": "Lab 8: Exceptions and SQL", "release": "11/18/16"}, {"due": "9/6/16", "link": "hw/hw01/", "name": "Homework 1", "release": "8/26/16"}, {"due": "9/15/16", "link": "hw/hw02/", "name": "Homework 2", "release": "9/2/16"}, {"due": "9/22/16", "link": "hw/hw03/", "name": "Homework 3", "release": "9/9/16"}, {"due": "10/16/16", "link": "hw/hw04/", "name": "Homework 4", "release": "10/7/16"}, {"due": "10/23/16", "link": "hw/hw05/", "name": "Homework 5", "release": "10/14/16"}, {"due": "10/30/16", "link": "hw/hw06/", "name": "Homework 6", "release": "10/21/16"}, {"due": "11/13/16", "link": "hw/hw07/", "name": "Homework 7", "release": "11/4/16"}, {"due": "11/29/16", "link": "hw/hw08/", "name": "Homework 8", "release": "11/18/16"}, {"due": "10/2/16", "link": "proj/maps/", "name": "Maps", "release": "9/23/16"}, {"due": "11/20/16", "link": "proj/wheel/", "name": "Wheel of Fortune", "release": "10/28/16"}, {"due": "12/6/16", "link": "proj/data_analysis/", "name": "Data Analysis", "release": "11/18/16"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
