@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link href="../../assets/css/project.css" rel="stylesheet" type="text/css">
+
+    <title>Project 3: Data Analysis  | CS 88 Fall 2016</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Project 3</span>: Data Analysis </h1>
+    </div>
+
+    <div id="haiku">
+  
+</div>
+
+    <h2>Introduction</h2>
+
+<p>In this project you will curate and process actual public data to answer questions of your choice. The goal of the project is to apply data science to answer actual questions using data and the techniques you've learned in CS88 and Data 8.</p>
+
+
+<p>You can obtain all the files needed for this project by downloading this <a href="Data Analysis .zip">zip archive</a>.</p>
+
+<h2>Logistics</h2>
+
+<p>This is a 14-day project. You may work with one other
+partner.  You should not share your code with students who are not your
+partner or copy from anyone else's solutions.</p>
+
+<p>In the end, you will submit one project for both partners. The
+project is worth 22 points. 20 points are
+assigned for correctness, and 2 points for the overall <a
+  href="../../articles/composition.html">composition</a> of your program.</p>
+
+<p>You will turn in the following files:</p>
+
+
+<ul>
+  <li><code>data_analysis.html</code></li>
+</ul>
+
+
+<p>You can submit by uploading these files to OK.</p>
+
+<p>You will be able to view your submissions on the <a
+  href="http://ok.cs88.org">OK dashboard</a>.</p>
+
+
+<h2 id="logistics">Logistics</h2>
+
+
+<p>This is a 14-day project. You may work with one other partner. You should not share your code with students who are not your partner or copy from anyone else's solutions. In the end, you will submit one project for both partners. The project is worth 20 points.</p>
+
+
+<h2 id="task-1-obtain-the-data">Task 1: Obtain the Data</h2>
+
+
+<p>Go to http://catalog.data.gov/dataset and select one or more dataset(s) of your choice in the format(s) of your choice. We suggest working with data that is available in .csv or excel formats as these can be easily processed. You are allowed to work with other data types as well, as long as you know how to read and process the data. Please save a link to your dataset and submit that as part of your Jupyter notebook.</p>
+
+<p>You may also work with multiple datasets in order to explore relationships between the two datasets, or to just have a greater amount of data to work with. We suggest that you use no more than a few datasets. Rather than adding complexity through the volume of data, we suggest adding complexity through your analysis of the data.</p>
+
+
+<h2 id="task-2-pose-three-questions">Task 2: Pose Three Questions</h2>
+
+
+<p>Ask three questions of varying complexity (easy, medium, difficult) that you want to answer with the dataset. An easy question is something that can be answered by looking at one column of the data (i.e. what is the mean value of some column?). The medium questions should require complex processing of the data in order to arrive at an answer. The hard questions should also require complex processing. With more difficult questions, it's okay if you're unable to arrive at concrete answers. The emphasis is on the process used to process the data and arrive at some sort of conclusion. These guidelines leave a lot of room to exercise creativity and interest. We encourage you to come up with ideas by the final lab meeting (11/28/16) and discuss your ideas with a TA. As you are processing the data (next task), you may find that you want to change your questions, which is fine. These questions should be written up in the text portion of the Jupyter notebook.</p>
+
+
+<h2 id="task-3-read-in-the-data">Task 3: Read in the Data</h2>
+
+<p>Process the dataset through methods of your choice. You should start by reading the data into some sort of data structure. One great choice would be to use the Tables module used in Data 8. You can take a look at readings and assignments for <a href="data8.org">Data 8</a> to see examples of data processing. You are also welcome to use external Python libraries to analyze the data. Feel free to look up methods of reading and processing data files. Some helpful links are listed below.</p>
+
+<ul>
+  <li><a href="https://docs.python.org/2/library/csv.html">Python CSV tools</a></li>
+  <li><a href="http://pandas.pydata.org/pandas-docs/stable/generated/pandas.read_csv.html">Pandas CSV tools</a></li>
+</ul>
+
+
+<h2 id="task-4-analyze-the-data">Task 4: Analyze the Data</h2>
+
+
+<p>We expect to see some use of techniques you have learned in Data 8 and CS88, listed below. However, you are not limited to these techniques. You can use other techniques that were not taught in cs interpret the data. All techniques used be part of the Jupyter notebook you submit. Code and appropriate captions/explanations should be part of the notebook.</p>
+
+<ul>
+  <li>Map/reduce/filter</li>
+  <li>Iterative/recursive algorithms</li>
+  <li>Higher order functions</li>
+  <li>Table joins</li>
+  <li>Random sampling</li>
+  <li>Linear regression</li>
+  <li>Estimating confidence intervals</li>
+  <li>Hypothesis testing</li>
+  <li>Classification</li>
+  <li>Plots/historgrams</li>
+  <li>Any other techniques learned in Data8/CS88</li>
+</ul>
+
+
+<h2 id="task-5-answer-the-questions">Task 5: Answer the Questions</h2>
+
+
+<p>Answer the questions you posed in task 2 as best as you can with the data and your current knowledge of data science. As mentioned above, you are not expected to provide concrete answers to all questions. However, you are expected to provide a greater level of understanding and insight to the questions through data analysis. Please write your answers out in the text portion of the Jupyter notebook.</p>
+
+
+<h2 id="grading">Grading</h2>
+
+
+<ul>
+  <li>Asking three questions about the data (3 pts)</li>
+  <li>Complexity of the questions (2 pts)</li>
+  <li>Data analysis (code and text) (9 pts)</li>
+  <li>Answering the questions (text) (6 pts)</li>
+</ul>
+
+<p>To get a good idea of what we expect the final Jupyter notebook to look like, please take a look at the Data 8 lab assignments. The labs have both code and text explanations that accompany the code. You do not need to describe every single line of code, but be sure to explain the techniques you are using to analyze the data.</p>
+
+
+<h2 id="submission">Submission</h2>
+
+
+<p>Download your Jupyter notebook in HTML format and upload the file <code>data_analysis.html</code> to OK. This HTML file should contain the following information:</p>
+
+<ul>
+  <li>Link to the dataset</li>
+  <li>3 questions</li>
+  <li>All code used</li>
+  <li>Text explanations for the code, as necessary</li>
+  <li>Answers to the questions</li>
+</ul>
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#logistics">Logistics</a></li>
+  <li><a href="#task-1-obtain-the-data">Task 1: Obtain the Data</a></li>
+  <li><a href="#task-2-pose-three-questions">Task 2: Pose Three Questions</a></li>
+  <li><a href="#task-3-read-in-the-data">Task 3: Read in the Data</a></li>
+  <li><a href="#task-4-analyze-the-data">Task 4: Analyze the Data</a></li>
+  <li><a href="#task-5-answer-the-questions">Task 5: Answer the Questions</a></li>
+  <li><a href="#grading">Grading</a></li>
+  <li><a href="#submission">Submission</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>
