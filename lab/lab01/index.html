@@ -740,7 +740,7 @@ number is equal to 0, 1, or <code>n</code>.)</p>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script>
   $(function() {
-    if (new Date("01/01/2016") < new Date()) {
+    if (new Date("01/01/2099") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');
