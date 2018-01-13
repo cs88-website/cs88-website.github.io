@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
 <link href="../../assets/css/project.css" rel="stylesheet" type="text/css">
 
-    <title>Project 3: Data Analysis  | CS 88 Fall 2016</title>
+    <title>Project 3: Data Analysis  | CS 88 Spring 2018</title>
 
   </head>
 
@@ -42,7 +42,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Calendar</a></li>
             <li><a href="/articles/resources.html">Resources</a></li>
-            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
             <li><a href="/articles/about.html">Course Information</a></li>
             <li><a href="/staff.html">Staff</a></li>
             <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
@@ -79,11 +79,21 @@
 <p>In this project you will process and analyze actual public data to answer questions of your choice. The goal of the project is to answer meaningful questions using data and the techniques you've learned in CS 88 and Data 8.</p>
 
 
+<p>You can obtain all the files needed for this project by downloading this <a href="Data Analysis .zip">zip archive</a>.</p>
+
 <h2>Logistics</h2>
 
-<p>This project is worth 20 points and is due on Tuesday, 12/6/16. You may work with one other partner. You should not share your code with students who are not your partner or copy from anyone else's solutions. In the end, you will submit one project for both partners. Make sure to add your partner on OK. The project is worth 20 points. You should write all code and text for the project in a Jupyter notebook and then download the notebook in HTML format for the final submission.</p>
+<p>This is a 14-day project. You may work with one other
+partner.  You should not share your code with students who are not your
+partner or copy from anyone else's solutions.</p>
+
+<p>In the end, you will submit one project for both partners. The
+project is worth 22 points. 20 points are
+assigned for correctness, and 2 points for the overall <a
+  href="../../articles/composition.html">composition</a> of your program.</p>
 
 <p>You will turn in the following files:</p>
+
 
 <ul>
   <li><code>data_analysis.html</code></li>
@@ -95,13 +105,99 @@
 <p>You will be able to view your submissions on the <a
   href="http://ok.cs88.org">OK dashboard</a>.</p>
 
+<p>For the functions that we ask you to complete, there may be some
+initial code that we provide. If you would rather not use that code,
+feel free to delete it and start from scratch. You may also add new
+function definitions as you see fit.</p>
+
+<p>However, please do <b>not</b> modify any other functions.  Doing so may
+result in your code failing our autograder tests. Also, please do not
+change any function signatures (names, argument order, or number of
+arguments).</p>
+
+
+<p>None</p>
+
+
+<h2>Testing</h2>
+
+<p>Throughout this project, you should be testing the correctness of your
+code.  It is good practice to test often, so that it is easy to isolate
+any problems.</p>
+
+<p>We have provided an <b>autograder</b> called <code>ok</code> to help you with
+testing your code and tracking your progress.</p> 
+<!-- The first time you run
+the autograder, you will be asked to <b>log in with your OK account using your web browser</b>. Please do so. Each time you run
+<code>ok</code>, it will back up your work and progress on our
+servers.</p> -->
+
+<p>The primary purpose of <code>ok</code> is to test your implementations, but there
+is a catch. At first, the test cases are <i>locked</i>. To unlock tests,
+run the following command from your terminal:</p>
+
+<pre><code>python ok -u --local</code></pre>
+
+<p>This command will start an interactive prompt that looks like:</p>
+
+<pre>
+=====================================================================
+Assignment: Data Analysis 
+OK, version ...
+=====================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unlocking tests
+
+At each "? ", type what you would expect the output to be.
+Type exit() to quit
+
+---------------------------------------------------------------------
+Question 0 &gt; Suite 1 &gt; Case 1
+(cases remaining: 1)
+
+&gt;&gt;&gt; Code here
+?
+</pre>
+
+<p>At the <code>?</code>, you can type what you expect the output to be.
+If you are correct, then this test case will be available the next time
+you run the autograder.</p>
+
+<p>The idea is to understand <i>conceptually</i> what your program should do
+first, before you start writing any code.</p>
+
+<p>Once you have unlocked some tests and written some code, you can check
+the correctness of your program using the tests that you have
+unlocked:</p>
+
+<pre>python ok --local</pre>
+
+<p>Most of the time, you will want to focus on a particular question.
+Use the <code>-q</code> option as directed in the problems below.</p>
+
+<p>The <code>tests</code> folder is used to store autograder tests, so make sure
+<b>not to modify it</b>. You may lose all your unlocking progress if you
+do. If you need to get a fresh copy, you can download the
+<a href="Data Analysis .zip">zip archive</a> and copy it over, but you
+will need to start unlocking from scratch.</p>
+
+
+
+
+<h2 id="logistics">Logistics</h2>
+
+
+<p>This project is worth 20 points and is due on Tuesday, 12/6/16. You may work with one other partner. You should not share your code with students who are not your partner or copy from anyone else's solutions. In the end, you will submit one project for both partners. Make sure to add your partner on OK. The project is worth 20 points.</p>
+
 
 <h2 id="task-1-obtain-the-data">Task 1: Obtain the Data</h2>
 
 
-<p>Go to <a href="http://catalog.data.gov/dataset">http://catalog.data.gov/dataset</a> and select one or more dataset(s) of your choice in the format(s) of your choice. We suggest working with data that is available in csv format as it can be easily processed. You are allowed to work with other data types as well, as long as you know how to read and process the data.</p>
+<p>Go to http://catalog.data.gov/dataset and select one or more dataset(s) of your choice in the format(s) of your choice. We suggest working with data that is available in csv format as it can be easily processed. You are allowed to work with other data types as well, as long as you know how to read and process the data.
+<br/>
 
-<p>You may also work with multiple datasets in order to explore relationships between the two datasets, or to just have a greater amount of data to work with. We suggest that you use no more than a few datasets. Rather than adding complexity through the volume of data, we suggest adding complexity through your analysis of the data. Save a link to each of your datasets and include all links in the final Jupyter notebook.</p>
+You may also work with multiple datasets in order to explore relationships between the two datasets, or to just have a greater amount of data to work with. We suggest that you use no more than a few datasets. Rather than adding complexity through the volume of data, we suggest adding complexity through your analysis of the data. Save a link to each of your datasets and include all links in the final Jupyter notebook.</p>
 
 
 <h2 id="task-2-pose-three-questions">Task 2: Pose Three Questions</h2>
@@ -109,7 +205,7 @@
 
 <p>Ask three questions of varying complexity (easy, medium, difficult) that you want to answer with the dataset. An easy question is something that can be answered by looking at one column of the data (i.e. what is the mean value of some column?). The medium and difficult questions should require complex processing of the data in order to arrive at some sort of answer. Many of the more difficult questions may not have concrete answers. You will not be penalized for not providing concrete answers. You should still give sophisticated insight into the question and explain what makes it difficult to answer.</p>
 
-<p>These guidelines leave a lot of room to exercise creativity and interest. We encourage you to come up with ideas by the final lab meeting (11/28/16) and discuss your ideas with a TA. As you are processing the data, you may find that you want to change your questions, which is fine. Clearly state all three questions in the Jupyter notebook.</p>
+<p>These guidelines leave a lot of room to exercise creativity and interest. We encourage you to come up with ideas by the final lab meeting (11/28/16) and discuss your ideas with a TA. As you are processing the data (next task), you may find that you want to change your questions, which is fine. Clearly state all three questions in the Jupyter notebook.</p>
 
 
 <h2 id="task-3-read-in-the-data">Task 3: Read in the Data</h2>
