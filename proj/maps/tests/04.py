@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': 'bbd938c5f56c98446e918d28e3cce2e7',
+          'answer': 'f7fc0cbea40705bfa71bc0241ba32ce9',
           'choices': [
             '[-1, 1]',
             '[5, -1]',
@@ -20,7 +20,7 @@ test = {
           """
         },
         {
-          'answer': 'b0b20e80299d918dd96ccea1b84f605c',
+          'answer': 'be8be05ae608c5a99de4f6a27d2f1b63',
           'choices': [
             '[-1, 1]',
             '[1, 1]',

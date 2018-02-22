@@ -13,10 +13,10 @@ test = {
           ...                       ['Restaurants', 'Pizza'],
           ...                       1, woz_reviews)
           >>> restaurant_num_ratings(woz)
-          f86124ac9392b60456505ccefe002925
+          bf781112d85f9ba641fb92c424afcfc4
           # locked
           >>> restaurant_mean_rating(woz) # should be a decimal
-          257cc2ef9c54a5c0d4f0eeff0b7f7309
+          3daf2d5010406875e3b7ba9c0f8a4022
           # locked
           """,
           'hidden': False,

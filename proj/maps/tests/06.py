@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '082859039c31d47c7289fe580f195935',
+          'answer': 'e384c7a6750f5c100ece094e455f6f06',
           'choices': [
             'randomly initialize k centroids',
             r"""
@@ -22,7 +22,7 @@ test = {
           """
         },
         {
-          'answer': '805cc5fdbc962de6ce1fb691ed01ab75',
+          'answer': 'c286b7c81a863f41040dba3d0001081f',
           'choices': [
             'xs + ys',
             '(xs, ys)',

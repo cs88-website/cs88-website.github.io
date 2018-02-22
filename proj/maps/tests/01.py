@@ -12,7 +12,7 @@ test = {
           ...                        ['Restaurants', 'Breakfast & Brunch'],
           ...                        1, soda_reviews)
           >>> restaurant_ratings(soda)
-          a131ee26d99ec1bd2a9cfdf6ef591a32
+          c52ba51cad5e79ee30b921114196f3a7
           # locked
           """,
           'hidden': False,

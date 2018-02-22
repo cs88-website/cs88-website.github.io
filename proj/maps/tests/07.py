@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '7b94a2861b435311f9fceeb5e6f092c4',
+          'answer': 'fb82a22c057637e022eb7ddae6aaea79',
           'choices': [
             'the restaurants in restaurants',
             'the names of restaurants in restaurants',
@@ -17,7 +17,7 @@ test = {
           'question': 'What does the list xs represent?'
         },
         {
-          'answer': '901ae86eb8ae688b7a7ca7c1f77cab35',
+          'answer': '1505923812f70bfa339a40321753647e',
           'choices': [
             'the ratings for the restaurants reviewed by user',
             'the ratings for the restaurants in restaurants',

@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '19ac9560bbc6a517672a11b71162cf1b',
+          'answer': '0a88b9eac4f2f29ea34b50f33e52e91d',
           'choices': [
             'a list of strings (categories)',
             'a single string (category)',
@@ -20,7 +20,7 @@ test = {
           """
         },
         {
-          'answer': 'b602d98cdeeae35da8fefb2d6bc0f7bb',
+          'answer': '0ce2635a1326df4470e1e5893dbbeb64',
           'choices': [
             "if the query string is a substring of the restaurant's name",
             "if the query string is mentioned in the restaurant's reviews",
@@ -32,7 +32,7 @@ test = {
           'question': 'When does a restaurant match a search query?'
         },
         {
-          'answer': '0c66e2394c4cd693834c62bfa1cc6511',
+          'answer': 'c5b4f236a25f490fc13cf29c1cf7a0b3',
           'choices': [
             'a list of restaurants',
             'a list of restaurant names (strings)',

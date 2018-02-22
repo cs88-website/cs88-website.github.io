@@ -9,11 +9,11 @@ test = {
           >>> square = lambda x: x * x
           >>> is_odd = lambda x: x % 2 == 1
           >>> map_and_filter([1, 2, 3, 4, 5], square, is_odd)
-          dab62dc32550156f38bcbd91d9a48b1a
+          d7483451bbef144118cb63ea9b97acfb
           # locked
           >>> map_and_filter(['hi', 'hello', 'hey', 'world'],
           ...                lambda x: x[4], lambda x: len(x) > 4)
-          08d56251df05a668e2cc1a38b0cff68b
+          6e8cfabbdca3d8d2e57972ea65156e9b
           # locked
           """,
           'hidden': False,
@@ -22,13 +22,13 @@ test = {
         {
           'code': r"""
           >>> key_of_min_value({1: 6, 2: 5, 3: 4})
-          f86124ac9392b60456505ccefe002925
+          bf781112d85f9ba641fb92c424afcfc4
           # locked
           >>> key_of_min_value({'a': 6, 'b': 5, 'c': 4})
-          78ecf8091bdb914c48fc1311604e0c87
+          0b66e07674e35e207b74b4ba8f313500
           # locked
           >>> key_of_min_value({'hello': 'world', 'hi': 'there'})
-          c8a87e36951a07938124fd8df6fbaf1e
+          e17fff0bfc4df2293b4360a3025c5c7b
           # locked
           """,
           'hidden': False,
@@ -37,7 +37,7 @@ test = {
         {
           'code': r"""
           >>> enumerate([6, 'one', 'a'], 3)[1]
-          736a16a06f9e289bf5bcd4cd6f238b2c
+          daeb2f77f64814cde803b66f350d3079
           # locked
           """,
           'hidden': False,

@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '26c0cd6d106fdf26fd85aa6de414e1ac',
+          'answer': '9c9ae59b808cf24bbbc76a9d6724fd26',
           'choices': [
             'number; e.g. 1',
             "restaurant; e.g. make_restaurant('A', [1, 1], ['Food'], 1, [])",
@@ -20,7 +20,7 @@ test = {
           """
         },
         {
-          'answer': '11ad45795e3c3a916d2bde6489676409',
+          'answer': '65e740a5296d2f5365f3d586af64700c',
           'choices': [
             'lambda x, y: pow(-x, y)',
             'lambda x, y: abs(x - y)',
@@ -44,13 +44,13 @@ test = {
         {
           'code': r"""
           >>> distance([0, 0], [3, 4]) # should be a decimal
-          05ffc04ece796bc36354d7ef3f5ecb4b
+          a15951e5057c787b8772cbe987c7df6e
           # locked
           >>> distance([6, 1], [6, 1]) # should be a decimal
-          42beece70d3b51719b1ca47780e3f5b5
+          537d72d7c992ba8b57a4f72133f5e8b7
           # locked
           >>> distance([-2, 7], [-3.5, 9]) # should be a decimal
-          17bb99edcf293ff077118c4bcc975596
+          80097a673c0352c4b5464ee5ad6a788e
           # locked
           """,
           'hidden': False,
@@ -60,11 +60,11 @@ test = {
           'code': r"""
           >>> find_closest([6, 1],
           ...              [[1, 5], [3, 3]])
-          56c587b685afb8be4741df4d7f3bb220
+          cf0ab5886c61bf8feb964e28b7b3c336
           # locked
           >>> find_closest([1, 6],
           ...              [[1, 5], [3, 3]])
-          71dfc270dd0cb21a153bad71eca045b9
+          a68ad37530ca58e37d42c1e6cf6b25ef
           # locked
           """,
           'hidden': False,
@@ -74,11 +74,11 @@ test = {
           'code': r"""
           >>> find_closest([0, 0],
           ...              [[-2, 0], [2, 0]])
-          53c0b010aa948332eccb7355b56828fd
+          4784c326ffb5331e44034a0ebf86eed3
           # locked
           >>> find_closest([0, 0],
           ...              [[1000, 1000]])
-          42bc5d4535a0f39499f807f8f1e11e9d
+          311bcea6935d7ea7cc662c793b484621
           # locked
           """,
           'hidden': False,
@@ -89,11 +89,11 @@ test = {
           >>> # be sure to use the distance function!
           >>> find_closest([0, 0],
           ...              [[2, 2], [0, 3]])
-          7cc3e5c11ab42007181d16531b7d93a9
+          44cc6ae4a474294a05cdfc1e57addc1a
           # locked
           >>> find_closest([0, 0],
           ...              [[5, 5], [2, 7]])
-          8b15a09e0d9053bc3b1a0ac4755210ff
+          cb9b6e0e5c0db9ff7593e1966ebe623c
           # locked
           """,
           'hidden': False,

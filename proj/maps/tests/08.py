@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '18f4b8f373a149983a060187fb945841',
+          'answer': 'a1b936b987dd1d8e04c4ca1970f64dea',
           'choices': [
             'a list of restaurants reviewed by the user',
             'a list of all possible restaurants',
@@ -16,7 +16,7 @@ test = {
           'question': 'In best_predictor, what does the variable reviewed represent?'
         },
         {
-          'answer': '6e952a03cc93ab2e76cc6e9be1f58c8e',
+          'answer': '6475a841cb2f9e38aa3e8e45b29e5994',
           'choices': [
             'a predictor function, and its r_squared value',
             'a predictor function',
@@ -31,7 +31,7 @@ test = {
           """
         },
         {
-          'answer': '6290d50f08bc68e242b1124b49a5e8db',
+          'answer': '8e8fe1252dbcb2c041434d22d0655313',
           'choices': [
             'the predictor with the highest r_squared',
             'the predictor with the lowest r_squared',

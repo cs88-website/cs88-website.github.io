@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': '85cc4d1eff44e1c6f45d86bf02942b8c',
+          'answer': 'a00063476a45f76feace7d55b23152a2',
           'choices': [
             'restaurant names',
             'restaurants',
@@ -16,7 +16,7 @@ test = {
           'question': 'rate_all returns a dictionary. What are the keys of this dictionary?'
         },
         {
-          'answer': 'a9ca5d2f8f05a0b53223e921bc719c8d',
+          'answer': 'dd6bcdf8dcbe6e6275f81cb82d137e6c',
           'choices': [
             'numbers - a mix of user ratings and predicted ratings',
             'numbers - user ratings only',
@@ -29,7 +29,7 @@ test = {
           'question': 'What are the values of the returned dictionary?'
         },
         {
-          'answer': '18f4b8f373a149983a060187fb945841',
+          'answer': 'a1b936b987dd1d8e04c4ca1970f64dea',
           'choices': [
             'a list of restaurants reviewed by the user',
             'a list of all possible restaurants',
