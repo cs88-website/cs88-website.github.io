@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 4: Mutation | CS 88 Fall 2016</title>
+    <title>Lab 4: Mutation | CS 88 Spring 2018</title>
 
   </head>
 
@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Calendar</a></li>
             <li><a href="/articles/resources.html">Resources</a></li>
-            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
             <li><a href="/articles/about.html">Course Information</a></li>
             <li><a href="/staff.html">Staff</a></li>
             <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Lab 4</span>: Mutation</h1>
     </div>
 
-    <p><i>Due at 11:59pm on 10/23/2016.</i></p>
+    <p><i>Due at 11:59pm on 3/11/2018.</i></p>
 
 <h2 id='starter-files'>Starter Files</h2>
 
@@ -104,10 +104,10 @@ You've already dealt with two mutable data structures: lists and dictionaries.</
 &gt;&gt;&gt; x[0] = 4
 &gt;&gt;&gt; x
 [4, 2, 3]   # x changed!
-&gt;&gt;&gt; d = {&#x27;name&#x27;: Garrett, &#x27;age&#x27;: 21, &#x27;major&#x27;: &#x27;EECS&#x27;}
-&gt;&gt;&gt; d[&#x27;major&#x27;] = &#x27;MCB&#x27;
+&gt;&gt;&gt; d = {&#x27;name&#x27;: &#x27;Rhonda&#x27;, &#x27;age&#x27;: 21, &#x27;major&#x27;: &#x27;Business&#x27;}
+&gt;&gt;&gt; d[&#x27;major&#x27;] = &#x27;Data Science&#x27;
 &gt;&gt;&gt; d
-{&#x27;name&#x27;: Garrett, &#x27;age&#x27;: 21, &#x27;major&#x27;: &#x27;MCB&#x27;}  # Garrett is an MCB major now!</code></pre>
+{&#x27;name&#x27;: &#x27;Rhonda&#x27;, &#x27;age&#x27;: 21, &#x27;major&#x27;: &#x27;Data Science&#x27;}  # Rhonda is an Data Science major now!</code></pre>
 
 <p>Unlike lists or dictionaries, tuples are <em>immutable</em> data structures. This means that once they are created,
 they can't be changed. For example, try this:</p>
@@ -447,20 +447,5 @@ so you have to push it to get the work done.</p>
   });
 </script>
 <script src="//code.jquery.com/jquery-latest.js"></script>
-<script>
-  $(function() {
-    if (new Date("10/28/2099") < new Date()) {
-      $('.toggleButton').css('display', 'inline-block');
-      $('.toggleButton').click(function() {
-        var solution_id = $(this).attr('id');
-        $('div.' + solution_id).slideToggle(600);
-      });
-    }
-    // Always display these toggle buttons
-    $('.toggleButtonShow').click(function() {
-      var solution_id = $(this).attr('id');
-      $('div.' + solution_id).slideToggle(600);
-    });
-  });
-</script>
+
 </html>

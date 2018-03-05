@@ -59,10 +59,10 @@ def make_pytunes(username):
     >>> print_tree(pytunes)
     i_love_music
       pop
-        justin bieber
+        kesha
           single
-            what do you mean?
-        2015 pop mashup
+            praying
+        2017 pop mashup
       trance
         darude
           sandstorm
@@ -109,15 +109,15 @@ def add_song(t, song, category):
 
     >>> indie_tunes = tree('indie_tunes',
     ...                  [tree('indie',
-    ...                    [tree('vance joy',
-    ...                       [tree('riptide')])])])
-    >>> new_indie = add_song(indie_tunes, 'georgia', 'vance joy')
+    ...                    [tree('alvvays',
+    ...                       [tree('archie, marry me')])])])
+    >>> new_indie = add_song(indie_tunes, 'dreams tonite', 'alvvays')
     >>> print_tree(new_indie)
     indie_tunes
       indie
-        vance joy
-          riptide
-          georgia
+        alvvays
+          archie, marry me
+          dreams tonite
 
     """
     "*** YOUR CODE HERE ***"

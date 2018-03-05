@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
 
 
-    <title>Homework 5 | CS 88 Fall 2016</title>
+    <title>Homework 5 | CS 88 Spring 2018</title>
 
   </head>
 
@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Calendar</a></li>
             <li><a href="/articles/resources.html">Resources</a></li>
-            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
             <li><a href="/articles/about.html">Course Information</a></li>
             <li><a href="/staff.html">Staff</a></li>
             <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Homework 5</span></h1>
     </div>
 
-    <p><em>Due by 11:59pm on Sunday, 10/23/16</em></p>
+    <p><em>Due by 11:59pm on Sunday, 3/11/2018</em></p>
 
 <h2>Instructions</h2>
 
@@ -128,10 +128,10 @@ album with no branches).</p>
     &gt;&gt;&gt; print_tree(pytunes)
     i_love_music
       pop
-        justin bieber
+        kesha
           single
-            what do you mean?
-        2015 pop mashup
+            praying
+        2017 pop mashup
       trance
         darude
           sandstorm
@@ -213,15 +213,15 @@ False</code></pre>
 
     &gt;&gt;&gt; indie_tunes = tree(&#x27;indie_tunes&#x27;,
     ...                  [tree(&#x27;indie&#x27;,
-    ...                    [tree(&#x27;vance joy&#x27;,
-    ...                       [tree(&#x27;riptide&#x27;)])])])
-    &gt;&gt;&gt; new_indie = add_song(indie_tunes, &#x27;georgia&#x27;, &#x27;vance joy&#x27;)
+    ...                    [tree(&#x27;alvvays&#x27;,
+    ...                       [tree(&#x27;archie, marry me&#x27;)])])])
+    &gt;&gt;&gt; new_indie = add_song(indie_tunes, &#x27;dreams tonite&#x27;, &#x27;alvvays&#x27;)
     &gt;&gt;&gt; print_tree(new_indie)
     indie_tunes
       indie
-        vance joy
-          riptide
-          georgia
+        alvvays
+          archie, marry me
+          dreams tonite
 
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"</code></pre>
@@ -344,6 +344,14 @@ calls to the function should return:</p>
 
 <p>Use OK to test your code:</p><pre><code>python ok -q make_withdraw --local</code></pre>
 
+
+<h2 id="challenge-question">Challenge Question</h2>
+
+
+<blockquote><p>Questions in this section are not required for submission. However,
+if you do a challenge question, you can skip another question on the 
+homework without losing points.</p></blockquote>
+
 <h3 class="question" id="q7">Question 7</h3>
 
 <p>Suppose that our banking system requires the ability to make joint
@@ -433,6 +441,10 @@ insufficient funds), while successful withdrawals will return a number.</p>
   <li><a href="#mutation">Mutation</a></li>
   <ul>
   <li><a href="#q6">Question 6</a></li>
+</ul>
+
+  <li><a href="#challenge-question">Challenge Question</a></li>
+  <ul>
   <li><a href="#q7">Question 7</a></li>
 </ul>
 
