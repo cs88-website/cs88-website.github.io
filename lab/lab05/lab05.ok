@@ -5,11 +5,12 @@
         "lab05.py"
     ],
     "tests": {
+        "lab05.py:avoid_indexerror": "doctest",
+        "lab05.py:avoid_keyerror": "doctest",
         "lab05.py:char_gen": "doctest",
         "lab05.py:countdown": "doctest",
         "lab05.py:is_prime": "doctest",
         "lab05.py:primes": "doctest",
-        "lab05.py:scale": "doctest",
         "lab05.py:count_palindromes": "doctest" 
     },
     "protocols": [

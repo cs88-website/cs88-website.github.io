@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 5: Sequences and Generators | CS 88 Fall 2016</title>
+    <title>Lab 5: Sequences and Generators | CS 88 Spring 2018</title>
 
   </head>
 
@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Calendar</a></li>
             <li><a href="/articles/resources.html">Resources</a></li>
-            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
             <li><a href="/articles/about.html">Course Information</a></li>
             <li><a href="/staff.html">Staff</a></li>
             <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Lab 5</span>: Sequences and Generators</h1>
     </div>
 
-    <p><i>Due at 11:59pm on 10/30/2016.</i></p>
+    <p><i>Due at 11:59pm on 3/18/2018.</i></p>
 
 <h2 id='starter-files'>Starter Files</h2>
 
@@ -91,10 +91,109 @@ deadline; only the final submission will be graded.</p>
     
 
 
+<h2 id="exceptions">Exceptions</h2>
+
+
+<p>Exceptions allow us to try a chunk of code, and then catch any errors
+that might come up. If we do catch an exception, we can run an
+alternative set of instructions. This construct is very useful in many
+situations.</p>
+
+<pre><code>try:
+    &lt;try suite&gt;
+except Exception as e:
+    &lt;except suite&gt;
+else:
+    &lt;else suite&gt;
+finally:
+    &lt;finally suite&gt;</code></pre>
+
+<p>Notice that we can catch the exception as e. This assigns the name e to
+the exception object.  This can be helpful when we want to give extra
+information on what happened. For example, we can <code>print(e)</code> inside the
+except clause.</p>
+
+<p>Also, we have an optional else case. The else suite is executed if the
+<code>try</code> suite finishes without any exceptions.</p>
+
+<p>We also have an optional finally clause, which is always executed,
+whether or not an exception is thrown. We generally don't need to use
+the else and finally controls in this class.</p>
+
+<p>When we write exception statements, we generally don't just use the
+word Exception as above. Rather, we figure out the specific type of
+exception that we want to handle, such as TypeError or
+ZeroDivisionError. To figure out which type of exception you are trying
+to handle, you can type purposely wrong things into the interpreter
+(such as 'hi' + 5 or 1 / 0) and see what kind of exception Python spits
+out.</p>
+
+<h3 class="question" id="q1">Question 1: No IndexErrors Allowed</h3>
+
+<p>You have seen that indexing a list with an index that is not contained in the list
+generates an IndexError exception. Use
+exception handling in the function <code>avoid_indexerror</code> to return the value at <code>index</code> and avoid IndexErrors when the index is invalid.</p>
+
+
+
+<pre><code>def avoid_indexerror(lst, index, missing=None):
+    &quot;&quot;&quot;Return lst[index] if it exists, otherwise missing.
+
+    &gt;&gt;&gt; avoid_indexerror([1,2,3], 1)
+    2
+    &gt;&gt;&gt; avoid_indexerror([1,2,3], 4)
+    &gt;&gt;&gt; avoid_indexerror([1,2,3], 4, &quot;Index out of range.&quot;)
+    &#x27;Index out of range.&#x27;
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python ok -q avoid_indexerror --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: No KeyErrors Allowed</h3>
+
+<p>If we try to look up a key that does not exist in a dictionary, then
+Python will raise a <code>KeyError</code>. Write the function <code>avoid_keyerror</code> which returns
+returns the value mapped to <code>key</code> in the <code>dictionary</code>. If <code>key</code> does
+not exist, print 'Avoid Exception' and map <code>key</code> to the string 'no value'.</p>
+
+
+
+<pre><code>def avoid_keyerror(dictionary, key):
+    &quot;&quot;&quot; Returns the value associated with key in dictionary. If key 
+    does not exist in the dictionary, print out &#x27;Avoid Exception&#x27; and
+    map it to the string &#x27;no value&#x27;.
+
+    &gt;&gt;&gt; d = {1: &#x27;one&#x27;, 3: &#x27;three&#x27;, 5: &#x27;five&#x27;}
+    &gt;&gt;&gt; avoid_keyerror(d, 3)
+    &#x27;three&#x27;
+    &gt;&gt;&gt; avoid_keyerror(d, 4)
+    Avoid Exception
+    &gt;&gt;&gt; d[4]
+    &#x27;no value&#x27;
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x41;&#x76;&#x6f;&#x69;&#x64;&#x20;&#x45;&#x78;&#x63;&#x65;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x22;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x27;&#x6e;&#x6f;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x27;</div></code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python ok -q avoid_keyerror --local</code></pre>
+
+
 <h2 id="generators">Generators</h2>
 
 
-<h3 class="question" id="q1">Question 1: Character generator</h3>
+<h3 class="question" id="q3">Question 3: Character generator</h3>
 
 <p>Write a generator that outputs each character of a string.</p>
 
@@ -111,18 +210,18 @@ deadline; only the final submission will be graded.</p>
     l
     o
     &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x68;&#x61;&#x72;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x63;&#x68;&#x61;&#x72;</div></code></pre>
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x68;&#x61;&#x72;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x63;&#x68;&#x61;&#x72;</div></code></pre>
 
 
-    <button id='1' class='toggleButton'>
+    <button id='3' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
 <p>Use OK to test your code:</p><pre><code>python ok -q char_gen --local</code></pre>
 
-<h3 class="question" id="q2">Question 2: Countdown</h3>
+<h3 class="question" id="q4">Question 4: Countdown</h3>
 
 <p>Write a generator that counts down to 0.</p>
 
@@ -143,18 +242,18 @@ deadline; only the final submission will be graded.</p>
     1
     0
     &quot;&quot;&quot;
-<div class="alt 2">    "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6e;&#x20;&#x3e;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x20;&#x3d;&#x20;&#x6e;&#x20;&#x2d;&#x20;&#x31;</div></code></pre>
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6e;&#x20;&#x3e;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x20;&#x3d;&#x20;&#x6e;&#x20;&#x2d;&#x20;&#x31;</div></code></pre>
 
 
-    <button id='2' class='toggleButton'>
+    <button id='4' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
 <p>Use OK to test your code:</p><pre><code>python ok -q countdown --local</code></pre>
 
-<h3 class="question" id="q3">Question 3: Primes</h3>
+<h3 class="question" id="q5">Question 5: Primes</h3>
 
 <p>Write a generator that generates prime numbers.
 Fill out the <code>is_prime</code> helper function and use that 
@@ -173,11 +272,11 @@ to create your generator.</p>
     &gt;&gt;&gt; is_prime(19)
     True
     &quot;&quot;&quot;
-<div class="alt 3">    "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3c;&#x20;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x65;&#x72;&#x20;&#x3c;&#x3d;&#x20;&#x73;&#x71;&#x72;&#x74;&#x28;&#x6e;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x25;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x65;&#x72;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x65;&#x72;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;</div></code></pre>
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3c;&#x20;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x65;&#x72;&#x20;&#x3c;&#x3d;&#x20;&#x73;&#x71;&#x72;&#x74;&#x28;&#x6e;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x25;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x65;&#x72;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x65;&#x72;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;</div></code></pre>
 
 
-    <button id='3' class='toggleButton'>
+    <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -196,11 +295,11 @@ to create your generator.</p>
     3
     5
     &quot;&quot;&quot;
-<div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x54;&#x72;&#x75;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x73;&#x5f;&#x70;&#x72;&#x69;&#x6d;&#x65;&#x28;&#x6e;&#x75;&#x6d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x6e;&#x75;&#x6d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x75;&#x6d;&#x20;&#x2b;&#x3d;&#x20;&#x31;</div></code></pre>
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x75;&#x6d;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x54;&#x72;&#x75;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x73;&#x5f;&#x70;&#x72;&#x69;&#x6d;&#x65;&#x28;&#x6e;&#x75;&#x6d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x6e;&#x75;&#x6d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x75;&#x6d;&#x20;&#x2b;&#x3d;&#x20;&#x31;</div></code></pre>
 
 
-    <button id='4' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -208,42 +307,48 @@ to create your generator.</p>
 <p>Use OK to test your code:</p><pre><code>python ok -q is_prime --local</code></pre>
 <p>Use OK to test your code:</p><pre><code>python ok -q primes --local</code></pre>
 
-<h3 class="question" id="q4">Question 4: Scale</h3>
+<h3 class="question" id="q6">Question 6: Church generator</h3>
 
-<p>Implement the generator function <code>scale(s, k)</code>, which yields elements of the
-given iterable <code>s</code>, scaled by <code>k</code>.</p>
+<p>Implement <code>church_generator</code>, a generator function that takes in a function <code>f</code>
+as an argument. <code>church_generator</code> yields functions that apply <code>f</code> to their
+argument one more time than the previously generated function. (The yielded
+functions are known as <a href="http://en.wikipedia.org/wiki/Church_encoding#Church_numerals">Church
+numerals</a>.)</p>
 
 
 
-<pre><code>def scale(s, k):
-    &quot;&quot;&quot;Yield elements of the iterable s scaled by a number k.
+<pre><code>def church_generator(f):
+    &quot;&quot;&quot;Takes in a function f and yields functions which apply f
+    to their argument one more time than the previously generated
+    function.
 
-    &gt;&gt;&gt; s = scale([1, 5, 2], 5)
-    &gt;&gt;&gt; type(s)
-    &lt;class &#x27;generator&#x27;&gt;
-    &gt;&gt;&gt; list(s)
-    [5, 25, 10]
-
-    &gt;&gt;&gt; m = scale(naturals(), 2)
-    &gt;&gt;&gt; [next(m) for _ in range(5)]
-    [2, 4, 6, 8, 10]
+    &gt;&gt;&gt; increment = lambda x: x + 1
+    &gt;&gt;&gt; church = church_generator(increment)
+    &gt;&gt;&gt; for _ in range(5):
+    ...     fn = next(church)
+    ...     print(fn(0))
+    0
+    1
+    2
+    3
+    4
     &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x2a;&#x20;&#x6b;</div></code></pre>
+    func = lambda x: x
+    while True:
+<div class="alt 7">        "*** YOUR CODE HERE ***"
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x66;&#x75;&#x6e;&#x63;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x20;&#x3d;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x66;&#x28;&#x66;&#x75;&#x6e;&#x63;&#x28;&#x78;&#x29;&#x29;</div></code></pre>
 
 
-    <button id='5' class='toggleButton'>
+    <button id='7' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
-
-<p>Use OK to test your code:</p><pre><code>python ok -q scale --local</code></pre>
 
 
 <h2 id="sequences">Sequences</h2>
 
 
-<h3 class="question" id="q5">Question 5: Count palindromes</h3>
+<h3 class="question" id="q7">Question 7: Count palindromes</h3>
 
 <pre><code>def count_palindromes(L):
     &quot;&quot;&quot;The number of palindromic words in the sequence of strings
@@ -268,17 +373,23 @@ string "PyThoN", the expression <code>s.lower()</code> evaluates to "python".</p
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
+  <li><a href="#exceptions">Exceptions</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: No IndexErrors Allowed</a></li>
+  <li><a href="#q2">Question 2: No KeyErrors Allowed</a></li>
+</ul>
+
   <li><a href="#generators">Generators</a></li>
   <ul>
-  <li><a href="#q1">Question 1: Character generator</a></li>
-  <li><a href="#q2">Question 2: Countdown</a></li>
-  <li><a href="#q3">Question 3: Primes</a></li>
-  <li><a href="#q4">Question 4: Scale</a></li>
+  <li><a href="#q3">Question 3: Character generator</a></li>
+  <li><a href="#q4">Question 4: Countdown</a></li>
+  <li><a href="#q5">Question 5: Primes</a></li>
+  <li><a href="#q6">Question 6: Church generator</a></li>
 </ul>
 
   <li><a href="#sequences">Sequences</a></li>
   <ul>
-  <li><a href="#q5">Question 5: Count palindromes</a></li>
+  <li><a href="#q7">Question 7: Count palindromes</a></li>
 </ul>
 
 </ul>
@@ -297,20 +408,5 @@ string "PyThoN", the expression <code>s.lower()</code> evaluates to "python".</p
   });
 </script>
 <script src="//code.jquery.com/jquery-latest.js"></script>
-<script>
-  $(function() {
-    if (new Date("11/04/2099") < new Date()) {
-      $('.toggleButton').css('display', 'inline-block');
-      $('.toggleButton').click(function() {
-        var solution_id = $(this).attr('id');
-        $('div.' + solution_id).slideToggle(600);
-      });
-    }
-    // Always display these toggle buttons
-    $('.toggleButtonShow').click(function() {
-      var solution_id = $(this).attr('id');
-      $('div.' + solution_id).slideToggle(600);
-    });
-  });
-</script>
+
 </html>
