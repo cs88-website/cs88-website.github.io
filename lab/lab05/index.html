@@ -307,48 +307,11 @@ to create your generator.</p>
 <p>Use OK to test your code:</p><pre><code>python ok -q is_prime --local</code></pre>
 <p>Use OK to test your code:</p><pre><code>python ok -q primes --local</code></pre>
 
-<h3 class="question" id="q6">Question 6: Church generator</h3>
-
-<p>Implement <code>church_generator</code>, a generator function that takes in a function <code>f</code>
-as an argument. <code>church_generator</code> yields functions that apply <code>f</code> to their
-argument one more time than the previously generated function. (The yielded
-functions are known as <a href="http://en.wikipedia.org/wiki/Church_encoding#Church_numerals">Church
-numerals</a>.)</p>
-
-
-
-<pre><code>def church_generator(f):
-    &quot;&quot;&quot;Takes in a function f and yields functions which apply f
-    to their argument one more time than the previously generated
-    function.
-
-    &gt;&gt;&gt; increment = lambda x: x + 1
-    &gt;&gt;&gt; church = church_generator(increment)
-    &gt;&gt;&gt; for _ in range(5):
-    ...     fn = next(church)
-    ...     print(fn(0))
-    0
-    1
-    2
-    3
-    4
-    &quot;&quot;&quot;
-    func = lambda x: x
-    while True:
-<div class="alt 7">        "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x66;&#x75;&#x6e;&#x63;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x20;&#x3d;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x66;&#x28;&#x66;&#x75;&#x6e;&#x63;&#x28;&#x78;&#x29;&#x29;</div></code></pre>
-
-
-    <button id='7' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
 
 <h2 id="sequences">Sequences</h2>
 
 
-<h3 class="question" id="q7">Question 7: Count palindromes</h3>
+<h3 class="question" id="q6">Question 6: Count palindromes</h3>
 
 <pre><code>def count_palindromes(L):
     &quot;&quot;&quot;The number of palindromic words in the sequence of strings
@@ -384,12 +347,11 @@ string "PyThoN", the expression <code>s.lower()</code> evaluates to "python".</p
   <li><a href="#q3">Question 3: Character generator</a></li>
   <li><a href="#q4">Question 4: Countdown</a></li>
   <li><a href="#q5">Question 5: Primes</a></li>
-  <li><a href="#q6">Question 6: Church generator</a></li>
 </ul>
 
   <li><a href="#sequences">Sequences</a></li>
   <ul>
-  <li><a href="#q7">Question 7: Count palindromes</a></li>
+  <li><a href="#q6">Question 6: Count palindromes</a></li>
 </ul>
 
 </ul>
