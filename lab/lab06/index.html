@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 6: Object-Oriented Programming | CS 88 Fall 2016</title>
+    <title>Lab 6: Object-Oriented Programming | CS 88 Spring 2018</title>
 
   </head>
 
@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Calendar</a></li>
             <li><a href="/articles/resources.html">Resources</a></li>
-            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
             <li><a href="/articles/about.html">Course Information</a></li>
             <li><a href="/staff.html">Staff</a></li>
             <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Lab 6</span>: Object-Oriented Programming</h1>
     </div>
 
-    <p><i>Due at 11:59pm on 11/06/2016.</i></p>
+    <p><i>Due at 11:59pm on 3/25/2018.</i></p>
 
 <h2 id='starter-files'>Starter Files</h2>
 
@@ -193,16 +193,16 @@ a <code>Car</code> class:</p>
 <h2 id="prologue">Prologue</h2>
 
 
-<p>It's the day of the DATA 8 silly hat lecture, and John needs to get from San
-Francisco to Berkeley without messing up his silly hat. He'd take the BART, but
-his silly hat is too tall! It'd be great if he had a car. A monster truck
-would be best, but a car will do.</p>
+<p>It's the day of the Data 8 silly hat lecture, and Raquel needs to get from San
+Francisco to Berkeley without messing up her silly hat. She'd take the BART, but
+her silly hat is too tall! It'd be great if she had a car. A monster truck
+would be better, but a car will do.</p>
 
 <p>In <code>car.py</code>, you'll find a class called <code>Car</code>. A <strong>class</strong> is a blueprint for
 creating objects of that type. In this case, the <code>Car</code> class statement tells us
 how to create <code>Car</code> objects.</p>
 
-<p>So let's build John a car! Don't worry, you won't need to do any physical work &mdash;
+<p>So let's build Raquel a car! Don't worry, you won't need to do any physical work &mdash;
 the <strong>constructor</strong> will do it for you. The <strong>constructor</strong> of a class is a
 method that constructs an instance of the class. In Python, the constructor
 method is named <code>__init__</code>. Note that there must be two underscores on each side
@@ -223,17 +223,17 @@ object, we must also provide an argument for <code>model_type</code>.</p>
 
 <pre><code>&gt;&gt;&gt; python &#x2d;i car.py</code></pre>
 
-<p>John would like to drive a Tesla to lecture. Try constructing an instance of
+<p>Raquel would like to drive a Tesla to lecture. Try constructing an instance of
 <code>Car</code> with <code>&#x27;Tesla&#x27;</code> as the <code>model_type</code>.</p>
 
-<pre><code>&gt;&gt;&gt; johns_car = Car(&#x27;Tesla&#x27;)</code></pre>
+<pre><code>&gt;&gt;&gt; raquels_car = Car(&#x27;Tesla&#x27;)</code></pre>
 
 <p><code>&#x27;Tesla&#x27;</code> is passed in as the <code>model_type</code>, and the constructor binds the
 instance attribute <code>model_type</code> to <code>&#x27;Tesla&#x27;</code>. An <strong>object</strong> is an instance of a
-class. In this case, <code>johns_car</code> is a <code>Car</code> object or an instance of the <code>Car</code>
+class. In this case, <code>raquels_car</code> is a <code>Car</code> object or an instance of the <code>Car</code>
 class.</p>
 
-<p>That's cool and all, but what color is John's new car? Let's talk about
+<p>That's cool and all, but what color is Raquel's new car? Let's talk about
 <strong>attributes</strong> of instances and classes. Here's a snippet of the code in
 <code>car.py</code> of the instance and class attributes in the <code>Car</code> class:</p>
 
@@ -249,10 +249,10 @@ class.</p>
         self.model = model_type
         self.gas = Car.gas</code></pre>
 
-<p>To find out the color of <code>johns_car</code>, we'll look at the <code>color</code> instance
+<p>To find out the color of <code>raquels_car</code>, we'll look at the <code>color</code> instance
 attribute. An <strong>instance attribute</strong> is a quality that is specific to an
 instance, and is usually first initialized in the <code>__init__</code> method.  For
-example, the color of <code>johns_car</code> doesn't affect the color of other cars. On the
+example, the color of <code>raquels_car</code> doesn't affect the color of other cars. On the
 other hand, a <strong>class attribute</strong> is a quality that is shared among all
 instances of the class. For example, the <code>Car</code> class has four class attributes
 seen at the beginning of a class: <code>num_wheels = 4</code>, <code>gas = 30</code>, <code>headlights = 2</code>
@@ -267,11 +267,11 @@ instance to <code>self</code>.</p>
 
 <pre><code>python ok &#x2d;q prologue &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
 
-<p>For example, in the following line, <code>johns_car</code> is the instance that Python
+<p>For example, in the following line, <code>raquels_car</code> is the instance that Python
 binds to <code>self</code> to access its <code>color</code> attribute.</p>
 
 
-    <pre><code>&gt;&gt;&gt; johns_car.color
+    <pre><code>&gt;&gt;&gt; raquels_car.color
 <div class="alt 8">______</div><div class="solution 8">&#x27;&#x4e;&#x6f;&#x20;&#x63;&#x6f;&#x6c;&#x6f;&#x72;&#x20;&#x79;&#x65;&#x74;&#x2e;&#x20;&#x59;&#x6f;&#x75;&#x20;&#x6e;&#x65;&#x65;&#x64;&#x20;&#x74;&#x6f;&#x20;&#x70;&#x61;&#x69;&#x6e;&#x74;&#x20;&#x6d;&#x65;&#x2e;&#x27;</div></code></pre>
 
     <button id='8' class='toggleButton'>
@@ -279,16 +279,16 @@ binds to <code>self</code> to access its <code>color</code> attribute.</p>
     </button>
     
 
-<p>Looks like we need to paint <code>johns_car</code>!</p>
+<p>Looks like we need to paint <code>raquels_car</code>!</p>
 
 <p>Let's use the <code>paint</code> method. <strong>Methods</strong> are functions that are bound to an
 object. Think of methods as "verbs" of the class. We can paint a car some color,
 so we've defined a <code>paint</code> method in the <code>Car</code> class.</p>
 
 
-    <pre><code>&gt;&gt;&gt; johns_car.paint(&#x27;black&#x27;)
+    <pre><code>&gt;&gt;&gt; raquels_car.paint(&#x27;black&#x27;)
 <div class="alt 9">______</div><div class="solution 9">&#x27;&#x54;&#x65;&#x73;&#x6c;&#x61;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x77;&#x20;&#x62;&#x6c;&#x61;&#x63;&#x6b;&#x27;</div>
-&gt;&gt;&gt; johns_car.color
+&gt;&gt;&gt; raquels_car.color
 <div class="alt 9">______</div><div class="solution 9">&#x27;&#x62;&#x6c;&#x61;&#x63;&#x6b;&#x27;</div></code></pre>
 
     <button id='9' class='toggleButton'>
@@ -297,9 +297,9 @@ so we've defined a <code>paint</code> method in the <code>Car</code> class.</p>
     
 
 <p>Awesome! But why don't we need to pass two arguments? Similar to accessing
-instance attributes, Python binds the instance <code>johns_car</code> to <code>self</code>.</p>
+instance attributes, Python binds the instance <code>raquels_car</code> to <code>self</code>.</p>
 
-<p>John's black Tesla is pretty cool, but there's still not enough head room (look
+<p>Raquel's black Tesla is pretty cool, but there's still not enough head room (look
 at the class attribute <code>size</code>, it's <code>&#x27;Tiny&#x27;</code>). How about we create a monster
 truck for him instead? In <code>car.py</code>, we've defined a <code>MonsterTruck</code> class. Let's
 look at the source code of <code>MonsterTruck</code>:</p>
@@ -315,10 +315,10 @@ look at the source code of <code>MonsterTruck</code>:</p>
         return Car.drive(self)</code></pre>
 
 <p>Wow! The truck may be big, but the source code is tiny! Let's make sure that the
-truck still does what we expect it to do. Try creating a new instance of John's
+truck still does what we expect it to do. Try creating a new instance of Raquel's
 monster truck:</p>
 
-<pre><code>&gt;&gt;&gt; johns_truck = MonsterTruck(&#x27;Monster Truck&#x27;)</code></pre>
+<pre><code>&gt;&gt;&gt; raquels_truck = MonsterTruck(&#x27;Monster Truck&#x27;)</code></pre>
 
 <p>Now make sure it behaves as you would expect a <code>Car</code> to. Can you still paint it?
 Is it even drivable?</p>
@@ -334,9 +334,9 @@ reduced. You only need to add (or <em>override</em>) new attributes or methods s
 unique from those in the existing class.</p>
 
 
-    <pre><code>&gt;&gt;&gt; johns_car.size
+    <pre><code>&gt;&gt;&gt; raquels_car.size
 <div class="alt 10">______</div><div class="solution 10">&#x27;&#x54;&#x69;&#x6e;&#x79;&#x27;</div>
-&gt;&gt;&gt; johns_truck.size
+&gt;&gt;&gt; raquels_truck.size
 <div class="alt 10">______</div><div class="solution 10">&#x27;&#x4d;&#x6f;&#x6e;&#x73;&#x74;&#x65;&#x72;&#x27;</div></code></pre>
 
     <button id='10' class='toggleButton'>
@@ -363,17 +363,17 @@ questions:</p>
 <p><em>Hint</em>: If an error occurs, write <code>Error</code>.</p></blockquote>
 
 
-    <pre><code>&gt;&gt;&gt; johns_car = Car(&#x27;Tesla&#x27;)
-&gt;&gt;&gt; johns_car.model
+    <pre><code>&gt;&gt;&gt; raquels_car = Car(&#x27;Tesla&#x27;)
+&gt;&gt;&gt; raquels_car.model
 <div class="alt 11">______</div><div class="solution 11">&#x27;&#x54;&#x65;&#x73;&#x6c;&#x61;&#x27;</div>
-&gt;&gt;&gt; johns_car.gas = 10
-&gt;&gt;&gt; johns_car.drive()
+&gt;&gt;&gt; raquels_car.gas = 10
+&gt;&gt;&gt; raquels_car.drive()
 <div class="alt 11">______</div><div class="solution 11">&#x27;&#x54;&#x65;&#x73;&#x6c;&#x61;&#x20;&#x67;&#x6f;&#x65;&#x73;&#x20;&#x76;&#x72;&#x6f;&#x6f;&#x6d;&#x21;&#x27;</div>
-&gt;&gt;&gt; johns_car.drive()
+&gt;&gt;&gt; raquels_car.drive()
 <div class="alt 11">______</div><div class="solution 11">&#x27;&#x54;&#x65;&#x73;&#x6c;&#x61;&#x20;&#x63;&#x61;&#x6e;&#x6e;&#x6f;&#x74;&#x20;&#x64;&#x72;&#x69;&#x76;&#x65;&#x21;&#x27;</div>
-&gt;&gt;&gt; johns_car.fill_gas()
+&gt;&gt;&gt; raquels_car.fill_gas()
 <div class="alt 11">______</div><div class="solution 11">&#x59;&#x6f;&#x75;&#x72;&#x20;&#x63;&#x61;&#x72;&#x20;&#x69;&#x73;&#x20;&#x66;&#x75;&#x6c;&#x6c;&#x2e;</div>
-&gt;&gt;&gt; johns_car.gas
+&gt;&gt;&gt; raquels_car.gas
 <div class="alt 11">______</div><div class="solution 11">&#x33;&#x30;</div></code></pre>
 
     <button id='11' class='toggleButton'>
@@ -384,12 +384,12 @@ questions:</p>
 
     <pre><code>&gt;&gt;&gt; Car.headlights
 <div class="alt 12">______</div><div class="solution 12">&#x32;</div>
-&gt;&gt;&gt; johns_car.headlights
+&gt;&gt;&gt; raquels_car.headlights
 <div class="alt 12">______</div><div class="solution 12">&#x32;</div>
 &gt;&gt;&gt; Car.headlights = 3
-&gt;&gt;&gt; johns_car.headlights
+&gt;&gt;&gt; raquels_car.headlights
 <div class="alt 12">______</div><div class="solution 12">&#x33;</div>
-&gt;&gt;&gt; johns_car.headlights = 2
+&gt;&gt;&gt; raquels_car.headlights = 2
 &gt;&gt;&gt; Car.headlights
 <div class="alt 12">______</div><div class="solution 12">&#x33;</div></code></pre>
 
@@ -399,18 +399,18 @@ questions:</p>
     
 
 
-    <pre><code>&gt;&gt;&gt; johns_car.wheels = 2
-&gt;&gt;&gt; johns_car.wheels
+    <pre><code>&gt;&gt;&gt; raquels_car.wheels = 2
+&gt;&gt;&gt; raquels_car.wheels
 <div class="alt 13">______</div><div class="solution 13">&#x32;</div>
 &gt;&gt;&gt; Car.num_wheels
 <div class="alt 13">______</div><div class="solution 13">&#x34;</div>
-&gt;&gt;&gt; johns_car.drive()
+&gt;&gt;&gt; raquels_car.drive()
 <div class="alt 13">______</div><div class="solution 13">&#x27;&#x54;&#x65;&#x73;&#x6c;&#x61;&#x20;&#x63;&#x61;&#x6e;&#x6e;&#x6f;&#x74;&#x20;&#x64;&#x72;&#x69;&#x76;&#x65;&#x21;&#x27;</div>
 &gt;&gt;&gt; Car.drive()
 <div class="alt 13">______</div><div class="solution 13">&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x28;&#x54;&#x79;&#x70;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;</div>
-&gt;&gt;&gt; Car.drive(johns_car)
+&gt;&gt;&gt; Car.drive(raquels_car)
 <div class="alt 13">______</div><div class="solution 13">&#x27;&#x54;&#x65;&#x73;&#x6c;&#x61;&#x20;&#x63;&#x61;&#x6e;&#x6e;&#x6f;&#x74;&#x20;&#x64;&#x72;&#x69;&#x76;&#x65;&#x21;&#x27;</div>
-&gt;&gt;&gt; MonsterTruck.drive(johns_car)
+&gt;&gt;&gt; MonsterTruck.drive(raquels_car)
 <div class="alt 13">______</div><div class="solution 13">&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x28;&#x41;&#x74;&#x74;&#x72;&#x69;&#x62;&#x75;&#x74;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;</div></code></pre>
 
     <button id='13' class='toggleButton'>
@@ -568,7 +568,7 @@ yourself as a <code>Player</code> object in <code>data.py</code>. Take a look at
 <pre><code># Player:
 # The Player should start at sather_gate.
 <div class="alt 1">me = None
-</div><div class="solution 1">&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x50;&#x6c;&#x61;&#x79;&#x65;&#x72;&#x28;&#x27;&#x4b;&#x65;&#x6c;&#x6c;&#x79;&#x27;&#x2c;&#x20;&#x73;&#x61;&#x74;&#x68;&#x65;&#x72;&#x5f;&#x67;&#x61;&#x74;&#x65;&#x29;</div></code></pre>
+</div><div class="solution 1">&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x50;&#x6c;&#x61;&#x79;&#x65;&#x72;&#x28;&#x27;&#x52;&#x61;&#x71;&#x75;&#x65;&#x6c;&#x27;&#x2c;&#x20;&#x73;&#x61;&#x74;&#x68;&#x65;&#x72;&#x5f;&#x67;&#x61;&#x74;&#x65;&#x29;</div></code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -658,7 +658,7 @@ will return the current <code>Place</code> and will print "Can't go to [destinat
 <h3 class="question" id="q4">Question 4: How do I talk?</h3>
 
 <p>Now you can go wherever you want! Try going to Wheeler Hall. There, you'll find
-Derrick. Try talking to him with the <code>talk to</code> command. This also doesn't work
+Jessica. Try talking to him with the <code>talk to</code> command. This also doesn't work
 :(</p>
 
 <p>Next, implement the <code>talk_to</code> method in <code>Player</code>. <code>talk_to</code> takes in the name of
@@ -677,13 +677,13 @@ will make them talk?</p></blockquote>
 <pre><code>def talk_to(self, person):
     &quot;&quot;&quot;Talk to person if person is at player&#x27;s current place.
 
-    &gt;&gt;&gt; john = Character(&#x27;John&#x27;, &#x27;Have to run for lecture!&#x27;)
-    &gt;&gt;&gt; sather_gate = Place(&#x27;Sather Gate&#x27;, &#x27;You are at Sather Gate&#x27;, [john], [])
+    &gt;&gt;&gt; sara = Character(&#x27;Sara&#x27;, &#x27;Have to run for lecture!&#x27;)
+    &gt;&gt;&gt; sather_gate = Place(&#x27;Sather Gate&#x27;, &#x27;You are at Sather Gate&#x27;, [sara], [])
     &gt;&gt;&gt; me = Player(&#x27;player&#x27;, sather_gate)
-    &gt;&gt;&gt; me.talk_to(john)
+    &gt;&gt;&gt; me.talk_to(sara)
     Person has to be a string.
-    &gt;&gt;&gt; me.talk_to(&#x27;John&#x27;)
-    John says: Have to run for lecture!
+    &gt;&gt;&gt; me.talk_to(&#x27;Sara&#x27;)
+    Sara says: Have to run for lecture!
     &gt;&gt;&gt; me.talk_to(&#x27;Albert&#x27;)
     Albert is not here.
     &quot;&quot;&quot;
@@ -846,10 +846,10 @@ unlocked without a key.</p>
 <h3 class="question" id="q7">Question 7: Knapsack (Challenge)</h3>
 
 <p>You've successfully completed your adventure, and as a reward
-Professor DeNero leads you to the <em>first</em> floor of Soda, unlocks a
+Gerald leads you to the <em>first</em> floor of Soda, unlocks a
 small wooden door, and offers you your choice of the treasures of
-Berkeley Computer Science. Shiny electronics, relics of a forgotten
-time, stacks of punch cards, Software Engineering books
+Berkeley Computer Science: shiny electronics, relics of a forgotten
+time, stacks of punch cards, and Software Engineering books
 from 2009. Your small backpack can only carry so much, you should come
 up with a strategy to take the max possible value!</p>
 
@@ -860,7 +860,7 @@ the method <code>knapsack</code>, which takes a <code>max_weight</code> and a
 treasures that have a combined weight less than or equal to
 <code>max_weight</code>.</p>
 
-<blockquote><p><em>Hint</em>: Tree recursion.</p>
+<blockquote><p><em>Hint</em>: Try using tree recursion.</p>
 
 <p><em>Hint Hint</em>: Think about two cases for each treasure, either take it, or leave it.</p></blockquote>
 
@@ -872,7 +872,7 @@ treasures that have a combined weight less than or equal to
 
     &gt;&gt;&gt; t1 = Treasure(&#x27;Treasure 1&#x27;, &#x27;Software Engineering 2008&#x27;, 5, 6)
     &gt;&gt;&gt; t2 = Treasure(&#x27;Treasure 2&#x27;, &quot;Paul Hilfinger&#x27;s First Computer&quot;, 10, 50)
-    &gt;&gt;&gt; t3 = Treasure(&#x27;Treasure 3&#x27;, &quot;John&#x27;s Silly Hat&quot;, 6, 3)
+    &gt;&gt;&gt; t3 = Treasure(&#x27;Treasure 3&#x27;, &quot;John DeNero&#x27;s glasses&quot;, 6, 3)
     &gt;&gt;&gt; t4 = Treasure(&#x27;Treasure 4&#x27;, &#x27;Whiteboard Marker&#x27;, 4, 2)
     &gt;&gt;&gt; t5 = Treasure(&#x27;Treasure 5&#x27;, &#x27;USB with a Linux Distro&#x27;, 2, 4)
     &gt;&gt;&gt; treasure_list = [t1, t2, t3, t4, t5]
@@ -936,20 +936,5 @@ treasures that have a combined weight less than or equal to
   });
 </script>
 <script src="//code.jquery.com/jquery-latest.js"></script>
-<script>
-  $(function() {
-    if (new Date("11/10/2099") < new Date()) {
-      $('.toggleButton').css('display', 'inline-block');
-      $('.toggleButton').click(function() {
-        var solution_id = $(this).attr('id');
-        $('div.' + solution_id).slideToggle(600);
-      });
-    }
-    // Always display these toggle buttons
-    $('.toggleButtonShow').click(function() {
-      var solution_id = $(this).attr('id');
-      $('div.' + solution_id).slideToggle(600);
-    });
-  });
-</script>
+
 </html>

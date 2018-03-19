@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
 
 
-    <title>Homework 7 | CS 88 Fall 2016</title>
+    <title>Homework 7 | CS 88 Spring 2018</title>
 
   </head>
 
@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Calendar</a></li>
             <li><a href="/articles/resources.html">Resources</a></li>
-            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
             <li><a href="/articles/about.html">Course Information</a></li>
             <li><a href="/staff.html">Staff</a></li>
             <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Homework 7</span></h1>
     </div>
 
-    <p><em>Due by 11:59pm on Sunday, 11/13</em></p>
+    <p><em>Due by 11:59pm on Wednesday, 4/4</em></p>
 
 <h2>Instructions</h2>
 
@@ -121,8 +121,9 @@ nodes of a <code>Tree</code>.</p>
 <h3 class="question" id="q2">Question 2: Person</h3>
 
 <p>Modify the following <code>Person</code> class to add a <code>repeat</code> method, which
-repeats the last thing said. See the doctests for an example of its
-use.</p>
+repeats the last thing said. If nothing has been said yet, you can
+have <code>repeat</code> return a string of your choosing. See the doctests for 
+an example of its use.</p>
 
 <blockquote><p><em>Hint</em>: you will have to modify other methods as well, not just the
 <code>repeat</code> method.</p></blockquote>
@@ -133,8 +134,6 @@ use.</p>
     &quot;&quot;&quot;Person class.
 
     &gt;&gt;&gt; steven = Person(&quot;Steven&quot;)
-    &gt;&gt;&gt; steven.repeat()       # starts at whatever value you&#x27;d like
-    &#x27;I squirreled it away before it could catch on fire.&#x27;
     &gt;&gt;&gt; steven.say(&quot;Hello&quot;)
     &#x27;Hello&#x27;
     &gt;&gt;&gt; steven.repeat()
@@ -173,7 +172,7 @@ use.</p>
 
 <p>We'd like to create a <code>Keyboard</code> class that takes in an arbitrary
 number of <code>Button</code>s and stores these <code>Button</code>s in a dictionary. The
-keys in the dictionary will be ints that represent the postition on the
+keys in the dictionary will be ints that represent the position on the
 <code>Keyboard</code>, and the values will be the respective <code>Button</code>. Fill out
 the methods in the <code>Keyboard</code> class according to each description,
 using the doctests as a reference for the behavior of a <code>Keyboard</code>.</p>
@@ -182,7 +181,7 @@ using the doctests as a reference for the behavior of a <code>Keyboard</code>.</
 
 <pre><code>class Keyboard:
     &quot;&quot;&quot;A Keyboard takes in an arbitrary amount of buttons, and has a
-    dictionary of positions as keys, and values as Buttons.
+    dictionary of positions as keys, and Buttons as values.
 
     &gt;&gt;&gt; b1 = Button(0, &quot;H&quot;)
     &gt;&gt;&gt; b2 = Button(1, &quot;I&quot;)

@@ -7,21 +7,21 @@ test = {
         {
           'code': r"""
           >>> from car import *
-          >>> johns_car = Car('Tesla')
-          >>> johns_car.model
+          >>> raquels_car = Car('Tesla')
+          >>> raquels_car.model
           4637c36baa2a7b15b42041c4f4eb1f0e
           # locked
-          >>> johns_car.gas = 10
-          >>> johns_car.drive()
+          >>> raquels_car.gas = 10
+          >>> raquels_car.drive()
           f7eb445770683ea938e01c464ee0ffa1
           # locked
-          >>> johns_car.drive()
+          >>> raquels_car.drive()
           df7c85b28b8be1d389a74508ee81e8cd
           # locked
-          >>> johns_car.fill_gas()
+          >>> raquels_car.fill_gas()
           c0e5eff108e787b15de63424867085d6
           # locked
-          >>> johns_car.gas
+          >>> raquels_car.gas
           1987bce9c137ee1be913e29126e18d3c
           # locked
           """,
@@ -31,18 +31,18 @@ test = {
         {
           'code': r"""
           >>> from car import *
-          >>> johns_car = Car('Tesla')
+          >>> raquels_car = Car('Tesla')
           >>> Car.headlights
           d05bc830613dfa69ef96df4f94a8da70
           # locked
-          >>> johns_car.headlights
+          >>> raquels_car.headlights
           d05bc830613dfa69ef96df4f94a8da70
           # locked
           >>> Car.headlights = 3
-          >>> johns_car.headlights
+          >>> raquels_car.headlights
           214f1f0cf62380259278c29f0dd9185d
           # locked
-          >>> johns_car.headlights = 2
+          >>> raquels_car.headlights = 2
           >>> Car.headlights
           214f1f0cf62380259278c29f0dd9185d
           # locked
@@ -53,24 +53,24 @@ test = {
         {
           'code': r"""
           >>> from car import *
-          >>> johns_car = Car('Tesla')
-          >>> johns_car.wheels = 2
-          >>> johns_car.wheels
+          >>> raquels_car = Car('Tesla')
+          >>> raquels_car.wheels = 2
+          >>> raquels_car.wheels
           d05bc830613dfa69ef96df4f94a8da70
           # locked
           >>> Car.num_wheels
           41cc26e29cc2a9e0b6fb880e349243bb
           # locked
-          >>> johns_car.drive()
+          >>> raquels_car.drive()
           df7c85b28b8be1d389a74508ee81e8cd
           # locked
           >>> Car.drive()
           34db8258c24aff02f4e0aeaa32af407b
           # locked
-          >>> Car.drive(johns_car)
+          >>> Car.drive(raquels_car)
           df7c85b28b8be1d389a74508ee81e8cd
           # locked
-          >>> MonsterTruck.drive(johns_car)
+          >>> MonsterTruck.drive(raquels_car)
           34db8258c24aff02f4e0aeaa32af407b
           # locked
           """,

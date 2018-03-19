@@ -3,20 +3,21 @@ from classes import *
 
 # Characters:
 
-john = Character('John',
+gerald = Character('Gerald',
                  "I can't believe I lost my wallet again! "
-                 "I wish someone could find it for me.")
-brian = Character('Brian',
-                  'John went to Soda to start grading. You can find him there.')
-sumukh = Character('Sumukh',
+                 "I wish someone could find it for me."
+                 "I could also really use a hot dog.")
+juliette = Character('Juliette',
+                  'Gerald went to Soda to start grading. You can find him there.')
+jobel = Character('Jobel',
                    'What do you mean ok doesnt work? ')
-jeffrey = Character('Jeffrey',
+meghna = Character('Meghna',
                     'No one brought food to the potluck! '
                     'Maybe the Golden Bear Cafe (GBC) is open; we can get food there.')
-derrick = Character('Derrick',
+andrew = Character('Jessica',
                     'I heard you like games, so I put some games in this game. '
                     'Have you gone to Games of Berkeley on Shattuck?')
-kevin = Character('Kevin',
+jessica = Character('Andrew',
                   'Hey! Want to play ultimate frisbee?')
 student = Character('Student',
                     'I once went into Dwinelle and got lost for 3 days! '
@@ -26,7 +27,7 @@ scared_student = Character('Terrified Student',
 
 # Things:
 wallet = Thing('Wallet',
-               "Looks like John's wallet. We should return it to him.")
+               "Looks like Gerald's wallet. We should return it to him.")
 hotdog = Thing('Hotdog',
                'Yummy! Bring it to a TA')
 coffee = Thing('Coffee',
@@ -49,13 +50,13 @@ sather_gate = Place('Sather Gate', 'Sather Gate - A fairly ineffective gate',
 fsm = Place('FSM', 'Free Speech Cafe - Home of Coffee',
             [], [wallet, coffee])
 vlsb = Place('VLSB', 'VLSB - THE building of Life Sciences',
-             [brian], [])
+             [juliette], [])
 soda = Place('Soda', 'Soda Hall - A building where Soda is not allowed',
-             [john, jeffrey], [])
+             [gerald, meghna], [])
 gbc = Place('GBC', 'Golden Bear Cafe - Now with healthy food',
             [], [hotdog])
 campanile = Place('Campanile', 'The Campanile - A great tower!',
-                  [sumukh], [])
+                  [jobel], [])
 game_store = Place('Games of Berkeley', 'Games of Berkeley',
                    [], [cards])
 woz = Place('Woz', 'Wozniak Lounge',
@@ -63,13 +64,13 @@ woz = Place('Woz', 'Wozniak Lounge',
 shattuck = Place('Shattuck', 'Shattuck Avenue',
                  [], [])
 wheeler = Place('Wheeler Hall', 'Wheeler Hall - CS61A lectures are held here.',
-                [derrick], [skeleton_key])
+                [jessica], [skeleton_key])
 dwinelle = Place('Dwinelle Hall', 'Dwinelle Hall - A Maze',
                  [student], [])
 deep_dwinelle = Place('Deep in Dwinelle Hall', 'You are lost in Dwinelle Hall',
                       [scared_student], [strange_skull])
 memorial_glade = Place('Memorial Glade', 'Memorial Glade on a beautiful day',
-                       [kevin], [])
+                       [andrew], [])
 
 
 # Exits:

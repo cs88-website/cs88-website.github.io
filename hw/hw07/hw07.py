@@ -32,8 +32,6 @@ class Person(object):
     """Person class.
 
     >>> steven = Person("Steven")
-    >>> steven.repeat()       # starts at whatever value you'd like
-    'I squirreled it away before it could catch on fire.'
     >>> steven.say("Hello")
     'Hello'
     >>> steven.repeat()
@@ -67,7 +65,7 @@ class Person(object):
 
 class Keyboard:
     """A Keyboard takes in an arbitrary amount of buttons, and has a
-    dictionary of positions as keys, and values as Buttons.
+    dictionary of positions as keys, and Buttons as values.
 
     >>> b1 = Button(0, "H")
     >>> b2 = Button(1, "I")

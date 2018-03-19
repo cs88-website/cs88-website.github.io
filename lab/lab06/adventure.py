@@ -134,8 +134,8 @@ and see what we can find there!
 WIN_MESSAGE = """
 You arrive at the Wozniak Lounge just in time for the homework party!
 
-John thanks you for finding his wallet.
-Jeffrey devours the hot dog you brought.
+Gerald thanks you for finding his wallet.
+He also devours the hot dog you brought.
 
 Congratulations! You won the adventure game!
 """

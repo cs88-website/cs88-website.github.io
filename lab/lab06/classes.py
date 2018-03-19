@@ -40,13 +40,13 @@ class Player(object):
     def talk_to(self, person):
         """Talk to person if person is at player's current place.
 
-        >>> john = Character('John', 'Have to run for lecture!')
-        >>> sather_gate = Place('Sather Gate', 'You are at Sather Gate', [john], [])
+        >>> sara = Character('Sara', 'Have to run for lecture!')
+        >>> sather_gate = Place('Sather Gate', 'You are at Sather Gate', [sara], [])
         >>> me = Player('player', sather_gate)
-        >>> me.talk_to(john)
+        >>> me.talk_to(sara)
         Person has to be a string.
-        >>> me.talk_to('John')
-        John says: Have to run for lecture!
+        >>> me.talk_to('Sara')
+        Sara says: Have to run for lecture!
         >>> me.talk_to('Albert')
         Albert is not here.
         """
@@ -157,7 +157,7 @@ class Player(object):
 
         >>> t1 = Treasure('Treasure 1', 'Software Engineering 2008', 5, 6)
         >>> t2 = Treasure('Treasure 2', "Paul Hilfinger's First Computer", 10, 50)
-        >>> t3 = Treasure('Treasure 3', "John's Silly Hat", 6, 3)
+        >>> t3 = Treasure('Treasure 3', "John DeNero's glasses", 6, 3)
         >>> t4 = Treasure('Treasure 4', 'Whiteboard Marker', 4, 2)
         >>> t5 = Treasure('Treasure 5', 'USB with a Linux Distro', 2, 4)
         >>> treasure_list = [t1, t2, t3, t4, t5]
