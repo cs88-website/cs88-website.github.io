@@ -91,6 +91,34 @@
                 </a>
             </li>
             <li>
+                <span class="announcement-date">Tuesday, 03/20</span>
+            </li>
+            <li class='announcement-btn-older'>
+                <a>
+                    older
+                    <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                </a>
+            </li>
+        </ul>
+        
+        <ul>
+  <li>Have a great Spring Break!</li>
+  <li>Project 2 has been released and is due on April 13.</li>
+  <li>Guerilla Section 3 is scheduled for Monday, April 2, from 7-9 PM in 320 Soda.</li>
+</ul>
+    </div>
+    
+
+    <div class="announcement" id='announcement-1'>
+        
+        <ul class="pager">
+            <li class='announcement-btn-newer'>
+                <a>
+                    <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                    newer
+                </a>
+            </li>
+            <li>
                 <span class="announcement-date">Friday, 02/09</span>
             </li>
             <li class='announcement-btn-older'>
@@ -113,7 +141,7 @@
     </div>
     
 
-    <div class="announcement" id='announcement-1'>
+    <div class="announcement" id='announcement-2'>
         
         <ul class="pager">
             <li class='announcement-btn-newer'>
@@ -465,6 +493,12 @@
         </tr>
 
         <tr>
+            <td class='resource-name'><a href="proj/wheel/">Wheel of Fortune</a></td>
+            <td class='resource-type'>Project</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
             <td class='resource-name'><a href="lab/lab00/">Lab 0: Setup</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
@@ -806,7 +840,7 @@
 <a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">2.6</a></td>
 <td><a href="lab/lab06/">Lab 6: Object-Oriented Programming</a><br/>(due Sun 3/25)</td>
 <td><a href="hw/hw07/">Homework 7</a><br/>(due Wed 4/4)</td>
-<td></td>
+<td><a href="proj/wheel/">Wheel of Fortune</a><br/>(due Fri 4/13)</td>
 </tr>
 <tr>
 <td rowspan="1" class="weeknum even">10</td>
@@ -936,7 +970,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "1/28/18", "link": "lab/lab00/", "name": "Lab 0: Setup", "release": "1/19/18"}, {"due": "2/11/18", "link": "lab/lab01/", "name": "Lab 1: Environments and Recursion", "release": "2/2/18"}, {"due": "2/18/18", "link": "lab/lab02/", "name": "Lab 2: Higher Order Functions", "release": "2/9/18"}, {"due": "2/28/18", "link": "lab/lab03/", "name": "Lab 3: Data Abstraction and Trees", "release": "2/16/18"}, {"due": "3/11/18", "link": "lab/lab04/", "name": "Lab 4: Mutation", "release": "3/2/18"}, {"due": "3/18/18", "link": "lab/lab05/", "name": "Lab 5: Sequences and Generators", "release": "3/9/18"}, {"due": "3/25/18", "link": "lab/lab06/", "name": "Lab 6: Object-Oriented Programming", "release": "3/16/18"}, {"due": "1/21/18", "link": "hw/hw00/", "name": "Homework 0", "release": "1/19/18"}, {"due": "2/4/18", "link": "hw/hw01/", "name": "Homework 1", "release": "1/26/18"}, {"due": "2/11/18", "link": "hw/hw02/", "name": "Homework 2", "release": "2/2/18"}, {"due": "2/18/18", "link": "hw/hw03/", "name": "Homework 3", "release": "2/9/18"}, {"due": "3/4/18", "link": "hw/hw04/", "name": "Homework 4", "release": "2/23/18"}, {"due": "3/11/18", "link": "hw/hw05/", "name": "Homework 5", "release": "3/2/18"}, {"due": "3/18/18", "link": "hw/hw06/", "name": "Homework 6", "release": "3/9/18"}, {"due": "4/4/18", "link": "hw/hw07/", "name": "Homework 7", "release": "3/16/18"}, {"due": "3/5/18", "link": "proj/maps/", "name": "Maps", "release": "2/16/18"}];
+  var assignments = [{"due": "1/28/18", "link": "lab/lab00/", "name": "Lab 0: Setup", "release": "1/19/18"}, {"due": "2/11/18", "link": "lab/lab01/", "name": "Lab 1: Environments and Recursion", "release": "2/2/18"}, {"due": "2/18/18", "link": "lab/lab02/", "name": "Lab 2: Higher Order Functions", "release": "2/9/18"}, {"due": "2/28/18", "link": "lab/lab03/", "name": "Lab 3: Data Abstraction and Trees", "release": "2/16/18"}, {"due": "3/11/18", "link": "lab/lab04/", "name": "Lab 4: Mutation", "release": "3/2/18"}, {"due": "3/18/18", "link": "lab/lab05/", "name": "Lab 5: Sequences and Generators", "release": "3/9/18"}, {"due": "3/25/18", "link": "lab/lab06/", "name": "Lab 6: Object-Oriented Programming", "release": "3/16/18"}, {"due": "1/21/18", "link": "hw/hw00/", "name": "Homework 0", "release": "1/19/18"}, {"due": "2/4/18", "link": "hw/hw01/", "name": "Homework 1", "release": "1/26/18"}, {"due": "2/11/18", "link": "hw/hw02/", "name": "Homework 2", "release": "2/2/18"}, {"due": "2/18/18", "link": "hw/hw03/", "name": "Homework 3", "release": "2/9/18"}, {"due": "3/4/18", "link": "hw/hw04/", "name": "Homework 4", "release": "2/23/18"}, {"due": "3/11/18", "link": "hw/hw05/", "name": "Homework 5", "release": "3/2/18"}, {"due": "3/18/18", "link": "hw/hw06/", "name": "Homework 6", "release": "3/9/18"}, {"due": "4/4/18", "link": "hw/hw07/", "name": "Homework 7", "release": "3/16/18"}, {"due": "3/5/18", "link": "proj/maps/", "name": "Maps", "release": "2/16/18"}, {"due": "4/13/18", "link": "proj/wheel/", "name": "Wheel of Fortune", "release": "3/16/18"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {

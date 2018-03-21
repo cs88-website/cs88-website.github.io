@@ -90,15 +90,15 @@ class Board:
         # END
 
     max_miss = 11
-    def miss_man(missed):
-        missed = min(missed, Board.max_miss)
-        return "assets/man{0}.txt".format(missed)
+    # def miss_man(missed):
+    #     missed = min(missed, Board.max_miss)
+    #     return "assets/man{0}.txt".format(missed)
 
     def display(self):
         missed = len(self.misses())
-        path = Board.miss_man(missed)
-        with open(path) as fp:
-            symbol = fp.read()
-        print(symbol)
+        # path = Board.miss_man(missed)
+        # with open(path) as fp:
+        #     symbol = fp.read()
+        # print(symbol)
         print(self.word())
         print("Guessed chars: ", self.guesses())

@@ -79,7 +79,7 @@ class WordMunch(WordSet):
         # END
 
     def frequency(self):
-        """Return and ordered dictionary of the frequency of each letter in word set."""
+        """Return an ordered dictionary of the frequency of each letter in the word set."""
         # BEGIN
         "*** REPLACE THIS LINE ***"
         # END
