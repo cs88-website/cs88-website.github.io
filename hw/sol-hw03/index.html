@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Homework 3 Solutions | CS 88 Spring 2018</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Homework 3</span> Solutions</h1>
+    </div>
+
+    <p><strong>Solutions:</strong> You can find the file with solutions for all
+questions <a href="hw03.py">here</a>.</p>
+
+    
+
+
+<h2 id="required-questions">Required questions</h2>
+
+
+<h3 class="question" id="q1">Question 1: Skip Add</h3>
+
+<p>Write a function <code>skip_add</code> that takes a single argument <code>n</code>
+and computes the sum of every other integer between 0 and <code>n</code> 
+starting from n. Assume <code>n</code> is non-negative.</p>
+
+<solution>
+
+<pre><code>def skip_add(n):
+    &quot;&quot;&quot; Takes a number x and returns x + x&#x2d;2 + x&#x2d;4 + x&#x2d;6 + ... + 0.
+
+    &gt;&gt;&gt; skip_add(5)  # 5 + 3 + 1 + 0
+    9
+    &gt;&gt;&gt; skip_add(10) # 10 + 8 + 6 + 4 + 2 + 0
+    30
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if n &lt;= 0:
+        return 0
+    return n + skip_add(n &#x2d; 2)</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python ok -q skip_add --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: Has Seven</h3>
+
+<p>Write a function <code>has_seven</code> that takes a positive integer <code>n</code> and
+returns whether <code>n</code> contains the digit 7.  <em>Do not use any assignment
+statements - use recursion instead</em>:</p>
+
+<solution>
+
+<pre><code>def has_seven(k):
+    &quot;&quot;&quot;Returns True if at least one of the digits of k is a 7, False otherwise.
+
+    &gt;&gt;&gt; has_seven(3)
+    False
+    &gt;&gt;&gt; has_seven(7)
+    True
+    &gt;&gt;&gt; has_seven(2734)
+    True
+    &gt;&gt;&gt; has_seven(2634)
+    False
+    &gt;&gt;&gt; has_seven(734)
+    True
+    &gt;&gt;&gt; has_seven(7777)
+    True
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if k % 10 == 7:
+        return True
+    elif k &lt; 10:
+        return False
+    else:
+        return has_seven(k // 10)</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python ok -q has_seven --local</code></pre>
+
+<h3 class="question" id="q3">Question 3: Recursive Min Sort</h3>
+
+<p>In Data8 you will find sort to be instrumental to analysis of data.  In CS88 you
+get to build it.  There are many sorting algorithms; they have interesting differences
+and elegant implementations.  In lecture we saw a tree recursive formulation of Quick Sort
+based on the following thinking:</p>
+
+<ul>
+  <li>Base: an empty list is sorted</li>
+  <li>Recursive leap: to sort a list of length <code>n</code>, assume quick sort works for all lists
+  of length <code>&lt; n</code>; remove the first element, use it to split the rest into two sets (all less-or-equal and all greater), sort both recursively, and put the three pieces back together.</li>
+</ul>
+
+<p>Review the lecture slides if this is unfamiliar to you.
+In this question we will build another sort algorithm and compare the two using some of your
+Data8 skills.  Here is another idea for sorting.</p>
+
+<ul>
+  <li>Base: an empty list is sorted</li>
+  <li>Recursive leap: to sort a list of length <code>n &gt; 0</code>, assume that your function will 
+  correctly sort lists of length <code>n&#x2d;1</code>, remove the minimum element in the sequence; 
+  sort the remaining list of length <code>n &#x2d; 1</code> recursively, put the min element in front
+  of the the sorted remainder.</li>
+</ul>
+
+<p>You have been given a function to find the minimum element (recursively) and a 
+function to remove the first occurence of an element (recursively).
+<br/>
+Now you can use those to sort a list (recursively). Complete <code>rsort</code></p>
+
+<solution>
+
+<pre><code># Recursive Min Sort
+
+# Helper function
+def first(s):
+    &quot;&quot;&quot;Return the first element in a sequence.&quot;&quot;&quot;
+    return s[0]
+
+# Helper function
+def rest(s):
+    &quot;&quot;&quot;Return all elements in a sequence after the first&quot;&quot;&quot;
+    return s[1:]
+
+# Helper function
+def rmin(s):
+    &quot;&quot;&quot;Return the minimum value in a sequence.&quot;&quot;&quot;
+    if len(s) == 1:
+        return first(s)
+    else:
+        return min(first(s), rmin(rest(s)))
+
+# Helper function
+def remove(to_remove, s):
+    &quot;&quot;&quot;Returns the sequence s with the first occurrence of to_remove taken out.&quot;&quot;&quot;
+    if s == []:
+        return []
+    if first(s) == to_remove:
+        return rest(s)
+    else:
+        return [first(s)] + remove(to_remove, rest(s))
+
+def rsort(s):
+    &quot;&quot;&quot;Sort sequence s in ascending order.
+
+    &gt;&gt;&gt; rsort([])
+    []
+    &gt;&gt;&gt; rsort([1])
+    [1]
+    &gt;&gt;&gt; rsort([1, 1, 1])
+    [1, 1, 1]
+    &gt;&gt;&gt; rsort([1, 2, 3])
+    [1, 2, 3]
+    &gt;&gt;&gt; rsort([3, 2, 1])
+    [1, 2, 3]
+    &gt;&gt;&gt; rsort([1, 2, 1])
+    [1, 1, 2]
+    &gt;&gt;&gt; rsort([1,2,3, 2, 1])
+    [1, 1, 2, 2, 3]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if not s:
+        return []
+    else:
+        min_value = rmin(s)
+        after_min = remove(min_value, s)
+        return [min_value] + rsort(after_min)</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python ok -q rsort --local</code></pre>
+
+<!-- A fundamental concept in computer science is understanding the "cost" of solving problems
+using an algorithm; this is called the *complexity* of the algorithm.  For the amount of
+work involved in sorting, we may consider the comparison, i.e., less-or-equal, to be the
+basic unit of work.  The question is "How many comparisons are required to sort of sequence
+of length <code>n</code> using a particular algorithm?"  We can try to answer it analytically or
+empirically.  Let's try both.
+
+*Analytically:* For your <code>rsort</code> on a sequence of length <code>n</code>, how many comparisons
+are required as a function of <code>n</code>?  Start with <code>n == 1</code>.  Then do <code>n = 2,3, ...</code>.  
+Draw a picture.  Figure out the rule.  (It is a simple formula).
+
+*Empirically:* You can use all that you are learning in Data8 to analyze data about
+programs.  At <a href="http://data8.org/cs-connector/">http://data8.org/cs-connector/</a> you
+will find a link for a notebook to use for this lab.  There is both an interactive
+link to open it on data8 and a download link now that you have the full datascience
+environment installed on your machine.  You can use either one.  (To run it locally
+on your machine you need to activate cs88 (remember it's different on windows and mac)
+and then run <code>jupyter notebook</code> in the directory that contains the notebook file. 
+
+In that notebook you will find a funny version of <code>leq</code> that uses a global variable
+to keep count of how many times it is called.  And there is a (higher order) function <code>measure</code>
+that take a function and data and measures the number of calls to <code>leq</code> in running
+that function on that data.  To get you started, 
+we have done a little analysis of <code>qsort</code> on already sorted data.
+
+<ul>
+  <li>Extend the notebook to compare the complexity of <code>rsort</code> and <code>qsort</code>
+  on already sorted data. Use this to verify your analytical analysis.  When
+  you think about what quick sort does on sorted data, do the results make sense?</li>
+  <li>Now the really interesting part.  Do another cell comparing the complexity of these
+  two functions on randomly permuted data.  Can you explain the difference that you see?
+  --></li>
+</ul>
+
+<h3 class="question" id="q4">Question 4: Count Change</h3>
+
+<p>A set of coins makes change for <code>n</code> if the sum of the values of the
+coins is <code>n</code>.  For example, if you have 1-cent, 2-cent and 4-cent
+coins, the following sets make change for <code>7</code>:</p>
+
+<ul>
+  <li>7 1-cent coins</li>
+  <li>5 1-cent, 1 2-cent coins</li>
+  <li>3 1-cent, 2 2-cent coins</li>
+  <li>3 1-cent, 1 4-cent coins</li>
+  <li>1 1-cent, 3 2-cent coins</li>
+  <li>1 1-cent, 1 2-cent, 1 4-cent coins</li>
+</ul>
+
+<p>Thus, there are 6 ways to make change for <code>7</code>.  Write a function
+<code>count_change</code> that takes a positive integer <code>n</code> and a list of
+the coin denominations and returns the number of ways to make change
+for <code>n</code> using these coins (Hint: You will need to use tree recursion):</p>
+
+<solution>
+
+<pre><code>def count_change(amount, denominations):
+    &quot;&quot;&quot;Returns the number of ways to make change for amount.
+
+    &gt;&gt;&gt; denominations = [50, 25, 10, 5, 1]
+    &gt;&gt;&gt; count_change(7, denominations)
+    2
+    &gt;&gt;&gt; count_change(100, denominations)
+    292
+    &gt;&gt;&gt; denominations = [16, 8, 4, 2, 1]
+    &gt;&gt;&gt; count_change(7, denominations)
+    6
+    &gt;&gt;&gt; count_change(10, denominations)
+    14
+    &gt;&gt;&gt; count_change(20, denominations)
+    60
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if amount &lt; 0 or denominations == []:
+        return 0
+    elif amount == 0:
+        return 1
+    using_coin = count_change(amount &#x2d; denominations[0], denominations)
+    not_using_coin = count_change(amount, denominations[1:])
+    return using_coin + not_using_coin</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python ok -q count_change --local</code></pre>
+
+
+<h2 id="challenge-question">Challenge question</h2>
+
+
+<blockquote><p>Questions in this section are not required for submission. However,
+if you choose to do a challenge question, you can skip another question 
+on the homework without losing points.</p></blockquote>
+
+<h3 class="question" id="q5">Question 5: Towers of Hanoi</h3>
+
+<p>A classic puzzle called the Towers of Hanoi is a game that consists of three
+rods, and a number of disks of different sizes which can slide onto any rod.
+The puzzle starts with <code>n</code> disks in a neat stack in ascending order of size on
+a <code>start</code> rod, the smallest at the top, forming a conical shape.</p>
+
+<p><img class="img-responsive center-block" src="assets/tower.jpg" alt="Towers of Hanoi"></p>
+
+<p>The objective of the puzzle is to move the entire stack to an <code>end</code> rod,
+obeying the following rules:</p>
+
+<ul>
+  <li>Only one disk may be moved at a time.</li>
+  <li>Each move consists of taking the top (smallest) disk from one of the rods and
+  sliding it onto another rod, on top of the other disks that may already be
+  present on that rod.</li>
+  <li>No disk may be placed on top of a smaller disk.</li>
+</ul>
+
+<p>Complete the definition of <code>move_stack</code>, which prints out the steps required to
+move <code>n</code> disks from the <code>start</code> rod to the <code>end</code> rod without violating the
+rules.</p>
+
+<solution>
+
+<pre><code>def print_move(origin, destination):
+    &quot;&quot;&quot;Print instructions to move a disk.&quot;&quot;&quot;
+    print(&quot;Move the top disk from rod&quot;, origin, &quot;to rod&quot;, destination)
+
+def move_stack(n, start, end):
+    &quot;&quot;&quot;Print the moves required to move n disks on the start pole to the end
+    pole without violating the rules of Towers of Hanoi.
+
+    n &#x2d;&#x2d; number of disks
+    start &#x2d;&#x2d; a pole position, either 1, 2, or 3
+    end &#x2d;&#x2d; a pole position, either 1, 2, or 3
+
+    There are exactly three poles, and start and end must be different. Assume
+    that the start pole has at least n disks of increasing size, and the end
+    pole is either empty or has a top disk larger than the top n start disks.
+
+    &gt;&gt;&gt; move_stack(1, 1, 3)
+    Move the top disk from rod 1 to rod 3
+    &gt;&gt;&gt; move_stack(2, 1, 3)
+    Move the top disk from rod 1 to rod 2
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 2 to rod 3
+    &gt;&gt;&gt; move_stack(3, 1, 3)
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 1 to rod 2
+    Move the top disk from rod 3 to rod 2
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 2 to rod 1
+    Move the top disk from rod 2 to rod 3
+    Move the top disk from rod 1 to rod 3
+    &quot;&quot;&quot;
+    assert 1 &lt;= start &lt;= 3 and 1 &lt;= end &lt;= 3 and start != end, &quot;Bad start/end&quot;
+<span class="sol-highlight">    if n == 1:
+        print_move(start, end)
+    else:
+        other = 6 &#x2d; start &#x2d; end
+        move_stack(n&#x2d;1, start, other)
+        print_move(start, end)
+        move_stack(n&#x2d;1, other, end)</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python ok -q move_stack --local</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#required-questions">Required questions</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Skip Add</a></li>
+  <li><a href="#q2">Question 2: Has Seven</a></li>
+  <li><a href="#q3">Question 3: Recursive Min Sort</a></li>
+  <li><a href="#q4">Question 4: Count Change</a></li>
+</ul>
+
+  <li><a href="#challenge-question">Challenge question</a></li>
+  <ul>
+  <li><a href="#q5">Question 5: Towers of Hanoi</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>
