@@ -669,8 +669,11 @@ cycles through the guessers until the game is done.  A guesser is
 presented with the board by invoking its <code>guess</code> method.  The
 resulting guessed character is the played onto the board with the
 board's <code>guess</code> method.  If the guess is successful, the player gets
-to keep playing.  When it missed, the next player gets a turn.
-Finally, the <code>winner</code> method can be invoked when the game is over to
+to keep playing.  When it missed, the next player gets a turn. Make sure that if the
+input <code>verbose</code> in the <code>play</code> method is <code>True</code>, 
+you want to display the board every turn. Otherwise you should not display the board.
+Take a look at the <code>display</code> method in board.py for a way to display 
+the board. Finally, the <code>winner</code> method can be invoked when the game is over to
 obtain the winning player.</p>
 
 <p>Testing the game is a little trickier, because it normally works with player object
