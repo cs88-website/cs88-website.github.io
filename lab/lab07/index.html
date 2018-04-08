@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 7: Linked Lists | CS 88 Fall 2016</title>
+    <title>Lab 7: SQL | CS 88 Spring 2018</title>
 
   </head>
 
@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Calendar</a></li>
             <li><a href="/articles/resources.html">Resources</a></li>
-            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
             <li><a href="/articles/about.html">Course Information</a></li>
             <li><a href="/staff.html">Staff</a></li>
             <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
@@ -68,10 +68,10 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Lab 7</span>: Linked Lists</h1>
+      <h1><span class="content-title-brand">Lab 7</span>: SQL</h1>
     </div>
 
-    <p><i>Due at 11:59pm on 11/13/2016.</i></p>
+    <p><i>Due at 11:59pm on 4/15/2018.</i></p>
 
 <h2 id='starter-files'>Starter Files</h2>
 
@@ -86,173 +86,334 @@ deadline; only the final submission will be graded.</p>
 
 
 <ul>
-  <li>To receive credit for this lab, you must complete Questions 2-6 in
-  <a href="lab07.py">lab07.py</a> and submit through OK.</li>
-  <li>Question 1 is for practice, you don't need to submit anything for it.</li>
-  <li>Questions 7 is a challenge problem. If you choose to complete it, you can skip 
-  another required question (Questions 2-6) on the lab and still get full credit.</li>
+  <li>To receive credit for this lab, you must complete Questions 1-4 in <code>lab07.sql</code> and submit through OK.
+  Please submit <a href="lab07.sql">lab07.sql</a> to OK.</li>
 </ul>
 
 
     
 
 
-<h2 id="linked-lists">Linked Lists</h2>
+<h2 id="sql">SQL</h2>
 
 
-<p>A linked list is either an empty linked list (<code>Link.empty</code>) <strong>or</strong> a first value
-and the rest of the linked list.</p>
 
-<pre><code>class Link:
-    &quot;&quot;&quot;
-    &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; s
-    Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; len(s)
-    3
-    &gt;&gt;&gt; s[2]
-    3
-    &gt;&gt;&gt; s = Link.empty
-    &gt;&gt;&gt; len(s)
-    0
-    &quot;&quot;&quot;
-    empty = ()
-
-    def __init__(self, first, rest=empty):
-        assert rest is Link.empty or isinstance(rest, Link)
-        self.first = first
-        self.rest = rest</code></pre>
-
-<p>To check if a <code>Link</code> is empty, compare it against the class attribute
-<code>Link.empty</code>. For example, the below function prints out whether or not the link it is handed is empty:</p>
-
-<pre><code>def test_empty(link):
-    if link is Link.empty:
-        print(&#x27;This linked list is empty!&#x27;)
-    else:
-        print(&#x27;This linked list is not empty!&#x27;)</code></pre>
-
-<blockquote><p>Note: Linked lists are recursive data structures! A linked list contains the
-first element of the list (<code>first</code>) and a reference to another linked list
-(<code>rest</code>) which contains the rest of the values in the list.</p></blockquote>
+<h2 id="setup">Setup</h2>
 
 
-<h3 id="motivation">Motivation</h3>
+<p>For this lab, you're going to move away from Datahub and onto your own
+machines. You can complete this lab by either installing SQLite onto
+your computer or use one of the computers in lab using your EECS login 
+information. To find your EECS login information, you can visit the 
+<a href="https://acropolis.cs.berkeley.edu/~account/webacct/">EECS instructional account site</a>.</p>
+
+<p>The simplest way to start using SQLite is to download a precompiled
+binary from the <a href="http://www.sqlite.org/download.html">SQLite website</a>.
+The latest version of SQLite at the time of writing is 3.23.0, but you
+can check for additional updates on the website.</p>
 
 
-<p>Since you are already familiar with Python's built-in lists, you might be
-wondering why we are teaching you another list representation. There are
-historical reasons, along with practical reasons. Later in the term, you'll be
-programming in Scheme, which is a programming language that uses linked lists
-for almost everything. But let's not worry about that for now. The real reason,
-is that certain operations are faster with linked lists.</p>
+<h3 id="windows">Windows</h3>
 
-<p>Python's built-in list is like a sequence of containers with indices on them:</p>
 
-<p><img class="img-responsive center-block" src="assets/arraylist.png" alt="arraylist"></p>
+<ol>
+  <li>Visit the download page linked above and navigate to the section
+  Precompiled Binaries for Windows. Click on the link
+  <strong>sqlite-shell-win32-x86-*.zip</strong> to download the binary.</li>
+  <li>Unzip the file. There should be a <code>sqlite3.exe</code> file in the
+  directory after extraction.</li>
+  <li><p>Navigate to the folder containing the <code>sqlite3.exe</code> file and check
+  that the version is at least 3.8.3:</p>
 
-<p>Linked lists are a list of items pointing to their neighbors. Notice that
-there's no explicit index for each item.</p>
+<pre><code>$ cd path/to/sqlite
+$ ./sqlite3 &#x2d;&#x2d;version
+3.9.2 2015&#x2d;11&#x2d;02 18:31:15 bda77dda9697c463c3d0704014d51627fceee328</code></pre></li>
+</ol>
 
-<p><img class="img-responsive center-block" src="assets/linkedlist.png" alt="linkedlist"></p>
 
-<p>Suppose we want to add an item at the head of the list.</p>
+<h3 id="mac-os-x-yosemite-10-10-or-el-capitan-10-11">Mac OS X Yosemite (10.10) or El Capitan (10.11)</h3>
+
+
+<p>SQLite comes pre-installed. Check that you have a version that's greater than 3.8.3:</p>
+
+<pre><code>    $ sqlite3
+    SQLite version 3.8.5</code></pre>
+
+
+<h3 id="mac-os-x-mavericks-10-9-or-older">Mac OS X Mavericks (10.9) or older</h3>
+
+
+<p>SQLite comes pre-installed, but it is the wrong version.</p>
+
+<ol>
+  <li>Visit the download page linked above and navigate to the section
+  <strong>Precompiled Binaries for Mac OS X (x86)</strong>. Click on
+  the link <strong>sqlite-shell-osx-x86-*.zip</strong> to download the
+  binary.</li>
+  <li>Unzip the file. There should be a <code>sqlite3</code> file in the directory
+  after extraction.</li>
+  <li><p>Navigate to the folder containing the <code>sqlite3</code> file and check that
+  the version is at least 3.8.3:</p>
+
+<pre><code>$ cd path/to/sqlite
+$ ./sqlite3 &#x2d;&#x2d;version
+3.9.2 2015&#x2d;11&#x2d;02 18:31:15 bda77dda9697c463c3d0704014d51627fceee328</code></pre></li>
+</ol>
+
+
+<h3 id="ubuntu">Ubuntu</h3>
+
+
+<p>The easiest way to use SQLite on Ubuntu is to install it straight from
+the native repositories (the version will be slightly behind the most
+recent release):</p>
+
+<pre><code>$ sudo apt&#x2d;get install sqlite3
+$ sqlite3 &#x2d;&#x2d;version
+3.8.6 2014&#x2d;08&#x2d;15 11:46:33 9491ba7d738528f168657adb43a198238abde19e</code></pre>
+
+
+<h2 id="usage">Usage</h2>
+
+
+<blockquote><p><em>Note:</em> If you downloaded a precompiled binary above, make sure that
+the <code>sqlite3.exe</code> file is in the same directory as your <code>.sql</code> file.
+(Extract and move it out from the zip file you downloaded.)</p></blockquote>
+
+<p>After writing your code in the <code>.sql</code> file, you can test and verify
+your output on the terminal with one of the two following
+commands.</p>
+
+<p>1.) Runs your code and then exits SQLite immediately afterwards.</p>
+
+<pre><code>    sqlite3 &lt; lab07.sql</code></pre>
+
+<p>2.) Runs your code and keeps SQLite open for further commands, which
+is similar to running Python code with the interactive <code>&#x2d;i</code> flag.
+You can type <code>.help</code> to see some of the commands you can run.</p>
+
+<pre><code>    sqlite3 &#x2d;&#x2d;init lab07.sql</code></pre>
+
+<p>To exit out of SQLite after using the second command, you can hit 
+<code>Ctrl&#x2d;D</code> type <code>.exit</code> or <code>.quit</code>.</p>
+
+
+<h2 id="sql-basics">SQL Basics</h2>
+
+
+
+<h3 id="creating-tables">Creating Tables</h3>
+
+
+<p>Two ways of creating tables in SQL are from scratch or from
+existing tables.</p>
+
+<p>Below creates the table from scratch, without referencing any
+other existing tables.</p>
+
+<pre><code>CREATE TABLE [table_name] as
+  SELECT [val1] as [column1], [val2] as [column2], ... UNION
+  SELECT [val3]             , [val4]             , ... UNION
+  SELECT [val5]             , [val6]             , ...;</code></pre>
+
+<blockquote><p><em>Note:</em> You do not need to repeat the <code>as</code> keyword in subsequent
+SELECT statements when creating the table.</p></blockquote>
+
+<p>Here is an example where we construct a table with the <code>CREATE TABLE</code>
+statement:</p>
+
+<pre><code>CREATE TABLE Football as
+  SELECT 30 as Berkeley, 7 as Stanford, 2002 as Year UNION
+  SELECT 28,             16,            2003         UNION
+  SELECT 17,             38,            2014;</code></pre>
+
+<p><img class="img-responsive center-block" src="assets/football.png" alt="football"></p>
+
+<p>Here we have created a table called <code>Football</code>, which has three attributes
+(columns): <code>Berkeley</code>, <code>Stanford</code>, and <code>Year</code>. We can later access the
+values from this table by referencing the table's columns.</p>
+
+<p>To create tables from existing tables, the <code>SELECT</code> command references
+another table.</p>
+
+
+<h3 id="selecting-from-tables">Selecting From Tables</h3>
+
+<p>More commonly, we will create new tables by selecting specific columns
+that we want from existing tables. <code>SELECT</code> statements can include optional
+clauses such as:</p>
 
 <ul>
-  <li>With Python's built-in list, if you want to put an item into the container
-  labeled with index 0, you must move <strong>all the items</strong> in the list into
-  its neighbor containers to make room for the first item;</li>
+  <li><code>FROM</code>: tells SQL which tables to select values from</li>
+  <li><code>WHERE</code>: filters by some condition</li>
+  <li><code>ORDER BY</code>: enforces an ordering by some attribute or attributes (usually a column or columns)</li>
+  <li><p><code>LIMIT</code>: limits the number of rows in the output table</p>
+
+<pre><code>SELECT [columns] FROM [tables] WHERE [condition] ORDER BY [attributes] LIMIT [limit]</code></pre></li>
 </ul>
 
-<p><img class="img-responsive center-block" src="assets/arraylist_insert.png" alt="arraylist"></p>
+<p>Notes about the arguments:</p>
 
 <ul>
-  <li>With a linked list, you tell Python that the neighbor of the new item is the
-  old beginning of the list.</li>
+  <li><code>[columns]</code>: a comma separated list of the columns to select, <code>*</code> can
+  be used to select all of them</li>
+  <li><code>[tables]</code>: a comma separated list of tables to select values from</li>
+  <li><code>[condition]</code>: a Boolean expression</li>
+  <li><code>[attributes]</code>: a comma separated list of attributes, which are usually
+  columns, but could also be named aggregates (which we will learn later)</li>
+  <li><code>[limit]</code>: an integer</li>
 </ul>
 
-<p><img class="img-responsive center-block" src="assets/linkedlist_insert.png" alt="arraylist"></p>
+<p>We can select all the values of an attribute from a table with the <code>SELECT</code>
+statement. In addition, we can apply a filter using the <code>WHERE</code> clause. Here,
+we filter by <code>Year &gt; 2002</code>, which makes the <code>SELECT</code> statement keep only the
+rows in the table whose <code>Year</code> value is greater than 2002.</p>
 
-<p>To test this, in your terminal, enter the following command: <code>python3 timing.py
-insert 100000</code>, which inserts 100,000 items into the beginning of both a linked
-list and a Python built-in list to compare the speed.</p>
+<pre><code>sqlite&gt; SELECT Berkeley FROM Football WHERE Year &gt; 2002;
+17
+28</code></pre>
 
-<p>Now, say we want the item at index 3.</p>
+<p>Here we selected Berkeley's score for all years after 2002.</p>
+
+
+<h3 id="expressions-in-sql">Expressions in SQL</h3>
+
+<p>Here are some fundamental operations you can perform:</p>
 
 <ul>
-  <li>In the built-in list, you can simply grab the item from the container
-  with 3 labeled on it;</li>
-  <li>In the linked list, you need to start at the first item, and go to
-  its neighbor's neighbor's neighbor to finally reach the item at index
-  3.</li>
+  <li>comparisons: <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;&gt;</code> ("not equal")</li>
+  <li>booleans: <code>and</code>, <code>or</code></li>
+  <li>arithmatic: <code>+</code>, <code>&#x2d;</code>, <code>*</code>, <code>/</code></li>
 </ul>
 
-<p>To test this, enter the following command in your terminal: <code>python3 timing.py
-index 10000</code>. This program compares the speed of randomly accessing 10,000 items from both a linked list and a
-built-in Python list (each with length 10,000).</p>
+<p>We can also perform string concatenation using <code>||</code>, which behaves
+similarly to <code>+</code> on strings in Python.</p>
 
-<p>You'll learn more about orders of growth this week, which will provide
-mathematical rigor when comparing the runtime of the same operations with
-different data structures.</p>
-
-<h3 class="question" id="q1">Question 1: WWPP: Linked Lists</h3>
-
-<blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
-questions:</p>
-
-<pre><code>python3 ok &#x2d;q link &#x2d;u</code></pre>
-
-<p>If you get stuck, try loading lab07.py into an interpreter or drawing out the
-diagram for the linked list on a piece of paper.</p></blockquote>
+<pre><code>sqlite&gt; select &quot;hello&quot; || &quot; &quot; || &quot;world&quot;
+hello world</code></pre>
 
 
-    <pre><code>&gt;&gt;&gt; from lab07 import *
-&gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
-&gt;&gt;&gt; link.first
-<div class="alt 8">______</div><div class="solution 8">&#x31;</div>
-&gt;&gt;&gt; link.rest.first
-<div class="alt 8">______</div><div class="solution 8">&#x32;</div>
-&gt;&gt;&gt; link.rest.rest.rest is Link.empty
-<div class="alt 8">______</div><div class="solution 8">&#x54;&#x72;&#x75;&#x65;</div>
-&gt;&gt;&gt; link.first = 9001
-&gt;&gt;&gt; link.first
-<div class="alt 8">______</div><div class="solution 8">&#x39;&#x30;&#x30;&#x31;</div>
-&gt;&gt;&gt; link.rest = link.rest.rest
-&gt;&gt;&gt; link.rest.first
-<div class="alt 8">______</div><div class="solution 8">&#x33;</div>
-&gt;&gt;&gt; link = Link(1)
-&gt;&gt;&gt; link.rest = link
-&gt;&gt;&gt; link.rest.rest.rest.rest.first
-<div class="alt 8">______</div><div class="solution 8">&#x31;</div>
-&gt;&gt;&gt; link = Link(2, Link(3, Link(4)))
-&gt;&gt;&gt; link2 = Link(1, link)
-&gt;&gt;&gt; link2.first
-<div class="alt 8">______</div><div class="solution 8">&#x31;</div>
-&gt;&gt;&gt; link2.rest.first
-<div class="alt 8">______</div><div class="solution 8">&#x32;</div>
-&gt;&gt;&gt; print_link(link2) # Look at print_link in lab07.py
-<div class="alt 8">______</div><div class="solution 8">&#x3c;&#x31;&#x20;&#x32;&#x20;&#x33;&#x20;&#x34;&#x3e;</div></code></pre>
+<h3 id="data">Data</h3>
 
-    <button id='8' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
+
+<p>In each question below, you will define a new table based on the following
+tables.</p>
+
+<pre><code>create table parents as
+  select &quot;abraham&quot; as parent, &quot;barack&quot; as child union
+  select &quot;abraham&quot;          , &quot;clinton&quot;         union
+  select &quot;delano&quot;           , &quot;herbert&quot;         union
+  select &quot;fillmore&quot;         , &quot;abraham&quot;         union
+  select &quot;fillmore&quot;         , &quot;delano&quot;          union
+  select &quot;fillmore&quot;         , &quot;grover&quot;          union
+  select &quot;eisenhower&quot;       , &quot;fillmore&quot;;
+
+create table dogs as
+  select &quot;abraham&quot; as name, &quot;long&quot; as fur, 26 as height union
+  select &quot;barack&quot;         , &quot;short&quot;      , 52           union
+  select &quot;clinton&quot;        , &quot;long&quot;       , 47           union
+  select &quot;delano&quot;         , &quot;long&quot;       , 46           union
+  select &quot;eisenhower&quot;     , &quot;short&quot;      , 35           union
+  select &quot;fillmore&quot;       , &quot;curly&quot;      , 32           union
+  select &quot;grover&quot;         , &quot;short&quot;      , 28           union
+  select &quot;herbert&quot;        , &quot;curly&quot;      , 31;
+
+create table sizes as
+  select &quot;toy&quot; as size, 24 as min, 28 as max union
+  select &quot;mini&quot;,        28,        35        union
+  select &quot;medium&quot;,      35,        45        union
+  select &quot;standard&quot;,    45,        60;</code></pre>
+
+<p>Your tables should still perform correctly even if the values in these tables
+change. For example, if you are asked to list all dogs with a name that starts
+with h, you should write:</p>
+
+<pre><code>select name from dogs where &quot;h&quot; &lt;= name and name &lt; &quot;i&quot;;</code></pre>
+
+<p>Instead of assuming that the <code>dogs</code> table has only the data above and writing</p>
+
+<pre><code>select &quot;herbert&quot;;</code></pre>
+
+<p>The former query would still be correct if the name <code>grover</code> were changed to
+<code>hoover</code> or a row was added with the name <code>harry</code>.</p>
+
+<h3 id="get-started-with-sqlite">Get started with sqlite</h3>
+
+
+<p>Following the instructions in the <em>usage</em> section
+above, start up <code>sqlite3</code> initializing it with <code>lab07.sql</code>. Try
+out <code>.help</code> and then <code>.tables</code> and <code>.schema parents</code>.  These <code>.</code>
+commands are particular to <code>.sqlite</code>; they are not part of SQL.
+Try out some <code>SQL</code> statements.</p>
+
+<p>How do you get the whole parents table? Give it a try.</p>
+
+
+    <button id='5' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
     </button>
-    
+    <div class="solution 5">
 
-<h3 class="question" id="q2">Question 2: List to Link</h3>
+<pre><code>select * from parents;</code></pre>
 
-<p>Write a function <code>list_to_link</code> that converts a Python list to a <code>Link</code>.</p>
+</div>
+
+<p>Looking at the data, which dogs are children of "abraham" ?</p>
+
+
+    <button id='6' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 6">
+
+<pre><code>&quot;barack&quot; and &quot;clinton&quot;</code></pre>
+
+</div>
+
+<p>Write a SQL statement to get the children of the dog "abraham".</p>
+
+
+    <button id='7' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 7">
+
+<pre><code>select child from parents where parent = &quot;abraham&quot;;</code></pre>
+
+</div>
+
+<p>Write a SQL statement to select the parents of curly-furred dogs.</p>
+
+
+    <button id='8' class='toggleButtonShow'>
+    Toggle Explanation<noscript> (enable JavaScript)</noscript>
+    </button>
+    <div class="solution 8">
+
+<pre><code>select parent from parents, dogs
+   where child = name and fur = &quot;curly&quot;;</code></pre>
+
+</div>
+
+<p>Try it out.  Did you get:</p>
+
+<pre><code>eisenhower
+delano</code></pre>
+
+<p>For the following questions, update <code>lab07.sql</code> with your
+solution.</p>
+
+<h3 class="question" id="q1">Question 1</h3>
+Some people just love little dogs.  Create a <code>short_dogs</code> table with
+three columns, <code>name</code>, <code>fur</code>, and <code>size</code>, containing the dogs of
+height < 40 cm.
 
 
 
-<pre><code>def list_to_link(lst):
-    &quot;&quot;&quot;Takes a Python list and returns a Link with the same elements.
-
-    &gt;&gt;&gt; link = list_to_link([1, 2, 3])
-    &gt;&gt;&gt; print_link(link)
-    &lt;1 2 3&gt;
-    &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x2c;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x5d;&#x29;&#x29;</div></code></pre>
+<pre><code>&#x2d;&#x2d; All short dogs
+create table short_dogs as
+<div class="alt 1">-- REPLACE THIS LINE
+</div><div class="solution 1">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x66;&#x75;&#x72;&#x2c;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x61;&#x73;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x20;&#x34;&#x30;&#x3b;</div></code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -260,26 +421,34 @@ diagram for the linked list on a piece of paper.</p></blockquote>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python ok -q list_to_link --local</code></pre>
+<pre><code>&#x2d;&#x2d; Example:
+select name from short_dogs;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   abraham
+&#x2d;&#x2d;   eisenhower
+&#x2d;&#x2d;   fillmore
+&#x2d;&#x2d;   grover
+&#x2d;&#x2d;   herbert</code></pre>
 
-<h3 class="question" id="q3">Question 3: Link to List</h3>
+<p>Test your solution with OK:</p>
 
-<p>Write a function <code>link_to_list</code> that converts a given <code>Link</code> to a
-Python list.</p>
+<pre><code>python ok &#x2d;q short &#x2d;&#x2d;local</code></pre>
+
+<h3 class="question" id="q2">Question 2</h3>
+The Fédération Cynologique Internationale classifies a standard poodle as over
+45 cm and up to 60 cm. The <code>sizes</code> table describes this and other such
+classifications, where a dog must be over the <code>min</code> and less than or equal to
+the <code>max</code> in height to qualify as a <code>size</code>.
+
+<p>Create a <code>size_of_dogs</code> table with two columns, one for each dog's <code>name</code> and
+another for its <code>size</code>.</p>
 
 
 
-<pre><code>def link_to_list(link):
-    &quot;&quot;&quot;Takes a Link and returns a Python list with the same elements.
-
-    &gt;&gt;&gt; link = Link(1, Link(2, Link(3, Link(4))))
-    &gt;&gt;&gt; link_to_list(link)
-    [1, 2, 3, 4]
-    &gt;&gt;&gt; link_to_list(Link.empty)
-    []
-    &quot;&quot;&quot;
-<div class="alt 2">    "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x23;&#x20;&#x52;&#x65;&#x63;&#x75;&#x72;&#x73;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5d;&#x20;&#x2b;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#xa;&#x23;&#x20;&#x49;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2e;&#x61;&#x70;&#x70;&#x65;&#x6e;&#x64;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
+<pre><code>&#x2d;&#x2d; The size of each dog
+create table size_of_dogs as
+<div class="alt 2">-- REPLACE THIS LINE
+</div><div class="solution 2">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3e;&#x20;&#x6d;&#x69;&#x6e;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x3b;</div></code></pre>
 
 
     <button id='2' class='toggleButton'>
@@ -287,38 +456,30 @@ Python list.</p>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python ok -q link_to_list --local</code></pre>
+<pre><code>&#x2d;&#x2d; Example:
+select name from size_of_dogs where size=&quot;toy&quot; or size=&quot;mini&quot;;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   abraham
+&#x2d;&#x2d;   eisenhower
+&#x2d;&#x2d;   fillmore
+&#x2d;&#x2d;   grover
+&#x2d;&#x2d;   herbert</code></pre>
 
-<h3 class="question" id="q4">Question 4: Insert</h3>
+<p>Test your solution with OK:</p>
 
-<p>Implement a function <code>insert</code> that takes a <code>Link</code>, a <code>value</code>, and an
-<code>index</code>, and inserts the <code>value</code> into the <code>Link</code> at the given <code>index</code>.
-You can assume the linked list already has at least one element. Do not
-return anything &mdash; <code>insert</code> should mutate the linked list.</p>
+<pre><code>python ok &#x2d;q small &#x2d;&#x2d;local</code></pre>
 
-<blockquote><p><strong>Note</strong>: If the index is out of bounds, you can raise an <code>IndexError</code> with:</p>
-
-<pre><code>raise IndexError</code></pre></blockquote>
+<h3 class="question" id="q3">Question 3</h3>
+Create a table <code>by_height</code> that has a column of the names of all dogs that have
+a <code>parent</code>, ordered by the height of the parent from tallest parent to shortest
+parent.
 
 
 
-<pre><code>def insert(link, value, index):
-    &quot;&quot;&quot;Insert a value into a Link at the given index.
-
-    &gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; print_link(link)
-    &lt;1 2 3&gt;
-    &gt;&gt;&gt; insert(link, 9001, 0)
-    &gt;&gt;&gt; print_link(link)
-    &lt;9001 1 2 3&gt;
-    &gt;&gt;&gt; insert(link, 100, 2)
-    &gt;&gt;&gt; print_link(link)
-    &lt;9001 1 100 2 3&gt;
-    &gt;&gt;&gt; insert(link, 4, 5)
-    IndexError
-    &quot;&quot;&quot;
-<div class="alt 3">    "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x73;&#x65;&#x72;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x2d;&#x20;&#x31;&#x29;&#xa;&#xa;&#x23;&#x20;&#x69;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x69;&#x6e;&#x73;&#x65;&#x72;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3e;&#x20;&#x30;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x2d;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;</div></code></pre>
+<pre><code>&#x2d;&#x2d; All dogs with parents ordered by decreasing height of their parent
+create table by_height as
+<div class="alt 3">-- REPLACE THIS LINE
+</div><div class="solution 3">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x2c;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x20;&#x6f;&#x72;&#x64;&#x65;&#x72;&#x20;&#x62;&#x79;&#x20;&#x2d;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x3b;</div></code></pre>
 
 
     <button id='3' class='toggleButton'>
@@ -326,30 +487,41 @@ return anything &mdash; <code>insert</code> should mutate the linked list.</p>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python ok -q insert --local</code></pre>
+<p>For example, <code>fillmore</code> has a parent (<code>eisenhower</code>) with height 35, and so
+should appear before <code>grover</code> who has a parent (<code>fillmore</code>) with height 32.
+The names of dogs with parents of the same height should appear together in any
+order. For example, <code>barack</code> and <code>clinton</code> should both appear at the end, but
+either one can come before the other.</p>
 
-<h3 class="question" id="q5">Question 5: Reverse</h3>
+<pre><code>&#x2d;&#x2d; Example:
+select * from by_height;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   herbert
+&#x2d;&#x2d;   fillmore
+&#x2d;&#x2d;   abraham
+&#x2d;&#x2d;   delano
+&#x2d;&#x2d;   grover
+&#x2d;&#x2d;   barack
+&#x2d;&#x2d;   clinton</code></pre>
 
-<p>Implement <code>reverse</code>, which takes a linked list <code>link</code> and returns a linked list
-containing the elements of <code>link</code> in reverse order. The original <code>link</code> should be
-unchanged.</p>
+<p>Test your solution with OK:</p>
+
+<pre><code>python ok &#x2d;q parent_height &#x2d;&#x2d;local</code></pre>
+
+<h3 class="question" id="q4">Question 4</h3>
+
+<p>Create a table <code>tallest</code> that includes the <code>height</code> and <code>name</code> of every dog
+that shares the 10's digit of its <code>height</code> with at least one other dog and has
+the highest 1's digit of all dogs that have the same 10's digit.</p>
 
 
 
-<pre><code>def reverse(link):
-    &quot;&quot;&quot;Returns a Link that is the reverse of the original.
-
-    &gt;&gt;&gt; print_link(reverse(Link(1)))
-    &lt;1&gt;
-    &gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; new = reverse(link)
-    &gt;&gt;&gt; print_link(new)
-    &lt;3 2 1&gt;
-    &gt;&gt;&gt; print_link(link)
-    &lt;1 2 3&gt;
-    &quot;&quot;&quot;
-<div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#xa;&#xa;&#x23;&#x20;&#x52;&#x65;&#x63;&#x75;&#x72;&#x73;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x5f;&#x74;&#x6f;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x5f;&#x74;&#x6f;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x74;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x5f;&#x74;&#x6f;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x29;</div></code></pre>
+<pre><code>&#x2d;&#x2d; Height and name of every dog that shares height 10&#x27;s digit  
+&#x2d;&#x2d; with at least one other dog and has the highest 1&#x27;s digit of all dogs 
+&#x2d;&#x2d; that have the same 10&#x27;s digit
+create table tallest as
+<div class="alt 4">-- REPLACE THIS LINE
+</div><div class="solution 4">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x29;&#x2c;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x67;&#x72;&#x6f;&#x75;&#x70;&#x20;&#x62;&#x79;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2f;&#x31;&#x30;&#x20;&#x68;&#x61;&#x76;&#x69;&#x6e;&#x67;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x28;&#x2a;&#x29;&#x20;&#x3e;&#x20;&#x31;&#x3b;</div></code></pre>
 
 
     <button id='4' class='toggleButton'>
@@ -357,141 +529,47 @@ unchanged.</p>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python ok -q reverse --local</code></pre>
+<pre><code>&#x2d;&#x2d; Example:
+select * from tallest;
+&#x2d;&#x2d; Expected output:
+&#x2d;&#x2d;   28|grover
+&#x2d;&#x2d;   35|eisenhower
+&#x2d;&#x2d;   47|clinton</code></pre>
 
-<h3 class="question" id="q6">Question 6: Deep Map</h3>
+<p><em>Explanation</em>: <code>grover</code> is the tallest 20-something dog. <code>eisenhower</code> is the
+tallest 30-something dog. <code>clinton</code> is the tallest 40-something dog. <code>barack</code>
+is not included because there are no other 50-something dogs.</p>
 
-<p>Implement <code>deep_map</code>, which takes a function <code>f</code> and a <code>link</code>. It returns a
-<em>new</em> linked list with the same structure as <code>link</code>, but with <code>f</code> applied to any
-element within <code>link</code> or any <code>Link</code> instance contained in <code>link</code>.</p>
+<p>Test your solution with OK:</p>
 
-<p>The <code>deep_map</code> function should recursively apply <code>fn</code> to each of that
-<code>Link</code>'s elements rather than to that <code>Link</code> itself.</p>
-
-<p><em>Hint</em>: You may find the built-in <code>isinstance</code> function useful.</p>
-
-
-
-<pre><code>def deep_map(f, link):
-    &quot;&quot;&quot;Return a Link with the same structure as link but with fn mapped over
-    its elements. If an element is an instance of a linked list, recursively
-    apply f inside that linked list as well.
-
-    &gt;&gt;&gt; s = Link(1, Link(Link(2, Link(3)), Link(4)))
-    &gt;&gt;&gt; print_link(deep_map(lambda x: x * x, s))
-    &lt;1 &lt;4 9&gt; 16&gt;
-    &gt;&gt;&gt; print_link(s) # unchanged
-    &lt;1 &lt;2 3&gt; 4&gt;
-    &gt;&gt;&gt; print_link(deep_map(lambda x: 2 * x, Link(s, Link(Link(Link(5))))))
-    &lt;&lt;2 &lt;4 6&gt; 8&gt; &lt;&lt;10&gt;&gt;&gt;
-    &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x73;&#x69;&#x6e;&#x73;&#x74;&#x61;&#x6e;&#x63;&#x65;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x64;&#x65;&#x65;&#x70;&#x5f;&#x6d;&#x61;&#x70;&#x28;&#x66;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x66;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x64;&#x65;&#x65;&#x70;&#x5f;&#x6d;&#x61;&#x70;&#x28;&#x66;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#x29;</div></code></pre>
-
-
-    <button id='5' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python ok -q deep_map --local</code></pre>
-
-
-<h2 id="challenge-question">Challenge Question</h2>
-
-
-<h3 class="question" id="q7">Question 7: Cycles</h3>
-
-<p>The <code>Link</code> class can represent lists with cycles.  That is, a list may
-contain itself as a sublist.</p>
-
-<pre><code>&gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
-&gt;&gt;&gt; s.rest.rest.rest = s
-&gt;&gt;&gt; s.rest.rest.rest.rest.rest.first
-3</code></pre>
-
-<p>Implement <code>has_cycle</code> that returns whether its argument, a <code>Link</code>
-instance, contains a cycle.</p>
-
-<blockquote><p><em>Hint</em>: Iterate through the linked list and try keeping track of which <code>Link</code>
-objects you've already seen.</p></blockquote>
-
-
-
-<pre><code>def has_cycle(link):
-    &quot;&quot;&quot;Return whether link contains a cycle.
-
-    &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; s.rest.rest.rest = s
-    &gt;&gt;&gt; has_cycle(s)
-    True
-    &gt;&gt;&gt; t = Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; has_cycle(t)
-    False
-    &gt;&gt;&gt; u = Link(2, Link(2, Link(2)))
-    &gt;&gt;&gt; has_cycle(u)
-    False
-    &quot;&quot;&quot;
-<div class="alt 6">    "*** YOUR CODE HERE ***"
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x74;&#x28;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x2e;&#x61;&#x64;&#x64;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;</div></code></pre>
-
-
-    <button id='6' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python ok -q has_cycle --local</code></pre>
-
-<p><strong>Extra for experts</strong>: Implement <code>has_cycle</code> with only <a href="http://composingprograms.com/pages/28-efficiency.html#growth-categories">constant space</a>. (If
-you followed the hint above, you will use linear space.) The solution is short
-(less than 20 lines of code), but requires a clever idea. Try to discover the
-solution yourself before asking around:</p>
-
-
-
-<pre><code>def has_cycle_constant(link):
-    &quot;&quot;&quot;Return whether link contains a cycle.
-
-    &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; s.rest.rest.rest = s
-    &gt;&gt;&gt; has_cycle_constant(s)
-    True
-    &gt;&gt;&gt; t = Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; has_cycle_constant(t)
-    False
-    &quot;&quot;&quot;
-<div class="alt 7">    "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x2c;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x66;&#x61;&#x73;&#x74;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x3d;&#x3d;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x20;&#x6f;&#x72;&#x20;&#x66;&#x61;&#x73;&#x74;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x3d;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x2c;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x66;&#x61;&#x73;&#x74;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;</div></code></pre>
-
-
-    <button id='7' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python ok -q has_cycle_constant --local</code></pre>
-
+<pre><code>python ok &#x2d;q tallest &#x2d;&#x2d;local</code></pre>
 
   </div>
 
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
-  <li><a href="#linked-lists">Linked Lists</a></li>
+  <li><a href="#sql">SQL</a></li>
+  <li><a href="#setup">Setup</a></li>
   <ul>
-  <li><a href="#motivation">Motivation</a></li>
-  <li><a href="#q1">Question 1: WWPP: Linked Lists</a></li>
-  <li><a href="#q2">Question 2: List to Link</a></li>
-  <li><a href="#q3">Question 3: Link to List</a></li>
-  <li><a href="#q4">Question 4: Insert</a></li>
-  <li><a href="#q5">Question 5: Reverse</a></li>
-  <li><a href="#q6">Question 6: Deep Map</a></li>
+  <li><a href="#windows">Windows</a></li>
+  <li><a href="#mac-os-x-yosemite-10-10-or-el-capitan-10-11">Mac OS X Yosemite (10.10) or El Capitan (10.11)</a></li>
+  <li><a href="#mac-os-x-mavericks-10-9-or-older">Mac OS X Mavericks (10.9) or older</a></li>
+  <li><a href="#ubuntu">Ubuntu</a></li>
 </ul>
 
-  <li><a href="#challenge-question">Challenge Question</a></li>
+  <li><a href="#usage">Usage</a></li>
+  <li><a href="#sql-basics">SQL Basics</a></li>
   <ul>
-  <li><a href="#q7">Question 7: Cycles</a></li>
+  <li><a href="#creating-tables">Creating Tables</a></li>
+  <li><a href="#selecting-from-tables">Selecting From Tables</a></li>
+  <li><a href="#expressions-in-sql">Expressions in SQL</a></li>
+  <li><a href="#data">Data</a></li>
+  <li><a href="#get-started-with-sqlite">Get started with sqlite</a></li>
+  <li><a href="#q1">Question 1</a></li>
+  <li><a href="#q2">Question 2</a></li>
+  <li><a href="#q3">Question 3</a></li>
+  <li><a href="#q4">Question 4</a></li>
 </ul>
 
 </ul>
