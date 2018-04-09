@@ -1,12 +1,9 @@
 {
-    "name": "Lab 08",
+    "name": "Lab 07",
     "endpoint": "cal/cs88/fa16/lab08",
     "src": [
-        "lab08.py"
     ],
     "tests": {
-        "lab08.py:avoid_indexerror": "doctest",
-        "lab08.py:avoid_keyerror": "doctest",
     	"tests/short.py": "ok_test",
     	"tests/small.py": "ok_test",
     	"tests/parent_height.py": "ok_test",
