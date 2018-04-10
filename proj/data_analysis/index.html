@@ -72,14 +72,13 @@
 
     <div id="haiku">
   
+<p><em>Here is your chance to show us what you learned about programming with data.</em></p>
+
 </div>
 
     <h2>Introduction</h2>
 
 <p>In this project you will process and analyze actual public data to answer questions of your choice. The goal of the project is to answer meaningful questions using data and the techniques you've learned in CS 88 and Data 8.</p>
-
-
-<p>You can obtain all the files needed for this project by downloading this <a href="Data Analysis .zip">zip archive</a>.</p>
 
 <h2>Logistics</h2>
 
@@ -103,101 +102,36 @@ assigned for correctness, and 2 points for the overall <a
 <p>You can submit by uploading these files to OK.</p>
 
 <p>You will be able to view your submissions on the <a
-  href="http://ok.cs88.org">OK dashboard</a>.</p>
-
-<p>For the functions that we ask you to complete, there may be some
-initial code that we provide. If you would rather not use that code,
-feel free to delete it and start from scratch. You may also add new
-function definitions as you see fit.</p>
-
-<p>However, please do <b>not</b> modify any other functions.  Doing so may
-result in your code failing our autograder tests. Also, please do not
-change any function signatures (names, argument order, or number of
-arguments).</p>
-
-
-<p>None</p>
-
-
-<h2>Testing</h2>
-
-<p>Throughout this project, you should be testing the correctness of your
-code.  It is good practice to test often, so that it is easy to isolate
-any problems.</p>
-
-<p>We have provided an <b>autograder</b> called <code>ok</code> to help you with
-testing your code and tracking your progress.</p> 
-<!-- The first time you run
-the autograder, you will be asked to <b>log in with your OK account using your web browser</b>. Please do so. Each time you run
-<code>ok</code>, it will back up your work and progress on our
-servers.</p> -->
-
-<p>The primary purpose of <code>ok</code> is to test your implementations, but there
-is a catch. At first, the test cases are <i>locked</i>. To unlock tests,
-run the following command from your terminal:</p>
-
-<pre><code>python ok -u --local</code></pre>
-
-<p>This command will start an interactive prompt that looks like:</p>
-
-<pre>
-=====================================================================
-Assignment: Data Analysis 
-OK, version ...
-=====================================================================
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Unlocking tests
-
-At each "? ", type what you would expect the output to be.
-Type exit() to quit
-
----------------------------------------------------------------------
-Question 0 &gt; Suite 1 &gt; Case 1
-(cases remaining: 1)
-
-&gt;&gt;&gt; Code here
-?
-</pre>
-
-<p>At the <code>?</code>, you can type what you expect the output to be.
-If you are correct, then this test case will be available the next time
-you run the autograder.</p>
-
-<p>The idea is to understand <i>conceptually</i> what your program should do
-first, before you start writing any code.</p>
-
-<p>Once you have unlocked some tests and written some code, you can check
-the correctness of your program using the tests that you have
-unlocked:</p>
-
-<pre>python ok --local</pre>
-
-<p>Most of the time, you will want to focus on a particular question.
-Use the <code>-q</code> option as directed in the problems below.</p>
-
-<p>The <code>tests</code> folder is used to store autograder tests, so make sure
-<b>not to modify it</b>. You may lose all your unlocking progress if you
-do. If you need to get a fresh copy, you can download the
-<a href="Data Analysis .zip">zip archive</a> and copy it over, but you
-will need to start unlocking from scratch.</p>
-
-
+  href="https://okpy.org/cal/cs88/sp18/">OK dashboard</a>.</p>
 
 
 <h2 id="logistics">Logistics</h2>
 
 
-<p>This project is worth 20 points and is due on Tuesday, 12/6/16. You may work with one other partner. You should not share your code with students who are not your partner or copy from anyone else's solutions. In the end, you will submit one project for both partners. Make sure to add your partner on OK. The project is worth 20 points.</p>
+<p>This project is worth 20 points and is due on Wednesday, 5/4/18. You may work with one other partner. You should not share your code with students who are not your partner or copy from anyone else's solutions. You should not share your code with students who are not your partner or copy from anyone else's solutions. First, log on to <a href="https://bcourses.berkeley.edu/courses/1467723/groups">bCourses > People > Project 3: Data Analysis Project</a> and add yourself and your partner to an existing group. Make sure you join the same group number.</p>
+
+<p>In the end, you will submit one project for both partners on OK. Make sure to add your partner on OK. The project is worth 20 points. You should write all code and text for the project in a Jupyter notebook and then download the notebook in HTML format for the final submission.</p>
+
+<p>In the end, you will submit one project for both partners. Again, make sure to add your partner on OK and on bCourses.</p>
+
+
+<h2 id="task-0-project-proposal-due-4-15">Task 0: Project Proposal (due 4/15)</h2>
+
+
+<p>You should submit a proposal highlighting what your goal for your project is. The proposal is due on <strong>Sunday, 4/15/18 on bCourses</strong>. Your proposal should describe the big ideas of your project, as well as the various features you’ll need to implement to complete the project. We ask you to submit a proposal to ensure that the project you are considering is challenging enough but also feasible to complete. Although you will be able to tweak your project idea after your proposal has been submitted, the gist of it should stay the same. If you are going to make ANY significant changes to your project, you must get in touch with your lab TA to discuss your ideas, and they will give you additional feedback in a new comment on your bCourses submission. Make sure that you find an idea you would be happy or passionate to work with since you'll be spending a good bit of time with it.</p>
+
+<p>Submit your proposal using the <a href="https://bcourses.berkeley.edu/courses/1467723/assignments/7883037">assignment link on bCourses</a>, which contains a list of specific questions for you to fill out. Only one person per group needs to submit. Remember you must join a Group on bCourses. If you do not do so, you are at risk of a point penalty on your final grade of the project.</p>
+
+<p>You should also come to lab the week following the deadline of the project proposal to speak with the TA who gave you feedback to discuss next steps.</p>
 
 
 <h2 id="task-1-obtain-the-data">Task 1: Obtain the Data</h2>
 
 
-<p>Go to http://catalog.data.gov/dataset and select one or more dataset(s) of your choice in the format(s) of your choice. We suggest working with data that is available in csv format as it can be easily processed. You are allowed to work with other data types as well, as long as you know how to read and process the data.
-<br/>
+<p>Go to <a href="http://catalog.data.gov/dataset">http://catalog.data.gov/dataset</a> and select one or more dataset(s) of your choice in the format(s) of your choice. We suggest working with data that is available in csv format as it can be easily processed. You are allowed to work with other data types as well, as long as you know how to read and process the data.
+</p>
 
-You may also work with multiple datasets in order to explore relationships between the two datasets, or to just have a greater amount of data to work with. We suggest that you use no more than a few datasets. Rather than adding complexity through the volume of data, we suggest adding complexity through your analysis of the data. Save a link to each of your datasets and include all links in the final Jupyter notebook.</p>
+<p>You may also work with multiple datasets in order to explore relationships between the two datasets, or to just have a greater amount of data to work with. We suggest that you use no more than a few datasets. Rather than adding complexity through the volume of data, we suggest adding complexity through your analysis of the data. Save a link to each of your datasets and include all links in the final Jupyter notebook.</p>
 
 
 <h2 id="task-2-pose-three-questions">Task 2: Pose Three Questions</h2>
@@ -205,7 +139,7 @@ You may also work with multiple datasets in order to explore relationships betwe
 
 <p>Ask three questions of varying complexity (easy, medium, difficult) that you want to answer with the dataset. An easy question is something that can be answered by looking at one column of the data (i.e. what is the mean value of some column?). The medium and difficult questions should require complex processing of the data in order to arrive at some sort of answer. Many of the more difficult questions may not have concrete answers. You will not be penalized for not providing concrete answers. You should still give sophisticated insight into the question and explain what makes it difficult to answer.</p>
 
-<p>These guidelines leave a lot of room to exercise creativity and interest. We encourage you to come up with ideas by the final lab meeting (11/28/16) and discuss your ideas with a TA. As you are processing the data (next task), you may find that you want to change your questions, which is fine. Clearly state all three questions in the Jupyter notebook.</p>
+<p>These guidelines leave a lot of room to exercise creativity and interest. You must submit your initial list of questions in the proposal (<strong>due 4/15/18</strong>) and discuss your ideas with the TA who gave you feedback at the following lab. You should also discuss the important programming tools and methods you plan to utilize to answer your questions. As you are processing the data, you may find that you want to change your questions, which is fine &mdash; just make sure you're informing your TA along the way. Clearly state all three questions in the Jupyter notebook.</p>
 
 
 <h2 id="task-3-read-in-the-data">Task 3: Read in the Data</h2>
@@ -249,7 +183,8 @@ You may also work with multiple datasets in order to explore relationships betwe
 
 
 <ul>
-  <li>Asking three questions about the data (3 pts)</li>
+  <li>Submitting a well-thought out proposal (2 pts)</li>
+  <li>Asking three questions about the data (1 pt)</li>
   <li>Complexity of the questions (2 pts)</li>
   <li>Data analysis (code and text) (9 pts)</li>
   <li>Answering the questions (text) (6 pts)</li>
@@ -277,6 +212,7 @@ You may also work with multiple datasets in order to explore relationships betwe
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
   <li><a href="#logistics">Logistics</a></li>
+  <li><a href="#task-0-project-proposal-due-4-15">Task 0: Project Proposal (due 4/15)</a></li>
   <li><a href="#task-1-obtain-the-data">Task 1: Obtain the Data</a></li>
   <li><a href="#task-2-pose-three-questions">Task 2: Pose Three Questions</a></li>
   <li><a href="#task-3-read-in-the-data">Task 3: Read in the Data</a></li>
