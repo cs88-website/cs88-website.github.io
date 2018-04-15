@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Gunjan Baid, Anthony Xian" />
+    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 8: Exceptions and SQL | CS 88 Fall 2016</title>
+    <title>Lab 8: Regular Expressions | CS 88 Spring 2018</title>
 
   </head>
 
@@ -43,7 +43,7 @@
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/">Calendar</a></li>
             <li><a href="/articles/resources.html">Resources</a></li>
-            <li><a href="/office-hours.html">Office Hours</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
             <li><a href="/articles/about.html">Course Information</a></li>
             <li><a href="/staff.html">Staff</a></li>
             <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
@@ -68,10 +68,10 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Lab 8</span>: Exceptions and SQL</h1>
+      <h1><span class="content-title-brand">Lab 8</span>: Regular Expressions</h1>
     </div>
 
-    <p><i>Due at 11:59pm on 11/29/2016.</i></p>
+    <p><i>Due at 11:59pm on 4/22/2018.</i></p>
 
 <h2 id='starter-files'>Starter Files</h2>
 
@@ -86,73 +86,341 @@ deadline; only the final submission will be graded.</p>
 
 
 <ul>
-  <li>To receive credit for this lab, you must complete Questions 1-2
-  in <a href="lab08.py">lab08.py</a> and 3-6 in <code>lab08.sql</code> and submit through OK.
-  Please submit both <a href="lab08.py">lab08.py</a> and lab08.sql to OK.</li>
-  <li>The zip file does not contain <code>lab08.sql</code>. See Piazza for instructions 
-  on how to obtain <code>lab08.sql</code>.</li>
+  <li>To receive credit for this lab, you must complete all the questions in
+  <a href="lab08.py">lab08.py</a> and submit through OK.</li>
 </ul>
 
 
     
 
 
-<h2 id="exceptions">Exceptions</h2>
+<h2 id="regular-expressions-regex">Regular Expressions (Regex)</h2>
 
 
-<p>Exceptions allow us to try a chunk of code, and then catch any errors
-that might come up. If we do catch an exception, we can run an
-alternative set of instructions. This construct is very useful in many
-situations.</p>
+<introduction>
+Data mining is the process of sorting through large data sets to identify patterns and establish relationships to solve problems through data analysis. It is a critical step in the data science process as it gives us the data we want to perform the analysis on. 
 
-<pre><code>try:
-    &lt;try suite&gt;
-except Exception as e:
-    &lt;except suite&gt;
-else:
-    &lt;else suite&gt;
-finally:
-    &lt;finally suite&gt;</code></pre>
+<p>For example, say we have a list of personal email ids of people who study at UC Berkeley. We want to find out which address (‘yahoo’ / ‘hotmail’ / ‘gmail’) is the most popular.</p>
 
-<p>Notice that we can catch the exception as e. This assigns the name e to
-the exception object.  This can be helpful when we want to give extra
-information on what happened. For example, we can <code>print(e)</code> inside the
-except clause.</p>
+<pre><code>emails = [&quot;abc@gmail.com&quot;, &quot;xyz@hotmail.com&quot;, &quot;cat@yahoo.com&quot;, &quot;dog@yahoo.com&quot;, 
+&quot;giraffe@hotmail.com&quot;, &quot;bob@gmail.com&quot;, &quot;alice@gmail.com&quot;, &quot;tom@gmail.com&quot;] </code></pre>
 
-<p>Also, we have an optional else case. The else suite is executed if the
-<code>try</code> suite finishes without any exceptions.</p>
+<p>The naive way to do this is:</p>
 
-<p>We also have an optional finally clause, which is always executed,
-whether or not an exception is thrown. We generally don't need to use
-the else and finally controls in this class.</p>
+<pre><code>def count_addresses(emails):
+    hotmail_count = 0
+    yahoo_count = 0
+    gmail_count = 0
+    for s in emails:
+        if &quot;hotmail&quot; in s:
+            hotmail_count += 1
+        elif &quot;yahoo&quot; in s:
+    		    yahoo_count += 1
+    	  elif &quot;gmail&quot; in s:
+            gmail_count += 1
+    return hotmail_count, yahoo_count, gmail_count </code></pre>
 
-<p>When we write exception statements, we generally don't just use the
-word Exception as above. Rather, we figure out the specific type of
-exception that we want to handle, such as TypeError or
-ZeroDivisionError. To figure out which type of exception you are trying
-to handle, you can type purposely wrong things into the interpreter
-(such as 'hi' + 5 or 1 / 0) and see what kind of exception Python spits
-out.</p>
+<p>This works but is a little tedious. We will learn a new technique of pattern matching to make this process easier.</p>
 
-<h3 class="question" id="q1">Question 1: No IndexErrors Allowed</h3>
+<p>Before we dive into the actual process, do you notice a common pattern across the emails? The address is always directly after an "@" symbol and just before “.com”. Regular expressions are a convenient pattern matching technique, which will simplify the above technique.</p>
 
-<p>You have seen that indexing a list with an index that is not contained in the list
-generates an IndexError exception. Use
-exception handling in the function <code>avoid_indexerror</code> to return the value at <code>index</code> and avoid IndexErrors when the index is invalid.</p>
+<p>How does pattern matching work?</p>
+
+<ol>
+  <li>We have a pattern and a string (example pattern: "@", example string: "bob@gmail.com")</li>
+  <li>We are looking for that pattern in the string</li>
+  <li>Proceed through the string from start to end (left to right) one character at a time</li>
+  <li>All of the pattern must be matched</li>
+  <li>Not all of the string needs to match the pattern</li>
+</ol>
+
+<p>Below is an example that matches the specific pattern, "cat" to the given string:</p>
+
+<p><img class="img-responsive center-block" src="assets/cat_pattern.png" alt="cat_pattern"></p>
+
+<p>What if we wanted to find all the letters between “@” and “.com”? Here is where Regular Expressions (or 'regex' for short) is most helpful. Below we will discuss a few different terms that are important to know to make the full use of regular expressions.</p>
+
+<p>Note: The syntax for writing a pattern is r’***’ where *** indicates the pattern. Keep this in mind as it is important to ensure that regex understands your input!</p>
+
+
+<h2 id="types-of-regular-expressions">Types of Regular Expressions</h2>
 
 
 
-<pre><code>def avoid_indexerror(lst, index, missing=None):
-    &quot;&quot;&quot;Return lst[index] if it exists, otherwise missing.
+<h3 id="literals">Literals</h3>
 
-    &gt;&gt;&gt; avoid_indexerror([1,2,3], 1)
-    2
-    &gt;&gt;&gt; avoid_indexerror([1,2,3], 4)
-    &gt;&gt;&gt; avoid_indexerror([1,2,3], 4, &quot;Index out of range.&quot;)
-    &#x27;Index out of range.&#x27;
+
+<ul>
+  <li>Notation used to represent a fixed value in Python (refer back to Lecture #2)</li>
+  <li>Literals in a pattern match on the character itself in the string</li>
+  <li>Example: "c" is a literal and will only match with the other “c”s in a string</li>
+</ul>
+
+
+<h3 id="character-classes">Character Classes</h3>
+
+
+<ul>
+  <li>Collection of characters that are considered equivalent</li>
+  <li>Denoted by [ ]</li>
+  <li>Example: [2a5bW] will match EITHER 2 OR a OR 5 OR b OR W in the string</li>
+  <li>Note: Here "Class" means set orcollection. This is <strong>different</strong> from the class concept you learnt in Object Oriented Programing.</li>
+</ul>
+
+<div class = 'table-responsive'>
+    <table class='table table-bordered'>
+      <tr>
+        <th class="col-sm-2">Character Class </th>
+        <th class="col-sm-2">Regex Expression </th>
+        <th class="col-sm-2">Example</th>
+      </tr>
+      <tr>
+        <td>Any capital letter </td>
+        <td>[A-Z] </td>
+        <td>The pattern [A-Z] will match "C" and “T” in the string “CaTch” </td>
+      </tr>
+      <tr>
+        <td>Any digit </td>
+        <td>[0-9]</td>
+        <td>The pattern [0-9] will match 2 and 5 in the string “2a5bW”</td>
+      </tr>
+      <tr>
+        <td>Any letter or digit</td>
+        <td>[a-z0-9]</td>
+        <td>The pattern [a-z0-9] will match 2, a, 5, and b in “2a5bW”</td>
+      </tr>
+      <tr>
+        <td>Specific letters</td>
+        <td>c[oa][td]</td>
+        <td>This pattern will match cot, cat, cod, and cad</td>
+      </tr>
+    </table>
+</div>
+
+
+<h3 id="modifiers">Modifiers</h3>
+
+
+<ul>
+  <li>Modifiers operate on literal characters, character classes, or a combination of the two</li>
+  <li>They are typically used for repetition, wild cards, anchors at the beginning or end of the string, alternation, and groups (Don’t worry if this all sounds confusing, it is summarized with examples below!)</li>
+</ul>
+
+<div class = 'table-responsive'>
+    <table class='table table-bordered'>
+      <tr>
+        <th class="col-sm-2">Modifier</th>
+        <th class="col-sm-2">Explanation</th>
+        <th class="col-sm-2">Example</th>
+      </tr>
+      <tr>
+        <td>^</td>
+        <td>If it is the first character in the pattern, it is an anchor, which tells you what the beginning of the pattern you are looking for is</td>
+        <td>^[lg]ame matches "lame" and “game” since they start with either “l” or “g” but does not match with “flame” since the “l”/”g” are not at the beginning of the string</td>
+      </tr>
+      <tr>
+        <td>$</td>
+        <td> It is an end anchor, which tells you what the end of the pattern you are looking for is</td>
+        <td>cat$ matches “Scat” and “my black cat” since both strings end with “cat” but doesn't match “Scat!” or “my cat is black”</td>
+      </tr>
+      <tr>
+        <td>?</td>
+        <td>Preceding element occurs zero or one time</td>
+        <td>ba? matches “b” or “ba” since the preceding character “a” occurs zero times in “b” and one time in “ba”. It wouldnt match “baa”</td>
+      </tr>
+      <tr>
+        <td>+</td>
+        <td>Preceding element occurs one or more times</td>
+        <td>ba+ matches “ba”, “baa”, “baaaaa” since “a” occurs at least one time in each but not “b”</td>
+      </tr>
+      <tr>
+        <td>*</td>
+        <td>Preceding element occurs zero or more times</td>
+        <td>ba* matches “b”, “ba”, “baa”, “baaaaa” since “a” occurs zero or more times in each</td>
+      </tr>
+      <tr>
+        <td>.</td>
+        <td>Wild card - i.e. it matches any character except a new line</td>
+        <td>. would match  “c” or “a” or “2” or “W” in “ca2w”. .* would match any character any number of times i.e. it would match the whole string”ca2w”</td>
+      </tr>
+      <tr>
+        <td>[ ]</td>
+        <td>Character class - every symbol (+, ?, . etc.) turns into a character when put inside brackets</td>
+        <td>E.g. [ao] matches “a” or “o”, [+*] matches “+” or “*”</td>
+      </tr>
+      <tr>
+        <td>-</td>
+        <td>Range within a character class</td>
+        <td>[a-cx-z] matches “a”, “b”, “c”, “x”, “y”, or “z”</td>
+      </tr>
+      <tr>
+        <td>a|b</td>
+        <td>Matches either pattern a or b</td>
+        <td>abc|vwxyz matches either “abc” or “vwxyz”</td>
+      </tr>
+      <tr>
+        <td>()</td>
+        <td>Identifies a subpattern</td>
+        <td>ab(cd|x)yz matches “abcdyz” or “abxyz”</td>
+      </tr>
+    </table>
+</div>
+
+<p>Some other common regular expressions are shown below:</p>
+
+<div class = 'table-responsive'>
+    <table class='table table-bordered'>
+      <tr>
+        <th class="col-sm-2">Expression</th>
+        <th class="col-sm-2">Explanation</th>
+      </tr>
+      <tr>
+        <td>\w  </td>
+        <td>Matches with any alphanumeric character i.e. a letter, a digit, or underscore </td>
+      </tr>
+      <tr>
+        <td>\d   </td>
+        <td> Matches with digits [0-9]</td>
+      </tr>
+      <tr>
+        <td>\s   </td>
+        <td>Matches with a single white space character (space, newline, return, tab, form) </td>
+      </tr>
+      <tr>
+        <td>\b   </td>
+        <td>boundary between word and non-word</td>
+      </tr>
+      <tr>
+        <td>                             [^..] </td>
+        <td>matches any single character not in square bracket. Note the difference between "^[..]" and “[^...]” </td>
+      </tr>
+      <tr>
+        <td>\    </td>
+        <td>It is used for special meaning characters like \. to match a period or \+ for plus sign.</td>
+      </tr>
+      <tr>
+        <td>                          \t, \n, \r     </td>
+        <td>Matches tab, newline, return</td>
+      </tr>
+    </table>
+</div>
+
+<p>Note: <a href="https://regex101.com/">This</a> is a very useful tool when trying out regex expressions.</p>
+
+
+<h2 id="important-regex-methods">Important Regex Methods</h2>
+
+
+<div class = 'table-responsive'>
+    <table class='table table-bordered'>
+      <tr>
+        <th class="col-sm-2">Method</th>
+        <th class="col-sm-2">Explanation</th>
+      </tr>
+      <tr>
+        <td>re.search(pattern, string)</td>
+        <td>Finds the given pattern from any position of the string but only returns the first occurrence of the pattern</td>
+      </tr>
+      <tr>
+        <td>Example:<br> 
+            <code>import re</code><br>
+            <code>result = re.search(r’Analytics’, ‘AV Analytics Vidhya AV’)</code><br>
+            <code>print result.group(0)</code><br>
+            <br>
+            Output:<br>
+                Analytics </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>re.findall(pattern, string)</td>
+        <td>Returns a list of all matching patterns in the string</td>
+      </tr>
+      <tr>
+        <td>Example:<br>
+            <code>import re</code><br>
+            <code>result = re.findall(r’AV’, ‘AV Analytics Vidhya AV’)</code><br>
+            <code>print result</code><br>
+            <br>
+            Output:<br>
+                [‘AV’, ‘AV’] </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>re.split(pattern, string)</td>
+        <td>Splits the string by occurrences of the given pattern</td>
+      </tr>
+      <tr>
+        <td>Example:<br>
+            <code>import re</code><br>
+            <code>result = re.split(r’i’, ‘Analytics Vidhya’)</code><br>
+            <code>print result</code><br>
+            <br>
+            Output:<br>
+                [‘Analyt’, ‘cs V’, ‘dhya’] </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>re.sub(pattern, repl, string)</td>
+        <td>It searches for the given pattern and replaces it with a new substring. If the pattern isn’t found, the same string is returned</td>
+      </tr>
+      <tr>
+        <td>Example:<br>
+            <code>import re</code><br>
+            <code>result = re.sub(r’cats’, ‘dogs’, ‘I love cats.’)</code><br>
+            <code>print result</code><br>
+            <br>
+            Output:<br>
+                ‘I love dogs.’</td>
+        <td></td>
+      </tr>
+    </table>
+</div>
+
+<p>Based on the first example we saw, let us now see how we can apply regex to find the most popular address used.</p>
+
+<pre><code>emails = [&quot;abc@gmail.com&quot;, &quot;xyz@hotmail.com&quot;, &quot;cat@yahoo.com&quot;, &quot;dog@yahoo.com&quot;, 
+&quot;giraffe@hotmail.com&quot;, &quot;bob@gmail.com&quot;, &quot;alice@gmail.com&quot;, &quot;tom@gmail.com&quot;] 
+
+import re 
+def count_addresses_v2(emails):
+    counts = {} 
+    for s in emails: 
+        address = re.search(r&#x27;@[a&#x2d;z]*&#x27;, s).group(0)[1:] 
+        if address in counts.keys(): 
+            counts[address] += 1
+    else: 
+        counts[address] = 1
+    return counts </code></pre>
+
+<p>You can try this out in Python by downloading the <a href="lab08.py">lab08.py</a> file and running the following line on your Terminal:</p>
+
+<pre><code>python &#x2d;i lab08.py </code></pre>
+
+<p>and in your Terminal, running the following line of code:</p>
+
+<pre><code>print(count_addresses_v2(emails))</code></pre>
+
+
+<h2 id="questions">Questions</h2>
+
+
+<h3 class="question" id="q1">Question 1: Find an example string</h3>
+
+<p>Use the tables given above to find one example of a string that the following pattern would match: r’^[a-z]+$’</p>
+
+
+
+<pre><code><div class="alt 1">"*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x65;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x20;&#x3d;&#x20;&#x22;&#x54;&#x48;&#x49;&#x53;&#x20;&#x45;&#x58;&#x41;&#x4d;&#x50;&#x4c;&#x45;&#x22;</div>
+def match_example():
+    &quot;&quot;&quot;Choose a string that will match the given pattern.
+
+    &gt;&gt;&gt; match_example()
+    True
     &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;</div></code></pre>
+    global example
+    pattern = r&#x27;^[a&#x2d;z]+$&#x27;
+    return re.findall(pattern, example)</code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -160,32 +428,23 @@ exception handling in the function <code>avoid_indexerror</code> to return the v
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python ok -q avoid_indexerror --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python ok -q match_example --local</code></pre>
 
-<h3 class="question" id="q2">Question 2: No KeyErrors Allowed</h3>
+<h3 class="question" id="q2">Question 2: Match Names</h3>
 
-<p>If we try to look up a key that does not exist in a dictionary, then
-Python will raise a <code>KeyError</code>. Write the function <code>avoid_keyerror</code> which returns
-returns the value mapped to <code>key</code> in the <code>dictionary</code>. If <code>key</code> does
-not exist, print 'Avoid Exception' and map <code>key</code> to the string 'no value'.</p>
+<p>Write a pattern which will find all the names of students in the following string: "name: Bob, age: 14, name: Amanda, age: 17, name: Tim, age: 30".</p>
 
+<p><em>Hint</em>: Do the names start with a lowercase letter or an uppercase letter?</p>
 
 
-<pre><code>def avoid_keyerror(dictionary, key):
-    &quot;&quot;&quot; Returns the value associated with key in dictionary. If key 
-    does not exist in the dictionary, print out &#x27;Avoid Exception&#x27; and
-    map it to the string &#x27;no value&#x27;.
 
-    &gt;&gt;&gt; d = {1: &#x27;one&#x27;, 3: &#x27;three&#x27;, 5: &#x27;five&#x27;}
-    &gt;&gt;&gt; avoid_keyerror(d, 3)
-    &#x27;three&#x27;
-    &gt;&gt;&gt; avoid_keyerror(d, 4)
-    Avoid Exception
-    &gt;&gt;&gt; d[4]
-    &#x27;no value&#x27;
+<pre><code>def match_names(s):
+    &quot;&quot;&quot;Return a list of all the names in the given string.
+
+    &gt;&gt;&gt; match_names(&quot;name: Bob, age: 14, name: Amanda, age: 17, name: Tim, age: 30&quot;)
     &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x41;&#x76;&#x6f;&#x69;&#x64;&#x20;&#x45;&#x78;&#x63;&#x65;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x22;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x27;&#x6e;&#x6f;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x27;</div></code></pre>
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x70;&#x61;&#x74;&#x74;&#x65;&#x72;&#x6e;&#x20;&#x3d;&#x20;&#x72;&#x27;&#x5b;&#x41;&#x2d;&#x5a;&#x5d;&#x5c;&#x77;&#x2a;&#x27;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x2e;&#x66;&#x69;&#x6e;&#x64;&#x61;&#x6c;&#x6c;&#x28;&#x70;&#x61;&#x74;&#x74;&#x65;&#x72;&#x6e;&#x2c;&#x20;&#x73;&#x29;</div></code></pre>
 
 
     <button id='2' class='toggleButton'>
@@ -193,253 +452,26 @@ not exist, print 'Avoid Exception' and map <code>key</code> to the string 'no va
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python ok -q avoid_keyerror --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python ok -q match_names --local</code></pre>
 
+<h3 class="question" id="q3">Question 3: Find Vowels</h3>
 
-<h2 id="sql">SQL</h2>
+<p>Write a function which will return all the words that start with a vowel in a given string.</p>
 
 
-<p>The zip file you downloaded does not contain <code>lab08.sql</code>. 
-See Piazza for instructions on how to obtain <code>lab08.sql</code>.</p>
 
+<pre><code>def find_vowels(s):
+    &quot;&quot;&quot;Return a list of all the words that start with a vowel in the given string.
 
-<h2 id="usage">Usage</h2>
-
-
-<p>After writing your code in the <code>.sql</code> file, you can test and verify
-your output on the terminal with one of the two following
-commands.</p>
-
-<p>1.) Runs your code and then exits SQLite immediately afterwards.</p>
-
-<pre><code>    sqlite3 &lt; lab08.sql</code></pre>
-
-<p>2.) Runs your code and keeps SQLite open for further commands, which
-is similar to running Python code with the interactive <code>&#x2d;i</code> flag.
-You can type <code>.help</code> to see some of the commands you can run.</p>
-
-<pre><code>    sqlite3 &#x2d;&#x2d;init lab08.sql</code></pre>
-
-<p>To exit out of SQLite after using the second command, you can hit 
-<code>Ctrl&#x2d;D</code> type <code>.exit</code> or <code>.quit</code>.</p>
-
-
-<h2 id="sql-basics">SQL Basics</h2>
-
-
-
-<h3 id="creating-tables">Creating Tables</h3>
-
-
-<p>Two ways of creating tables in SQL are from scratch or from
-existing tables.</p>
-
-<p>Below creates the table from scratch, without referencing any
-other existing tables.</p>
-
-<pre><code>CREATE TABLE [table_name] as
-  SELECT [val1] as [column1], [val2] as [column2], ... UNION
-  SELECT [val3]             , [val4]             , ... UNION
-  SELECT [val5]             , [val6]             , ...;</code></pre>
-
-<blockquote><p><em>Note:</em> You do not need to repeat the <code>as</code> keyword in subsequent
-SELECT statements when creating the table.</p></blockquote>
-
-<p>Here is an example where we construct a table with the <code>CREATE TABLE</code>
-statement:</p>
-
-<pre><code>CREATE TABLE Football as
-  SELECT 30 as Berkeley, 7 as Stanford, 2002 as Year UNION
-  SELECT 28,             16,            2003         UNION
-  SELECT 17,             38,            2014;</code></pre>
-
-<p><img class="img-responsive center-block" src="assets/football.png" alt="football"></p>
-
-<p>Here we have created a table called <code>Football</code>, which has three attributes
-(columns): <code>Berkeley</code>, <code>Stanford</code>, and <code>Year</code>. We can later access the
-values from this table by referencing the table's columns.</p>
-
-<p>To create tables from existing tables, the <code>SELECT</code> command references
-another table.</p>
-
-
-<h3 id="selecting-from-tables">Selecting From Tables</h3>
-
-<p>More commonly, we will create new tables by selecting specific columns
-that we want from existing tables. <code>SELECT</code> statements can include optional
-clauses such as:</p>
-
-<ul>
-  <li><code>FROM</code>: tells SQL which tables to select values from</li>
-  <li><code>WHERE</code>: filters by some condition</li>
-  <li><code>ORDER BY</code>: enforces an ordering by some attribute or attributes (usually a column or columns)</li>
-  <li><p><code>LIMIT</code>: limits the number of rows in the output table</p>
-
-<pre><code>SELECT [columns] FROM [tables] WHERE [condition] ORDER BY [attributes] LIMIT [limit]</code></pre></li>
-</ul>
-
-<p>Notes about the arguments:</p>
-
-<ul>
-  <li><code>[columns]</code>: a comma separated list of the columns to select, <code>*</code> can
-  be used to select all of them</li>
-  <li><code>[tables]</code>: a comma separated list of tables to select values from</li>
-  <li><code>[condition]</code>: a Boolean expression</li>
-  <li><code>[attributes]</code>: a comma separated list of attributes, which are usually
-  columns, but could also be named aggregates (which we will learn later)</li>
-  <li><code>[limit]</code>: an integer</li>
-</ul>
-
-<p>We can select all the values of an attribute from a table with the <code>SELECT</code>
-statement. In addition, we can apply a filter using the <code>WHERE</code> clause. Here,
-we filter by <code>Year &gt; 2002</code>, which makes the <code>SELECT</code> statement keep only the
-rows in the table whose <code>Year</code> value is greater than 2002.</p>
-
-<pre><code>sqlite&gt; SELECT Berkeley FROM Football WHERE Year &gt; 2002;
-17
-28</code></pre>
-
-<p>Here we selected Berkeley's score for all years after 2002.</p>
-
-
-<h3 id="expressions-in-sql">Expressions in SQL</h3>
-
-<p>Here are some fundamental operations you can perform:</p>
-
-<ul>
-  <li>comparisons: <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;&gt;</code> ("not equal")</li>
-  <li>booleans: <code>and</code>, <code>or</code></li>
-  <li>arithmatic: <code>+</code>, <code>&#x2d;</code>, <code>*</code>, <code>/</code></li>
-</ul>
-
-<p>We can also perform string concatenation using <code>||</code>, which behaves
-similarly to <code>+</code> on strings in Python.</p>
-
-<pre><code>sqlite&gt; select &quot;hello&quot; || &quot; &quot; || &quot;world&quot;
-hello world</code></pre>
-
-
-<h3 id="data">Data</h3>
-
-
-<p>In each question below, you will define a new table based on the following
-tables.</p>
-
-<pre><code>create table parents as
-  select &quot;abraham&quot; as parent, &quot;barack&quot; as child union
-  select &quot;abraham&quot;          , &quot;clinton&quot;         union
-  select &quot;delano&quot;           , &quot;herbert&quot;         union
-  select &quot;fillmore&quot;         , &quot;abraham&quot;         union
-  select &quot;fillmore&quot;         , &quot;delano&quot;          union
-  select &quot;fillmore&quot;         , &quot;grover&quot;          union
-  select &quot;eisenhower&quot;       , &quot;fillmore&quot;;
-
-create table dogs as
-  select &quot;abraham&quot; as name, &quot;long&quot; as fur, 26 as height union
-  select &quot;barack&quot;         , &quot;short&quot;      , 52           union
-  select &quot;clinton&quot;        , &quot;long&quot;       , 47           union
-  select &quot;delano&quot;         , &quot;long&quot;       , 46           union
-  select &quot;eisenhower&quot;     , &quot;short&quot;      , 35           union
-  select &quot;fillmore&quot;       , &quot;curly&quot;      , 32           union
-  select &quot;grover&quot;         , &quot;short&quot;      , 28           union
-  select &quot;herbert&quot;        , &quot;curly&quot;      , 31;
-
-create table sizes as
-  select &quot;toy&quot; as size, 24 as min, 28 as max union
-  select &quot;mini&quot;,        28,        35        union
-  select &quot;medium&quot;,      35,        45        union
-  select &quot;standard&quot;,    45,        60;</code></pre>
-
-<p>Your tables should still perform correctly even if the values in these tables
-change. For example, if you are asked to list all dogs with a name that starts
-with h, you should write:</p>
-
-<pre><code>select name from dogs where &quot;h&quot; &lt;= name and name &lt; &quot;i&quot;;</code></pre>
-
-<p>Instead of assuming that the <code>dogs</code> table has only the data above and writing</p>
-
-<pre><code>select &quot;herbert&quot;;</code></pre>
-
-<p>The former query would still be correct if the name <code>grover</code> were changed to
-<code>hoover</code> or a row was added with the name <code>harry</code>.</p>
-
-<h3 id="get-started-with-sqlite">Get started with sqlite</h3>
-
-
-<p>Following the instructions in the <em>usage</em> section
-above, start up <code>sqlite3</code> initializing it with <code>lab08.sql</code>. Try
-out <code>.help</code> and then <code>.tables</code> and <code>.schema parents</code>.  These <code>.</code>
-commands are particular to <code>.sqlite</code>; they are not part of SQL.
-Try out some <code>SQL</code> statements.</p>
-
-<p>How do you get the whole parents table? Give it a try.</p>
-
-
-    <button id='7' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 7">
-
-<pre><code>select * from parents;</code></pre>
-
-</div>
-
-<p>Looking at the data, which dogs are children of "abraham" ?</p>
-
-
-    <button id='8' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 8">
-
-<pre><code>&quot;barack&quot; and &quot;clinton&quot;</code></pre>
-
-</div>
-
-<p>Write a SQL statement to get the children of the dog "abraham".</p>
-
-
-    <button id='9' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 9">
-
-<pre><code>select child from parents where parent = &quot;abraham&quot;;</code></pre>
-
-</div>
-
-<p>Write a SQL statement to select the parents of curly-furred dogs.</p>
-
-
-    <button id='10' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 10">
-
-<pre><code>select parent from parents, dogs
-   where child = name and fur = &quot;curly&quot;;</code></pre>
-
-</div>
-
-<p>Try it out.  Did you get:</p>
-
-<pre><code>eisenhower
-delano</code></pre>
-
-<p>For the following questions, update <code>lab08.sql</code> with your
-solution.</p>
-
-<h3 class="question" id="q3">Question 3</h3>
-Some people just love little dogs.  Create a <code>short_dogs</code> table with
-three columns, <code>name</code>, <code>fur</code>, and <code>size</code>, containing the dogs of
-height < 40 cm.
-
-
-
-<pre><code>&#x2d;&#x2d; All short dogs
-create table short_dogs as
-<div class="alt 3">-- REPLACE THIS LINE
-</div><div class="solution 3">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x66;&#x75;&#x72;&#x2c;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x61;&#x73;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x20;&#x34;&#x30;&#x3b;</div></code></pre>
+    &gt;&gt;&gt; find_vowels(&#x27;Alpha is the first greek alphabet.&#x27;)
+    [&#x27;Alpha&#x27;, &#x27;is&#x27;, &#x27;alphabet&#x27;]
+    &gt;&gt;&gt; find_vowels(&#x27;Eve is an amateur cook.&#x27;)
+    [&#x27;Eve&#x27;, &#x27;is&#x27;, &#x27;an&#x27;, &#x27;amateur&#x27;]
+    &gt;&gt;&gt; find_vowels(&#x27;random words&#x27;)
+    []
+    &quot;&quot;&quot;
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x2e;&#x66;&#x69;&#x6e;&#x64;&#x61;&#x6c;&#x6c;&#x28;&#x72;&#x27;&#x5c;&#x62;&#x5b;&#x61;&#x65;&#x69;&#x6f;&#x75;&#x41;&#x45;&#x49;&#x4f;&#x55;&#x5d;&#x5c;&#x77;&#x2b;&#x27;&#x2c;&#x20;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
 
 
     <button id='3' class='toggleButton'>
@@ -447,34 +479,26 @@ create table short_dogs as
     </button>
     
 
-<pre><code>&#x2d;&#x2d; Example:
-select name from short_dogs;
-&#x2d;&#x2d; Expected output:
-&#x2d;&#x2d;   abraham
-&#x2d;&#x2d;   eisenhower
-&#x2d;&#x2d;   fillmore
-&#x2d;&#x2d;   grover
-&#x2d;&#x2d;   herbert</code></pre>
+<p>Use OK to test your code:</p><pre><code>python ok -q find_vowels --local</code></pre>
 
-<p>Test your solution with OK:</p>
+<h3 class="question" id="q4">Question 4: Find GPAs</h3>
 
-<pre><code>python ok &#x2d;q short &#x2d;&#x2d;local</code></pre>
+<p>Now let us see how we could use Regex to extract information from a website, which is typically what data mining involves. Click on the <a href="lab08.html">lab08.html</a> file in the zip folder. It should open a webpage with a list of students. Now right click on the file and open it with Sublime or another text editor. This will show you the source code behind the webpage. Don’t worry about understanding the code or what it means! This will not be tested, it is only to give you an example of how regex is applicable in the real world!</p>
 
-<h3 class="question" id="q4">Question 4</h3>
-The Fédération Cynologique Internationale classifies a standard poodle as over
-45 cm and up to 60 cm. The <code>sizes</code> table describes this and other such
-classifications, where a dog must be over the <code>min</code> and less than or equal to
-the <code>max</code> in height to qualify as a <code>size</code>.
+<p>Our goal is to extract a list of all the GPAs shown in the list. Write a function which takes in the source file as a string and returns a list of the GPAs.</p>
 
-<p>Create a <code>size_of_dogs</code> table with two columns, one for each dog's <code>name</code> and
-another for its <code>size</code>.</p>
+<p><em>Hint:</em> Notice that all the GPAs are written in the format x.y where both x and y are digits. Think about how you can use this similarity to write a pattern.</p>
 
 
 
-<pre><code>&#x2d;&#x2d; The size of each dog
-create table size_of_dogs as
-<div class="alt 4">-- REPLACE THIS LINE
-</div><div class="solution 4">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3e;&#x20;&#x6d;&#x69;&#x6e;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x3b;</div></code></pre>
+<pre><code>def find_gpas(s):
+    &quot;&quot;&quot;Return a list of all the words that start with a vowel in the given string.
+
+    &gt;&gt;&gt; find_gpas(&#x27;&lt;html&gt;&lt;HEAD&gt;&lt;TITLE&gt;List of Students&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;body BGCOLOR=&quot;FFFFFFF&quot;&gt;&lt;HR&gt;&lt;H1&gt;This is a List of Students in a class at Berkeley&lt;/H1&gt;&lt;HR&gt;&lt;table style=&quot;width:20%&quot;&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Gender&lt;/th&gt; &lt;th&gt;GPA&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Jill Smith&lt;/td&gt;&lt;td&gt;Female&lt;/td&gt; &lt;td&gt;3.7&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Eve Jackson&lt;/td&gt;&lt;td&gt;Female&lt;/td&gt; &lt;td&gt;3.5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Hannah Summers&lt;/td&gt;&lt;td&gt;Female&lt;/td&gt; &lt;td&gt;2.3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Noah Johnson&lt;/td&gt;&lt;td&gt;Male&lt;/td&gt; &lt;td&gt;3.2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Henry Tanner&lt;/td&gt;&lt;td&gt;Male&lt;/td&gt;&lt;td&gt;3.6&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Tom Cook&lt;/td&gt;&lt;td&gt;Male&lt;/td&gt;&lt;td&gt;2.6&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&#x27;)
+    [&#x27;3.7&#x27;, &#x27;3.5&#x27;, &#x27;2.3&#x27;, &#x27;3.2&#x27;, &#x27;3.6&#x27;, &#x27;2.6&#x27;]
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x70;&#x61;&#x74;&#x74;&#x65;&#x72;&#x6e;&#x20;&#x3d;&#x20;&#x72;&#x27;&#x5c;&#x64;&#x2e;&#x5c;&#x64;&#x27;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x2e;&#x66;&#x69;&#x6e;&#x64;&#x61;&#x6c;&#x6c;&#x28;&#x70;&#x61;&#x74;&#x74;&#x65;&#x72;&#x6e;&#x2c;&#x20;&#x73;&#x29;</div></code></pre>
 
 
     <button id='4' class='toggleButton'>
@@ -482,30 +506,30 @@ create table size_of_dogs as
     </button>
     
 
-<pre><code>&#x2d;&#x2d; Example:
-select name from size_of_dogs where size=&quot;toy&quot; or size=&quot;mini&quot;;
-&#x2d;&#x2d; Expected output:
-&#x2d;&#x2d;   abraham
-&#x2d;&#x2d;   eisenhower
-&#x2d;&#x2d;   fillmore
-&#x2d;&#x2d;   grover
-&#x2d;&#x2d;   herbert</code></pre>
+<p>Use OK to test your code:</p><pre><code>python ok -q find_gpas --local</code></pre>
 
-<p>Test your solution with OK:</p>
 
-<pre><code>python ok &#x2d;q small &#x2d;&#x2d;local</code></pre>
+<h2 id="challenge-question">Challenge Question</h2>
 
-<h3 class="question" id="q5">Question 5</h3>
-Create a table <code>by_height</code> that has a column of the names of all dogs that have
-a <code>parent</code>, ordered by the height of the parent from tallest parent to shortest
-parent.
+
+<blockquote><p>Questions in this section are not required for submission. However,
+if you do a challenge question, you can skip another question on the lab
+without losing points.</p></blockquote>
+
+<h3 class="question" id="q5">Question 5: Find Names</h3>
+
+<p>Write a function which takes in the source file from the previous question and returns a list of student names.</p>
 
 
 
-<pre><code>&#x2d;&#x2d; All dogs with parents ordered by decreasing height of their parent
-create table by_height as
-<div class="alt 5">-- REPLACE THIS LINE
-</div><div class="solution 5">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x2c;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x20;&#x6f;&#x72;&#x64;&#x65;&#x72;&#x20;&#x62;&#x79;&#x20;&#x2d;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x3b;</div></code></pre>
+<pre><code>def find_names(s):
+    &quot;&quot;&quot;Return a list of all the words that start with a vowel in the given string.
+
+    &gt;&gt;&gt; find_names(&#x27;&lt;html&gt;&lt;HEAD&gt;&lt;TITLE&gt;List of Students&lt;/TITLE&gt;&lt;/HEAD&gt;&lt;body BGCOLOR=&quot;FFFFFFF&quot;&gt;&lt;HR&gt;&lt;H1&gt;This is a List of Students in a class at Berkeley&lt;/H1&gt;&lt;HR&gt;&lt;table style=&quot;width:20%&quot;&gt;&lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Gender&lt;/th&gt; &lt;th&gt;GPA&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Jill Smith&lt;/td&gt;&lt;td&gt;Female&lt;/td&gt; &lt;td&gt;3.7&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Eve Jackson&lt;/td&gt;&lt;td&gt;Female&lt;/td&gt; &lt;td&gt;3.5&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Hannah Summers&lt;/td&gt;&lt;td&gt;Female&lt;/td&gt; &lt;td&gt;2.3&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Noah Johnson&lt;/td&gt;&lt;td&gt;Male&lt;/td&gt; &lt;td&gt;3.2&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Henry Tanner&lt;/td&gt;&lt;td&gt;Male&lt;/td&gt;&lt;td&gt;3.6&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Tom Cook&lt;/td&gt;&lt;td&gt;Male&lt;/td&gt;&lt;td&gt;2.6&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/body&gt;&lt;/html&gt;&#x27;)
+    [&#x27;Jill Smith&#x27;, &#x27;Eve Jackson&#x27;, &#x27;Hannah Summers&#x27;, &#x27;Noah Johnson&#x27;, &#x27;Henry Tanner&#x27;, &#x27;Tom Cook&#x27;]
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x70;&#x61;&#x74;&#x74;&#x65;&#x72;&#x6e;&#x20;&#x3d;&#x20;&#x72;&#x27;&#x5b;&#x41;&#x2d;&#x5a;&#x5d;&#x5c;&#x77;&#x2a;&#x5c;&#x73;&#x5b;&#x41;&#x2d;&#x5a;&#x5d;&#x5c;&#x77;&#x2a;&#x27;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x2e;&#x66;&#x69;&#x6e;&#x64;&#x61;&#x6c;&#x6c;&#x28;&#x70;&#x61;&#x74;&#x74;&#x65;&#x72;&#x6e;&#x2c;&#x20;&#x73;&#x29;</div></code></pre>
 
 
     <button id='5' class='toggleButton'>
@@ -513,87 +537,34 @@ create table by_height as
     </button>
     
 
-<p>For example, <code>fillmore</code> has a parent (<code>eisenhower</code>) with height 35, and so
-should appear before <code>grover</code> who has a parent (<code>fillmore</code>) with height 32.
-The names of dogs with parents of the same height should appear together in any
-order. For example, <code>barack</code> and <code>clinton</code> should both appear at the end, but
-either one can come before the other.</p>
+<p>Use OK to test your code:</p><pre><code>python ok -q find_names --local</code></pre>
 
-<pre><code>&#x2d;&#x2d; Example:
-select * from by_height;
-&#x2d;&#x2d; Expected output:
-&#x2d;&#x2d;   herbert
-&#x2d;&#x2d;   fillmore
-&#x2d;&#x2d;   abraham
-&#x2d;&#x2d;   delano
-&#x2d;&#x2d;   grover
-&#x2d;&#x2d;   barack
-&#x2d;&#x2d;   clinton</code></pre>
-
-<p>Test your solution with OK:</p>
-
-<pre><code>python ok &#x2d;q parent_height &#x2d;&#x2d;local</code></pre>
-
-<h3 class="question" id="q6">Question 6</h3>
-
-<p>Create a table <code>tallest</code> that includes the <code>height</code> and <code>name</code> of every dog
-that shares the 10's digit of its <code>height</code> with at least one other dog and has
-the highest 1's digit of all dogs that have the same 10's digit.</p>
-
-
-
-<pre><code>&#x2d;&#x2d; Height and name of every dog that shares height 10&#x27;s digit  
-&#x2d;&#x2d; with at least one other dog and has the highest 1&#x27;s digit of all dogs 
-&#x2d;&#x2d; that have the same 10&#x27;s digit
-create table tallest as
-<div class="alt 6">-- REPLACE THIS LINE
-</div><div class="solution 6">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x29;&#x2c;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x67;&#x72;&#x6f;&#x75;&#x70;&#x20;&#x62;&#x79;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2f;&#x31;&#x30;&#x20;&#x68;&#x61;&#x76;&#x69;&#x6e;&#x67;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x28;&#x2a;&#x29;&#x20;&#x3e;&#x20;&#x31;&#x3b;</div></code></pre>
-
-
-    <button id='6' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<pre><code>&#x2d;&#x2d; Example:
-select * from tallest;
-&#x2d;&#x2d; Expected output:
-&#x2d;&#x2d;   28|grover
-&#x2d;&#x2d;   35|eisenhower
-&#x2d;&#x2d;   47|clinton</code></pre>
-
-<p><em>Explanation</em>: <code>grover</code> is the tallest 20-something dog. <code>eisenhower</code> is the
-tallest 30-something dog. <code>clinton</code> is the tallest 40-something dog. <code>barack</code>
-is not included because there are no other 50-something dogs.</p>
-
-<p>Test your solution with OK:</p>
-
-<pre><code>python ok &#x2d;q tallest &#x2d;&#x2d;local</code></pre>
 
   </div>
 
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
-  <li><a href="#exceptions">Exceptions</a></li>
+  <li><a href="#regular-expressions-regex">Regular Expressions (Regex)</a></li>
+  <li><a href="#types-of-regular-expressions">Types of Regular Expressions</a></li>
   <ul>
-  <li><a href="#q1">Question 1: No IndexErrors Allowed</a></li>
-  <li><a href="#q2">Question 2: No KeyErrors Allowed</a></li>
+  <li><a href="#literals">Literals</a></li>
+  <li><a href="#character-classes">Character Classes</a></li>
+  <li><a href="#modifiers">Modifiers</a></li>
 </ul>
 
-  <li><a href="#sql">SQL</a></li>
-  <li><a href="#usage">Usage</a></li>
-  <li><a href="#sql-basics">SQL Basics</a></li>
+  <li><a href="#important-regex-methods">Important Regex Methods</a></li>
+  <li><a href="#questions">Questions</a></li>
   <ul>
-  <li><a href="#creating-tables">Creating Tables</a></li>
-  <li><a href="#selecting-from-tables">Selecting From Tables</a></li>
-  <li><a href="#expressions-in-sql">Expressions in SQL</a></li>
-  <li><a href="#data">Data</a></li>
-  <li><a href="#get-started-with-sqlite">Get started with sqlite</a></li>
-  <li><a href="#q3">Question 3</a></li>
-  <li><a href="#q4">Question 4</a></li>
-  <li><a href="#q5">Question 5</a></li>
-  <li><a href="#q6">Question 6</a></li>
+  <li><a href="#q1">Question 1: Find an example string</a></li>
+  <li><a href="#q2">Question 2: Match Names</a></li>
+  <li><a href="#q3">Question 3: Find Vowels</a></li>
+  <li><a href="#q4">Question 4: Find GPAs</a></li>
+</ul>
+
+  <li><a href="#challenge-question">Challenge Question</a></li>
+  <ul>
+  <li><a href="#q5">Question 5: Find Names</a></li>
 </ul>
 
 </ul>
@@ -612,20 +583,5 @@ is not included because there are no other 50-something dogs.</p>
   });
 </script>
 <script src="//code.jquery.com/jquery-latest.js"></script>
-<script>
-  $(function() {
-    if (new Date("12/03/2099") < new Date()) {
-      $('.toggleButton').css('display', 'inline-block');
-      $('.toggleButton').click(function() {
-        var solution_id = $(this).attr('id');
-        $('div.' + solution_id).slideToggle(600);
-      });
-    }
-    // Always display these toggle buttons
-    $('.toggleButtonShow').click(function() {
-      var solution_id = $(this).attr('id');
-      $('div.' + solution_id).slideToggle(600);
-    });
-  });
-</script>
+
 </html>
