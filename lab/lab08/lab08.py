@@ -2,14 +2,14 @@ import re
 emails = ["abc@gmail.com", "xyz@hotmail.com", "cat@yahoo.com", "dog@yahoo.com", "giraffe@hotmail.com", "bob@gmail.com", "alice@gmail.com", "tom@gmail.com"] 
 
 def count_addresses_v2(emails):
-	counts = {} 
-	for s in emails: 
-		address = re.search(r'@[a-z]*', s).group(0)[1:] 
-		if address in counts.keys(): 
-			counts[address] += 1
-		else: 
-			counts[address] = 1
-	return counts 
+    counts = {} 
+    for s in emails: 
+        address = re.search(r'@[a-z]*', s).group(0)[1:] 
+        if address in counts.keys(): 
+            counts[address] += 1
+        else: 
+            counts[address] = 1
+    return counts 
 
 # Question 1
 "*** YOUR CODE HERE ***"
@@ -22,13 +22,14 @@ def match_example():
     """
     global example
     pattern = r'^[a-z]+$'
-    return re.findall(pattern, example)
+    return len(re.findall(pattern, example)) > 0
 
 # Question 2
 def match_names(s):
     """Return a list of all the names in the given string.
 
     >>> match_names("name: Bob, age: 14, name: Amanda, age: 17, name: Tim, age: 30")
+    ['Bob', 'Amanda', 'Tim']
     """
     "*** YOUR CODE HERE ***"
 

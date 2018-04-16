@@ -86,8 +86,10 @@ deadline; only the final submission will be graded.</p>
 
 
 <ul>
-  <li>To receive credit for this lab, you must complete all the questions in
-  <a href="lab08.py">lab08.py</a> and submit through OK.</li>
+  <li>To receive credit for this lab, you must complete questions 1-4 in
+  <a href="lab08.py">lab08.py</a> and submit through OK. If you complete the 
+  challenge problem, you can skip one of the required questions and
+  still receive full credit.</li>
 </ul>
 
 
@@ -411,7 +413,7 @@ def count_addresses_v2(emails):
 
 
 <pre><code><div class="alt 1">"*** YOUR CODE HERE ***"
-</div><div class="solution 1">&#x65;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x20;&#x3d;&#x20;&#x22;&#x54;&#x48;&#x49;&#x53;&#x20;&#x45;&#x58;&#x41;&#x4d;&#x50;&#x4c;&#x45;&#x22;</div>
+</div><div class="solution 1">&#x65;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x20;&#x3d;&#x20;&#x22;&#x74;&#x68;&#x69;&#x73;&#x20;&#x65;&#x78;&#x61;&#x6d;&#x70;&#x6c;&#x65;&#x22;</div>
 def match_example():
     &quot;&quot;&quot;Choose a string that will match the given pattern.
 
@@ -420,7 +422,7 @@ def match_example():
     &quot;&quot;&quot;
     global example
     pattern = r&#x27;^[a&#x2d;z]+$&#x27;
-    return re.findall(pattern, example)</code></pre>
+    return len(re.findall(pattern, example)) &gt; 0</code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -442,6 +444,7 @@ def match_example():
     &quot;&quot;&quot;Return a list of all the names in the given string.
 
     &gt;&gt;&gt; match_names(&quot;name: Bob, age: 14, name: Amanda, age: 17, name: Tim, age: 30&quot;)
+    [&#x27;Bob&#x27;, &#x27;Amanda&#x27;, &#x27;Tim&#x27;]
     &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
 </div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x70;&#x61;&#x74;&#x74;&#x65;&#x72;&#x6e;&#x20;&#x3d;&#x20;&#x72;&#x27;&#x5b;&#x41;&#x2d;&#x5a;&#x5d;&#x5c;&#x77;&#x2a;&#x27;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x2e;&#x66;&#x69;&#x6e;&#x64;&#x61;&#x6c;&#x6c;&#x28;&#x70;&#x61;&#x74;&#x74;&#x65;&#x72;&#x6e;&#x2c;&#x20;&#x73;&#x29;</div></code></pre>
