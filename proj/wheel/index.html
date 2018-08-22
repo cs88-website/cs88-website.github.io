@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
 <link href="../../assets/css/project.css" rel="stylesheet" type="text/css">
 
-    <title>Project 2: Wheel of Fortune | CS 88 Spring 2018</title>
+    <title>Project 2: Wheel of Fortune | CS 88 Fall 2018</title>
 
   </head>
 
@@ -98,7 +98,7 @@ changes will be made to:</p>
 </ul>
 
 
-<p>You can obtain all the files needed for this project by downloading this <a href="wheel.zip">zip archive</a>.</p>
+<p>You can obtain all the files needed for this project by downloading this <a href="Wheel of Fortune.zip">zip archive</a>.</p>
 
 <h2>Logistics</h2>
 
@@ -669,11 +669,8 @@ cycles through the guessers until the game is done.  A guesser is
 presented with the board by invoking its <code>guess</code> method.  The
 resulting guessed character is the played onto the board with the
 board's <code>guess</code> method.  If the guess is successful, the player gets
-to keep playing.  When it missed, the next player gets a turn. Make sure that if the
-input <code>verbose</code> in the <code>play</code> method is <code>True</code>, 
-you want to display the board every turn. Otherwise you should not display the board.
-Take a look at the <code>display</code> method in board.py for a way to display 
-the board. Finally, the <code>winner</code> method can be invoked when the game is over to
+to keep playing.  When it missed, the next player gets a turn.
+Finally, the <code>winner</code> method can be invoked when the game is over to
 obtain the winning player.</p>
 
 <p>Testing the game is a little trickier, because it normally works with player object

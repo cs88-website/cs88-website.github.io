@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Meghna Dasgupta, Jessica Gao, Andrew Tan, Jobel Vecino" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
 
 
-    <title>Homework 8 | CS 88 Spring 2018</title>
+    <title>Homework 8 | CS 88 Fall 2018</title>
 
   </head>
 
@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Homework 8</span></h1>
     </div>
 
-    <p><em>Due by 4/20/2018</em></p>
+    <p><em>Due by 11/29/2016</em></p>
 
 <h2>Instructions</h2>
 
@@ -79,10 +79,12 @@
   hw08.zip</a>.  Inside the archive, you will
 find a file called <a href="hw08.sql">
 hw08.sql</a>, along with a copy
-of the <a href="ok">OK</a> autograder.
+of the <a href="ok">OK</a> autograder. Upload the zip file to Jupyter
+to complete the assignment. See <a href="/lab/lab00#submitting-assignments">Lab 0</a> for instructions on
+using Jupyter to complete assignments.</p>
 
 <p><strong>Submission:</strong> When you are done, submit the assignment
-by uploading the .sql file to <a href="https://okpy.org">okpy.org</a>. 
+by uploading the .py file to <a href="https://okpy.org">okpy.org</a>. 
 You may submit more than once before the deadline; only the
 final submission will be scored. See <a href="/lab/lab00#submitting-assignments">Lab 0</a> for instructions on submitting
 assignments.</p>
@@ -94,6 +96,13 @@ assignments.</p>
 </ul>
 
     
+
+<h2 id="sql">SQL</h2>
+
+
+<p>The zip file you downloaded does not contain <code>hw08.sql</code>.
+See Piazza for instructions on how to obtain <code>hw08.sql</code>.
+The top of the page says that the zip file contains <code>hw08.sql</code>, but that part is displayed automatically.</p>
 
 
 <h2 id="working-with-the-chinook-dataset">Working with the Chinook Dataset</h2>
@@ -140,12 +149,12 @@ sqlite3 &#x2d;&#x2d;init hw08.sql</code></pre>
 
 <h3 class="question" id="q1">Question 1: What Would SQL print?</h3>
 
-<p>First, load the tables into sqlite3. If you're on Mac OS X
+<p>First, load the tables into sqlite3. If you're on Windows or Mac OS X
 (Mavericks or older), use the following command:</p>
 
 <pre><code>$ ./sqlite3 &#x2d;&#x2d;init hw08.sql</code></pre>
 
-<p>If you're on Windows, Ubuntu, or Mac OS X (Yosemite or newer), use:</p>
+<p>If you're on Ubuntu or Mac OS X (Yosemite or newer), use:</p>
 
 <pre><code>$ sqlite3 &#x2d;&#x2d;init hw08.sql</code></pre>
 
@@ -390,12 +399,12 @@ number of rows in each group of a <code>GROUP BY</code> statement.</p>
 
 <solution>
 
-<pre><code>CREATE TABLE track_count as
+<pre><code>CREATE TABLE long_album as
   select "REPLACE THIS LINE WITH YOUR SOLUTION";</code></pre>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python ok -q track_count --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python ok -q long_album --local</code></pre>
 
 <h3 class="question" id="q7">Question 7: Counting albums</h3>
 
@@ -408,7 +417,6 @@ with how many albums that artist has released (that are in the <code>albums</cod
 <p>You should get the following output:</p>
 
 <pre><code>sqlite&gt; SELECT * FROM album_count LIMIT 10;
-AC/DC|2
 Aaron Copland &amp; London Symphony Orchestra|1
 Aaron Goldberg|1
 Academy of St. Martin in the Fields &amp; Sir Neville Marriner|1
@@ -474,6 +482,7 @@ SELECT count(*) FROM artists, albums, tracks;
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
+  <li><a href="#sql">SQL</a></li>
   <li><a href="#working-with-the-chinook-dataset">Working with the Chinook Dataset</a></li>
   <ul>
   <li><a href="#q1">Question 1: What Would SQL print?</a></li>

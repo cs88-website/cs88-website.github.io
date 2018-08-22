@@ -18,7 +18,7 @@ test = {
       'ordered': False,
       'scored': True,
       'setup': r"""
-      sqlite> .read lab07.sql
+      sqlite> .read lab08.sql
       """,
       'teardown': '',
       'type': 'sqlite'

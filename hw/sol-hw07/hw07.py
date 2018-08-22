@@ -28,7 +28,7 @@ def leaves(t):
     if t.is_leaf():
         return [t.entry]
     all_leaves = []
-    for b in t.subtrees:
+    for b in t.branches:
         all_leaves += leaves(b)
     return all_leaves
 
