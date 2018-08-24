@@ -71,9 +71,24 @@
       <h1><span class="content-title-brand">Lab 0</span>: Community Building + Setup</h1>
     </div>
 
-    <p><i>Due at 9:00pm on 08/30/2018.</i></p>
+    <p><i>Due at 11:59pm on 08/30/2018.</i></p>
 
-  
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab00.zip">lab00.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the OK autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab using <code>ok</code>. You may submit more than once before the
+deadline; only the final submission will be graded.</p>
+
+
+
+    
+
+
 <h2 id="community-building-exercise">Community Building Exercise</h2>
 
 
@@ -95,7 +110,9 @@ In c8, you mainly work in a python notebook: you type a piece of code into a cel
 <br/>
 
 <ul>
-  <li>To access Jupyter, log in to the account that you are using for Data 8 using a Berkeley email.</li>
+  <li>To access Jupyter, open <a href="http://datahub.berkeley.edu">http://datahub.berkeley.edu</a>
+  (do this in a new tab or window)
+  that you are using for Data 8 using your Berkeley email.</li>
   <li>If you see the <code>My Server</code> button, click on it.</li>
 </ul></p>
 
@@ -105,11 +122,11 @@ In c8, you mainly work in a python notebook: you type a piece of code into a cel
 
 <p>Terminal is a tool for you to interact with your folders and files. To open a terminal in datahub, click on “new” in the upper-right hand corner, and click on terminal.</p>
 
-<p><img class="img-responsive center-block" src="" alt="Terminal in Jupyter"></p>
+<p><img class="img-responsive center-block" src="assets/jupyter-terminal.jpg" alt="Terminal in Jupyter"></p>
 
 <p>When you open a terminal in datahub, it looks something like this:</p>
 
-<p><img class="img-responsive center-block" src="" alt="Jupyter Terminal"></p>
+<p><img class="img-responsive center-block" src="assets/home-dir-jupyter.jpg" alt="Jupyter Terminal"></p>
 
 <p>You start off in something called your home directory.</p>
 
@@ -135,15 +152,15 @@ In c8, you mainly work in a python notebook: you type a piece of code into a cel
 
 <p>All macs automatically come with a terminal. Open it up and play around with it. It looks something like this. You should see a tilde sign (~), which means that you are in your home directory:</p>
 
-<p><img class="img-responsive center-block" src="" alt="Mac Terminal"></p>
+<p><img class="img-responsive center-block" src="assets/mac-terminal.jpg" alt="Mac Terminal"></p>
 
 <p>If you are using Window, please follow the instructions to download git bash here:</p>
 
-<p>Head to this <a href="">website</a> and click the windows download link.</p>
+<p>Head to this <a href="https://git-scm.com/downloads">website</a> and click the windows download link.</p>
 
 <p>You should be able to install Git Bash with most of the default configuration options, with one exception. In the <em>Configuring the terminal emulator to use with Git Bash</em> step, select the second option: <em>Use Windows' default console window.</em></p>
 
-<p><img class="img-responsive center-block" src="" alt="Git Bash"></p>
+<p><img class="img-responsive center-block" src="assets/git-bash.jpg" alt="Git Bash"></p>
 
 <p><strong>To do:</strong></p>
 
@@ -160,36 +177,36 @@ In c8, you mainly work in a python notebook: you type a piece of code into a cel
 
 <p>A text editor is a program that allows you to edit and write a range of different types of files, especially files with programing languages. In this class, you will be writing a lot of “.py” files, or Python files. In Jupyter hub, you can do so by opening up text file.</p>
 
-<p><img class="img-responsive center-block" src="" alt="Text editor in Jupyter"></p>
+<p><img class="img-responsive center-block" src="assets/open-edit-jupyter.jpg" alt="Text editor in Jupyter"></p>
 
 <p>When you open it up, it looks something like this:</p>
 
-<p><img class="img-responsive center-block" src="" alt="Jupyter Terminal"></p>
+<p><img class="img-responsive center-block" src="assets/untitled-textfile.jpg" alt="Jupyter Terminal"></p>
 
 <p>Right now, you can see that it’s titled “untitled.txt”. The .txt extension tells you that it’s a text file. Try changing the title by clicking on the title text directory, and type something in the file. For example:</p>
 
-<p><img class="img-responsive center-block" src="" alt="Mac Terminal"></p>
+<p>![Mac Terminal]edit/assets/kupkake-txt.jpg)</p>
 
 <p>Remember to save the file by clicking on File, then save. (Try running it without saving the file and see what happens.) Now let’s see how we can use the terminal to interact with this file.
 <br/>
 
 Open up the terminal and type in <code>ls</code>:</p>
 
-<p><img class="img-responsive center-block" src="" alt="Mac Terminal"></p>
+<p><img class="img-responsive center-block" src="assets/ls-terminal.jpg" alt="Mac Terminal"></p>
 
 <p>ls lists out all the directories and files in my current directory, which is also the home directory. In the second column amidst all the other files and directory, you see “kupkake.txt”</p>
 
 <p>Now type in <code>cat “text name”</code>. This will display the file content:</p>
 
-<p><img class="img-responsive center-block" src="" alt="Mac Terminal"></p>
+<p><img class="img-responsive center-block" src="assets/cat-kupkake.jpg" alt="Mac Terminal"></p>
 
 <p>Woah. Cool, right?</p>
 
 <p>Now, instead of using datahub, let’s download a text editor to our local computers. There are many options, but we suggest either sublime or atom.</p>
 
 <ul>
-  <li>Download sublime <a href="">here</a></li>
-  <li>Download atom <a href="">here</a></li>
+  <li>Download sublime <a href="https://www.sublimetext.com/2">here</a></li>
+  <li>Download atom <a href="https://atom.io/">here</a></li>
 </ul>
 
 
@@ -201,11 +218,12 @@ Open up the terminal and type in <code>ls</code>:</p>
 
 In this class, we run the version of Python that is 3.5 or higher. To download Python for Mac, follow this link: https://www.python.org/downloads/</p>
 
-<p>To install python on windows, head to this <a href="">site</a> and click on the latest release, 3.7.0</p>
+<p>To install python on windows, head to this <a href="https://www.python.org/downloads/windows/">site</a>
+ and click on the latest release, 3.7.0</p>
 
 <p>When installing, make sure to check the "Add Python 3.6 to PATH" box, which will allow you to execute the <code>python</code> command from your terminal.</p>
 
-<p><img class="img-responsive center-block" src="" alt="adding path"></p>
+<p><img class="img-responsive center-block" src="assets/window-python-path.jpg" alt="adding path"></p>
 
 <p>Congratulations on finishing your first lab! And welcome to CS 88.</p>
 
