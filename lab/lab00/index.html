@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 0: Setup | CS 88 Fall 2018</title>
+    <title>Lab 0: Community Building + Setup | CS 88 Fall 2018</title>
 
   </head>
 
@@ -68,10 +68,10 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Lab 0</span>: Setup</h1>
+      <h1><span class="content-title-brand">Lab 0</span>: Community Building + Setup</h1>
     </div>
 
-    <p><i>Due at 11:59pm on 01/28/2018.</i></p>
+    <p><i>Due at 11:59pm on 08/30/2018.</i></p>
 
 <h2 id='starter-files'>Starter Files</h2>
 
@@ -85,352 +85,140 @@ Inside the archive, you will find starter files for the questions in this lab,
 deadline; only the final submission will be graded.</p>
 
 
-<ul>
-  <li>Please complete Question 1, <code>twenty_sixteen</code>, in <a href="lab00.py">lab00.py</a>.</li>
-</ul>
-
 
     
 
 
-<h2 id="terminal-python-text-editor">Terminal, Python, Text Editor</h2>
+<h2 id="community-building-exercise">Community Building Exercise</h2>
 
 
-<p>A terminal is a program that allows you to interact with your computer by entering commands.
-Python is the programming language we will be using in this course.
-A text editor is a program that allows you to view and edit files.</p>
+<p>At the beginning of class, you will be participating in several activities that introduce you to the community of CS 88&mdash;your TA, your lab assistants, and most importantly, your fellow classmates.</p>
 
-<p>It is common to have a terminal, Python, and text editor downloaded on 
-your computer when you are programming. If you go on to take other
-computer science courses, you may have to download these programs. For this course, however,
-you will not have to download any of these tools because we will be using Jupyter.
-In addition to the Python notebooks that you are using in Data 8, 
-Jupyter also provides these other programs.
-One benefit of using Jupyter is a common programming environment regardless of what 
-operating system you are using. In addition, Jupyter stores your work on the cloud so 
-you can complete assignments from any computer.</p>
+
+<h2 id="set-up-for-class">Set-up for Class</h2>
+
+
+<p>In c8 you are doing all your development in the cloud on data8.berkeley.edu, but we will be using your personal computer for cs88.  If you are using the instructional
+machine in the lab you can ignore this section. We would like to be able to use the
+<code>datascience</code> module in cs88 as well, to make the most of what you learn in c8 and
+vice versa.
+<br/>
+
+In c8, you mainly work in a python notebook: you type a piece of code into a cell, run the cell, and voila, the output is magically displayed. Furthermore, you can type text in addition to code in a python notebook; all the titles, subtitles, and instructions are text. However, more often in the real world you would be using a combination of terminal and text editor to run your program. And that’s what we will be doing in this class. All your code goes on to the text editor, and you run the code using Python on the terminal.</p>
+
+<p>Let’s dive into how it works.
+<br/>
 
 <ul>
-  <li>To access Jupyter, log in to <a href="https://data8.berkeley.edu">the account</a> that you 
-  are using for Data 8 using a Berkeley email.</li>
+  <li>To access Jupyter, log in to the account that you are using for Data 8 using a Berkeley email.</li>
   <li>If you see the <code>My Server</code> button, click on it.</li>
-  <li>Use the <code>New</code> drop down at the top right to open a <code>Terminal</code>.</li>
-</ul>
-
-<p>You should now have two tabs open: the folder view and the terminal. 
-You will need to switch between both of these tabs when you complete your assignments for CS 88.</p>
-
-<p>In Data 8, you work mostly with Jupyter notebooks and avoid dealing 
-with Python files, the terminal, and many other aspects of software development.
-That is where CS 88 differs. In this course, you will
-learn to write and run programs made of many files using the terminal! 
-Before we start writing code, we will learn a bit more about how to use the terminal.</p>
+</ul></p>
 
 
-<h2 id="organize-your-files">Organize your files</h2>
+<h3 id="terminal">Terminal</h3>
 
 
-<p>There are many terminal commands that you will be using in this course.</p>
+<p>Terminal is a tool for you to interact with your folders and files. To open a terminal in datahub, click on “new” in the upper-right hand corner, and click on terminal.</p>
 
+<p><img class="img-responsive center-block" src="" alt="Terminal in Jupyter"></p>
 
-<h3 id="directories">Directories</h3>
+<p>When you open a terminal in datahub, it looks something like this:</p>
 
+<p><img class="img-responsive center-block" src="" alt="Jupyter Terminal"></p>
 
-<p>The first command we'll use is <code>ls</code>. Try typing it in the terminal:</p>
+<p>You start off in something called your home directory.</p>
 
-<pre><code>ls</code></pre>
-
-<p>The <code>ls</code> command <strong>l</strong>i<strong>s</strong>ts all the files and folders in the current
-directory. A <strong>directory</strong> is another name for a folder (such as the
-<code>Documents</code> folder). Since we're in the home directory right now, you
-should see the contents of your home directory.</p>
-
-
-<h3 id="making-new-directories">Making new directories</h3>
-
-
-<p>Our next command is called <code>mkdir</code>, which <strong>m</strong>a<strong>k</strong>es new
-<strong>dir</strong>ectories. Let's make a directory called <code>cs88</code> to store all of
-the assignments for this class:</p>
-
-<pre><code>mkdir cs88</code></pre>
-
-<p>A folder called <code>cs88</code> will appear in our home directory.</p>
-
-
-<h3 id="changing-directories">Changing directories</h3>
-
-
-<p>To move into another directory, we use the <code>cd</code> command. Try typing the
-following command into your terminal:</p>
-
-<pre><code>cd cs88</code></pre>
-
-<p>The <code>cd</code> command will <strong>c</strong>hange <strong>d</strong>irectories &mdash; in other words, it
-moves you into the specified folder. In the example above, we chose to
-move into the <code>cs88</code> directory.</p>
-
-<p>If we want to go back to our home directory, there are a few ways to do
-so:</p>
+<p>Your TA will now demonstrate for you how to use the terminal. By the end, you should be able to answer these questions:</p>
 
 <ul>
-  <li>Type <code>cd ..</code> (two dots). The <code>..</code> means "the parent directory". In
-  this case, the parent directory of <code>cs88</code> happens to be our home
-  directory, so we can use <code>cd ..</code> to go up one directory.</li>
-  <li>Type <code>cd ~</code> (the tilde). Remember that <code>~</code> means home directory, so
-  this command tells your terminal to change to the home directory,
-  no matter where you currently are.</li>
-  <li>Type <code>cd</code> (that is, the <code>cd</code> command with no arguments),
-  typing just <code>cd</code> is a shortcut for typing <code>cd ~</code>.</li>
+  <li>1.) What is a directory? A file?</li>
+  <li>2.) What does it mean by current directory?</li>
+  <li>3.) What are some basic commands I can use in terminal?</li>
 </ul>
 
-<p>At this point, let's create some more directories. Make sure you are in
-the <code>~/cs88</code> directory, using the necessary <code>cd</code> commands. Then create
-<code>projects</code> and <code>lab</code>folders inside of our <code>cs88</code> folder:</p>
-
-<pre><code>cd ~/cs88
-mkdir projects
-mkdir lab</code></pre>
-
-<p>Now if we list the contents of the directory (using <code>ls</code>), we'll see two
-folders, <code>projects</code> and <code>lab</code>.</p>
-
-
-<h3 id="downloading-the-assignment">Downloading the assignment</h3>
-
-
-<p>Next download the zip archive, <a href="lab00.zip">lab00.zip</a>, if you have not already done so.
-This zip file contains all the files that we'll need for this lab.</p>
-
-
-<h3 id="uploading-the-assignment">Uploading the assignment</h3>
-
-
-<p>The lab must be uploaded to Jupyter as a zip file; uploading a folder will not work. Switch from the terminal to the homepage and upload the zip file into the <code>cs88</code> directory you created earlier.</p>
-
-
-<h3 id="extracting-starter-files">Extracting starter files</h3>
-
-
-<p>Switch back to the terminal tab.</p>
-
-<blockquote><p>Use the command below to unzip the file.</p>
-
-<pre><code>unzip lab00.zip</code></pre>
-
-<p>Make sure you are in the <code>cs88</code> directory in your terminal.</p></blockquote>
-
-<p>Once you unzip <code>lab00.zip</code>, you should have a new folder called <code>lab00</code> 
-in the <code>cs88</code> directory which contains the following files:</p>
+<p>The most common terminal commands are as follows:</p>
 
 <ul>
-  <li><code>lab00.py</code>: The template file you'll be adding your code to</li>
-  <li><code>ok</code>: A program used to test and submit assignments</li>
-  <li><code>lab00.ok</code>: A configuration file for <code>ok</code></li>
+  <li>ls - lists out all the files and directories in the current directory</li>
+  <li>cd “folder name” - cd stands for “change directory”. cd “folder name” gets you into the directory with the folder name, provided the folder is inside your current directory</li>
+  <li>cd.. - exit out to the previous directory</li>
+  <li>cd - exits out to home directory</li>
+  <li>mkdir - “make directory”, or create a folder</li>
+  <li>touch - make a file</li>
+  <li>clear - clear previous commands to make terminal look cleaner</li>
 </ul>
 
-<p>You no longer need <code>lab00.zip</code> and can delete it from your <code>cs88</code> folder if you want. 
-You're now ready to start looking at the code! Don't worry if this seems
-complicated &mdash; it will get much easier over time.  Just keep
-practicing! You can also take a look at our <a href="/articles/unix.html">UNIX tutorial</a> for a more detailed explanation of terminal commands.</p>
+<p>All macs automatically come with a terminal. Open it up and play around with it. It looks something like this. You should see a tilde sign (~), which means that you are in your home directory:</p>
 
+<p><img class="img-responsive center-block" src="" alt="Mac Terminal"></p>
 
-<h2 id="run-python">Run Python</h2>
+<p>If you are using Window, please follow the instructions to download git bash here:</p>
 
+<p>Head to this <a href="">website</a> and click the windows download link.</p>
 
-<p>In your terminal window, you can run Python using the command below. We will be using the default version of Python 3.5.</p>
+<p>You should be able to install Git Bash with most of the default configuration options, with one exception. In the <em>Configuring the terminal emulator to use with Git Bash</em> step, select the second option: <em>Use Windows' default console window.</em></p>
 
-<pre><code>  python</code></pre>
+<p><img class="img-responsive center-block" src="" alt="Git Bash"></p>
 
-<p>You should see something like</p>
-
-
-
-<pre><code>  Python 3.5.2 |Continuum Analytics, Inc.| (default, Jul  2 2016, 17:53:06)
-  [GCC 4.4.7 20120313 (Red Hat 4.4.7&#x2d;1)] on linux
-  Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
-  &gt;&gt;&gt;</code></pre>
-
-<solution>
-
-<p>The '>>>' is the prompt.  If you type an python expression, it will evaluate it
-and print the answer. Since you have already seen cells in a jupyter notebook,
-you may think of this as a super duper cell.  (Well, actually its the other way
-around - the shell came first.)  Type some expressions at it and see what it does.</p>
-
-<pre><code>  &gt;&gt;&gt; 2016
-  2016
-  &gt;&gt;&gt; 2016+1
-  2017
-  &gt;&gt;&gt; 2016*2
-  4032</code></pre>
-
-<p>Type expressions using numbers, <code>+</code>, and <code>*</code> and see how fancy you can get that returns 2016</p>
-
-<pre><code>  &gt;&gt;&gt;(2016+2)*2&#x2d;2020
-  2016</code></pre>
-
-<p>To exit, type <code>exit()</code> into the interpreter prompt. You
-can also use the keyboard shortcut <code>Ctrl&#x2d;D</code> on Linux/Mac machines or <code>Ctrl&#x2d;Z
-Enter</code> on Windows.</p>
-
-<pre><code>  &gt;&gt;&gt; exit() </code></pre>
-
-<p>The <code>python</code> command is the most basic way to run Python. 
-Later in the lab, you will see how to run Python in more complex ways by 
-adding certain flags to this command.</p>
-
-
-<h2 id="understand-the-given-code">Understand the given code</h2>
-
-
-<h3 class="question" id="q1">Question 1: Twenty Sixteen</h3>
-
-<p>Open up <code>lab00.py</code> in your text editor. You should see something like this:</p>
-
-<solution>
-
-<pre><code>def twenty_sixteen():
-    &quot;&quot;&quot;Come up with the most creative expression that evaluates to 2016,
-    using only numbers and the +, *, and &#x2d; operators.
-
-    &gt;&gt;&gt; twenty_sixteen()
-    2016
-    &quot;&quot;&quot;
-<div class="alt 1">    return ______
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x28;&#x31;&#x33;&#x20;&#x2a;&#x20;&#x33;&#x31;&#x20;&#x2b;&#x20;&#x31;&#x30;&#x30;&#x29;&#x20;&#x2a;&#x20;&#x34;&#x29;&#x20;&#x2b;&#x20;&#x34;</div></code></pre>
-
-
-    <button id='1' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>The lines in the triple-quotes <code>&quot;&quot;&quot;</code> are called a <strong>docstring</strong>, which is a
-description of what the function is supposed to do.  When writing code in CS 88,
-you should always read the docstring!</p>
-
-<p>The lines in the docstring that begin with <code>&gt;&gt;&gt;</code> are called <strong>doctests</strong>. 
-Doctests explain what the function does by showing actual Python code. 
-The lines underneath the <code>&gt;&gt;&gt;</code> show the expected output from running the above Python code.</p>
-
-<p>In <code>twenty_sixteen</code>,</p>
+<p><strong>To do:</strong></p>
 
 <ul>
-  <li>The docstring tells us to "come up with the most creative expression that
-  evaluates to 2016," but that we can only use numbers and arithmetic operators
-  <code>+</code> (add), <code>*</code> (multiply), and <code>&#x2d;</code> (subtract).</li>
-  <li>The doctest for <code>twenty_sixteen()</code> checks that no matter how we do our
-  calculation, <code>twenty_sixteen</code> should return the number 2016.</li>
+  <li>Make a directory called "cs88"</li>
+  <li>Now <code>cd</code> into that directory, and make 3 more directories: "labs", "hw", "projects"</li>
 </ul>
 
-<blockquote><p>You should never change the doctests in your assignments!  The only
-part of your assignments that you'll need to edit is the code.</p></blockquote>
+
+<h3 id="files-and-text-editors">Files and Text Editors</h3>
 
 
-<h2 id="write-your-own-code">Write your own code</h2>
+<p>A file is something that stores information. There are different types of file, signified by their extension&mdash;the part of the file name after a dot (.). The most common types you interact with include .docx, .ppt, .txt, etc. What other types of file can you think of?</p>
+
+<p>A text editor is a program that allows you to edit and write a range of different types of files, especially files with programing languages. In this class, you will be writing a lot of “.py” files, or Python files. In Jupyter hub, you can do so by opening up text file.</p>
+
+<p><img class="img-responsive center-block" src="" alt="Text editor in Jupyter"></p>
+
+<p>When you open it up, it looks something like this:</p>
+
+<p><img class="img-responsive center-block" src="" alt="Jupyter Terminal"></p>
+
+<p>Right now, you can see that it’s titled “untitled.txt”. The .txt extension tells you that it’s a text file. Try changing the title by clicking on the title text directory, and type something in the file. For example:</p>
+
+<p><img class="img-responsive center-block" src="" alt="Mac Terminal"></p>
+
+<p>Remember to save the file by clicking on File, then save. (Try running it without saving the file and see what happens.) Now let’s see how we can use the terminal to interact with this file.
+<br/>
+
+Open up the terminal and type in <code>ls</code>:</p>
+
+<p><img class="img-responsive center-block" src="" alt="Mac Terminal"></p>
+
+<p>ls lists out all the directories and files in my current directory, which is also the home directory. In the second column amidst all the other files and directory, you see “kupkake.txt”</p>
+
+<p>Now type in <code>cat “text name”</code>. This will display the file content:</p>
+
+<p><img class="img-responsive center-block" src="" alt="Mac Terminal"></p>
+
+<p>Woah. Cool, right?</p>
+
+<p>Now, instead of using datahub, let’s download a text editor to our local computers. There are many options, but we suggest either sublime or atom.</p>
+
+<p>Download sublime <a href="">here</a>
+Download atom <a href="">here</a></p>
 
 
-<p>Once you understand what the question is asking, you're ready to start writing
-code! You should replace the underscores in <code>return ______</code> with an expression that
-evaluates to 2016.  What's the most creative expression you can come up with?</p>
-
-<ul>
-  <li>Open lab00.py in your text editor.  Start by simply returning 2016.  This is not
-  very creative, but it gives the right answer.</li>
-  <li><p>Run Python on your code in lab00.py using the interactive flag.  When you
-  get the prompt, type the name of the function, just like in the doc string.  Did
-  you get the right answer?</p>
-
-<pre><code>python &#x2d;i lab00.py
-&gt;&gt;&gt; twenty_sixteen()
-2016
-&gt;&gt;&gt; exit()</code></pre></li>
-  <li>Exit Python to get back to your terminal shell.  You will need to do that each time you
-  run Python interactively.</li>
-</ul>
-
-<p>You are going to want to learn to test your code before submitting it to the autograder.  This 
-always begins with reading it, thinking about it and convincing yourself it should work.  Come
-up with examples that verify it really does what it should.  That is what goes into the docstring.</p>
+<h3 id="python">Python</h3>
 
 
-<h2 id="test-your-code">Test your code</h2>
+<p>A file with Python code ends with “.py”. In datahub, you don’t need to worry about downloading Python in order to run Python code, or a.k.a execute the code written on these .py files. However, to run Python code on your local computers, you would need to download Python.
+<br/>
 
+In this class, we run the version of Python that is 3.5 or higher. To download Python for Mac, follow this link: https://www.python.org/downloads/</p>
 
-<p>In CS 88, we will use a program called <code>ok</code> to test our code. <code>ok</code> will be
-included in every assignment in this class.</p>
+<p>To install python on windows, head to this <a href="">site</a> and click on the latest release, 3.7.0</p>
 
-<p>Back to the terminal! Make sure you are in the <code>lab00</code> directory we created
-earlier (remember, the <code>cd</code> command lets you <a href="#changing-directories">change
-directories</a>).</p>
+<p>When installing, make sure to check the "Add Python 3.6 to PATH" box, which will allow you to execute the <code>python</code> command from your terminal.</p>
 
-<p>In that directory, you can type <code>ls</code> to verify that there are the following
-three files:</p>
-
-<ul>
-  <li><code>lab00.py</code>: the starter file you just edited</li>
-  <li><code>ok</code>: our autograder</li>
-  <li><code>lab00.ok</code>: a configuration file for OK</li>
-</ul>
-
-<p>Now, let's test our code to make sure it works. You can run <code>ok</code> with this
-command:</p>
-
-<pre><code>python ok &#x2d;&#x2d;local</code></pre>
-
-<p>If you wrote your code correctly, we should see a successful test:</p>
-
-<pre><code>=====================================================================
-Assignment: Lab 0
-OK, version v1.4.1
-=====================================================================
-
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Running tests
-
-&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;
-Test summary
-    Passed: 1
-    Failed: 0
-[ooooooooook] 100.0% passed</code></pre>
-
-<p>If you didn't pass the tests, <code>ok</code> will instead show you something like this:</p>
-
-<pre><code>&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;
-Doctests for twenty_sixteen
-
-&gt;&gt;&gt; from lab00 import *
-&gt;&gt;&gt; twenty_sixteen()
-2013
-
-# Error: expected
-#     2016
-# but got
-#     ...
-
-&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;&#x2d;
-Test summary
-    Passed: 0
-    Failed: 1
-[k..........] 0.0% passed</code></pre>
-
-<p>Fix your code in the text editor until the test passes.</p>
-
-
-<h2 id="submitting-assignments">Submitting assignments</h2>
-
-
-<p>Now that you have completed your first CS88 lab assignment, it's time to turn it
-in.</p>
-
-<p>Download the <code>lab00.py</code> file to your computer. Go to <a href="https://okpy.org">okpy.org</a> 
-and find the Lab 0 assignment under the CS 88 course. Click on <code>Create a new
-submission</code> and upload the <code>lab00.py</code> file.</p>
-
-<p>Verify that your submission worked. You should see a successful submission for lab00.</p>
-
-<p><strong>Congratulations</strong>, you just submitted your first CS 88 lab!</p>
+<p><img class="img-responsive center-block" src="" alt="adding path"></p>
 
 
   </div>
@@ -438,26 +226,14 @@ submission</code> and upload the <code>lab00.py</code> file.</p>
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
-  <li><a href="#terminal-python-text-editor">Terminal, Python, Text Editor</a></li>
-  <li><a href="#organize-your-files">Organize your files</a></li>
+  <li><a href="#community-building-exercise">Community Building Exercise</a></li>
+  <li><a href="#set-up-for-class">Set-up for Class</a></li>
   <ul>
-  <li><a href="#directories">Directories</a></li>
-  <li><a href="#making-new-directories">Making new directories</a></li>
-  <li><a href="#changing-directories">Changing directories</a></li>
-  <li><a href="#downloading-the-assignment">Downloading the assignment</a></li>
-  <li><a href="#uploading-the-assignment">Uploading the assignment</a></li>
-  <li><a href="#extracting-starter-files">Extracting starter files</a></li>
+  <li><a href="#terminal">Terminal</a></li>
+  <li><a href="#files-and-text-editors">Files and Text Editors</a></li>
+  <li><a href="#python">Python</a></li>
 </ul>
 
-  <li><a href="#run-python">Run Python</a></li>
-  <li><a href="#understand-the-given-code">Understand the given code</a></li>
-  <ul>
-  <li><a href="#q1">Question 1: Twenty Sixteen</a></li>
-</ul>
-
-  <li><a href="#write-your-own-code">Write your own code</a></li>
-  <li><a href="#test-your-code">Test your code</a></li>
-  <li><a href="#submitting-assignments">Submitting assignments</a></li>
 </ul>
 
     </nav>
@@ -476,7 +252,7 @@ submission</code> and upload the <code>lab00.py</code> file.</p>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script>
   $(function() {
-    if (new Date("01/31/2018") < new Date()) {
+    if (new Date("08/30/2018") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');
