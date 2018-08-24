@@ -1,3 +1,4 @@
-import webbrowser
+"""This is just a hw to help you go through the process of submission."""
 
-webbrowser.open('https://bcourses.berkeley.edu/courses/1467723/quizzes/2275966')
+def your_name():
+	return "Your solution here"
