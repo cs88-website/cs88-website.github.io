@@ -5,13 +5,10 @@
         "lab01.py"
     ],
     "tests": {
-        "lab01.py:sine": "doctest",
-        "lab01.py:g": "doctest",
-        "lab01.py:hailstone_recursive": "doctest",
-        "lab01.py:hailstone_iterative": "doctest",        
-        "lab01.py:gcd": "doctest",
-        "lab01.py:remove": "doctest",
-        "lab01.py:interleaved_sum": "doctest"
+        "tests/primitive-expressions.py": "ok_test",
+        "tests/call-expressions.py": "ok_test",
+        "lab01.py:temperature_converter": "doctest",
+        "lab01.py:pythagorean_triple": "doctest"
     },
     "protocols": [
         "restore",
