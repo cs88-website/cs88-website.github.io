@@ -115,7 +115,7 @@ tab in your browser.
 In your terminal window, you can run Python using the command
 below. We will be using the default version of Python 3.6.</p>
 
-<pre><code>  python</code></pre>
+<pre><code>  python3</code></pre>
 
 <p>You should see something like</p>
 
@@ -455,7 +455,7 @@ False</code></pre>
 
 <p><code>and</code> returns True when both conditions are True, whereas <code>or</code> returns True as long as one condition is True.</p>
 
-<p>Something interesting in Python is that all values are assigned a True or False value&mdash;0, empty strings, False, Null are all 'False', whereas everything else is 'True'</p>
+<p>Something interesting in Python is that all values are assigned a True or False value&mdash;0, empty strings, False, None, and all other empty items (empty lists, empty tuples, etc.) are 'False', whereas everything else is 'True'.</p>
 
 <p>There is a concept of 'short-circuiting' in evaluating logic operators on booleans. The idea is that we don't want to do unnecessary evaluations. For example, in <code>and</code>statements, if the first value proves to be False, we don't have to evaluate the second value&mdash;we know that the whole statement will return False either way. In <code>or</code> statements, however, it's the opposite&mdash;if the first value evaluates to True, we don't have to evaluate the second value, because we know that the whole statement will return True regardless of what the second statement is.</p>
 
@@ -623,7 +623,7 @@ statement to compute the correct conversion.</p>
      # END SOLUTION
      return celsius_temp</code></pre>
 
-<p>Use OK to test your code:</p><pre><code>python ok -q temperature_converter --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q temperature_converter --local</code></pre>
 
 <h3 class="question" id="q4">Question 4: Pythagorean Triple</h3>
 
@@ -644,7 +644,7 @@ square of the last.</p>
     return &quot;Replace this&quot;
     # END SOLUTION</code></pre>
 
-<p>Use OK to test your code:</p><pre><code>python ok -q pythagorean_triple --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q pythagorean_triple --local</code></pre>
 
 <p>Make sure you answer all the questions in your lab01.py file. If you worked on datahub for the first coding question, copy and paste your answer onto your local file. Save it, then submit the assignment by uploading the .py file to okpy.org. You may submit more than once before the deadline; only the final submission will be scored.</p>
 

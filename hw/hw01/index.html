@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Homework 1</span></h1>
     </div>
 
-    <p><em>Due by 08/01/2018</em></p>
+    <p><em>Due by 08/07/2018</em></p>
 
 <h2>Instructions</h2>
 
@@ -97,225 +97,11 @@ final submission will be scored.</p>
     
 
 
-<h2 id="develop-your-understanding">Develop your understanding</h2>
+<h2 id="review-from-lab">Review from lab</h2>
 
 
-<p>Like getting to Carnegie Hall, becoming proficient in programming takes practice.  The
-start of this assignment is intended to give you practice working with values and
-expressions while pointing out some of the subtleties that are good to have tucked
-away in your brain somewhere.</p>
 
-<p>Please note that while those of you with some programming
-experience may find this to be a rather basic review, others may find
-it completely new.  Either way, bear with us; we want everyone to have
-the basics.</p>
-
-<h3 id="primitive-expressions">Primitive expressions</h3>
-
-
-<p>A <strong>primitive expression</strong> requires only a single evaluation
-step: use the literal value directly. For example, numbers, names, and
-strings are all primitive expressions.</p>
-
-<pre><code>&gt;&gt;&gt; 2
-2
-&gt;&gt;&gt; &#x27;Hello World!&#x27;
-&#x27;Hello World!&#x27;</code></pre>
-
-
-<h3 id="arithmetic-operations-on-integers">Arithmetic operations on integers</h3>
-
-
-<pre><code>&gt;&gt;&gt; 5 + 3
-8
-&gt;&gt;&gt; 5 &#x2d; 3
-2
-&gt;&gt;&gt; 5 * 3  # comments look like this
-15
-&gt;&gt;&gt; &#x2d;47  # unary minus
-&#x2d;47
-&gt;&gt;&gt; 2 ** 3 # exponentiation
-8</code></pre>
-
-<p>All of these operators took integers as inputs and produced integers as outputs.
-There are other operators that take integers as inputs and
-produce other data types, such as booleans or decimal numbers (called floats), as outputs.</p>
-
-<pre><code>&gt;&gt;&gt; 2 == 1
-False
-&gt;&gt;&gt; 5 &#x2d; 3 == 2
-True
-&gt;&gt;&gt; 5 / 3  # will this produce an integer?
-1.6666666666666667
-&gt;&gt;&gt; 5 // 3 # here&#x27;s another kind of division that has an integer result
-1
-&gt;&gt;&gt; 5 % 3  # what&#x27;s this crazy looking operation?
-2</code></pre>
-
-
-<h3 id="floats-and-precedence">Floats and precedence</h3>
-
-
-<p>Floating point numbers (floats) behave a lot like real numbers.  You can identify a float by the decimal point. <strong>All floats have decimal points.</strong>  To write a floating point number (as a literal) you must add a decimal point!</p>
-
-<pre><code>&gt;&gt;&gt; 3.141592
-3.141592
-&gt;&gt;&gt; 2*3.141592 # you can mix ints and floats 
-6.283184
-&gt;&gt;&gt; pie = 3.141592 # you can assign values to variables
-&gt;&gt;&gt; pie
-3.141592
-&gt;&gt;&gt; pie/pie
-1.0
-&gt;&gt;&gt; pie/pie == 1 # a float can be equal in value to an int
-True
-&gt;&gt;&gt; from math import pi   # here is a better pi
-&gt;&gt;&gt; pi
-3.141592653589793
-&gt;&gt;&gt; 5.0/3.0  # this is division of floats, not ints
-1.6666666666666667
-&gt;&gt;&gt; 2**(1/2) # square root &#x2d; isn&#x27;t that transcendental?
-1.4142135623730951</code></pre>
-
-<p>Expressions follow operator precedence (just like in math).  Operations are performed one at a time in a specific order. Parenthesis are used to specify order (again, just like in math - remember PEMDAS?).</p>
-
-<pre><code>&gt;&gt;&gt; 2 + 3 &#x2d; 4 + 5   # equal precedence, left to right
-6
-&gt;&gt;&gt; 2 + 3 &#x2d; (4 + 5) # order matters &#x2d; parentheses are your friend
-&#x2d;4
-&gt;&gt;&gt; (((2 + 3) &#x2d; 4) + 5) # explicit order of the first example
-6
-&gt;&gt;&gt; 2 + 3 * 4   # * and / bind more tightly than + or &#x2d; 
-14
-&gt;&gt;&gt; 2 + (3 * 4) 
-14
-&gt;&gt;&gt; (2 + 3) * 4  
-20
-&gt;&gt;&gt; 2 + 3 / 4 * 5  # what about * and / ?
-5.75</code></pre>
-
-<p>An expression can have multiple return values, called a tuple:</p>
-
-<pre><code>&gt;&gt;&gt; 2, 3
-(2, 3)
-&gt;&gt;&gt; x, y = 1, pi
-&gt;&gt;&gt; y
-3.141592653589793</code></pre>
-
-
-<h3 id="simple-expressions">Simple expressions</h3>
-
-
-<h3 class="question" id="q1">Question 1: What would Python print?</h3>
-
-<blockquote><p>Use OK to test your knowledge with the some "What Would Python Print?"
-questions:</p>
-
-<pre><code>python3 ok &#x2d;q primitive&#x2d;expressions &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
-
-<p><strong>Note:</strong> If you think any of the expressions would cause Python to throw an error, type "Error" (without quotes) when prompted.</p>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; 3
-3
-&gt;&gt;&gt; 2 + 3
-5
-&gt;&gt;&gt; &#x2d;16 &#x2d; &#x2d;16
-0
-&gt;&gt;&gt; 3 * 4 + 1
-13
-&gt;&gt;&gt; 3 * (4 + 1)
-15
-&gt;&gt;&gt; 2 ** 3
-8</code></pre>
-
-</prompt>
-
-<p>Now let's try using variables:</p>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; x = 4
-&gt;&gt;&gt; 3 + x
-7
-&gt;&gt;&gt; x + y
-Error
-&gt;&gt;&gt; x, y = 1, 2
-&gt;&gt;&gt; 3 + x
-4
-&gt;&gt;&gt; x + y
-3</code></pre>
-
-</prompt> 
-
-
-<h3 id="operations-on-strings">Operations on Strings</h3>
-
-
-<p>It is very useful to be able to write programs that operate on strings, not just numbers.
-Without strings, web browsers and word processors would be like the matrix!  Just as with ints,
-floats, and booleans, strings are a data type and have certain operators defined on them:</p>
-
-<pre><code>&gt;&gt;&gt; &#x27;cal&#x27;           # a string literal is a sequence of characters in quotes
-&#x27;cal&#x27;
-&gt;&gt;&gt; &quot;rocks&quot;         # either kind of quote, but they need to match
-&#x27;rocks&#x27;
-&gt;&gt;&gt; &quot;cal&quot; + &quot;rocks&quot;   # + is concatenation
-&#x27;calrocks&#x27;
-&gt;&gt;&gt; &#x27;cal&#x27; * 3         # * is replication
-&#x27;calcalcal&#x27;
-&gt;&gt;&gt; &#x27;cal&#x27; == &quot;cal&quot;  # equality is if they are the same string (notice the single and double quotes)
-True
-&gt;&gt;&gt; &#x27;Cal&#x27; == &#x27;cal&#x27;  # case sensitive
-False
-&gt;&gt;&gt; &#x27;Cal&#x27; &lt; &#x27;cal&#x27;   # lexicographic ordering, with upper before lower case
-True
-&gt;&gt;&gt; &#x27;you&#x27; is not &#x27;me&#x27;
-True</code></pre>
-
-
-<h3 id="operations-on-booleans">Operations on Booleans</h3>
-
-
-<p>Like "==", which checks for equality, we can also use "not equal", "less than", "less than or equal", etc.:</p>
-
-<pre><code>&gt;&gt;&gt; 2 == 3
-False
-&gt;&gt;&gt; 2 != 3
-True
-&gt;&gt;&gt; 2 &lt; 2
-False
-&gt;&gt;&gt; 2 &lt;= 2
-True</code></pre>
-
-<p>We also have logic operators on booleans: <code>and</code>, <code>or</code>, and <code>not</code>:</p>
-
-<pre><code>&gt;&gt;&gt; x = 2
-&gt;&gt;&gt; x &gt; 1 or x != 0
-True
-&gt;&gt;&gt; x == 2 and 3 &gt; 4
-False
-&gt;&gt;&gt; not x &lt; 3
-False</code></pre>
-
-<p><code>and</code> returns True when both conditions are True, whereas <code>or</code> returns True as long as one condition is True.</p>
-
-<p>Something interesting in Python is that all values are assigned a True or False value&mdash;0, empty strings, False, Null are all 'False', whereas everything else is 'True'</p>
-
-<p>There is a concept of 'short-circuiting' in evaluating logic operators on booleans. The idea is that we don't want to do unnecessary evaluations. For example, in <code>and</code>statements, if the first value proves to be False, we don't have to evaluate the second value&mdash;we know that the whole statement will return False either way. In <code>or</code> statements, however, it's the opposite&mdash;if the first value evaluates to True, we don't have to evaluate the second value, because we know that the whole statement will return True regardless of what the second statement is.</p>
-
-<p>Python also has some handy operators that make expressions read more like prose:</p>
-
-<pre><code>&gt;&gt;&gt; 2 is 1
-False
-&gt;&gt;&gt; 2 is not 1
-True
-&gt;&gt;&gt; &quot;you&quot; is not &quot;me&quot;
-True</code></pre>
-
-
-<h2 id="division">Division</h2>
+<h3 id="division">Division</h3>
 
 
 <p>Let's compare the different division-related operators in Python:</p>
@@ -376,7 +162,7 @@ whether a number <code>x</code> is divisible by another number <code>y</code>:</
 <pre><code>x % 2 == 0</code></pre>
 
 
-<h2 id="floats-and-precedence">Floats and precedence</h2>
+<h3 id="floats-and-precedence">Floats and precedence</h3>
 
 
 <p>Floating point numbers (floats) behave a lot like real numbers.  You can identify a float by the decimal point. <strong>All floats have decimal points.</strong>  To write a floating point number (as a literal) you must add a decimal point!</p>
@@ -426,54 +212,7 @@ True
 3.141592653589793</code></pre>
 
 
-<h2 id="simple-expressions">Simple expressions</h2>
-
-
-<h3 class="question" id="q2">Question 2: What would Python print?</h3>
-
-<blockquote><p>Use OK to test your knowledge with the some "What Would Python Print?"
-questions:</p>
-
-<pre><code>python3 ok &#x2d;q primitive&#x2d;expressions &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
-
-<p><strong>Note:</strong> If you think any of the expressions would cause Python to throw an error, type "Error" (without quotes) when prompted.</p>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; 3
-3
-&gt;&gt;&gt; 2 + 3
-5
-&gt;&gt;&gt; &#x2d;16 &#x2d; &#x2d;16
-0
-&gt;&gt;&gt; 3 * 4 + 1
-13
-&gt;&gt;&gt; 3 * (4 + 1)
-15
-&gt;&gt;&gt; 2 ** 3
-8</code></pre>
-
-</prompt>
-
-<p>Now let's try using variables:</p>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; x = 4
-&gt;&gt;&gt; 3 + x
-7
-&gt;&gt;&gt; x + y
-Error
-&gt;&gt;&gt; x, y = 1, 2
-&gt;&gt;&gt; 3 + x
-4
-&gt;&gt;&gt; x + y
-3</code></pre>
-
-</prompt> 
-
-
-<h2 id="strings">Strings</h2>
+<h3 id="strings">Strings</h3>
 
 
 <p>It is very useful to be able to write programs that operate on strings, not just numbers.
@@ -498,483 +237,131 @@ True
 True</code></pre>
 
 
-<h2 id="equality-vs-comparison-and-boolean-operators">Equality vs. comparison and Boolean operators</h2>
+<h2 id="problems">Problems</h2>
 
 
-<p>So far everything you've seen looks the same as the arithmetic you did
-in elementary school.  But back then, without even knowing it you used the equals sign in two
-different ways: to test equality and to assign value to a variable.  When programming we need to 
-be a little more careful.  When we want the operator that tests for equality, we use
-<code>==</code>.  Similarly, we have "not equal", "less than", "less than or equal", etc.:</p>
+<h3 class="question" id="q1">Question 1: Diff</h3>
 
-<pre><code>&gt;&gt;&gt; 2 == 3
-False
-&gt;&gt;&gt; 2 != 3
-True
-&gt;&gt;&gt; 2 &lt; 2
-False
-&gt;&gt;&gt; 2 &lt;= 2
-True</code></pre>
-
-<p>Equality should never be confused with assignment. To assign a value to a variable we use <code>=</code>:</p>
-
-<pre><code>&gt;&gt;&gt; 2 = 3
-SyntaxError: can&#x27;t assign to literal
-&gt;&gt;&gt; two
-NameError: name &#x27;two&#x27; is not defined
-&gt;&gt;&gt; two = 2
-&gt;&gt;&gt; two
-2
-&gt;&gt;&gt; two == 2
-True
-&gt;&gt;&gt; two = 3     # don&#x27;t let the name confuse you
-&gt;&gt;&gt; two
-3
-&gt;&gt;&gt; two == 2
-False
-&gt;&gt;&gt; x = 2 == 3  # This assigns a value to x.  Which?
-&gt;&gt;&gt; x
-False</code></pre>
-
-<p>Please notice that the results above depended on the <strong><em>sequence 
-of operations</em></strong>.  We assigned the value <code>2</code> to the variable named <code>two</code> and then
-we later assigned the value <code>3</code> to this same variable.</p>
-
-<p>We also have logic operators on booleans: <code>and</code>, <code>or</code>, and <code>not</code>:</p>
-
-<pre><code>&gt;&gt;&gt; x = 2
-&gt;&gt;&gt; x &gt; 1 or x != 0
-True
-&gt;&gt;&gt; x == 2 and 3 &gt; 4
-False
-&gt;&gt;&gt; not x &lt; 3
-False</code></pre>
-
-<p>Python also has some handy operators that make expressions read more like prose:</p>
-
-<pre><code>&gt;&gt;&gt; 2 is 1
-False
-&gt;&gt;&gt; 2 is not 1
-True</code></pre>
-
-<p>You briefly encountered Boolean operators last week, but here you will
-see there is a close connection between them and conditionals.</p>
-
-<p>Python supports three boolean operators: <code>and</code>, <code>or</code>, and <code>not</code>:</p>
-
-<pre><code>&gt;&gt;&gt; a = 4
-&gt;&gt;&gt; a &lt; 2 and a &gt; 0
-False
-&gt;&gt;&gt; a &lt; 2 or a &gt; 0
-True
-&gt;&gt;&gt; not (a &gt; 0)
-False</code></pre>
-
-<ul>
-  <li><code>and</code> evaluates to <code>True</code> only if both operands evaluate to <code>True</code>.
-  If at least one operand is <code>False</code>, then <code>and</code> evaluates to <code>False</code>.</li>
-  <li><code>or</code> evaluates to <code>True</code> if at least one operand evaluates to <code>True</code>.
-  If all operands are <code>False</code>, then <code>or</code> evaluates to <code>False</code>.</li>
-</ul>
-
-<p>What do you think the following expression evaluates to? Try it out in the
-Python interpreter.</p>
-
-<pre><code>&gt;&gt;&gt; True and not False or not True and False</code></pre>
-
-<p>It is difficult to read complex expressions, like the one above, and understand
-how a program will behave. Using parentheses can make your code easier to
-understand. Just so you know, Python interprets that expression in the
-following way:</p>
-
-<pre><code>&gt;&gt;&gt; (True and (not False)) or ((not True) and False)</code></pre>
-
-<p>This is because boolean operators, like arithmetic operators, have an order of operation:</p>
-
-<ul>
-  <li><code>not</code> has the highest priority</li>
-  <li><code>and</code></li>
-  <li><code>or</code> has the lowest priority</li>
-</ul>
-
-<p>To make your code more readable, <code>and</code> and <code>or</code> work on more than just booleans (<code>True</code>,
-<code>False</code>). Other Python values can be considered "false-y," including <code>0</code>,
-<code>None</code>, and <code>&#x27;&#x27;</code> (the empty string). All other values are considered "truth-y."</p>
-
-<h3 class="question" id="q3">Question 3: WWPP: Truthiness</h3>
-
-<blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
-questions:</p>
-
-<pre><code>python ok &#x2d;q truthiness &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
-
-<!-- <prompt>
-
-<pre><code>&gt;&gt;&gt; 0 or True
-True
-&gt;&gt;&gt; not &#x27;&#x27; or not 0 and False
-True
-&gt;&gt;&gt; 13 and False
-False</code></pre>
-
-</prompt> -->
-
-
-<h2 id="short-circuiting">Short Circuiting</h2>
-
-
-<p>What do you think will happen if we type the following into Python?</p>
-
-<pre><code>1 / 0</code></pre>
-
-<p>Try it out in Python! You should see a <code>ZeroDivisionError</code>. But what about this expression?</p>
-
-<pre><code>True or 1 / 0</code></pre>
-
-<p>It evaluates to <code>True</code> because Python's <code>and</code> and <code>or</code> operators <em>short-circuit</em>. That is, they don't necessarily evaluate every operand.</p>
-
-<div class = "table-responsive">
-  <table class='table table-bordered'>
-    <tr>
-      <th>Operator</th>
-      <th>Evaluates from left to right until:</th>
-      <th>Example</th>
-    </tr>
-    <tr>
-      <td>AND</td>
-      <td>The first "false-y" value</td>
-      <td><code>False and 1 / 0</code> evaluates to <code>False</code></td>
-    </tr>
-    <tr>
-      <td>OR</td>
-      <td>The first "truth-y" value</td>
-      <td><code>True or 1 / 0</code> evaluates to <code>True</code></td>
-    </tr>
-  </table>
-</div>
-
-<p>If <code>and</code> and <code>or</code> do not <em>short-circuit</em>, they just return the last
-value. This means that <code>and</code> and <code>or</code> don't always return booleans when using truth-y
-and false-y values.</p>
-
-<p>Here's a little example:</p>
-
-<pre><code>def divides(x, y):
-    &quot;&quot;&quot;
-    return True if x divides y
-    &quot;&quot;&quot;
-    return x and y % x == 0</code></pre>
-
-<h3 class="question" id="q4">Question 4: WWPP: Veritasiness</h3>
-
-<blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
-questions:</p>
-
-<pre><code>python ok &#x2d;q short_circuiting &#x2d;u &#x2d;&#x2d;local</code></pre>
-
-<p><em>Hint</em>: If an error occurs, write Error.</p></blockquote>
-
-<!-- <prompt>
-
-<pre><code>&gt;&gt;&gt; True and 13
-13
-&gt;&gt;&gt; False or 0
-0
-&gt;&gt;&gt; not 10
-False
-&gt;&gt;&gt; not None
-True</code></pre>
-
-</prompt>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; True and 1 / 0 and False
-Error (ZeroDivisionError)
-&gt;&gt;&gt; True or 1 / 0 or False
-True
-&gt;&gt;&gt; True and 0
-0
-&gt;&gt;&gt; False or 1
-1
-&gt;&gt;&gt; 1 and 3 and 6 and 10 and 15
-15
-&gt;&gt;&gt; 0 or False or 2 or 1 / 0
-2</code></pre>
-
-</prompt>
- -->
-
-<h3 class="question" id="q5">Question 5: Fix the Bug</h3>
-
-<p>The following snippet of code doesn't work! Figure out what is wrong
-and fix the bugs.</p>
+<p>Implement a function <code>diff</code> that takes as input three integers <code>x</code>, <code>y</code>, and <code>z</code>. It should
+return whether subtracting one of these numbers from another gives the third.</p>
 
 <solution>
 
-<pre><code>def both_positive(x, y):
-    &quot;&quot;&quot;Returns True if both x and y are positive.
+<pre><code>def diff(x, y, z):
+    &quot;&quot;&quot;Return whether one argument is the difference between the other two.
 
-    &gt;&gt;&gt; both_positive(&#x2d;1, 1)
-    False
-    &gt;&gt;&gt; both_positive(1, 1)
+    x, y, and z are all integers.
+
+    &gt;&gt;&gt; diff(5, 3, 2) # 5 &#x2d; 3 is 2
     True
+    &gt;&gt;&gt; diff(2, 3, 5) # 5 &#x2d; 3 is 2
+    True
+    &gt;&gt;&gt; diff(2, 5, 3) # 5 &#x2d; 3 is 2
+    True
+    &gt;&gt;&gt; diff(&#x2d;2, 3, 5) # 3 &#x2d; 5 is &#x2d;2
+    True
+    &gt;&gt;&gt; diff(&#x2d;5, &#x2d;3, &#x2d;2) # &#x2d;5 &#x2d; &#x2d;2 is &#x2d;3
+    True
+    &gt;&gt;&gt; diff(&#x2d;2, 3, &#x2d;5) # &#x2d;2 &#x2d; 3 is &#x2d;5
+    True
+    &gt;&gt;&gt; diff(2, 3, &#x2d;5)
+    False
+    &gt;&gt;&gt; diff(10, 6, 4)
+    True
+    &gt;&gt;&gt; diff(10, 6, 3)
+    False
+
+
     &quot;&quot;&quot;
-    return x and y &gt; 0 # You can replace this line!</code></pre>
-
-
+    "*** YOUR CODE HERE ***"</code></pre>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python ok -q both_positive --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q diff --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: Distance</h3>
+
+<p>Implement a function called <code>distance(x1, y1, x2, y2)</code> where:</p>
+
+<ul>
+  <li><code>x1</code> and <code>y1</code> form an x-y coordinate pair</li>
+  <li><code>x2</code> and <code>y2</code> form an x-y coordinate pair</li>
+</ul>
+
+<p><code>distance</code> returns the Euclidean distance between the two points. Use the
+following formula:</p>
+
+<p><img class="img-responsive center-block" src="assets/distance2d.png" alt="2-D distance formula"></p>
+
+<solution>
+
+<pre><code>from math import sqrt
+
+def distance(x1, y1, x2, y2):
+    &quot;&quot;&quot;Calculates the Euclidian distance between two points (x1, y1) and (x2, y2)
+
+    &gt;&gt;&gt; distance(1, 1, 1, 2)
+    1.0
+    &gt;&gt;&gt; distance(1, 3, 1, 1)
+    2.0
+    &gt;&gt;&gt; distance(1, 2, 3, 4)
+    2.8284271247461903
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q distance --local</code></pre>
+
+<h3 class="question" id="q3">Question 3: Distance (3-D)</h3>
+
+<p>Now, let us edit this program to get the distance between two
+3-dimensional coordinates. Your <code>distance3d</code> function should take six
+arguments and compute the following:</p>
+
+<p><img class="img-responsive center-block" src="assets/distance3d.png" alt="3-D distance formula"></p>
+
+<solution>
+
+<pre><code>def distance3d(x1, y1, z1, x2, y2, z2):
+    &quot;&quot;&quot;Calculates the 3D Euclidian distance between two points (x1, y1, z1) and
+    (x2, y2, z2).
+
+    &gt;&gt;&gt; distance3d(1, 1, 1, 1, 2, 1)
+    1.0
+    &gt;&gt;&gt; distance3d(2, 3, 5, 5, 8, 3)
+    6.164414002968976
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q distance3d --local</code></pre>
+
+<h3 class="question" id="q4">Question 4: Quadratic formula</h3>
+
+<p>Complete the function that returns both roots of a quadratic polynomial
+using the quadratic formula.  Your solution must call the <code>sqrt</code> function
+exactly once.</p>
+
+<pre><code>from math import sqrt
+
+def quadratic(a,b,c):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; quadratic(1,0,&#x2d;1)
+    (&#x2d;1.0, 1.0)
+    &gt;&gt;&gt; quadratic(1,2,1)
+    (&#x2d;1.0, &#x2d;1.0)
+    &gt;&gt;&gt; quadratic(1,3,&#x2d;4)
+    (&#x2d;4.0, 1.0)
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q quadratic --local</code></pre>
 
 
-<h2 id="call-expressions">Call expressions</h2>
 
-
-<p>All these operators are also functions.  And, just as we build expressions
-with values, variables, and operators, we can also call functions.</p>
-
-<p>A call expression applies a function, which may or may not accept
-arguments. The call expression evaluates to the function's return value.</p>
-
-<p>The syntax of a function call:</p>
-
-<pre><code>  add   (    2   ,    3   )
-   |         |        |
-operator  operand  operand</code></pre>
-
-<p>Every call expression requires a set of parentheses delimiting its
-comma-separated operands.</p>
-
-<p>To evaluate a function call:</p>
-
-<ol>
-  <li>Evaluate the operator, and then the operands (from left to right).</li>
-  <li>Apply the operator to the operands (the values of the operands).</li>
-</ol>
-
-<p>If an operand is a nested call expression, then these two steps are
-applied to that operand in order to evaluate it.</p>
-
-<h3 class="question" id="q6">Question 6: What Would Python Print?</h3>
-
-<p>Let's <code>import</code> the functions that correspond to the arithmetic operators you are
-already familiar with. (You can learn more <a href="https://docs.python.org/3/library/operator.html">here</a>.)
-Don't worry too much about the import statement just yet.  The fancy sounding
-idea is that these functions have names that reside in a namespace outside of our own.  We can
-bring those names into our local namespace using an <code>import</code> statement.</p>
-
-<blockquote><p>Use OK to test your knowledge with the some "What Would Python Print?"
-questions:</p>
-
-<pre><code>python3 ok &#x2d;q call&#x2d;expressions &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; from operator import mul, add
-&gt;&gt;&gt; mul(3, 4)
-12
-&gt;&gt;&gt; mul(3, add(4, 1))
-15
-&gt;&gt;&gt; pow(2, 3)
-8
-&gt;&gt;&gt; pow(pow(2, 3), abs(&#x2d;2))
-64</code></pre>
-
-</prompt>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; from math import sqrt
-&gt;&gt;&gt; sqrt(144)
-12.0
-&gt;&gt;&gt; pi
-Error
-&gt;&gt;&gt; from math import pi
-&gt;&gt;&gt; pi
-3.141592653589793
-&gt;&gt;&gt; print(add(9, 1))
-10
-&gt;&gt;&gt; print(print(2))
-2
-None</code></pre>
-
-</prompt> 
-
-<p>Now take a look at the following examples. Make sure you understand them before moving on!</p>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; def welcome():
-...     print(&#x27;welcome to&#x27;)
-...     return &#x27;hello&#x27;
-...
-&gt;&gt;&gt; def cs88():
-...     print(&#x27;cs88&#x27;)
-...     return &#x27;world&#x27;
-...
-&gt;&gt;&gt; print(welcome(), cs88())
-welcome to
-cs88
-hello world</code></pre>
-
-</prompt>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; from operator import add
-&gt;&gt;&gt; def double(x):
-...     return x + x
-...
-&gt;&gt;&gt; def square(y):
-...     return y * y
-...
-&gt;&gt;&gt; def f(z):
-...     add(square(double(z)), 1)
-...
-&gt;&gt;&gt; f(4)
-# Nothing shows up because the return value is None.
-# How do you fix this?</code></pre>
-
-</prompt>
-
-
-<h2 id="if-statements">If Statements</h2>
-
-
-<p>You can review the syntax and behavior of <code>if</code> statements in
-<a href="http://composingprograms.com/pages/15-control.html#conditional-statements">Section 1.5.4</a>
-of Composing Programs.</p>
-
-<p>The <code>conditional statement</code> is a statement, not an expression; it does
-not return a value.  The <code>if&#x2d;expression</code> (or predicate) is evaluated
-first, before any other part of the statement, to determine whether to
-evaluate an <code>arm</code>.  If the <code>if&#x2d;expression</code> evaluates to a True value
-then the statement(s) following the <code>:</code> is evaluate.  Otherwise, the
-<code>else arm</code> is evaluated, if present.  Multiple predicates can be
-chained together with <code>elif</code>.  They are evaluated sequentially.  Often
-conditionals are often used along with return statements in functions.  For example,
-in some census data you see in c8 you might want to decode the gender code.</p>
-
-<pre><code>def decode_gender(code):
-    if (code == 0):
-        return &#x27;all&#x27;
-    elif (code == 1):
-        return &#x27;male&#x27;
-    elif (code == 2):
-        return &#x27;female&#x27;
-    else:
-        return &#x27;unknown&#x27;</code></pre>
-
-<p>Conditionals are often used with assignment statements to simplify later expressions.</p>
-
-<pre><code>if ((year % 4) == 0) and (((year % 100) != 0) or ((year % 400) == 0)):
-    year_len = 366
-else:
-    year_len = 365
-&lt;do something with year_len&gt;</code></pre>
-
-<p>Or with print statements to control output</p>
-
-<pre><code>if (scene == &#x27;architect skit&#x27;):
-    print(&quot;spam, spam, spam&quot;)
-else
-    print(&quot;nobody expects the Spanish inquisition&quot;)</code></pre>
-
-<p>If statements are often misused by beginning programmers to accomplish
-what simple boolean expressions do much more naturally.</p>
-
-<blockquote><p><em>Hint</em>: We sometimes see code that looks like this:</p>
-
-<pre><code>if x &gt; 3:
-    return True
-else:
-    return False</code></pre>
-
-<p>This can be written more concisely as <code>return x &gt; 3</code>. If your code looks like
-the code above, see if you can rewrite it more clearly!</p></blockquote>
-
-<h3 class="question" id="q7">Question 7: WWPP: What If?</h3>
-
-<blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
-questions:</p>
-
-<pre><code>python ok &#x2d;q what_if &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
-
-<p>The functions below are already defined in <code>hw01.py</code>. If you get stuck, try
-<code>python &#x2d;i hw01.py</code> and experiment.</p>
-
-<!-- <prompt>
-
-<pre><code>&gt;&gt;&gt; def xk(c, d):
-...     if c == 4:
-...         return 6
-...     elif d &gt;= 4:
-...         return 6 + 7 + c
-...     else:
-...         return 25
-&gt;&gt;&gt; xk(10, 10)
-23
-&gt;&gt;&gt; xk(10, 6)
-23
-&gt;&gt;&gt; xk(4, 6)
-6
-&gt;&gt;&gt; xk(0, 0)
-25</code></pre>
-
-</prompt>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; def how_big(x):
-...     if x &gt; 10:
-...         print(&#x27;huge&#x27;)
-...     elif x &gt; 5:
-...         return &#x27;big&#x27;
-...     elif x &gt; 0:
-...         print(&#x27;small&#x27;)
-...     else:
-...         print(&quot;nothin&#x27;&quot;)
-&gt;&gt;&gt; how_big(7)
-&#x27;big&#x27;
-&gt;&gt;&gt; how_big(12)
-huge
-&gt;&gt;&gt; how_big(1)
-small
-&gt;&gt;&gt; how_big(&#x2d;1)
-nothin&#x27;</code></pre>
-
-</prompt>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; def so_big(x):
-...     if x &gt; 10:
-...         print(&#x27;huge&#x27;)
-...     if x &gt; 5:
-...         return &#x27;big&#x27;
-...     if x &gt; 0:
-...         print(&#x27;small&#x27;)
-...     print(&quot;nothin&#x27;&quot;)
-&gt;&gt;&gt; so_big(7)
-&#x27;big&#x27;
-&gt;&gt;&gt; so_big(12)
-huge
-&#x27;big&#x27;
-&gt;&gt;&gt; so_big(1)
-small
-nothin&#x27;</code></pre>
-
-</prompt> -->
-
-<blockquote><p><em>Hint</em>: <code>print</code> (unlike <code>return</code>) does <em>not</em> cause the function to exit!</p></blockquote>
-
-
-<h2 id="more-practice">More Practice</h2>
-
-
-<h3 class="question" id="q8">Question 8: Add absolute</h3>
+<h3 class="question" id="q5">Question 5: Add absolute</h3>
 
 <p>We've seen that we can name a value by assigning it to a variable.  Functions
 are objects too.  Try typing the name of a function you have defined or imported
@@ -1000,7 +387,7 @@ def a_plus_abs_b(a, b):
         f = _____
     return f(a, b) # You can replace this line, but don&#x27;t have to.</code></pre>
 
-<p>Use OK to test your code:</p><pre><code>python ok -q a_plus_abs_b --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q a_plus_abs_b --local</code></pre>
 
 
 
@@ -1010,49 +397,20 @@ def a_plus_abs_b(a, b):
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
-  <li><a href="#develop-your-understanding">Develop your understanding</a></li>
+  <li><a href="#review-from-lab">Review from lab</a></li>
   <ul>
-  <li><a href="#primitive-expressions">Primitive expressions</a></li>
-  <li><a href="#arithmetic-operations-on-integers">Arithmetic operations on integers</a></li>
-  <li><a href="#floats-and-precedence">Floats and precedence</a></li>
-  <li><a href="#simple-expressions">Simple expressions</a></li>
-  <li><a href="#q1">Question 1: What would Python print?</a></li>
-  <li><a href="#operations-on-strings">Operations on Strings</a></li>
-  <li><a href="#operations-on-booleans">Operations on Booleans</a></li>
-</ul>
-
   <li><a href="#division">Division</a></li>
   <li><a href="#floats-and-precedence">Floats and precedence</a></li>
-  <li><a href="#simple-expressions">Simple expressions</a></li>
-  <ul>
-  <li><a href="#q2">Question 2: What would Python print?</a></li>
-</ul>
-
   <li><a href="#strings">Strings</a></li>
-  <li><a href="#equality-vs-comparison-and-boolean-operators">Equality vs. comparison and Boolean operators</a></li>
-  <ul>
-  <li><a href="#q3">Question 3: WWPP: Truthiness</a></li>
 </ul>
 
-  <li><a href="#short-circuiting">Short Circuiting</a></li>
+  <li><a href="#problems">Problems</a></li>
   <ul>
-  <li><a href="#q4">Question 4: WWPP: Veritasiness</a></li>
-  <li><a href="#q5">Question 5: Fix the Bug</a></li>
-</ul>
-
-  <li><a href="#call-expressions">Call expressions</a></li>
-  <ul>
-  <li><a href="#q6">Question 6: What Would Python Print?</a></li>
-</ul>
-
-  <li><a href="#if-statements">If Statements</a></li>
-  <ul>
-  <li><a href="#q7">Question 7: WWPP: What If?</a></li>
-</ul>
-
-  <li><a href="#more-practice">More Practice</a></li>
-  <ul>
-  <li><a href="#q8">Question 8: Add absolute</a></li>
+  <li><a href="#q1">Question 1: Diff</a></li>
+  <li><a href="#q2">Question 2: Distance</a></li>
+  <li><a href="#q3">Question 3: Distance (3-D)</a></li>
+  <li><a href="#q4">Question 4: Quadratic formula</a></li>
+  <li><a href="#q5">Question 5: Add absolute</a></li>
 </ul>
 
 </ul>
