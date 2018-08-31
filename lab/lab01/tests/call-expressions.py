@@ -30,7 +30,7 @@ test = {
           7925eab2931ff04d3fd1eca7688a537b
           # locked
           >>> pi
-          f0beb2d9d3a8f334ba32543989e2c52a
+          d7b5fd49f83e4ee318af207fc969c9f4
           # locked
           >>> from math import pi
           >>> pi
