@@ -1,5 +1,5 @@
 test = {
-  'name': 'primitive_expressions',
+  'name': 'primitive-expressions',
   'points': 0,
   'suites': [
     {
@@ -7,22 +7,22 @@ test = {
         {
           'code': r"""
           >>> 3
-          287ada61eabab45481c038d336cec0d9
+          95e06bb41a8511e42188cb3fde2ddb68
           # locked
           >>> 2 + 3
-          2a2c5c11d76ef6a196697fa556ae3a0d
+          45d2cef3b717b1b5edc7f57ec2e831f0
           # locked
           >>> -16 - -16
-          581086b6b29789659effb7a5da0bfb0f
+          b0754f6baafe74512d1be0bd5c8098ed
           # locked
           >>> 3 * 4 + 1
-          84d2bcf7974876306bccfc116b6bfc7f
+          72c74b6c7ed80d51f9fa7defbf7ed121
           # locked
           >>> 3 * (4 + 1)
-          95957b6860bf3a30b229da4a41866ade
+          438f344a520081fe8e2d0da944a5240b
           # locked
           >>> 2 ** 3
-          671ed54989b8b2d016a764f4eb59e6f8
+          44b009a8ae29e806844d66237881d263
           # locked
           """,
           'hidden': False,
@@ -32,17 +32,17 @@ test = {
           'code': r"""
           >>> x = 4
           >>> 3 + x
-          92e04b9c9e12e4baa468ce2ece990386
+          f3f0d7ed9a5f7790e7d6be65f44e207a
           # locked
           >>> x + y
-          dfda46f58105eb6e5be6c5c5ab7b6eb1
+          d7b5fd49f83e4ee318af207fc969c9f4
           # locked
           >>> x, y = 1, 2
           >>> 3 + x
-          f970de4b11828bffd6138ddf36454ecf
+          9f3942462dcdc25005b450dc0da0adb5
           # locked
           >>> x + y
-          287ada61eabab45481c038d336cec0d9
+          95e06bb41a8511e42188cb3fde2ddb68
           # locked
           """,
           'hidden': False,

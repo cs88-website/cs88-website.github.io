@@ -1,0 +1,21 @@
+{
+    "name": "Lab 1",
+    "endpoint": "cal/cs88/sp18/lab01",
+    "src": [
+        "lab01.py"
+    ],
+    "tests": {
+        "tests/primitive-expressions.py": "ok_test",
+        "tests/call-expressions.py": "ok_test",
+        "lab01.py:temperature_converter": "doctest",
+        "lab01.py:pythagorean_triple": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}

@@ -161,7 +161,7 @@ servers.</p> -->
 is a catch. At first, the test cases are <i>locked</i>. To unlock tests,
 run the following command from your terminal:</p>
 
-<pre><code>python ok -u --local</code></pre>
+<pre><code>python3 ok -u --local</code></pre>
 
 <p>This command will start an interactive prompt that looks like:</p>
 
@@ -196,7 +196,7 @@ first, before you start writing any code.</p>
 the correctness of your program using the tests that you have
 unlocked:</p>
 
-<pre>python ok --local</pre>
+<pre>python3 ok --local</pre>
 
 <p>Most of the time, you will want to focus on a particular question.
 Use the <code>-q</code> option as directed in the problems below.</p>
@@ -608,7 +608,7 @@ the <code>SecretWord</code> class in file <code>secret.py</code>.</p>
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python ok &#x2d;q SecretWord &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q SecretWord &#x2d;&#x2d;local</code></pre>
 
 
 <h3 id="problem-2-2-pt">Problem 2 (2 pt)</h3>
@@ -618,13 +618,13 @@ the <code>SecretWord</code> class in file <code>secret.py</code>.</p>
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python ok &#x2d;q WordSet &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q WordSet &#x2d;&#x2d;local</code></pre>
 
 <p>Now that you have a <code>WordSet</code>, verify that you also have a working <code>Dictionary</code> that inherits from this. You didn't have to build the Dictionary, but you need to make sure that the one we provided works with your <code>WordSet</code>.</p>
 
 <p>Test our implementation before moving on:</p>
 
-<pre><code>python ok &#x2d;q Dictionary &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q Dictionary &#x2d;&#x2d;local</code></pre>
 
 
 <h3 id="problem-3-3-pt">Problem 3 (3 pt)</h3>
@@ -638,7 +638,7 @@ want to produce tests for your individual methods.</p>
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python ok &#x2d;q Board &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q Board &#x2d;&#x2d;local</code></pre>
 
 
 <h3 id="problem-4-3-pt">Problem 4 (3 pt)</h3>
@@ -649,7 +649,7 @@ initialization method to set the class attribute.</p>
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python ok &#x2d;q Player &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q Player &#x2d;&#x2d;local</code></pre>
 
 <p>Complete the implementation of the <code>pick_word</code> method of <code>ComputerPlayer</code>.  You don't
 need the (much bigger) guess method.</p>
@@ -680,7 +680,7 @@ connect your <code>HumanPlayer</code> and picker-only version of <code>ComputerP
 
 <p>Test your implementation before moving on:</p>
 
-<pre><code>python ok &#x2d;q Game &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q Game &#x2d;&#x2d;local</code></pre>
 
 <p>At this point you should have a complete human player game.  Run:</p>
 
@@ -734,7 +734,7 @@ Submit this as <code>computer_session2.txt</code>.</p>
 
 <p>Once you have completed all questions, you can run all the OK tests at once using the command below.</p>
 
-<pre><code>python ok &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;&#x2d;local</code></pre>
 
 <p>Congratulations on finishing the project!</p>
 

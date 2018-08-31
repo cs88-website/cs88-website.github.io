@@ -8,16 +8,16 @@ test = {
           'code': r"""
           >>> from operator import mul, add
           >>> mul(3, 4)
-          0c5bacbb5aa8efa98a98d240383bf633
+          d7069594fd949c78b4021fc7911322a4
           # locked
           >>> mul(3, add(4, 1))
-          95957b6860bf3a30b229da4a41866ade
+          438f344a520081fe8e2d0da944a5240b
           # locked
           >>> pow(2, 3)
-          671ed54989b8b2d016a764f4eb59e6f8
+          44b009a8ae29e806844d66237881d263
           # locked
           >>> pow(pow(2, 3), abs(-2))
-          636a955b889c15b5068e35f1317fd581
+          b87d7bccbca9251a446d3bd43ad00973
           # locked
           """,
           'hidden': False,
@@ -27,22 +27,21 @@ test = {
           'code': r"""
           >>> from math import sqrt
           >>> sqrt(144)
-          0c5bacbb5aa8efa98a98d240383bf633
+          7925eab2931ff04d3fd1eca7688a537b
           # locked
           >>> pi
-          dfda46f58105eb6e5be6c5c5ab7b6eb1
+          d7b5fd49f83e4ee318af207fc969c9f4
           # locked
           >>> from math import pi
-          >>> pi # round to 2 decimal places
-          064dd9757f5e3e880843a6f8acd7fb32
+          >>> pi
+          1fdff3e2f9fb8ede0322356723aae485
           # locked
-          >>> from operator import add
           >>> print(add(9, 1))
-          56057c93219ebaa36c14e3a5c2c6adc1
+          32606b4d8bc69544a1579aca287813dc
           # locked
           >>> print(print(2))
-          0e848c28f96df07c693ef539595d4380
-          84223991e4180c1b5055fe16fc7125a3
+          6d6f378f0affa7f84aa38e519e353617
+          140b47bd322af58a8e4cce7e526bedeb
           # locked
           """,
           'hidden': False,
