@@ -35,7 +35,7 @@ test = {
           f3f0d7ed9a5f7790e7d6be65f44e207a
           # locked
           >>> x + y
-          f0beb2d9d3a8f334ba32543989e2c52a
+          d7b5fd49f83e4ee318af207fc969c9f4
           # locked
           >>> x, y = 1, 2
           >>> 3 + x
