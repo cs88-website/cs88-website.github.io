@@ -52,7 +52,7 @@ def abs_value_equal(x, y):
     False
     """
     # YOUR CODE HERE
- 	return False
+    return False
 
 
 ## Representation
