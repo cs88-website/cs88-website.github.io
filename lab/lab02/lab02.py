@@ -29,6 +29,32 @@ def a_or_c(grade):
 
 
 
+## Control
+
+def min(x, y):
+    """
+    Return the minimum between x and y
+
+    >>> min(1,2)
+    1
+    >>> min(3,1)
+    1
+    >>> min(2,3)
+    2
+    >>> min(0, 67777)
+    0
+    >>> min(-1, -5)
+    -5
+    >>> min(-7, -1)
+    -7
+    >>> min(0, 0)
+    0
+    """
+
+    # YOUR CODE HERE
+    return 0
+
+
 ## Transformation
 
 def abs_value_equal(x, y):
@@ -75,30 +101,4 @@ def mirror(num1, num2):
     """
     # YOUR CODE HERE
     return False
-
-
-## Control
-
-def min(x, y):
-    """
-    Return the minimum between x and y
-
-    >>> min(1,2)
-    1
-    >>> min(3,1)
-    1
-    >>> min(2,3)
-    2
-    >>> min(0, 67777)
-    0
-    >>> min(-1, -5)
-    -5
-    >>> min(-7, -1)
-    -7
-    >>> min(0, 0)
-    0
-    """
-
-    # YOUR CODE HERE
-    return 0
 
