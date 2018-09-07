@@ -5,6 +5,7 @@
         "hw01.py"
     ],
     "tests": {
+        "hw01.py:odd": "doctest",
         "hw01.py:diff": "doctest",
         "hw01.py:distance": "doctest",
         "hw01.py:distance3d": "doctest",
