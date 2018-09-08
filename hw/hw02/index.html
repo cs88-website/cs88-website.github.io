@@ -208,23 +208,24 @@ miles per second and returns the same value converted to kilometers per day.</p>
 
 <ol>
   <li>Convert Seconds to Days (Hint: Multiply by Seconds / Hour, Hours / Day)</li>
-  <li><p>Convert Miles to Kilometers (Hint: Assume 1 Mile = 1.609 Kilometers)</p>
-
-  <p>def speed<em>converter(miles</em>per_sec):</p>
-
-<pre><code>&quot;&quot;&quot;
-&gt;&gt;&gt; speed_converter(0)
-0.0
-&gt;&gt;&gt; speed_converter(0.5)
-1158.48
-&gt;&gt;&gt; speed_converter(0.75)
-1737.72
-&gt;&gt;&gt; speed_converter(2)
-4633.92
-&quot;&quot;&quot;
-"*** YOUR CODE HERE ***"
-return kilos_per_day</code></pre></li>
+  <li>Convert Miles to Kilometers (Hint: Assume 1 Mile = 1.609 Kilometers)</li>
 </ol>
+
+<p>Try to use only a single expression for the body of the function.</p>
+
+<pre><code>def speed_converter(miles_per_sec):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; speed_converter(0)
+    0.0
+    &gt;&gt;&gt; speed_converter(0.5)
+    1158.48
+    &gt;&gt;&gt; speed_converter(0.75)
+    1737.72
+    &gt;&gt;&gt; speed_converter(2)
+    4633.92
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+    return kilos_per_day</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q speed_converter --local</code></pre>
 
