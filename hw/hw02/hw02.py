@@ -2,16 +2,16 @@
 
 # Question 1
 
-def harmonic(x, y):
+def harmonic_mean(x, y):
     """Return the harmonic mean of x and y.
 
-    >>> harmonic(2, 6)
+    >>> harmonic_mean(2, 6)
     3.0
-    >>> harmonic(1, 1)
+    >>> harmonic_mean(1, 1)
     1.0
-    >>> harmonic(2.5, 7.5)
+    >>> harmonic_mean(2.5, 7.5)
     3.75
-    >>> harmonic(4, 12)
+    >>> harmonic_mean(4, 12)
     6.0
     """
     "*** YOUR CODE HERE ***"

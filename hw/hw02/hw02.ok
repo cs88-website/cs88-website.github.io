@@ -7,9 +7,9 @@
     "tests": {
         "hw02.py:harmonic_mean": "doctest",
         "hw02.py:speed_converter": "doctest",
-        "hw02.py:largest_factor": "doctest",
         "hw02.py:two_of_three": "doctest",
-        "hw02.py:law_of_sines": "doctest",
+        "hw02.py:largest_factor": "doctest",
+        "hw02.py:law_of_sines": "doctest"
     },
     "protocols": [
         "restore",
