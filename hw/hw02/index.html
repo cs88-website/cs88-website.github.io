@@ -201,19 +201,19 @@ reciprocals of the numbers. (The reciprocal of <code>x</code> is <code>1/x</code
 
 <h3 class="question" id="q2">Question 2: Speed Converter</h3>
 
-<p>Define <code>speed_converter</code>, which takes a value miles<em>per</em>sec with units
-miles per second and returns the same value converted to kilometers per day.</p>
+<p>Define <code>speed_converter</code>, which takes a value "miles per minute" with units
+miles per minute and returns the same value converted to kilometers per day.</p>
 
-<p>The approach for converting from miles per second to kilometers per day is twofold:</p>
+<p>The approach for converting from miles per minute to kilometers per day is twofold:</p>
 
 <ol>
-  <li>Convert Seconds to Days (Hint: Multiply by Seconds / Hour, Hours / Day)</li>
+  <li>Convert Minutes to Days (Hint: Multiply by Minutes / Hour, Hours / Day)</li>
   <li>Convert Miles to Kilometers (Hint: Assume 1 Mile = 1.609 Kilometers)</li>
 </ol>
 
 <p>Try to use only a single expression for the body of the function.</p>
 
-<pre><code>def speed_converter(miles_per_sec):
+<pre><code>def speed_converter(miles_per_min):
     &quot;&quot;&quot;
     &gt;&gt;&gt; speed_converter(0)
     0.0

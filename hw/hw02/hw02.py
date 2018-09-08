@@ -19,7 +19,7 @@ def harmonic_mean(x, y):
 
 # Question 2
 
-def speed_converter(miles_per_sec):
+def speed_converter(miles_per_min):
     """
     >>> speed_converter(0)
     0.0
