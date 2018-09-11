@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 3: List Comprehensions, Conditionals and Iteration. | CS 88 Fall 2018</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 3</span>: List Comprehensions, Conditionals and Iteration.</h1>
+    </div>
+
+    <p><i>Due at 9:00pm on 9:00 PM on 09/20/2018.</i></p>
+
+
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab03.zip">lab03.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the OK autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab using <code>ok</code>. You may submit more than once before the
+deadline; only the final submission will be graded.</p>
+
+
+<ul>
+  <li>All questions for this lab are required.</li>
+</ul>
+
+
+    
+
+
+<h2 id="list-comprehensions">List Comprehensions</h2>
+
+
+<p>Now that we can create lists, assign variables, write expressions, and
+define functions, we can compose these concepts to do lots of interesting
+things.  Python's <code>list comprehensions</code> open a beautiful of data-centeric
+programming.
+<br/>
+
+The comprehension is in brackets, just like a list, but rather than a static
+sequence of literals, it is a dynamically computed list.</p>
+
+<pre><code>&gt;&gt;&gt; somelist = [1, 2, 9, &#x2d;1, 0]
+&gt;&gt;&gt; [x+1 for x in somelist]
+[2, 3, 10, 0, 1]
+&gt;&gt;&gt; [x*x for x in somelist]
+[1, 4, 81, 1, 0]</code></pre>
+
+<p>In general, the expression just inside the <code>[</code> is evaluated for each element
+in the list, using the variable between the <code>for</code> and the <code>in</code> to name each
+element in succession. The result is the transformed list.
+<br/>
+
+<pre><code>&gt;&gt;&gt; def square(x):
+...     return x*x
+...
+&gt;&gt;&gt; def squares(s):
+...     return [square(x) for x in s]
+...
+&gt;&gt;&gt; squares([0,1,2,4])
+[0, 1, 4, 16]</code></pre></p>
+
+<p>This is a powerful design pattern, called <code>map</code>, that you will use in often
+in analyzing data.  It <em>maps</em>, or transforms, one data structure into another
+under some expression, often by applying a function to each of the elements.</p>
+
+<p>Do you remember the Table.apply( ) function from Data 8? The Table.apply function is another great example of the <code>map</code> design pattern as it applies a "transformation" or a function to a row or column.</p>
+
+<p>Sometimes you need a sequence to get started, and Python provides handy tools
+for that.  One of them is <code>range</code>.
+<br/>
+
+<pre><code>&gt;&gt;&gt; [x*x for x in range(10)]
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]</code></pre></p>
+
+<p>You can review <code>range</code> in <a href="http://composingprograms.com/pages/23-sequences.html">Section 2.3</a>
+of Composing Programs.</p>
+
+<h3 class="question" id="q1">Question 1: Shopping</h3>
+
+<p>Let's write a function that transforms a <code>shopping cart</code>, which we will represent as a list of 3 element tuples, by adding a specified <code>percent</code> tax to the price of each item. We will then compute the cost of all our items including tax.</p>
+
+<p>Shopping carts are represented like this:</p>
+
+<pre><code>[(item1, cost1, quantity1), (item2, cost2, quantity2), ..., (itemN, costN, quantityN)]</code></pre>
+
+<p>Implement <code>tax(shopping_cart, percent)</code> and <code>sum(shopping_cart)</code> so you can figure out how much you have to pay for all of your items.
+</p>
+
+<pre><code>def tax(shopping_cart, percent):
+    &quot;&quot;&quot;
+    Adds a `percent` tax to each item&#x27;s price in a shopping cart.
+
+    &gt;&gt;&gt; fruitCart = [(&quot;apple&quot;, 0.5, 3), (&quot;banana&quot;, 0.25, 4)]
+    &gt;&gt;&gt; tax(fruitCart, 10)
+    [ (apple, 0.55, 3), (banana, 0.275, 4)]
+
+    &gt;&gt;&gt; calCart = [(&quot;oski&quot;, 1000, 1), (&quot;go&quot;, 1, 2), (&quot;bears&quot;, 3.5, 2)]
+    &gt;&gt;&gt; tax(calCart, 100)
+    [(&quot;oski&quot;, 2000, 1), (&quot;go&quot;, 2, 2), (&quot;bears&quot;, 7, 2)]
+
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x61;&#x78;&#x4d;&#x75;&#x6c;&#x74;&#x69;&#x70;&#x6c;&#x69;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x28;&#x70;&#x65;&#x72;&#x63;&#x65;&#x6e;&#x74;&#x20;&#x2f;&#x20;&#x31;&#x30;&#x30;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x20;&#x2a;&#x20;&#x74;&#x61;&#x78;&#x4d;&#x75;&#x6c;&#x74;&#x69;&#x70;&#x6c;&#x69;&#x65;&#x72;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x68;&#x6f;&#x70;&#x70;&#x69;&#x6e;&#x67;&#x5f;&#x63;&#x61;&#x72;&#x74;&#x5d;</div>
+def cartSum(shopping_cart):
+    &quot;&quot;&quot;
+    Sums a shopping cart
+
+    &gt;&gt;&gt; fruitCart = [(&quot;apple&quot;, 0.5, 3), (&quot;banana&quot;, 0.25, 4)]
+    &gt;&gt;&gt; taxedFruit = tax(fruitCart, 10)
+    [ (apple, 0.55, 3), (banana, 0.275, 4)]
+    &gt;&gt;&gt; cartSum(taxedFruit)
+    2.75
+    &gt;&gt;&gt; calCart = [(&quot;oski&quot;, 1000, 1), (&quot;go&quot;, 1, 2), (&quot;bears&quot;, 3.5, 2)]
+    &gt;&gt;&gt; taxedCal = tax(calCart, 100)
+    [(&quot;oski&quot;, 2000, 1), (&quot;go&quot;, 5.5, 4), (&quot;bears&quot;, 13.2, 4)]
+    &gt;&gt;&gt; cartSum(taxedCal)
+    2018
+
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x5b;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2a;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x68;&#x6f;&#x70;&#x70;&#x69;&#x6e;&#x67;&#x5f;&#x63;&#x61;&#x72;&#x74;&#x5d;&#x29;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q tax --local
+python3 ok -q cartSum --local</code></pre>
+
+
+<h2 id="conditionals">Conditionals</h2>
+
+
+<p>You can review the syntax and behavior of <code>if</code> statements in
+<a href="http://composingprograms.com/pages/15-control.html#conditional-statements">Section 1.5.4</a>
+of Composing Programs.</p>
+
+<p>The <code>conditional statement</code> is a statement, not an expression; it does
+not return a value.  The <code>if&#x2d;expression</code> (or predicate) is evaluated
+first, before any other part of the statement, to determine whether to
+evaluate an <code>arm</code>.  If the <code>if&#x2d;expression</code> evaluates to a True value
+then the statement(s) following the <code>:</code> is evaluate.  Otherwise, the
+<code>else arm</code> is evaluated, if present.  Multiple predicates can be
+chained together with <code>elif</code>.  They are evaluated sequentially.  Often
+conditionals are often used along with return statements in functions.  For example,
+in some census data you see in c8 you might want to decode the gender code.</p>
+
+<pre><code>def decode_gender(code):
+    if (code == 0):
+        return &#x27;all&#x27;
+    elif (code == 1):
+        return &#x27;male&#x27;
+    elif (code == 2):
+        return &#x27;female&#x27;
+    else:
+        return &#x27;unknown&#x27;</code></pre>
+
+<p>Conditionals are often used with assignment statements to simplify later expressions.</p>
+
+<pre><code>if ((year % 4) == 0) and (((year % 100) != 0) or ((year % 400) == 0)):
+    year_len = 366
+else:
+    year_len = 365
+&lt;do something with year_len&gt;</code></pre>
+
+<p>Or with print statements to control output</p>
+
+<pre><code>if (scene == &#x27;architect skit&#x27;):
+    print(&quot;spam, spam, spam&quot;)
+else
+    print(&quot;nobody expects the Spanish inquisition&quot;)</code></pre>
+
+
+<h3 id="omitting-the-else">Omitting the else</h3>
+
+<p>Consider the following function:</p>
+
+<pre><code>def abs(x):
+    if x &gt;= 0:
+        return x
+    else:
+        return &#x2d;x</code></pre>
+
+<p>It is correct to rewrite <code>abs</code> in the following way:</p>
+
+<pre><code>def abs(x):
+    if x &gt;= 0:
+        return x
+    return &#x2d;x</code></pre>
+
+<p>This is a direct consequence of how <code>return</code> works &mdash; when
+Python sees a <code>return</code> statement, it will <em>immediately terminate</em> the
+function, and the rest of the function will not be evaluated.  In the
+above example, if <code>x &gt;= 0</code>, Python will never reach the final line.
+Try to convince yourself that this is indeed the case before moving on.</p>
+
+<p>Keep in mind that <strong>omitting the <code>else</code> only works if the function is
+terminated</strong>!  For example, the following function will <em>always</em> print
+"less than zero", because the function is not terminated in the body
+of the <code>if</code> suite:</p>
+
+<pre><code>&gt;&gt;&gt; def foo(x):
+...     if x &gt; 0:
+...         print(&quot;greater than zero&quot;)
+...     print(&quot;less than zero&quot;)
+...
+&gt;&gt;&gt; foo(&#x2d;3)
+less than zero
+&gt;&gt;&gt; foo(4)
+greater than zero
+less than zero</code></pre>
+
+<p>In general, omitting the <code>else</code> will make your code more concise &mdash;
+however, if you find that it makes your code harder to read, by all
+means use an <code>else</code> statement.</p>
+
+<h3 class="question" id="q2">Question 2: arange</h3>
+
+<p>Implement the function <code>arange</code>, which behaves just like np.arange(start, end, step) from Data 8. You only need to support positive values for step.</p>
+
+
+
+<pre><code>def arange(start, end, step=1):
+    &quot;&quot;&quot;
+    arange behaves just like np.arange(start, end, step).
+    You only need to support positive values for step.
+
+    &gt;&gt;&gt; arange(1, 3)
+    [ 1, 2]
+    &gt;&gt;&gt; arange(0, 25, 2)
+    [ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24]
+    &gt;&gt;&gt; arange(0, 1231, 34)
+    [   0,   34,   68,  102,  136,  170,  204,  238,  272,  306,  340,
+            374,  408,  442,  476,  510,  544,  578,  612,  646,  680,  714,
+            748,  782,  816,  850,  884,  918,  952,  986, 1020, 1054, 1088,
+           1122, 1156, 1190, 1224]
+
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6e;&#x20;&#x2a;&#x20;&#x73;&#x74;&#x65;&#x70;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6e;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x73;&#x74;&#x61;&#x72;&#x74;&#x2c;&#x20;&#x65;&#x6e;&#x64;&#x29;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x2a;&#x20;&#x73;&#x74;&#x65;&#x70;&#x20;&#x3c;&#x20;&#x65;&#x6e;&#x64;&#x5d;</div></code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q arange --local</code></pre>
+
+<h3 class="question" id="q3">Question 3: Coordinates</h3>
+
+<p>Implement a function <code>coords</code>, which takes a function, a sequence, and
+an upper and lower bound on output of the function. <code>coords</code> then
+returns a list of x, y coordinate pairs (lists) such that:</p>
+
+<ul>
+  <li>Each pair contains <code>[x, fn(x)]</code></li>
+  <li>The x coordinates are the elements in the sequence</li>
+  <li>Only pairs whose y coordinate is within the upper and lower bounds
+  (inclusive)</li>
+</ul>
+
+<p>See the doctests for examples.</p>
+
+<p>One other thing: your answer can only be <em>one line long</em>. You should
+make use of list comprehensions!</p>
+
+
+
+<pre><code>def coords(fn, seq, lower, upper):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; seq = [&#x2d;4, &#x2d;2, 0, 1, 3]
+    &gt;&gt;&gt; fn = lambda x: x**2
+    &gt;&gt;&gt; coords(fn, seq, 1, 9)
+    [[&#x2d;2, 4], [1, 1], [3, 9]]
+    &quot;&quot;&quot; 
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5b;&#x78;&#x2c;&#x20;&#x66;&#x6e;&#x28;&#x78;&#x29;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x65;&#x71;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x6f;&#x77;&#x65;&#x72;&#x20;&#x3c;&#x3d;&#x20;&#x66;&#x6e;&#x28;&#x78;&#x29;&#x20;&#x3c;&#x3d;&#x20;&#x75;&#x70;&#x70;&#x65;&#x72;&#x5d;</div></code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q coords --local</code></pre>
+
+
+<h2 id="iteration">Iteration</h2>
+
+<p>You might remeber for loops from simulations in Data 8. A for loop can be constructed by using the for statement. Typically, the for statement is used to iterate through a sequence, such as a list,
+and perform some computating on each iteration.  Here is an example:</p>
+
+<pre><code>def sum(s):
+   &quot;&quot;&quot;
+   Return the sum of the elements in the sequence, s.
+   &gt;&gt;&gt; sum([1, 2, 3])
+   6
+   &quot;&quot;&quot;
+   total = 0           
+   for number in s:         # for each element in the sequence
+      total = total + number  # accumulate it into the partial sum
+   return total         # the final partial sum is the total sum</code></pre>
+
+<p>The line <code>total = total + number</code> is called an accumulation statement. This statement is so common that it has a special shorthand notation.</p>
+
+<pre><code>total += number</code></pre>
+
+<h3 class="question" id="q4">Question 4: Minmax</h3>
+
+<p>In c8 you often need to understand the spread of data.  Write a simple function to
+find the minimum and maximum elements in a sequence using a for loop.</p>
+
+
+
+<pre><code>def minmax(s):
+    &quot;&quot;&quot;Return the minimum and maximum elements of a sequence.
+
+    &gt;&gt;&gt; minmax([1, 2, &#x2d;3])
+    (&#x2d;3, 2)
+    &gt;&gt;&gt; minmax([2])
+    (2, 2)
+    &gt;&gt;&gt; minmax([])
+    (None, None)
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6e;&#x2c;&#x20;&#x6d;&#x78;&#x20;&#x3d;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6d;&#x6e;&#x20;&#x69;&#x73;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x20;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x3c;&#x20;&#x6d;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6e;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6d;&#x78;&#x20;&#x69;&#x73;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x20;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x3e;&#x20;&#x6d;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x78;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x6e;&#x2c;&#x20;&#x6d;&#x78;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q minmax --local</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#list-comprehensions">List Comprehensions</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Shopping</a></li>
+</ul>
+
+  <li><a href="#conditionals">Conditionals</a></li>
+  <ul>
+  <li><a href="#omitting-the-else">Omitting the else</a></li>
+  <li><a href="#q2">Question 2: arange</a></li>
+  <li><a href="#q3">Question 3: Coordinates</a></li>
+</ul>
+
+  <li><a href="#iteration">Iteration</a></li>
+  <ul>
+  <li><a href="#q4">Question 4: Minmax</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+
+</html>
