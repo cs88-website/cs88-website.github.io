@@ -195,7 +195,7 @@ for that.  One of them is <code>range</code>.
 <p>You can review <code>range</code> in <a href="http://composingprograms.com/pages/23-sequences.html">Section 2.3</a>
 of Composing Programs.</p>
 
-<h3 class="question" id="q1">Question 1: Shopping</h3>
+<h3 class="question" id="q1">Question 1: Shopping - Tax</h3>
 
 <p>Let's write a function that transforms a <code>shopping cart</code>, which we will represent as a list of 3 element tuples, by adding a specified <code>percent</code> tax to the price of each item. We will then compute the cost of all our items including tax.</p>
 
@@ -203,8 +203,9 @@ of Composing Programs.</p>
 
 <pre><code>[(item1, cost1, quantity1), (item2, cost2, quantity2), ..., (itemN, costN, quantityN)]</code></pre>
 
-<p>Implement <code>tax(shopping_cart, percent)</code> and <code>sum(shopping_cart)</code> so you can figure out how much you have to pay for all of your items.
-</p>
+<p>Implement <code>tax(shopping_cart, percent)</code> and <code>sum(shopping_cart)</code> so you can figure out how much you have to pay for all of your items.</p>
+
+
 
 <pre><code>def tax(shopping_cart, percent):
     &quot;&quot;&quot;
@@ -220,7 +221,21 @@ of Composing Programs.</p>
     &quot;&quot;&quot;
 <div class="alt 1">    "*** YOUR CODE HERE ***"
     return ______
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x61;&#x78;&#x4d;&#x75;&#x6c;&#x74;&#x69;&#x70;&#x6c;&#x69;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x28;&#x70;&#x65;&#x72;&#x63;&#x65;&#x6e;&#x74;&#x20;&#x2f;&#x20;&#x31;&#x30;&#x30;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x20;&#x2a;&#x20;&#x74;&#x61;&#x78;&#x4d;&#x75;&#x6c;&#x74;&#x69;&#x70;&#x6c;&#x69;&#x65;&#x72;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x68;&#x6f;&#x70;&#x70;&#x69;&#x6e;&#x67;&#x5f;&#x63;&#x61;&#x72;&#x74;&#x5d;</div>def cartSum(shopping_cart):
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x61;&#x78;&#x4d;&#x75;&#x6c;&#x74;&#x69;&#x70;&#x6c;&#x69;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x28;&#x70;&#x65;&#x72;&#x63;&#x65;&#x6e;&#x74;&#x20;&#x2f;&#x20;&#x31;&#x30;&#x30;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x20;&#x2a;&#x20;&#x74;&#x61;&#x78;&#x4d;&#x75;&#x6c;&#x74;&#x69;&#x70;&#x6c;&#x69;&#x65;&#x72;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x68;&#x6f;&#x70;&#x70;&#x69;&#x6e;&#x67;&#x5f;&#x63;&#x61;&#x72;&#x74;&#x5d;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q tax --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: Shopping - Cart Sum</h3>
+
+
+
+<pre><code>def cartSum(shopping_cart):
     &quot;&quot;&quot;
     Sums a shopping cart
 
@@ -233,18 +248,17 @@ of Composing Programs.</p>
     &gt;&gt;&gt; cartSum(taxedCal)
     2018.0
     &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
+<div class="alt 2">    "*** YOUR CODE HERE ***"
     return ______
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x5b;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2a;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x68;&#x6f;&#x70;&#x70;&#x69;&#x6e;&#x67;&#x5f;&#x63;&#x61;&#x72;&#x74;&#x5d;&#x29;</div></code></pre>
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x5b;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2a;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x68;&#x6f;&#x70;&#x70;&#x69;&#x6e;&#x67;&#x5f;&#x63;&#x61;&#x72;&#x74;&#x5d;&#x29;</div></code></pre>
 
 
-    <button id='1' class='toggleButton'>
+    <button id='2' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q tax --local
-python3 ok -q cartSum --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q cartSum --local</code></pre>
 
 
 <h2 id="conditionals">Conditionals</h2>
@@ -333,12 +347,13 @@ less than zero</code></pre>
 however, if you find that it makes your code harder to read, by all
 means use an <code>else</code> statement.</p>
 
-<h3 class="question" id="q2">Question 2: where_above</h3>
+<h3 class="question" id="q3">Question 3: Where Above</h3>
 
 <p>Lets use list comprehensions to implement some of the filters we could apply in Data 8's <code>table.where()</code> function.
-In particular, fill in the <code>where_above</code> function that returns a list that filters out any elements less than or equal to <code>limit</code>.</p>
+In particular, fill in the <code>where_above</code> function that returns a list that filters out any elements less than or equal to <code>limit</code>.
+Try to do this in only one line.</p>
 
-<div class="solution 2">
+
 
 <pre><code>def where_above(list, limit):
     &quot;&quot;&quot;
@@ -353,10 +368,12 @@ In particular, fill in the <code>where_above</code> function that returns a list
     [121, 122]
 
     &quot;&quot;&quot;
-    return [n for n in list if n &gt; limit]</code></pre>
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6e;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6e;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3e;&#x20;&#x6c;&#x69;&#x6d;&#x69;&#x74;&#x5d;</div></code></pre>
 
-</div>
-    <button id='2' class='toggleButton'>
+
+    <button id='3' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -385,7 +402,7 @@ and perform some computing on each iteration.  Here is an example:</p>
 
 <pre><code>total += number</code></pre>
 
-<h3 class="question" id="q3">Question 3: Minmax</h3>
+<h3 class="question" id="q4">Question 4: Minmax</h3>
 
 <p>In c8 you often need to understand the spread of data.  Write a simple function to
 find the minimum and maximum elements in a sequence using a for loop.</p>
@@ -402,11 +419,12 @@ find the minimum and maximum elements in a sequence using a for loop.</p>
     &gt;&gt;&gt; minmax([])
     (None, None)
     &quot;&quot;&quot;
-<div class="alt 3">    "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6e;&#x2c;&#x20;&#x6d;&#x78;&#x20;&#x3d;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6d;&#x6e;&#x20;&#x69;&#x73;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x20;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x3c;&#x20;&#x6d;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6e;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6d;&#x78;&#x20;&#x69;&#x73;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x20;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x3e;&#x20;&#x6d;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x78;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x6e;&#x2c;&#x20;&#x6d;&#x78;</div></code></pre>
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6e;&#x2c;&#x20;&#x6d;&#x78;&#x20;&#x3d;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6d;&#x6e;&#x20;&#x69;&#x73;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x20;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x3c;&#x20;&#x6d;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6e;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6d;&#x78;&#x20;&#x69;&#x73;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x20;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x3e;&#x20;&#x6d;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x78;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x6e;&#x2c;&#x20;&#x6d;&#x78;</div></code></pre>
 
 
-    <button id='3' class='toggleButton'>
+    <button id='4' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -431,11 +449,11 @@ predicate will compute a boolean expression involving that state.  And
 the body of the loop will advance the state, thereby iterating until
 the predicate is satisfied.</p>
 
-<h3 class="question" id="q4">Question 4: Closest Power of 2</h3>
+<h3 class="question" id="q5">Question 5: Closest Power of 2</h3>
 
 <p>Let's test out our knowledge by making a function that finds the largest power of 2 that is less than a given number. Fill in the function <code>closest_power_2</code> below to return the closest power of 2 using a while loop.</p>
 
-<div class="solution 4">
+
 
 <pre><code>def closest_power_2(x):
     &quot;&quot;&quot; Returns the closest power of 2 that is less than x
@@ -450,13 +468,12 @@ the predicate is satisfied.</p>
     &gt;&gt;&gt; closest_power_2(524290)
     524288
     &quot;&quot;&quot;
-    exponent = 0
-    while x &gt; (2 ** (exponent + 1)):
-        exponent += 1
-    return 2 ** exponent</code></pre>
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x70;&#x6f;&#x6e;&#x65;&#x6e;&#x74;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x78;&#x20;&#x3e;&#x20;&#x28;&#x32;&#x20;&#x2a;&#x2a;&#x20;&#x28;&#x65;&#x78;&#x70;&#x6f;&#x6e;&#x65;&#x6e;&#x74;&#x20;&#x2b;&#x20;&#x31;&#x29;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x70;&#x6f;&#x6e;&#x65;&#x6e;&#x74;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x32;&#x20;&#x2a;&#x2a;&#x20;&#x65;&#x78;&#x70;&#x6f;&#x6e;&#x65;&#x6e;&#x74;</div></code></pre>
 
-</div>
-    <button id='4' class='toggleButton'>
+
+    <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -474,23 +491,24 @@ the predicate is satisfied.</p>
   <li><a href="#scopes-and-nested-functions">Scopes and Nested Functions</a></li>
   <li><a href="#list-comprehensions">List Comprehensions</a></li>
   <ul>
-  <li><a href="#q1">Question 1: Shopping</a></li>
+  <li><a href="#q1">Question 1: Shopping - Tax</a></li>
+  <li><a href="#q2">Question 2: Shopping - Cart Sum</a></li>
 </ul>
 
   <li><a href="#conditionals">Conditionals</a></li>
   <ul>
   <li><a href="#omitting-the-else">Omitting the else</a></li>
-  <li><a href="#q2">Question 2: where_above</a></li>
+  <li><a href="#q3">Question 3: Where Above</a></li>
 </ul>
 
   <li><a href="#iteration-for-loops">Iteration: For loops</a></li>
   <ul>
-  <li><a href="#q3">Question 3: Minmax</a></li>
+  <li><a href="#q4">Question 4: Minmax</a></li>
 </ul>
 
   <li><a href="#iteration-while-loops">Iteration: While loops</a></li>
   <ul>
-  <li><a href="#q4">Question 4: Closest Power of 2</a></li>
+  <li><a href="#q5">Question 5: Closest Power of 2</a></li>
 </ul>
 
 </ul>

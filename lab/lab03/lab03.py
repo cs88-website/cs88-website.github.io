@@ -1,4 +1,5 @@
-# Question 1
+# Question 1-2
+
 
 def tax(shopping_cart, percent):
     """
@@ -14,6 +15,7 @@ def tax(shopping_cart, percent):
     """
     "*** YOUR CODE HERE ***"
     return ______
+
 def cartSum(shopping_cart):
     """
     Sums a shopping cart
@@ -31,7 +33,7 @@ def cartSum(shopping_cart):
     return ______
 
 
-# Question 2
+# Question 3
 
 def where_above(list, limit):
     """
@@ -46,10 +48,11 @@ def where_above(list, limit):
     [121, 122]
 
     """
-    return [n for n in list if n > limit]
+    "*** YOUR CODE HERE ***"
+    return ______
 
 
-# Question 3
+# Question 4
 
 def minmax(s):
     """Return the minimum and maximum elements of a sequence.
@@ -62,9 +65,10 @@ def minmax(s):
     (None, None)
     """
     "*** YOUR CODE HERE ***"
+    return ______
 
 
-# Question 4
+# Question 5
 
 def closest_power_2(x):
     """ Returns the closest power of 2 that is less than x
@@ -79,8 +83,6 @@ def closest_power_2(x):
     >>> closest_power_2(524290)
     524288
     """
-    exponent = 0
-    while x > (2 ** (exponent + 1)):
-        exponent += 1
-    return 2 ** exponent
+    "*** YOUR CODE HERE ***"
+    return ______
 
