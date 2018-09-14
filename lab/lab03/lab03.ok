@@ -1,0 +1,23 @@
+{
+    "name": "Lab 3",
+    "endpoint": "cal/cs88/fa18/lab03",
+    "src": [
+        "lab03.py"
+    ],
+    "tests": {
+        "lab03.py:tax": "doctest",
+        "lab03.py:cartSum": "doctest",
+        "lab03.py:where_above": "doctest",
+        "lab03.py:minmax": "doctest",
+        "lab03.py:closest_power_2": "doctest"
+
+
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
