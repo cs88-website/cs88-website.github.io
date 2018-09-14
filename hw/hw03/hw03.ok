@@ -9,6 +9,7 @@
         "hw03.py:nonzero": "doctest",
         "hw03.py:hailstone": "doctest",
         "hw03.py:odd_even": "doctest",
+        "hw03.py:classify": "doctest",
         "hw03.py:decode": "doctest"
     },
     "protocols": [
