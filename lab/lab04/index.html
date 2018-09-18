@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 4: Higher Order Functions | CS 88 Fall 2018</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 4</span>: Higher Order Functions</h1>
+    </div>
+
+    <p><i>Due at 9:00pm on 09/27/2018.</i></p>
+
+
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab04.zip">lab04.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the OK autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab using <code>ok</code>. You may submit more than once before the
+deadline; only the final submission will be graded.</p>
+
+
+<ul>
+  <li>All questions for this lab are required. To submit the assignment, upload lab04.py to Okpy.org.</li>
+</ul>
+
+
+    
+
+<p>In the previous lab, you went through a crash course going through the wonders of list comprehension, conditionals and iteration! In this week’s lab, we will begin to explore the world of higher order functions!</p>
+
+
+<h2 id="higher-order-functions">Higher Order Functions</h2>
+
+
+<p>Thus far, in Python Tutor, we’ve visualized Python programs in the form of environment diagrams that display which variables are tied to which values within different frames. However, as we noted when introducing Python, values are not necessarily just primitive expressions or types like float, string, integer, and boolean.</p>
+
+<p>In a nutshell, a higher order function is any function that takes a function as a parameter or provides a function has a return value. We will be exploring many applications of higher order functions.</p>
+
+<p>Let's think about a more practical use of higher order functions. Pretend you’re a math teacher, and you want to teach your students the difference between the equations for a line and a parabola given the same set of inputs. Let’s step through a Python Tutor example!</p>
+
+<p>Open Python Tutor in a new tab</p>
+
+<p><a href="http://pythontutor.com/visualize.html#mode=edit">PythonTutor</a></p>
+
+<p>Paste this code into the interpreter:</p>
+
+<pre><code>def plotter(equation):
+    points = [1, 2, 3, 4, 5]
+    result = [equation(point) for point in points]
+    return result
+
+def line(x):
+    m = 2
+    b = 1
+    return m * x + b
+
+def parabola(x):
+    a = 4
+    b = &#x2d;2
+    c = 1
+    return a*(x**2) + b*x + c
+
+line_graph = plotter(line)
+parabola_graph = plotter(parabola)
+print(line_graph)
+print(parabola_graph)</code></pre>
+
+<p>Now step through the code. Notice how both <code>line</code> and <code>parabola</code> are functions, and how the first function, <code>plotter</code>, takes in each as a parameter, and maps the functionality onto each element of <code>points</code> in the form of a list comprehension. In this case, <code>plotter</code>'s higher order nature comes from the fact that it takes in a function as a parameter.</p>
+
+
+<h2 id="pass-by-reference">Pass by Reference</h2>
+
+
+<p>Something interesting occurred in the previous Python tutor example. On step 4, at line 17, notice that something happens in the environment diagram which we’ve never seen before.</p>
+
+<p><img class="img-responsive center-block" src="assets/pass-reference-1.png" alt="hof-1"></p>
+
+<p>What’s happening here? We know that in Line 17, the function “plotter” is getting called, and we’re passing in the parameter <code>line</code>. From the global frame, we can see that unlike before, the value of <code>line</code> is not a primitive expression, but a function! As a result, when a new frame for <code>plotter</code> is created, the value of the parameter <code>equation</code> would be pointing at the <code>line</code> function object!</p>
+
+<p>You might be asking yourself an important question. From previous Python Tutors, you might remember that whenever we passed in a value as a parameter, the value would be copied over as opposed to having a new pointer created. To use a simple clarifying example, if we had a function like</p>
+
+<pre><code>def adder(a, b):
+return a + b
+
+x = 3
+y = 4
+adder(x, y)</code></pre>
+
+<p>In our environment diagram, the values of parameter <code>a</code> and <code>b</code> would be 3 and 4.</p>
+
+<p><img class="img-responsive center-block" src="assets/pass-reference-2.png" alt="hof-2"></p>
+
+<p>So that begs the question, wouldn’t it make more sense if the <code>equation</code> variable within plotter pointed at another copy of the <code>line</code> function object, as opposed to pointing at the same value as the <code>line</code> variable in the global frame?</p>
+
+<p>In Python, for values that are objects, such as functions, and not primitive expressions like strings or integers, Python duplicates the <em>identity</em>, not the <em>value</em> of specific functions. A simple analogy to put things in perspective would be a shared editing platform such as Google Drive! Let’s say both you and your friend want to work on a particular assignment. When you pass something by value, effectively, you are giving someone the right to modify the original document and make whatever changes they would like. Similarly, in this situation, when an object is passed by reference, its associated variables will be <em>pointing</em> at the value, as opposed to copying the value in its entirety.</p>
+
+
+<h2 id="functions-as-arguments-funargs">Functions as Arguments (Funargs)</h2>
+
+
+<p>So far we have used several type of data - ints, floats, booleans,
+strings, lists, tuples, and numpy.arrays.  We perform operations on them in
+constructing expressions; we assign them to variables; we pass them to functions
+and return them as results.  So what about functions themselves?  So far we have 
+<em>called them</em>, that is we applied them to arguments.  Sometimes we <em>compose</em> them -
+just like in math; apply a function to the result of applying a function.  You
+did that several times above.</p>
+
+<p>In modern programming languages like Python, functions are <em>first class citizens</em>;
+we can pass them around and put them in data structures.  Take a look at the following
+and try it out for various functions that you have available in the <code>.py</code> file for this
+lab.</p>
+
+<pre><code>&gt;&gt;&gt; square(square(3))
+81
+&gt;&gt;&gt; square
+&lt;function square at 0x102033d90&gt;
+&gt;&gt;&gt; x = square
+&gt;&gt;&gt; x(3)
+9
+&gt;&gt;&gt; x(x(2))
+16
+&gt;&gt;&gt; </code></pre>
+
+<h3 class="question" id="q1">Question 1: This Question is so Derivative</h3>
+
+<p>Define a function <code>make_derivative</code> that returns a function: the derivative of a
+function <code>f</code>. Assuming that <code>f</code> is a single-variable mathematical function, its
+derivative will also be a single-variable function. When called with a number
+<code>a</code>, the derivative will estimate the slope of <code>f</code> at point <code>(a, f(a))</code>.</p>
+
+<p>Recall that the formula for finding the derivative of <code>f</code> at point <code>a</code> is:</p>
+
+<p><img class="img-responsive center-block" src="assets/derivative.png" alt="Derivative"></p>
+
+<p>where <code>h</code> approaches 0. We will approximate the derivative by choosing a very
+small value for <code>h</code>. The closer <code>h</code> is to 0, the better the estimate of the
+derivative will be.</p>
+
+
+
+<pre><code>def make_derivative(f, h=1e&#x2d;5):
+    &quot;&quot;&quot;Returns a function that approximates the derivative of f.
+
+    Recall that f&#x27;(a) = (f(a + h) &#x2d; f(a)) / h as h approaches 0. We will
+    approximate the derivative by choosing a very small value for h.
+
+    &gt;&gt;&gt; square = lambda x: x*x
+    &gt;&gt;&gt; derivative = make_derivative(square)
+    &gt;&gt;&gt; result = derivative(3)
+    &gt;&gt;&gt; round(result, 3) # approximately 2*3
+    6.0
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+    return _____
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x66;&#x28;&#x78;&#x20;&#x2b;&#x20;&#x68;&#x29;&#x20;&#x2d;&#x20;&#x66;&#x28;&#x78;&#x29;&#x29;&#x20;&#x2f;&#x20;&#x68;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q make_derivative --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: Intersect</h3>
+
+<p>Two functions intersect at an argument <code>x</code> if they return equal values.
+Implement <code>intersects</code>, which takes a one-argument functions <code>f</code> and a value
+<code>x</code>. It returns a function that takes another function <code>g</code> and returns whether
+<code>f</code> and <code>g</code> intersect at <code>x</code>.</p>
+
+
+
+<pre><code>def intersects(f, x):
+    &quot;&quot;&quot;Returns a function that returns whether f intersects g at x.
+
+    &gt;&gt;&gt; at_three = intersects(square, 3)
+    &gt;&gt;&gt; at_three(triple) # triple(3) == square(3)
+    True
+    &gt;&gt;&gt; at_three(increment)
+    False
+    &gt;&gt;&gt; at_one = intersects(identity, 1)
+    &gt;&gt;&gt; at_one(square)
+    True
+    &gt;&gt;&gt; at_one(triple)
+    False
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+    return _____
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x61;&#x74;&#x5f;&#x78;&#x28;&#x67;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x78;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x67;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x74;&#x5f;&#x78;</div></code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q intersects --local</code></pre>
+
+<h3 class="question" id="q3">Question 3: Piecewise</h3>
+
+<p>Implement <code>piecewise</code>, which takes two one-argument functions, <code>f</code> and <code>g</code>,
+along with a number <code>b</code>. It returns a new function that takes a number <code>x</code> and
+returns either <code>f(x)</code> if <code>x</code> is less than <code>b</code>, or <code>g(x)</code> if <code>x</code> is greater than
+or equal to <code>b</code>.</p>
+
+
+
+<pre><code>def piecewise(f, g, b):
+    &quot;&quot;&quot;Returns the piecewise function h where:
+
+    h(x) = f(x) if x &lt; b,
+           g(x) otherwise
+
+    &gt;&gt;&gt; def negate(x):
+    ...     return &#x2d;x
+    &gt;&gt;&gt; abs_value = piecewise(negate, identity, 0)
+    &gt;&gt;&gt; abs_value(6)
+    6
+    &gt;&gt;&gt; abs_value(&#x2d;1)
+    1
+    &quot;&quot;&quot;
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+    return _____
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x68;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x78;&#x20;&#x3c;&#x20;&#x62;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x68;</div></code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q piecewise --local</code></pre>
+
+
+<h2 id="introduction-to-map">Introduction to 'Map'</h2>
+
+
+<p>Higher order functions fit into a domain of programming known as "functional" or "functional form" programming, centered around this idea of passing and returning functions as parameters and arguments. In class, you learned the command <code>map</code> that is a fundamental example of higher order functions.</p>
+
+<p>Let's take a closer look at how <code>map</code> works. At its core, <code>map</code> applies a function to all items in an input list. It takes in a function as the first parameter and a series of inputs as the second parameter.</p>
+
+<pre><code>map(function_to_apply, list_of_inputs)</code></pre>
+
+<p>A potentially easier way to think about <code>map</code> is to draw an equivalent with a list comprehension! Given the <code>func</code> (function to apply) and <code>inputs</code> (list of inputs), a map is similar to this:</p>
+
+<pre><code>[func(x) for x in inputs]</code></pre>
+
+<p>Keep in mind that the <code>map</code> function actually returns a <code>map</code> object, not a list, by default. Consequently, in order to make the result actionable, it's important for us to adjust the return value of map to a <code>list</code> by passing the map object into the <code>list()</code> function.</p>
+
+<h3 class="question" id="q4">Question 4: Converter</h3>
+Given a list of temperatures in Celsius format, convert each temperature value in a list from Celsius to Fahrenheit.
+
+<p>A couple tips:</p>
+
+<ul>
+  <li>Make sure to use the <code>map</code> keyword for this solution!</li>
+  <li>The temperature converter function will be passed in as a method, so there is no need for you to write it again!</li>
+</ul>
+
+<p>If you're feeling stuck, think about the parameters of <code>map</code>. This is meant to be a simple problem that provides hands-on experience of understanding what <code>map</code> does.</p>
+
+
+
+<pre><code>def converter(temperatures, convert):
+    &quot;&quot;&quot;Returns a function that converts each Celsius temperature to Fahrenheit
+
+    &gt;&gt;&gt; convert = lambda x: 9.0*x/5.0 + 32
+    &gt;&gt;&gt; temperatures = [10, 20, 30, 40, 50]
+    &gt;&gt;&gt; converter(temperatures, convert)
+    [50.0, 68.0, 86.0, 104.0, 122.0]
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+    return _____
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6d;&#x61;&#x70;&#x28;&#x63;&#x6f;&#x6e;&#x76;&#x65;&#x72;&#x74;&#x2c;&#x20;&#x74;&#x65;&#x6d;&#x70;&#x65;&#x72;&#x61;&#x74;&#x75;&#x72;&#x65;&#x73;&#x29;&#x29;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q converter --local</code></pre>
+
+
+<h2 id="introduction-to-filter">Introduction to 'Filter'</h2>
+
+
+<p>The <code>filter</code> keyword is similar in nature to the <code>map</code> with a very important distinction. In <code>map</code>, the function we pass in is being applied to every item in our sequence. In <code>filter</code>, the function we pass in <em>filters</em> the elements for which the function returns true. For example, if I wanted to remove all negative numbers from a list, I could use the <code>filter</code> function to identify values that satisfy the greater than or equal to 0 criterion.</p>
+
+<pre><code>def isPositive(number):
+    return number &gt;= 0
+
+numbers = [&#x2d;1, 1, &#x2d;2, 2, &#x2d;3, 3, &#x2d;4, 4]
+positive_nums = list(filter(isPositive, numbers))</code></pre>
+
+<p>Again, similar to <code>map</code>, the output of the <code>filter</code> function is a <code>filter</code> object, not a list, so casting is required. In addition, continuing off the above example, the equivalent for filter in the form of a list comprehension would look something along the lines of this:</p>
+
+<pre><code>positive_nums = [x for x in numbers if isPositive(numbers)]</code></pre>
+
+
+<h2 id="introduction-to-reduce">Introduction to 'Reduce'</h2>
+
+
+<p>One of the most useful functional functions we'll encounter in this class is the <code>reduce</code> keyword. Before diving into the inner workings, it's best to start off with a iterative equivalent that will helps us better appreciate the benefits of using <code>reduce</code>.</p>
+
+<p>Let's say I wanted to calculate the product of the square roots of a list of numbers. The non-<code>reduce</code> version of this code would look something along the lines of this:</p>
+
+<pre><code>product = 1
+numbers = [4, 9, 16, 25, 36]
+
+for num in numbers:
+    product = product * sqrt(numbers)</code></pre>
+
+<p><code>Reduce</code> can be broken down into three different parameters: A function, a sequence, and an identity. The function and sequence are the same parameters as before. The identity can be thought of as the value through which function outputs are aggregated. In the above case, the identity would be the <code>product</code> variable.</p>
+
+<p><code>Reduce</code> is very useful for performing computations on lists that involve every element in the list. Computations are performed in a rolling fashion, where the function acts upon each element one at a time.</p>
+
+<h3 class="question" id="q5">Question 5: reduce</h3>
+
+<p>Write the higher order function <code>reduce</code> which takes</p>
+
+<ul>
+  <li>reducer - a two-argument function that reduces elements to a single value</li>
+  <li>s - a sequence of values</li>
+  <li>base - the starting value in the reduction.  This is usually the identity of the reducer</li>
+</ul>
+
+<p>If you're feeling stuck, think about the parameters of <code>reduce</code>. This is meant to be a simple problem that provides hands-on experience of understanding what <code>reduce</code> does.</p>
+
+
+
+<pre><code>def reduce(reducer, s, base):
+    &quot;&quot;&quot;Reduce a sequence under a two&#x2d;argument function starting from a base value.
+
+    &gt;&gt;&gt; reduce(add, [1,2,3,4], 0)
+    10
+    &gt;&gt;&gt; reduce(mul, [1,2,3,4], 0)
+    0
+    &gt;&gt;&gt; reduce(mul, [1,2,3,4], 1)
+    24
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+    return _____
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#x72;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2c;&#x20;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
+
+
+    <button id='5' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q reduce --local</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#higher-order-functions">Higher Order Functions</a></li>
+  <li><a href="#pass-by-reference">Pass by Reference</a></li>
+  <li><a href="#functions-as-arguments-funargs">Functions as Arguments (Funargs)</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: This Question is so Derivative</a></li>
+  <li><a href="#q2">Question 2: Intersect</a></li>
+  <li><a href="#q3">Question 3: Piecewise</a></li>
+</ul>
+
+  <li><a href="#introduction-to-map">Introduction to 'Map'</a></li>
+  <ul>
+  <li><a href="#q4">Question 4: Converter</a></li>
+</ul>
+
+  <li><a href="#introduction-to-filter">Introduction to 'Filter'</a></li>
+  <li><a href="#introduction-to-reduce">Introduction to 'Reduce'</a></li>
+  <ul>
+  <li><a href="#q5">Question 5: reduce</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+
+</html>
