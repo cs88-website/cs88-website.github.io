@@ -1,0 +1,22 @@
+{
+    "name": "Homework 3",
+    "endpoint": "cal/cs88/fa18/hw03",
+    "src": [
+        "hw03.py"
+    ],
+    "tests": {
+        "hw03.py:falling": "doctest",
+        "hw03.py:nonzero": "doctest",
+        "hw03.py:hailstone": "doctest",
+        "hw03.py:odd_even": "doctest",
+        "hw03.py:classify": "doctest",
+        "hw03.py:decode": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
