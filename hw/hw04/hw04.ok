@@ -6,7 +6,7 @@
     ],
     "tests": {
         "hw04.py:coords: "doctest",
-        "hw04.py:repeated": "doctest"
+        "hw04.py:repeated": "doctest",
         "hw04.py:count_cond: "doctest",
         "hw04.py:match-and-apply": "doctest"
     },

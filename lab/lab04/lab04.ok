@@ -6,7 +6,7 @@
     ],
     "tests": {
         "lab04.py:data-clean": "doctest",
-        "lab04.py:reduce": "doctest"
+        "lab04.py:reduce": "doctest",
         "lab04.py:piecewise": "doctest",
         "lab04.py:buzzer": "doctest",
         "lab04.py:intersects": "doctest"
