@@ -50,7 +50,7 @@ def double(f):
 
 def count_cond(condition, n):
     """
-    >>> def devisible(n, i):
+    >>> def divisible(n, i):
     ...     return n % i == 0
     >>> count_cond(divisible, 2) # 1, 2
     2
