@@ -23,9 +23,15 @@ def data_clean(a):
 
 # Question 2
 
+from operator import add, mul
+
 def reduce(reducer, s, base):
     """Reduce a sequence under a two-argument function starting from a base value.
 
+    >>> def add(x, y):
+    ...     return x + y
+    >>> def mul(x, y):
+    ...     return x*y
     >>> reduce(add, [1,2,3,4], 0)
     10
     >>> reduce(mul, [1,2,3,4], 0)
@@ -47,6 +53,8 @@ def piecewise(f, g, b):
 
     >>> def negate(x):
     ...     return -x
+    >>> def identity(x):
+    ...     return x
     >>> abs_value = piecewise(negate, identity, 0)
     >>> abs_value(6)
     6
@@ -85,6 +93,14 @@ def make_buzzer(n):
 def intersects(f, x):
     """Returns a function that returns whether f intersects g at x.
 
+    >>> def square(x):
+    ...     return x * x
+    >>> def triple(x):
+    ...     return x * 3
+    >>> def increment(x):
+    ...     return x + 1
+    >>> def identity(x):
+    ...     return x
     >>> at_three = intersects(square, 3)
     >>> at_three(triple) # triple(3) == square(3)
     True

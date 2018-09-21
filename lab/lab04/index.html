@@ -201,7 +201,7 @@ Given a list of float numbers, round each number in the list down to the nearest
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q data-clean --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q data_clean --local</code></pre>
 
 
 <h2 id="introduction-to-filter">Introduction to 'Filter'</h2>
@@ -251,9 +251,15 @@ for num in numbers:
 
 
 
-<pre><code>def reduce(reducer, s, base):
+<pre><code>from operator import add, mul
+
+def reduce(reducer, s, base):
     &quot;&quot;&quot;Reduce a sequence under a two&#x2d;argument function starting from a base value.
 
+    &gt;&gt;&gt; def add(x, y):
+    ...     return x + y
+    &gt;&gt;&gt; def mul(x, y):
+    ...     return x*y
     &gt;&gt;&gt; reduce(add, [1,2,3,4], 0)
     10
     &gt;&gt;&gt; reduce(mul, [1,2,3,4], 0)
@@ -322,6 +328,8 @@ or equal to <code>b</code>.</p>
 
     &gt;&gt;&gt; def negate(x):
     ...     return &#x2d;x
+    &gt;&gt;&gt; def identity(x):
+    ...     return x
     &gt;&gt;&gt; abs_value = piecewise(negate, identity, 0)
     &gt;&gt;&gt; abs_value(6)
     6
@@ -390,6 +398,14 @@ Implement <code>intersects</code>, which takes a one-argument functions <code>f<
 <pre><code>def intersects(f, x):
     &quot;&quot;&quot;Returns a function that returns whether f intersects g at x.
 
+    &gt;&gt;&gt; def square(x):
+    ...     return x * x
+    &gt;&gt;&gt; def triple(x):
+    ...     return x * 3
+    &gt;&gt;&gt; def increment(x):
+    ...     return x + 1
+    &gt;&gt;&gt; def identity(x):
+    ...     return x
     &gt;&gt;&gt; at_three = intersects(square, 3)
     &gt;&gt;&gt; at_three(triple) # triple(3) == square(3)
     True
