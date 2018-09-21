@@ -2,7 +2,7 @@
 
 def data_clean(a):
     """Write a function that rounds each element of the list down to the nearest tens place.
-    Then, calculate and return the sum of all elements from both lists.
+
 
     >>> a = [12, 23, 34]
     >>> data_clean(a)

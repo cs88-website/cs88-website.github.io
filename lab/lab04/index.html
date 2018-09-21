@@ -176,7 +176,6 @@ Given a list of float numbers, round each number in the list down to the nearest
 
 <pre><code>def data_clean(a):
     &quot;&quot;&quot;Write a function that rounds each element of the list down to the nearest tens place.
-    Then, calculate and return the sum of all elements from both lists.
 
     &gt;&gt;&gt; a = [12, 23, 34]
     &gt;&gt;&gt; data_clean(a)
@@ -231,7 +230,7 @@ positive_nums = list(filter(isPositive, numbers))</code></pre>
 numbers = [4, 9, 16, 25, 36]
 
 for num in numbers:
-    product = product * sqrt(numbers)</code></pre>
+    product = product * sqrt(num)</code></pre>
 
 <p><code>Reduce</code> can be broken down into three different parameters: A function, a sequence, and an identity. The function and sequence are the same parameters as before. The identity can be thought of as the value through which function outputs are aggregated. In the above case, the identity would be the <code>product</code> variable.</p>
 
