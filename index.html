@@ -220,7 +220,7 @@
 
         <tr>
             <td class='resource-name'>Lecture 4: Higher Order Functions
-(<a href="assets/slides/04-Higher_Order_Functions_1pp.pdf">1pp</a>) (<a href="assets/slides/04-Higher_Order_Functions_6pps.pdf">6pps</a>) (<a href="assets/slides/04-Higher_Order_Functions.ipynb">ipynb</a>)</td>
+(1pp) (6pps) (<a href="assets/slides/04-Higher_Order_Functions.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
@@ -404,6 +404,12 @@
         </tr>
 
         <tr>
+            <td class='resource-name'><a href="hw/hw04/">Homework 4</a></td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
             <td class='resource-name'><a href="lab/lab00/">Lab 0: Community and Setup</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
@@ -423,6 +429,12 @@
 
         <tr>
             <td class='resource-name'><a href="lab/lab03/">Lab 3: List Comprehensions, Conditionals and Iteration</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab04/">Lab 4: Higher Order Functions</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
@@ -699,14 +711,30 @@
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum odd">5</td>
+<td rowspan="3" class="weeknum odd">5</td>
 <td>Mon 9/17</td>
 <td>Higher Order Functions
 <br/>
-(<a href="assets/slides/04-Higher_Order_Functions_1pp.pdf">1pp</a>) (<a href="assets/slides/04-Higher_Order_Functions_6pps.pdf">6pps</a>) (<a href="assets/slides/04-Higher_Order_Functions.ipynb">ipynb</a>)</td>
+(1pp) (6pps) (<a href="assets/slides/04-Higher_Order_Functions.ipynb">ipynb</a>)</td>
 <td><a href="http://composingprograms.com/pages/16-higher-order-functions.html">1.6</a></td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Thu 9/20</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab04/">Lab 4: Higher Order Functions</a><br/>(due Thu 9/27)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 9/21</td>
+<td></td>
+<td></td>
+<td></td>
+<td><a href="hw/hw04/">Homework 4</a><br/>(due Fri 9/28)</td>
 <td></td>
 </tr>
 <tr>
@@ -921,7 +949,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "8/30/18", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/24/18"}, {"due": "9/6/18", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "8/31/18"}, {"due": "9/13/18", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/7/18"}, {"due": "9/20/18", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/14/18"}, {"due": "8/31/18", "link": "hw/hw00/", "name": "Homework 0", "release": "8/24/18"}, {"due": "9/9/18", "link": "hw/hw01/", "name": "Homework 1", "release": "8/31/18"}, {"due": "9/14/18", "link": "hw/hw02/", "name": "Homework 2", "release": "9/7/18"}, {"due": "9/21/18", "link": "hw/hw03/", "name": "Homework 3", "release": "9/14/18"}];
+  var assignments = [{"due": "8/30/18", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/24/18"}, {"due": "9/6/18", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "8/31/18"}, {"due": "9/13/18", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/7/18"}, {"due": "9/20/18", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/14/18"}, {"due": "9/27/18", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "9/20/18"}, {"due": "8/31/18", "link": "hw/hw00/", "name": "Homework 0", "release": "8/24/18"}, {"due": "9/9/18", "link": "hw/hw01/", "name": "Homework 1", "release": "8/31/18"}, {"due": "9/14/18", "link": "hw/hw02/", "name": "Homework 2", "release": "9/7/18"}, {"due": "9/21/18", "link": "hw/hw03/", "name": "Homework 3", "release": "9/14/18"}, {"due": "9/28/18", "link": "hw/hw04/", "name": "Homework 4", "release": "9/21/18"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
