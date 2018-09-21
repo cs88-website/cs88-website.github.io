@@ -8,14 +8,8 @@
         "hw04.py:coords": "doctest",
         "hw04.py:repeated": "doctest",
         "hw04.py:double": "doctest",
-<<<<<<< HEAD
-        "hw04.py:count-cond: "doctest",
-        "hw04.py:match-and-apply": "doctest"
-
-=======
         "hw04.py:count_cond": "doctest",
         "hw04.py:match_and_apply": "doctest"
->>>>>>> b9be2ea6a47a4669bba36c28e2cd7c785af6e871
     },
     "protocols": [
         "restore",
