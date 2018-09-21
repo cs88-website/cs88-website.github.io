@@ -1,14 +1,14 @@
 {
     "name": "Homework 4",
-    "endpoint": "cal/cs61a/fa18/hw04",
+    "endpoint": "cal/cs88/fa18/hw04",
     "src": [
         "hw04.py"
     ],
     "tests": {
-        "hw04.py:coords: "doctest",
+        "hw04.py:coords": "doctest",
         "hw04.py:repeated": "doctest",
         "hw04.py:double": "doctest",
-        "hw04.py:count_cond: "doctest",
+        "hw04.py:count_cond": "doctest",
         "hw04.py:match_and_apply": "doctest"
     },
     "protocols": [
