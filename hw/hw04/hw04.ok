@@ -1,0 +1,20 @@
+{
+    "name": "Homework 4",
+    "endpoint": "cal/cs61a/fa18/hw04",
+    "src": [
+        "hw04.py"
+    ],
+    "tests": {
+        "hw04.py:coords: "doctest",
+        "hw04.py:repeated": "doctest"
+        "hw04.py:count_cond: "doctest",
+        "hw04.py:match-and-apply": "doctest",
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
