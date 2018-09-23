@@ -86,8 +86,10 @@ def match_and_apply(pairs, function):
     >>> result
     16
     >>> result = func(1)
+    >>> result
     4
     >>> result = func(7)
+    >>> result
     64
     >>> result = func(15)
     >>> print(result)
