@@ -16,7 +16,12 @@ def coords(fn, seq, lower, upper):
 
 def repeated(f, n):
     """Return the function that computes the nth application of f.
-
+    >>> def increment(x):
+    ...     return x + 1
+    >>> def square(x):
+    ...     return x**2
+    >>> def triple(x):
+    ...     return x*3
     >>> add_three = repeated(increment, 3)
     >>> add_three(5)
     8
@@ -41,6 +46,8 @@ def double(f):
 
     f -- a function that takes one argument
 
+    >>> def square(x):
+    ...     return x**2
     >>> double(square)(2)
     16
     """

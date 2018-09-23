@@ -146,7 +146,12 @@ compute <code>f(f(....(f(x))....))</code> (apply <code>f</code> a total <code>n<
 
 <pre><code>def repeated(f, n):
     &quot;&quot;&quot;Return the function that computes the nth application of f.
-
+    &gt;&gt;&gt; def increment(x):
+    ...     return x + 1
+    &gt;&gt;&gt; def square(x):
+    ...     return x**2
+    &gt;&gt;&gt; def triple(x):
+    ...     return x*3
     &gt;&gt;&gt; add_three = repeated(increment, 3)
     &gt;&gt;&gt; add_three(5)
     8
@@ -185,6 +190,8 @@ function that returns two more:</p>
 
     f &#x2d;&#x2d; a function that takes one argument
 
+    &gt;&gt;&gt; def square(x):
+    ...     return x**2
     &gt;&gt;&gt; double(square)(2)
     16
     &quot;&quot;&quot;
