@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 5: Recursion | CS 88 Fall 2018</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 5</span>: Recursion</h1>
+    </div>
+
+    <p><i>Due at 9:00pm on 10/04/2018.</i></p>
+
+
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab05.zip">lab05.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the OK autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>When you are done, submit the lab by uploading the <code>lab05.py</code>
+    file to <a href="https://okpy.org">okpy.org</a>. You may submit more than once before the
+    deadline; only the final submission will be graded.</p>
+
+
+
+
+
+    
+
+
+<h2 id="recursion">Recursion</h2>
+
+
+<p>A recursive function is a function that calls itself in its body,
+either directly or indirectly. Recursive functions have three important
+components:</p>
+
+<ol>
+  <li>Base case(s), the simplest possible form of the problem you're trying to solve.</li>
+  <li>Consider a recursive call on a smaller argument.</li>
+  <li>Recursive case(s), where the function calls itself with a <em>simpler
+  argument</em> as part of the computation.</li>
+</ol>
+
+<p>Let's look at the canonical example, <code>factorial</code>:</p>
+
+<pre><code>def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n &#x2d; 1)</code></pre>
+
+<p>We know by its definition that <code>0!</code> is <code>1</code>. So we choose <code>n = 0</code> as our
+base case. The recursive step also follows from the definition of
+factorial, i.e.  <code>n! = n * (n&#x2d;1)!</code>.</p>
+
+<p>The next few questions in lab will have you writing recursive
+functions.  Here are some general tips:</p>
+
+<ul>
+  <li>Consider how you can solve the current problem using the solution to
+  a simpler version of the problem. Remember to <em>trust the recursion</em>:
+  assume that your solution to the simpler problem works correctly
+  without worrying about how.</li>
+  <li>Think about what the answer would be in the simplest possible
+  case(s). These will be your base cases - the stopping points for your
+  recursive calls. Make sure to consider the possibility that you're
+  missing base cases (this is a common way recursive solutions fail).</li>
+  <li>It may help to write the iterative version first.</li>
+</ul>
+
+<!-- <table class='table table-bordered'>
+
+<pre><code>&lt;tr&gt;
+    &lt;th&gt;Function Type:&lt;/th&gt;
+    &lt;th&gt;Recusive&lt;/th&gt;
+    &lt;th&gt;Iterative&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Function&lt;/td&gt;
+    &lt;td&gt;&lt;pre&gt; def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n &#x2d; 1)&lt;pre&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;pre&gt; def factorial(n):
+    total = 1
+    while n &gt; 0:
+        total *= n
+        n &#x2d;= 1
+    return total
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Ends calculations&lt;/td&gt;
+    &lt;td&gt;When it hits the base case&lt;/td&gt;
+    &lt;td&gt;When n !&gt; 0, it will end.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Means of traversal&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;factorial(&lt;strong&gt;n &#x2d; 1&lt;/strong&gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;&lt;strong&gt;n &#x2d;= 1&lt;/strong&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt; 
+&lt;/tr&gt;</code></pre>
+
+</table> -->
+
+
+<h2 id="required-questions">Required Questions</h2>
+
+
+<h3 class="question" id="q1">Question 1: Sine</h3>
+
+<p>Now we're going to approximate the sine trigonemetric function using 2
+useful facts. One is that <em>sin(x)</em> is approximately equal to <em>x</em> as <em>x</em>
+gets small (for this question, below 0.0001). The other fact is the
+trigonometric identity</p>
+
+<p><img class="img-responsive center-block" src="assets/sin.gif" alt="sine"></p>
+
+<p>Using these two facts, write a function <code>sine</code> that returns the sine of
+a value in radians.</p>
+
+
+
+<pre><code>def sine(x):
+    &quot;&quot;&quot;Returns the value of sine(x), where x is a value in radians. Use 0.0001 as a threshold.
+
+    &gt;&gt;&gt; from math import pi
+    &gt;&gt;&gt; sine(pi) #Notice how the value is very small but not quite 0.
+    &#x2d;1.482085565385205e&#x2d;09 
+    &gt;&gt;&gt; sine(pi/2)
+    1.0
+    &gt;&gt;&gt; sine((7 * pi)/2)
+    &#x2d;1.0
+    &gt;&gt;&gt; sine(1.5)
+    0.9974949867067586
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x61;&#x62;&#x73;&#x28;&#x78;&#x29;&#x20;&#x3c;&#x20;&#x30;&#x2e;&#x30;&#x30;&#x30;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x33;&#x20;&#x2a;&#x20;&#x73;&#x69;&#x6e;&#x65;&#x28;&#x78;&#x20;&#x2f;&#x20;&#x33;&#x29;&#x20;&#x2d;&#x20;&#x34;&#x20;&#x2a;&#x20;&#x70;&#x6f;&#x77;&#x28;&#x73;&#x69;&#x6e;&#x65;&#x28;&#x78;&#x20;&#x2f;&#x20;&#x33;&#x29;&#x2c;&#x20;&#x33;&#x29;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q sine --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: G function</h3>
+
+<p>A mathematical function <code>G</code> on positive integers is defined by two
+cases:</p>
+
+<pre><code>G(n) = n,                                       if n &lt;= 3
+G(n) = G(n &#x2d; 1) + 2 * G(n &#x2d; 2) + 3 * G(n &#x2d; 3),  if n &gt; 3</code></pre>
+
+<p>Write a recursive function <code>g</code> that computes <code>G(n)</code>.</p>
+
+
+
+<pre><code>def g(n):
+    &quot;&quot;&quot;Return the value of G(n), computed recursively.
+
+    &gt;&gt;&gt; g(1)
+    1
+    &gt;&gt;&gt; g(2)
+    2
+    &gt;&gt;&gt; g(3)
+    3
+    &gt;&gt;&gt; g(4)
+    10
+    &gt;&gt;&gt; g(5)
+    22
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x69;&#x6e;&#x20;&#x28;&#x31;&#x2c;&#x20;&#x32;&#x2c;&#x20;&#x33;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x28;&#x6e;&#x2d;&#x31;&#x29;&#x20;&#x2b;&#x20;&#x32;&#x2a;&#x67;&#x28;&#x6e;&#x2d;&#x32;&#x29;&#x20;&#x2b;&#x20;&#x33;&#x2a;&#x67;&#x28;&#x6e;&#x2d;&#x33;&#x29;</div>
+# Iterative solution, if you&#x27;re curious
+def g_iter(n):
+    &quot;&quot;&quot;Return the value of G(n), computed iteratively.
+
+    &gt;&gt;&gt; g_iter(1)
+    1
+    &gt;&gt;&gt; g_iter(2)
+    2
+    &gt;&gt;&gt; g_iter(3)
+    3
+    &gt;&gt;&gt; g_iter(4)
+    10
+    &gt;&gt;&gt; g_iter(5)
+    22
+    &quot;&quot;&quot;
+    if n == 1 or n == 2 or n == 3:
+        return n
+    a, b, c = 1, 2, 3
+    while n &gt; 3:
+        a, b, c = b, c, c + 2*b + 3*a
+        n = n &#x2d; 1
+    return c</code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q g --local</code></pre>
+
+<h3 class="question" id="q3">Question 3: AB Plus C</h3>
+
+<p>Implement <code>ab_plus_c</code>, a function that takes arguments <code>a</code>, <code>b</code>, and
+<code>c</code> and computes <code>a * b + c</code>.  You can assume a and b are both positive
+integers. However, you can't use the <code>*</code> operator. Try recursion!</p>
+
+
+
+<pre><code>def ab_plus_c(a, b, c):
+    &quot;&quot;&quot;Computes a * b + c.
+
+    &gt;&gt;&gt; ab_plus_c(2, 4, 3)  # 2 * 4 + 3
+    11
+    &gt;&gt;&gt; ab_plus_c(0, 3, 2)  # 0 * 3 + 2
+    2
+    &gt;&gt;&gt; ab_plus_c(3, 0, 2)  # 3 * 0 + 2
+    2
+    &quot;&quot;&quot;
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x62;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x63;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x20;&#x2b;&#x20;&#x61;&#x62;&#x5f;&#x70;&#x6c;&#x75;&#x73;&#x5f;&#x63;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x20;&#x2d;&#x20;&#x31;&#x2c;&#x20;&#x63;&#x29;</div></code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q ab_plus_c --local</code></pre>
+
+<h3 class="question" id="q4">Question 4: GCD</h3>
+
+<p>The greatest common divisor of two positive integers <code>a</code> and <code>b</code> is the
+largest integer which evenly divides both numbers (with no remainder).
+Euclid, a Greek mathematician in 300 B.C., realized that the greatest
+common divisor of <code>a</code> and <code>b</code> is one of the following:</p>
+
+<ul>
+  <li>the smaller value if it evenly divides the larger value, OR</li>
+  <li>the greatest common divisor of the smaller value and the remainder of
+  the larger value divided by the smaller value</li>
+</ul>
+
+<p>In other words, if <code>a</code> is greater than <code>b</code> and <code>a</code> is not divisible by
+<code>b</code>, then</p>
+
+<pre><code>gcd(a, b) == gcd(b, a % b)</code></pre>
+
+<p>Write the <code>gcd</code> function recursively using Euclid's algorithm.</p>
+
+
+
+<pre><code>def gcd(a, b):
+    &quot;&quot;&quot;Returns the greatest common divisor of a and b.
+    Should be implemented using recursion.
+
+    &gt;&gt;&gt; gcd(34, 19)
+    1
+    &gt;&gt;&gt; gcd(39, 91)
+    13
+    &gt;&gt;&gt; gcd(20, 30)
+    10
+    &gt;&gt;&gt; gcd(40, 40)
+    40
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x61;&#x2c;&#x20;&#x62;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x29;&#x2c;&#x20;&#x6d;&#x69;&#x6e;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x61;&#x20;&#x25;&#x20;&#x62;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x62;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x63;&#x64;&#x28;&#x62;&#x2c;&#x20;&#x61;&#x20;&#x25;&#x20;&#x62;&#x29;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q gcd --local</code></pre>
+
+<p>This is an example of the elegance that recursive solutions permit.  Here
+for comparison is an iterative solution.</p>
+
+<pre><code># Iterative solution, if you&#x27;re curious
+def gcd_iter(a, b):
+    &quot;&quot;&quot;Returns the greatest common divisor of a and b, using iteration.
+
+    &gt;&gt;&gt; gcd_iter(34, 19)
+    1
+    &gt;&gt;&gt; gcd_iter(39, 91)
+    13
+    &gt;&gt;&gt; gcd_iter(20, 30)
+    10
+    &gt;&gt;&gt; gcd_iter(40, 40)
+    40
+    &quot;&quot;&quot;
+    if a &lt; b:
+        a, b = b, a
+    while a &gt; b and not a % b == 0:
+        a, b = b, a % b
+    return b</code></pre>
+
+</question GCD>
+
+<h3 class="question" id="q5">Question 5: Remove from sequence</h3>
+
+<p>Complete the recursive function <code>remove</code> which removes the first element in a
+sequence that is equal to a specified value.</p>
+
+
+
+<pre><code>def first(s):
+    &quot;&quot;&quot;Return the first element in a sequence.&quot;&quot;&quot;
+    return s[0]
+
+def rest(s):
+    &quot;&quot;&quot;Return all elements in a sequence after the first&quot;&quot;&quot;
+    return s[1:]
+
+def remove(x, s):
+    &quot;&quot;&quot;Remove first element equal to x from sequence s.
+
+    &gt;&gt;&gt; remove(1,[])
+    []
+    &gt;&gt;&gt; remove(1,[1])
+    []
+    &gt;&gt;&gt; remove(1,[1,1])
+    [1]
+    &gt;&gt;&gt; remove(1,[2,1])
+    [2]
+    &gt;&gt;&gt; remove(1,[3,1,2])
+    [3, 2]
+    &gt;&gt;&gt; remove(1,[3,1,2,1])
+    [3, 2, 1]
+    &gt;&gt;&gt; remove(5, [3, 5, 2, 5, 11])
+    [3, 2, 5, 11]
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x66;&#x69;&#x72;&#x73;&#x74;&#x28;&#x73;&#x29;&#x5d;&#x20;&#x2b;&#x20;&#x72;&#x65;&#x6d;&#x6f;&#x76;&#x65;&#x28;&#x78;&#x2c;&#x20;&#x72;&#x65;&#x73;&#x74;&#x28;&#x73;&#x29;&#x29;</div></code></pre>
+
+
+    <button id='5' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Illustrated here is a more complete doctest that shows good testing methodology.
+It is a little cumbersome as documentation, but you'll want to think about it
+for your projects.  Test every condition that might come up.  Then you won't be
+surprised when it does.</p>
+
+</question Remove from sequence>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q remove --local</code></pre>
+
+<h3 class="question" id="q6">Question 6: Recursive Min Sort</h3>
+
+<p>In Data8 you will find sort to be instrumental to analysis of data.  In CS88 you
+get to build it.  There are many sorting algorithms; they have interesting differences
+and elegant implementations.  In lecture we saw a tree recursive formulation of Quick Sort
+based on the following thinking:</p>
+
+<ul>
+  <li>Base: an empty list is sorted</li>
+  <li>Recursive leap: to sort a list of length <code>n</code>, assume quick sort works for all lists
+  of length <code>&lt; n</code>; remove the first element, use it to split the rest into two sets (all less-or-equal and all greater), sort both recursively, and put the three pieces back together.</li>
+</ul>
+
+<p>Review the lecture slides if this is unfamiliar to you.
+In this question we will build another sort algorithm and compare the two using some of your
+Data8 skills.  Here is another idea for sorting.</p>
+
+<ul>
+  <li>Base: an empty list is sorted</li>
+  <li>Recursive leap: to sort a list of length <code>n &gt; 0</code>, assume that your function will 
+  correctly sort lists of length <code>n&#x2d;1</code>, remove the minimum element in the sequence; 
+  sort the remaining list of length <code>n &#x2d; 1</code> recursively, put the min element in front
+  of the the sorted remainder.</li>
+</ul>
+
+<p>You have been given a function to find the minimum element (recursively) and you just wrote function to remove the first occurence of an element (recursively).
+<br/>
+Now you can use those to sort a list (recursively). Complete <code>rsort</code></p>
+
+
+
+<pre><code># Recursive Min Sort
+
+# Helper function
+def rmin(s):
+    &quot;&quot;&quot;Return the minimum value in a sequence.&quot;&quot;&quot;
+    if len(s) == 1:
+        return first(s)
+    else:
+        return min(first(s), rmin(rest(s)))
+
+def rsort(s):
+    &quot;&quot;&quot;Sort sequence s in ascending order.
+
+    &gt;&gt;&gt; rsort([])
+    []
+    &gt;&gt;&gt; rsort([1])
+    [1]
+    &gt;&gt;&gt; rsort([1, 1, 1])
+    [1, 1, 1]
+    &gt;&gt;&gt; rsort([1, 2, 3])
+    [1, 2, 3]
+    &gt;&gt;&gt; rsort([3, 2, 1])
+    [1, 2, 3]
+    &gt;&gt;&gt; rsort([1, 2, 1])
+    [1, 1, 2]
+    &gt;&gt;&gt; rsort([1,2,3, 2, 1])
+    [1, 1, 2, 2, 3]
+    &quot;&quot;&quot;
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x69;&#x6e;&#x5f;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x20;&#x3d;&#x20;&#x72;&#x6d;&#x69;&#x6e;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x61;&#x66;&#x74;&#x65;&#x72;&#x5f;&#x6d;&#x69;&#x6e;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x6d;&#x6f;&#x76;&#x65;&#x28;&#x6d;&#x69;&#x6e;&#x5f;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6d;&#x69;&#x6e;&#x5f;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x5d;&#x20;&#x2b;&#x20;&#x72;&#x73;&#x6f;&#x72;&#x74;&#x28;&#x61;&#x66;&#x74;&#x65;&#x72;&#x5f;&#x6d;&#x69;&#x6e;&#x29;</div></code></pre>
+
+
+    <button id='6' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q rsort --local</code></pre>
+
+<!-- A fundamental concept in computer science is understanding the "cost" of solving problems
+using an algorithm; this is called the *complexity* of the algorithm.  For the amount of
+work involved in sorting, we may consider the comparison, i.e., less-or-equal, to be the
+basic unit of work.  The question is "How many comparisons are required to sort of sequence
+of length <code>n</code> using a particular algorithm?"  We can try to answer it analytically or
+empirically.  Let's try both.
+
+*Analytically:* For your <code>rsort</code> on a sequence of length <code>n</code>, how many comparisons
+are required as a function of <code>n</code>?  Start with <code>n == 1</code>.  Then do <code>n = 2,3, ...</code>.  
+Draw a picture.  Figure out the rule.  (It is a simple formula).
+
+*Empirically:* You can use all that you are learning in Data8 to analyze data about
+programs.  At <a href="http://data8.org/cs-connector/">http://data8.org/cs-connector/</a> you
+will find a link for a notebook to use for this lab.  There is both an interactive
+link to open it on data8 and a download link now that you have the full datascience
+environment installed on your machine.  You can use either one.  (To run it locally
+on your machine you need to activate cs88 (remember it's different on windows and mac)
+and then run <code>jupyter notebook</code> in the directory that contains the notebook file. 
+
+In that notebook you will find a funny version of <code>leq</code> that uses a global variable
+to keep count of how many times it is called.  And there is a (higher order) function <code>measure</code>
+that take a function and data and measures the number of calls to <code>leq</code> in running
+that function on that data.  To get you started, 
+we have done a little analysis of <code>qsort</code> on already sorted data.
+
+<ul>
+  <li>Extend the notebook to compare the complexity of <code>rsort</code> and <code>qsort</code>
+  on already sorted data. Use this to verify your analytical analysis.  When
+  you think about what quick sort does on sorted data, do the results make sense?</li>
+  <li>Now the really interesting part.  Do another cell comparing the complexity of these
+  two functions on randomly permuted data.  Can you explain the difference that you see?
+  --></li>
+</ul>
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#recursion">Recursion</a></li>
+  <li><a href="#required-questions">Required Questions</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Sine</a></li>
+  <li><a href="#q2">Question 2: G function</a></li>
+  <li><a href="#q3">Question 3: AB Plus C</a></li>
+  <li><a href="#q4">Question 4: GCD</a></li>
+  <li><a href="#q5">Question 5: Remove from sequence</a></li>
+  <li><a href="#q6">Question 6: Recursive Min Sort</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+
+</html>
