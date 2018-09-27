@@ -210,56 +210,84 @@ a value in radians.</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q sine --local</code></pre>
 
-<h3 class="question" id="q2">Question 2: G function</h3>
 
-<p>A mathematical function <code>G</code> on positive integers is defined by two
-cases:</p>
-
-<pre><code>G(n) = n,                                       if n &lt;= 3
-G(n) = G(n &#x2d; 1) + 2 * G(n &#x2d; 2) + 3 * G(n &#x2d; 3),  if n &gt; 3</code></pre>
-
-<p>Write a recursive function <code>g</code> that computes <code>G(n)</code>.</p>
+<h2 id="list-manipulation">List Manipulation</h2>
 
 
+<p>Python has a <code>list</code> class that contains many useful methods.  Using the
+builtin <code>dir()</code> function will show you all of them, like so:</p>
 
-<pre><code>def g(n):
-    &quot;&quot;&quot;Return the value of G(n), computed recursively.
+<pre><code>dir(list)</code></pre>
 
-    &gt;&gt;&gt; g(1)
-    1
-    &gt;&gt;&gt; g(2)
-    2
-    &gt;&gt;&gt; g(3)
-    3
-    &gt;&gt;&gt; g(4)
-    10
-    &gt;&gt;&gt; g(5)
-    22
+<p>Some of the most common methods include <code>append()</code>, <code>extend()</code>, and
+<code>pop()</code>.</p>
+
+<pre><code>&gt;&gt;&gt; l = [3, 5, 6]
+&gt;&gt;&gt; l.append(10) # adds an element to the end
+&gt;&gt;&gt; l
+[3, 5, 6, 10]
+&gt;&gt;&gt; l.extend([&#x2d;1, &#x2d;6]) # concatenates another list to the end
+&gt;&gt;&gt; l
+[3, 5, 6, 10, &#x2d;1, &#x2d;6]
+&gt;&gt;&gt; l.pop() # removes and returns the last element
+&#x2d;6
+&gt;&gt;&gt; l
+[3, 5, 6, 10, &#x2d;1]
+&gt;&gt;&gt; l.pop(2) # removes and returns the element at the index given
+6
+&gt;&gt;&gt; l
+[3, 5, 10, &#x2d;1]</code></pre>
+
+<p>Other cool things we can do with list is index them, and get slices of them</p>
+
+<pre><code>&gt;&gt;&gt; lst = [2, 4, 6, 8, 10]
+&gt;&gt;&gt; lst[0]
+2
+&gt;&gt;&gt; lst[1]
+4
+&gt;&gt;&gt; lst[4]
+10
+&gt;&gt;&gt; lst[&#x2d;1] # this is how we get the last element!
+10
+&gt;&gt;&gt; lst[1:]
+[4, 6, 8, 10]
+&gt;&gt;&gt; lst[1:4] # list slicing, include the start, exclude the end
+[4, 6, 8, 10]
+&gt;&gt;&gt; lst[1:&#x2d;1]
+[4, 6, 8, 10]
+&gt;&gt;&gt; lst[:3]
+[2, 4, 6]
+&gt;&gt;&gt; lst[0:3]
+[2, 4, 6]</code></pre>
+
+<p>Play around with this in your terminal!</p>
+
+<h3 class="question" id="q2">Question 2: is_palindrome</h3>
+
+<p>Write a recursive solution for the function <code>is_palindrome</code> such that it takes in any list and returns True if that list is the same way going forwards and backwards.</p>
+
+
+
+<pre><code>def is_palindrome(lst):
+    &quot;&quot;&quot; Returns True if the list is a palindrome. A palindrome is a list 
+    that reads the same forwards as backwards
+    &gt;&gt;&gt; is_palindrome([1, 2, 3, 4, 5])
+    False
+    &gt;&gt;&gt; is_palindrome([&quot;p&quot;, &quot;a&quot;, &quot;l&quot;, &quot;i&quot;, &quot;n&quot;, &quot;d&quot;, &quot;r&quot;, &quot;o&quot;, &quot;m&quot;, &quot;e&quot;])
+    False
+    &gt;&gt;&gt; is_palindrome([True, False, True])
+    True
+    &gt;&gt;&gt; is_palindrome([])
+    True
+    &gt;&gt;&gt; is_palindrome([&quot;a&quot;, &quot;v&quot;, &quot;a&quot;])
+    True
+    &gt;&gt;&gt; is_palindrome([&quot;racecar&quot;, &quot;racecar&quot;])
+    True
+    &gt;&gt;&gt; is_palindrome([&quot;r&quot;, &quot;a&quot;, &quot;c&quot;, &quot;e&quot;, &quot;c&quot;, &quot;a&quot;, &quot;r&quot;])
+    True
     &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x69;&#x6e;&#x20;&#x28;&#x31;&#x2c;&#x20;&#x32;&#x2c;&#x20;&#x33;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x28;&#x6e;&#x2d;&#x31;&#x29;&#x20;&#x2b;&#x20;&#x32;&#x2a;&#x67;&#x28;&#x6e;&#x2d;&#x32;&#x29;&#x20;&#x2b;&#x20;&#x33;&#x2a;&#x67;&#x28;&#x6e;&#x2d;&#x33;&#x29;</div>
-# Iterative solution, if you&#x27;re curious
-def g_iter(n):
-    &quot;&quot;&quot;Return the value of G(n), computed iteratively.
-
-    &gt;&gt;&gt; g_iter(1)
-    1
-    &gt;&gt;&gt; g_iter(2)
-    2
-    &gt;&gt;&gt; g_iter(3)
-    3
-    &gt;&gt;&gt; g_iter(4)
-    10
-    &gt;&gt;&gt; g_iter(5)
-    22
-    &quot;&quot;&quot;
-    if n == 1 or n == 2 or n == 3:
-        return n
-    a, b, c = 1, 2, 3
-    while n &gt; 3:
-        a, b, c = b, c, c + 2*b + 3*a
-        n = n &#x2d; 1
-    return c</code></pre>
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x20;&#x6f;&#x72;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x20;&#x21;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x2d;&#x31;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x69;&#x73;&#x5f;&#x70;&#x61;&#x6c;&#x69;&#x6e;&#x64;&#x72;&#x6f;&#x6d;&#x65;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x2d;&#x31;&#x5d;&#x29;</div></code></pre>
 
 
     <button id='2' class='toggleButton'>
@@ -267,7 +295,7 @@ def g_iter(n):
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q g --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q is_palindrome --local</code></pre>
 
 <h3 class="question" id="q3">Question 3: AB Plus C</h3>
 
@@ -531,7 +559,11 @@ we have done a little analysis of <code>qsort</code> on already sorted data.
   <li><a href="#required-questions">Required Questions</a></li>
   <ul>
   <li><a href="#q1">Question 1: Sine</a></li>
-  <li><a href="#q2">Question 2: G function</a></li>
+</ul>
+
+  <li><a href="#list-manipulation">List Manipulation</a></li>
+  <ul>
+  <li><a href="#q2">Question 2: is_palindrome</a></li>
   <li><a href="#q3">Question 3: AB Plus C</a></li>
   <li><a href="#q4">Question 4: GCD</a></li>
   <li><a href="#q5">Question 5: Remove from sequence</a></li>

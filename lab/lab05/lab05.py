@@ -18,45 +18,25 @@ def sine(x):
     "*** YOUR CODE HERE ***"
 
 
-def g(n):
-    """Return the value of G(n), computed recursively.
-
-    >>> g(1)
-    1
-    >>> g(2)
-    2
-    >>> g(3)
-    3
-    >>> g(4)
-    10
-    >>> g(5)
-    22
+def is_palindrome(lst):
+    """ Returns True if the list is a palindrome. A palindrome is a list 
+    that reads the same forwards as backwards
+    >>> is_palindrome([1, 2, 3, 4, 5])
+    False
+    >>> is_palindrome(["p", "a", "l", "i", "n", "d", "r", "o", "m", "e"])
+    False
+    >>> is_palindrome([True, False, True])
+    True
+    >>> is_palindrome([])
+    True
+    >>> is_palindrome(["a", "v", "a"])
+    True
+    >>> is_palindrome(["racecar", "racecar"])
+    True
+    >>> is_palindrome(["r", "a", "c", "e", "c", "a", "r"])
+    True
     """
     "*** YOUR CODE HERE ***"
-
-
-# Iterative solution, if you're curious
-def g_iter(n):
-    """Return the value of G(n), computed iteratively.
-
-    >>> g_iter(1)
-    1
-    >>> g_iter(2)
-    2
-    >>> g_iter(3)
-    3
-    >>> g_iter(4)
-    10
-    >>> g_iter(5)
-    22
-    """
-    if n == 1 or n == 2 or n == 3:
-        return n
-    a, b, c = 1, 2, 3
-    while n > 3:
-        a, b, c = b, c, c + 2*b + 3*a
-        n = n - 1
-    return c
 
 
 def ab_plus_c(a, b, c):
