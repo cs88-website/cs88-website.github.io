@@ -1,0 +1,25 @@
+{
+    "name": "Homework 5",
+    "endpoint": "cal/cs88/fa18/hw05",
+    "src": [
+        "hw05.py"
+    ],
+    "tests": {
+        "hw05.py:filter": "doctest",
+        "hw05.py:reduce": "doctest",
+        "hw05.py:decimal": "doctest",
+        "hw05.py:binary": "doctest",
+        "hw05.py:count_digit": "doctest",
+        "hw05.py:ten_pairs": "doctest",
+        "hw05.py:count_change": "doctest",
+        "hw05.py:fibonacci": "doctest"
+
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup"
+    ]
+}
