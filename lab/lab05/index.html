@@ -211,32 +211,50 @@ a value in radians.</p>
 <p>Use OK to test your code:</p><pre><code>python3 ok -q sine --local</code></pre>
 
 
-<h2 id="list-manipulation">List Manipulation</h2>
+<h3 id="lists-review">Lists Review</h3>
 
 
-<p>Python has a <code>list</code> class that contains many useful methods.  Using the
-builtin <code>dir()</code> function will show you all of them, like so:</p>
+<p>In Data 8, you have recently started working with <code>Tables</code>.  Tables are an extremely useful and powerful data type.  In CS88 we will work with other data types.  Python provides
+several important built-in data types that we can build from.  So far, you have met numberical data types (ints, floats, and booleans) and one sequence type (strings).  Lists, tuples, and dictionaries are other sequence data types in Python.  Here, we will take a closer look at lists. <strong>A list can contain a sequence of values of any type.</strong></p>
 
-<pre><code>dir(list)</code></pre>
+<p>You can create a list just by placing the values, separated by commas, within square
+brackets.  Here are some examples. As you will see in one of the examples, lists can contain other lists.</p>
 
-<p>Some of the most common methods include <code>append()</code>, <code>extend()</code>, and
-<code>pop()</code>.</p>
+<pre><code>&gt;&gt;&gt; [1,2,3]
+[1, 2, 3]
+&gt;&gt;&gt; [&quot;frog&quot;, 3, 3.1415]
+[&#x27;frog&#x27;, 3, 3.1415]
+&gt;&gt;&gt; [True, [1, 2], 42]
+[True, [1, 2], 42]</code></pre>
 
-<pre><code>&gt;&gt;&gt; l = [3, 5, 6]
-&gt;&gt;&gt; l.append(10) # adds an element to the end
-&gt;&gt;&gt; l
-[3, 5, 6, 10]
-&gt;&gt;&gt; l.extend([&#x2d;1, &#x2d;6]) # concatenates another list to the end
-&gt;&gt;&gt; l
-[3, 5, 6, 10, &#x2d;1, &#x2d;6]
-&gt;&gt;&gt; l.pop() # removes and returns the last element
-&#x2d;6
-&gt;&gt;&gt; l
-[3, 5, 6, 10, &#x2d;1]
-&gt;&gt;&gt; l.pop(2) # removes and returns the element at the index given
+<p>Open up your python interpreter and create some lists of your own.
+<br/>
+
+You learned last week that what really makes a data type useful is the operations that you can 
+perform on it.  What can you do with lists?</p>
+
+<pre><code>&gt;&gt;&gt; x = [1,2,3]    # assign them to variables
+&gt;&gt;&gt; len(x)         # get their length, i.e., the number of elements in them
+3
+&gt;&gt;&gt; x + [4,5]      # + is concatenation
+[1, 2, 3, 4, 5]
+&gt;&gt;&gt; [1,2] * 3        # * is replication
+[1, 2, 1, 2, 1, 2]
+&gt;&gt;&gt; len([1,2] * 3)
 6
-&gt;&gt;&gt; l
-[3, 5, 10, &#x2d;1]</code></pre>
+&gt;&gt;&gt; [1,2] * [3,4]    # what&#x27;s this?
+TypeError: can&#x27;t multiply sequence by non&#x2d;int of type &#x27;list&#x27;</code></pre>
+
+<p>The <code>in</code> operator is very useful when working with lists.  It operates on the entire list and produces a boolean that answers the question, "Is this item in the list?".</p>
+
+<pre><code>&gt;&gt;&gt; 2 in [1,2,3]
+True
+&gt;&gt;&gt; &quot;frog&quot; in [1,2,3]
+False
+&gt;&gt;&gt; [1,2] in [1,2,3]
+False
+&gt;&gt;&gt; [1,2] in [[1,2],3]
+True</code></pre>
 
 <p>Other cool things we can do with list is index them, and get slices of them</p>
 
@@ -559,10 +577,7 @@ we have done a little analysis of <code>qsort</code> on already sorted data.
   <li><a href="#required-questions">Required Questions</a></li>
   <ul>
   <li><a href="#q1">Question 1: Sine</a></li>
-</ul>
-
-  <li><a href="#list-manipulation">List Manipulation</a></li>
-  <ul>
+  <li><a href="#lists-review">Lists Review</a></li>
   <li><a href="#q2">Question 2: is_palindrome</a></li>
   <li><a href="#q3">Question 3: AB Plus C</a></li>
   <li><a href="#q4">Question 4: GCD</a></li>
