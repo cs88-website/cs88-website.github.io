@@ -174,7 +174,16 @@ at <code>n</code>, and returns the number of steps in the sequence:</p>
     &gt;&gt;&gt; a
     7
     &quot;&quot;&quot;
-    &quot;*** YOUR CODE HERE ***&quot;</code></pre>
+<span class="sol-highlight">    s = 1
+    print(n)
+    while n != 1:
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = n * 3 + 1
+        print(n)
+        s = s + 1
+    return s</span></code></pre>
 
 <p>Hailstone sequences can get quite long!  Try 27.  What's the longest
 you can find?</p>

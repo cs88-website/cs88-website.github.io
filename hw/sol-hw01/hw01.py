@@ -24,7 +24,7 @@ def distance(x1, y1, x2, y2):
     >>> distance(1, 2, 3, 4)
     2.8284271247461903
     """
-    return "Replace this"
+    return sqrt((y2-y1)**2 + (x2-x1)**2)
 
 def distance3d(x1, y1, z1, x2, y2, z2):
     """Calculates the 3D Euclidian distance between two points (x1, y1, z1) and
@@ -35,7 +35,7 @@ def distance3d(x1, y1, z1, x2, y2, z2):
     >>> distance3d(2, 3, 5, 5, 8, 3)
     6.164414002968976
     """
-    return "Replace this"
+    return sqrt((y2-y1)**2 + (x2-x1)**2 + (z2-z1)**2)
 
 
 def diff(x, y, z):

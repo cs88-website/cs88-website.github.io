@@ -54,7 +54,16 @@ def hailstone(n):
     >>> a
     7
     """
-    "*** YOUR CODE HERE ***"
+    s = 1
+    print(n)
+    while n != 1:
+        if n % 2 == 0:
+            n = n // 2
+        else:
+            n = n * 3 + 1
+        print(n)
+        s = s + 1
+    return s
 
 
 def odd_even(x):
