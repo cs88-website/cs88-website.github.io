@@ -283,6 +283,40 @@ expression evaluates to. Lambdas have the following syntax:</p>
 in which it was defined.</em></p>
 
 
+<h4 id="note-on-dictionaries">Note on Dictionaries</h4>
+
+
+<p>Dictionaries are unordered sets of key-value pairs. To create a
+dictionary, use the following syntax:</p>
+
+<pre><code>&gt;&gt;&gt; singers = { &#x27;Iggy Azalea&#x27;: &#x27;Fancy&#x27;, &#x27;Beyonce&#x27;: &#x27;Flawless&#x27;, &#x27;Adam Levine&#x27;: &#x27;Maps&#x27;}</code></pre>
+
+<p>The curly braces denote the key-value pairs in your dictionary. Each key-value
+pair is separated by a comma. For each pair, the key appears to the left of the
+colon and the value appears to the right of the colon. You can retrieve values
+from your dictionary by "indexing" using the key:</p>
+
+<pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
+&#x27;Flawless&#x27;
+&gt;&gt;&gt; singers[&#x27;Iggy Azalea&#x27;]
+&#x27;Fancy&#x27;</code></pre>
+
+<p>You can update an entry for an existing key in the dictionary using the
+following syntax. Be careful adding a new key follows identical syntax!</p>
+
+<pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;] = &#x27;Survivor&#x27;
+&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
+&#x27;Survivor&#x27;
+&gt;&gt;&gt; singers[&#x27;Nicki Minaj&#x27;] = &#x27;Anaconda&#x27; # new entry!
+&gt;&gt;&gt; singers[&#x27;Nicki Minaj&#x27;]
+&#x27;Anaconda&#x27;</code></pre>
+
+<p>You can also check for membership of keys!</p>
+
+<pre><code>&gt;&gt;&gt; &#x27;Adam Levine&#x27; in singers
+True</code></pre>
+
+
 <h4 id="problem-0-1-using-list-comprehensions">Problem 0.1: Using list comprehensions</h4>
 
 
@@ -705,6 +739,7 @@ Here's how:</p>
   <li><a href="#problem-0-2-pt">Problem 0 (2 pt)</a></li>
   <ul>
   <li><a href="#note-on-lambdas">Note on Lambdas</a></li>
+  <li><a href="#note-on-dictionaries">Note on Dictionaries</a></li>
   <li><a href="#problem-0-1-using-list-comprehensions">Problem 0.1: Using list comprehensions</a></li>
   <li><a href="#problem-0-2-using-min">Problem 0.2: Using <code>min</code></a></li>
   <li><a href="#problem-0-3-using-zip">Problem 0.3: Using <code>zip</code></a></li>
