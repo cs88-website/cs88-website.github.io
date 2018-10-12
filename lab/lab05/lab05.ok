@@ -1,0 +1,23 @@
+{
+    "name": "Lab 5",
+    "endpoint": "cal/cs88/fa18/lab05",
+    "src": [
+        "lab05.py"
+    ],
+    "tests": {
+        "lab05.py:sine": "doctest",
+        "lab05.py:is_palindrome": "doctest",
+        "lab05.py:ab_plus_c": "doctest",
+        "lab05.py:gcd": "doctest",
+        "lab05.py:remove": "doctest",
+        "lab05.py:rsort": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}

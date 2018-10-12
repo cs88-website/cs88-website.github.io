@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
 <link href="../../assets/css/project.css" rel="stylesheet" type="text/css">
 
-    <title>Project 1: Yelp Maps | CS 88 Fall 2018</title>
+    <title>Project 1: Maps | CS 88 Fall 2018</title>
 
   </head>
 
@@ -67,7 +67,7 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Project 1</span>: Yelp Maps</h1>
+      <h1><span class="content-title-brand">Project 1</span>: Maps</h1>
     </div>
 
     <div id="haiku">
@@ -115,7 +115,7 @@ The project uses several files, but all of your changes will be made to
   <li><code>ucb.py</code>: Utility functions for miscellaneous and debugging</li>
   <li><code>data</code>: A directory of Yelp users, restaurants, and reviews</li>
   <li><code>ok</code>: The autograder</li>
-  <li><code>proj2.ok</code>: The <code>ok</code> configuration file</li>
+  <li><code>proj1.ok</code>: The <code>ok</code> configuration file</li>
   <li><code>tests</code>:  A directory of tests used by <code>ok</code></li>
   <li><code>users</code>: A directory of user files</li>
   <li><code>visualize</code>: A directory of tools for drawing the final visualization</li>
@@ -126,7 +126,7 @@ The project uses several files, but all of your changes will be made to
 
 <h2>Logistics</h2>
 
-<p>This is a 1-week project. You may work with one other
+<p>This is a 3-week project. You may work with one other
 partner.  You should not share your code with students who are not your
 partner or copy from anyone else's solutions.</p>
 
@@ -148,7 +148,7 @@ assigned for correctness, and 2 points for the overall <a
 <p>You can submit by uploading these files to OK.</p>
 
 <p>You will be able to view your submissions on the <a
-  href="https://okpy.org/cal/cs88/sp18/">OK dashboard</a>.</p>
+  href="https://okpy.org/cal/cs88/fa18/">OK dashboard</a>.</p>
 
 <p>For the functions that we ask you to complete, there may be some
 initial code that we provide. If you would rather not use that code,
@@ -164,6 +164,12 @@ arguments).</p>
 
 <p>Make sure you have added your partner on OK before submitting the project.</p>
 
+<p><strong>The assignment is due on Wednesday, 10/24, at 9pm. We will have a mid-project checkpoint due on Saturday, 10/13.</strong></p>
+
+<ul>
+  <li>Part 1: Phases 0, 1, and 2 are due on Saturday, 10/13. Submit <code>utils.py</code>, <code>abstractions.py</code>, and <code>recommend.py</code> to Okpy.</li>
+  <li>The entire project (including Part 1) is due on Wednesday, 10/24, at 9pm. Submit <code>utils.py</code>, <code>abstractions.py</code>, and <code>recommend.py</code> to Okpy. <strong>Extra Credit Opportunity:</strong> If you submit the entire project by Thursday, 10/18, you can earn one point of EC towards your project grade.</li>
+</ul>
 
 
 <h2>Testing</h2>
@@ -189,7 +195,7 @@ run the following command from your terminal:</p>
 
 <pre>
 =====================================================================
-Assignment: Yelp Maps
+Assignment: Maps
 OK, version ...
 =====================================================================
 
@@ -275,6 +281,40 @@ expression evaluates to. Lambdas have the following syntax:</p>
 
 <p><em>Note that as with other functions, a lambda function's lexical parent is the frame
 in which it was defined.</em></p>
+
+
+<h4 id="note-on-dictionaries">Note on Dictionaries</h4>
+
+
+<p>Dictionaries are unordered sets of key-value pairs. To create a
+dictionary, use the following syntax:</p>
+
+<pre><code>&gt;&gt;&gt; singers = { &#x27;Iggy Azalea&#x27;: &#x27;Fancy&#x27;, &#x27;Beyonce&#x27;: &#x27;Flawless&#x27;, &#x27;Adam Levine&#x27;: &#x27;Maps&#x27;}</code></pre>
+
+<p>The curly braces denote the key-value pairs in your dictionary. Each key-value
+pair is separated by a comma. For each pair, the key appears to the left of the
+colon and the value appears to the right of the colon. You can retrieve values
+from your dictionary by "indexing" using the key:</p>
+
+<pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
+&#x27;Flawless&#x27;
+&gt;&gt;&gt; singers[&#x27;Iggy Azalea&#x27;]
+&#x27;Fancy&#x27;</code></pre>
+
+<p>You can update an entry for an existing key in the dictionary using the
+following syntax. Be careful adding a new key follows identical syntax!</p>
+
+<pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;] = &#x27;Survivor&#x27;
+&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
+&#x27;Survivor&#x27;
+&gt;&gt;&gt; singers[&#x27;Nicki Minaj&#x27;] = &#x27;Anaconda&#x27; # new entry!
+&gt;&gt;&gt; singers[&#x27;Nicki Minaj&#x27;]
+&#x27;Anaconda&#x27;</code></pre>
+
+<p>You can also check for membership of keys!</p>
+
+<pre><code>&gt;&gt;&gt; &#x27;Adam Levine&#x27; in singers
+True</code></pre>
 
 
 <h4 id="problem-0-1-using-list-comprehensions">Problem 0.1: Using list comprehensions</h4>
@@ -699,6 +739,7 @@ Here's how:</p>
   <li><a href="#problem-0-2-pt">Problem 0 (2 pt)</a></li>
   <ul>
   <li><a href="#note-on-lambdas">Note on Lambdas</a></li>
+  <li><a href="#note-on-dictionaries">Note on Dictionaries</a></li>
   <li><a href="#problem-0-1-using-list-comprehensions">Problem 0.1: Using list comprehensions</a></li>
   <li><a href="#problem-0-2-using-min">Problem 0.2: Using <code>min</code></a></li>
   <li><a href="#problem-0-3-using-zip">Problem 0.3: Using <code>zip</code></a></li>

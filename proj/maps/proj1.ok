@@ -1,0 +1,20 @@
+{
+  "name": "Project 1: Yelp Maps",
+  "endpoint": "cal/cs88/fa18/proj1",
+  "src": [
+    "utils.py",
+    "abstractions.py",
+    "recommend.py"
+  ],
+  "tests": {
+      "tests/0[0-9].py": "ok_test",
+      "tests/10.py": "ok_test"
+  },
+  "protocols": [
+      "restore",
+      "file_contents",
+      "unlock",
+      "grading",
+      "backup"
+  ]
+}
