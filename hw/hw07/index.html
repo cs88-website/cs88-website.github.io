@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Homework 7 | CS 88 Fall 2018</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Homework 7</span></h1>
+    </div>
+
+    <p><em>Due by 9:00pm on Friday, 10/19/2018</em></p>
+
+<h2>Instructions</h2>
+
+<p>Download <a href="hw07.zip"> hw07.zip</a>.
+    Inside the archive, you will find starter files for the questions in this homework,
+    along with a copy of the OK autograder.</p>
+
+<p><strong>Submission:</strong> When you are done, submit the homework by uploading the
+    <code>hw07.py</code> file to <a href="https://okpy.org">okpy.org</a>.
+    You may submit more than once before the deadline; only the
+    final submission will be scored.</p>
+
+<p><strong>Readings:</strong> This homework relies on following references:</p>
+
+<ul>
+  <li><a href="http://composingprograms.com/pages/22-data-abstraction.html">Section 2.2</a></li>
+  <li><a href="http://composingprograms.com/pages/24-mutable-data.html#dictionaries">Section 2.4.3</a></li>
+</ul>
+
+    
+
+
+<h2 id="baseball-season">Baseball Season!</h2>
+
+
+<h3 class="question" id="q1">Question 1: MLB All Star</h3>
+
+<p>It's October, which means its baseball playoffs season! In this exercise, let's utilize dictionaries to see if we can model and learn more about some of our favorite players. In this problem, you will be implementing multiple functions.</p>
+
+<p>As you can see within your hw06.py file, the dictionaries mapping players to their team and statistics respectively have been created already. However, instead of accessing these values directly, we'll be implementing two functions to retrieve the appropriate values as a layer of abstraction.</p>
+
+<p>Implement the <code>get_team</code> and <code>get_stats</code> functions to retrieve the team or statistics given a player's name.</p>
+
+<solution>
+
+<pre><code>full_roster = {
+    &quot;Manny Machado&quot; : &quot;Dodgers&quot;,
+    &quot;Yasiel Puig&quot; : &quot;Dodgers&quot;,
+    &quot;Aaron Judge&quot; : &quot;Yankees&quot;,
+    &quot;Clayton Kershaw&quot; : &quot;Dodgers&quot;,
+    &quot;Giancarlo Stanton&quot; : &quot;Yankees&quot;
+}
+
+full_stats = {
+    &quot;Manny Machado&quot;: [&quot;SO&quot;, &quot;1B&quot;, &quot;3B&quot;, &quot;SO&quot;, &quot;HR&quot;],
+    &quot;Yasiel Puig&quot;: [&quot;3B&quot;, &quot;3B&quot;, &quot;1B&quot;, &quot;1B&quot;, &quot;SO&quot;],
+    &quot;Aaron Judge&quot;: [&quot;SO&quot;, &quot;HR&quot;, &quot;HR&quot;, &quot;1B&quot;, &quot;SO&quot;],
+    &quot;Clayton Kershaw&quot;: [&quot;1B&quot;, &quot;SO&quot;, &quot;SO&quot;, &quot;1B&quot;, &quot;SO&quot;],
+    &quot;Giancarlo Stanton&quot;: [&quot;HR&quot;, &quot;SO&quot;, &quot;3B&quot;, &quot;SO&quot;, &quot;2B&quot;],
+}
+
+def get_team(player):
+    &quot;&quot;&quot;Returns team that the provided player is a member of.
+
+    &gt;&gt;&gt; get_team(&quot;Manny Machado&quot;)
+    &#x27;Dodgers&#x27;
+    &gt;&gt;&gt; get_team(&quot;Aaron Judge&quot;)
+    &#x27;Yankees&#x27;
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+    return ______
+
+def get_stats(player):
+    &quot;&quot;&quot;Returns the statistics associated with the provided player.
+    &gt;&gt;&gt; get_stats(&quot;Manny Machado&quot;)
+    [&#x27;SO&#x27;, &#x27;1B&#x27;, &#x27;3B&#x27;, &#x27;SO&#x27;, &#x27;HR&#x27;]
+    &gt;&gt;&gt; get_stats(&#x27;Aaron Judge&#x27;)
+    [&#x27;SO&#x27;, &#x27;HR&#x27;, &#x27;HR&#x27;, &#x27;1B&#x27;, &#x27;SO&#x27;]
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+    return ______</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q get_team --local
+python3 ok -q get_stats --local</code></pre>
+
+
+<h2 id="retrieval-methods">Retrieval Methods</h2>
+
+
+<h3 class="question" id="q2">Question 2: Team Roster</h3>
+
+<p>Implement the function <code>get_players</code> which takes a team name and returns a list containing all the players that are members of the given team.</p>
+
+<solution>
+
+<pre><code>def get_players(team):
+    &quot;&quot;&quot;Returns a list of all players who are members of the given team.
+
+    &gt;&gt;&gt; get_players(&quot;Dodgers&quot;)
+    [&#x27;Manny Machado&#x27;, &#x27;Yasiel Puig&#x27;, &#x27;Clayton Kershaw&#x27;]
+    &gt;&gt;&gt; get_players(&quot;Yankees&quot;)
+    [&#x27;Aaron Judge&#x27;, &#x27;Giancarlo Stanton&#x27;]
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+    return _____</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q get_players --local</code></pre>
+
+<h3 class="question" id="q3">Question 3: Build the Full Rosters</h3>
+
+<p>Implement the function <code>common_players</code>. The <code>common_players</code> function identifies which keys from the <code>full_roster</code> share the same values. The function returns a new dictionary where each key is the value from the original dictionary, and the corresponding values of the new dictionary are list that contain keys that share the same value.</p>
+
+<solution>
+
+<pre><code>def common_players(roster):
+    &quot;&quot;&quot;Returns a dictionary containing values along with a corresponding
+    list of keys that had that value from the original dictionary.
+
+    &gt;&gt;&gt; common_players(full_roster)
+    {&#x27;Dodgers&#x27;: [&#x27;Manny Machado&#x27;, &#x27;Yasiel Puig&#x27;, &#x27;Clayton Kershaw&#x27;], &#x27;Yankees&#x27;: [&#x27;Aaron Judge&#x27;, &#x27;Giancarlo Stanton&#x27;]}
+    &gt;&gt;&gt; full_roster = {&quot;bob&quot;: &quot;excellent&quot;, &quot;barnum&quot;: &quot;passing&quot;, &quot;beatrice&quot;: &quot;satisfactory&quot;, &quot;bernice&quot;: &quot;passing&quot;, &quot;ben&quot;: &quot;no pass&quot;, &quot;belle&quot;: &quot;excellent&quot;, &quot;bill&quot;: &quot;passing&quot;, &quot;bernie&quot;: &quot;passing&quot;, &quot;baxter&quot;: &quot;excellent&quot;}
+    &gt;&gt;&gt; common_players(full_roster)
+    {&#x27;excellent&#x27;: [&#x27;bob&#x27;, &#x27;belle&#x27;, &#x27;baxter&#x27;], &#x27;passing&#x27;: [&#x27;barnum&#x27;, &#x27;bernice&#x27;, &#x27;bill&#x27;, &#x27;bernie&#x27;], &#x27;satisfactory&#x27;: [&#x27;beatrice&#x27;], &#x27;no pass&#x27;: [&#x27;ben&#x27;]}
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+    return ______</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q common_players --local</code></pre>
+
+
+<h2 id="sabremetrics">Sabremetrics</h2>
+
+
+<h3 class="question" id="q4">Question 4: Baseball Statistics</h3>
+
+<p>If you're a Moneyball movie fan, you know that statistics helps teams find value in players that nobody else sees. In this problem, you'll be implementing two functions to calculate the team batting average for one team, and the mean slugging percentage for all teams.</p>
+
+<p>We highly encourage you to use the functions that you've defined before to solve these problems, specifically the <code>common_players</code> and <code>get_players</code> functions from the previous two problems.</p>
+
+<p>Two functions have already been defined for you to calculate batting average and slugging percentage given a player's statistics. Use these functions when you calculate the averages for each team.</p>
+
+<solution>
+
+<pre><code># Following Functions have been given to you, do NOT modify
+
+def calculate_batting_average(stats):
+    hits = 0
+    total_bats = 0
+    for at_bat in stats:
+        if at_bat != &quot;SO&quot;:
+            hits += 1
+        total_bats += 1
+    return float(round(hits/total_bats, 1))
+
+def calculate_slugging_percent(stats):
+    bases = 0
+    total_bats = 0
+    for at_bat in stats:
+        if at_bat == &quot;1B&quot;:
+            bases += 1
+        elif at_bat == &quot;2B&quot;:
+            bases += 2
+        elif at_bat == &quot;3B&quot;:
+            bases += 3
+        elif at_bat == &quot;HR&quot;:
+            bases += 4
+        total_bats += 1
+    return float(round(bases/total_bats, 1))
+
+# Modify Functions below
+
+def calculate_team_BA(team):
+    &quot;&quot;&quot;Given a single team name, returns the mean batting average of all players on that team. You are encouraged to use previous functions that you&#x27;ve defined already
+    &gt;&gt;&gt; calculate_team_BA(&#x27;Dodgers&#x27;)
+    0.6
+    &gt;&gt;&gt; calculate_team_BA(&#x27;Yankees&#x27;)
+    0.6
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+    return _____
+
+def calculate_all_team_SP():
+    &quot;&quot;&quot;Returns a dictionary mapping every team to the average slugging percentage of all players on that team. You are encouraged to use previous functions that you&#x27;ve defined already.
+    &gt;&gt;&gt; calculate_all_team_SP()
+    {&#x27;Dodgers&#x27;: 1.2, &#x27;Yankees&#x27;: 1.8}
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+    return _____</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q calculate_team_BA --local
+python3 ok -q calculate_all_team_SP --local</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#baseball-season">Baseball Season!</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: MLB All Star</a></li>
+</ul>
+
+  <li><a href="#retrieval-methods">Retrieval Methods</a></li>
+  <ul>
+  <li><a href="#q2">Question 2: Team Roster</a></li>
+  <li><a href="#q3">Question 3: Build the Full Rosters</a></li>
+</ul>
+
+  <li><a href="#sabremetrics">Sabremetrics</a></li>
+  <ul>
+  <li><a href="#q4">Question 4: Baseball Statistics</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>

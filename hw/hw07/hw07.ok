@@ -1,0 +1,23 @@
+{
+    "name": "Homework 7",
+    "endpoint": "cal/cs88/fa18/hw07",
+    "src": [
+        "hw07.py"
+    ],
+    "tests": {
+        "hw07.py:get_team": "doctest",
+        "hw07.py:get_stats": "doctest",
+        "hw07.py:get_players": "doctest",
+        "hw07.py:common_players": "doctest",
+        "hw07.py:calculate_team_BA": "doctest",
+        "hw07.py:calculate_all_team_SP": "doctest"
+
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup"
+    ]
+}

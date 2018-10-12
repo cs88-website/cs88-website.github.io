@@ -286,6 +286,8 @@ in which it was defined.</em></p>
 <h4 id="note-on-dictionaries">Note on Dictionaries</h4>
 
 
+<p>You've actually seen several abstract data types! List, tuples, ranges, and even strings are examples of abstract data types. Dictionary is another example of abstract data types.</p>
+
 <p>Dictionaries are unordered sets of key-value pairs. To create a
 dictionary, use the following syntax:</p>
 
@@ -293,7 +295,7 @@ dictionary, use the following syntax:</p>
 
 <p>The curly braces denote the key-value pairs in your dictionary. Each key-value
 pair is separated by a comma. For each pair, the key appears to the left of the
-colon and the value appears to the right of the colon. You can retrieve values
+colon and the value appears to the right of the colon. (This is a dictionary's constructor!) You can retrieve values
 from your dictionary by "indexing" using the key:</p>
 
 <pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
@@ -302,7 +304,7 @@ from your dictionary by "indexing" using the key:</p>
 &#x27;Fancy&#x27;</code></pre>
 
 <p>You can update an entry for an existing key in the dictionary using the
-following syntax. Be careful adding a new key follows identical syntax!</p>
+following syntax. What this means is that each key is unique. Be careful, adding a new key follows identical syntax!</p>
 
 <pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;] = &#x27;Survivor&#x27;
 &gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
@@ -315,6 +317,33 @@ following syntax. Be careful adding a new key follows identical syntax!</p>
 
 <pre><code>&gt;&gt;&gt; &#x27;Adam Levine&#x27; in singers
 True</code></pre>
+
+<p>Recall how we can iterate through a list using for-loops. For example, you can do something like this:</p>
+
+<pre><code>&gt;&gt;&gt; a = [1,2,3]
+&gt;&gt;&gt; for each in a:
+...     print(each)
+1
+2
+3</code></pre>
+
+<p>What happens if you iterate through a dictionary? Can you even iterate through a dictionary?? Notice what happens:</p>
+
+<pre><code>&gt;&gt;&gt; shopping_cart = {&quot;apple&quot;:3, &quot;bananas&quot;:4, &quot;orange&quot;:6}
+&gt;&gt;&gt; for each in shopping_cart:
+...     print(each)
+apple
+bananas
+orange</code></pre>
+
+<p>Notice that when you iterate through a dictionary, the set of keys is what you iterate through. How would you print out values instead? You can simply do:</p>
+
+<pre><code>&gt;&gt;&gt; shopping_cart = {&quot;apple&quot;:3, &quot;bananas&quot;:4, &quot;orange&quot;:6}
+&gt;&gt;&gt; for each in shopping_cart:
+...     print(shopping_cart[each])
+3
+4
+5</code></pre>
 
 
 <h4 id="problem-0-1-using-list-comprehensions">Problem 0.1: Using list comprehensions</h4>

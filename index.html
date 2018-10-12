@@ -386,7 +386,7 @@
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="hw/hw00/">Homework 0</a> (<a href="hw/sol-hw00/">Solutions</a>)</td>
+            <td class='resource-name'><a href="hw/hw00/">Homework 0</a> (Solutions)</td>
             <td class='resource-type'>Homework</td>
             <td class='resource-tags'></td>
         </tr>
@@ -398,7 +398,6 @@
         </tr>
 
         <tr>
-
             <td class='resource-name'><a href="hw/hw02/">Homework 2</a> (<a href="hw/sol-hw02/">Solutions</a>)</td>
             <td class='resource-type'>Homework</td>
             <td class='resource-tags'></td>
@@ -418,6 +417,18 @@
 
         <tr>
             <td class='resource-name'><a href="hw/hw05/">Homework 5</a> (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Homework 6 (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw07/">Homework 7</a></td>
             <td class='resource-type'>Homework</td>
             <td class='resource-tags'></td>
         </tr>
@@ -691,7 +702,7 @@
 <td></td>
 <td></td>
 <td><a href="lab/lab00/">Lab 0: Community and Setup</a><br/>(due Thu 8/30)</td>
-<td><a href="hw/hw00/">Homework 0</a><br/>(due Fri 8/31) (<a href="hw/sol-hw00/">Solutions</a>)</td>
+<td><a href="hw/hw00/">Homework 0</a><br/>(due Fri 8/31) (Solutions)</td>
 <td></td>
 </tr>
 <tr>
@@ -781,6 +792,7 @@
 <td><a href="http://composingprograms.com/pages/17-recursive-functions.html">1.7</a></td>
 <td></td>
 <td></td>
+<td></td>
 </tr>
 <tr>
 <td>Fri 9/28</td>
@@ -806,11 +818,13 @@
 <td>Midterm Exam: Evening</td>
 <td></td>
 <td>Lab 6: Introduction to Maps<br/>(due Thu 10/11)</td>
-<td></td>
+<td>Homework 6<br/>(due Wed 10/3) (Solutions)</td>
 <td></td>
 </tr>
 <tr>
 <td>Fri 10/5</td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 <td><a href="proj/maps/">Maps (Part 1)</a><br/>(due Sat 10/13)</td>
@@ -831,7 +845,7 @@
 <td></td>
 <td></td>
 <td><a href="lab/lab07/">Lab 7: ADTs and Dictionaries</a><br/>(due Thu 10/18)</td>
-<td></td>
+<td><a href="hw/hw07/">Homework 7</a><br/>(due Fri 10/19)</td>
 <td></td>
 </tr>
 <tr>
@@ -1013,7 +1027,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "8/30/18", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/24/18"}, {"due": "9/6/18", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "8/31/18"}, {"due": "9/13/18", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/7/18"}, {"due": "9/20/18", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/14/18"}, {"due": "9/27/18", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "9/21/18"}, {"due": "10/4/18", "link": "lab/lab05/", "name": "Lab 5: Recursion", "release": "9/28/18"}, {"due": "10/11/18", "link": "lab/lab06/", "name": "Lab 6: Introduction to Maps", "release": "10/3/18"}, {"due": "10/18/18", "link": "lab/lab07/", "name": "Lab 7: ADTs and Dictionaries", "release": "10/11/18"}, {"due": "8/31/18", "link": "hw/hw00/", "name": "Homework 0", "release": "8/24/18"}, {"due": "9/9/18", "link": "hw/hw01/", "name": "Homework 1", "release": "8/31/18"}, {"due": "9/14/18", "link": "hw/hw02/", "name": "Homework 2", "release": "9/7/18"}, {"due": "9/21/18", "link": "hw/hw03/", "name": "Homework 3", "release": "9/14/18"}, {"due": "9/28/18", "link": "hw/hw04/", "name": "Homework 4", "release": "9/21/18"}, {"due": "10/5/18", "link": "hw/hw05/", "name": "Homework 5", "release": "9/28/18"}, {"due": "10/13/18", "link": "proj/maps/", "name": "Maps (Part 1)", "release": "10/5/18"}, {"due": "10/24/18", "link": "proj/maps/", "name": "Maps", "release": "10/12/18"}];
+  var assignments = [{"due": "8/30/18", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/24/18"}, {"due": "9/6/18", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "8/31/18"}, {"due": "9/13/18", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/7/18"}, {"due": "9/20/18", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/14/18"}, {"due": "9/27/18", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "9/21/18"}, {"due": "10/4/18", "link": "lab/lab05/", "name": "Lab 5: Recursion", "release": "9/28/18"}, {"due": "10/11/18", "link": "lab/lab06/", "name": "Lab 6: Introduction to Maps", "release": "10/3/18"}, {"due": "10/18/18", "link": "lab/lab07/", "name": "Lab 7: ADTs and Dictionaries", "release": "10/11/18"}, {"due": "8/31/18", "link": "hw/hw00/", "name": "Homework 0", "release": "8/24/18"}, {"due": "9/9/18", "link": "hw/hw01/", "name": "Homework 1", "release": "8/31/18"}, {"due": "9/14/18", "link": "hw/hw02/", "name": "Homework 2", "release": "9/7/18"}, {"due": "9/21/18", "link": "hw/hw03/", "name": "Homework 3", "release": "9/14/18"}, {"due": "9/28/18", "link": "hw/hw04/", "name": "Homework 4", "release": "9/21/18"}, {"due": "10/5/18", "link": "hw/hw05/", "name": "Homework 5", "release": "9/28/18"}, {"due": "10/3/18", "link": "hw/hw06/", "name": "Homework 6", "release": "10/3/18"}, {"due": "10/19/18", "link": "hw/hw07/", "name": "Homework 7", "release": "10/11/18"}, {"due": "10/13/18", "link": "proj/maps/", "name": "Maps (Part 1)", "release": "10/5/18"}, {"due": "10/24/18", "link": "proj/maps/", "name": "Maps", "release": "10/12/18"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
