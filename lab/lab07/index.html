@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 7: ADTs and Dictionaries | CS 88 Fall 2018</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 7</span>: ADTs and Dictionaries</h1>
+    </div>
+
+    <p><i>Due at 9:00pm on 10/18/2018.</i></p>
+
+
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab07.zip">lab07.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the OK autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>When you are done, submit the lab by uploading the <code>lab07.py</code>
+    file to <a href="https://okpy.org">okpy.org</a>. You may submit more than once before the
+    deadline; only the final submission will be graded.</p>
+
+
+
+
+
+    
+
+
+<h2 id="abstract-data-types">Abstract Data Types</h2>
+
+
+<p>Data abstraction is a powerful concept in computer science that
+allows programmers to treat code as objects --- for example,
+car objects, chair objects, people objects, etc. That way,
+programmers don't have to worry about <em>how</em> code is
+implemented --- they just have to know <em>what</em> it does.</p>
+
+<p>Data abstraction mimics how we think about the world. For example,
+when you want to drive a car, you don't need to know how the
+engine was built or what kind of material the tires are made of.
+You just have to know how to turn the wheel and press the gas pedal.</p>
+
+<p>An abstract data type consists of two types of functions:</p>
+
+<ul>
+  <li>Constructors: functions that build the abstract data type.</li>
+  <li>Selectors: functions that retrieve information from the data type.</li>
+</ul>
+
+<p>For example, say we have an abstract data type called <code>city</code>.
+This <code>city</code> object will hold the <code>city</code>'s name, and
+its latitude and longitude. To create a <code>city</code> object,
+you'd use a constructor like</p>
+
+<pre><code>city = make_city(name, lat, lon)</code></pre>
+
+<p>To extract the information of a <code>city</code> object, you would use the selectors like</p>
+
+<pre><code>get_name(city)
+get_lat(city)
+get_lon(city)</code></pre>
+
+<p>For example, here is how we would use the <code>make_city</code> constructor to create a city object to represent Berkeley
+and the selectors to access its information.</p>
+
+<pre><code>&gt;&gt;&gt; berkeley = make_city(&#x27;Berkeley&#x27;, 122, 37)
+&gt;&gt;&gt; get_name(berkeley)
+&#x27;Berkeley&#x27;
+&gt;&gt;&gt; get_lat(berkeley)
+122
+&gt;&gt;&gt; get_lon(berkeley)
+37</code></pre>
+
+<p>Notice that we don't need to know how these functions were implemented.  We are
+assuming that someone else has defined them for us.</p>
+
+<p>It's okay if the end user doesn't know how functions were implemented.  However,
+the functions still have to be defined by someone. We'll look into defining the
+constructors and selectors later in this discussion.</p>
+
+<h3 class="question" id="q1">Question 1: Distance</h3>
+
+<p>We will now use those selectors to write <code>distance</code>, which computes the distance between two city objects. Recall that the distance between two coordinate pairs, <code>(x1, y1)</code> and <code>(x2, y2)</code> can be found by calculating the <code>sqrt</code> of <code>(x1 &#x2d; x2)**2 + (y1 &#x2d; y2)**2</code>. We have already imported <code>sqrt</code> for your convenience, so use that and the appropriate selectors to fill in the function.</p>
+
+<div class="solution 1">
+
+<pre><code>from math import sqrt
+def distance(city_1, city_2):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; city1 = make_city(&#x27;city1&#x27;, 0, 1)
+    &gt;&gt;&gt; city2 = make_city(&#x27;city2&#x27;, 0, 2)
+    &gt;&gt;&gt; distance(city1, city2)
+    1.0
+    &quot;&quot;&quot;
+
+    ALT=&quot;return &lt;REPLACE THIS&gt;&quot;
+
+    lat_1, lon_1 = get_lat(city_1), get_lon(city_1)
+    lat_2, lon_2 = get_lat(city_2), get_lon(city_2)
+    return sqrt((lat_1 &#x2d; lat_2)**2 + (lon_1 &#x2d; lon_2)**2)</code></pre>
+
+</div>
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q distance --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: Closer city</h3>
+
+<p>Implement <code>closer_city</code>, a function that takes a latitude,
+longitude, and two cities, and returns the name of the city that is
+relatively closer to the provided latitude and longitude.</p>
+
+<p>You may only use selectors and constructors (introduced above) for
+this question. You may also use the <code>distance</code> function
+defined above. All of these functions can be found in <code>utils.py</code>, if you
+are curious how they are implemented. However, the point of data abstraction,
+as we've said, is that we do not need to know how an abstract data type is
+implemented, but rather just how we can interact with and use the data type.</p>
+
+
+
+<pre><code>def closer_city(lat, lon, city1, city2):
+    &quot;&quot;&quot; Returns the name of either city1 or city2, whichever is closest
+        to coordinate (lat, lon).
+
+        &gt;&gt;&gt; berkeley = make_city(&#x27;Berkeley&#x27;, 37.87, 112.26)
+        &gt;&gt;&gt; stanford = make_city(&#x27;Stanford&#x27;, 34.05, 118.25)
+        &gt;&gt;&gt; closer_city(38.33, 121.44, berkeley, stanford)
+        &#x27;Stanford&#x27;
+        &gt;&gt;&gt; bucharest = make_city(&#x27;Bucharest&#x27;, 44.43, 26.10)
+        &gt;&gt;&gt; vienna = make_city(&#x27;Vienna&#x27;, 48.20, 16.37)
+        &gt;&gt;&gt; closer_city(41.29, 174.78, bucharest, vienna)
+        &#x27;Bucharest&#x27;
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#xa;&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x28;&#x27;&#x61;&#x72;&#x62;&#x27;&#x2c;&#x20;&#x6c;&#x61;&#x74;&#x2c;&#x20;&#x6c;&#x6f;&#x6e;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x73;&#x74;&#x31;&#x20;&#x3d;&#x20;&#x64;&#x69;&#x73;&#x74;&#x61;&#x6e;&#x63;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x31;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x73;&#x74;&#x32;&#x20;&#x3d;&#x20;&#x64;&#x69;&#x73;&#x74;&#x61;&#x6e;&#x63;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x32;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x64;&#x69;&#x73;&#x74;&#x31;&#x20;&#x3c;&#x20;&#x64;&#x69;&#x73;&#x74;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6e;&#x61;&#x6d;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x31;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6e;&#x61;&#x6d;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x32;&#x29;</div></code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q closer_city --local</code></pre>
+
+
+<h2 id="dictionaries">Dictionaries</h2>
+
+
+<p>You've actually seen several abstract data types! List, tuples, ranges, and even strings are examples of abstract data types. Dictionary is another example of abstract data types.</p>
+
+<p>Dictionaries are unordered sets of key-value pairs. To create a
+dictionary, use the following syntax:</p>
+
+<pre><code>&gt;&gt;&gt; singers = { &#x27;Iggy Azalea&#x27;: &#x27;Fancy&#x27;, &#x27;Beyonce&#x27;: &#x27;Flawless&#x27;, &#x27;Adam Levine&#x27;: &#x27;Maps&#x27;}</code></pre>
+
+<p>The curly braces denote the key-value pairs in your dictionary. Each key-value
+pair is separated by a comma. For each pair, the key appears to the left of the
+colon and the value appears to the right of the colon. (This is a dictionary's constructor!) You can retrieve values
+from your dictionary by "indexing" using the key:</p>
+
+<pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
+&#x27;Flawless&#x27;
+&gt;&gt;&gt; singers[&#x27;Iggy Azalea&#x27;]
+&#x27;Fancy&#x27;</code></pre>
+
+<p>You can update an entry for an existing key in the dictionary using the
+following syntax. Be careful adding a new key follows identical syntax!</p>
+
+<pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;] = &#x27;Survivor&#x27;
+&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
+&#x27;Survivor&#x27;
+&gt;&gt;&gt; singers[&#x27;Nicki Minaj&#x27;] = &#x27;Anaconda&#x27; # new entry!
+&gt;&gt;&gt; singers[&#x27;Nicki Minaj&#x27;]
+&#x27;Anaconda&#x27;</code></pre>
+
+<p>You can also check for membership of keys!</p>
+
+<pre><code>&gt;&gt;&gt; &#x27;Adam Levine&#x27; in singers
+True</code></pre>
+
+<h3 class="question" id="q3">Question 3: Counter</h3>
+
+<p>Implement the function <code>counter</code> which takes in a string of words, and returns a
+dictionary where each key is a word in the message, and each value is the number
+of times that word is present in the original string.</p>
+
+
+
+<pre><code>def counter(message):
+    &quot;&quot;&quot; Returns a dictionary of each word in message mapped
+    to the number of times it appears in the input string.
+
+    &gt;&gt;&gt; x = counter(&#x27;to be or not to be&#x27;)
+    &gt;&gt;&gt; x[&#x27;to&#x27;]
+    2
+    &gt;&gt;&gt; x[&#x27;be&#x27;]
+    2
+    &gt;&gt;&gt; x[&#x27;not&#x27;]
+    1
+    &gt;&gt;&gt; y = counter(&#x27;run forrest run&#x27;)
+    &gt;&gt;&gt; y[&#x27;run&#x27;]
+    2
+    &gt;&gt;&gt; y[&#x27;forrest&#x27;]
+    1
+    &quot;&quot;&quot;
+    word_list = message.split()
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x20;&#x3d;&#x20;&#x7b;&#x7d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x20;&#x69;&#x6e;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x5b;&#x77;&#x6f;&#x72;&#x64;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x5b;&#x77;&#x6f;&#x72;&#x64;&#x5d;&#x20;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;</div></code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q counter --local</code></pre>
+
+<h3 class="question" id="q4">Question 4: Replace All</h3>
+
+<p>Given a dictionary <code>d</code>, replace all occurences of <code>x</code> as a value (not a key) with <code>y</code>.</p>
+
+
+
+<pre><code>def replace_all(d, x, y):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; d = {&#x27;foo&#x27;: 2, &#x27;bar&#x27;: 3, &#x27;garply&#x27;: 3, &#x27;xyzzy&#x27;: 99}
+    &gt;&gt;&gt; replace_all(d, 3, &#x27;poof&#x27;)
+
+    &gt;&gt;&gt; d == {&#x27;foo&#x27;: 2, &#x27;bar&#x27;: &#x27;poof&#x27;, &#x27;garply&#x27;: &#x27;poof&#x27;, &#x27;xyzzy&#x27;: 99}
+    True
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6b;&#x65;&#x79;&#x20;&#x69;&#x6e;&#x20;&#x64;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x64;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x3d;&#x20;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x79;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q replace_all --local</code></pre>
+
+<h3 class="question" id="q5">Question 5: Politician ADT</h3>
+
+<p>Now let's combine ADT and dictionaries! Let's try to make an ADT that represents a politician. The <code>politician</code> ADT has a constructor <code>make_politician</code>. There are three selectors, <code>get_name</code>, <code>get_party</code>, and <code>get_age</code>. When implementing an ADT, you have the freedom to choose how you want to represent it. Some common data structures used to represent ADTs are lists and dictionaries. The <code>city</code> ADT was implemented using a list. (Look at the code in utils.py). Now, let's use dictionaries to implement our <code>politician</code> ADT. You must use a dictionary for this question, or else you will not pass the tests.</p>
+
+
+
+<pre><code>def politicians(name, party, age):
+	&quot;&quot;&quot;
+    &gt;&gt;&gt; donald = make_politician(&#x27;Donald Trump&#x27;, &#x27;Republican&#x27;, 69)
+    &gt;&gt;&gt; isinstance(donald, dict)
+    True
+    &quot;&quot;&quot;
+    # Make sure you use a dictionary in your implementation!
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x7b;&#x22;&#x6e;&#x61;&#x6d;&#x65;&#x22;&#x3a;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x22;&#x70;&#x61;&#x72;&#x74;&#x79;&#x22;&#x3a;&#x20;&#x70;&#x61;&#x72;&#x74;&#x79;&#x2c;&#x20;&#x22;&#x61;&#x67;&#x65;&#x22;&#x3a;&#x20;&#x61;&#x67;&#x65;&#x7d;</div>
+def get_name(politician):
+	&quot;&quot;&quot;
+    &gt;&gt;&gt; donald = make_politician(&#x27;Donald Trump&#x27;, &#x27;Republican&#x27;, 69)
+    &gt;&gt;&gt; get_name(donald)
+    &#x27;Donald Trump&#x27;
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x69;&#x74;&#x69;&#x63;&#x69;&#x61;&#x6e;&#x5b;&#x22;&#x6e;&#x61;&#x6d;&#x65;&#x22;&#x5d;</div>
+def get_party(politician):
+	&quot;&quot;&quot;
+    &gt;&gt;&gt; donald = make_politician(&#x27;Donald Trump&#x27;, &#x27;Republican&#x27;, 69)
+    &gt;&gt;&gt; get_party(donald)
+    &#x27;Republican&#x27;
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x69;&#x74;&#x69;&#x63;&#x69;&#x61;&#x6e;&#x5b;&#x22;&#x70;&#x61;&#x72;&#x74;&#x79;&#x22;&#x5d;</div>
+def get_age(politician):
+	&quot;&quot;&quot;
+    &gt;&gt;&gt; donald = make_politician(&#x27;Donald Trump&#x27;, &#x27;Republican&#x27;, 69)
+    &gt;&gt;&gt; get_age(donald)
+    69
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x69;&#x74;&#x69;&#x63;&#x69;&#x61;&#x6e;&#x5b;&#x22;&#x61;&#x67;&#x65;&#x22;&#x5d;</div></code></pre>
+
+
+    <button id='5' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q politician --local</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#abstract-data-types">Abstract Data Types</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Distance</a></li>
+  <li><a href="#q2">Question 2: Closer city</a></li>
+</ul>
+
+  <li><a href="#dictionaries">Dictionaries</a></li>
+  <ul>
+  <li><a href="#q3">Question 3: Counter</a></li>
+  <li><a href="#q4">Question 4: Replace All</a></li>
+  <li><a href="#q5">Question 5: Politician ADT</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+
+</html>
