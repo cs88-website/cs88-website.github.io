@@ -16,7 +16,7 @@ def get_name(city):
     """
     >>> city = make_city('Berkeley', 0, 1)
     >>> get_name(city)
-    'Berkeley' 
+    'Berkeley'
     """
     return city[0]
 
@@ -46,7 +46,7 @@ def distance(city_1, city_2):
     """
 
     "*** YOUR CODE HERE ***"
-    return <REPLACE THIS>
+    return 
 
 def closer_city(lat, lon, city1, city2):
     """ Returns the name of either city1 or city2, whichever is closest
@@ -62,7 +62,7 @@ def closer_city(lat, lon, city1, city2):
         'Bucharest'
     """
     "*** YOUR CODE HERE ***"
-    return <REPLACE THIS>
+    return 
 
 
 ## Dictionaries
@@ -86,7 +86,7 @@ def counter(message):
     """
     word_list = message.split()
     "*** YOUR CODE HERE ***"
-    return <REPLACE THIS>
+    return 
 
 
 def replace_all(d, x, y):
@@ -98,7 +98,8 @@ def replace_all(d, x, y):
     True
     """
     "*** YOUR CODE HERE ***"
-    return <REPLACE THIS>
+    return 
+
 
 
 def make_politician(name, party, age):
@@ -109,7 +110,7 @@ def make_politician(name, party, age):
     """
     # Make sure you use a dictionary in your implementation!
     "*** YOUR CODE HERE ***"
-    return <REPLACE THIS>
+    return 
 
 def get_pol_name(politician):
     """
@@ -118,7 +119,7 @@ def get_pol_name(politician):
     'Woodrow Wilson'
     """
     "*** YOUR CODE HERE ***"
-    return <REPLACE THIS>
+    return 
 
 def get_party(politician):
     """
@@ -127,7 +128,7 @@ def get_party(politician):
     'Democrat'
     """
     "*** YOUR CODE HERE ***"
-    return <REPLACE THIS>
+    return 
 
 def get_age(politician):
     """
@@ -136,5 +137,6 @@ def get_age(politician):
     57
     """
     "*** YOUR CODE HERE ***"
-    return <REPLACE THIS>
+    return 
+
 
