@@ -1,0 +1,24 @@
+{
+    "name": "Lab 7",
+    "endpoint": "cal/cs88/fa18/lab07",
+    "src": [
+        "lab07.py"
+    ],
+    "tests": {
+        "lab07.py:distance": "doctest",
+        "lab07.py:closer_city": "doctest",
+        "lab07.py:counter": "doctest",
+        "lab07.py:replace_all": "doctest",
+        "lab07.py:make_politician": "doctest",
+        "lab07.py:get_pol_name": "doctest",
+        "lab07.py:get_party": "doctest",
+        "lab07.py:get_age": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}

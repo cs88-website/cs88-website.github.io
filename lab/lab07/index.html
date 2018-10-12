@@ -150,7 +150,7 @@ constructors and selectors later in this discussion.</p>
 
 <p>We will now use those selectors to write <code>distance</code>, which computes the distance between two city objects. Recall that the distance between two coordinate pairs, <code>(x1, y1)</code> and <code>(x2, y2)</code> can be found by calculating the <code>sqrt</code> of <code>(x1 &#x2d; x2)**2 + (y1 &#x2d; y2)**2</code>. We have already imported <code>sqrt</code> for your convenience, so use that and the appropriate selectors to fill in the function.</p>
 
-<div class="solution 1">
+
 
 <pre><code>from math import sqrt
 def distance(city_1, city_2):
@@ -161,13 +161,11 @@ def distance(city_1, city_2):
     1.0
     &quot;&quot;&quot;
 
-    ALT=&quot;return &lt;REPLACE THIS&gt;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+    return &lt;REPLACE THIS&gt;
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x74;&#x5f;&#x31;&#x2c;&#x20;&#x6c;&#x6f;&#x6e;&#x5f;&#x31;&#x20;&#x3d;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6c;&#x61;&#x74;&#x28;&#x63;&#x69;&#x74;&#x79;&#x5f;&#x31;&#x29;&#x2c;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6c;&#x6f;&#x6e;&#x28;&#x63;&#x69;&#x74;&#x79;&#x5f;&#x31;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x74;&#x5f;&#x32;&#x2c;&#x20;&#x6c;&#x6f;&#x6e;&#x5f;&#x32;&#x20;&#x3d;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6c;&#x61;&#x74;&#x28;&#x63;&#x69;&#x74;&#x79;&#x5f;&#x32;&#x29;&#x2c;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6c;&#x6f;&#x6e;&#x28;&#x63;&#x69;&#x74;&#x79;&#x5f;&#x32;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x71;&#x72;&#x74;&#x28;&#x28;&#x6c;&#x61;&#x74;&#x5f;&#x31;&#x20;&#x2d;&#x20;&#x6c;&#x61;&#x74;&#x5f;&#x32;&#x29;&#x2a;&#x2a;&#x32;&#x20;&#x2b;&#x20;&#x28;&#x6c;&#x6f;&#x6e;&#x5f;&#x31;&#x20;&#x2d;&#x20;&#x6c;&#x6f;&#x6e;&#x5f;&#x32;&#x29;&#x2a;&#x2a;&#x32;&#x29;</div></code></pre>
 
-    lat_1, lon_1 = get_lat(city_1), get_lon(city_1)
-    lat_2, lon_2 = get_lat(city_2), get_lon(city_2)
-    return sqrt((lat_1 &#x2d; lat_2)**2 + (lon_1 &#x2d; lon_2)**2)</code></pre>
 
-</div>
     <button id='1' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
@@ -204,7 +202,8 @@ implemented, but rather just how we can interact with and use the data type.</p>
         &#x27;Bucharest&#x27;
     &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#xa;&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x28;&#x27;&#x61;&#x72;&#x62;&#x27;&#x2c;&#x20;&#x6c;&#x61;&#x74;&#x2c;&#x20;&#x6c;&#x6f;&#x6e;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x73;&#x74;&#x31;&#x20;&#x3d;&#x20;&#x64;&#x69;&#x73;&#x74;&#x61;&#x6e;&#x63;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x31;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x73;&#x74;&#x32;&#x20;&#x3d;&#x20;&#x64;&#x69;&#x73;&#x74;&#x61;&#x6e;&#x63;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x32;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x64;&#x69;&#x73;&#x74;&#x31;&#x20;&#x3c;&#x20;&#x64;&#x69;&#x73;&#x74;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6e;&#x61;&#x6d;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x31;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6e;&#x61;&#x6d;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x32;&#x29;</div></code></pre>
+    return &lt;REPLACE THIS&gt;
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x6b;&#x65;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x28;&#x27;&#x61;&#x72;&#x62;&#x27;&#x2c;&#x20;&#x6c;&#x61;&#x74;&#x2c;&#x20;&#x6c;&#x6f;&#x6e;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x73;&#x74;&#x31;&#x20;&#x3d;&#x20;&#x64;&#x69;&#x73;&#x74;&#x61;&#x6e;&#x63;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x31;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x73;&#x74;&#x32;&#x20;&#x3d;&#x20;&#x64;&#x69;&#x73;&#x74;&#x61;&#x6e;&#x63;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x32;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x63;&#x69;&#x74;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x64;&#x69;&#x73;&#x74;&#x31;&#x20;&#x3c;&#x20;&#x64;&#x69;&#x73;&#x74;&#x32;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6e;&#x61;&#x6d;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x31;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x65;&#x74;&#x5f;&#x6e;&#x61;&#x6d;&#x65;&#x28;&#x63;&#x69;&#x74;&#x79;&#x32;&#x29;</div></code></pre>
 
 
     <button id='2' class='toggleButton'>
@@ -236,7 +235,7 @@ from your dictionary by "indexing" using the key:</p>
 &#x27;Fancy&#x27;</code></pre>
 
 <p>You can update an entry for an existing key in the dictionary using the
-following syntax. Be careful adding a new key follows identical syntax!</p>
+following syntax. What this means is that each key is unique. Be careful, adding a new key follows identical syntax!</p>
 
 <pre><code>&gt;&gt;&gt; singers[&#x27;Beyonce&#x27;] = &#x27;Survivor&#x27;
 &gt;&gt;&gt; singers[&#x27;Beyonce&#x27;]
@@ -249,6 +248,33 @@ following syntax. Be careful adding a new key follows identical syntax!</p>
 
 <pre><code>&gt;&gt;&gt; &#x27;Adam Levine&#x27; in singers
 True</code></pre>
+
+<p>Recall how we can iterate through a list using for-loops. For example, you can do something like this:</p>
+
+<pre><code>&gt;&gt;&gt; a = [1,2,3]
+&gt;&gt;&gt; for each in a:
+...     print(each)
+1
+2
+3</code></pre>
+
+<p>What happens if you iterate through a dictionary? Can you even iterate through a dictionary?? Notice what happens:</p>
+
+<pre><code>&gt;&gt;&gt; shopping_cart = {&quot;apple&quot;:3, &quot;bananas&quot;:4, &quot;orange&quot;:6}
+&gt;&gt;&gt; for each in shopping_cart:
+...     print(each)
+apple
+bananas
+orange</code></pre>
+
+<p>Notice that when you iterate through a dictionary, the set of keys is what you iterate through. How would you print out values instead? You can simply do:</p>
+
+<pre><code>&gt;&gt;&gt; shopping_cart = {&quot;apple&quot;:3, &quot;bananas&quot;:4, &quot;orange&quot;:6}
+&gt;&gt;&gt; for each in shopping_cart:
+...     print(shopping_cart[each])
+3
+4
+5</code></pre>
 
 <h3 class="question" id="q3">Question 3: Counter</h3>
 
@@ -277,7 +303,8 @@ of times that word is present in the original string.</p>
     &quot;&quot;&quot;
     word_list = message.split()
 <div class="alt 3">    "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x20;&#x3d;&#x20;&#x7b;&#x7d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x20;&#x69;&#x6e;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x5b;&#x77;&#x6f;&#x72;&#x64;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x5b;&#x77;&#x6f;&#x72;&#x64;&#x5d;&#x20;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;</div></code></pre>
+    return &lt;REPLACE THIS&gt;
+</div><div class="solution 3">&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x20;&#x3d;&#x20;&#x7b;&#x7d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x20;&#x69;&#x6e;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x77;&#x6f;&#x72;&#x64;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x5b;&#x77;&#x6f;&#x72;&#x64;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;&#x5b;&#x77;&#x6f;&#x72;&#x64;&#x5d;&#x20;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x5f;&#x64;&#x69;&#x63;&#x74;</div></code></pre>
 
 
     <button id='3' class='toggleButton'>
@@ -289,20 +316,21 @@ of times that word is present in the original string.</p>
 
 <h3 class="question" id="q4">Question 4: Replace All</h3>
 
-<p>Given a dictionary <code>d</code>, replace all occurences of <code>x</code> as a value (not a key) with <code>y</code>.</p>
+<p>Given a dictionary <code>d</code>, return a new dictionary where all occurences of <code>x</code> as a value (not a key) is replaced with <code>y</code>.</p>
 
 
 
 <pre><code>def replace_all(d, x, y):
     &quot;&quot;&quot;
     &gt;&gt;&gt; d = {&#x27;foo&#x27;: 2, &#x27;bar&#x27;: 3, &#x27;garply&#x27;: 3, &#x27;xyzzy&#x27;: 99}
-    &gt;&gt;&gt; replace_all(d, 3, &#x27;poof&#x27;)
+    &gt;&gt;&gt; e = replace_all(d, 3, &#x27;poof&#x27;)
 
-    &gt;&gt;&gt; d == {&#x27;foo&#x27;: 2, &#x27;bar&#x27;: &#x27;poof&#x27;, &#x27;garply&#x27;: &#x27;poof&#x27;, &#x27;xyzzy&#x27;: 99}
+    &gt;&gt;&gt; e == {&#x27;foo&#x27;: 2, &#x27;bar&#x27;: &#x27;poof&#x27;, &#x27;garply&#x27;: &#x27;poof&#x27;, &#x27;xyzzy&#x27;: 99}
     True
     &quot;&quot;&quot;
 <div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6b;&#x65;&#x79;&#x20;&#x69;&#x6e;&#x20;&#x64;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x64;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x3d;&#x20;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x79;</div></code></pre>
+    return &lt;REPLACE THIS&gt;
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x3d;&#x20;&#x7b;&#x7d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6b;&#x65;&#x79;&#x20;&#x69;&#x6e;&#x20;&#x64;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x64;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x3d;&#x20;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x64;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x77;</div></code></pre>
 
 
     <button id='4' class='toggleButton'>
@@ -316,49 +344,18 @@ of times that word is present in the original string.</p>
 
 <p>Now let's combine ADT and dictionaries! Let's try to make an ADT that represents a politician. The <code>politician</code> ADT has a constructor <code>make_politician</code>. There are three selectors, <code>get_name</code>, <code>get_party</code>, and <code>get_age</code>. When implementing an ADT, you have the freedom to choose how you want to represent it. Some common data structures used to represent ADTs are lists and dictionaries. The <code>city</code> ADT was implemented using a list. (Look at the code in utils.py). Now, let's use dictionaries to implement our <code>politician</code> ADT. You must use a dictionary for this question, or else you will not pass the tests.</p>
 
+<div class="solution 5">
 
-
-<pre><code>def politicians(name, party, age):
-	&quot;&quot;&quot;
-    &gt;&gt;&gt; donald = make_politician(&#x27;Donald Trump&#x27;, &#x27;Republican&#x27;, 69)
-    &gt;&gt;&gt; isinstance(donald, dict)
-    True
-    &quot;&quot;&quot;
-    # Make sure you use a dictionary in your implementation!
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x7b;&#x22;&#x6e;&#x61;&#x6d;&#x65;&#x22;&#x3a;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x22;&#x70;&#x61;&#x72;&#x74;&#x79;&#x22;&#x3a;&#x20;&#x70;&#x61;&#x72;&#x74;&#x79;&#x2c;&#x20;&#x22;&#x61;&#x67;&#x65;&#x22;&#x3a;&#x20;&#x61;&#x67;&#x65;&#x7d;</div>
-def get_name(politician):
-	&quot;&quot;&quot;
-    &gt;&gt;&gt; donald = make_politician(&#x27;Donald Trump&#x27;, &#x27;Republican&#x27;, 69)
-    &gt;&gt;&gt; get_name(donald)
-    &#x27;Donald Trump&#x27;
-    &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x69;&#x74;&#x69;&#x63;&#x69;&#x61;&#x6e;&#x5b;&#x22;&#x6e;&#x61;&#x6d;&#x65;&#x22;&#x5d;</div>
-def get_party(politician):
-	&quot;&quot;&quot;
-    &gt;&gt;&gt; donald = make_politician(&#x27;Donald Trump&#x27;, &#x27;Republican&#x27;, 69)
-    &gt;&gt;&gt; get_party(donald)
-    &#x27;Republican&#x27;
-    &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x69;&#x74;&#x69;&#x63;&#x69;&#x61;&#x6e;&#x5b;&#x22;&#x70;&#x61;&#x72;&#x74;&#x79;&#x22;&#x5d;</div>
-def get_age(politician):
-	&quot;&quot;&quot;
-    &gt;&gt;&gt; donald = make_politician(&#x27;Donald Trump&#x27;, &#x27;Republican&#x27;, 69)
-    &gt;&gt;&gt; get_age(donald)
-    69
-    &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x41;&#x4c;&#x54;&#x3d;&#x22;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x3c;&#x52;&#x45;&#x50;&#x4c;&#x41;&#x43;&#x45;&#x20;&#x54;&#x48;&#x49;&#x53;&#x3e;&#x22;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x69;&#x74;&#x69;&#x63;&#x69;&#x61;&#x6e;&#x5b;&#x22;&#x61;&#x67;&#x65;&#x22;&#x5d;</div></code></pre>
-
-
+</div>
     <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q politician --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q make_politician --local
+python3 ok -q get_pol_name --local
+python3 ok -q get_party --local
+python3 ok -q get_age --local</code></pre>
 
 
   </div>
