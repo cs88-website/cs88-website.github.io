@@ -45,32 +45,27 @@ def todo():
 
 def mailbox():
     """
-    >>> EMPTY MAILBOX TEST 
     >>> get_mail, deliver_mail = mailbox()
     >>> get_mail("Amir")
-    None
     >>> deliver_mail("Amir", ["postcard"])
     >>> get_mail("Amir")
-    ["postcard"]
+    ['postcard']
     >>> get_mail("Amir")
-    None
     >>> deliver_mail("Ting", ["paycheck", "ads"])
     >>> get_mail("Ting")
-    ["paycheck", "ads"]
+    ['paycheck', 'ads']
     >>> deliver_mail("Ting", ["bills"])
     >>> get_mail("Ting")
-    ["bills"]
-    >>> deliver_mail(TA_mailbox, "Alex", ["survey"])
+    ['bills']
+    >>> deliver_mail("Alex", ["survey"])
     >>> get_mail("Alex")
-    ["survey"]
+    ['survey']
     >>> get_mail("Alex")
-    None
     >>> get_mail("John")
-    None
     >>> deliver_mail("John", ["postcard", "paycheck"])
     >>> deliver_mail("John", ["ads"])
     >>> get_mail("John")
-    ["postcard", "paycheck", "ads"]
+    ['postcard', 'paycheck', 'ads']
     """
     "*** YOUR CODE HERE ***"
     

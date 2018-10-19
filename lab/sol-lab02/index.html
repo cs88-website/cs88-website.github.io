@@ -364,8 +364,9 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     &gt;&gt;&gt; a_or_c(40)
     False
     &quot;&quot;&quot;
-    #YOUR CODE HERE
-    return False</code></pre>
+    #BEGIN SOLUTION ALT=&quot;&quot;
+    return grade &gt; 89 or (grade &lt; 80 and grade &gt; 69)
+    #END SOLUTION</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q a_or_c --local</code></pre>
 
@@ -393,8 +394,11 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     0
     &quot;&quot;&quot;
 
-    # YOUR CODE HERE
-    return 0</code></pre>
+    #BEGIN SOLUTION ALT=&quot;&quot;
+    if x &lt; y:
+        return x
+    return y
+    #END SOLUTION</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q min --local</code></pre>
 
@@ -422,8 +426,13 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     &gt;&gt;&gt; abs_value_equal(5, &#x2d;6)
     False
     &quot;&quot;&quot;
-    # YOUR CODE HERE
-    return False</code></pre>
+    #BEGIN SOLUTION ALT=&quot;&quot;
+    if x &lt; 0:
+        x = x * &#x2d;1
+    if y &lt; 0:
+        y = y * &#x2d;1
+    return x == y
+    #END SOLUTION</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q abs_value_equal --local</code></pre>
 
@@ -447,8 +456,11 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     &gt;&gt;&gt; mirror(12, 22)
     False
     &quot;&quot;&quot;
-    # YOUR CODE HERE
-    return False</code></pre>
+    #BEGIN SOLUTION ALT=&quot;&quot;
+    first = num1 % 10 == num2 //10
+    second = num1 //10 == num2 % 10
+    return first and second 
+    #END SOLUTION</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q mirror --local</code></pre>
 

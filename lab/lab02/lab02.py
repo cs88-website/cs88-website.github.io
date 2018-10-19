@@ -24,9 +24,8 @@ def a_or_c(grade):
     >>> a_or_c(40)
     False
     """
-    #YOUR CODE HERE
-    return False
-
+    "*** YOUR CODE HERE ***"
+    
 
 
 ## Control
@@ -51,8 +50,8 @@ def min(x, y):
     0
     """
 
-    # YOUR CODE HERE
-    return 0
+    "*** YOUR CODE HERE ***"
+    
 
 
 ## Transformation
@@ -77,8 +76,8 @@ def abs_value_equal(x, y):
     >>> abs_value_equal(5, -6)
     False
     """
-    # YOUR CODE HERE
-    return False
+    "*** YOUR CODE HERE ***"
+    
 
 
 ## Representation
@@ -99,6 +98,6 @@ def mirror(num1, num2):
     >>> mirror(12, 22)
     False
     """
-    # YOUR CODE HERE
-    return False
+    "*** YOUR CODE HERE ***"
+    
 
