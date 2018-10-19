@@ -7,7 +7,7 @@ def merge_dict(d1, d2):
     >>> cs61b = {"midterms":2, "projects":4}
     >>> combined = merge_dict(cs61a, cs61b)
     >>> combined
-    {"midterms":4, "projects":7}
+    {'midterms': 4, 'projects': 7}
     """
     "*** YOUR CODE HERE ***"
     return ______
@@ -22,7 +22,7 @@ def merge_dict_mutate(d1, d2):
     >>> new_deposits = {"Annie":700, "David":800}
     >>> merge_dict_mutate(bank, new_deposits)
     >>> bank
-    {"Annie":1700, "David":1300}
+    {'Annie': 1700, 'David': 1300}
     """
     "*** YOUR CODE HERE ***"
     "SOLUTION HERE"
@@ -40,7 +40,7 @@ def list_combine(lst):
     ['abcde']
     """
     "*** YOUR CODE HERE ***"
-    "SOLUTION HERE"
+    
 
 def dict_cycle(dictionary):
     """Write a function that cycles each of the key-value pair such that the key becomes the last
@@ -52,7 +52,7 @@ def dict_cycle(dictionary):
     {'b': ['c', 'd', 'a'], 'x': ['y', 'z', 'w']}
     """
     "*** YOUR CODE HERE ***"
-    "SOLUTION HERE"
+    
 
 def make_gym(a, b, c, d):
     """Returns a pokemon gym (represented by list) of the four pokemons a, b, c, d."""
@@ -74,7 +74,7 @@ def make_pokemon_set():
     >>> my_gym = make_gym("charmander", "celebi", "pikachu", "rattata")
     >>> my_pokemons["evolve_all"](my_gym)
     >>> my_gym
-    ['charizard', 'celebi', 'raichu', 'raticate']
+    ['charizard', 'celebi', 'pikachu', 'raticate']
 
     """
     

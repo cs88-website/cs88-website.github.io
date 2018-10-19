@@ -1,0 +1,20 @@
+{
+    "name": "Lab 08",
+    "endpoint": "cal/cs88/fa18/lab08",
+    "src": [
+        "lab08.py"
+    ],
+    "tests": {
+        "lab08.py:map": "doctest",
+        "lab08.py:todo": "doctest",
+        "lab08.py:mailbox": "doctest",
+        "lab08.py:deep_copy": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
