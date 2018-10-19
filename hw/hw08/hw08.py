@@ -74,7 +74,7 @@ def make_pokemon_set():
     >>> my_gym = make_gym("charmander", "celebi", "pikachu", "rattata")
     >>> my_pokemons["evolve_all"](my_gym)
     >>> my_gym
-    ['charizard', 'celebi', 'raichu', 'raticate']
+    ['charizard', 'celebi', 'pikachu', 'raticate']
 
     """
     

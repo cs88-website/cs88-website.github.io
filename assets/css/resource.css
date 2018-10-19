@@ -1,0 +1,83 @@
+/* Stylesheet for CS 61A resources */
+
+*:focus {
+  outline:none;
+}
+
+
+/* Headers */
+
+
+/* block level elements */
+
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width:80%;
+  text-align:center;
+}
+
+/* buttons */
+
+.btn {
+  border:2px solid #0072c1;
+  color:#0072c1;
+  cursor:pointer;
+}
+
+.btn:hover {
+  background-color:#0072c1;
+  border:2px solid #0072c1;
+  color:#fff
+}
+
+.toggleButton, .toggleButtonShow {
+  background-color:#0072c1;
+  color:#ecf0f1;
+  padding:10px;
+  margin-bottom:10px;
+  border: 0;
+}
+
+.toggleButton:hover, .toggleButtonShow {
+  color:white;
+}
+
+
+/* span-level elements */
+
+abbr {
+  font-variant: small-caps;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+}
+
+
+
+/* Lists */
+
+ol.simple, ul.simple {
+  margin-bottom:1em;
+}
+
+ol.arabic {
+  list-style:decimal
+}
+
+ol.loweralpha {
+  list-style:lower-alpha
+}
+
+ol.upperalpha {
+  list-style:upper-alpha
+}
+
+ol.lowerroman {
+  list-style:lower-roman
+}
+
+ol.upperroman {
+  list-style:upper-roman
+}
