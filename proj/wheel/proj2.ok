@@ -1,0 +1,31 @@
+{
+  "name": "Project 2: Wheel of Fortune",
+  "endpoint": "cal/cs88/fa18/proj2",
+  "src": [
+    "utils.py",
+    "secret.py",
+    "wordset.py",
+    "board.py",
+    "player.py",
+    "game.py"
+  ],
+  "tests": {
+    "utils.py:key_of_max": "doctest",
+    "secret.py:SecretWord": "doctest",
+    "wordset.py:WordSet": "doctest",
+    "wordset.py:Dictionary": "doctest",
+    "wordset.py:WordMunch": "doctest",
+    "board.py:Board": "doctest",
+    "player.py:Player": "doctest",
+    "player.py:ComputerPlayer": "doctest",
+    "game.py:Game": "doctest"
+  },
+  "protocols": [
+      "restore",
+      "file_contents",
+      "unlock",
+      "grading",
+      "analytics",
+      "backup"
+  ]
+}
