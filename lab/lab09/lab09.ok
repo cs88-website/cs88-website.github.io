@@ -1,0 +1,13 @@
+{
+    "name": "Lab 9",
+    "endpoint": "cal/cs88/fa18/lab09",
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup",
+        "scoring"
+    ]
+}
