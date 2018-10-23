@@ -342,6 +342,8 @@ Sublime also has some other pretty neat features. One you’ve probably already 
 <h3 id="problem-1">Problem 1</h3>
 
 
+<h3 class="question" id="q1">Question 1: A or C</h3> 
+
 <pre><code>def a_or_c(grade):
     &quot;&quot;&quot;
     We all know the saying &quot;C&#x27;s get degrees&quot;.
@@ -364,11 +366,17 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     &gt;&gt;&gt; a_or_c(40)
     False
     &quot;&quot;&quot;
-    #BEGIN SOLUTION ALT=&quot;&quot;
+    # BEGIN SOLUTION
     return grade &gt; 89 or (grade &lt; 80 and grade &gt; 69)
-    #END SOLUTION</code></pre>
+    # END SOLUTION</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q a_or_c --local</code></pre>
+
+<explanation>
+
+<p><code>return grade &gt;= 90 or (grade &lt;= 79 and grade &gt;= 70)</code> is also okay.</p>
+
+</explanation>
 
 
 <h3 id="problem-2">Problem 2</h3>
@@ -496,6 +504,7 @@ Hello World!
   <li><a href="#deliverables">Deliverables</a></li>
   <ul>
   <li><a href="#problem-1">Problem 1</a></li>
+  <li><a href="#q1">Question 1: A or C</a></li>
   <li><a href="#problem-2">Problem 2</a></li>
   <li><a href="#problem-3">Problem 3</a></li>
   <li><a href="#problem-4">Problem 4</a></li>
