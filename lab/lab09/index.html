@@ -175,7 +175,7 @@ a <code>Car</code> class:</p>
 </ul>
 
 
-<h2 id="warm-up">Warm-up</h2>
+<h2 id="inheritance">Inheritance</h2>
 
 
 <h3 class="question" id="q1">Question 1: Cat</h3>
@@ -263,18 +263,48 @@ class Pet(Animal):
 
 
 
-<pre><code>    def num_rows():
-        &quot;&quot;&quot;Compute the number of rows in a table&quot;&quot;&quot;
+<pre><code>    def num_rows(self):
+        &quot;&quot;&quot;
+        Compute the number of rows in a table.
+
+        &gt;&gt;&gt; simple_table = T88ble(simple_table_rows, simple_table_labels)
+        &gt;&gt;&gt; simple_table.num_rows()
+        2
+        &gt;&gt;&gt; longer_table = T88ble(longer_table_rows, longer_table_labels)
+        &gt;&gt;&gt; longer_table.num_rows()
+        3
+        &quot;&quot;&quot;
 <div class="alt 2">        "*** YOUR CODE HERE ***"
+        return ______
 </div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x72;&#x6f;&#x77;&#x73;&#x29;</div>
-    def num_cols():
-        &quot;&quot;&quot;Compute the number of cols in a table&quot;&quot;&quot;
+    def num_cols(self):
+        &quot;&quot;&quot;
+        Compute the number of cols in a table.
+
+        &gt;&gt;&gt; simple_table = T88ble(simple_table_rows, simple_table_labels)
+        &gt;&gt;&gt; simple_table.num_cols()
+        2
+        &gt;&gt;&gt; longer_table = T88ble(longer_table_rows, longer_table_labels)
+        &gt;&gt;&gt; longer_table.num_cols()
+        5
+        &quot;&quot;&quot;
 <div class="alt 2">        "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x63;&#x6f;&#x6c;&#x73;&#x29;</div>
-    def labels():
-        &quot;&quot;&quot;Lists the column labels in a table&quot;&quot;&quot;
+        return ______
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x72;&#x6f;&#x77;&#x73;&#x5b;&#x30;&#x5d;&#x29;</div>
+    def labels(self):
+        &quot;&quot;&quot;
+        Lists the column labels in a table.
+
+        &gt;&gt;&gt; simple_table = T88ble(simple_table_rows, simple_table_labels)
+        &gt;&gt;&gt; simple_table.labels()
+        [&#x27;Flavor&#x27;, &#x27;Price&#x27;]
+        &gt;&gt;&gt; longer_table = T88ble(longer_table_rows, longer_table_labels)
+        &gt;&gt;&gt; longer_table.labels()
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;]
+        &quot;&quot;&quot;
 <div class="alt 2">        "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x63;&#x6f;&#x6c;&#x73;&#x2e;&#x6b;&#x65;&#x79;&#x73;&#x28;&#x29;</div></code></pre>
+        return ______
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x63;&#x6f;&#x6c;&#x75;&#x6d;&#x6e;&#x5f;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;</div></code></pre>
 
 
     <button id='2' class='toggleButton'>
@@ -282,34 +312,88 @@ class Pet(Animal):
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q basic --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q T88ble.num_rows --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q T88ble.num_cols --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q T88ble.labels --local</code></pre>
 
 <h3 class="question" id="q3">Question 3: Column Methods</h3>
 
 <p>Complete the <code>column</code>, <code>select</code>, and <code>with_column</code> functions according to the docstrings.</p>
 
+<p>You might find the <code>list.index(value)</code> function to be particularly useful for this problem.
+Check out the python docs <a href="https://docs.python.org/3/tutorial/datastructures.html">here</a></p>
+
 
 
 <pre><code>    def column(self, label):
         &quot;&quot;&quot;
-        The values of a column
+        Returns the values of the column represented by label.
+
+        &gt;&gt;&gt; simple_table = T88ble(simple_table_rows, simple_table_labels)
+        &gt;&gt;&gt; simple_table.column(&quot;Flavor&quot;)
+        [&#x27;chocolate&#x27;, &#x27;vanilla&#x27;]
+        &gt;&gt;&gt; longer_table = T88ble(longer_table_rows, longer_table_labels)
+        &gt;&gt;&gt; longer_table.column(&quot;Eggs price&quot;)
+        [1.5, 2.5, 4]
+        &gt;&gt;&gt; longer_table
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;]
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
         &quot;&quot;&quot;
 <div class="alt 3">        "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x63;&#x6f;&#x6c;&#x73;&#x2e;&#x6b;&#x65;&#x79;&#x73;&#x28;&#x29;</div>
-    def select(self, labels):
-        &quot;&quot;&quot;
-        Create a copy of a table with only some of the columns.
-        Each column is the column name or index.
-        &quot;&quot;&quot;
-<div class="alt 3">        "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x63;&#x6f;&#x6c;&#x73;&#x2e;&#x6b;&#x65;&#x79;&#x73;&#x28;&#x29;</div>
+        return ______
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x28;&#x29;&#x2e;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x72;&#x6f;&#x77;&#x5b;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x72;&#x6f;&#x77;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x72;&#x6f;&#x77;&#x73;&#x5d;</div>
     def with_column(self, label, values):
         &quot;&quot;&quot;
-        A table with an additional or replaced column.
+        Returns a new table with an additional or replaced column.
         label is a string for the name of a column, values is an list
+
+        &gt;&gt;&gt; longer_table = T88ble(longer_table_rows, longer_table_labels)
+        &gt;&gt;&gt; longer_table.with_column(&#x27;Inflation rate&#x27;, [i for i in range(longer_table.num_rows())])
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;, &#x27;Inflation rate&#x27;]
+        [1990, 1, 1.5, 12, 7, 0]
+        [2000, 2, 2.5, 25, 10, 1]
+        [2010, 5, 4, 70, 36, 2]
+        &gt;&gt;&gt; longer_table
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;]
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
         &quot;&quot;&quot;
 <div class="alt 3">        "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x63;&#x6f;&#x6c;&#x73;&#x2e;&#x6b;&#x65;&#x79;&#x73;&#x28;&#x29;</div></code></pre>
+        return ______
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x72;&#x6f;&#x77;&#x73;&#x5b;&#x69;&#x5d;&#x5b;&#x3a;&#x5d;&#x20;&#x2b;&#x20;&#x5b;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x73;&#x5b;&#x69;&#x5d;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6e;&#x75;&#x6d;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x28;&#x29;&#x29;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x28;&#x29;&#x5b;&#x3a;&#x5d;&#x20;&#x2b;&#x20;&#x5b;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x38;&#x38;&#x62;&#x6c;&#x65;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x29;</div>
+    def select(self, labels):
+        &quot;&quot;&quot;
+        Create a copy of a table with only some of the columns,
+        reffered to by the list of labels.
+
+        &gt;&gt;&gt; simple_table = T88ble(simple_table_rows, simple_table_labels)
+        &gt;&gt;&gt; simple_table.select([&quot;Flavor&quot;])
+        [&#x27;Flavor&#x27;]
+        [&#x27;chocolate&#x27;]
+        [&#x27;vanilla&#x27;]
+        &gt;&gt;&gt; simple_table
+        [&#x27;Flavor&#x27;, &#x27;Price&#x27;]
+        [&#x27;chocolate&#x27;, 2]
+        [&#x27;vanilla&#x27;, 1]
+
+        &gt;&gt;&gt; longer_table = T88ble(longer_table_rows, longer_table_labels)
+        &gt;&gt;&gt; longer_table.select([&#x27;Year&#x27;, &#x27;Average tank of gas&#x27;])
+        [&#x27;Year&#x27;, &#x27;Average tank of gas&#x27;]
+        [1990, 12]
+        [2000, 25]
+        [2010, 70]
+        &gt;&gt;&gt; longer_table
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;]
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
+        &quot;&quot;&quot;
+<div class="alt 3">        "*** YOUR CODE HERE ***"
+        return ______
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5f;&#x69;&#x6e;&#x64;&#x69;&#x63;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x28;&#x29;&#x2e;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x5b;&#x72;&#x6f;&#x77;&#x5b;&#x69;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5f;&#x69;&#x6e;&#x64;&#x69;&#x63;&#x65;&#x73;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x72;&#x6f;&#x77;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x72;&#x6f;&#x77;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x38;&#x38;&#x62;&#x6c;&#x65;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x2c;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x29;</div></code></pre>
 
 
     <button id='3' class='toggleButton'>
@@ -317,21 +401,50 @@ class Pet(Animal):
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q column --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q T88ble.column --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q T88ble.with_column --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q T88ble.select --local</code></pre>
 
 <h3 class="question" id="q4">Question 4: Sort</h3>
 
 <p>Complete the <code>sort</code> function according to the docstring.</p>
 
+<p>You might find the <code>sorted</code> method to be very useful for this question. <code>sorted</code> can take in a <code>key = lambda...</code> just like the min function from the project.
+Check out the python docs <a href="https://docs.python.org/3/library/functions.html#sorted">here</a></p>
 
 
-<pre><code>    def sort(self, column, descending=True):
+
+<pre><code>    def sort(self, label, descending=True):
         &quot;&quot;&quot;
         Create a copy of a table sorted by the values in a column.
         Defaults to ascending order unless descending = True is included.
+
+        &gt;&gt;&gt; longer_table = T88ble(longer_table_rows, longer_table_labels)
+        &gt;&gt;&gt; longer_table.sort(&quot;Year&quot;)
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;]
+        [2010, 5, 4, 70, 36]
+        [2000, 2, 2.5, 25, 10]
+        [1990, 1, 1.5, 12, 7]
+        &gt;&gt;&gt; longer_table
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;]
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
+
+        &gt;&gt;&gt; simple_table = T88ble(simple_table_rows, simple_table_labels)
+        &gt;&gt;&gt; simple_table.sort(&quot;Price&quot;, descending=False)
+        [&#x27;Flavor&#x27;, &#x27;Price&#x27;]
+        [&#x27;vanilla&#x27;, 1]
+        [&#x27;chocolate&#x27;, 2]
+        &gt;&gt;&gt; simple_table
+        [&#x27;Flavor&#x27;, &#x27;Price&#x27;]
+        [&#x27;chocolate&#x27;, 2]
+        [&#x27;vanilla&#x27;, 1]
+
         &quot;&quot;&quot;
 <div class="alt 4">        "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x63;&#x6f;&#x6c;&#x73;&#x2e;&#x6b;&#x65;&#x79;&#x73;&#x28;&#x29;</div></code></pre>
+        return ______
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x28;&#x29;&#x2e;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x20;&#x3d;&#x20;&#x73;&#x6f;&#x72;&#x74;&#x65;&#x64;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x72;&#x6f;&#x77;&#x73;&#x5b;&#x3a;&#x5d;&#x2c;&#x20;&#x6b;&#x65;&#x79;&#x3d;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x78;&#x5b;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x5d;&#x2c;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x20;&#x3d;&#x20;&#x64;&#x65;&#x73;&#x63;&#x65;&#x6e;&#x64;&#x69;&#x6e;&#x67;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x38;&#x38;&#x62;&#x6c;&#x65;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x2c;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x28;&#x29;&#x29;</div></code></pre>
 
 
     <button id='4' class='toggleButton'>
@@ -339,7 +452,7 @@ class Pet(Animal):
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q sort --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q T88ble.sort --local</code></pre>
 
 <h3 class="question" id="q5">Question 5: Where</h3>
 
@@ -350,16 +463,32 @@ class Pet(Animal):
 <pre><code>    def where(self, label, filter_fn):
         &quot;&quot;&quot;
         Create a copy of a table with only the rows that match a filter function.
+
+        &gt;&gt;&gt; def above(x):
+        ...     return lambda y: y &gt; x
+        ...
+        &gt;&gt;&gt; longer_table = T88ble(longer_table_rows, longer_table_labels)
+        &gt;&gt;&gt; longer_table.where(&#x27;Eggs price&#x27;, above(2))
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
+        &gt;&gt;&gt; longer_table
+        [&#x27;Year&#x27;, &#x27;Bread price&#x27;, &#x27;Eggs price&#x27;, &#x27;Average tank of gas&#x27;, &#x27;Rent per day&#x27;]
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
         &quot;&quot;&quot;
 <div class="alt 5">        "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x63;&#x6f;&#x6c;&#x73;&#x2e;&#x6b;&#x65;&#x79;&#x73;&#x28;&#x29;</div></code></pre>
+        return ______
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x28;&#x29;&#x2e;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x28;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x72;&#x6f;&#x77;&#x5b;&#x3a;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x72;&#x6f;&#x77;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x72;&#x6f;&#x77;&#x73;&#x20;&#x69;&#x66;&#x20;&#x66;&#x69;&#x6c;&#x74;&#x65;&#x72;&#x5f;&#x66;&#x6e;&#x28;&#x72;&#x6f;&#x77;&#x5b;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x5f;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x5d;&#x29;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x38;&#x38;&#x62;&#x6c;&#x65;&#x28;&#x6e;&#x65;&#x77;&#x5f;&#x72;&#x6f;&#x77;&#x73;&#x2c;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6c;&#x61;&#x62;&#x65;&#x6c;&#x73;&#x28;&#x29;&#x29;</div></code></pre>
 
 
     <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
-<p>Use OK to test your code:</p><pre><code>python3 ok -q where --local</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q T88ble.where --local</code></pre>
 
 
   </div>
@@ -368,7 +497,7 @@ class Pet(Animal):
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
   <li><a href="#oop-terminology">OOP terminology</a></li>
-  <li><a href="#warm-up">Warm-up</a></li>
+  <li><a href="#inheritance">Inheritance</a></li>
   <ul>
   <li><a href="#q1">Question 1: Cat</a></li>
 </ul>
