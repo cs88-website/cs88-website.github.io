@@ -221,57 +221,7 @@
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q Arr88.apply --local</code></pre>
 
-<h3 class="question" id="q2">Question 2: Person</h3>
-
-<p>Modify the following <code>Person</code> class to add a <code>repeat</code> method, which
-repeats the last thing said. If nothing has been said yet, you can
-have <code>repeat</code> return a string of your choosing. See the doctests for 
-an example of its use.</p>
-
-<blockquote><p><em>Hint</em>: you will have to modify other methods as well, not just the
-<code>repeat</code> method.</p></blockquote>
-
-<solution>
-
-<pre><code>class Person(object):
-    &quot;&quot;&quot;Person class.
-
-    &gt;&gt;&gt; steven = Person(&quot;Steven&quot;)
-    &gt;&gt;&gt; steven.say(&quot;Hello&quot;)
-    &#x27;Hello&#x27;
-    &gt;&gt;&gt; steven.repeat()
-    &#x27;Hello&#x27;
-    &gt;&gt;&gt; steven.greet()
-    &#x27;Hello, my name is Steven&#x27;
-    &gt;&gt;&gt; steven.repeat()
-    &#x27;Hello, my name is Steven&#x27;
-    &gt;&gt;&gt; steven.ask(&quot;preserve abstraction barriers&quot;)
-    &#x27;Would you please preserve abstraction barriers&#x27;
-    &gt;&gt;&gt; steven.repeat()
-    &#x27;Would you please preserve abstraction barriers&#x27;
-    &quot;&quot;&quot;
-    def __init__(self, name):
-        self.name = name
-        "*** YOUR CODE HERE ***"
-
-    def say(self, stuff):
-        "*** YOUR CODE HERE ***"
-        return stuff
-
-    def ask(self, stuff):
-        return self.say(&quot;Would you please &quot; + stuff)
-
-    def greet(self):
-        return self.say(&quot;Hello, my name is &quot; + self.name)
-
-    def repeat(self):
-        "*** YOUR CODE HERE ***"</code></pre>
-
-</solution>
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q Person --local</code></pre>
-
-<h3 class="question" id="q3">Question 3: Checking account</h3>
+<h3 class="question" id="q2">Question 2: Checking account</h3>
 
 <p>We'd like to be able to cash checks, so let's add a <code>deposit_check</code>
 method to our <code>CheckingAccount</code> class. It will take a <code>Check</code> object
@@ -324,82 +274,7 @@ class Check(object):
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q CheckingAccount --local</code></pre>
 
-<h3 class="question" id="q4">Question 4: Mint</h3>
-
-<p>Complete the <code>Mint</code> and <code>Coin</code> classes so that the coins created by a mint have
-the correct year and worth.</p>
-
-<ul>
-  <li>Each <code>Mint</code> instance has a <code>year</code> stamp. The <code>update</code> method sets the
-  <code>year</code> stamp to the <code>current_year</code> class attribute of the <code>Mint</code> class.</li>
-  <li>The <code>create</code> method takes a subclass of <code>Coin</code> and returns an instance of
-  that class stamped with the <code>mint</code>'s year (which may be different from
-  <code>Mint.current_year</code> if it has not been updated.)</li>
-  <li>A <code>Coin</code>'s <code>worth</code> method returns the <code>cents</code> value of the coin plus one
-  extra cent for each year of age beyond 50. A coin's age can be determined
-  by subtracting the coin's year from the <code>current_year</code> class attribute of
-  the <code>Mint</code> class.</li>
-</ul>
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q Mint --local</code></pre>
-
-<pre><code>class Mint:
-    &quot;&quot;&quot;A mint creates coins by stamping on years.
-
-    The update method sets the mint&#x27;s stamp to Mint.current_year.
-
-    &gt;&gt;&gt; mint = Mint()
-    &gt;&gt;&gt; mint.year
-    2015
-    &gt;&gt;&gt; dime = mint.create(Dime)
-    &gt;&gt;&gt; dime.year
-    2015
-    &gt;&gt;&gt; Mint.current_year = 2100  # Time passes
-    &gt;&gt;&gt; nickel = mint.create(Nickel)
-    &gt;&gt;&gt; nickel.year     # The mint has not updated its stamp yet
-    2015
-    &gt;&gt;&gt; nickel.worth()  # 5 cents + (85 &#x2d; 50 years)
-    40
-    &gt;&gt;&gt; mint.update()   # The mint&#x27;s year is updated to 2100
-    &gt;&gt;&gt; Mint.current_year = 2175     # More time passes
-    &gt;&gt;&gt; mint.create(Dime).worth()    # 10 cents + (75 &#x2d; 50 years)
-    35
-    &gt;&gt;&gt; Mint().create(Dime).worth()  # A new mint has the current year
-    10
-    &gt;&gt;&gt; dime.worth()     # 10 cents + (160 &#x2d; 50 years)
-    120
-    &gt;&gt;&gt; Dime.cents = 20  # Upgrade all dimes!
-    &gt;&gt;&gt; dime.worth()     # 20 cents + (160 &#x2d; 50 years)
-    130
-
-
-    &quot;&quot;&quot;
-    current_year = 2015
-
-    def __init__(self):
-        self.update()
-
-    def create(self, kind):
-        "*** YOUR CODE HERE ***"
-
-    def update(self):
-        "*** YOUR CODE HERE ***"
-
-class Coin:
-    def __init__(self, year):
-        self.year = year
-
-    def worth(self):
-        &quot;The worth is a coin&#x27;s face value + 1 cent for each year over age 50.&quot;
-        "*** YOUR CODE HERE ***"
-
-class Nickel(Coin):
-    cents = 5
-
-class Dime(Coin):
-    cents = 10</code></pre>
-
-<h3 class="question" id="q5">Question 5: Vending Machine</h3>
+<h3 class="question" id="q3">Question 3: Vending Machine</h3>
 
 <p>Create a class called <code>VendingMachine</code> that represents a vending
 machine for some product. A <code>VendingMachine</code> object returns strings
@@ -409,7 +284,7 @@ describing its interactions.  See the doctest below for examples:</p>
 
 <p><code>restock</code> should update the stock and return the current stock.</p>
 
-<p><code>deposit</code> should return add money to the balance and return the current balance, unless the stock is zero, then it should inform the user the stock is zero and return the money.</p>
+<p><code>deposit</code> should add money to the balance and return the current balance, unless the stock is zero, then it should inform the user the stock is zero and return the money.</p>
 
 <p><code>vend</code> should either tell you how much more money needs to be deposited to buy a product, or sell you a product and return the change, or let you know the machine is out of stock.</p>
 
@@ -459,10 +334,8 @@ describing its interactions.  See the doctest below for examples:</p>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
   <li><a href="#q1">Question 1: Arr88</a></li>
-  <li><a href="#q2">Question 2: Person</a></li>
-  <li><a href="#q3">Question 3: Checking account</a></li>
-  <li><a href="#q4">Question 4: Mint</a></li>
-  <li><a href="#q5">Question 5: Vending Machine</a></li>
+  <li><a href="#q2">Question 2: Checking account</a></li>
+  <li><a href="#q3">Question 3: Vending Machine</a></li>
 </ul>
 
     </nav>
