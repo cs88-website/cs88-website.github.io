@@ -80,6 +80,7 @@ so that you can play.</em></p>
 
     <h2>Introduction</h2>
 
+
 <p>In this project, you will create a retro-text version of the classic game show, <a href="https://en.wikipedia.org/wiki/Wheel_of_Fortune_(U.S._game_show)">Wheel of Fortune</a>, which is a spin on the traditional word-guessing game.</p>
 
 <p>The project combines functional and object-oriented programming paradigms,
@@ -98,7 +99,7 @@ changes will be made to:</p>
 </ul>
 
 
-<p>You can obtain all the files needed for this project by downloading this <a href="Wheel of Fortune.zip">zip archive</a>.</p>
+<p>You can obtain all the files needed for this project by downloading this <a href="wheel.zip">zip archive</a>.</p>
 
 <h2>Logistics</h2>
 
@@ -112,6 +113,11 @@ assigned for correctness, and 2 points for the overall <a
   href="../../articles/composition.html">composition</a> of your program.</p>
 
 <p>You will turn in the following files:</p>
+
+
+
+
+<h2 id="project-submission">Project Submission</h2>
 
 
 <ul>
@@ -149,7 +155,7 @@ arguments).</p>
 <p><strong>The assignment is due on Wednesday, 11/21, at 9pm. We will have a mid-project checkpoint due on Saturday, 11/10.</strong></p>
 
 <ul>
-  <li>Part 1: Phases 0, 1, and 2 are due on Saturday, 11/10. Submit the files listed under <code>Project Submission</code> to Okpy.</li>
+  <li>Part 1: Problems 0-3 are due on Saturday, 11/10, at 9pm. Submit the files listed under <code>Project Submission</code> to Okpy.</li>
   <li>The entire project (including Part 1) is due on Wednesday, 11/21, at 9pm. Submit the files listed under <code>Project Submission</code> to Okpy. <strong>Extra Credit Opportunity:</strong> If you submit the entire project by Thursday, 11/15, you can earn one point of EC towards your project grade.</li>
 </ul>
 
@@ -214,7 +220,7 @@ Use the <code>-q</code> option as directed in the problems below.</p>
 <p>The <code>tests</code> folder is used to store autograder tests, so make sure
 <b>not to modify it</b>. You may lose all your unlocking progress if you
 do. If you need to get a fresh copy, you can download the
-<a href="Wheel of Fortune.zip">zip archive</a> and copy it over, but you
+<a href="wheel.zip">zip archive</a> and copy it over, but you
 will need to start unlocking from scratch.</p>
 
 
@@ -235,7 +241,7 @@ and methods defined on objects of the class and, to a lesser degree,
 the attributes and methods on the class itself.</p>
 
 
-<h2 id="the-game">The game</h2>
+<h2 id="the-game">The Game</h2>
 
 
 <p>The following shows a little example of playing the game where the computer
@@ -746,13 +752,15 @@ Submit this as <code>computer_session2.txt</code>.</p>
 
 <pre><code>python3 ok &#x2d;&#x2d;local</code></pre>
 
-<p>Congratulations on finishing the project!</p>
+<p><strong>Congratulations on finishing the project!</strong> See the <code>Project Submission</code> tab for submission instructions.</p>
 
 
-<h3 id="extra-credit-2-pts">Extra Credit (2 pts)</h3>
+<h3 id="extra-practice">Extra Practice</h3>
 
-<p>You can choose one of the options below to receive 2 additional points for the project. The tasks below are fairly open-ended, we want you to get creative! If you choose to complete the extra credit, please submit a text file called <code>extra_credit.txt</code> to the <code>Wheel of Fortune (Extra Credit)</code> assignment on OK. Please make sure you submit to the extra credit assignment (not the <code>Wheel of Fortune</code> assignment) in order to get credit. This text file should contain a description of the code you wrote, sample output from the game (if that helps explain the improvements), and a list of the files where the extra credit code is located. Make sure to add your partner to the extra credit assignment as well. 
-<br/>
+<p>If enjoyed this project and want to take it a step further, play around with the following extensions. These extra features are only for practice and will not be graded. 
+<!-- ### Extra Credit (2 pts)
+You can choose one of the options below to receive 2 additional points for the project. The tasks below are fairly open-ended, we want you to get creative! If you choose to complete the extra credit, please submit a text file called <code>extra_credit.txt</code> to the <code>Wheel of Fortune (Extra Credit)</code> assignment on OK. Please make sure you submit to the extra credit assignment (not the <code>Wheel of Fortune</code> assignment) in order to get credit. This text file should contain a description of the code you wrote, sample output from the game (if that helps explain the improvements), and a list of the files where the extra credit code is located. Make sure to add your partner to the extra credit assignment as well.   
+ --></p>
 
 <ul>
   <li>Implement a multiplayer version of computer player.</li>
@@ -764,7 +772,7 @@ Submit this as <code>computer_session2.txt</code>.</p>
   word you should not miss at all.  This approach introduces a bit of a search tree.</li>
   <li>Come up with better ways of guessing, such as looking at character combinations.  Show how
   much better these perform than simply filtering on length and match.</li>
-</ul></p>
+</ul>
 
   </div>
 
@@ -772,6 +780,33 @@ Submit this as <code>computer_session2.txt</code>.</p>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
   <li><a href="#project-submission">Project Submission</a></li>
+  <li><a href="#core-concepts">Core Concepts</a></li>
+  <li><a href="#the-game">The Game</a></li>
+  <li><a href="#the-code">The Code</a></li>
+  <ul>
+  <li><a href="#secret-words">Secret Words</a></li>
+  <li><a href="#word-sets">Word Sets</a></li>
+  <li><a href="#dictionary">Dictionary</a></li>
+  <li><a href="#board">Board</a></li>
+  <li><a href="#player">Player</a></li>
+  <li><a href="#humanplayer">HumanPlayer</a></li>
+  <li><a href="#computerplayer">ComputerPlayer</a></li>
+  <li><a href="#wordmunch">WordMunch</a></li>
+  <li><a href="#game">Game</a></li>
+</ul>
+
+  <li><a href="#problems">Problems</a></li>
+  <ul>
+  <li><a href="#problem-0-1-pts">Problem 0 (1 pts)</a></li>
+  <li><a href="#problem-1-3-pts">Problem 1 (3 pts)</a></li>
+  <li><a href="#problem-2-2-pt">Problem 2 (2 pt)</a></li>
+  <li><a href="#problem-3-3-pt">Problem 3 (3 pt)</a></li>
+  <li><a href="#problem-4-3-pt">Problem 4 (3 pt)</a></li>
+  <li><a href="#problem-5-4-pt">Problem 5 (4 pt)</a></li>
+  <li><a href="#problem-6-2-pt">Problem 6 (2 pt)</a></li>
+  <li><a href="#extra-practice">Extra Practice</a></li>
+</ul>
+
 </ul>
 
     </nav>
