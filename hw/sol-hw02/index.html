@@ -169,7 +169,7 @@ reciprocals of the numbers. (The reciprocal of <code>x</code> is <code>1/x</code
     &gt;&gt;&gt; harmonic_mean(4, 12)
     6.0
     &quot;&quot;&quot;
-<span class="sol-highlight">    return &quot;replace this&quot;</span></code></pre>
+<span class="sol-highlight">    return 2/(1/x+1/y)</span></code></pre>
 
 </solution>
 
@@ -200,7 +200,7 @@ miles per minute and returns the same value converted to kilometers per day.</p>
     &gt;&gt;&gt; speed_converter(2)
     4633.92
     &quot;&quot;&quot;
-<span class="sol-highlight">    kilos_per_day = &quot;replace this&quot;</span>
+<span class="sol-highlight">    kilos_per_day = (miles_per_min*1.609)*60*24</span>
     return kilos_per_day</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q speed_converter --local</code></pre>
@@ -224,7 +224,7 @@ expression for the body of the function.</strong></p>
     &gt;&gt;&gt; two_of_three(5, 5, 5)
     50
     &quot;&quot;&quot;
-<span class="sol-highlight">    return &quot;replace this&quot;</span></code></pre>
+<span class="sol-highlight">    return (a*a + b*b + c*c) &#x2d; min(a*a, b*b, c*c)</span></code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q two_of_three --local</code></pre>
 
@@ -254,7 +254,7 @@ statements.</p>
     &gt;&gt;&gt; largest_factor(9) # n*n&#x2d;1 is 80; factors are 1, 2, 4, 5, 8, 10, ...
     8
     &quot;&quot;&quot;
-<span class="sol-highlight">    return &quot;replace this&quot;</span></code></pre>
+<span class="sol-highlight">    return n &#x2d; 1</span></code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q largest_factor --local</code></pre>
 
@@ -284,7 +284,7 @@ def law_of_sines(a, b, c, A, B, C):
     &gt;&gt;&gt; law_of_sines(1, 2, 3, 1, 2, 3)
     False
     &quot;&quot;&quot;
-<span class="sol-highlight">    is_triangle = &quot;replace this&quot;</span>
+<span class="sol-highlight">    is_triangle = math.sin(A)/a == math.sin(B)/b == math.sin(C)/c</span>
     return is_triangle</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q law_of_sines --local</code></pre>
