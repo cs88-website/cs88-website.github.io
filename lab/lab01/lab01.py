@@ -10,6 +10,7 @@ def temperature_converter(f_temp):
     0.0
     """
     "*** YOUR CODE HERE ***"
+    "Replace this"
 
 
 def pythagorean_triple(a,b,c):
@@ -20,6 +21,7 @@ def pythagorean_triple(a,b,c):
     False
     """
     "*** YOUR CODE HERE ***"
+    "Replace This"
 
 
 

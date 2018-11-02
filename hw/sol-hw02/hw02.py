@@ -14,7 +14,7 @@ def harmonic_mean(x, y):
     >>> harmonic_mean(4, 12)
     6.0
     """
-    return "replace this"
+    return 2/(1/x+1/y)
 
 
 # Question 2
@@ -30,7 +30,7 @@ def speed_converter(miles_per_min):
     >>> speed_converter(2)
     4633.92
     """
-    kilos_per_day = "replace this"
+    kilos_per_day = (miles_per_min*1.609)*60*24
     return kilos_per_day
 
 
@@ -49,7 +49,7 @@ def two_of_three(a, b, c):
     >>> two_of_three(5, 5, 5)
     50
     """
-    return "replace this"
+    return (a*a + b*b + c*c) - min(a*a, b*b, c*c)
 
 
 # Question 4
@@ -62,7 +62,7 @@ def largest_factor(n):
     >>> largest_factor(9) # n*n-1 is 80; factors are 1, 2, 4, 5, 8, 10, ...
     8
     """
-    return "replace this"
+    return n - 1
 
 
 # Question 5
@@ -76,6 +76,6 @@ def law_of_sines(a, b, c, A, B, C):
     >>> law_of_sines(1, 2, 3, 1, 2, 3)
     False
     """
-    is_triangle = "replace this"
+    is_triangle = math.sin(A)/a == math.sin(B)/b == math.sin(C)/c
     return is_triangle
 

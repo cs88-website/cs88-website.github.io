@@ -25,7 +25,6 @@ def a_or_c(grade):
     False
     """
     "*** YOUR CODE HERE ***"
-    
 
 
 ## Control
