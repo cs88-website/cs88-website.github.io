@@ -134,19 +134,19 @@ class Keeper(Player):
 def get_most_common_element(lst):
     return max(set(lst), key=lst.count)
 
-class Player:
+class Pl88yer:
     def __init__(self, name):
         self.name = name
         self.active = True
 
-class Werewolf(Player):
+class Werewolf(Pl88yer):
     def __init__(self, name):
-        Player.__init__(self, name)
+        Pl88yer.__init__(self, name)
 
     def reveal_player_type(self):
         print("You are a werewolf!")
 
-class Villager(Player):
+class Villager(Pl88yer):
     def __init__(self, name):
         Villager.__init__(self, name)    
 
