@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Lab 10</span>: Exceptions, Classes, and Inheritance</h1>
     </div>
 
-    <p><i>Due at 9:00pm on 11/8/2018.</i></p>
+    <p><i>Due at 9:00pm on 11/08/2018.</i></p>
 
 
 
@@ -704,5 +704,20 @@ class Game:
   });
 </script>
 <script src="//code.jquery.com/jquery-latest.js"></script>
-
+<script>
+  $(function() {
+    if (new Date("11/09/2018") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
 </html>
