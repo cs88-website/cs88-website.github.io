@@ -544,5 +544,20 @@ Hello World!
   });
 </script>
 <script src="//code.jquery.com/jquery-latest.js"></script>
-
+<script>
+  $(function() {
+    if (new Date("9/14/2018") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
 </html>

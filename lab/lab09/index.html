@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Lab 9</span>: Object-Oriented Programming</h1>
     </div>
 
-    <p><i>Due at 9:00pm on 11/1/2018.</i></p>
+    <p><i>Due at 9:00pm on 11/01/2018.</i></p>
 
 
 
@@ -526,5 +526,20 @@ Check out the python docs <a href="https://docs.python.org/3/library/functions.h
   });
 </script>
 <script src="//code.jquery.com/jquery-latest.js"></script>
-
+<script>
+  $(function() {
+    if (new Date("11/02/2018") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
 </html>
