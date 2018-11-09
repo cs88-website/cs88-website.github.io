@@ -91,9 +91,6 @@ Inside the archive, you will find starter files for the questions in this lab,
 <ul>
   <li>To receive credit for this lab, you must complete Questions 2, 3, 4, and
   5 in <a href="lab11.py">lab11.py</a> and submit through OK.</li>
-  <li>Questions 6, 7, 8 are <em>extra practice</em>. They can be found in the
-  <a href="lab11_extra.py">lab11_extra.py</a> file. It is recommended that you
-  complete these problems on your on time.</li>
 </ul>
 
 
@@ -215,10 +212,10 @@ except StopIteration as e:
         return self</code></pre>
 
 
-    <button id='10' class='toggleButtonShow'>
+    <button id='7' class='toggleButtonShow'>
     Toggle Explanation<noscript> (enable JavaScript)</noscript>
     </button>
-    <div class="solution 10">
+    <div class="solution 7">
 
 <p>No problem, this is a beautiful iterator.</p>
 
@@ -232,10 +229,10 @@ except StopIteration as e:
         return self</code></pre>
 
 
-    <button id='11' class='toggleButtonShow'>
+    <button id='8' class='toggleButtonShow'>
     Toggle Explanation<noscript> (enable JavaScript)</noscript>
     </button>
-    <div class="solution 11">
+    <div class="solution 8">
 
 <p>Oh no!  Where is <code>__next__</code>?  This fails to implement the iterator
 interface because calling <code>__iter__</code> doesn't return something that has
@@ -254,10 +251,10 @@ a <code>__next__</code> method.</p>
         return self.start</code></pre>
 
 
-    <button id='12' class='toggleButtonShow'>
+    <button id='9' class='toggleButtonShow'>
     Toggle Explanation<noscript> (enable JavaScript)</noscript>
     </button>
-    <div class="solution 12">
+    <div class="solution 9">
 
 <p>This also fails to implement the iterator interface.  Without the
 <code>__iter__</code> method, the <code>for</code> loop will error.  The <code>for</code> loop needs to
@@ -279,10 +276,10 @@ object that does.</p>
         return self</code></pre>
 
 
-    <button id='13' class='toggleButtonShow'>
+    <button id='10' class='toggleButtonShow'>
     Toggle Explanation<noscript> (enable JavaScript)</noscript>
     </button>
-    <div class="solution 13">
+    <div class="solution 10">
 
 <p>This is technically an iterator, because it implements both <code>__iter__</code> and
 <code>__next__</code>. Notice that it's an infinite sequence!  Sequences like these are
@@ -472,17 +469,17 @@ questions:</p>
 
     <pre><code>&gt;&gt;&gt; g = generator()
 &gt;&gt;&gt; g # what type of object is this?
-<div class="alt 9">______</div><div class="solution 9">&#x3c;&#x67;&#x65;&#x6e;&#x65;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x20;&#x6f;&#x62;&#x6a;&#x65;&#x63;&#x74;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
+<div class="alt 6">______</div><div class="solution 6">&#x3c;&#x67;&#x65;&#x6e;&#x65;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x20;&#x6f;&#x62;&#x6a;&#x65;&#x63;&#x74;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
 &gt;&gt;&gt; g == iter(g) # equivalent of g.__iter__()
-<div class="alt 9">______</div><div class="solution 9">&#x54;&#x72;&#x75;&#x65;</div>
+<div class="alt 6">______</div><div class="solution 6">&#x54;&#x72;&#x75;&#x65;</div>
 &gt;&gt;&gt; next(g) # equivalent of g.__next__()
-<div class="alt 9">______</div><div class="solution 9">&#x53;&#x74;&#x61;&#x72;&#x74;&#x69;&#x6e;&#x67;&#x20;&#x68;&#x65;&#x72;&#x65;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x30;</div>
+<div class="alt 6">______</div><div class="solution 6">&#x53;&#x74;&#x61;&#x72;&#x74;&#x69;&#x6e;&#x67;&#x20;&#x68;&#x65;&#x72;&#x65;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x30;</div>
 &gt;&gt;&gt; next(g)
-<div class="alt 9">______</div><div class="solution 9">&#x41;&#x66;&#x74;&#x65;&#x72;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x31;</div>
+<div class="alt 6">______</div><div class="solution 6">&#x41;&#x66;&#x74;&#x65;&#x72;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x31;</div>
 &gt;&gt;&gt; next(g)
-<div class="alt 9">______</div><div class="solution 9">&#x41;&#x66;&#x74;&#x65;&#x72;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x32;</div></code></pre>
+<div class="alt 6">______</div><div class="solution 6">&#x41;&#x66;&#x74;&#x65;&#x72;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x32;</div></code></pre>
 
-    <button id='9' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -509,10 +506,10 @@ for i in IterGen():
 <p>Why does this iterable work without defining a <code>__next__</code> method?</p>
 
 
-    <button id='14' class='toggleButtonShow'>
+    <button id='11' class='toggleButtonShow'>
     Toggle Explanation<noscript> (enable JavaScript)</noscript>
     </button>
-    <div class="solution 14">
+    <div class="solution 11">
 
 <p>The <code>for</code> loop only expects the object returned by <code>__iter__</code> to have a
 <code>__next__</code> method. The <code>__iter__</code> method is a generator function because of the
@@ -626,133 +623,6 @@ within the <code>__iter__</code> method of a class.</p>
 <p>Use OK to test your code:</p><pre><code>python3 ok -q hailstone --local</code></pre>
 
 
-<h2 id="extra-questions">Extra Questions</h2>
-
-
-<h3 class="question" id="q6">Question 6: Scale</h3>
-
-<p>Implement the generator function <code>scale(s, k)</code>, which yields elements of the
-given iterable <code>s</code>, scaled by <code>k</code>.</p>
-
-
-
-<pre><code>def scale(s, k):
-    &quot;&quot;&quot;Yield elements of the iterable s scaled by a number k.
-
-    &gt;&gt;&gt; s = scale([1, 5, 2], 5)
-    &gt;&gt;&gt; type(s)
-    &lt;class &#x27;generator&#x27;&gt;
-    &gt;&gt;&gt; list(s)
-    [5, 25, 10]
-
-    &gt;&gt;&gt; m = scale(naturals(), 2)
-    &gt;&gt;&gt; [next(m) for _ in range(5)]
-    [2, 4, 6, 8, 10]
-    &quot;&quot;&quot;
-<div class="alt 6">    "*** YOUR CODE HERE ***"
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x2a;&#x20;&#x6b;</div></code></pre>
-
-
-    <button id='6' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q scale --local</code></pre>
-
-<h3 class="question" id="q7">Question 7: Merge</h3>
-
-<p>Implement <code>merge(s0, s1)</code>, which takes two iterables <code>s0</code> and <code>s1</code> whose
-elements are ordered. <code>merge</code> yields elements from <code>s0</code> and <code>s1</code> in sorted
-order, eliminating repetition. <strong>You may also assume <code>s0</code> and <code>s1</code> represent infinite
-sequences; that is, their iterators never raise <code>StopIteration</code></strong>.</p>
-
-<p>See the doctests for example behavior.</p>
-
-
-
-<pre><code>def merge(s0, s1):
-    &quot;&quot;&quot;Yield the elements of strictly increasing iterables s0 and s1 and 
-    make sure to remove the repeated values in both. 
-    You can also assume that s0 and s1 represent infinite sequences.
-
-    &gt;&gt;&gt; twos = scale(naturals(), 2)
-    &gt;&gt;&gt; threes = scale(naturals(), 3)
-    &gt;&gt;&gt; m = merge(twos, threes)
-    &gt;&gt;&gt; type(m)
-    &lt;class &#x27;generator&#x27;&gt;
-    &gt;&gt;&gt; [next(m) for _ in range(10)]
-    [2, 3, 4, 6, 8, 9, 10, 12, 14, 15]
-    &quot;&quot;&quot;
-    i0, i1 = iter(s0), iter(s1)
-    e0, e1 = next(i0), next(i1)
-<div class="alt 7">    "*** YOUR CODE HERE ***"
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x54;&#x72;&#x75;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x6d;&#x69;&#x6e;&#x28;&#x65;&#x30;&#x2c;&#x20;&#x65;&#x31;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x30;&#x20;&#x3c;&#x20;&#x65;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x30;&#x20;&#x3d;&#x20;&#x6e;&#x65;&#x78;&#x74;&#x28;&#x69;&#x30;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x65;&#x31;&#x20;&#x3c;&#x20;&#x65;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x31;&#x20;&#x3d;&#x20;&#x6e;&#x65;&#x78;&#x74;&#x28;&#x69;&#x31;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x30;&#x2c;&#x20;&#x65;&#x31;&#x20;&#x3d;&#x20;&#x6e;&#x65;&#x78;&#x74;&#x28;&#x69;&#x30;&#x29;&#x2c;&#x20;&#x6e;&#x65;&#x78;&#x74;&#x28;&#x69;&#x31;&#x29;</div></code></pre>
-
-
-    <button id='7' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q merge --local</code></pre>
-
-<h3 class="question" id="q8">Question 8: Remainder generator</h3>
-
-<p>Like functions, generators can also be <em>higher-order</em>. For this
-problem, we will be writing <code>remainders_generator</code>, which yields a
-series of generator objects.</p>
-
-<p><code>remainders_generator</code> takes in an integer <code>m</code>, and yields <code>m</code> different
-generators. The first generator is a generator of multiples of <code>m</code>, i.e. numbers
-where the remainder is 0. The second, a generator of natural numbers with
-remainder 1 when divided by <code>m</code>. The last generator yield natural numbers with
-remainder <code>m &#x2d; 1</code> when divided by <code>m</code>.</p>
-
-
-
-<pre><code>def remainders_generator(m):
-    &quot;&quot;&quot;
-    Takes in an integer m, and yields m different remainder groups
-    of m.
-
-    &gt;&gt;&gt; remainders_mod_four = remainders_generator(4)
-    &gt;&gt;&gt; for rem_group in remainders_mod_four:
-    ...     for _ in range(3):
-    ...         print(next(rem_group))
-    0
-    4
-    8
-    1
-    5
-    9
-    2
-    6
-    10
-    3
-    7
-    11
-    &quot;&quot;&quot;
-<div class="alt 8">    "*** YOUR CODE HERE ***"
-</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x72;&#x65;&#x6d;&#x61;&#x69;&#x6e;&#x64;&#x65;&#x72;&#x5f;&#x67;&#x72;&#x6f;&#x75;&#x70;&#x28;&#x72;&#x65;&#x6d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x6d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x54;&#x72;&#x75;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#x20;&#x2b;&#x3d;&#x20;&#x6d;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x72;&#x65;&#x6d;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x72;&#x65;&#x6d;&#x61;&#x69;&#x6e;&#x64;&#x65;&#x72;&#x5f;&#x67;&#x72;&#x6f;&#x75;&#x70;&#x28;&#x72;&#x65;&#x6d;&#x29;</div></code></pre>
-
-
-    <button id='8' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Note that if you have implemented this correctly, each of the
-generators yielded by <code>remainder_generator</code> will be <em>infinite</em> - you
-can keep calling <code>next</code> on them forever without running into a
-<code>StopIteration</code> exception.</p>
-
-<p><strong>Hint</strong>: Consider defining an inner generator function. What arguments
-should it take in? Where should you call it?</p>
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q remainders_generator --local</code></pre>
-
-
   </div>
 
   <div class='col-md-3'>
@@ -769,13 +639,6 @@ should it take in? Where should you call it?</p>
   <ul>
   <li><a href="#q4">Question 4: Countdown</a></li>
   <li><a href="#q5">Question 5: Hailstone</a></li>
-</ul>
-
-  <li><a href="#extra-questions">Extra Questions</a></li>
-  <ul>
-  <li><a href="#q6">Question 6: Scale</a></li>
-  <li><a href="#q7">Question 7: Merge</a></li>
-  <li><a href="#q8">Question 8: Remainder generator</a></li>
 </ul>
 
 </ul>
@@ -796,7 +659,7 @@ should it take in? Where should you call it?</p>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script>
   $(function() {
-    if (new Date("11/16/2018") < new Date()) {
+    if (new Date("11/17/2018") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');

@@ -1,0 +1,22 @@
+{
+    "name": "Homework 11",
+    "endpoint": "cal/cs88/fa18/hw11",
+    "src": [
+        "hw11.py"
+    ],
+    "tests": {
+        "hw11.py:scale": "doctest",
+        "hw11.py:merge": "doctest",
+        "hw11.py:remainders_generator": "doctest",
+        "hw11.py:is_prime": "doctest",
+        "hw11.py:primes": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup",
+        "unlock"
+    ]
+}
