@@ -1,0 +1,19 @@
+{
+    "name": "Lab 12",
+    "endpoint": "cal/cs61a/fa18/lab12",
+    "src": [
+        "lab12.py"
+    ],
+    "tests": {
+        "lab12.py:polynomial": "doctest",
+        "lab12.py:regression": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}

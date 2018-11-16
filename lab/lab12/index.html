@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+
+
+    <title>Lab 12: Models as HOFs | CS 88 Fall 2018</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 12</span>: Models as HOFs</h1>
+    </div>
+
+    <p><i>Due at 9:00pm on 11/22/2018.</i></p>
+
+
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab12.zip">lab12.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the OK autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>When you are done, submit the lab by uploading the <code>lab12.py</code>
+    file to <a href="https://okpy.org">okpy.org</a>. You may submit more than once before the
+    deadline; only the final submission will be graded.</p>
+
+
+<ul>
+  <li>To receive credit for this lab, you must complete Questions 1 and 2 
+  in <a href="lab12.py">lab12.py</a> and submit through OK.</li>
+</ul>
+
+
+    
+
+
+<h2 id="review-on-hofs">Review on HOFs</h2>
+
+
+<h3 class="question" id="q1">Question 1: Polynomial</h3>
+
+<p>A polynomial function is a function with coefficients, variables and constants. A polynomial function is said to be the nth degree polynomial if there is a term in the function with the variable to the nth degree. For example, a 4th degree polynomial must contain the term x^4 with some coefficient multiplied to it.</p>
+
+<p>Complete the function <code>polynomial</code>, which takes in a degree and a list of coefficients. The function should output the corresponding polynomial function.
+<br/>
+
+</p>
+
+<pre><code>def polynomial(degree, coeffs):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; fourth = polynomial(4, [3,6,2,1, 100])
+    &gt;&gt;&gt; fourth(3)   # 3*(3**4) + 6*(3**3) + 2*(3**2) + 1*(3**1) + 100
+    526
+    &gt;&gt;&gt; third = polynomial(3, [2, 0, 0, 0])
+    &gt;&gt;&gt; third(4)   # 2*(4**3) + 0*(4**2) + 0*(4**1) + 0
+    128
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+    return ______
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x70;&#x6f;&#x6c;&#x79;&#x5f;&#x66;&#x75;&#x6e;&#x63;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x6f;&#x6e;&#x6c;&#x6f;&#x63;&#x61;&#x6c;&#x20;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x69;&#x63;&#x69;&#x65;&#x6e;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x69;&#x63;&#x69;&#x65;&#x6e;&#x74;&#x2a;&#x78;&#x2a;&#x2a;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#x20;&#x2b;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#x20;&#x2d;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x79;&#x5f;&#x66;&#x75;&#x6e;&#x63;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q polynomial --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: Regression</h3>
+
+<p>Remember regression from Data 8? Here, we will build a regression model function together step-by-step in Python.</p>
+
+<p>For Data8's lecture on linear regression, look <a href="https://docs.google.com/presentation/d/1TXu2sV9026yzy09uZmTdZSxayKR3ff4yixjbLmbbh-M/edit#slide=id.g30c77890ad_0_0">here</a></p>
+
+<p>To calculate standard units, search <a href="https://www.stat.berkeley.edu/~stark/SticiGui/Text/computeR.htm">here</a></p>
+
+<p><strong>A note on testing and assert statements.</strong></p>
+
+<p><code>Assert</code> statements are a good way to make sure that your function is working the way you want it to work. You can use assert statement two ways, with or without an error message. To use it without an error message:</p>
+
+<pre><code>&gt;&gt;&gt; assert len([1,2,3]) == 3</code></pre>
+
+<p>If the assertion statement pass (i.e., there is no problem with your statement), nothing happens. But if your statement does not hold true, <code>AssertionError</code> will be displayed.</p>
+
+<p>To use assert statement with an error message, add a string after a comma:</p>
+
+<pre><code>&gt;&gt;&gt; assert len([1,2,3]) == 3, &quot;Length of list is not 3!!!!!!!&quot;</code></pre>
+
+<p>Instead of <code>AssertionError</code>, your string message will be displayed instead.</p>
+
+<p>Complete these functions below. No doctests will be provided except for the <code>regression</code> function, so fill your test functions with assert statements to make sure your code works. Some examples have been provided. <code>testregression</code> is optional, but it's a good practice!</p>
+
+
+
+<pre><code>def mean(x):
+	&quot;&quot;&quot;
+	Return the mean of x, where x is a list of data points. 
+
+	&quot;&quot;&quot;
+<div class="alt 2">	"*** YOUR CODE HERE ***"
+	return &quot;&quot;
+</div><div class="solution 2">&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x78;&#x29;&#x2f;&#x6c;&#x65;&#x6e;&#x28;&#x78;&#x29;</div>
+def testmean():
+	assert mean([0,0,0,0,0]) == 0, &quot;please pass me!&quot;
+
+	&quot;&quot;&quot;***PUT YOUR TEST HERE***&quot;&quot;&quot;
+
+def sd(x):
+	&quot;&quot;&quot;
+	Return the standard deviation of x, where x is a list of data points. 
+
+	&quot;&quot;&quot;
+<div class="alt 2">	"*** YOUR CODE HERE ***"
+	return &quot;&quot;
+</div><div class="solution 2">&#x9;&#x61;&#x76;&#x67;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x9;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x9;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x28;&#x65;&#x61;&#x63;&#x68;&#x2d;&#x61;&#x76;&#x67;&#x29;&#x2a;&#x2a;&#x32;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x61;&#x63;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x78;&#x29;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2f;&#x6c;&#x65;&#x6e;&#x28;&#x78;&#x29;&#x29;&#x2a;&#x2a;&#x28;&#x31;&#x2f;&#x32;&#x29;&#xa;</div>
+def testsd():
+	assert sd([0,0,0,0,0]) == 0, &quot;pass me please!&quot;
+
+	&quot;&quot;&quot;***PUT YOUR TEST HERE***&quot;&quot;&quot;
+
+def standard_units(x):
+	&quot;&quot;&quot;
+	Return the standard units of x, where x is a list of data points. 
+	&quot;&quot;&quot;
+<div class="alt 2">	"*** YOUR CODE HERE ***"
+	return &quot;&quot;
+</div><div class="solution 2">&#x9;&#x61;&#x76;&#x67;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x9;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x5f;&#x64;&#x65;&#x76;&#x20;&#x3d;&#x20;&#x73;&#x64;&#x28;&#x78;&#x29;&#xa;&#x9;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x28;&#x65;&#x61;&#x63;&#x68;&#x2d;&#x61;&#x76;&#x67;&#x29;&#x2f;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x5f;&#x64;&#x65;&#x76;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x61;&#x63;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x78;&#x5d;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div>
+def testsu():
+	&quot;&quot;&quot;***PUT YOUR TEST HERE***&quot;&quot;&quot;
+
+def corr_coeff(x, y):
+	&quot;&quot;&quot;
+	Return the correlation coefficients (r) of x and y, where x is a list of
+	data points and y is a list of data points corresponding to x. 
+
+	&quot;&quot;&quot;
+<div class="alt 2">	"*** YOUR CODE HERE ***"
+	return &quot;&quot;
+</div><div class="solution 2">&#x9;&#x78;&#x5f;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x20;&#x3d;&#x20;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x61;&#x72;&#x64;&#x5f;&#x75;&#x6e;&#x69;&#x74;&#x73;&#x28;&#x78;&#x29;&#xa;&#x9;&#x79;&#x5f;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x20;&#x3d;&#x20;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x61;&#x72;&#x64;&#x5f;&#x75;&#x6e;&#x69;&#x74;&#x73;&#x28;&#x79;&#x29;&#xa;&#x9;&#x70;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x78;&#x5f;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x5b;&#x69;&#x5d;&#x2a;&#x79;&#x5f;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x5b;&#x69;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x65;&#x6e;&#x28;&#x78;&#x5f;&#x73;&#x74;&#x61;&#x6e;&#x64;&#x29;&#x29;&#x5d;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x70;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#x29;</div>
+def testcorr_coeff():
+	&quot;&quot;&quot;***PUT YOUR TEST HERE***&quot;&quot;&quot;
+
+def regression(points):
+    &quot;&quot;&quot;
+    Return a function that takes in x and predicts y, based on a linear regression model. 
+
+    &gt;&gt;&gt; tempVIcecream = [[35,1], [33,2], [37,3], [45,5],[47,6],[42,8],[43,9],[51,10]]
+    &gt;&gt;&gt; predictor = regression(tempVIcecream)
+    &gt;&gt;&gt; predictor(62)    # Round to the third decimal place
+    14.597
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+    return &quot;&quot;
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x78;&#x20;&#x3d;&#x20;&#x5b;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x5b;&#x30;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x79;&#x20;&#x3d;&#x20;&#x5b;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x5b;&#x31;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x6d;&#x6f;&#x64;&#x65;&#x6c;&#x28;&#x67;&#x69;&#x76;&#x65;&#x6e;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x72;&#x72;&#x5f;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x28;&#x78;&#x2c;&#x20;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x64;&#x5f;&#x78;&#x20;&#x3d;&#x20;&#x73;&#x64;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x64;&#x5f;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x64;&#x28;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x78;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x79;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x20;&#x3d;&#x20;&#x72;&#x2a;&#x28;&#x73;&#x64;&#x5f;&#x79;&#x2f;&#x73;&#x64;&#x5f;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x63;&#x65;&#x70;&#x74;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x79;&#x20;&#x2d;&#x20;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x2a;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x6f;&#x75;&#x6e;&#x64;&#x28;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x2a;&#x67;&#x69;&#x76;&#x65;&#x6e;&#x2b;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x63;&#x65;&#x70;&#x74;&#x2c;&#x20;&#x33;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x6f;&#x64;&#x65;&#x6c;&#x20;&#x9;&#xa;</div>
+def testregression():
+	&quot;&quot;&quot;***PUT YOUR TEST HERE***&quot;&quot;&quot;</code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q regression --local</code></pre>
+
+
+<h2 id="sqlite">SQLite</h2>
+
+
+<h3 id="setup">Setup</h3>
+
+
+<p>The simplest way to start using SQLite is to download a precompiled binary from the <a href="https://www.sqlite.org/download.html">SQLite website</a>. The latest version of SQLite at the time of writing is 3.24.0, but you can check for additional updates on the website.</p>
+
+
+<h4 id="windows">Windows</h4>
+
+
+<ol>
+  <li>Visit the download page linked above and navigate to the section Precompiled Binaries for Windows. Click on the link sqlite-tools-win32-x86-*.zip to download the binary.</li>
+  <li>Unzip the file. There should be a <code>sqlite3.exe</code> file in the directory after extraction.</li>
+  <li><p>Navigate to the folder containing the <code>sqlite3.exe</code> file and check that the version is at least 3.8.3:</p>
+
+<pre><code>$ cd path/to/sqlite
+$ ./sqlite3 &#x2d;&#x2d;version
+3.12.1 2016&#x2d;04&#x2d;08 15:09:49 fe7d3b75fe1bde41511b323925af8ae1b910bc4d</code></pre></li>
+</ol>
+
+
+<h4 id="macos-yosemite-10-10-or-newer">MacOS Yosemite (10.10) or newer</h4>
+
+<p>SQLite comes pre-installed. Check that you have a version that's greater than 3.8.3:</p>
+
+<pre><code>$ sqlite3
+SQLite version 3.8.10.2</code></pre>
+
+
+<h4 id="mac-os-x-mavericks-10-9-or-older">Mac OS X Mavericks (10.9) or older</h4>
+
+<p>SQLite comes pre-installed, but it is the wrong version.</p>
+
+<ol>
+  <li>Visit the download page linked above and navigate to the section Precompiled Binaries for Mac OS X (x86). Click on the link sqlite-tools-osx-x86-*.zip to download the binary.</li>
+  <li>Unzip the file. There should be a sqlite3 file in the directory after extraction.</li>
+  <li><p>Navigate to the folder containing the sqlite3 file and check that the version is at least 3.8.3:</p>
+
+<pre><code>$ cd path/to/sqlite
+$ ./sqlite3 &#x2d;&#x2d;version
+.12.1 2016&#x2d;04&#x2d;08 15:09:49 fe7d3b75fe1bde41511b323925af8ae1b910bc4d</code></pre></li>
+</ol>
+
+
+<h4 id="ubuntu">Ubuntu</h4>
+
+<p>The easiest way to use SQLite on Ubuntu is to install it straight from the native repositories (the version will be slightly behind the most recent release):</p>
+
+<pre><code>$ sudo apt install sqlite3
+$ sqlite3 &#x2d;&#x2d;version
+3.8.6 2014&#x2d;08&#x2d;15 11:46:33 9491ba7d738528f168657adb43a198238abde19e</code></pre>
+
+
+<h3 id="usage">Usage</h3>
+
+<p>You can start an interactive SQLite session in your Terminal or Git Bash with the following commands:</p>
+
+<ul>
+  <li><p>Ubuntu / Mac OS X (Yosemite or newer)</p>
+
+<pre><code>sqlite3</code></pre></li>
+  <li><p>Windows / Mac OS X (Mavericks or older)</p>
+
+<pre><code>./sqlite3</code></pre></li>
+</ul>
+
+<p>While the interpreter is running, you can type <code>.help</code> to see some of the commands you can run.</p>
+
+<p>To exit out of the SQLite intepreter, type <code>.exit</code> or <code>.quit</code> or press <code>Ctrl&#x2d;C</code>. Remember that if you see <code>...&gt;</code> after pressing return, you probably forgot a <code>;</code>.</p>
+
+<p>You can also run all the statements in a <code>.sql</code> file by doing the following:</p>
+
+<ol>
+  <li><p>Runs your code and then exits SQLite immediately afterwards.</p>
+
+  <ol>
+    <li><p>Ubuntu / Mac OS X (Yosemite or newer)</p>
+
+<pre><code>sqlite3 &lt; lab12.sql</code></pre></li>
+    <li><p>Windows / Mac OS X (Mavericks or older)</p>
+
+<pre><code>./sqlite3 &lt; lab12.sql</code></pre></li>
+  </ol></li>
+  <li><p>Runs your code and then opens an interactive SQLite session, which is similar to running Python code with the interactive -i flag.</p>
+
+  <ol>
+    <li><p>Ubuntu / Mac OS X (Yosemite or newer)</p>
+
+<pre><code>sqlite3 &#x2d;&#x2d;init lab12.sql</code></pre></li>
+    <li><p>Windows / Mac OS X (Mavericks or older)</p>
+
+<pre><code>./sqlite3 &#x2d;&#x2d;init lab12.sql</code></pre></li>
+  </ol></li>
+</ol>
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#review-on-hofs">Review on HOFs</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Polynomial</a></li>
+  <li><a href="#q2">Question 2: Regression</a></li>
+</ul>
+
+  <li><a href="#sqlite">SQLite</a></li>
+  <ul>
+  <li><a href="#setup">Setup</a></li>
+  <ul>
+  <li><a href="#windows">Windows</a></li>
+  <li><a href="#macos-yosemite-10-10-or-newer">MacOS Yosemite (10.10) or newer</a></li>
+  <li><a href="#mac-os-x-mavericks-10-9-or-older">Mac OS X Mavericks (10.9) or older</a></li>
+  <li><a href="#ubuntu">Ubuntu</a></li>
+</ul>
+
+  <li><a href="#usage">Usage</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(function() {
+    if (new Date("11/22/2018") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+</html>
