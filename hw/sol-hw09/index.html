@@ -87,8 +87,8 @@ questions <a href="hw09.py">here</a>.</p>
 <solution>
 
 <pre><code>    def __len__(self):
-        &quot;&quot;&quot;
-        Get the length of the Arr88
+        &quot;&quot;&quot; Return the length of the Arr88
+
         &gt;&gt;&gt; arr88 = Arr88([1, 2, 3])
         &gt;&gt;&gt; len(arr88)
         3
@@ -96,7 +96,7 @@ questions <a href="hw09.py">here</a>.</p>
         &gt;&gt;&gt; len(arr88)
         4
         &quot;&quot;&quot;
-<span class="sol-highlight">        return len(self.values)</span>
+<span class="sol-highlight">        return len(self._values)</span>
 
     def item(self, i):
         &quot;&quot;&quot;
@@ -107,7 +107,7 @@ questions <a href="hw09.py">here</a>.</p>
         &gt;&gt;&gt; arr88.item(0)
         1
         &quot;&quot;&quot;
-<span class="sol-highlight">        return self.values[i]</span></code></pre>
+<span class="sol-highlight">        return self._values[i]</span></code></pre>
 
 </solution>
 
@@ -123,8 +123,8 @@ questions <a href="hw09.py">here</a>.</p>
 <solution>
 
 <pre><code>    def __add__(self, arr88):
-        &quot;&quot;&quot;
-        Add two Arr88s of the same length componentwise
+        &quot;&quot;&quot; Add two Arr88s of the same length element by element
+
         &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
         &gt;&gt;&gt; arr88b = Arr88([4, 5, 6])
         &gt;&gt;&gt; arr88a + arr88b
@@ -137,16 +137,12 @@ questions <a href="hw09.py">here</a>.</p>
         Arr88([&#x27;Hello&#x27;, &#x27;World&#x27;, &#x27;!&#x27;])
         &quot;&quot;&quot;
         # Checks that the lengths are the same
-        assert len(self) == len(arr88)
-<span class="sol-highlight">        current = list(self.values)
-        for i in range(len(self)):
-            current[i] += arr88.values[i]
-
-        return Arr88(current)</span>
+        assert len(self) == len(arr88), &quot;Arr88&#x27;s of different len&quot;
+<span class="sol-highlight">        return Arr88([a+b for a,b in zip(self._values, arr88._values)])</span>
 
     def __mul__(self, arr88):
-        &quot;&quot;&quot;
-        Multiply two Arr88s of the same length componentwise
+        &quot;&quot;&quot; Multiply two Arr88s of the same length componentwise
+
         &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
         &gt;&gt;&gt; arr88b = Arr88([4, 5, 6])
         &gt;&gt;&gt; arr88a * arr88b
@@ -159,16 +155,12 @@ questions <a href="hw09.py">here</a>.</p>
         Arr88([&#x27;NaNaNaNaNaNaNaNaNaNa&#x27;, &#x27;Batman&#x27;, &#x27;!!!!!&#x27;])
         &quot;&quot;&quot;
         # Checks that the lengths are the same
-        assert len(self) == len(arr88)
-<span class="sol-highlight">        current = list(self.values)
-        for i in range(len(self)):
-            current[i] *= arr88.values[i]
-
-        return Arr88(current)</span>
+        assert len(self) == len(arr88), &quot;Arr88&#x27;s of different len&quot;
+<span class="sol-highlight">        return Arr88([a*b for a,b in zip(self._values, arr88._values)])</span>
 
     def negate(self):
-        &quot;&quot;&quot;
-        Negate an Arr88 with mutation
+        &quot;&quot;&quot;Negate an Arr88 with mutation
+
         &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
         &gt;&gt;&gt; arr88b = Arr88([4.0, &#x2d;5.5, 0.0])
         &gt;&gt;&gt; arr88a.negate()
@@ -178,8 +170,7 @@ questions <a href="hw09.py">here</a>.</p>
         &gt;&gt;&gt; arr88b
         Arr88([&#x2d;4.0, 5.5, &#x2d;0.0])
         &quot;&quot;&quot;
-<span class="sol-highlight">        for i in range(len(self)):
-            self.values[i] = &#x2d;self.values[i]</span></code></pre>
+<span class="sol-highlight">        self._values = [&#x2d;a for a in self._values]</span></code></pre>
 
 </solution>
 
@@ -192,8 +183,8 @@ questions <a href="hw09.py">here</a>.</p>
 <solution>
 
 <pre><code>    def apply(self, func):
-        &quot;&quot;&quot;
-        Apply a function to an Arr88
+        &quot;&quot;&quot; Apply a function to an Arr88
+
         &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
         &gt;&gt;&gt; arr88a.apply(lambda x : x * x)
         Arr88([1, 4, 9])
@@ -203,11 +194,7 @@ questions <a href="hw09.py">here</a>.</p>
         &gt;&gt;&gt; arr88b.apply(lambda f: f(1))
         Arr88([1, 2, 3])
         &quot;&quot;&quot;
-<span class="sol-highlight">        current = list(self.values)
-        for i in range(len(self)):
-            current[i] = func(current[i])
-
-        return Arr88(current)</span></code></pre>
+<span class="sol-highlight">        return Arr88([func(a) for a in self._values])</span></code></pre>
 
 </solution>
 
