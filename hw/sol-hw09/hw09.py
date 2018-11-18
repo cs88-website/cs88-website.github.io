@@ -8,19 +8,19 @@ class Arr88():
     Here the internel representation is a list
     """
     def __init__(self, values):
-        # This checks that all values are the same type, else it errors
+        # Check that all values are the same type, else it errors
         if len(values) > 1:
-            assert all([type(values[0]) == type(values[i]) for i in range(len(values))])
-        self.values = values
+            assert all([type(values[0]) == type(values[i]) for i in range(len(values))]), "Arr88 must be of homogeneous type"
+        self._values = values
 
     # DO NOT CHANGE THE __repr__
     # This displays the Arr88 nicely in the terminal
     def __repr__(self):
-        return "Arr88(" + str(self.values) + ')'
+        return "Arr88(" + str(self._values) + ')'
 
     def __len__(self):
-        """
-        Get the length of the Arr88
+        """ Return the length of the Arr88
+
         >>> arr88 = Arr88([1, 2, 3])
         >>> len(arr88)
         3
@@ -28,7 +28,7 @@ class Arr88():
         >>> len(arr88)
         4
         """
-        return len(self.values)
+        return len(self._values)
 
     def item(self, i):
         """
@@ -39,11 +39,11 @@ class Arr88():
         >>> arr88.item(0)
         1
         """
-        return self.values[i]
+        return self._values[i]
 
     def __add__(self, arr88):
-        """
-        Add two Arr88s of the same length componentwise
+        """ Add two Arr88s of the same length element by element
+
         >>> arr88a = Arr88([1, 2, 3])
         >>> arr88b = Arr88([4, 5, 6])
         >>> arr88a + arr88b
@@ -56,16 +56,12 @@ class Arr88():
         Arr88(['Hello', 'World', '!'])
         """
         # Checks that the lengths are the same
-        assert len(self) == len(arr88)
-        current = list(self.values)
-        for i in range(len(self)):
-            current[i] += arr88.values[i]
-
-        return Arr88(current)
+        assert len(self) == len(arr88), "Arr88's of different len"
+        return Arr88([a+b for a,b in zip(self._values, arr88._values)])
 
     def __mul__(self, arr88):
-        """
-        Multiply two Arr88s of the same length componentwise
+        """ Multiply two Arr88s of the same length componentwise
+
         >>> arr88a = Arr88([1, 2, 3])
         >>> arr88b = Arr88([4, 5, 6])
         >>> arr88a * arr88b
@@ -78,16 +74,12 @@ class Arr88():
         Arr88(['NaNaNaNaNaNaNaNaNaNa', 'Batman', '!!!!!'])
         """
         # Checks that the lengths are the same
-        assert len(self) == len(arr88)
-        current = list(self.values)
-        for i in range(len(self)):
-            current[i] *= arr88.values[i]
-
-        return Arr88(current)
+        assert len(self) == len(arr88), "Arr88's of different len"
+        return Arr88([a*b for a,b in zip(self._values, arr88._values)])
 
     def negate(self):
-        """
-        Negate an Arr88 with mutation
+        """Negate an Arr88 with mutation
+
         >>> arr88a = Arr88([1, 2, 3])
         >>> arr88b = Arr88([4.0, -5.5, 0.0])
         >>> arr88a.negate()
@@ -97,13 +89,12 @@ class Arr88():
         >>> arr88b
         Arr88([-4.0, 5.5, -0.0])
         """
-        for i in range(len(self)):
-            self.values[i] = -self.values[i]
+        self._values = [-a for a in self._values]
 
 
     def apply(self, func):
-        """
-        Apply a function to an Arr88
+        """ Apply a function to an Arr88
+
         >>> arr88a = Arr88([1, 2, 3])
         >>> arr88a.apply(lambda x : x * x)
         Arr88([1, 4, 9])
@@ -113,11 +104,7 @@ class Arr88():
         >>> arr88b.apply(lambda f: f(1))
         Arr88([1, 2, 3])
         """
-        current = list(self.values)
-        for i in range(len(self)):
-            current[i] = func(current[i])
-
-        return Arr88(current)
+        return Arr88([func(a) for a in self._values])
 
 
 
