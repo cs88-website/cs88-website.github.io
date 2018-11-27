@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Homework 10 Solutions | CS 88 Fall 2018</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Homework 10</span> Solutions</h1>
+    </div>
+
+    <p><strong>Solutions:</strong> You can find the file with solutions for all
+questions <a href="hw10.py">here</a>.</p>
+
+    
+
+<h3 class="question" id="q1">Question 1: Person</h3>
+
+<p>Modify the following <code>Person</code> class to add a <code>repeat</code> method, which
+repeats the last thing said. If nothing has been said yet, you can
+have <code>repeat</code> return a string of your choosing. See the doctests for 
+an example of its use.</p>
+
+<blockquote><p><em>Hint</em>: you will have to modify other methods as well, not just the
+<code>repeat</code> method.</p></blockquote>
+
+<solution>
+
+<pre><code>class Person(object):
+    &quot;&quot;&quot;Person class.
+
+    &gt;&gt;&gt; steven = Person(&quot;Steven&quot;)
+    &gt;&gt;&gt; steven.say(&quot;Hello&quot;)
+    &#x27;Hello&#x27;
+    &gt;&gt;&gt; steven.repeat()
+    &#x27;Hello&#x27;
+    &gt;&gt;&gt; steven.greet()
+    &#x27;Hello, my name is Steven&#x27;
+    &gt;&gt;&gt; steven.repeat()
+    &#x27;Hello, my name is Steven&#x27;
+    &gt;&gt;&gt; steven.ask(&quot;preserve abstraction barriers&quot;)
+    &#x27;Would you please preserve abstraction barriers&#x27;
+    &gt;&gt;&gt; steven.repeat()
+    &#x27;Would you please preserve abstraction barriers&#x27;
+    &quot;&quot;&quot;
+    def __init__(self, name):
+        self.name = name
+<span class="sol-highlight">        self.previous = &quot;I squirreled it away before it could catch on fire.&quot;</span>
+
+    def say(self, stuff):
+<span class="sol-highlight">        self.previous = stuff</span>
+        return stuff
+
+    def ask(self, stuff):
+        return self.say(&quot;Would you please &quot; + stuff)
+
+    def greet(self):
+        return self.say(&quot;Hello, my name is &quot; + self.name)
+
+    def repeat(self):
+<span class="sol-highlight">        return self.say(self.previous)</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Person --local</code></pre>
+
+<h3 class="question" id="q2">Question 2: Mint</h3>
+
+<p>Complete the <code>Mint</code> and <code>Coin</code> classes so that the coins created by a mint have
+the correct year and worth.</p>
+
+<ul>
+  <li>Each <code>Mint</code> instance has a <code>year</code> stamp. The <code>update</code> method sets the
+  <code>year</code> stamp to the <code>current_year</code> class attribute of the <code>Mint</code> class.</li>
+  <li>The <code>create</code> method takes a subclass of <code>Coin</code> and returns an instance of
+  that class stamped with the <code>mint</code>'s year (which may be different from
+  <code>Mint.current_year</code> if it has not been updated.)</li>
+  <li>A <code>Coin</code>'s <code>worth</code> method returns the <code>cents</code> value of the coin plus one
+  extra cent for each year of age beyond 50. A coin's age can be determined
+  by subtracting the coin's year from the <code>current_year</code> class attribute of
+  the <code>Mint</code> class.</li>
+</ul>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Mint --local</code></pre>
+
+<pre><code>class Mint:
+    &quot;&quot;&quot;A mint creates coins by stamping on years.
+
+    The update method sets the mint&#x27;s stamp to Mint.current_year.
+
+    &gt;&gt;&gt; mint = Mint()
+    &gt;&gt;&gt; mint.year
+    2015
+    &gt;&gt;&gt; dime = mint.create(Dime)
+    &gt;&gt;&gt; dime.year
+    2015
+    &gt;&gt;&gt; Mint.current_year = 2100  # Time passes
+    &gt;&gt;&gt; nickel = mint.create(Nickel)
+    &gt;&gt;&gt; nickel.year     # The mint has not updated its stamp yet
+    2015
+    &gt;&gt;&gt; nickel.worth()  # 5 cents + (85 &#x2d; 50 years)
+    40
+    &gt;&gt;&gt; mint.update()   # The mint&#x27;s year is updated to 2100
+    &gt;&gt;&gt; Mint.current_year = 2175     # More time passes
+    &gt;&gt;&gt; mint.create(Dime).worth()    # 10 cents + (75 &#x2d; 50 years)
+    35
+    &gt;&gt;&gt; Mint().create(Dime).worth()  # A new mint has the current year
+    10
+    &gt;&gt;&gt; dime.worth()     # 10 cents + (160 &#x2d; 50 years)
+    120
+    &gt;&gt;&gt; Dime.cents = 20  # Upgrade all dimes!
+    &gt;&gt;&gt; dime.worth()     # 20 cents + (160 &#x2d; 50 years)
+    130
+
+<span class="sol-highlight">    &gt;&gt;&gt; m = Mint()
+    &gt;&gt;&gt; n = m.create(Nickel)
+    &gt;&gt;&gt; n.worth()
+    5
+    &gt;&gt;&gt; n.year = 2015
+    &gt;&gt;&gt; n.worth()
+    115
+</span>
+    &quot;&quot;&quot;
+    current_year = 2015
+
+    def __init__(self):
+        self.update()
+
+    def create(self, kind):
+<span class="sol-highlight">        return kind(self.year)</span>
+
+    def update(self):
+<span class="sol-highlight">        self.year = Mint.current_year</span>
+
+class Coin:
+    def __init__(self, year):
+        self.year = year
+
+    def worth(self):
+        &quot;The worth is a coin&#x27;s face value + 1 cent for each year over age 50.&quot;
+<span class="sol-highlight">        return self.cents + max(0, Mint.current_year &#x2d; self.year &#x2d; 50)</span>
+
+class Nickel(Coin):
+    cents = 5
+
+class Dime(Coin):
+    cents = 10</code></pre>
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Question 1: Person</a></li>
+  <li><a href="#q2">Question 2: Mint</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>
