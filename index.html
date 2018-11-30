@@ -433,7 +433,13 @@
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="lab/lab12/">Lab 12: Models as HOFs</a></td>
+            <td class='resource-name'><a href="lab/lab12/">Lab 12: Models as HOFs</a> (<a href="lab/sol-lab12/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab13/">Lab 13: SQL</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
@@ -512,6 +518,12 @@
 
         <tr>
             <td class='resource-name'>Homework 12 (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Homework 13</td>
             <td class='resource-type'>Homework</td>
             <td class='resource-tags'></td>
         </tr>
@@ -987,7 +999,7 @@
 <td>Fri 11/16</td>
 <td></td>
 <td></td>
-<td><a href="lab/lab12/">Lab 12: Models as HOFs</a><br/>(due Wed 11/28)</td>
+<td><a href="lab/lab12/">Lab 12: Models as HOFs</a><br/>(due Wed 11/28) (<a href="lab/sol-lab12/">Solutions</a>)</td>
 <td>Homework 12<br/>(due Fri 11/16) (Solutions)</td>
 <td></td>
 </tr>
@@ -1009,7 +1021,7 @@
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum odd">15</td>
+<td rowspan="2" class="weeknum odd">15</td>
 <td>Mon 11/26</td>
 <td>SQL
 <br/>
@@ -1017,6 +1029,14 @@
 <td><a href="http://composingprograms.com/pages/43-declarative-programming.html">4.3</a></td>
 <td></td>
 <td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 11/30</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab13/">Lab 13: SQL</a><br/>(due Thu 12/6)</td>
+<td>Homework 13<br/>(due Fri 12/7)</td>
 <td></td>
 </tr>
 <tr>
@@ -1101,7 +1121,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "8/30/18", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/24/18"}, {"due": "9/6/18", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "8/31/18"}, {"due": "9/13/18", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/7/18"}, {"due": "9/20/18", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/14/18"}, {"due": "9/27/18", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "9/21/18"}, {"due": "10/4/18", "link": "lab/lab05/", "name": "Lab 5: Recursion", "release": "9/28/18"}, {"due": "10/13/18", "link": "lab/lab06/", "name": "Lab 6: Maps (Part 1)", "release": "10/5/18"}, {"due": "10/18/18", "link": "lab/lab07/", "name": "Lab 7: ADTs and Dictionaries", "release": "10/12/18"}, {"due": "10/25/18", "link": "lab/lab08/", "name": "Lab 8: Mutation", "release": "10/19/18"}, {"due": "11/1/18", "link": "lab/lab09/", "name": "Lab 9: Object-Oriented Programming", "release": "10/26/18"}, {"due": "11/8/18", "link": "lab/lab10/", "name": "Lab 10: Exceptions, Classes, and Inheritance", "release": "11/2/18"}, {"due": "11/15/18", "link": "lab/lab11/", "name": "Lab 11: Iterators and Generators", "release": "11/9/18"}, {"due": "11/28/18", "link": "lab/lab12/", "name": "Lab 12: Models as HOFs", "release": "11/16/18"}, {"due": "8/31/18", "link": "hw/hw00/", "name": "Homework 0", "release": "8/24/18"}, {"due": "9/9/18", "link": "hw/hw01/", "name": "Homework 1", "release": "8/31/18"}, {"due": "9/14/18", "link": "hw/hw02/", "name": "Homework 2", "release": "9/7/18"}, {"due": "9/21/18", "link": "hw/hw03/", "name": "Homework 3", "release": "9/14/18"}, {"due": "9/28/18", "link": "hw/hw04/", "name": "Homework 4", "release": "9/21/18"}, {"due": "10/5/18", "link": "hw/hw05/", "name": "Homework 5", "release": "9/28/18"}, {"due": "10/5/18", "link": "hw/hw06/", "name": "Homework 6", "release": "10/5/18"}, {"due": "10/19/18", "link": "hw/hw07/", "name": "Homework 7", "release": "10/12/18"}, {"due": "10/26/18", "link": "hw/hw08/", "name": "Homework 8", "release": "10/19/18"}, {"due": "11/2/18", "link": "hw/hw09/", "name": "Homework 9", "release": "10/26/18"}, {"due": "11/9/18", "link": "hw/hw10/", "name": "Homework 10", "release": "11/2/18"}, {"due": "11/16/18", "link": "hw/hw11/", "name": "Homework 11", "release": "11/9/18"}, {"due": "11/16/18", "link": "hw/hw12/", "name": "Homework 12", "release": "11/16/18"}, {"due": "10/13/18", "link": "proj/maps/", "name": "Maps (Part 1)", "release": "10/5/18"}, {"due": "10/24/18", "link": "proj/maps/", "name": "Maps", "release": "10/12/18"}, {"due": "11/10/18", "link": "proj/wheel/", "name": "Wheel of Fortune (Part 1)", "release": "11/2/18"}, {"due": "11/28/18", "link": "proj/wheel/", "name": "Wheel of Fortune", "release": "11/9/18"}];
+  var assignments = [{"due": "8/30/18", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/24/18"}, {"due": "9/6/18", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "8/31/18"}, {"due": "9/13/18", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/7/18"}, {"due": "9/20/18", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/14/18"}, {"due": "9/27/18", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "9/21/18"}, {"due": "10/4/18", "link": "lab/lab05/", "name": "Lab 5: Recursion", "release": "9/28/18"}, {"due": "10/13/18", "link": "lab/lab06/", "name": "Lab 6: Maps (Part 1)", "release": "10/5/18"}, {"due": "10/18/18", "link": "lab/lab07/", "name": "Lab 7: ADTs and Dictionaries", "release": "10/12/18"}, {"due": "10/25/18", "link": "lab/lab08/", "name": "Lab 8: Mutation", "release": "10/19/18"}, {"due": "11/1/18", "link": "lab/lab09/", "name": "Lab 9: Object-Oriented Programming", "release": "10/26/18"}, {"due": "11/8/18", "link": "lab/lab10/", "name": "Lab 10: Exceptions, Classes, and Inheritance", "release": "11/2/18"}, {"due": "11/15/18", "link": "lab/lab11/", "name": "Lab 11: Iterators and Generators", "release": "11/9/18"}, {"due": "11/28/18", "link": "lab/lab12/", "name": "Lab 12: Models as HOFs", "release": "11/16/18"}, {"due": "12/6/18", "link": "lab/lab13/", "name": "Lab 13: SQL", "release": "11/30/18"}, {"due": "8/31/18", "link": "hw/hw00/", "name": "Homework 0", "release": "8/24/18"}, {"due": "9/9/18", "link": "hw/hw01/", "name": "Homework 1", "release": "8/31/18"}, {"due": "9/14/18", "link": "hw/hw02/", "name": "Homework 2", "release": "9/7/18"}, {"due": "9/21/18", "link": "hw/hw03/", "name": "Homework 3", "release": "9/14/18"}, {"due": "9/28/18", "link": "hw/hw04/", "name": "Homework 4", "release": "9/21/18"}, {"due": "10/5/18", "link": "hw/hw05/", "name": "Homework 5", "release": "9/28/18"}, {"due": "10/5/18", "link": "hw/hw06/", "name": "Homework 6", "release": "10/5/18"}, {"due": "10/19/18", "link": "hw/hw07/", "name": "Homework 7", "release": "10/12/18"}, {"due": "10/26/18", "link": "hw/hw08/", "name": "Homework 8", "release": "10/19/18"}, {"due": "11/2/18", "link": "hw/hw09/", "name": "Homework 9", "release": "10/26/18"}, {"due": "11/9/18", "link": "hw/hw10/", "name": "Homework 10", "release": "11/2/18"}, {"due": "11/16/18", "link": "hw/hw11/", "name": "Homework 11", "release": "11/9/18"}, {"due": "11/16/18", "link": "hw/hw12/", "name": "Homework 12", "release": "11/16/18"}, {"due": "12/7/18", "link": "hw/hw13/", "name": "Homework 13", "release": "11/30/18"}, {"due": "10/13/18", "link": "proj/maps/", "name": "Maps (Part 1)", "release": "10/5/18"}, {"due": "10/24/18", "link": "proj/maps/", "name": "Maps", "release": "10/12/18"}, {"due": "11/10/18", "link": "proj/wheel/", "name": "Wheel of Fortune (Part 1)", "release": "11/2/18"}, {"due": "11/28/18", "link": "proj/wheel/", "name": "Wheel of Fortune", "release": "11/9/18"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {

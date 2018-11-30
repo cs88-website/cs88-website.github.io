@@ -103,8 +103,8 @@
 <solution>
 
 <pre><code>    def __len__(self):
-        &quot;&quot;&quot;
-        Get the length of the Arr88
+        &quot;&quot;&quot; Return the length of the Arr88
+
         &gt;&gt;&gt; arr88 = Arr88([1, 2, 3])
         &gt;&gt;&gt; len(arr88)
         3
@@ -141,8 +141,8 @@
 <solution>
 
 <pre><code>    def __add__(self, arr88):
-        &quot;&quot;&quot;
-        Add two Arr88s of the same length componentwise
+        &quot;&quot;&quot; Add two Arr88s of the same length element by element
+
         &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
         &gt;&gt;&gt; arr88b = Arr88([4, 5, 6])
         &gt;&gt;&gt; arr88a + arr88b
@@ -155,13 +155,13 @@
         Arr88([&#x27;Hello&#x27;, &#x27;World&#x27;, &#x27;!&#x27;])
         &quot;&quot;&quot;
         # Checks that the lengths are the same
-        assert len(self) == len(arr88)
+        assert len(self) == len(arr88), &quot;Arr88&#x27;s of different len&quot;
         "*** YOUR CODE HERE ***"
         return ______
 
     def __mul__(self, arr88):
-        &quot;&quot;&quot;
-        Multiply two Arr88s of the same length componentwise
+        &quot;&quot;&quot; Multiply two Arr88s of the same length componentwise
+
         &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
         &gt;&gt;&gt; arr88b = Arr88([4, 5, 6])
         &gt;&gt;&gt; arr88a * arr88b
@@ -174,13 +174,13 @@
         Arr88([&#x27;NaNaNaNaNaNaNaNaNaNa&#x27;, &#x27;Batman&#x27;, &#x27;!!!!!&#x27;])
         &quot;&quot;&quot;
         # Checks that the lengths are the same
-        assert len(self) == len(arr88)
+        assert len(self) == len(arr88), &quot;Arr88&#x27;s of different len&quot;
         "*** YOUR CODE HERE ***"
         return ______
 
     def negate(self):
-        &quot;&quot;&quot;
-        Negate an Arr88 with mutation
+        &quot;&quot;&quot;Negate an Arr88 with mutation
+
         &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
         &gt;&gt;&gt; arr88b = Arr88([4.0, &#x2d;5.5, 0.0])
         &gt;&gt;&gt; arr88a.negate()
@@ -204,8 +204,8 @@
 <solution>
 
 <pre><code>    def apply(self, func):
-        &quot;&quot;&quot;
-        Apply a function to an Arr88
+        &quot;&quot;&quot; Apply a function to an Arr88
+
         &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
         &gt;&gt;&gt; arr88a.apply(lambda x : x * x)
         Arr88([1, 4, 9])
