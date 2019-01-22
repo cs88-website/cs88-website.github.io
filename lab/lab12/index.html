@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 12: Models as HOFs | CS 88 Spring 2019</title>
+    <title>Lab 12: Models as HOFs | CS 88 Fall 2018</title>
 
   </head>
 
@@ -120,7 +120,7 @@ Inside the archive, you will find starter files for the questions in this lab,
     &quot;&quot;&quot;
 <div class="alt 1">    "*** YOUR CODE HERE ***"
     return ______
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x23;&#x20;&#x4f;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x5b;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x73;&#x5b;&#x69;&#x5d;&#x2a;&#x28;&#x78;&#x20;&#x2a;&#x2a;&#x20;&#x28;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#x20;&#x2d;&#x20;&#x69;&#x29;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#x20;&#x2b;&#x20;&#x31;&#x29;&#x5d;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x23;&#x20;&#x4f;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x70;&#x6f;&#x6c;&#x79;&#x5f;&#x66;&#x75;&#x6e;&#x63;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x5b;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x73;&#x5b;&#x69;&#x5d;&#x2a;&#x28;&#x78;&#x20;&#x2a;&#x2a;&#x20;&#x28;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#x20;&#x2d;&#x20;&#x69;&#x29;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#x20;&#x2b;&#x20;&#x31;&#x29;&#x5d;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x79;&#x5f;&#x66;&#x75;&#x6e;&#x63;</div></code></pre>
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x70;&#x6f;&#x6c;&#x79;&#x5f;&#x66;&#x75;&#x6e;&#x63;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x6f;&#x6e;&#x6c;&#x6f;&#x63;&#x61;&#x6c;&#x20;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x69;&#x63;&#x69;&#x65;&#x6e;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x69;&#x63;&#x69;&#x65;&#x6e;&#x74;&#x2a;&#x78;&#x2a;&#x2a;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#x20;&#x2b;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x67;&#x72;&#x65;&#x65;&#x20;&#x2d;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x6f;&#x6c;&#x79;&#x5f;&#x66;&#x75;&#x6e;&#x63;</div></code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -158,7 +158,7 @@ Inside the archive, you will find starter files for the questions in this lab,
 
 <pre><code>def mean(x):
 	&quot;&quot;&quot;
-	Return the mean of x, where x is a list of data points.
+	Return the mean of x, where x is a list of data points. 
 
 	&quot;&quot;&quot;
 <div class="alt 2">	"*** YOUR CODE HERE ***"
@@ -171,12 +171,12 @@ def testmean():
 
 def sd(x):
 	&quot;&quot;&quot;
-	Return the standard deviation of x, where x is a list of data points.
+	Return the standard deviation of x, where x is a list of data points. 
 
 	&quot;&quot;&quot;
 <div class="alt 2">	"*** YOUR CODE HERE ***"
 	return &quot;&quot;
-</div><div class="solution 2">&#x9;&#x61;&#x76;&#x67;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x9;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x5b;&#x28;&#x65;&#x61;&#x63;&#x68;&#x2d;&#x61;&#x76;&#x67;&#x29;&#x2a;&#x2a;&#x32;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x61;&#x63;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x78;&#x5d;&#x29;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2f;&#x6c;&#x65;&#x6e;&#x28;&#x78;&#x29;&#x29;&#x2a;&#x2a;&#x28;&#x31;&#x2f;&#x32;&#x29;&#xa;</div>
+</div><div class="solution 2">&#x9;&#x61;&#x76;&#x67;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x9;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x9;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x28;&#x65;&#x61;&#x63;&#x68;&#x2d;&#x61;&#x76;&#x67;&#x29;&#x2a;&#x2a;&#x32;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x61;&#x63;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x78;&#x29;&#xa;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2f;&#x6c;&#x65;&#x6e;&#x28;&#x78;&#x29;&#x29;&#x2a;&#x2a;&#x28;&#x31;&#x2f;&#x32;&#x29;&#xa;</div>
 def testsd():
 	assert sd([0,0,0,0,0]) == 0, &quot;pass me please!&quot;
 
@@ -184,7 +184,7 @@ def testsd():
 
 def standard_units(x):
 	&quot;&quot;&quot;
-	Return the standard units of x, where x is a list of data points.
+	Return the standard units of x, where x is a list of data points. 
 	&quot;&quot;&quot;
 <div class="alt 2">	"*** YOUR CODE HERE ***"
 	return &quot;&quot;
@@ -195,7 +195,7 @@ def testsu():
 def corr_coeff(x, y):
 	&quot;&quot;&quot;
 	Return the correlation coefficients (r) of x and y, where x is a list of
-	data points and y is a list of data points corresponding to x.
+	data points and y is a list of data points corresponding to x. 
 
 	&quot;&quot;&quot;
 <div class="alt 2">	"*** YOUR CODE HERE ***"
@@ -206,7 +206,7 @@ def testcorr_coeff():
 
 def regression(points):
     &quot;&quot;&quot;
-    Return a function that takes in x and predicts y, based on a linear regression model.
+    Return a function that takes in x and predicts y, based on a linear regression model. 
 
     &gt;&gt;&gt; tempVIcecream = [[35,1], [33,2], [37,3], [45,5],[47,6],[42,8],[43,9],[51,10]]
     &gt;&gt;&gt; predictor = regression(tempVIcecream)
@@ -215,7 +215,7 @@ def regression(points):
     &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
     return &quot;&quot;
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x78;&#x20;&#x3d;&#x20;&#x5b;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x5b;&#x30;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x79;&#x20;&#x3d;&#x20;&#x5b;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x5b;&#x31;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x6d;&#x6f;&#x64;&#x65;&#x6c;&#x28;&#x67;&#x69;&#x76;&#x65;&#x6e;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x72;&#x72;&#x5f;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x28;&#x78;&#x2c;&#x20;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x64;&#x5f;&#x78;&#x20;&#x3d;&#x20;&#x73;&#x64;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x64;&#x5f;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x64;&#x28;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x78;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x79;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x20;&#x3d;&#x20;&#x72;&#x2a;&#x28;&#x73;&#x64;&#x5f;&#x79;&#x2f;&#x73;&#x64;&#x5f;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x63;&#x65;&#x70;&#x74;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x79;&#x20;&#x2d;&#x20;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x2a;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x6f;&#x75;&#x6e;&#x64;&#x28;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x2a;&#x67;&#x69;&#x76;&#x65;&#x6e;&#x2b;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x63;&#x65;&#x70;&#x74;&#x2c;&#x20;&#x33;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x6f;&#x64;&#x65;&#x6c;&#xa;</div>
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x78;&#x20;&#x3d;&#x20;&#x5b;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x5b;&#x30;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x79;&#x20;&#x3d;&#x20;&#x5b;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x5b;&#x31;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x20;&#x69;&#x6e;&#x20;&#x70;&#x6f;&#x69;&#x6e;&#x74;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x6d;&#x6f;&#x64;&#x65;&#x6c;&#x28;&#x67;&#x69;&#x76;&#x65;&#x6e;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x20;&#x3d;&#x20;&#x63;&#x6f;&#x72;&#x72;&#x5f;&#x63;&#x6f;&#x65;&#x66;&#x66;&#x28;&#x78;&#x2c;&#x20;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x64;&#x5f;&#x78;&#x20;&#x3d;&#x20;&#x73;&#x64;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x64;&#x5f;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x64;&#x28;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x78;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x79;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x28;&#x79;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x20;&#x3d;&#x20;&#x72;&#x2a;&#x28;&#x73;&#x64;&#x5f;&#x79;&#x2f;&#x73;&#x64;&#x5f;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x63;&#x65;&#x70;&#x74;&#x20;&#x3d;&#x20;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x79;&#x20;&#x2d;&#x20;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x2a;&#x6d;&#x65;&#x61;&#x6e;&#x5f;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x6f;&#x75;&#x6e;&#x64;&#x28;&#x73;&#x6c;&#x6f;&#x70;&#x65;&#x2a;&#x67;&#x69;&#x76;&#x65;&#x6e;&#x2b;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x63;&#x65;&#x70;&#x74;&#x2c;&#x20;&#x33;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x6f;&#x64;&#x65;&#x6c;&#x20;&#x9;&#xa;</div>
 def testregression():
 	&quot;&quot;&quot;***PUT YOUR TEST HERE***&quot;&quot;&quot;</code></pre>
 

@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu" />
+    <meta name="author" content ="David Culler, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Ting Ding, Lyric Yu, Julia Yu" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -20,7 +20,7 @@
 
     
 
-    <title> CS 88 Spring 2019</title>
+    <title> CS 88 Fall 2018</title>
 
   </head>
 
@@ -67,9 +67,9 @@
   <h1><span class="content-title-brand">CS 88</span>:
   Computational Structures in Data Science</h1>
 
-  Spring 2019<br/>
-  Instructor: Gerald Friedland<br/>
-  M 9-10am in LeConte 4, M 10:30-11:30am in Soda 306
+  Fall 2018<br/>
+  Instructor: David Culler<br/>
+  M 2-3 in LeConte 4
 
 </div>
 
@@ -91,7 +91,7 @@
                 </a>
             </li>
             <li>
-                <span class="announcement-date">Wednesday, 01/16</span>
+                <span class="announcement-date">Tuesday, 08/21</span>
             </li>
             <li class='announcement-btn-older'>
                 <a>
@@ -104,13 +104,14 @@
         <p>Welcome to CS88!</p>
 
 <ul>
-  <li>Lectures will start on Monday 1/28.</li>
-  <li>Attendance of lecture is required</li>
+  <li>Lectures will start on Monday 8/27 in 4 LeConte.</li>
   <li>Labs will start this first week and Friday 8/24. Details of the sections are
-  here for 
-  <a href="https://classes.berkeley.edu/content/2019-spring-compsci-88-001-lec-001">lecture 1</a> and here for <a href="https://classes.berkeley.edu/content/2019-spring-compsci-88-002-lec-002">lecture 2</a>.</li>
+  in 
+  <a href="https://classes.berkeley.edu/content/2018-fall-compsci-88-001-lec-001">https://classes.berkeley.edu/content/2018-fall-compsci-88-001-lec-001</a> and in
+  our 
+  <a href="https://bcourses.berkeley.edu/courses/1473140/discussion_topics/5387992">bcourses announcement</a>.</li>
   <li>Please sign up for the CS 88 <a href="https://piazza.com/berkeley/fall2018/cs88">Piazza</a> forum.</li>
-  <li>Students should bring a laptop to lab. Data Science students can borrow laptops from the library.</li>
+  <li>Students should bring a laptop. Data Science students can borrow laptops from the library.</li>
   <li>Lectures will be subject to change.</li>
   <li>You cannot get credit for CS 88 if you have already taken CS 61A.</li>
 </ul>
@@ -143,7 +144,20 @@
         <tbody class="list">
             
         <tr>
-            <td class='resource-name'>Lecture 1: No Lecture</td>
+            <td class='resource-name'>Midterm Exam: Evening</td>
+            <td class='resource-type'>Exam</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Final Exam: 3-5pm in Evans 10</td>
+            <td class='resource-type'>Exam</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 1: No Lecture
+(1pp) (6pps) (ipynb)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
@@ -155,7 +169,8 @@
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 2: Overview and Concepts</td>
+            <td class='resource-name'>Lecture 2: Overview and Concepts
+(<a href="assets/slides/02-Overview_and_Concepts_1pp.pdf">1pp</a>) (<a href="assets/slides/02-Overview_and_Concepts_6pps.pdf">6pps</a>) (ipynb)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
@@ -173,139 +188,426 @@
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 3: </td>
+            <td class='resource-name'>Lecture 3: Control, Loops, Functions
+(<a href="assets/slides/03-Control,_Loops,_Functions_1pp.pdf">1pp</a>) (<a href="assets/slides/03-Control,_Loops,_Functions_6pps.pdf">6pps</a>) (<a href="assets/slides/03-Control,_Loops,_Functions.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 4: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/13-defining-new-functions.html">Readings: section 1.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/14-designing-functions.html">Readings: section 1.4</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/15-control.html">Readings: section 1.5</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/23-sequences.html">Readings: section 2.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 4: Higher Order Functions
+(<a href="assets/slides/04-Higher_Order_Functions_1pp.pdf">1pp</a>) (<a href="assets/slides/04-Higher_Order_Functions_6pps.pdf">6pps</a>) (<a href="assets/slides/04-Higher_Order_Functions.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 5: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/16-higher-order-functions.html">Readings: section 1.6</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 5: Recursion
+(<a href="assets/slides/05-Recursion_1pp.pdf">1pp</a>) (<a href="assets/slides/05-Recursion_6pps.pdf">6pps</a>) (ipynb)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 6: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/17-recursive-functions.html">Readings: section 1.7</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 6: Lambda, Environments, Review
+(<a href="assets/slides/06-Lambda,_Environments,_Review_1pp.pdf">1pp</a>) (<a href="assets/slides/06-Lambda,_Environments,_Review_6pps.pdf">6pps</a>) (<a href="assets/slides/06-Lambda,_Environments,_Review.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 7: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/16-higher-order-functions.html">Readings: section 1.6</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 7: Abstract Data Types
+(<a href="assets/slides/07-Abstract_Data_Types_1pp.pdf">1pp</a>) (<a href="assets/slides/07-Abstract_Data_Types_6pps.pdf">6pps</a>) (ipynb)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 8: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/22-data-abstraction.html">Readings: section 2.2</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 8: Mutable Data
+(<a href="assets/slides/08-Mutable_Data_1pp.pdf">1pp</a>) (<a href="assets/slides/08-Mutable_Data_6pps.pdf">6pps</a>) (ipynb)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 9: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/24-mutable-data.html">Readings: section 2.4</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/33-exceptions.html">Readings: section 3.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 9: Object Oriented Programming
+(<a href="assets/slides/09-Object_Oriented_Programming_1pp.pdf">1pp</a>) (<a href="assets/slides/09-Object_Oriented_Programming_6pps.pdf">6pps</a>) (<a href="assets/slides/09-Object_Oriented_Programming.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 10: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">Readings: section 2.5</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">Readings: section 2.6</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 10: Classes, Inheritance, Exceptions
+(<a href="assets/slides/10-Classes,_Inheritance,_Exceptions_1pp.pdf">1pp</a>) (<a href="assets/slides/10-Classes,_Inheritance,_Exceptions_6pps.pdf">6pps</a>) (<a href="assets/slides/10-Classes,_Inheritance,_Exceptions.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 11: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/29-recursive-objects.html">Readings: section 2.9</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/33-exceptions.html">Readings: section 3.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 11: Iterators and Generators
+(<a href="assets/slides/11-Iterators_and_Generators_1pp.pdf">1pp</a>) (<a href="assets/slides/11-Iterators_and_Generators_6pps.pdf">6pps</a>) (<a href="assets/slides/11-Iterators_and_Generators.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 12: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/24-mutable-data.html">Readings: section 2.4</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 12: SQL
+(<a href="assets/slides/12-SQL_1pp.pdf">1pp</a>) (<a href="assets/slides/12-SQL_6pps.pdf">6pps</a>) (<a href="assets/slides/12-SQL.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 13: </td>
+            <td class='resource-name'><a href="http://composingprograms.com/pages/43-declarative-programming.html">Readings: section 4.3</a></td>
+            <td class='resource-type'>Reading</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lecture 13: RRR Week: Review
+(1pp) (6pps) (ipynb)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Lecture 14: RRR Week: Review</td>
-            <td class='resource-type'>Lecture</td>
-            <td class='resource-tags'></td>
-        </tr>
-
-        <tr>
-            <td class='resource-name'>Lab 0: Community and Setup (Solutions)</td>
+            <td class='resource-name'><a href="lab/lab00/">Lab 0: Community and Setup</a> (Solutions)</td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Syllabus</td>
+            <td class='resource-name'><a href="lab/lab01/">Lab 1: Data Types, Expressions, Shell Command II</a> (<a href="lab/sol-lab01/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab02/">Lab 2: Functions and Editors</a> (<a href="lab/sol-lab02/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab03/">Lab 3: List Comprehensions, Conditionals and Iteration</a> (<a href="lab/sol-lab03/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab04/">Lab 4: Higher Order Functions</a> (<a href="lab/sol-lab04/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab05/">Lab 5: Recursion</a> (<a href="lab/sol-lab05/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Lab 6: Maps (Part 1) (Solutions)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab07/">Lab 7: ADTs and Dictionaries</a> (<a href="lab/sol-lab07/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab08/">Lab 8: Mutation</a> (<a href="lab/sol-lab08/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab09/">Lab 9: Object-Oriented Programming</a> (<a href="lab/sol-lab09/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab10/">Lab 10: Exceptions, Classes, and Inheritance</a> (<a href="lab/sol-lab10/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab11/">Lab 11: Iterators and Generators</a> (<a href="lab/sol-lab11/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab12/">Lab 12: Models as HOFs</a> (<a href="lab/sol-lab12/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab13/">Lab 13: SQL</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw00/">Homework 0</a> (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw01/">Homework 1</a> (<a href="hw/sol-hw01/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw02/">Homework 2</a> (<a href="hw/sol-hw02/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw03/">Homework 3</a> (<a href="hw/sol-hw03/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw04/">Homework 4</a> (<a href="hw/sol-hw04/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw05/">Homework 5</a> (<a href="hw/sol-hw05/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Homework 6 (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw07/">Homework 7</a> (<a href="hw/sol-hw07/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw08/">Homework 8</a> (<a href="hw/sol-hw08/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw09/">Homework 9</a> (<a href="hw/sol-hw09/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw10/">Homework 10</a> (<a href="hw/sol-hw10/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw11/">Homework 11</a> (<a href="hw/sol-hw11/">Solutions</a>)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Homework 12 (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'>Homework 13</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="proj/maps/">Maps (Part 1)</a></td>
+            <td class='resource-type'>Project</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="proj/maps/">Maps</a></td>
+            <td class='resource-type'>Project</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="proj/wheel/">Wheel of Fortune (Part 1)</a></td>
+            <td class='resource-type'>Project</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="proj/wheel/">Wheel of Fortune</a></td>
+            <td class='resource-type'>Project</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="articles/about.html">Syllabus</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Composition Guide</td>
+            <td class='resource-name'><a href="articles/composition.html">Composition Guide</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'>Programming</td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Debugging Guide</td>
+            <td class='resource-name'><a href="articles/debugging.html">Debugging Guide</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'>Programming</td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Using OK</td>
+            <td class='resource-name'><a href="articles/using-ok.html">Using OK</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'>OK</td>
         </tr>
 
         <tr>
-            <td class='resource-name'>UNIX Tutorial</td>
+            <td class='resource-name'><a href="articles/unix.html">UNIX Tutorial</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'>UNIX</td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Sublime Text</td>
+            <td class='resource-name'><a href="articles/sublime.html">Sublime Text</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'>Text Editors</td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Vim</td>
+            <td class='resource-name'><a href="articles/vim.html">Vim</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'>Text Editors</td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Emacs</td>
+            <td class='resource-name'><a href="articles/emacs.html">Emacs</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'>Text Editors</td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Staff</td>
+            <td class='resource-name'><a href="staff.html">Staff</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Weekly Schedule</td>
+            <td class='resource-name'><a href="weekly-schedule.html">Weekly Schedule</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'></td>
         </tr>
@@ -445,25 +747,29 @@
 </tr>
 <tr>
 <td rowspan="2" class="weeknum odd">1</td>
-<td>Mon 1/22</td>
-<td></td>
-<td></td>
-<td>Lab 0: Community and Setup<br/>(due Mon 1/29) (Solutions)</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Mon 1/21</td>
-<td>No Lecture</td>
+<td>Mon 8/20</td>
+<td>No Lecture
+<br/>
+(1pp) (6pps) (ipynb)</td>
 <td><a href="http://composingprograms.com/pages/11-getting-started.html">1.1</a></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum even">2</td>
-<td>Mon 1/28</td>
-<td>Overview and Concepts</td>
+<td>Fri 8/24</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab00/">Lab 0: Community and Setup</a><br/>(due Thu 8/30) (Solutions)</td>
+<td><a href="hw/hw00/">Homework 0</a><br/>(due Fri 8/31) (Solutions)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum even">2</td>
+<td>Mon 8/27</td>
+<td>Overview and Concepts
+<br/>
+(<a href="assets/slides/02-Overview_and_Concepts_1pp.pdf">1pp</a>) (<a href="assets/slides/02-Overview_and_Concepts_6pps.pdf">6pps</a>) (ipynb)</td>
 <td><a href="http://composingprograms.com/pages/12-elements-of-programming.html">1.2</a><br/>
 <a href="http://composingprograms.com/pages/21-introduction.html">2.1</a></td>
 <td></td>
@@ -471,126 +777,283 @@
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum odd">3</td>
-<td>Mon 2/4</td>
+<td>Fri 8/31</td>
 <td></td>
+<td></td>
+<td><a href="lab/lab01/">Lab 1: Data Types, Expressions, Shell Command II</a><br/>(due Thu 9/6) (<a href="lab/sol-lab01/">Solutions</a>)</td>
+<td><a href="hw/hw01/">Homework 1</a><br/>(due Sun 9/9) (<a href="hw/sol-hw01/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum odd">3</td>
+<td>Mon 9/3</td>
+<td>No Lecture: Labor Day</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum even">4</td>
-<td>Mon 2/11</td>
+<td>Fri 9/7</td>
 <td></td>
+<td></td>
+<td><a href="lab/lab02/">Lab 2: Functions and Editors</a><br/>(due Thu 9/13) (<a href="lab/sol-lab02/">Solutions</a>)</td>
+<td><a href="hw/hw02/">Homework 2</a><br/>(due Fri 9/14) (<a href="hw/sol-hw02/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum even">4</td>
+<td>Mon 9/10</td>
+<td>Control, Loops, Functions
+<br/>
+(<a href="assets/slides/03-Control,_Loops,_Functions_1pp.pdf">1pp</a>) (<a href="assets/slides/03-Control,_Loops,_Functions_6pps.pdf">6pps</a>) (<a href="assets/slides/03-Control,_Loops,_Functions.ipynb">ipynb</a>)</td>
+<td><a href="http://composingprograms.com/pages/13-defining-new-functions.html">1.3</a><br/>
+<a href="http://composingprograms.com/pages/14-designing-functions.html">1.4</a><br/>
+<a href="http://composingprograms.com/pages/15-control.html">1.5</a><br/>
+<a href="http://composingprograms.com/pages/23-sequences.html">2.3</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 9/14</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab03/">Lab 3: List Comprehensions, Conditionals and Iteration</a><br/>(due Thu 9/20) (<a href="lab/sol-lab03/">Solutions</a>)</td>
+<td><a href="hw/hw03/">Homework 3</a><br/>(due Fri 9/21) (<a href="hw/sol-hw03/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum odd">5</td>
+<td>Mon 9/17</td>
+<td>Higher Order Functions
+<br/>
+(<a href="assets/slides/04-Higher_Order_Functions_1pp.pdf">1pp</a>) (<a href="assets/slides/04-Higher_Order_Functions_6pps.pdf">6pps</a>) (<a href="assets/slides/04-Higher_Order_Functions.ipynb">ipynb</a>)</td>
+<td><a href="http://composingprograms.com/pages/16-higher-order-functions.html">1.6</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 9/21</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab04/">Lab 4: Higher Order Functions</a><br/>(due Thu 9/27) (<a href="lab/sol-lab04/">Solutions</a>)</td>
+<td><a href="hw/hw04/">Homework 4</a><br/>(due Fri 9/28) (<a href="hw/sol-hw04/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum even">6</td>
+<td>Mon 9/24</td>
+<td>Recursion
+<br/>
+(<a href="assets/slides/05-Recursion_1pp.pdf">1pp</a>) (<a href="assets/slides/05-Recursion_6pps.pdf">6pps</a>) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/17-recursive-functions.html">1.7</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 9/28</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab05/">Lab 5: Recursion</a><br/>(due Thu 10/4) (<a href="lab/sol-lab05/">Solutions</a>)</td>
+<td><a href="hw/hw05/">Homework 5</a><br/>(due Fri 10/5) (<a href="hw/sol-hw05/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="3" class="weeknum odd">7</td>
+<td>Mon 10/1</td>
+<td>Lambda, Environments, Review
+<br/>
+(<a href="assets/slides/06-Lambda,_Environments,_Review_1pp.pdf">1pp</a>) (<a href="assets/slides/06-Lambda,_Environments,_Review_6pps.pdf">6pps</a>) (<a href="assets/slides/06-Lambda,_Environments,_Review.ipynb">ipynb</a>)</td>
+<td><a href="http://composingprograms.com/pages/16-higher-order-functions.html">1.6</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Wed 10/3</td>
+<td>Midterm Exam: Evening</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum odd">5</td>
-<td>Mon 2/18</td>
-<td>No Lecture: Academic and Administrative Holiday</td>
+<td>Fri 10/5</td>
+<td></td>
+<td></td>
+<td>Lab 6: Maps (Part 1)<br/>(due Sat 10/13) (Solutions)</td>
+<td>Homework 6<br/>(due Fri 10/5) (Solutions)</td>
+<td><a href="proj/maps/">Maps (Part 1)</a><br/>(due Sat 10/13)</td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum even">8</td>
+<td>Mon 10/8</td>
+<td>Abstract Data Types
+<br/>
+(<a href="assets/slides/07-Abstract_Data_Types_1pp.pdf">1pp</a>) (<a href="assets/slides/07-Abstract_Data_Types_6pps.pdf">6pps</a>) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/22-data-abstraction.html">2.2</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 10/12</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab07/">Lab 7: ADTs and Dictionaries</a><br/>(due Thu 10/18) (<a href="lab/sol-lab07/">Solutions</a>)</td>
+<td><a href="hw/hw07/">Homework 7</a><br/>(due Fri 10/19) (<a href="hw/sol-hw07/">Solutions</a>)</td>
+<td><a href="proj/maps/">Maps</a><br/>(due Wed 10/24)</td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum odd">9</td>
+<td>Mon 10/15</td>
+<td>Mutable Data
+<br/>
+(<a href="assets/slides/08-Mutable_Data_1pp.pdf">1pp</a>) (<a href="assets/slides/08-Mutable_Data_6pps.pdf">6pps</a>) (ipynb)</td>
+<td><a href="http://composingprograms.com/pages/24-mutable-data.html">2.4</a><br/>
+<a href="http://composingprograms.com/pages/33-exceptions.html">3.3</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 10/19</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab08/">Lab 8: Mutation</a><br/>(due Thu 10/25) (<a href="lab/sol-lab08/">Solutions</a>)</td>
+<td><a href="hw/hw08/">Homework 8</a><br/>(due Fri 10/26) (<a href="hw/sol-hw08/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum even">10</td>
+<td>Mon 10/22</td>
+<td>Object Oriented Programming
+<br/>
+(<a href="assets/slides/09-Object_Oriented_Programming_1pp.pdf">1pp</a>) (<a href="assets/slides/09-Object_Oriented_Programming_6pps.pdf">6pps</a>) (<a href="assets/slides/09-Object_Oriented_Programming.ipynb">ipynb</a>)</td>
+<td><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">2.5</a><br/>
+<a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">2.6</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 10/26</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab09/">Lab 9: Object-Oriented Programming</a><br/>(due Thu 11/1) (<a href="lab/sol-lab09/">Solutions</a>)</td>
+<td><a href="hw/hw09/">Homework 9</a><br/>(due Fri 11/2) (<a href="hw/sol-hw09/">Solutions</a>)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum odd">11</td>
+<td>Mon 10/29</td>
+<td>Classes, Inheritance, Exceptions
+<br/>
+(<a href="assets/slides/10-Classes,_Inheritance,_Exceptions_1pp.pdf">1pp</a>) (<a href="assets/slides/10-Classes,_Inheritance,_Exceptions_6pps.pdf">6pps</a>) (<a href="assets/slides/10-Classes,_Inheritance,_Exceptions.ipynb">ipynb</a>)</td>
+<td><a href="http://composingprograms.com/pages/29-recursive-objects.html">2.9</a><br/>
+<a href="http://composingprograms.com/pages/33-exceptions.html">3.3</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 11/2</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab10/">Lab 10: Exceptions, Classes, and Inheritance</a><br/>(due Thu 11/8) (<a href="lab/sol-lab10/">Solutions</a>)</td>
+<td><a href="hw/hw10/">Homework 10</a><br/>(due Fri 11/9) (<a href="hw/sol-hw10/">Solutions</a>)</td>
+<td><a href="proj/wheel/">Wheel of Fortune (Part 1)</a><br/>(due Sat 11/10)</td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum even">12</td>
+<td>Mon 11/5</td>
+<td>Iterators and Generators
+<br/>
+(<a href="assets/slides/11-Iterators_and_Generators_1pp.pdf">1pp</a>) (<a href="assets/slides/11-Iterators_and_Generators_6pps.pdf">6pps</a>) (<a href="assets/slides/11-Iterators_and_Generators.ipynb">ipynb</a>)</td>
+<td><a href="http://composingprograms.com/pages/24-mutable-data.html">2.4</a></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Fri 11/9</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab11/">Lab 11: Iterators and Generators</a><br/>(due Thu 11/15) (<a href="lab/sol-lab11/">Solutions</a>)</td>
+<td><a href="hw/hw11/">Homework 11</a><br/>(due Fri 11/16) (<a href="hw/sol-hw11/">Solutions</a>)</td>
+<td><a href="proj/wheel/">Wheel of Fortune</a><br/>(due Wed 11/28)</td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum odd">13</td>
+<td>Mon 11/12</td>
+<td>No Lecture: Veterans Day</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum even">6</td>
-<td>Mon 2/25</td>
+<td>Fri 11/16</td>
 <td></td>
+<td></td>
+<td><a href="lab/lab12/">Lab 12: Models as HOFs</a><br/>(due Wed 11/28) (<a href="lab/sol-lab12/">Solutions</a>)</td>
+<td>Homework 12<br/>(due Fri 11/16) (Solutions)</td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="2" class="weeknum even">14</td>
+<td>Mon 11/19</td>
+<td>No Lecture: Class Cancelled</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum odd">7</td>
-<td>Mon 3/4</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td rowspan="1" class="weeknum even">8</td>
-<td>Mon 3/11</td>
-<td></td>
+<td>Fri 11/23</td>
+<td>No Lecture: Thanksgiving Break</td>
 <td></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum odd">9</td>
-<td>Mon 3/18</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td rowspan="1" class="weeknum even">10</td>
-<td>Mon 3/25</td>
-<td>No Lecture: Spring Break</td>
-<td></td>
+<td rowspan="2" class="weeknum odd">15</td>
+<td>Mon 11/26</td>
+<td>SQL
+<br/>
+(<a href="assets/slides/12-SQL_1pp.pdf">1pp</a>) (<a href="assets/slides/12-SQL_6pps.pdf">6pps</a>) (<a href="assets/slides/12-SQL.ipynb">ipynb</a>)</td>
+<td><a href="http://composingprograms.com/pages/43-declarative-programming.html">4.3</a></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
 <tr>
-<td rowspan="1" class="weeknum odd">11</td>
-<td>Mon 4/1</td>
+<td>Fri 11/30</td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td rowspan="1" class="weeknum even">12</td>
-<td>Mon 4/8</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td rowspan="1" class="weeknum odd">13</td>
-<td>Mon 4/15</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td rowspan="1" class="weeknum even">14</td>
-<td>Mon 4/22</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td rowspan="1" class="weeknum odd">15</td>
-<td>Mon 4/29</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="lab/lab13/">Lab 13: SQL</a><br/>(due Thu 12/6)</td>
+<td>Homework 13<br/>(due Fri 12/7)</td>
 <td></td>
 </tr>
 <tr>
 <td rowspan="1" class="weeknum even">16</td>
-<td>Mon 5/6</td>
-<td>RRR Week: Review</td>
+<td>Mon 12/3</td>
+<td>RRR Week: Review
+<br/>
+(1pp) (6pps) (ipynb)</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">17</td>
+<td>Thu 12/13</td>
+<td>Final Exam: 3-5pm in Evans 10</td>
 <td></td>
 <td></td>
 <td></td>
@@ -658,7 +1121,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "1/29/18", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "1/22/18"}];
+  var assignments = [{"due": "8/30/18", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/24/18"}, {"due": "9/6/18", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "8/31/18"}, {"due": "9/13/18", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/7/18"}, {"due": "9/20/18", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/14/18"}, {"due": "9/27/18", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "9/21/18"}, {"due": "10/4/18", "link": "lab/lab05/", "name": "Lab 5: Recursion", "release": "9/28/18"}, {"due": "10/13/18", "link": "lab/lab06/", "name": "Lab 6: Maps (Part 1)", "release": "10/5/18"}, {"due": "10/18/18", "link": "lab/lab07/", "name": "Lab 7: ADTs and Dictionaries", "release": "10/12/18"}, {"due": "10/25/18", "link": "lab/lab08/", "name": "Lab 8: Mutation", "release": "10/19/18"}, {"due": "11/1/18", "link": "lab/lab09/", "name": "Lab 9: Object-Oriented Programming", "release": "10/26/18"}, {"due": "11/8/18", "link": "lab/lab10/", "name": "Lab 10: Exceptions, Classes, and Inheritance", "release": "11/2/18"}, {"due": "11/15/18", "link": "lab/lab11/", "name": "Lab 11: Iterators and Generators", "release": "11/9/18"}, {"due": "11/28/18", "link": "lab/lab12/", "name": "Lab 12: Models as HOFs", "release": "11/16/18"}, {"due": "12/6/18", "link": "lab/lab13/", "name": "Lab 13: SQL", "release": "11/30/18"}, {"due": "8/31/18", "link": "hw/hw00/", "name": "Homework 0", "release": "8/24/18"}, {"due": "9/9/18", "link": "hw/hw01/", "name": "Homework 1", "release": "8/31/18"}, {"due": "9/14/18", "link": "hw/hw02/", "name": "Homework 2", "release": "9/7/18"}, {"due": "9/21/18", "link": "hw/hw03/", "name": "Homework 3", "release": "9/14/18"}, {"due": "9/28/18", "link": "hw/hw04/", "name": "Homework 4", "release": "9/21/18"}, {"due": "10/5/18", "link": "hw/hw05/", "name": "Homework 5", "release": "9/28/18"}, {"due": "10/5/18", "link": "hw/hw06/", "name": "Homework 6", "release": "10/5/18"}, {"due": "10/19/18", "link": "hw/hw07/", "name": "Homework 7", "release": "10/12/18"}, {"due": "10/26/18", "link": "hw/hw08/", "name": "Homework 8", "release": "10/19/18"}, {"due": "11/2/18", "link": "hw/hw09/", "name": "Homework 9", "release": "10/26/18"}, {"due": "11/9/18", "link": "hw/hw10/", "name": "Homework 10", "release": "11/2/18"}, {"due": "11/16/18", "link": "hw/hw11/", "name": "Homework 11", "release": "11/9/18"}, {"due": "11/16/18", "link": "hw/hw12/", "name": "Homework 12", "release": "11/16/18"}, {"due": "12/7/18", "link": "hw/hw13/", "name": "Homework 13", "release": "11/30/18"}, {"due": "10/13/18", "link": "proj/maps/", "name": "Maps (Part 1)", "release": "10/5/18"}, {"due": "10/24/18", "link": "proj/maps/", "name": "Maps", "release": "10/12/18"}, {"due": "11/10/18", "link": "proj/wheel/", "name": "Wheel of Fortune (Part 1)", "release": "11/2/18"}, {"due": "11/28/18", "link": "proj/wheel/", "name": "Wheel of Fortune", "release": "11/9/18"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
