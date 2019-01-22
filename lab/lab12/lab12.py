@@ -14,13 +14,12 @@ def polynomial(degree, coeffs):
     """
     "*** YOUR CODE HERE ***"
     return ______
-    
 
 
 # Q2
 def mean(x):
 	"""
-	Return the mean of x, where x is a list of data points. 
+	Return the mean of x, where x is a list of data points.
 
 	"""
 	"*** YOUR CODE HERE ***"
@@ -33,7 +32,7 @@ def testmean():
 
 def sd(x):
 	"""
-	Return the standard deviation of x, where x is a list of data points. 
+	Return the standard deviation of x, where x is a list of data points.
 
 	"""
 	"*** YOUR CODE HERE ***"
@@ -47,7 +46,7 @@ def testsd():
 
 def standard_units(x):
 	"""
-	Return the standard units of x, where x is a list of data points. 
+	Return the standard units of x, where x is a list of data points.
 	"""
 	"*** YOUR CODE HERE ***"
 	return ""
@@ -59,7 +58,7 @@ def testsu():
 def corr_coeff(x, y):
 	"""
 	Return the correlation coefficients (r) of x and y, where x is a list of
-	data points and y is a list of data points corresponding to x. 
+	data points and y is a list of data points corresponding to x.
 
 	"""
 	"*** YOUR CODE HERE ***"
@@ -67,14 +66,14 @@ def corr_coeff(x, y):
 
 def testcorr_coeff():
 	"""***PUT YOUR TEST HERE***"""
-	
+
 
 
 
 def regression(points):
     """
-    Return a function that takes in x and predicts y, based on a linear regression model. 
-    
+    Return a function that takes in x and predicts y, based on a linear regression model.
+
     >>> tempVIcecream = [[35,1], [33,2], [37,3], [45,5],[47,6],[42,8],[43,9],[51,10]]
     >>> predictor = regression(tempVIcecream)
     >>> predictor(62)    # Round to the third decimal place
@@ -85,6 +84,5 @@ def regression(points):
 
 def testregression():
 	"""***PUT YOUR TEST HERE***"""
-    
 
 
