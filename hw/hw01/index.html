@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu" />
+    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Homework 1</span></h1>
     </div>
 
-    <p><em>Due by 09/09/2018</em></p>
+    <p><em>Due by 02/06/2019</em></p>
 
 <h2>Instructions</h2>
 
@@ -79,10 +79,7 @@
     Inside the archive, you will find starter files for the questions in this homework,
     along with a copy of the OK autograder.</p>
 
-<p><strong>Submission:</strong> When you are done, submit the homework by uploading the
-    <code>hw01.py</code> file to <a href="https://okpy.org">okpy.org</a>.
-    You may submit more than once before the deadline; only the
-    final submission will be scored.</p>
+<p><strong>Submission:</strong> When you are done, submit with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be scored. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
 
 <p><strong>Readings:</strong> This homework relies on following references:</p>
 
@@ -91,6 +88,10 @@
   <li><a href="http://composingprograms.com/pages/13-defining-new-functions.html">Section 1.3</a></li>
   <li><a href="http://composingprograms.com/pages/15-control.html">Section 1.5</a></li>
 </ul>
+
+<p>To submit: run <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
 
     
 
@@ -257,7 +258,7 @@ Your solution will look like <code>return &lt;expression&gt;</code>.</p>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q odd --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q odd</code></pre>
 
 <h3 class="question" id="q2">Question 2: Distance</h3>
 
@@ -291,7 +292,7 @@ def distance(x1, y1, x2, y2):
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q distance --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q distance</code></pre>
 
 <h3 class="question" id="q3">Question 3: Distance (3-D)</h3>
 
@@ -316,7 +317,7 @@ arguments and compute the following:</p>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q distance3d --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q distance3d</code></pre>
 
 <h3 class="question" id="q4">Question 4: Diff</h3>
 
@@ -355,7 +356,7 @@ return whether subtracting one of these numbers from another gives the third.</p
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q diff --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q diff</code></pre>
 
 <h3 class="question" id="q5">Question 5: Add absolute</h3>
 
@@ -386,7 +387,7 @@ def a_plus_abs_b(a, b):
         f = _____
     return f(a, b) # You can replace this line, but don&#x27;t have to.</code></pre>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q a_plus_abs_b --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q a_plus_abs_b</code></pre>
 
 
 
@@ -409,7 +410,7 @@ def quadratic(a,b,c):
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"</code></pre>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q quadratic --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q quadratic</code></pre>
 
 
 

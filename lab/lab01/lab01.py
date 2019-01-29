@@ -2,15 +2,13 @@
 # Required Questions #
 ######################
 
-
 def temperature_converter(f_temp):
     """
-    >>> celsius_temp1 = temperature_converter(32)
-    >>> celsius_temp1
+    >>> temperature_converter(32)
     0.0
     """
     "*** YOUR CODE HERE ***"
-    "Replace this"
+    return celsius_temp
 
 
 def pythagorean_triple(a,b,c):
@@ -21,7 +19,4 @@ def pythagorean_triple(a,b,c):
     False
     """
     "*** YOUR CODE HERE ***"
-    "Replace This"
-
-
 

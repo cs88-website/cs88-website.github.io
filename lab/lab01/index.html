@@ -3,7 +3,7 @@
   <head>
     <meta name="description" content ="CS88: Computational Structures in Data Science " />
     <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
-    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu" />
+    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport" content="width=device-width">
 
@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Lab 1</span>: Data Types, Expressions, Shell Command II</h1>
     </div>
 
-    <p><i>Due at 9:00pm on 09/06/2018.</i></p>
+    <p><i>Due at 9:00pm on 02/02/2019.</i></p>
 
 
 
@@ -83,37 +83,36 @@ Inside the archive, you will find starter files for the questions in this lab,
 
 <h2 id='submission'>Submission</h2>
 
-<p>When you are done, submit the lab by uploading the <code>lab01.py</code>
-    file to <a href="https://okpy.org">okpy.org</a>. You may submit more than once before the
-    deadline; only the final submission will be graded.</p>
+<p>By the end of this lab, you should have submitted the lab with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be graded. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
 
 
 <ul>
-  <li>To receive credit for this lab, all questions must be completed for full credit.</li>
+  <li>To receive full credit for this lab, all questions must be attempted.</li>
 </ul>
+
+<p>When you are ready to submit, run <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
+
+<p>After submitting, <code>ok</code> will display a submission URL, with which you can view your submission on okpy.org.</p>
+
 
 
     
 
 
+<h2 id="setting-up-okpy">Setting up Okpy</h2>
+
+
+<p>Please navigate to this <a href="https://cs61a.org/articles/using-ok.html">website</a> and follow the instruction on there to set up okpy. Note: we follow the 61a procedure, so it's a link page from 61a. Steps are the same though.</p>
+
+
 <h2 id="running-python-basics">Running Python Basics</h2>
 
 
-<p>To ensure the process works smoothly, you will start this lab 
-on datahub and then shift over to your local installation, thereby
-making sure you have a working environment on both.</p>
+<p>Open up your terminal on your local computer. For Windows, use gitbash.</p>
 
-<p>Upload the zipped file you downloaded to datahub, then
-open up a terminal in datahub (<code>New &gt; Terminal</code>).
-You should see <code>lab01.zip</code> that you uploaded (using <code>ls</code>).
-Unzip this file, using <code>unzip lab01.zip</code>. List what you have now in 
-that folder , aka "directory".
-Navigate to the folder <code>lab01</code> folder using the 
-<code>cd</code> (change directory) command.</p>
-
-<p>Using <code>New &gt; Terminal</code> open a terminal window.  It should appear as a new
-tab in your browser. 
-In your terminal window, you can run Python using the command
+<p>In your terminal window, you can run Python using the command
 below. We will be using the default version of Python 3.6.</p>
 
 <pre><code>  python3</code></pre>
@@ -169,11 +168,6 @@ adding a “.py” extension.</p>
 <p>Now, you can see that you remain in the Python intepreter and can access any variable or function defined in the particular file.</p>
 
 <p>Again, use <code>exit()</code> to exit out of the interpreter.</p>
-
-<p>Repeat this process on your laptop using the terminal and python that you
-got set up last week.  If you have any problems with that, let your TA know.
-You can do the remainder of this lab either locally or on datahub, but we want to 
-make sure you have both working before the lab is done.</p>
 
 <p>Be sure that you are running python 3.  On macs you may need to run <code>python3</code>.</p>
 
@@ -362,7 +356,7 @@ True
 <blockquote><p>Use OK to test your knowledge with the some "What Would Python Print?"
 questions:</p>
 
-<pre><code>python3 ok &#x2d;q primitive&#x2d;expressions &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
+<pre><code>python3 ok &#x2d;q primitive&#x2d;expressions &#x2d;u</code></pre></blockquote>
 
 <p><strong>Note:</strong> If you think any of the expressions would cause Python to throw an error, type "Error" (without quotes) when prompted.</p>
 
@@ -513,7 +507,7 @@ bring those names into our local namespace using an <code>import</code> statemen
 <blockquote><p>Use OK to test your knowledge with the some "What Would Python Print?"
 questions:</p>
 
-<pre><code>python3 ok &#x2d;q call&#x2d;expressions &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
+<pre><code>python3 ok &#x2d;q call&#x2d;expressions &#x2d;u</code></pre></blockquote>
 
 
     <pre><code>&gt;&gt;&gt; from operator import mul, add
@@ -621,7 +615,7 @@ statement to compute the correct conversion.</p>
      # END SOLUTION
      return celsius_temp</code></pre>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q temperature_converter --local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q temperature_converter</code></pre>
 
 <h3 class="question" id="q4">Question 4: Pythagorean Triple</h3>
 
@@ -642,9 +636,7 @@ square of the last.</p>
     return &quot;Replace this&quot;
     # END SOLUTION</code></pre>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q pythagorean_triple --local</code></pre>
-
-<p>Make sure you answer all the questions in your lab01.py file. If you worked on datahub for the first coding question, copy and paste your answer onto your local file. Save it, then submit the assignment by uploading the .py file to okpy.org. You may submit more than once before the deadline; only the final submission will be scored.</p>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q pythagorean_triple</code></pre>
 
 
   </div>
@@ -652,6 +644,7 @@ square of the last.</p>
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
+  <li><a href="#setting-up-okpy">Setting up Okpy</a></li>
   <li><a href="#running-python-basics">Running Python Basics</a></li>
   <li><a href="#data-types">Data Types</a></li>
   <li><a href="#develop-your-understanding-of-expressions">Develop your understanding of Expressions</a></li>
@@ -694,7 +687,7 @@ square of the last.</p>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script>
   $(function() {
-    if (new Date("9/07/2018") < new Date()) {
+    if (new Date("02/03/2019") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');
