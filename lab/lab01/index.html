@@ -468,7 +468,7 @@ True</code></pre>
 
 
 <p>A call expression applies a function, which may or may not accept
-arguments. The call expression evaluates to the function's return value.</p>
+arguments. The call expression evaluates to the function's return value. It has a familiar notation borrowed from Math.</p>
 
 <p>The syntax of a function call:</p>
 
@@ -482,7 +482,8 @@ comma-separated operands.</p>
 <p>To evaluate a function call:</p>
 
 <ol>
-  <li>Evaluate the operator, and then the operands (from left to right).</li>
+  <li>Evaluate the operator</li>
+  <li>Evaluate the operands (from left to right).</li>
   <li>Apply the operator to the operands (the values of the operands).</li>
 </ol>
 
@@ -687,7 +688,7 @@ square of the last.</p>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <script>
   $(function() {
-    if (new Date("02/04/2019") < new Date()) {
+    if (new Date("02/11/2019") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');
