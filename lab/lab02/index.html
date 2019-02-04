@@ -367,6 +367,8 @@ Sublime also has some other pretty neat features. One you’ve probably already 
 
 <h3 class="question" id="q1">Question 1: A or C</h3> 
 
+
+
 <pre><code>def a_or_c(grade):
     &quot;&quot;&quot;
     We all know the saying &quot;C&#x27;s get degrees&quot;.
@@ -389,9 +391,14 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     &gt;&gt;&gt; a_or_c(40)
     False
     &quot;&quot;&quot;
-    # BEGIN SOLUTION
-    return grade &gt; 89 or (grade &lt; 80 and grade &gt; 69)
-    # END SOLUTION</code></pre>
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x72;&#x61;&#x64;&#x65;&#x20;&#x3e;&#x20;&#x38;&#x39;&#x20;&#x6f;&#x72;&#x20;&#x28;&#x67;&#x72;&#x61;&#x64;&#x65;&#x20;&#x3c;&#x20;&#x38;&#x30;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x67;&#x72;&#x61;&#x64;&#x65;&#x20;&#x3e;&#x20;&#x36;&#x39;&#x29;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q a_or_c</code></pre>
 
@@ -402,6 +409,8 @@ Sublime also has some other pretty neat features. One you’ve probably already 
 </explanation>
 
 <h3 class="question" id="q2">Question 2: Min</h3> 
+
+
 
 <pre><code>def min(x, y):
     &quot;&quot;&quot;
@@ -422,16 +431,20 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     &gt;&gt;&gt; min(0, 0)
     0
     &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x78;&#x20;&#x3c;&#x20;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x79;</div></code></pre>
 
-    #BEGIN SOLUTION ALT=&quot;&quot;
-    if x &lt; y:
-        return x
-    return y
-    #END SOLUTION</code></pre>
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q min</code></pre>
 
 <h3 class="question" id="q3">Question 3: Absolute Values</h3> 
+
+
 
 <pre><code>def abs_value_equal(x, y):
     &quot;&quot;&quot;Return whether or not the absolute value of both numbers is the same.
@@ -453,13 +466,20 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     &gt;&gt;&gt; abs_value_equal(5, &#x2d;6)
     False
     &quot;&quot;&quot;
-    #BEGIN SOLUTION ALT=&quot;&quot;
-    return x == y or (x * &#x2d;1) == y
-    #END SOLUTION</code></pre>
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x79;&#x20;&#x6f;&#x72;&#x20;&#x28;&#x78;&#x20;&#x2a;&#x20;&#x2d;&#x31;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x79;</div></code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q abs_value_equal</code></pre>
 
 <h3 class="question" id="q4">Question 4: Mirror</h3> 
+
+
 
 <pre><code>def mirror(num1, num2):
     &quot;&quot;&quot;
@@ -477,11 +497,15 @@ Sublime also has some other pretty neat features. One you’ve probably already 
     &gt;&gt;&gt; mirror(12, 22)
     False
     &quot;&quot;&quot;
-    #BEGIN SOLUTION ALT=&quot;&quot;
-    first = num1 % 10 == num2 //10
-    second = num1 //10 == num2 % 10
-    return first and second 
-    #END SOLUTION</code></pre>
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+    
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x31;&#x20;&#x25;&#x20;&#x31;&#x30;&#x20;&#x3d;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x32;&#x20;&#x2f;&#x2f;&#x31;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x63;&#x6f;&#x6e;&#x64;&#x20;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x31;&#x20;&#x2f;&#x2f;&#x31;&#x30;&#x20;&#x3d;&#x3d;&#x20;&#x6e;&#x75;&#x6d;&#x32;&#x20;&#x25;&#x20;&#x31;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x73;&#x65;&#x63;&#x6f;&#x6e;&#x64;&#x20;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q mirror</code></pre>
 

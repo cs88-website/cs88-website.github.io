@@ -48,9 +48,7 @@ def min(x, y):
     >>> min(0, 0)
     0
     """
-
     "*** YOUR CODE HERE ***"
-    
 
 
 ## Transformation
@@ -76,7 +74,6 @@ def abs_value_equal(x, y):
     False
     """
     "*** YOUR CODE HERE ***"
-    
 
 
 ## Representation
