@@ -93,6 +93,10 @@ def mirror(num1, num2):
     False
     >>> mirror(12, 22)
     False
+    >>> mirror(19, 91)
+    True 
+    >>> mirror(5, 6)
+    False
     """
     "*** YOUR CODE HERE ***"
     
