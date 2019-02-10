@@ -9,28 +9,28 @@ def tax(shopping_cart, percent):
     >>> tax(fruitCart, 10)
     [('apple', 0.55, 3), ('banana', 0.275, 4)]
 
-    >>> calCart = [("oski", 1000, 1), ("go", 1, 2), ("bears", 3.5, 2)]
+    >>> calCart = [("oski", 1000, 1), ("go", 1.25, 2), ("bears", 3.5, 2)]
     >>> tax(calCart, 100)
-    [('oski', 2000.0, 1), ('go', 2.0, 2), ('bears', 7.0, 2)]
+    [('oski', 2000.0, 1), ('go', 2.5, 2), ('bears', 7.0, 2)]
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 
 def cartSum(shopping_cart):
     """
-    Sums a shopping cart
+    Sums a shopping cart returning a float.
 
     >>> fruitCart = [("apple", 0.5, 3), ("banana", 0.25, 4)]
     >>> taxedFruit = tax(fruitCart, 10)
     >>> cartSum(taxedFruit)
     2.75
-    >>> calCart = [("oski", 1000, 1), ("go", 1, 2), ("bears", 3.5, 2)]
+    >>> calCart = [("oski", 1000, 1), ("go", 1.25, 2), ("bears", 3.5, 2)]
     >>> taxedCal = tax(calCart, 100)
     >>> cartSum(taxedCal)
-    2018.0
+    2019.0
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 
 
 # Question 3
@@ -49,7 +49,7 @@ def where_above(list, limit):
 
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 
 
 # Question 4
@@ -66,7 +66,7 @@ def minmax(s):
     (None, None)
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 
 
 # Question 5
@@ -85,5 +85,5 @@ def closest_power_2(x):
     524288
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 

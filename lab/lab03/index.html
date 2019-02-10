@@ -221,12 +221,12 @@ of Composing Programs.</p>
     &gt;&gt;&gt; tax(fruitCart, 10)
     [(&#x27;apple&#x27;, 0.55, 3), (&#x27;banana&#x27;, 0.275, 4)]
 
-    &gt;&gt;&gt; calCart = [(&quot;oski&quot;, 1000, 1), (&quot;go&quot;, 1, 2), (&quot;bears&quot;, 3.5, 2)]
+    &gt;&gt;&gt; calCart = [(&quot;oski&quot;, 1000, 1), (&quot;go&quot;, 1.25, 2), (&quot;bears&quot;, 3.5, 2)]
     &gt;&gt;&gt; tax(calCart, 100)
-    [(&#x27;oski&#x27;, 2000.0, 1), (&#x27;go&#x27;, 2.0, 2), (&#x27;bears&#x27;, 7.0, 2)]
+    [(&#x27;oski&#x27;, 2000.0, 1), (&#x27;go&#x27;, 2.5, 2), (&#x27;bears&#x27;, 7.0, 2)]
     &quot;&quot;&quot;
 <div class="alt 1">    "*** YOUR CODE HERE ***"
-    return ______
+    
 </div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x61;&#x78;&#x4d;&#x75;&#x6c;&#x74;&#x69;&#x70;&#x6c;&#x69;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x31;&#x20;&#x2b;&#x20;&#x28;&#x70;&#x65;&#x72;&#x63;&#x65;&#x6e;&#x74;&#x20;&#x2f;&#x20;&#x31;&#x30;&#x30;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x20;&#x2a;&#x20;&#x74;&#x61;&#x78;&#x4d;&#x75;&#x6c;&#x74;&#x69;&#x70;&#x6c;&#x69;&#x65;&#x72;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x68;&#x6f;&#x70;&#x70;&#x69;&#x6e;&#x67;&#x5f;&#x63;&#x61;&#x72;&#x74;&#x5d;</div></code></pre>
 
 
@@ -243,19 +243,19 @@ of Composing Programs.</p>
 
 <pre><code>def cartSum(shopping_cart):
     &quot;&quot;&quot;
-    Sums a shopping cart
+    Sums a shopping cart returning a float.
 
     &gt;&gt;&gt; fruitCart = [(&quot;apple&quot;, 0.5, 3), (&quot;banana&quot;, 0.25, 4)]
     &gt;&gt;&gt; taxedFruit = tax(fruitCart, 10)
     &gt;&gt;&gt; cartSum(taxedFruit)
     2.75
-    &gt;&gt;&gt; calCart = [(&quot;oski&quot;, 1000, 1), (&quot;go&quot;, 1, 2), (&quot;bears&quot;, 3.5, 2)]
+    &gt;&gt;&gt; calCart = [(&quot;oski&quot;, 1000, 1), (&quot;go&quot;, 1.25, 2), (&quot;bears&quot;, 3.5, 2)]
     &gt;&gt;&gt; taxedCal = tax(calCart, 100)
     &gt;&gt;&gt; cartSum(taxedCal)
-    2018.0
+    2019.0
     &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
-    return ______
+    
 </div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x75;&#x6d;&#x28;&#x5b;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2a;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x28;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x70;&#x72;&#x69;&#x63;&#x65;&#x2c;&#x20;&#x71;&#x75;&#x61;&#x6e;&#x74;&#x69;&#x74;&#x79;&#x29;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x68;&#x6f;&#x70;&#x70;&#x69;&#x6e;&#x67;&#x5f;&#x63;&#x61;&#x72;&#x74;&#x5d;&#x29;</div></code></pre>
 
 
@@ -375,7 +375,7 @@ Try to do this in only one line.</p>
 
     &quot;&quot;&quot;
 <div class="alt 3">    "*** YOUR CODE HERE ***"
-    return ______
+    
 </div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6e;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6e;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3e;&#x20;&#x6c;&#x69;&#x6d;&#x69;&#x74;&#x5d;</div></code></pre>
 
 
@@ -427,7 +427,7 @@ find the minimum and maximum elements in a sequence using a for loop.</p>
     (None, None)
     &quot;&quot;&quot;
 <div class="alt 4">    "*** YOUR CODE HERE ***"
-    return ______
+    
 </div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6e;&#x2c;&#x20;&#x6d;&#x78;&#x20;&#x3d;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6d;&#x6e;&#x20;&#x69;&#x73;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x20;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x3c;&#x20;&#x6d;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6e;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6d;&#x78;&#x20;&#x69;&#x73;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x20;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x3e;&#x20;&#x6d;&#x78;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x78;&#x20;&#x3d;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x6e;&#x2c;&#x20;&#x6d;&#x78;</div></code></pre>
 
 
@@ -476,7 +476,7 @@ the predicate is satisfied.</p>
     524288
     &quot;&quot;&quot;
 <div class="alt 5">    "*** YOUR CODE HERE ***"
-    return ______
+    
 </div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x70;&#x6f;&#x6e;&#x65;&#x6e;&#x74;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x78;&#x20;&#x3e;&#x20;&#x28;&#x32;&#x20;&#x2a;&#x2a;&#x20;&#x28;&#x65;&#x78;&#x70;&#x6f;&#x6e;&#x65;&#x6e;&#x74;&#x20;&#x2b;&#x20;&#x31;&#x29;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x70;&#x6f;&#x6e;&#x65;&#x6e;&#x74;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x32;&#x20;&#x2a;&#x2a;&#x20;&#x65;&#x78;&#x70;&#x6f;&#x6e;&#x65;&#x6e;&#x74;</div></code></pre>
 
 
