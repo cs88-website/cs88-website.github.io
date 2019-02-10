@@ -94,7 +94,7 @@ def mirror(num1, num2):
     >>> mirror(12, 22)
     False
     >>> mirror(19, 91)
-    True 
+    True
     >>> mirror(5, 6)
     False
     """
