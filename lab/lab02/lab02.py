@@ -48,9 +48,7 @@ def min(x, y):
     >>> min(0, 0)
     0
     """
-
     "*** YOUR CODE HERE ***"
-    
 
 
 ## Transformation
@@ -76,7 +74,6 @@ def abs_value_equal(x, y):
     False
     """
     "*** YOUR CODE HERE ***"
-    
 
 
 ## Representation
@@ -95,6 +92,10 @@ def mirror(num1, num2):
     >>> mirror(42, 52)
     False
     >>> mirror(12, 22)
+    False
+    >>> mirror(19, 91)
+    True
+    >>> mirror(5, 6)
     False
     """
     "*** YOUR CODE HERE ***"
