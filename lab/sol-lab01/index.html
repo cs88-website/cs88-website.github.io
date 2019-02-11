@@ -19,10 +19,10 @@
     <script>hljs.initHighlightingOnLoad();</script>
 
     <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
-<link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/lab.css"/>
 
 
-    <title>Lab 1: Data Types, Expressions, Shell Command II | CS 88 Spring 2019</title>
+    <title>Lab 1 Solutions | CS 88 Spring 2019</title>
 
   </head>
 
@@ -68,35 +68,11 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Lab 1</span>: Data Types, Expressions, Shell Command II</h1>
+      <h1><span class="content-title-brand">Lab 1</span> Solutions</h1>
     </div>
 
-    <p><i>Due at 9:00pm on 02/03/2019.</i></p>
-
-
-
-<h2 id='starter-files'>Starter Files</h2>
-
-<p>Download <a href="lab01.zip">lab01.zip</a>.
-Inside the archive, you will find starter files for the questions in this lab,
-  along with a copy of the OK autograder.</p>
-
-<h2 id='submission'>Submission</h2>
-
-<p>By the end of this lab, you should have submitted the lab with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be graded. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
-
-
-<ul>
-  <li>To receive full credit for this lab, all questions must be attempted.</li>
-</ul>
-
-<p>When you are ready to submit, run <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
-
-<pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
-
-<p>After submitting, <code>ok</code> will display a submission URL, with which you can view your submission on okpy.org.</p>
-
-
+    <p><strong>Solutions:</strong> You can find the file with solutions for all
+questions <a href="lab01.">here</a>.</p>
 
     
 
@@ -468,7 +444,7 @@ True</code></pre>
 
 
 <p>A call expression applies a function, which may or may not accept
-arguments. The call expression evaluates to the function's return value. It has a familiar notation borrowed from Math.</p>
+arguments. The call expression evaluates to the function's return value.</p>
 
 <p>The syntax of a function call:</p>
 
@@ -482,8 +458,7 @@ comma-separated operands.</p>
 <p>To evaluate a function call:</p>
 
 <ol>
-  <li>Evaluate the operator</li>
-  <li>Evaluate the operands (from left to right).</li>
+  <li>Evaluate the operator, and then the operands (from left to right).</li>
   <li>Apply the operator to the operands (the values of the operands).</li>
 </ol>
 
@@ -685,21 +660,5 @@ square of the last.</p>
     offset: 40
   });
 </script>
-<script src="//code.jquery.com/jquery-latest.js"></script>
-<script>
-  $(function() {
-    if (new Date("02/11/2019") < new Date()) {
-      $('.toggleButton').css('display', 'inline-block');
-      $('.toggleButton').click(function() {
-        var solution_id = $(this).attr('id');
-        $('div.' + solution_id).slideToggle(600);
-      });
-    }
-    // Always display these toggle buttons
-    $('.toggleButtonShow').click(function() {
-      var solution_id = $(this).attr('id');
-      $('div.' + solution_id).slideToggle(600);
-    });
-  });
-</script>
+
 </html>

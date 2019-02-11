@@ -170,7 +170,7 @@
 
         <tr>
             <td class='resource-name'>Lecture 2: Control, Loops, Functions
-(1pp) (6pps) (ipynb)</td>
+(<a href="assets/slides/02-Control,_Loops,_Functions_1pp.pdf">1pp</a>) (<a href="assets/slides/02-Control,_Loops,_Functions_6pps.pdf">6pps</a>) (<a href="assets/slides/02-Control,_Loops,_Functions.ipynb">ipynb</a>)</td>
             <td class='resource-type'>Lecture</td>
             <td class='resource-tags'></td>
         </tr>
@@ -349,13 +349,25 @@
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="lab/lab00/">Lab 0: Community and Setup</a> (Solutions)</td>
+            <td class='resource-name'><a href="lab/lab00/">Lab 0: Community and Setup</a> (<a href="lab/sol-lab00/">Solutions</a>)</td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="lab/lab01/">Lab 1: Data Types, Expressions, Shell Command II</a></td>
+            <td class='resource-name'><a href="lab/lab01/">Lab 1: Data Types, Expressions, Shell Command II</a> (<a href="lab/sol-lab01/">Solutions</a>)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab02/">Lab 2: Functions and Editors</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab03/">Lab 3: List Comprehensions, Conditionals and Iteration</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
@@ -367,7 +379,19 @@
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="hw/hw01/">Homework 1</a></td>
+            <td class='resource-name'><a href="hw/hw01/">Homework 1</a> (Solutions)</td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw02/">Homework 2</a></td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw03/">Homework 3</a></td>
             <td class='resource-type'>Homework</td>
             <td class='resource-tags'></td>
         </tr>
@@ -570,7 +594,7 @@
 <td>Mon 1/21</td>
 <td>No Lecture: Martin Luther King Jr. Day</td>
 <td></td>
-<td><a href="lab/lab00/">Lab 0: Community and Setup</a><br/>(due Sun 1/27) (Solutions)</td>
+<td><a href="lab/lab00/">Lab 0: Community and Setup</a><br/>(due Sun 1/27) (<a href="lab/sol-lab00/">Solutions</a>)</td>
 <td>Homework 0<br/>(due Wed 1/30) (Solutions)</td>
 <td></td>
 </tr>
@@ -582,8 +606,8 @@
 (<a href="assets/slides/01-Overview_and_Concepts_1pp.pdf">1pp</a>) (<a href="assets/slides/01-Overview_and_Concepts_6pps.pdf">6pps</a>) (ipynb)</td>
 <td><a href="http://composingprograms.com/pages/12-elements-of-programming.html">1.2</a><br/>
 <a href="http://composingprograms.com/pages/21-introduction.html">2.1</a></td>
-<td><a href="lab/lab01/">Lab 1: Data Types, Expressions, Shell Command II</a><br/>(due Sun 2/3)</td>
-<td><a href="hw/hw01/">Homework 1</a><br/>(due Wed 2/6)</td>
+<td><a href="lab/lab01/">Lab 1: Data Types, Expressions, Shell Command II</a><br/>(due Sun 2/3) (<a href="lab/sol-lab01/">Solutions</a>)</td>
+<td><a href="hw/hw01/">Homework 1</a><br/>(due Wed 2/6) (Solutions)</td>
 <td></td>
 </tr>
 <tr>
@@ -591,13 +615,13 @@
 <td>Mon 2/4</td>
 <td>Control, Loops, Functions
 <br/>
-(1pp) (6pps) (ipynb)</td>
+(<a href="assets/slides/02-Control,_Loops,_Functions_1pp.pdf">1pp</a>) (<a href="assets/slides/02-Control,_Loops,_Functions_6pps.pdf">6pps</a>) (<a href="assets/slides/02-Control,_Loops,_Functions.ipynb">ipynb</a>)</td>
 <td><a href="http://composingprograms.com/pages/13-defining-new-functions.html">1.3</a><br/>
 <a href="http://composingprograms.com/pages/14-designing-functions.html">1.4</a><br/>
 <a href="http://composingprograms.com/pages/15-control.html">1.5</a><br/>
 <a href="http://composingprograms.com/pages/23-sequences.html">2.3</a></td>
-<td></td>
-<td></td>
+<td><a href="lab/lab02/">Lab 2: Functions and Editors</a><br/>(due Sun 2/10)</td>
+<td><a href="hw/hw02/">Homework 2</a><br/>(due Wed 2/13)</td>
 <td></td>
 </tr>
 <tr>
@@ -607,8 +631,8 @@
 <br/>
 (1pp) (6pps) (ipynb)</td>
 <td><a href="http://composingprograms.com/pages/16-higher-order-functions.html">1.6</a></td>
-<td></td>
-<td></td>
+<td><a href="lab/lab03/">Lab 3: List Comprehensions, Conditionals and Iteration</a><br/>(due Sun 2/17)</td>
+<td><a href="hw/hw03/">Homework 3</a><br/>(due Wed 2/20)</td>
 <td></td>
 </tr>
 <tr>
@@ -812,7 +836,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "1/27/19", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "1/21/19"}, {"due": "2/3/19", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "1/28/19"}, {"due": "1/30/19", "link": "hw/hw00/", "name": "Homework 0", "release": "1/21/19"}, {"due": "2/6/19", "link": "hw/hw01/", "name": "Homework 1", "release": "1/28/19"}];
+  var assignments = [{"due": "1/27/19", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "1/21/19"}, {"due": "2/3/19", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "1/28/19"}, {"due": "2/10/19", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "2/4/19"}, {"due": "2/17/19", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "2/11/19"}, {"due": "1/30/19", "link": "hw/hw00/", "name": "Homework 0", "release": "1/21/19"}, {"due": "2/6/19", "link": "hw/hw01/", "name": "Homework 1", "release": "1/28/19"}, {"due": "2/13/19", "link": "hw/hw02/", "name": "Homework 2", "release": "2/4/19"}, {"due": "2/20/19", "link": "hw/hw03/", "name": "Homework 3", "release": "2/11/19"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
