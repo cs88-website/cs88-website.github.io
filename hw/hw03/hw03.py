@@ -51,8 +51,8 @@ def hailstone(n):
 
 
 def odd_even(x):
-    """
-    Classify a number as odd or even.
+    """Classify a number as odd or even.
+    
     >>> odd_even(4)
     'even'
     >>> odd_even(3)
@@ -64,7 +64,7 @@ def classify(s):
     """
     Classify all the elements of a sequence as odd or even
     >>> classify([0, 1, 2, 4])
-    ['even', 'odd', 'even', 'even'] 
+    ['even', 'odd', 'even', 'even']
     """
     "*** YOUR CODE HERE ***"
 
