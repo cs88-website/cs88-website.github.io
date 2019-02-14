@@ -1,0 +1,21 @@
+{
+    "name": "Lab 4",
+    "endpoint": "cal/cs88/fa18/lab04",
+    "src": [
+        "lab04.py"
+    ],
+    "tests": {
+        "lab04.py:data_clean": "doctest",
+        "lab04.py:reduce": "doctest",
+        "lab04.py:piecewise": "doctest",
+        "lab04.py:make_buzzer": "doctest",
+        "lab04.py:intersects": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "unlock",
+        "backup"
+    ]
+}
