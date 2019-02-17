@@ -1,6 +1,6 @@
 {
     "name": "Lab 4",
-    "endpoint": "cal/cs88/fa18/lab04",
+    "endpoint": "cal/cs88/sp19/lab04",
     "src": [
         "lab04.py"
     ],
