@@ -1,7 +1,7 @@
 # Question 1
 
 def converter(temperatures, convert):
-    """Returns a function that converts each Celsius temperature to Fahrenheit
+    """Returns a sequence that converts each Celsius temperature to Fahrenheit
 
     >>> def convert(x):
     ...     return 9.0*x/5.0 + 32
