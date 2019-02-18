@@ -85,5 +85,5 @@ def decode(list_of_sex_age_pairs):
     ['Male 0-9', 'Male 10-19', 'Male 20-29', 'Male 30-39', 'Male 40-49', 'Female 50-59', 'Female 60-69', 'Female 70-79', 'Female 80-89', 'Female 90-99', 'Female 100+']
     """ 
     "*** YOUR CODE HERE ***"
-    return ______
+    
 

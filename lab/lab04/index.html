@@ -106,10 +106,10 @@ Inside the archive, you will find starter files for the questions in this lab,
 <h2 id="functions-as-arguments-funargs">Functions as Arguments (Funargs)</h2>
 
 
-<p>So far we have used several type of data - ints, floats, booleans,
-strings, lists, tuples, and numpy.arrays.  We perform operations on them in
+<p>So far we have used several types of data - ints, floats, booleans,
+strings, lists, tuples, and numpy.arrays.  We perform operations on them by
 constructing expressions; we assign them to variables; we pass them to functions
-and return them as results.  So what about functions themselves?  So far we have 
+and return them as results.  So what about functions themselves?  So far we have
 <em>called them</em>, that is we applied them to arguments.  Sometimes we <em>compose</em> them -
 just like in math; apply a function to the result of applying a function.  You
 did that several times above.</p>
@@ -128,7 +128,7 @@ lab.</p>
 9
 &gt;&gt;&gt; x(x(2))
 16
-&gt;&gt;&gt; </code></pre>
+&gt;&gt;&gt;</code></pre>
 
 
 <h2 id="introduction-to-map">Introduction to 'Map'</h2>
@@ -144,13 +144,13 @@ lab.</p>
 
 <pre><code>[func(x) for x in inputs]</code></pre>
 
-<p>Keep in mind that the <code>map</code> function actually returns a <code>map</code> object, not a list, by default. Consequently, in order to make the result actionable, it's important for us to adjust the return value of map to a <code>list</code> by passing the map object into the <code>list()</code> function.</p>
+<p>Keep in mind that the <code>map</code> function actually returns a <code>map</code> object, not a list. We need to convert this object to a <code>list</code> by passing it into the <code>list()</code> function.</p>
 
 <p>Let's do a Python Tutor example to understand how map works.</p>
 
-<p>Open <a href="http://pythontutor.com/visualize.html#mode=edit">Python Tutor</a> in a new tab.</p>
+<p>Open <a href="https://goo.gl/MoRuLF">Python Tutor</a> in a new tab.</p>
 
-<p>Paste this code into the interpreter:</p>
+<p>This code should already be there:</p>
 
 <pre><code>INCR = 2
 def inc(x):
@@ -164,40 +164,38 @@ print(result)</code></pre>
 
 <p>So what's happening here? In the first 3 lines, we're defining a function <code>inc</code> which increments an input <code>x</code> by a certain amount, <code>INCR</code>.</p>
 
-<p>Notice that <code>INCR</code> is defined once in the Global frame. This is a nice review of how Python resolves references when there are both local and global variables. When the <code>inc</code> method executes, remember that since the <code>INCR</code> variable isn't declared locally within the <code>inc</code> function, the Python compiler will look at the parent frame, the frame in which <code>inc</code> was declared, for the value of <code>INCR</code>. In this case, since the <code>inc</code> function was declared in the Global frame, the global <code>INC</code> variable value will apply.</p>
+<p>Notice that <code>INCR</code> is defined once in the Global frame. This is a nice review of how Python resolves references when there are both local and global variables. When the <code>inc</code> method executes, python needs to find the value <code>INCR</code>. Since the <code>INCR</code> variable isn't declared locally, within the <code>inc</code> function, Python will look at the parent frame, the frame in which <code>inc</code> was declared, for the value of <code>INCR</code>. In this case, since the <code>inc</code> function was declared in the Global frame, the global <code>INC</code> variable value will be used.</p>
 
 <p>The second function, <code>mymap</code>, is an example of how map works in the form of a list comprehension! Notice that <code>mymap</code> takes in a function as its first argument and a sequence as its second. Just like <code>map</code>, this list comprehension runs each element of <code>seq</code> through the <code>fun</code> method.</p>
 
 <p>As you run through the program in Python Tutor, notice how the list comprehension in <code>mymap</code> will repeatedly call the <code>inc</code> function. The functional anatomy of how <code>map</code> works is exactly encapsulated by the <code>mymap</code> function.</p>
 
-<h3 class="question" id="q1">Question 1: Data Cleaning</h3>
-Given a list of float numbers, round each number in the list down to the nearest tens place. (i.e. 17 -> 10, 23 -> 20)
+<h3 class="question" id="q1">Question 1: Converter</h3>
+Given a list of temperatures in Celsius format, convert each temperature value in the list from Celsius to Fahrenheit.
 
-<p>We recommend writing a nested function that performs the rounding, then use <code>map</code> to perform the rounding on each element of the list.</p>
+<p>A couple tips:</p>
 
-<p>You can assume that none of the values in the problem's tests will be floats or negative.</p>
+<ul>
+  <li>Make sure to use the <code>map</code> keyword for this solution!</li>
+  <li>The temperature converter function will be passed in as a method, so there is no need for you to write it again!</li>
+</ul>
+
+<p>If you're feeling stuck, think about the parameters of <code>map</code>. This is meant to be a simple problem that provides hands-on experience of understanding what <code>map</code> does.</p>
 
 
 
-<pre><code>def data_clean(a):
-    &quot;&quot;&quot;Write a function that rounds each element of the list down to the nearest tens place.
+<pre><code>def converter(temperatures, convert):
+    &quot;&quot;&quot;Returns a function that converts each Celsius temperature to Fahrenheit
 
-    &gt;&gt;&gt; a = [12, 23, 34]
-    &gt;&gt;&gt; data_clean(a)
-    [10, 20, 30]
-    &gt;&gt;&gt; b = [238, 193, 928]
-    &gt;&gt;&gt; data_clean(b)
-    [230, 190, 920]
-    &gt;&gt;&gt; c = [10, 20, 30]
-    &gt;&gt;&gt; data_clean(c)
-    [10, 20, 30]
-    &gt;&gt;&gt; d = [9, 9, 9]
-    &gt;&gt;&gt; data_clean(d)
-    [0, 0, 0]
+    &gt;&gt;&gt; def convert(x):
+    &gt;&gt;&gt;     return 9.0*x/5.0 + 32
+    &gt;&gt;&gt; temperatures = [10, 20, 30, 40, 50]
+    &gt;&gt;&gt; converter(temperatures, convert)
+    [50.0, 68.0, 86.0, 104.0, 122.0]
     &quot;&quot;&quot;
 <div class="alt 1">    "*** YOUR CODE HERE ***"
-    return _____
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x74;&#x72;&#x75;&#x6e;&#x63;&#x61;&#x74;&#x65;&#x4e;&#x75;&#x6d;&#x62;&#x65;&#x72;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#x20;&#x2d;&#x20;&#x28;&#x78;&#x25;&#x31;&#x30;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6d;&#x61;&#x70;&#x28;&#x74;&#x72;&#x75;&#x6e;&#x63;&#x61;&#x74;&#x65;&#x4e;&#x75;&#x6d;&#x62;&#x65;&#x72;&#x2c;&#x20;&#x61;&#x29;&#x29;</div></code></pre>
+    
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6d;&#x61;&#x70;&#x28;&#x63;&#x6f;&#x6e;&#x76;&#x65;&#x72;&#x74;&#x2c;&#x20;&#x74;&#x65;&#x6d;&#x70;&#x65;&#x72;&#x61;&#x74;&#x75;&#x72;&#x65;&#x73;&#x29;&#x29;</div></code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -205,13 +203,13 @@ Given a list of float numbers, round each number in the list down to the nearest
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q data_clean</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q converter</code></pre>
 
 
 <h2 id="introduction-to-filter">Introduction to 'Filter'</h2>
 
 
-<p>The <code>filter</code> keyword is similar in nature to the <code>map</code> with a very important distinction. In <code>map</code>, the function we pass in is being applied to every item in our sequence. In <code>filter</code>, the function we pass in <em>filters</em> the elements for which the function returns true. For example, if I wanted to remove all negative numbers from a list, I could use the <code>filter</code> function to identify values that satisfy the greater than or equal to 0 criterion.</p>
+<p>The <code>filter</code> keyword is similar in nature to <code>map</code> with a very important distinction. In <code>map</code>, the function we pass in is being applied to every item in our sequence. In <code>filter</code>, the function we pass in <em>filters</em> the elements, only leaving the elements for which the function returns true. For example, if I wanted to remove all negative numbers from a list, I could use the <code>filter</code> function to identify values that are greater than or equal to 0, and filter out the rest.</p>
 
 <pre><code>def isPositive(number):
     return number &gt;= 0
@@ -219,7 +217,7 @@ Given a list of float numbers, round each number in the list down to the nearest
 numbers = [&#x2d;1, 1, &#x2d;2, 2, &#x2d;3, 3, &#x2d;4, 4]
 positive_nums = list(filter(isPositive, numbers))</code></pre>
 
-<p>Again, similar to <code>map</code>, the output of the <code>filter</code> function is a <code>filter</code> object, not a list, so casting is required. In addition, continuing off the above example, the equivalent for filter in the form of a list comprehension would look something along the lines of this:</p>
+<p>Again, similar to <code>map</code>, the output of the <code>filter</code> function is a <code>filter</code> object, not a list, so you need to call <code>list()</code>. The equivalent for filter in the form of a list comprehension would look something along the lines of this:</p>
 
 <pre><code>positive_nums = [x for x in numbers if isPositive(numbers)]</code></pre>
 
@@ -227,7 +225,9 @@ positive_nums = list(filter(isPositive, numbers))</code></pre>
 <h2 id="introduction-to-reduce">Introduction to 'Reduce'</h2>
 
 
-<p>One of the most useful functional functions we'll encounter in this class is the <code>reduce</code> keyword. Before diving into the inner workings, it's best to start off with a iterative equivalent that will helps us better appreciate the benefits of using <code>reduce</code>.</p>
+<p><code>Reduce</code> takes in three different parameters: A function, a sequence, and an identity. The function and sequence are the same parameters that we saw in <code>map</code> and <code>filter</code>. The identity can be thought of as the container where you are going to store all of your results. In the above case, the identity would be the <code>product</code> variable.</p>
+
+<p><code>Reduce</code> is very useful for performing computations on lists that involve every element in the list. Computations are performed in a rolling fashion, where the function acts upon each element one at a time.</p>
 
 <p>Let's say I wanted to calculate the product of the square roots of a list of numbers. The non-<code>reduce</code> version of this code would look something along the lines of this:</p>
 
@@ -235,11 +235,16 @@ positive_nums = list(filter(isPositive, numbers))</code></pre>
 numbers = [4, 9, 16, 25, 36]
 
 for num in numbers:
-    product = product * sqrt(num)</code></pre>
+    product = product * num**.5</code></pre>
 
-<p><code>Reduce</code> can be broken down into three different parameters: A function, a sequence, and an identity. The function and sequence are the same parameters as before. The identity can be thought of as the value through which function outputs are aggregated. In the above case, the identity would be the <code>product</code> variable.</p>
+<p>Here's the <code>reduce</code> version</p>
 
-<p><code>Reduce</code> is very useful for performing computations on lists that involve every element in the list. Computations are performed in a rolling fashion, where the function acts upon each element one at a time.</p>
+<pre><code>  multiplicative_identity = 1
+  nums = [4, 9, 16, 25, 36]
+  def sqrtProd(x, y):
+      return x * y ** .5
+
+  reduce(sqrtProd, nums, multiplicative_identity)</code></pre>
 
 <h3 class="question" id="q2">Question 2: reduce</h3>
 
@@ -272,8 +277,8 @@ def reduce(reducer, s, base):
     24
     &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
-    return _____
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#x72;&#x28;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2c;&#x20;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
+    
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x78;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x62;&#x61;&#x73;&#x65;&#x20;&#x3d;&#x20;&#x72;&#x65;&#x64;&#x75;&#x63;&#x65;&#x72;&#x28;&#x62;&#x61;&#x73;&#x65;&#x2c;&#x20;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x62;&#x61;&#x73;&#x65;</div></code></pre>
 
 
     <button id='2' class='toggleButton'>
@@ -341,7 +346,7 @@ or equal to <code>b</code>.</p>
     1
     &quot;&quot;&quot;
 <div class="alt 3">    "*** YOUR CODE HERE ***"
-    return _____
+    
 </div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x68;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x78;&#x20;&#x3c;&#x20;&#x62;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x68;</div></code></pre>
 
 
@@ -352,35 +357,39 @@ or equal to <code>b</code>.</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q piecewise</code></pre>
 
-<h3 class="question" id="q4">Question 4: Flight of the Bumblebee</h3>
+<h3 class="question" id="q4">Question 4: This Question is so Derivative</h3>
 
-<p>Write a function that takes in a number <code>n</code> and returns a function
-that takes in a number <code>m</code> which will print all numbers from <code>0</code>
-to <code>m &#x2d; 1</code> (including <code>0</code> but excluding <code>m</code>) but print <code>Buzz!</code>
-instead for all the numbers that are divisible by <code>n</code>.</p>
+<p>Define a function <code>make_derivative</code> that returns a function: the derivative of a
+function <code>f</code>. Assuming that <code>f</code> is a single-variable mathematical function, its
+derivative will also be a single-variable function. When called with a number
+<code>a</code>, the derivative will estimate the slope of <code>f</code> at point <code>(a, f(a))</code>.</p>
+
+<p>Recall that the formula for finding the derivative of <code>f</code> at point <code>a</code> is:</p>
+
+<p><img class="img-responsive center-block" src="assets/derivative.png" alt="Derivative"></p>
+
+<p>where <code>h</code> approaches 0. We will approximate the derivative by choosing a very
+small value for <code>h</code>. The closer <code>h</code> is to 0, the better the estimate of the
+derivative will be.</p>
 
 
 
-<pre><code>def make_buzzer(n):
-    &quot;&quot;&quot; Returns a function that prints numbers in a specified
-    range except those divisible by n.
+<pre><code>def make_derivative(f):
+    &quot;&quot;&quot;Returns a function that approximates the derivative of f.
 
-    &gt;&gt;&gt; i_hate_fives = make_buzzer(5)
-    &gt;&gt;&gt; i_hate_fives(10)
-    Buzz!
-    1
-    2
-    3
-    4
-    Buzz!
-    6
-    7
-    8
-    9
+    Recall that f&#x27;(a) = (f(a + h) &#x2d; f(a)) / h as h approaches 0. We will
+    approximate the derivative by choosing a very small value for h.
+
+    &gt;&gt;&gt; square = lambda x: x*x
+    &gt;&gt;&gt; derivative = make_derivative(square)
+    &gt;&gt;&gt; result = derivative(3)
+    &gt;&gt;&gt; round(result, 3) # approximately 2*3
+    6.0
     &quot;&quot;&quot;
+    h=0.00001
 <div class="alt 4">    "*** YOUR CODE HERE ***"
-    return _____
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x62;&#x75;&#x7a;&#x7a;&#x28;&#x6d;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x3d;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x20;&#x3c;&#x20;&#x6d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x20;&#x25;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x27;&#x42;&#x75;&#x7a;&#x7a;&#x21;&#x27;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x69;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x62;&#x75;&#x7a;&#x7a;</div></code></pre>
+    
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x66;&#x28;&#x78;&#x20;&#x2b;&#x20;&#x68;&#x29;&#x20;&#x2d;&#x20;&#x66;&#x28;&#x78;&#x29;&#x29;&#x20;&#x2f;&#x20;&#x68;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;</div></code></pre>
 
 
     <button id='4' class='toggleButton'>
@@ -388,7 +397,7 @@ instead for all the numbers that are divisible by <code>n</code>.</p>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q make_buzzer</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q make_derivative</code></pre>
 
 <h3 class="question" id="q5">Question 5: Intersect</h3>
 
@@ -422,7 +431,7 @@ Implement <code>intersects</code>, which takes a one-argument functions <code>f<
     False
     &quot;&quot;&quot;
 <div class="alt 5">    "*** YOUR CODE HERE ***"
-    return _____
+    
 </div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x61;&#x74;&#x5f;&#x78;&#x28;&#x67;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x78;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x67;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x74;&#x5f;&#x78;</div></code></pre>
 
 
@@ -442,14 +451,14 @@ Implement <code>intersects</code>, which takes a one-argument functions <code>f<
 <p>To install the above libraries, please do the following:</p>
 
 <ol>
-  <li>'datascience' module: Please open a new Terminal / Git-bash locally on your computer. Then, type in <code>pip3 install datascience</code> and click enter. If that does not work, try <code>pip install datascience</code>.</li>
+  <li><code>datascience</code> module: Please open a new Terminal / Git-bash locally on your computer. Then, type in <code>pip3 install datascience</code> and click enter. If that does not work, try <code>pip install datascience</code>.</li>
 </ol>
 
-<p><code>pip3</code> is a package management system for Python. To put it simply, it helps you install and manage software packages written in Python. Your machine should come pre-installed with pip3 (or pip). After running the above line, you'll see some output indication that the <code>datascience</code> module and its related dependencies are being installed.</p>
+<p><code>pip3</code> is a package management system for Python. To put it simply, it helps you install and manage software packages written in Python. Your machine should come pre-installed with pip3 (or pip). After running the above line, you'll see some output indicating that the <code>datascience</code> module and its related dependencies are being installed.</p>
 
 <p>The module installed successfully if the last line of the output looks something along the lines of <code>Successfully installed coveralls&#x2d;0.5 datascience&#x2d;0.10.6</code>.</p>
 
-<p>The <code>datascience</code> module was written by Professors John Denero and David Culler (your instructor!) along with the help of several undergraduate students. It was originally written for the Data 8 class as a friendly introduction to analytical tools used by data science developers. To learn more about this library, you can follow this <a href="https://github.com/data-8/datascience">link</a>.</p>
+<p>The <code>datascience</code> module was written by Professors John Denero and David Culler along with the help of several undergraduate students. It was originally written for the Data 8 class as a friendly introduction to analytical tools used by data science developers. To learn more about this library, you can follow this <a href="https://github.com/data-8/datascience">link</a>.</p>
 
 <ol>
   <li>Anaconda: Please visit the Anaconda <a href="https://www.anaconda.com/download/">downloads</a> link. From there, follow the online directions and install the corresponding version of Anaconda for your operating system. Make sure to install Python version <em>3.6</em>.</li>
@@ -466,7 +475,7 @@ Implement <code>intersects</code>, which takes a one-argument functions <code>f<
   <li><a href="#functions-as-arguments-funargs">Functions as Arguments (Funargs)</a></li>
   <li><a href="#introduction-to-map">Introduction to 'Map'</a></li>
   <ul>
-  <li><a href="#q1">Question 1: Data Cleaning</a></li>
+  <li><a href="#q1">Question 1: Converter</a></li>
 </ul>
 
   <li><a href="#introduction-to-filter">Introduction to 'Filter'</a></li>
@@ -478,7 +487,7 @@ Implement <code>intersects</code>, which takes a one-argument functions <code>f<
   <li><a href="#higher-order-functions">Higher Order Functions</a></li>
   <ul>
   <li><a href="#q3">Question 3: Piecewise</a></li>
-  <li><a href="#q4">Question 4: Flight of the Bumblebee</a></li>
+  <li><a href="#q4">Question 4: This Question is so Derivative</a></li>
   <li><a href="#q5">Question 5: Intersect</a></li>
 </ul>
 

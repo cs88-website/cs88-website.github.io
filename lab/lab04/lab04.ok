@@ -5,10 +5,10 @@
         "lab04.py"
     ],
     "tests": {
-        "lab04.py:data_clean": "doctest",
+        "lab04.py:converter": "doctest",
         "lab04.py:reduce": "doctest",
         "lab04.py:piecewise": "doctest",
-        "lab04.py:make_buzzer": "doctest",
+        "lab04.py:derivative": "doctest",
         "lab04.py:intersects": "doctest"
     },
     "protocols": [

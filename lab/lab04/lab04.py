@@ -1,24 +1,16 @@
 # Question 1
 
-def data_clean(a):
-    """Write a function that rounds each element of the list down to the nearest tens place.
+def converter(temperatures, convert):
+    """Returns a function that converts each Celsius temperature to Fahrenheit
 
-
-    >>> a = [12, 23, 34]
-    >>> data_clean(a)
-    [10, 20, 30]
-    >>> b = [238, 193, 928]
-    >>> data_clean(b)
-    [230, 190, 920]
-    >>> c = [10, 20, 30]
-    >>> data_clean(c)
-    [10, 20, 30]
-    >>> d = [9, 9, 9]
-    >>> data_clean(d)
-    [0, 0, 0]
+    >>> def convert(x):
+    >>>     return 9.0*x/5.0 + 32
+    >>> temperatures = [10, 20, 30, 40, 50]
+    >>> converter(temperatures, convert)
+    [50.0, 68.0, 86.0, 104.0, 122.0]
     """
     "*** YOUR CODE HERE ***"
-    return _____
+    
 
 
 # Question 2
@@ -40,7 +32,7 @@ def reduce(reducer, s, base):
     24
     """
     "*** YOUR CODE HERE ***"
-    return _____
+    
 
 
 # Question 3
@@ -62,30 +54,26 @@ def piecewise(f, g, b):
     1
     """
     "*** YOUR CODE HERE ***"
-    return _____
+    
 
 
 # Question 4
 
-def make_buzzer(n):
-    """ Returns a function that prints numbers in a specified
-    range except those divisible by n.
+def make_derivative(f):
+    """Returns a function that approximates the derivative of f.
 
-    >>> i_hate_fives = make_buzzer(5)
-    >>> i_hate_fives(10)
-    Buzz!
-    1
-    2
-    3
-    4
-    Buzz!
-    6
-    7
-    8
-    9
+    Recall that f'(a) = (f(a + h) - f(a)) / h as h approaches 0. We will
+    approximate the derivative by choosing a very small value for h.
+
+    >>> square = lambda x: x*x
+    >>> derivative = make_derivative(square)
+    >>> result = derivative(3)
+    >>> round(result, 3) # approximately 2*3
+    6.0
     """
+    h=0.00001
     "*** YOUR CODE HERE ***"
-    return _____
+    
 
 
 # Question 5
@@ -113,5 +101,5 @@ def intersects(f, x):
     False
     """
     "*** YOUR CODE HERE ***"
-    return _____
+    
 

@@ -93,40 +93,34 @@
 <h2 id="required-questions">Required questions</h2>
 
 
-<h3 class="question" id="q1">Question 1: Coordinates</h3>
+<h3 class="question" id="q1">Question 1: arange</h3>
 
-<p>Implement a function <code>coords</code>, which takes a function, a sequence, and
-an upper and lower bound on output of the function. <code>coords</code> then
-returns a list of x, y coordinate pairs (lists) such that:</p>
-
-<ul>
-  <li>Each pair contains <code>[x, fn(x)]</code></li>
-  <li>The x coordinates are the elements in the sequence</li>
-  <li>Only pairs whose y coordinate is within the upper and lower bounds
-  (inclusive)</li>
-</ul>
-
-<p>See the doctests for examples.</p>
-
-<p>One other thing: your answer can only be <em>one line long</em>. You should
-make use of list comprehensions!</p>
+<p>Implement the function <code>arange</code>, which behaves just like np.arange(start, end, step) from Data 8. You only need to support positive values for step.</p>
 
 <solution>
 
-<pre><code>def coords(fn, seq, lower, upper):
+<pre><code>def arange(start, end, step=1):
     &quot;&quot;&quot;
-    &gt;&gt;&gt; seq = [&#x2d;4, &#x2d;2, 0, 1, 3]
-    &gt;&gt;&gt; def fn(x):
-    ...     return x**2
-    &gt;&gt;&gt; coords(fn, seq, 1, 9)
-    [[&#x2d;2, 4], [1, 1], [3, 9]]
+    arange behaves just like np.arange(start, end, step).
+    You only need to support positive values for step.
+
+    &gt;&gt;&gt; arange(1, 3)
+    [ 1, 2]
+    &gt;&gt;&gt; arange(0, 25, 2)
+    [ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24]
+    &gt;&gt;&gt; arange(0, 1231, 34)
+    [   0,   34,   68,  102,  136,  170,  204,  238,  272,  306,  340,
+            374,  408,  442,  476,  510,  544,  578,  612,  646,  680,  714,
+            748,  782,  816,  850,  884,  918,  952,  986, 1020, 1054, 1088,
+           1122, 1156, 1190, 1224]
+
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"
-    return ______</code></pre>
+    </code></pre>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q coords</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q arange</code></pre>
 
 <h3 class="question" id="q2">Question 2: Repeated</h3>
 
@@ -160,7 +154,7 @@ compute <code>f(f(....(f(x))....))</code> (apply <code>f</code> a total <code>n<
     152587890625
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"
-    return ______</code></pre>
+    </code></pre>
 
 <p><em>Hint</em>: You may find it convenient to use <code>compose1</code> from the textbook:</p>
 
@@ -193,7 +187,7 @@ function that returns two more:</p>
     16
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"
-    return ______</code></pre>
+    </code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q double</code></pre>
 
@@ -258,7 +252,7 @@ i)</code>. <code>count_cond</code> returns a count of all the numbers from 1 to 
     8
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"
-    return ______</code></pre>
+    </code></pre>
 
 </solution>
 
@@ -272,7 +266,7 @@ being the price they have to pay.</p>
 
 <p>We can use a list of pairs for this:</p>
 
-<p><code>[[&quot;Jessica&quot;, 5], [&quot;Andrew&quot;, 9], [&quot;Alex&quot;, 2], [&quot;Amir&quot;, 11], [&quot;John&quot;, 3], [&quot;Ting&quot;, 2]]</code></p>
+<p><code>[[&quot;Jessica&quot;, 5], [&quot;Andrew&quot;, 9], [&quot;Alex&quot;, 2], [&quot;Amir&quot;, 11], [&quot;John&quot;, 3], [&quot;Lyric&quot;, 2]]</code></p>
 
 <p>The first value in each pair is the name, the second is the price.</p>
 
@@ -310,7 +304,7 @@ matches the first of a pair, returns the result of applying <code>function</code
 
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"
-    return ______</code></pre>
+    </code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q match_and_apply</code></pre>
 
@@ -322,7 +316,7 @@ matches the first of a pair, returns the result of applying <code>function</code
       <ul>
   <li><a href="#required-questions">Required questions</a></li>
   <ul>
-  <li><a href="#q1">Question 1: Coordinates</a></li>
+  <li><a href="#q1">Question 1: arange</a></li>
   <li><a href="#q2">Question 2: Repeated</a></li>
   <li><a href="#q3">Question 3: Double</a></li>
   <li><a href="#q4">Question 4: Count van Count</a></li>

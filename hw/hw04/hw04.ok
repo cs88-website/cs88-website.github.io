@@ -5,7 +5,7 @@
         "hw04.py"
     ],
     "tests": {
-        "hw04.py:coords": "doctest",
+        "hw04.py:arange": "doctest",
         "hw04.py:repeated": "doctest",
         "hw04.py:double": "doctest",
         "hw04.py:count_cond": "doctest",

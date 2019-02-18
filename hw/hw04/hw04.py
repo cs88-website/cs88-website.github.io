@@ -2,16 +2,24 @@
 # Required Questions #
 ######################
 
-def coords(fn, seq, lower, upper):
+def arange(start, end, step=1):
     """
-    >>> seq = [-4, -2, 0, 1, 3]
-    >>> def fn(x):
-    ...     return x**2
-    >>> coords(fn, seq, 1, 9)
-    [[-2, 4], [1, 1], [3, 9]]
+    arange behaves just like np.arange(start, end, step).
+    You only need to support positive values for step.
+
+    >>> arange(1, 3)
+    [ 1, 2]
+    >>> arange(0, 25, 2)
+    [ 0,  2,  4,  6,  8, 10, 12, 14, 16, 18, 20, 22, 24]
+    >>> arange(0, 1231, 34)
+    [   0,   34,   68,  102,  136,  170,  204,  238,  272,  306,  340,
+            374,  408,  442,  476,  510,  544,  578,  612,  646,  680,  714,
+            748,  782,  816,  850,  884,  918,  952,  986, 1020, 1054, 1088,
+           1122, 1156, 1190, 1224]
+
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 
 
 def repeated(f, n):
@@ -33,7 +41,7 @@ def repeated(f, n):
     152587890625
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 
 def compose1(f, g):
     """Return a function h, such that h(x) = f(g(x))."""
@@ -52,7 +60,7 @@ def double(f):
     16
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 
 
 def count_cond(condition, n):
@@ -80,7 +88,7 @@ def count_cond(condition, n):
     8
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
 
 
 def match_and_apply(pairs, function):
@@ -104,4 +112,4 @@ def match_and_apply(pairs, function):
 
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    
