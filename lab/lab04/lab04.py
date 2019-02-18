@@ -4,7 +4,7 @@ def converter(temperatures, convert):
     """Returns a function that converts each Celsius temperature to Fahrenheit
 
     >>> def convert(x):
-    >>>     return 9.0*x/5.0 + 32
+    ...     return 9.0*x/5.0 + 32
     >>> temperatures = [10, 20, 30, 40, 50]
     >>> converter(temperatures, convert)
     [50.0, 68.0, 86.0, 104.0, 122.0]
