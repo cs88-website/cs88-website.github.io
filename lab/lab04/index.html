@@ -380,7 +380,9 @@ derivative will be.</p>
     Recall that f&#x27;(a) = (f(a + h) &#x2d; f(a)) / h as h approaches 0. We will
     approximate the derivative by choosing a very small value for h.
 
-    &gt;&gt;&gt; square = lambda x: x*x
+    &gt;&gt;&gt; def square(x): 
+    ...     # equivalent to: square = lambda x: x*x
+    ...     return x*x
     &gt;&gt;&gt; derivative = make_derivative(square)
     &gt;&gt;&gt; result = derivative(3)
     &gt;&gt;&gt; round(result, 3) # approximately 2*3
@@ -388,7 +390,6 @@ derivative will be.</p>
     &quot;&quot;&quot;
     h=0.00001
 <div class="alt 4">    "*** YOUR CODE HERE ***"
-    
 </div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x66;&#x28;&#x78;&#x20;&#x2b;&#x20;&#x68;&#x29;&#x20;&#x2d;&#x20;&#x66;&#x28;&#x78;&#x29;&#x29;&#x20;&#x2f;&#x20;&#x68;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;</div></code></pre>
 
 
