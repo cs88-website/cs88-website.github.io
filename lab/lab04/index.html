@@ -219,7 +219,7 @@ positive_nums = list(filter(isPositive, numbers))</code></pre>
 
 <p>Again, similar to <code>map</code>, the output of the <code>filter</code> function is a <code>filter</code> object, not a list, so you need to call <code>list()</code>. The equivalent for filter in the form of a list comprehension would look something along the lines of this:</p>
 
-<pre><code>positive_nums = [x for x in numbers if isPositive(numbers)]</code></pre>
+<pre><code>positive_nums = [number for number in numbers if isPositive(number)]</code></pre>
 
 
 <h2 id="introduction-to-reduce">Introduction to 'Reduce'</h2>
