@@ -1,3 +1,18 @@
+## Debug This
+def skip_mul(n):
+    """Return the product of n * (n - 2) * (n - 4) * ...
+
+    >>> skip_mul(5) # 5 * 3 * 1
+    15
+    >>> skip_mul(8) # 8 * 6 * 4 * 2  * 0
+    0
+    """
+    if n == 0:
+        return 0
+    else:
+        return n * skip_mul(n - 2)
+
+
 ## MapReduce
 
 def map(f, s):
@@ -132,17 +147,37 @@ def count_change(amount, denominations):
     "*** YOUR CODE HERE ***"
 
 
-def fibonacci(n, nMinus2 = 0, nMinus1 = 1):
-    """Return the nth fibonacci number.
+def print_move(origin, destination):
+    """Print instructions to move a disk."""
+    print("Move the top disk from rod", origin, "to rod", destination)
 
-    >>> fibonacci(11)
-    89
-    >>> fibonacci(5)
-    5
-    >>> fibonacci(0)
-    0
-    >>> fibonacci(1)
-    1
+def move_stack(n, start, end):
+    """Print the moves required to move n disks on the start pole to the end
+    pole without violating the rules of Towers of Hanoi.
+
+    n -- number of disks
+    start -- a pole position, either 1, 2, or 3
+    end -- a pole position, either 1, 2, or 3
+
+    There are exactly three poles, and start and end must be different. Assume
+    that the start pole has at least n disks of increasing size, and the end
+    pole is either empty or has a top disk larger than the top n start disks.
+
+    >>> move_stack(1, 1, 3)
+    Move the top disk from rod 1 to rod 3
+    >>> move_stack(2, 1, 3)
+    Move the top disk from rod 1 to rod 2
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 2 to rod 3
+    >>> move_stack(3, 1, 3)
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 1 to rod 2
+    Move the top disk from rod 3 to rod 2
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 2 to rod 1
+    Move the top disk from rod 2 to rod 3
+    Move the top disk from rod 1 to rod 3
     """
+    assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
 

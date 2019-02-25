@@ -87,9 +87,87 @@ Inside the archive, you will find starter files for the questions in this lab,
 
 
 
+<p>* To receive full credit for this lab, all questions must be attempted.</p>
+
+<p>When you are ready to submit, run <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
+
+<p>After submitting, <code>ok</code> will display a submission URL, with which you can view your submission on okpy.org.</p>
+
 
 
     
+
+
+<h2 id="debugging">Debugging</h2>
+
+
+<h3 class="question" id="q1">Question 1: A Bad List Flattener</h3>
+
+<p>There is something wrong with the following code! Debug the code to satisfy the docstring.</p>
+
+<pre><code>def bad_list_flattener(lst1, lst2):
+    &quot;&quot;&quot;
+    Flattens both lst1 and lst2, and returns the 
+    concatenation of the two flattened lists. Flattening 
+    a list means to collapse the list into one 
+    dimension (like np.flatten).
+    &gt;&gt;&gt; girls = [[&#x27;Rachel&#x27;, &#x27;Green&#x27;], [&#x27;Phoebe&#x27;, &#x27;Buffay&#x27;]]
+    &gt;&gt;&gt; boys = [[&#x27;Ross&#x27;, &#x27;Geller&#x27;], [&#x27;Chandler&#x27;, &#x27;Bing&#x27;]]
+    &gt;&gt;&gt; bad_list_flattener(girls, boys)
+    [&#x27;Rachel&#x27;, &#x27;Green&#x27;, &#x27;Phoebe&#x27;, &#x27;Buffay&#x27;, &#x27;Ross&#x27;, &#x27;Geller&#x27;, &#x27;Chandler&#x27;, &#x27;Bing&#x27;]
+    &gt;&gt;&gt; cats = [[&#x27;Persian&#x27;], [&#x27;British&#x27;, &#x27;Shorthair&#x27;]]
+    &gt;&gt;&gt; dogs = [[&#x27;Golden&#x27;, &#x27;Retriever&#x27;]]
+    &gt;&gt;&gt; bad_list_flattener(dogs, cats)
+    [&#x27;Golden&#x27;, &#x27;Retriever&#x27;, &#x27;Persian&#x27;, &#x27;British&#x27;, &#x27;Shorthair&#x27;]
+    &quot;&quot;&quot;
+    newlist1 = []
+    newlist2 = []
+    for inner_lst in lst1:
+        for item in inner_lst:
+            newlist1 += item
+    for inner_lst in lst2:
+        for item in inner_lst:
+            newlist2 += item
+    return newlist1 + newlist2</code></pre>
+
+<div class="solution 1">
+
+<pre><code>def bad_list_flattener(lst1, lst2):
+    &quot;&quot;&quot;
+    Flattens both lst1 and lst2, and returns the 
+    concatenation of the two flattened lists. Flattening 
+    a list means to collapse the list into one 
+    dimension (like np.flatten).
+    &gt;&gt;&gt; girls = [[&#x27;Rachel&#x27;, &#x27;Green&#x27;], [&#x27;Phoebe&#x27;, &#x27;Buffay&#x27;]]
+    &gt;&gt;&gt; boys = [[&#x27;Ross&#x27;, &#x27;Geller&#x27;], [&#x27;Chandler&#x27;, &#x27;Bing&#x27;]]
+    &gt;&gt;&gt; bad_list_flattener(girls, boys)
+    [&#x27;Rachel&#x27;, &#x27;Green&#x27;, &#x27;Phoebe&#x27;, &#x27;Buffay&#x27;, &#x27;Ross&#x27;, &#x27;Geller&#x27;, &#x27;Chandler&#x27;, &#x27;Bing&#x27;]
+    &gt;&gt;&gt; cats = [[&#x27;Persian&#x27;], [&#x27;British&#x27;, &#x27;Shorthair&#x27;]]
+    &gt;&gt;&gt; dogs = [[&#x27;Golden&#x27;, &#x27;Retriever&#x27;]]
+    &gt;&gt;&gt; bad_list_flattener(dogs, cats)
+    [&#x27;Golden&#x27;, &#x27;Retriever&#x27;, &#x27;Persian&#x27;, &#x27;British&#x27;, &#x27;Shorthair&#x27;]
+    &quot;&quot;&quot;
+    newlist1 = []
+    newlist2 = []
+    for inner_lst in lst1:
+        for item in inner_lst:
+            newlist1 += item
+    for inner_lst in lst2:
+        for item in inner_lst:
+            newlist2 += item
+    return newlist1 + newlist2</code></pre>
+
+</div>
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q bad_list_flattener</code></pre>
+
+</question A Bad List Flattener>
 
 
 <h2 id="recursion">Recursion</h2>
@@ -167,49 +245,7 @@ functions.  Here are some general tips:</p>
 </table> -->
 
 
-<h2 id="required-questions">Required Questions</h2>
-
-
-<h3 class="question" id="q1">Question 1: Sine</h3>
-
-<p>Now we're going to approximate the sine trigonemetric function using 2
-useful facts. One is that <em>sin(x)</em> is approximately equal to <em>x</em> as <em>x</em>
-gets small (for this question, below 0.0001). The other fact is the
-trigonometric identity</p>
-
-<p><img class="img-responsive center-block" src="assets/sin.gif" alt="sine"></p>
-
-<p>Using these two facts, write a function <code>sine</code> that returns the sine of
-a value in radians.</p>
-
-
-
-<pre><code>def sine(x):
-    &quot;&quot;&quot;Returns the value of sine(x), where x is a value in radians. Use 0.0001 as a threshold.
-
-    &gt;&gt;&gt; from math import pi
-    &gt;&gt;&gt; sine(pi) #Notice how the value is very small but not quite 0.
-    &#x2d;1.482085565385205e&#x2d;09 
-    &gt;&gt;&gt; sine(pi/2)
-    1.0
-    &gt;&gt;&gt; sine((7 * pi)/2)
-    &#x2d;1.0
-    &gt;&gt;&gt; sine(1.5)
-    0.9974949867067586
-    &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x61;&#x62;&#x73;&#x28;&#x78;&#x29;&#x20;&#x3c;&#x20;&#x30;&#x2e;&#x30;&#x30;&#x30;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x33;&#x20;&#x2a;&#x20;&#x73;&#x69;&#x6e;&#x65;&#x28;&#x78;&#x20;&#x2f;&#x20;&#x33;&#x29;&#x20;&#x2d;&#x20;&#x34;&#x20;&#x2a;&#x20;&#x70;&#x6f;&#x77;&#x28;&#x73;&#x69;&#x6e;&#x65;&#x28;&#x78;&#x20;&#x2f;&#x20;&#x33;&#x29;&#x2c;&#x20;&#x33;&#x29;</div></code></pre>
-
-
-    <button id='1' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q sine</code></pre>
-
-
-<h3 id="lists-review">Lists Review</h3>
+<h2 id="lists-review">Lists Review</h2>
 
 
 <p>In Data 8, you have recently started working with <code>Tables</code>.  Tables are an extremely useful and powerful data type.  In CS88 we will work with other data types.  Python provides
@@ -277,6 +313,10 @@ True</code></pre>
 [2, 4, 6]</code></pre>
 
 <p>Play around with this in your terminal!</p>
+
+
+<h2 id="required-questions">Required Questions</h2>
+
 
 <h3 class="question" id="q2">Question 2: is_palindrome</h3>
 
@@ -466,7 +506,7 @@ surprised when it does.</p>
 
 <p>In Data8 you will find sort to be instrumental to analysis of data.  In CS88 you
 get to build it.  There are many sorting algorithms; they have interesting differences
-and elegant implementations.  In lecture we saw a tree recursive formulation of Quick Sort
+and elegant implementations.  There is a tree recursive formulation of Quick Sort
 based on the following thinking:</p>
 
 <ul>
@@ -475,8 +515,7 @@ based on the following thinking:</p>
   of length <code>&lt; n</code>; remove the first element, use it to split the rest into two sets (all less-or-equal and all greater), sort both recursively, and put the three pieces back together.</li>
 </ul>
 
-<p>Review the lecture slides if this is unfamiliar to you.
-In this question we will build another sort algorithm and compare the two using some of your
+<p>In this question we will build another sort algorithm and compare the two using some of your
 Data8 skills.  Here is another idea for sorting.</p>
 
 <ul>
@@ -487,7 +526,7 @@ Data8 skills.  Here is another idea for sorting.</p>
   of the the sorted remainder.</li>
 </ul>
 
-<p>You have been given a function to find the minimum element (recursively) and you just wrote function to remove the first occurence of an element (recursively).
+<p>You have been given a function to find the minimum element (recursively) and you just wrote a function to remove the first occurence of an element (recursively).
 <br/>
 Now you can use those to sort a list (recursively). Complete <code>rsort</code></p>
 
@@ -571,11 +610,15 @@ we have done a little analysis of <code>qsort</code> on already sorted data.
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
+  <li><a href="#debugging">Debugging</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: A Bad List Flattener</a></li>
+</ul>
+
   <li><a href="#recursion">Recursion</a></li>
+  <li><a href="#lists-review">Lists Review</a></li>
   <li><a href="#required-questions">Required Questions</a></li>
   <ul>
-  <li><a href="#q1">Question 1: Sine</a></li>
-  <li><a href="#lists-review">Lists Review</a></li>
   <li><a href="#q2">Question 2: is_palindrome</a></li>
   <li><a href="#q3">Question 3: AB Plus C</a></li>
   <li><a href="#q4">Question 4: GCD</a></li>

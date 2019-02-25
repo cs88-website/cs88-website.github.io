@@ -2,20 +2,30 @@
 # Required Questions #
 ######################
 
-def sine(x):
-    """Returns the value of sine(x), where x is a value in radians. Use 0.0001 as a threshold.
-    
-    >>> from math import pi
-    >>> sine(pi) #Notice how the value is very small but not quite 0.
-    -1.482085565385205e-09 
-    >>> sine(pi/2)
-    1.0
-    >>> sine((7 * pi)/2)
-    -1.0
-    >>> sine(1.5)
-    0.9974949867067586
+def bad_list_flattener(lst1, lst2):
     """
-    "*** YOUR CODE HERE ***"
+    Flattens both lst1 and lst2, and returns the 
+    concatenation of the two flattened lists. Flattening 
+    a list means to collapse the list into one 
+    dimension (like np.flatten).
+    >>> girls = [['Rachel', 'Green'], ['Phoebe', 'Buffay']]
+    >>> boys = [['Ross', 'Geller'], ['Chandler', 'Bing']]
+    >>> bad_list_flattener(girls, boys)
+    ['Rachel', 'Green', 'Phoebe', 'Buffay', 'Ross', 'Geller', 'Chandler', 'Bing']
+    >>> cats = [['Persian'], ['British', 'Shorthair']]
+    >>> dogs = [['Golden', 'Retriever']]
+    >>> bad_list_flattener(dogs, cats)
+    ['Golden', 'Retriever', 'Persian', 'British', 'Shorthair']
+    """
+    newlist1 = []
+    newlist2 = []
+    for inner_lst in lst1:
+        for item in inner_lst:
+            newlist1 += item
+    for inner_lst in lst2:
+        for item in inner_lst:
+            newlist2 += item
+    return newlist1 + newlist2
 
 
 def is_palindrome(lst):
