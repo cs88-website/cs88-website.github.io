@@ -11,9 +11,7 @@
         "hw05.py:decimal": "doctest",
         "hw05.py:binary": "doctest",
         "hw05.py:count_digit": "doctest",
-        "hw05.py:ten_pairs": "doctest",
-        "hw05.py:count_change": "doctest",
-        "hw05.py:move_stack": "doctest"
+        "hw05.py:ten_pairs": "doctest"
     },
     "protocols": [
         "restore",

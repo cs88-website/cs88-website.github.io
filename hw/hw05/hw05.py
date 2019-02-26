@@ -77,28 +77,6 @@ def reduce(reducer, s, base):
 
 # Recursive Math
 
-def decimal(n):
-    """Return a list representing the decimal representation of a number.
-
-    >>> decimal(55055)
-    [5, 5, 0, 5, 5]
-    >>> decimal(-136)
-    ['-', 1, 3, 6]
-    """
-    "*** YOUR CODE HERE ***"
-
-
-def binary(n):
-    """Return a list representing the representation of a number in base 2.
-
-    >>> binary(55055)
-    [1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1]
-    >>> binary(-136)
-    ['-', 1, 0, 0, 0, 1, 0, 0, 0]
-    """
-    "*** YOUR CODE HERE ***"
-
-
 def count_digit(n, digit):
     """Return how many times digit appears in n.
 
@@ -128,56 +106,24 @@ def ten_pairs(n):
 
 # Challenge
 
-def count_change(amount, denominations):
-    """Returns the number of ways to make change for amount.
+def decimal(n):
+    """Return a list representing the decimal representation of a number.
 
-    >>> denominations = [50, 25, 10, 5, 1]
-    >>> count_change(7, denominations)
-    2
-    >>> count_change(100, denominations)
-    292
-    >>> denominations = [16, 8, 4, 2, 1]
-    >>> count_change(7, denominations)
-    6
-    >>> count_change(10, denominations)
-    14
-    >>> count_change(20, denominations)
-    60
+    >>> decimal(55055)
+    [5, 5, 0, 5, 5]
+    >>> decimal(-136)
+    ['-', 1, 3, 6]
     """
     "*** YOUR CODE HERE ***"
 
 
-def print_move(origin, destination):
-    """Print instructions to move a disk."""
-    print("Move the top disk from rod", origin, "to rod", destination)
+def binary(n):
+    """Return a list representing the representation of a number in base 2.
 
-def move_stack(n, start, end):
-    """Print the moves required to move n disks on the start pole to the end
-    pole without violating the rules of Towers of Hanoi.
-
-    n -- number of disks
-    start -- a pole position, either 1, 2, or 3
-    end -- a pole position, either 1, 2, or 3
-
-    There are exactly three poles, and start and end must be different. Assume
-    that the start pole has at least n disks of increasing size, and the end
-    pole is either empty or has a top disk larger than the top n start disks.
-
-    >>> move_stack(1, 1, 3)
-    Move the top disk from rod 1 to rod 3
-    >>> move_stack(2, 1, 3)
-    Move the top disk from rod 1 to rod 2
-    Move the top disk from rod 1 to rod 3
-    Move the top disk from rod 2 to rod 3
-    >>> move_stack(3, 1, 3)
-    Move the top disk from rod 1 to rod 3
-    Move the top disk from rod 1 to rod 2
-    Move the top disk from rod 3 to rod 2
-    Move the top disk from rod 1 to rod 3
-    Move the top disk from rod 2 to rod 1
-    Move the top disk from rod 2 to rod 3
-    Move the top disk from rod 1 to rod 3
+    >>> binary(55055)
+    [1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1]
+    >>> binary(-136)
+    ['-', 1, 0, 0, 0, 1, 0, 0, 0]
     """
-    assert 1 <= start <= 3 and 1 <= end <= 3 and start != end, "Bad start/end"
     "*** YOUR CODE HERE ***"
 
