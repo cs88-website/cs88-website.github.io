@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Homework 6 | CS 88 Spring 2019</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Homework 6</span></h1>
+    </div>
+
+    <p><em>Due by 9:00pm on Wednesday, March 13th</em></p>
+
+<h2>Instructions</h2>
+
+<p>Download <a href="hw06.zip"> hw06.zip</a>.
+    Inside the archive, you will find starter files for the questions in this homework,
+    along with a copy of the OK autograder.</p>
+
+<p><strong>Submission:</strong> When you are done, submit with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be scored. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
+
+<p><strong>Readings:</strong> This homework relies on following references:</p>
+
+<ul>
+  <li><a href="http://composingprograms.com/pages/22-data-abstraction.html">Section 2.2</a></li>
+  <li><a href="http://composingprograms.com/pages/23-sequences.html">Section 2.3</a></li>
+</ul>
+
+    
+
+
+<h2 id="required-questions">Required Questions</h2>
+
+
+<h3 class="question" id="q1">Question 1</h3>
+
+<p>A list that contains one or more lists as elements is called a <em>deep</em>
+list. For example, <code>[1, [2, 3], 4]</code> is a deep list.</p>
+
+<p>Write a function <code>deep_len</code> that takes a list and returns its deep
+length. See the doctests for the function's behavior.</p>
+
+<p><em>Hint</em>: you can check if something is a list by using the built-in
+<code>type</code> function. For example,</p>
+
+<pre><code>&gt;&gt;&gt; type(3) == list
+False
+&gt;&gt;&gt; type([1, 2, 3]) == list
+True</code></pre>
+
+<solution>
+
+<pre><code>def deep_len(lst):
+    &quot;&quot;&quot;Returns the deep length of the list.
+
+    &gt;&gt;&gt; deep_len([1, 2, 3])     # normal list
+    3
+    &gt;&gt;&gt; x = [1, [2, 3], 4]      # deep list
+    &gt;&gt;&gt; deep_len(x)
+    4
+    &gt;&gt;&gt; x = [[1, [1, 1]], 1, [1, 1]] # deep list
+    &gt;&gt;&gt; deep_len(x)
+    6
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q deep_len</code></pre>
+
+
+<h3 id="intervals-data-abstraction">Intervals (data abstraction)</h3>
+
+
+<p><strong>Acknowledgements.</strong> This interval arithmetic example is based on
+a classic problem from Structure and Interpretation of Computer Programs,
+<a href="http://mitpress.mit.edu/sicp/full-text/book/book-Z-H-14.html#%_sec_2.1.4">Section 2.1.4</a>.</p>
+
+<p><strong>Introduction.</strong> Alyssa P. Hacker is designing a system to help people
+solve engineering problems. One feature she wants to provide in her
+system is the ability to manipulate inexact quantities (such as
+measured parameters of physical devices) with known precision, so that
+when computations are done with such approximate quantities the results
+will be numbers of known precision.</p>
+
+<p>Alyssa's idea is to implement interval arithmetic as a set of
+arithmetic operations for combining "intervals" (objects that represent
+the range of possible values of an inexact quantity). The result of
+adding, subracting, multiplying, or dividing two intervals is itself an
+interval, representing the range of the result.</p>
+
+<p>Alyssa postulates the existence of an abstract object called an
+"interval" that has two endpoints: a lower bound and an upper bound.
+She also presumes that, given the endpoints of an interval, she can
+construct the interval using the data constructor interval.   Using the
+constructor and selectors, she defines the following operations:</p>
+
+<pre><code>def str_interval(x):
+    &quot;&quot;&quot;Return a string representation of interval x.
+
+    &gt;&gt;&gt; str_interval(interval(&#x2d;1, 2))
+    &#x27;&#x2d;1 to 2&#x27;
+    &quot;&quot;&quot;
+    return &#x27;{0} to {1}&#x27;.format(lower_bound(x), upper_bound(x))
+
+def add_interval(x, y):
+    &quot;&quot;&quot;Return an interval that contains the sum of any value in interval x and
+    any value in interval y.
+
+    &gt;&gt;&gt; str_interval(add_interval(interval(&#x2d;1, 2), interval(4, 8)))
+    &#x27;3 to 10&#x27;
+    &quot;&quot;&quot;
+    lower = lower_bound(x) + lower_bound(y)
+    upper = upper_bound(x) + upper_bound(y)
+    return interval(lower, upper)
+
+def mul_interval(x, y):
+    &quot;&quot;&quot;Return the interval that contains the product of any value in x and any
+    value in y.
+
+    &gt;&gt;&gt; str_interval(mul_interval(interval(&#x2d;1, 2), interval(4, 8)))
+    &#x27;&#x2d;8 to 16&#x27;
+    &quot;&quot;&quot;
+    p1 = lower_bound(x) * lower_bound(y)
+    p2 = lower_bound(x) * upper_bound(y)
+    p3 = upper_bound(x) * lower_bound(y)
+    p4 = upper_bound(x) * upper_bound(y)
+    return interval(min(p1, p2, p3, p4), max(p1, p2, p3, p4))</code></pre>
+
+<p>A constructor is something that creates whatever you want to make, and a selector gets the elements from the thing you made. For example, your constructor <code>interval</code> will take in two numbers a and b. It will construct a two element list of them. Then your <code>lower_bound</code> selector will return the smaller item in the list and the <code>upper_bound</code> selector will return the bigger element in the list.</p>
+
+<h3 class="question" id="q2">Question 2</h3>
+
+<p>Alyssa's program is incomplete because she has not specified the
+implementation of the interval abstraction. Define the constructor and
+selectors in terms of two-element lists:</p>
+
+<pre><code>def interval(a, b):
+    &quot;&quot;&quot;Construct an interval from a to b.&quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+
+def lower_bound(x):
+    &quot;&quot;&quot;Return the lower bound of interval x.&quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+
+def upper_bound(x):
+    &quot;&quot;&quot;Return the upper bound of interval x.&quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q str_interval
+python3 ok -q add_interval
+python3 ok -q mul_interval</code></pre>
+
+<h3 class="question" id="q3">Question 3</h3>
+
+<p>Alyssa implements division below, by multiplying by the reciprocal of
+<code>y</code>. Ben Bitdiddle, an expert systems programmer, looks over Alyssa's
+shoulder and comments that it is not clear what it means to divide by
+an interval that spans zero. Return <code>False</code> if the interval being divided by contains zero.</p>
+
+<pre><code>def div_interval(x, y):
+    &quot;&quot;&quot;Return the interval that contains the quotient of any value in x divided by any value in y.
+
+    Division is implemented as the multiplication of x by the reciprocal of y.
+
+    &gt;&gt;&gt; str_interval(div_interval(interval(&#x2d;1, 2), interval(4, 8)))
+    &#x27;&#x2d;0.25 to 0.5&#x27;
+    &gt;&gt;&gt; div_interval(interval(4, 8), interval(&#x2d;1, 2))
+    False
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+    reciprocal_y = interval(1/upper_bound(y), 1/lower_bound(y))
+    return mul_interval(x, reciprocal_y)</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q div_interval</code></pre>
+
+<h3 class="question" id="q4">Question 4</h3>
+
+<p>Using reasoning analogous to Alyssa's, define a subtraction function
+for intervals:</p>
+
+<pre><code>def sub_interval(x, y):
+    &quot;&quot;&quot;Return the interval that contains the difference between any value in x
+    and any value in y.
+
+    &gt;&gt;&gt; str_interval(sub_interval(interval(&#x2d;1, 2), interval(4, 8)))
+    &#x27;&#x2d;9 to &#x2d;2&#x27;
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q sub_interval</code></pre>
+
+<h3 class="question" id="q5">Question 5</h3>
+
+<p>After debugging her program, Alyssa shows it to a potential user, who
+complains that her program solves the wrong problem. He wants a program
+that can deal with numbers represented as a center value and an
+additive tolerance; for example, he wants to work with intervals such
+as <code>3.5 +/&#x2d; 0.15</code> rather than <code>3.35</code> to <code>3.65</code>. Alyssa returns to her
+desk and fixes this problem by supplying an alternate constructor and
+alternate selectors in terms of the existing ones:</p>
+
+<pre><code>def make_center_width(c, w):
+    &quot;&quot;&quot;Construct an interval from center and width.&quot;&quot;&quot;
+    return interval(c &#x2d; w, c + w)
+
+def center(x):
+    &quot;&quot;&quot;Return the center of interval x.&quot;&quot;&quot;
+    return (upper_bound(x) + lower_bound(x)) / 2
+
+def width(x):
+    &quot;&quot;&quot;Return the width of interval x.&quot;&quot;&quot;
+    return (upper_bound(x) &#x2d; lower_bound(x)) / 2</code></pre>
+
+<p>Unfortunately, most of Alyssa's users are engineers. Real engineering
+situations usually involve measurements with only a small uncertainty,
+measured as the ratio of the width of the interval to the midpoint of
+the interval.  Engineers usually specify percentage tolerances on the
+parameters of devices.</p>
+
+<p>Define a constructor <code>make_center_percent</code> that takes a center and a
+percentage tolerance and produces the desired interval. You must also
+define a selector percent that produces the percentage tolerance for a
+given interval. The center selector is the same as the one shown
+above:</p>
+
+<pre><code>def make_center_percent(c, p):
+    &quot;&quot;&quot;Construct an interval from center and percentage tolerance.
+
+    &gt;&gt;&gt; str_interval(make_center_percent(2, 50))
+    &#x27;1.0 to 3.0&#x27;
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+
+def percent(x):
+    &quot;&quot;&quot;Return the percentage tolerance of interval x.
+
+    &gt;&gt;&gt; percent(interval(1, 3))
+    50.0
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q make_center_percent</code></pre>
+
+<h3 class="question" id="q6">Question 6</h3>
+
+<p>Write a function <code>quadratic</code> that returns the interval of all values
+<code>f(t)</code> such that <code>t</code> is in the argument interval <code>x</code> and <code>f(t)</code> is a
+<a href="http://en.wikipedia.org/wiki/Quadratic_function">quadratic function</a>:</p>
+
+<pre><code>f(t) = a*t*t + b*t + c</code></pre>
+
+<p>Make sure that your implementation returns the smallest such interval,
+one that does not suffer from the multiple references problem.</p>
+
+<p><em>Hint</em>: the derivative <code>f&#x27;(t) = 2*a*t + b</code>, and so the extreme
+point of the quadratic is <code>&#x2d;b/(2*a)</code>:</p>
+
+<pre><code>def quadratic(x, a, b, c):
+    &quot;&quot;&quot;Return the interval that is the range of the quadratic defined by
+    coefficients a, b, and c, for domain interval x.
+
+    &gt;&gt;&gt; str_interval(quadratic(interval(0, 2), &#x2d;2, 3, &#x2d;1))
+    &#x27;&#x2d;3 to 0.125&#x27;
+    &gt;&gt;&gt; str_interval(quadratic(interval(1, 3), 2, &#x2d;3, 1))
+    &#x27;0 to 10&#x27;
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q quadratic</code></pre>
+
+
+<h2 id="extra-questions">Extra Questions</h2>
+
+
+<blockquote><p>Extra questions are not worth extra credit and are entirely optional. They are
+designed to challenge you to think creatively!</p></blockquote>
+
+<h3 class="question" id="q7">Question 7</h3>
+
+<p>Write a function polynomial that takes an interval <code>x</code> and a list of
+coefficients <code>c</code>, and returns the interval containing all values of
+<code>f(t)</code> for <code>t</code> in interval <code>x</code>, where:</p>
+
+<pre><code>f(t) = c[k&#x2d;1] * pow(t, k&#x2d;1) + c[k&#x2d;2] * pow(t, k&#x2d;2) + ... + c[0] * 1</code></pre>
+
+<p>Like quadratic, your polynomial function should return the smallest
+such interval, one that does not suffer from the multiple references
+problem.</p>
+
+<p><em>Hint</em>: You can approximate this result. Try using <a href="http://www.composingprograms.com/pages/16-higher-order-functions.html#example-newton-s-method">Newton's
+method</a>.</p>
+
+<pre><code>def polynomial(x, c):
+    &quot;&quot;&quot;Return the interval that is the range of the polynomial defined by
+    coefficients c, for domain interval x.
+
+    &gt;&gt;&gt; str_interval(polynomial(interval(0, 2), [&#x2d;1, 3, &#x2d;2]))
+    &#x27;&#x2d;3 to 0.125&#x27;
+    &gt;&gt;&gt; str_interval(polynomial(interval(1, 3), [1, &#x2d;3, 2]))
+    &#x27;0 to 10&#x27;
+    &gt;&gt;&gt; str_interval(polynomial(interval(0.5, 2.25), [10, 24, &#x2d;6, &#x2d;8, 3]))
+    &#x27;18.0 to 23.0&#x27;
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"
+
+</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q polynomial</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#required-questions">Required Questions</a></li>
+  <ul>
+  <li><a href="#q1">Question 1</a></li>
+  <li><a href="#intervals-data-abstraction">Intervals (data abstraction)</a></li>
+  <li><a href="#q2">Question 2</a></li>
+  <li><a href="#q3">Question 3</a></li>
+  <li><a href="#q4">Question 4</a></li>
+  <li><a href="#q5">Question 5</a></li>
+  <li><a href="#q6">Question 6</a></li>
+</ul>
+
+  <li><a href="#extra-questions">Extra Questions</a></li>
+  <ul>
+  <li><a href="#q7">Question 7</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>
