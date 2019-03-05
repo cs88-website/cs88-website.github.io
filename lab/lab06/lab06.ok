@@ -6,6 +6,7 @@
     ],
     "tests": {
         "lab06.py:has_seven": "doctest",
+        "lab06.py:deep_len": "doctest",
         "lab06.py:polynomial": "doctest",
         "lab06.py:add_matrices": "doctest",
         "lab06.py:mul_by_num": "doctest",

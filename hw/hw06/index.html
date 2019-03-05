@@ -71,7 +71,7 @@
       <h1><span class="content-title-brand">Homework 6</span></h1>
     </div>
 
-    <p><em>Due by 9:00pm on Friday, March 15th</em></p>
+    <p><em>Due by 9:00pm on Friday, 03/15/19</em></p>
 
 <h2>Instructions</h2>
 
@@ -93,42 +93,6 @@
 
 <h2 id="required-questions">Required Questions</h2>
 
-
-<h3 class="question" id="q1">Question 1</h3>
-
-<p>A list that contains one or more lists as elements is called a <em>deep</em>
-list. For example, <code>[1, [2, 3], 4]</code> is a deep list.</p>
-
-<p>Write a function <code>deep_len</code> that takes a list and returns its deep
-length. See the doctests for the function's behavior.</p>
-
-<p><em>Hint</em>: you can check if something is a list by using the built-in
-<code>type</code> function. For example,</p>
-
-<pre><code>&gt;&gt;&gt; type(3) == list
-False
-&gt;&gt;&gt; type([1, 2, 3]) == list
-True</code></pre>
-
-<solution>
-
-<pre><code>def deep_len(lst):
-    &quot;&quot;&quot;Returns the deep length of the list.
-
-    &gt;&gt;&gt; deep_len([1, 2, 3])     # normal list
-    3
-    &gt;&gt;&gt; x = [1, [2, 3], 4]      # deep list
-    &gt;&gt;&gt; deep_len(x)
-    4
-    &gt;&gt;&gt; x = [[1, [1, 1]], 1, [1, 1]] # deep list
-    &gt;&gt;&gt; deep_len(x)
-    6
-    &quot;&quot;&quot;
-    "*** YOUR CODE HERE ***"</code></pre>
-
-</solution>
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q deep_len</code></pre>
 
 
 <h3 id="intervals-data-abstraction">Intervals (data abstraction)</h3>
@@ -191,7 +155,7 @@ def mul_interval(x, y):
 
 <p>A constructor is something that creates whatever you want to make, and a selector gets the elements from the thing you made. For example, your constructor <code>interval</code> will take in two numbers a and b. It will construct a two element list of them. Then your <code>lower_bound</code> selector will return the smaller item in the list and the <code>upper_bound</code> selector will return the bigger element in the list.</p>
 
-<h3 class="question" id="q2">Question 2</h3>
+<h3 class="question" id="q1">Question 1</h3>
 
 <p>Alyssa's program is incomplete because she has not specified the
 implementation of the interval abstraction. Define the constructor and
@@ -213,7 +177,7 @@ def upper_bound(x):
 python3 ok -q add_interval
 python3 ok -q mul_interval</code></pre>
 
-<h3 class="question" id="q3">Question 3</h3>
+<h3 class="question" id="q2">Question 2</h3>
 
 <p>Alyssa implements division below, by multiplying by the reciprocal of
 <code>y</code>. Ben Bitdiddle, an expert systems programmer, looks over Alyssa's
@@ -236,7 +200,7 @@ an interval that spans zero. Return <code>False</code> if the interval being div
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q div_interval</code></pre>
 
-<h3 class="question" id="q4">Question 4</h3>
+<h3 class="question" id="q3">Question 3</h3>
 
 <p>Using reasoning analogous to Alyssa's, define a subtraction function
 for intervals:</p>
@@ -252,7 +216,7 @@ for intervals:</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q sub_interval</code></pre>
 
-<h3 class="question" id="q5">Question 5</h3>
+<h3 class="question" id="q4">Question 4</h3>
 
 <p>After debugging her program, Alyssa shows it to a potential user, who
 complains that her program solves the wrong problem. He wants a program
@@ -304,7 +268,7 @@ def percent(x):
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q make_center_percent</code></pre>
 
-<h3 class="question" id="q6">Question 6</h3>
+<h3 class="question" id="q5">Question 5</h3>
 
 <p>Write a function <code>quadratic</code> that returns the interval of all values
 <code>f(t)</code> such that <code>t</code> is in the argument interval <code>x</code> and <code>f(t)</code> is a
@@ -338,7 +302,7 @@ point of the quadratic is <code>&#x2d;b/(2*a)</code>:</p>
 <blockquote><p>Extra questions are not worth extra credit and are entirely optional. They are
 designed to challenge you to think creatively!</p></blockquote>
 
-<h3 class="question" id="q7">Question 7</h3>
+<h3 class="question" id="q6">Question 6</h3>
 
 <p>Write a function polynomial that takes an interval <code>x</code> and a list of
 coefficients <code>c</code>, and returns the interval containing all values of
@@ -378,18 +342,17 @@ method</a>.</p>
       <ul>
   <li><a href="#required-questions">Required Questions</a></li>
   <ul>
-  <li><a href="#q1">Question 1</a></li>
   <li><a href="#intervals-data-abstraction">Intervals (data abstraction)</a></li>
+  <li><a href="#q1">Question 1</a></li>
   <li><a href="#q2">Question 2</a></li>
   <li><a href="#q3">Question 3</a></li>
   <li><a href="#q4">Question 4</a></li>
   <li><a href="#q5">Question 5</a></li>
-  <li><a href="#q6">Question 6</a></li>
 </ul>
 
   <li><a href="#extra-questions">Extra Questions</a></li>
   <ul>
-  <li><a href="#q7">Question 7</a></li>
+  <li><a href="#q6">Question 6</a></li>
 </ul>
 
 </ul>

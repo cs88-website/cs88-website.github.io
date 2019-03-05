@@ -8,7 +8,6 @@
         "hw06.py": "doctest"
     },
     "default_tests": [
-        "deep_len",
         "str_interval",
         "add_interval",
         "mul_interval",
