@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Homework 5 Solutions | CS 88 Spring 2019</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Homework 5</span> Solutions</h1>
+    </div>
+
+    <p><strong>Solutions:</strong> You can find the file with solutions for all
+questions <a href="hw05.py">here</a>.</p>
+
+    
+
+
+<h2 id="debugging">Debugging</h2>
+
+
+<h3 class="question" id="q1">Question 1: Common Misconception</h3>
+
+<p>Fix the error with this recursive function.</p>
+
+<pre><code>def skip_mul(n):
+    &quot;&quot;&quot;Return the product of n * (n &#x2d; 2) * (n &#x2d; 4) * ...
+
+    &gt;&gt;&gt; skip_mul(5) # 5 * 3 * 1
+    15
+    &gt;&gt;&gt; skip_mul(8) # 8 * 6 * 4 * 2  * 0
+    0
+    &quot;&quot;&quot;
+    if n == 0:
+        return 0
+    else:
+        return n * skip_mul(n &#x2d; 2)</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q skip_mul</code></pre>
+
+
+<h2 id="recursion-revisiting-map-filter-and-reduce">Recursion: revisiting Map, Filter, and Reduce</h2>
+
+
+<p>In this next section you are going to implement the filter and reduce functions we learned in lab04 using recursion. Feel free to refer to lab04 for guidance and more examples <a href="https://cs88-website.github.io/lab/lab04/">Lab04</a>.</p>
+
+<p>We wrote the recursive version of the function <code>map</code> in lecture. Here it is again:</p>
+
+<p><code>map</code> takes</p>
+
+<ul>
+  <li>m - a one-argument function that you want to map onto each element in the list.</li>
+  <li>s - a sequence of values</li>
+</ul>
+
+<solution>
+
+<pre><code>def map(f, s):
+    &quot;&quot;&quot;
+    Map a function f onto a sequence.
+
+    &gt;&gt;&gt; def double(x):
+    ...     return x * 2
+    &gt;&gt;&gt; def square(x):
+    ...     return x ** 2
+    &gt;&gt;&gt; def toLetter(x):
+    ...     alpha = [&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;, &#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;, &#x27;g&#x27;, &#x27;h&#x27;, &#x27;i&#x27;, &#x27;j&#x27;, &#x27;k&#x27;, &#x27;l&#x27;, &#x27;m&#x27;, &#x27;n&#x27;, &#x27;o&#x27;, &#x27;p&#x27;, &#x27;q&#x27;, &#x27;r&#x27;, &#x27;s&#x27;, &#x27;t&#x27;, &#x27;u&#x27;, &#x27;v&#x27;, &#x27;w&#x27;, &#x27;x&#x27;, &#x27;y&#x27;, &#x27;z&#x27;]
+    ...     return alpha[x%26]
+    &gt;&gt;&gt; map(double, [1,2,3,4])
+    [2, 4, 6, 8]
+    &gt;&gt;&gt; map(square, [1, 2, 3, 4, 5, 10])
+    [1, 4, 9, 16, 25, 100]
+    &gt;&gt;&gt; map(toLetter, [3, 0, 19, 0])
+    [&#x27;d&#x27;, &#x27;a&#x27;, &#x27;t&#x27;, &#x27;a&#x27;]
+
+    &quot;&quot;&quot;
+    if s == []:
+        return s
+    return [f(s[0])] + map(f, s[1:])</code></pre>
+
+</solution>
+
+<h3 class="question" id="q2">Question 2: Filter</h3>
+
+<p>Write the recursive version of the function <code>filter</code> which takes</p>
+
+<ul>
+  <li>filter - a one-argument function that returns True if the argument passed in should be included in the list, and False otherwise.</li>
+  <li>s - a sequence of values</li>
+</ul>
+
+<solution>
+
+<pre><code>def filter(f, s):
+    &quot;&quot;&quot;Filter a sequence to only contain values allowed by filter.
+
+    &gt;&gt;&gt; def is_even(x):
+    ...     return x % 2 == 0
+    &gt;&gt;&gt; def divisible_by5(x):
+    ...     return x % 5 == 0
+    &gt;&gt;&gt; filter(is_even, [1,2,3,4])
+    [2, 4]
+    &gt;&gt;&gt; filter(divisible_by5, [1, 4, 9, 16, 25, 100])
+    [25, 100]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if s == []:
+        return s
+    if f(s[0]):
+        return [s[0]] + filter(f, s[1:])
+    return filter(f, s[1:])</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q filter</code></pre>
+
+<h3 class="question" id="q3">Question 3: Reduce</h3>
+
+<p>Write the recursive version of the function <code>reduce</code> which takes</p>
+
+<ul>
+  <li>reducer - a two-argument function that reduces elements to a single value</li>
+  <li>s - a sequence of values</li>
+  <li>base - the starting value in the reduction.  This is usually the identity of the reducer</li>
+</ul>
+
+<p>If you're feeling stuck, think about the parameters of <code>reduce</code>.</p>
+
+<solution>
+
+<pre><code>from operator import add, mul
+
+def reduce(reducer, s, base):
+    &quot;&quot;&quot;Reduce a sequence under a two&#x2d;argument function starting from a base value.
+
+    &gt;&gt;&gt; def add(x, y):
+    ...     return x + y
+    &gt;&gt;&gt; def mul(x, y):
+    ...     return x*y
+    &gt;&gt;&gt; reduce(add, [1,2,3,4], 0)
+    10
+    &gt;&gt;&gt; reduce(mul, [1,2,3,4], 0)
+    0
+    &gt;&gt;&gt; reduce(mul, [1,2,3,4], 1)
+    24
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if s == []:
+        return base
+    next_base = reducer(base, s[0])
+    return reduce(reducer, s[1:], next_base)</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q reduce</code></pre>
+
+
+<h2 id="recursion-let-s-do-some-math">Recursion: Let's do some Math</h2>
+
+
+<h3 class="question" id="q4">Question 4: Ten-Pairs</h3>
+
+<p>Write a function that takes a positive integer <code>n</code> and returns the
+number of times the number <code>digit</code> appears. <em>Do not use any assignment statements.</em></p>
+
+<solution>
+
+<pre><code>def count_digit(n, digit):
+    &quot;&quot;&quot;Return how many times digit appears in n.
+
+    &gt;&gt;&gt; count_digit(55055, 5)
+    4
+    &gt;&gt;&gt; count_digit(1231421, 1)
+    3
+    &gt;&gt;&gt; count_digit(12, 3)
+    0
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if n == 0:
+        return 0
+    if n%10 == digit:
+        return count_digit(n//10, digit) + 1
+    else:
+        return count_digit(n//10, digit)</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q count_digit</code></pre>
+
+<p>Write a function that takes a positive integer <code>n</code> and returns the
+number of ten-pairs it contains.  A ten-pair is a pairs of digits
+within <code>n</code> that sum to 10.   <em>Do not use any assignment statements.</em></p>
+
+<p>The number 7,823,952 has 3 ten-pairs. The first and fourth digits sum
+to 7+3=10, the second and third digits sum to 8+2=10, and the second
+and last digit sum to 8+2=10:</p>
+
+<p>Hint: What if you had a function that counted the times a certain digit appeared.
+<solution></p>
+
+<pre><code>def ten_pairs(n):
+    &quot;&quot;&quot;Return the number of ten&#x2d;pairs within positive integer n.
+
+    &gt;&gt;&gt; ten_pairs(7823952)
+    3
+    &gt;&gt;&gt; ten_pairs(55055)
+    6
+    &gt;&gt;&gt; ten_pairs(9641469)
+    6
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if n &lt; 10:
+        return 0
+    else:
+        return ten_pairs(n//10) + count_digit(n//10, 10 &#x2d; n%10)
+
+def count_digit(n, digit):
+    &quot;&quot;&quot;Return how many times digit appears in n.
+
+    &gt;&gt;&gt; count_digit(55055, 5)
+    4
+    &quot;&quot;&quot;
+    if n == 0:
+        return 0
+    else:
+        if n%10 == digit:
+            return count_digit(n//10, digit) + 1
+        else:
+            return count_digit(n//10, digit)</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q ten_pairs</code></pre>
+
+
+<h2 id="challenge-questions">Challenge Questions</h2>
+
+
+<blockquote><p>Questions in this section count for extra credit:)</p></blockquote>
+
+<h3 class="question" id="q5">Question 5: Number representation</h3>
+
+<p>Whenever we think of numbers, we are actually thinking of them in relation to some base. Typically that base is 10. Each number can be decomposed as a combination of the powers of it's base.</p>
+
+<p><code>134 = 1 * 10^2 + 3 * 10^1 + 4 * 10^0</code></p>
+
+<p>Write a function that takes a number and returns a list of it's decimal representation.</p>
+
+<solution>
+
+<pre><code>def decimal(n):
+    &quot;&quot;&quot;Return a list representing the decimal representation of a number.
+
+    &gt;&gt;&gt; decimal(55055)
+    [5, 5, 0, 5, 5]
+    &gt;&gt;&gt; decimal(&#x2d;136)
+    [&#x27;&#x2d;&#x27;, 1, 3, 6]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if n &lt; 0:
+        return [&#x27;&#x2d;&#x27;] + decimal(&#x2d;1 * n)
+    elif n &lt; 10:
+        return [n % 10]
+    else:
+        return decimal(n // 10) + [n % 10]</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q decimal</code></pre>
+
+<p>We can also represent numbers in different bases. Think of how you could represent the number 5 in base 2. Essentially, how can you break the number 5 into powers of 2. It contains one 4 and one 1. In base 2, your digit overflows after 1, so this representation of numbers only has 1 and 0.</p>
+
+<p><code>5 = 1 * 2^2 + 0 * 2^1 + 1 * 2^0</code></p>
+
+<p>Write a function that takes a number and returns a list of it's representation in base 2.</p>
+
+<solution>
+
+<pre><code>def binary(n):
+    &quot;&quot;&quot;Return a list representing the representation of a number in base 2.
+
+    &gt;&gt;&gt; binary(55055)
+    [1, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 1, 1]
+    &gt;&gt;&gt; binary(&#x2d;136)
+    [&#x27;&#x2d;&#x27;, 1, 0, 0, 0, 1, 0, 0, 0]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if n &lt; 0:
+        return [&#x27;&#x2d;&#x27;] + binary(&#x2d;1 * n)
+    elif n &lt; 2:
+        return [n % 2]
+    else:
+        return binary(n // 2) + [n % 2]</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q binary</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#debugging">Debugging</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Common Misconception</a></li>
+</ul>
+
+  <li><a href="#recursion-revisiting-map-filter-and-reduce">Recursion: revisiting Map, Filter, and Reduce</a></li>
+  <ul>
+  <li><a href="#q2">Question 2: Filter</a></li>
+  <li><a href="#q3">Question 3: Reduce</a></li>
+</ul>
+
+  <li><a href="#recursion-let-s-do-some-math">Recursion: Let's do some Math</a></li>
+  <ul>
+  <li><a href="#q4">Question 4: Ten-Pairs</a></li>
+</ul>
+
+  <li><a href="#challenge-questions">Challenge Questions</a></li>
+  <ul>
+  <li><a href="#q5">Question 5: Number representation</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>
