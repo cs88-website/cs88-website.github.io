@@ -1,0 +1,22 @@
+{
+    "name": "Homework 7",
+    "endpoint": "cal/cs88/sp19/hw07",
+    "src": [
+        "hw07.py"
+    ],
+    "tests": {
+        "hw07.py:dice": "doctest",
+        "hw07.py:roll_dice": "doctest",
+        "hw07.py:rolls_until_six": "doctest",
+        "hw07.py:cup": "doctest",
+        "hw07.py:add_to_cup": "doctest",
+        "hw07.py:roll_cup": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup"
+    ]
+}
