@@ -1,0 +1,21 @@
+{
+    "name": "Homework 8",
+    "endpoint": "cal/cs88/fa16/hw08",
+    "src": [
+        "hw08.py"
+    ],
+    "tests": {
+        "hw08.py:merge_dict": "doctest",
+        "hw08.py:merge_dict_mutate": "doctest",
+        "hw08.py:list_combine": "doctest",
+        "hw08.py:dict_cycle": "doctest",
+        "hw08.py:make_pokemon_set": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
