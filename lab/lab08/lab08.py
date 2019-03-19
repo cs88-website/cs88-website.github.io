@@ -16,7 +16,7 @@ def compose(f, g):
     >>> b(5)
     490
     >>> b(2)
-    160 
+    160
     """
     "*** YOUR CODE HERE ***"
     
