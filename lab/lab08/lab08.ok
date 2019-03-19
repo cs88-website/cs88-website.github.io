@@ -5,7 +5,8 @@
         "lab08.py"
     ],
     "tests": {
-        "lab08.py:compose": "doctest", 
+        "lab08.py:compose": "doctest",
+        "lab08.py:lambda_curry2": "doctest",
         "lab08.py:map": "doctest",
         "lab08.py:todo": "doctest",
         "lab08.py:mailbox": "doctest",
