@@ -374,7 +374,7 @@ identical lists, <code>x</code> and <code>y</code>. She then wanted to modify on
 However, she was surprised to see that <code>x</code> had been modified too! 
 Use the command below to see what happened.</p></blockquote>
 
-<pre><code> python3 ok &#x2d;q case1 &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code> python3 ok &#x2d;q case1 &#x2d;u</code></pre>
 
 <p>Hmm... what could have gone wrong here? Here are some clues that will 
 help you figure this out:</p>
@@ -388,7 +388,7 @@ help you figure this out:</p>
 <p>You think you have found a fix using slicing and the list function.
 Use the command below to confirm that you have solved the mystery!</p>
 
-<pre><code> python3 ok &#x2d;q case1_solved &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code> python3 ok &#x2d;q case1_solved &#x2d;u</code></pre>
 
 <br>
 
@@ -399,7 +399,7 @@ Unlike Alice, Bob knew about slicing and the list function. However, he was
 still a victim of mutation. Let's take a look at what
 happened to Bob's lists using the command below.</p></blockquote>
 
-<pre><code> python3 ok &#x2d;q case2 &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code> python3 ok &#x2d;q case2 &#x2d;u</code></pre>
 
 <p>Here are some clues as to what caused this error:</p>
 
@@ -412,11 +412,38 @@ happened to Bob's lists using the command below.</p></blockquote>
 
 <p>You have figured out that Bob needs to perform a deep copy on his lists.
 You decide to write a <code>deep_copy</code> function for Bob to use. Fill in the 
-body of the function in lab06.py. Do NOT use the copy module shown in the
-article, you need to write your own function! 
-Test your code using the following command.</p>
+body of the function. Do NOT use the copy module shown in the
+article, you need to write your own function!</p>
 
-<pre><code> python3 ok &#x2d;q deep_copy &#x2d;&#x2d;local</code></pre>
+
+
+<pre><code>def deep_copy(lst):
+    &quot;&quot;&quot;Returns a new list that is a deep copy of lst.
+    &gt;&gt;&gt; x = [[0, &#x27;a&#x27;],  [1, &#x27;b&#x27;], [2, &#x27;c&#x27;]]
+    &gt;&gt;&gt; y = deep_copy(x)
+    &gt;&gt;&gt; y[0][1] = &#x27;z&#x27;
+    &gt;&gt;&gt; y
+    [[0, &#x27;z&#x27;], [1, &#x27;b&#x27;], [2, &#x27;c&#x27;]]
+    &gt;&gt;&gt; x
+    [[0, &#x27;a&#x27;], [1, &#x27;b&#x27;], [2, &#x27;c&#x27;]]
+    &gt;&gt;&gt; x = [[0, &#x27;a&#x27;],  [1, &#x27;b&#x27;], [2, &#x27;c&#x27;]]
+    &gt;&gt;&gt; z = deep_copy(x)
+    &gt;&gt;&gt; z[0][1] = &#x27;z&#x27;
+    &gt;&gt;&gt; z
+    [[0, &#x27;z&#x27;], [1, &#x27;b&#x27;], [2, &#x27;c&#x27;]]
+    &gt;&gt;&gt; x       #x should not change
+    [[0, &#x27;a&#x27;], [1, &#x27;b&#x27;], [2, &#x27;c&#x27;]]
+    &quot;&quot;&quot;
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x69;&#x73;&#x69;&#x6e;&#x73;&#x74;&#x61;&#x6e;&#x63;&#x65;&#x28;&#x65;&#x6c;&#x65;&#x6d;&#x2c;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x29;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x20;&#x64;&#x65;&#x65;&#x70;&#x5f;&#x63;&#x6f;&#x70;&#x79;&#x28;&#x65;&#x6c;&#x65;&#x6d;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x73;&#x74;&#x5d;</div></code></pre>
+
+
+    <button id='6' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q deep_copy</code></pre>
 
 <br>
 
@@ -428,7 +455,7 @@ Eve knew that she was not properly deep copying her lists. However, she could no
 figure out why this only caused problems some of the time. Let's investigate 
 further.</p></blockquote>
 
-<pre><code> python3 ok &#x2d;q case3 &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code> python3 ok &#x2d;q case3 &#x2d;u</code></pre>
 
 <p>Your final clues:</p>
 
@@ -437,9 +464,6 @@ further.</p></blockquote>
   <li>Lists contain pointers to other lists.</li>
   <li>There are no pointers to strings or numbers, the values are stored directly.</li>
 </ol>
-
-<p>Once you have solved this last case, write out an explanation for the unusual 
-behavior in Eve'e code in <code>case3_explanation</code> in lab06.py.</p>
 
 <p><strong>Congratulations, you have solved the mutation mystery!</strong></p>
 
