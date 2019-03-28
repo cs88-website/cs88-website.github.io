@@ -1,0 +1,27 @@
+{
+    "name": "Lab 9",
+    "endpoint": "cal/cs88/sp19/lab09",
+    "src": [
+        "lab09.py"
+    ],
+    "tests": {
+        "lab09.py:Cat": "doctest",
+        "lab09.py:T88ble.num_rows": "doctest",
+        "lab09.py:T88ble.num_cols": "doctest",
+        "lab09.py:T88ble.labels": "doctest",
+        "lab09.py:T88ble.column": "doctest",
+        "lab09.py:T88ble.with_column": "doctest",
+        "lab09.py:T88ble.select": "doctest",
+        "lab09.py:T88ble.sort": "doctest",
+        "lab09.py:T88ble.where": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup",
+        "scoring"
+    ]
+}

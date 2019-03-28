@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Homework 9 | CS 88 Spring 2019</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Homework 9</span></h1>
+    </div>
+
+    <p><em>Due by 9pm on Wednesday, 4/10/2019</em></p>
+
+<h2>Instructions</h2>
+
+<p>Download <a href="hw09.zip"> hw09.zip</a>.
+    Inside the archive, you will find starter files for the questions in this homework,
+    along with a copy of the OK autograder.</p>
+
+<p><strong>Submission:</strong> When you are done, submit with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be scored. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
+
+<p><strong>Readings:</strong> This homework relies on following references:</p>
+
+<ul>
+  <li><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">Section 2.5</a></li>
+</ul>
+
+    
+
+<h3 class="question" id="q1">Question 1: Account</h3>
+
+<p>There are several things wrong with the following code! Debug the <code>Account</code> class to satisfy the docstring.</p>
+
+<solution>
+
+<pre><code>class Account(object):
+    &quot;&quot;&quot;A bank account that allows deposits and withdrawals.
+
+    &gt;&gt;&gt; sophia_account = Account(&#x27;Sophia&#x27;)
+    &gt;&gt;&gt; sophia_account.deposit(1000000)   # depositing my paycheck for the week
+    1000000
+    &gt;&gt;&gt; sophia_account.transactions
+    [(&#x27;deposit&#x27;, 1000000)]
+    &gt;&gt;&gt; sophia_account.withdraw(100)      # buying dinner
+    999900
+    &gt;&gt;&gt; sophia_account.transactions
+    [(&#x27;deposit&#x27;, 1000000), (&#x27;withdraw&#x27;, 100)]
+    &quot;&quot;&quot;
+
+    interest = 0.02
+    balance = 1000
+
+    def __init__(self, account_holder):
+        self.balance = 0
+        self.holder = account_holder
+        self.transactions = []
+
+    def deposit(self, amount):
+        &quot;&quot;&quot;Increase the account balance by amount and return the
+        new balance.
+        &quot;&quot;&quot;
+        self.transactions.append((&#x27;deposit&#x27;, amount))
+        Account.balance = self.balance + amount
+        return self.balance
+
+    def withdraw(self, amount):
+        &quot;&quot;&quot;Decrease the account balance by amount and return the
+        new balance.
+        &quot;&quot;&quot;
+        self.transactions.append((&#x27;withdraw&#x27;, amount))
+        if amount &gt; self.balance:
+            return &#x27;Insufficient funds&#x27;
+        self.balance = Account.balance &#x2d; amount
+        return Account.balance</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Account</code></pre>
+
+<h3 class="question" id="q2">Question 2: Arr88</h3>
+
+<p>In lab you created the T88ble, now you will create arr88, which are similar to numpy arrays from Data 8.</p>
+
+<p>Complete the <code>__len__</code>, and <code>item</code> functions according to the docstrings.</p>
+
+<p><code>__len__</code> is a special attribute, like <code>__init__</code> that allows us to call <code>len</code> on our Arr88s to get their length!</p>
+
+<solution>
+
+<pre><code>    def __len__(self):
+        &quot;&quot;&quot; Return the length of the Arr88
+
+        &gt;&gt;&gt; arr88 = Arr88([1, 2, 3])
+        &gt;&gt;&gt; len(arr88)
+        3
+        &gt;&gt;&gt; arr88 = Arr88([1, 2, 3, 4])
+        &gt;&gt;&gt; len(arr88)
+        4
+        &quot;&quot;&quot;
+        "*** YOUR CODE HERE ***"
+        
+
+    def item(self, i):
+        &quot;&quot;&quot;
+        Get the item of the Arr88 at index i
+        &gt;&gt;&gt; arr88 = Arr88([1, 2, 3])
+        &gt;&gt;&gt; arr88.item(1)
+        2
+        &gt;&gt;&gt; arr88.item(0)
+        1
+        &quot;&quot;&quot;
+        "*** YOUR CODE HERE ***"
+        </code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Arr88.__len__</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Arr88.item</code></pre>
+
+<p>Complete the <code>__add__</code>, <code>__mul__</code>, and <code>negate</code> functions according to the docstrings.</p>
+
+<p>Keep an eye out for which functions mutate the Arr88 and which don't!</p>
+
+<p><code>__add__</code> and <code>__mul__</code> are also special attributes, like <code>__init__</code> and <code>__len__</code>, that allow us to use <code>+</code> and <code>*</code> on our Arr88s to add/multiply them componentwise!</p>
+
+<solution>
+
+<pre><code>    def __add__(self, arr88):
+        &quot;&quot;&quot; Add two Arr88s of the same length element by element
+
+        &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
+        &gt;&gt;&gt; arr88b = Arr88([4, 5, 6])
+        &gt;&gt;&gt; arr88a + arr88b
+        Arr88([5, 7, 9])
+        &gt;&gt;&gt; arr88a # We aren&#x27;t mutating arr88a
+        Arr88([1, 2, 3])
+        &gt;&gt;&gt; arr88a = Arr88([&#x27;He&#x27;, &#x27;Wor&#x27;, &#x27;!&#x27;])
+        &gt;&gt;&gt; arr88b = Arr88([&#x27;llo&#x27;, &#x27;ld&#x27;, &#x27;&#x27;])
+        &gt;&gt;&gt; arr88a + arr88b
+        Arr88([&#x27;Hello&#x27;, &#x27;World&#x27;, &#x27;!&#x27;])
+        &quot;&quot;&quot;
+        # Checks that the lengths are the same
+        assert len(self) == len(arr88), &quot;Arr88&#x27;s of different len&quot;
+        "*** YOUR CODE HERE ***"
+        
+
+    def __mul__(self, arr88):
+        &quot;&quot;&quot; Multiply two Arr88s of the same length componentwise
+
+        &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
+        &gt;&gt;&gt; arr88b = Arr88([4, 5, 6])
+        &gt;&gt;&gt; arr88a * arr88b
+        Arr88([4, 10, 18])
+        &gt;&gt;&gt; arr88a # We aren&#x27;t mutating arr88a
+        Arr88([1, 2, 3])
+        &gt;&gt;&gt; arr88a = Arr88([&#x27;Na&#x27;, &#x27;Batman&#x27;, &#x27;!&#x27;])
+        &gt;&gt;&gt; arr88b = Arr88([10, 1, 5])
+        &gt;&gt;&gt; arr88a * arr88b
+        Arr88([&#x27;NaNaNaNaNaNaNaNaNaNa&#x27;, &#x27;Batman&#x27;, &#x27;!!!!!&#x27;])
+        &quot;&quot;&quot;
+        # Checks that the lengths are the same
+        assert len(self) == len(arr88), &quot;Arr88&#x27;s of different len&quot;
+        "*** YOUR CODE HERE ***"
+        
+
+    def negate(self):
+        &quot;&quot;&quot;Negate an Arr88 with mutation
+
+        &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
+        &gt;&gt;&gt; arr88b = Arr88([4.0, &#x2d;5.5, 0.0])
+        &gt;&gt;&gt; arr88a.negate()
+        &gt;&gt;&gt; arr88a
+        Arr88([&#x2d;1, &#x2d;2, &#x2d;3])
+        &gt;&gt;&gt; arr88b.negate()
+        &gt;&gt;&gt; arr88b
+        Arr88([&#x2d;4.0, 5.5, &#x2d;0.0])
+        &quot;&quot;&quot;
+        "*** YOUR CODE HERE ***"
+        </code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Arr88.__add__</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Arr88.__mul__</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Arr88.negate</code></pre>
+
+<p>Complete the <code>apply</code> function that returns a new list with the function applied to every element.</p>
+
+<solution>
+
+<pre><code>    def apply(self, func):
+        &quot;&quot;&quot; Apply a function to an Arr88
+
+        &gt;&gt;&gt; arr88a = Arr88([1, 2, 3])
+        &gt;&gt;&gt; arr88a.apply(lambda x : x * x)
+        Arr88([1, 4, 9])
+        &gt;&gt;&gt; arr88a # We aren&#x27;t mutating arr88a
+        Arr88([1, 2, 3])
+        &gt;&gt;&gt; arr88b = Arr88([lambda x: x, lambda x: x + 1, lambda x: x + 2])
+        &gt;&gt;&gt; arr88b.apply(lambda f: f(1))
+        Arr88([1, 2, 3])
+        &quot;&quot;&quot;
+        "*** YOUR CODE HERE ***"
+        </code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Arr88.apply</code></pre>
+
+<h3 class="question" id="q3">Question 3: Checking account</h3>
+
+<p>We'd like to be able to cash checks, so let's add a <code>deposit_check</code>
+method to our <code>CheckingAccount</code> class. It will take a <code>Check</code> object
+as an argument, and check to see if the <code>payable_to</code> attribute matches
+the <code>CheckingAccount</code>'s holder. If so, it marks the <code>Check</code> as
+deposited, and adds the amount specified to the <code>CheckingAccount</code>'s
+total.</p>
+
+<p>Write an appropriate <code>Check</code> class, and add the <code>deposit_check</code> method
+to the <code>CheckingAccount</code> class. Make sure not to copy and paste code!
+Use inheritance whenever possible.</p>
+
+<p>See the doctests for examples of how this code should work.</p>
+
+<solution>
+
+<pre><code>class CheckingAccount(Account):
+    &quot;&quot;&quot;A bank account that charges for withdrawals.
+
+    &gt;&gt;&gt; check = Check(&quot;Steven&quot;, 42)  # 42 dollars, payable to Steven
+    &gt;&gt;&gt; steven_account = CheckingAccount(&quot;Steven&quot;)
+    &gt;&gt;&gt; eric_account = CheckingAccount(&quot;Eric&quot;)
+    &gt;&gt;&gt; eric_account.deposit_check(check)  # trying to steal steven&#x27;s money
+    The police have been notified.
+    &gt;&gt;&gt; eric_account.balance
+    0
+    &gt;&gt;&gt; check.deposited
+    False
+    &gt;&gt;&gt; steven_account.balance
+    0
+    &gt;&gt;&gt; steven_account.deposit_check(check)
+    42
+    &gt;&gt;&gt; check.deposited
+    True
+    &gt;&gt;&gt; steven_account.deposit_check(check)  # can&#x27;t cash check twice
+    The police have been notified.
+    &quot;&quot;&quot;
+    withdraw_fee = 1
+    interest = 0.01
+
+    def withdraw(self, amount):
+        return Account.withdraw(self, amount + self.withdraw_fee)
+
+
+
+class Check(object):
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q CheckingAccount</code></pre>
+
+<h3 class="question" id="q4">Question 4: Vending Machine</h3>
+
+<p>Create a class called <code>VendingMachine</code> that represents a vending
+machine for some product. A <code>VendingMachine</code> object returns strings
+describing its interactions.  See the doctest below for examples:</p>
+
+<p>Here's a quick explanation of some of the functions you need to implement.</p>
+
+<p><code>restock</code> should update the stock and return the current stock.</p>
+
+<p><code>deposit</code> should add money to the balance and return the current balance, unless the stock is zero, then it should inform the user the stock is zero and return the money.</p>
+
+<p><code>vend</code> should either tell you how much more money needs to be deposited to buy a product, or sell you a product and return the change, or let you know the machine is out of stock.</p>
+
+<solution>
+
+<pre><code>class VendingMachine:
+    &quot;&quot;&quot;A vending machine that vends some product for some price.
+
+    &gt;&gt;&gt; v = VendingMachine(&#x27;candy&#x27;, 10)
+    &gt;&gt;&gt; v.vend()
+    &#x27;Machine is out of stock.&#x27;
+    &gt;&gt;&gt; v.restock(2)
+    &#x27;Current candy stock: 2&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;You must deposit $10 more.&#x27;
+    &gt;&gt;&gt; v.deposit(7)
+    &#x27;Current balance: $7&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;You must deposit $3 more.&#x27;
+    &gt;&gt;&gt; v.deposit(5)
+    &#x27;Current balance: $12&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;Here is your candy and $2 change.&#x27;
+    &gt;&gt;&gt; v.deposit(10)
+    &#x27;Current balance: $10&#x27;
+    &gt;&gt;&gt; v.vend()
+    &#x27;Here is your candy.&#x27;
+    &gt;&gt;&gt; v.deposit(15)
+    &#x27;Machine is out of stock. Here is your $15.&#x27;
+    &quot;&quot;&quot;
+    def __init__(self, product, price):
+        self.product = product
+        self.price = price
+        self.stock = 0
+        self.balance = 0
+
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q VendingMachine</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#q1">Question 1: Account</a></li>
+  <li><a href="#q2">Question 2: Arr88</a></li>
+  <li><a href="#q3">Question 3: Checking account</a></li>
+  <li><a href="#q4">Question 4: Vending Machine</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+</html>

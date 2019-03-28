@@ -1,0 +1,27 @@
+{
+    "name": "Homework 9",
+    "endpoint": "cal/cs88/sp19/hw09",
+    "src": [
+        "hw09.py"
+    ],
+    "tests": {
+        "hw09.py:Account": "doctest",
+        "hw09.py:Arr88.__len__": "doctest",
+        "hw09.py:Arr88.item": "doctest",
+        "hw09.py:Arr88.__add__": "doctest",
+        "hw09.py:Arr88.__mul__": "doctest",
+        "hw09.py:Arr88.negate": "doctest",
+        "hw09.py:Arr88.apply": "doctest",
+        "hw09.py:CheckingAccount": "doctest",
+        "hw09.py:VendingMachine": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup"
+    ]
+
+}
+
