@@ -155,21 +155,25 @@ they create the correct messages when called.</p>
   <li>The <code>SyntaxError</code> and <code>ZeroDivisionError</code> classes inherit from the <code>Error</code> class and add functionality that is unique to those particular errors. Their code is partially implemented for you.</li>
   <li>The <code>add_code</code> method adds a new helpful message to your error, while the <code>write</code> method should print the output that you see when an error is raised.</li>
   <li>When used in a string, <code>/n</code> will signal the start of a new line.</li>
+  <li>You can access the parent class methods using the <a href="https://docs.python.org/3/library/functions.html#super">super()</a> function</li>
 </ul>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q Errors</code></pre>
+<solution>
 
 <pre><code>class Error:
     &quot;&quot;&quot;
     &gt;&gt;&gt; err1 = Error(12, &quot;error.py&quot;)
     &gt;&gt;&gt; err1.write()
-    &#x27;Traceback (most recent call last):     \\n    error.py line 12\\n&#x27;
+    Traceback (most recent call last):
+        error.py line 12
+
     &quot;&quot;&quot;
     def __init__(self, line, file):
         "*** YOUR CODE HERE ***"
+
     def write(self):
-        trace = &#x27;Traceback (most recent call last):     \n &#x27;
-        return trace + &#x27;   &#x27; + self.file + &#x27; line &#x27; + str(self.line) + &#x27;\n&#x27;
+        trace = &#x27;Traceback (most recent call last):\n &#x27;
+        print(trace + &#x27;   &#x27; + self.file + &#x27; line &#x27; + str(self.line))
 
 class SyntaxError(Error):
     &quot;&quot;&quot;
@@ -194,7 +198,7 @@ class SyntaxError(Error):
 
     def write(self):
         "*** YOUR CODE HERE ***"
-        print(trace + &#x27;    &#x27; + self.type + &#x27; : &#x27; + self.message)
+        print(&#x27;    &#x27; + self.type + &#x27; : &#x27; + self.message)
 
     def add_code(self, code, msg):
         "*** YOUR CODE HERE ***"
@@ -213,8 +217,15 @@ class ZeroDivisionError(Error):
         "*** YOUR CODE HERE ***"
 
     def write(self):
-        trace = Error.write(self)
-        print(trace + &#x27;    &#x27; + self.type + &#x27; : &#x27; + self.message)</code></pre>
+        "*** YOUR CODE HERE ***"
+        print(&#x27;    &#x27; + self.type + &#x27; : &#x27; + self.message)</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Error</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q SyntaxError</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q ZeroDivisionError</code></pre>
+
 
   </div>
 

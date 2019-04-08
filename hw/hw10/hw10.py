@@ -45,13 +45,16 @@ class Error:
     """
     >>> err1 = Error(12, "error.py")
     >>> err1.write()
-    'Traceback (most recent call last):     \\n    error.py line 12\\n'
+    Traceback (most recent call last):
+        error.py line 12
+
     """
     def __init__(self, line, file):
         "*** YOUR CODE HERE ***"
+
     def write(self):
-        trace = 'Traceback (most recent call last):     \n '
-        return trace + '   ' + self.file + ' line ' + str(self.line) + '\n'
+        trace = 'Traceback (most recent call last):\n '
+        print(trace + '   ' + self.file + ' line ' + str(self.line))
 
 class SyntaxError(Error):
     """
@@ -76,7 +79,7 @@ class SyntaxError(Error):
 
     def write(self):
         "*** YOUR CODE HERE ***"
-        print(trace + '    ' + self.type + ' : ' + self.message)
+        print('    ' + self.type + ' : ' + self.message)
 
     def add_code(self, code, msg):
         "*** YOUR CODE HERE ***"
@@ -95,6 +98,6 @@ class ZeroDivisionError(Error):
         "*** YOUR CODE HERE ***"
 
     def write(self):
-        trace = Error.write(self)
-        print(trace + '    ' + self.type + ' : ' + self.message)
+        "*** YOUR CODE HERE ***"
+        print('    ' + self.type + ' : ' + self.message)
 
