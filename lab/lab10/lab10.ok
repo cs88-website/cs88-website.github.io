@@ -1,0 +1,23 @@
+{
+    "name": "Lab 10",
+    "endpoint": "cal/cs88/sp19/lab10",
+    "src": [
+        "lab10.py"
+    ],
+    "tests": {
+        "lab10.py:avoid_keyerror": "doctest",
+        "lab10.py:safe_sum": "doctest",
+        "lab10.py:Beater.energy": "doctest",
+        "lab10.py:Chaser.energy": "doctest",
+        "lab10.py:Seeker.energy": "doctest",
+        "lab10.py:Keeper.energy": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
