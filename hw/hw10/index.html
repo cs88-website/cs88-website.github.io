@@ -154,7 +154,6 @@ they create the correct messages when called.</p>
 <ul>
   <li>The <code>SyntaxError</code> and <code>ZeroDivisionError</code> classes inherit from the <code>Error</code> class and add functionality that is unique to those particular errors. Their code is partially implemented for you.</li>
   <li>The <code>add_code</code> method adds a new helpful message to your error, while the <code>write</code> method should print the output that you see when an error is raised.</li>
-  <li>When used in a string, <code>/n</code> will signal the start of a new line.</li>
   <li>You can access the parent class methods using the <a href="https://docs.python.org/3/library/functions.html#super">super()</a> function</li>
 </ul>
 
@@ -164,30 +163,24 @@ they create the correct messages when called.</p>
     &quot;&quot;&quot;
     &gt;&gt;&gt; err1 = Error(12, &quot;error.py&quot;)
     &gt;&gt;&gt; err1.write()
-    Traceback (most recent call last):
-        error.py line 12
+    &#x27;error.py:12&#x27;
 
     &quot;&quot;&quot;
     def __init__(self, line, file):
         "*** YOUR CODE HERE ***"
 
     def write(self):
-        trace = &#x27;Traceback (most recent call last):\n &#x27;
-        print(trace + &#x27;   &#x27; + self.file + &#x27; line &#x27; + str(self.line))
+        return self.file + &#x27;:&#x27; + str(self.line)
 
 class SyntaxError(Error):
     &quot;&quot;&quot;
     &gt;&gt;&gt; err1 = SyntaxError(17, &quot;HW10.py&quot;)
     &gt;&gt;&gt; err1.write()
-    Traceback (most recent call last):
-        HW10.py line 17
-        SyntaxError : Invalid syntax
+    HW10.py:17 SyntaxError : Invalid syntax
     &gt;&gt;&gt; err1.add_code(4, &quot;EOL while scanning string literal&quot;)
     &gt;&gt;&gt; err2 = SyntaxError(18, &quot;HW10.py&quot;, 4)
     &gt;&gt;&gt; err2.write()
-    Traceback (most recent call last):
-        HW10.py line 18
-        SyntaxError : EOL while scanning string literal
+    HW10.py:18 SyntaxError : EOL while scanning string literal
 
     &quot;&quot;&quot;
     type = &#x27;SyntaxError&#x27;
@@ -197,8 +190,8 @@ class SyntaxError(Error):
         "*** YOUR CODE HERE ***"
 
     def write(self):
+        end = self.type + &#x27; : &#x27; + self.message
         "*** YOUR CODE HERE ***"
-        print(&#x27;    &#x27; + self.type + &#x27; : &#x27; + self.message)
 
     def add_code(self, code, msg):
         "*** YOUR CODE HERE ***"
@@ -207,9 +200,7 @@ class ZeroDivisionError(Error):
     &quot;&quot;&quot;
     &gt;&gt;&gt; err1 = ZeroDivisionError(273, &quot;HW10.py&quot;)
     &gt;&gt;&gt; err1.write()
-    Traceback (most recent call last):
-        HW10.py line 273
-        ZeroDivisionError : division by zero
+    HW10.py:273 ZeroDivisionError : division by zero
     &quot;&quot;&quot;
     type = &#x27;ZeroDivisionError&#x27;
 
@@ -217,8 +208,8 @@ class ZeroDivisionError(Error):
         "*** YOUR CODE HERE ***"
 
     def write(self):
-        "*** YOUR CODE HERE ***"
-        print(&#x27;    &#x27; + self.type + &#x27; : &#x27; + self.message)</code></pre>
+        end = self.type + &#x27; : &#x27; + self.message
+        "*** YOUR CODE HERE ***"</code></pre>
 
 </solution>
 

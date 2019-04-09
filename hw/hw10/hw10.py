@@ -41,34 +41,29 @@ class Person(object):
 #### Errors ####  
 ##############
 
+
 class Error:
     """
     >>> err1 = Error(12, "error.py")
     >>> err1.write()
-    Traceback (most recent call last):
-        error.py line 12
+    'error.py:12'
 
     """
     def __init__(self, line, file):
         "*** YOUR CODE HERE ***"
 
     def write(self):
-        trace = 'Traceback (most recent call last):\n '
-        print(trace + '   ' + self.file + ' line ' + str(self.line))
+        return self.file + ':' + str(self.line)
 
 class SyntaxError(Error):
     """
     >>> err1 = SyntaxError(17, "HW10.py")
     >>> err1.write()
-    Traceback (most recent call last):
-        HW10.py line 17
-        SyntaxError : Invalid syntax
+    HW10.py:17 SyntaxError : Invalid syntax
     >>> err1.add_code(4, "EOL while scanning string literal")
     >>> err2 = SyntaxError(18, "HW10.py", 4)
     >>> err2.write()
-    Traceback (most recent call last):
-        HW10.py line 18
-        SyntaxError : EOL while scanning string literal
+    HW10.py:18 SyntaxError : EOL while scanning string literal
 
     """
     type = 'SyntaxError'
@@ -78,8 +73,8 @@ class SyntaxError(Error):
         "*** YOUR CODE HERE ***"
 
     def write(self):
+        end = self.type + ' : ' + self.message
         "*** YOUR CODE HERE ***"
-        print('    ' + self.type + ' : ' + self.message)
 
     def add_code(self, code, msg):
         "*** YOUR CODE HERE ***"
@@ -88,9 +83,7 @@ class ZeroDivisionError(Error):
     """
     >>> err1 = ZeroDivisionError(273, "HW10.py")
     >>> err1.write()
-    Traceback (most recent call last):
-        HW10.py line 273
-        ZeroDivisionError : division by zero
+    HW10.py:273 ZeroDivisionError : division by zero
     """
     type = 'ZeroDivisionError'
 
@@ -98,6 +91,6 @@ class ZeroDivisionError(Error):
         "*** YOUR CODE HERE ***"
 
     def write(self):
+        end = self.type + ' : ' + self.message
         "*** YOUR CODE HERE ***"
-        print('    ' + self.type + ' : ' + self.message)
 
