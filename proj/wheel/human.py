@@ -13,5 +13,3 @@ def human_plays():
 
 if __name__ == "__main__":
     human_plays()
-
-

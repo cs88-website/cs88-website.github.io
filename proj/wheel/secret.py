@@ -39,7 +39,7 @@ class SecretWord:
         return "<secret word>"
 
     def match(self, char):
-        """Return a list of the indices of char in the secret word."""
+        """Return a list of the indices where char appears in the secret word."""
         # BEGIN Question 1
         "*** REPLACE THIS LINE ***"
         # END Question 1

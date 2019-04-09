@@ -1,6 +1,7 @@
 """Player classes for Wheel of Fortune game."""
 
 from wordset import WordMunch
+from wordset import Dictionary
 from utils import *
 import random
 
@@ -8,20 +9,18 @@ class Player:
     """Player base class.  Defines initializer and interface.
 
     >>> from wordset import Dictionary
-    >>> p = Player(Dictionary('assets/lincoln.txt'))
-    >>> Player.all_words[2]
+    >>> p = Player("Fred", Dictionary('assets/lincoln.txt'))
+    >>> p.possible_words[2]
     'add'
     """
-    all_words = None
-
-    def __init__(self, dictionary):
-        """Inialize class with a dictionary."""
+    def __init__(self, name, dictionary=Dictionary('assets/lincoln.txt')):
+        """Inialize the class with a dictionary of words the player can guess from."""
         # BEGIN
         "*** REPLACE THIS LINE ***"
         # END
 
     def guess(self, board):
-        """Return a character a a guess."""
+        """Guesses a character and returns it."""
         return None
 
     def pick_word(self):
@@ -36,27 +35,28 @@ class DummyPlayer(Player):
         self.calls = -1
 
     def guess(self, board):
-        """Return a character a a guess."""
+        """Return the guesses [c,f,e,o,r,s]."""
         self.calls += 1
         return "cfeors"[self.calls]
 
     def pick_word(self):
-        """Return a word that is to be guessed."""
+        """Sets the dummy word as `score` and returns it."""
         return 'score'
 
 
 class HumanPlayer(Player):
-    """HumanPlayer is initialized with a name and implements the player interface
+    """
+    HumanPlayer is initialized with a name and implements the player interface
     such that:
     - guess requests a guess from a person, via the input device
     - pick_word requests a secret word and verifies that it is in the dictionary
-
     """
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, dict=Dictionary('assets/lincoln.txt'), name='Human'):
+        """Creates a player with the name and word set"""
+        super().__init__(name, dict)
 
     def guess(self, board):
-        """Guess a character."""
+        """Asks the user to guess a character updates the board accordingly."""
 
         print(self.name, ", please enter your next guess.")
         guess = input()
@@ -66,35 +66,78 @@ class HumanPlayer(Player):
         return guess
 
     def pick_word(self):
-        """Return a secret word from the dictionary."""
-
+        """
+        Requests a word from user to use as a secret words.
+        Only allows words from the dictionary.
+        """
         print(self.name,", pick your secret word.")
         word = input()
-        while not word in Player.all_words:
+        while not word in self.possible_words:
             print(word, " is not in the dictionary. Another:")
             word = input()
         return word
 
 class ComputerPlayer(Player):
-    """Perform as a player - picking a word or guessing a character
+    """
+    Perform as a player - picking a word or guessing a character
 
-    >>> from wordset import WordSet    # Basic test including total character frequency
+    >>> from wordset import WordSet
     >>> from board import Board
     >>> from secret import SecretWord
-    >>> p = Player(WordSet(['one','two','three']))   # Player superclass with the dictionary
-    >>> c = ComputerPlayer()
-    >>> b = Board(SecretWord('three'))
-    >>> c.guess(b)
+    >>> c0 = ComputerPlayer(WordSet(['three', 'toooooo', 'ellen']))
+    >>> c1 = ComputerPlayer(WordSet(['three', 'toooooo', 'ellen']), 1)
+    >>> c2 = ComputerPlayer(WordSet(['three', 'toooooo', 'ellen']), 2)
+    >>> b0 = Board(SecretWord('three'))
+    >>> b1 = Board(SecretWord('three'))
+    >>> b2 = Board(SecretWord('three'))
+    >>> c0.guess(b0) # Case 1.1
+    'o'
+    >>> b0.guess(c0.guess(b0)) # Case 1.1
+    0
+    >>> c0.guess(b0) # Case 1.2
     'e'
+    >>> b0.guess(c0.guess(b0)) # Case 1.2
+    2
+    >>> c0.guess(b0) # Case 1.3
+    'l'
+    >>> b0.guess(c0.guess(b0)) # Case 1.3
+    0
+    >>> c1.guess(b1) # Case 2.1
+    'e'
+    >>> b1.guess(c1.guess(b1)) # Case 2.1
+    2
+    >>> c1.guess(b1) # Case 2.2
+    'l'
+    >>> b1.guess(c1.guess(b1)) # Case 2.2
+    0
+    >>> c1.guess(b1) # Case 2.3
+    'h'
+    >>> b1.guess(c1.guess(b1)) # Case 2.3
+    1
+    >>> c2.guess(b2) # Case 3.1
+    'e'
+    >>> b2.guess(c2.guess(b2)) # Case 3.1
+    2
+    >>> c2.guess(b2) # Case 3.2
+    'h'
+    >>> b2.guess(c2.guess(b2)) # Case 3.2
+    1
+    >>> c2.guess(b2) # Case 3.3
+    'r'
+    >>> b2.guess(c2.guess(b2)) # Case 3.3
+    1
     """
-    def __init__(self, name='Computer'):
+    def __init__(self, dict=Dictionary('assets/lincoln.txt'), skill=0, name='Computer'):
+        """Creates a player with the name, dict, and skill level"""
         # BEGIN
         "*** REPLACE THIS LINE ***"
         # END
 
-    def guess(self, board, verbose=False):
-        """Guess a character to play based on the current board.
-        verbose option allows useful and fun displays.
+    def guess(self, board):
+        """
+        Guess a character to play based on the current board
+        Uses different strategies based on the players skill level
+        Break ties alphabetically, key_of_max does this automatically:)
         """
         # BEGIN
         "*** REPLACE THIS LINE ***"

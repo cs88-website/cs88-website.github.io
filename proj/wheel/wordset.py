@@ -1,6 +1,5 @@
 from utils import lowercase, key_of_max
 import string
-from collections import OrderedDict    # Variant of dict that you might want to learn about
 
 #
 # WordSet class
@@ -79,7 +78,7 @@ class WordMunch(WordSet):
         # END
 
     def frequency(self):
-        """Return an ordered dictionary of the frequency of each letter in the word set."""
+        """Return a dictionary of the frequency of each letter in the word set."""
         # BEGIN
         "*** REPLACE THIS LINE ***"
         # END
