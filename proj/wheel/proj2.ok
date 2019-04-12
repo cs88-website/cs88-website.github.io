@@ -1,13 +1,14 @@
 {
   "name": "Project 2: Wheel of Fortune",
-  "endpoint": "cal/cs88/fa18/proj2",
+  "endpoint": "cal/cs88/sp19/proj2",
   "src": [
     "utils.py",
     "secret.py",
     "wordset.py",
     "board.py",
     "player.py",
-    "game.py"
+    "game.py",
+    "computerTest.py"
   ],
   "tests": {
     "tests/0[1-6].py": "ok_test",
@@ -19,7 +20,8 @@
     "board.py:Board": "doctest",
     "player.py:Player": "doctest",
     "player.py:ComputerPlayer": "doctest",
-    "game.py:Game": "doctest"
+    "game.py:Game": "doctest",
+    "computerTest.py:computer_plays": "doctest"
   },
   "protocols": [
       "restore",

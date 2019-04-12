@@ -16,7 +16,7 @@ class Player:
     def __init__(self, name, dictionary=Dictionary('assets/lincoln.txt')):
         """Inialize the class with a dictionary of words the player can guess from."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def guess(self, board):
@@ -130,7 +130,7 @@ class ComputerPlayer(Player):
     def __init__(self, dict=Dictionary('assets/lincoln.txt'), skill=0, name='Computer'):
         """Creates a player with the name, dict, and skill level"""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def guess(self, board):
@@ -140,11 +140,11 @@ class ComputerPlayer(Player):
         Break ties alphabetically, key_of_max does this automatically:)
         """
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def pick_word(self):
         """Pick a random word from the dictionary."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END

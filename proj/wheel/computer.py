@@ -3,10 +3,8 @@ from player import Player, ComputerPlayer, HumanPlayer
 from game import Game
 
 def computer_plays():
-    dictionary = Dictionary("assets/lincoln.txt")
-    Player(dictionary)
-    picker = HumanPlayer("you")
-    guesser = ComputerPlayer("AI thing")
+    picker = HumanPlayer(name="you")
+    guesser = ComputerPlayer(name="AI thing")
     game = Game(picker, [guesser] )
     board =  game.play(True)
     print("Solved ", board.word()," in ",len(board.guesses()), "guesses")

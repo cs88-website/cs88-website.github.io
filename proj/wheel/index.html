@@ -86,13 +86,13 @@
     <h2>Introduction</h2>
 
 
-<p>In this project, you will create a retro-text version of the classic game show, <a href="https://en.wikipedia.org/wiki/Wheel_of_Fortune_(U.S._game_show)">Wheel of Fortune</a>, which is a spin on the traditional word-guessing game.</p>
+<p>In this project, you will create a retro-text version of the classic game show, <a href="https://en.wikipedia.org/wiki/Wheel_of_Fortune_">Wheel of Fortune</a>, which is a spin on the traditional word-guessing game.</p>
 
 <p>The project combines functional and object-oriented programming paradigms,
 focusing on the material from <a href="http://composingprograms.com/pages/25-object-oriented-programming.html">Chapter 2.5</a> of Composing Programs. The
 project also involves understanding, extending, and testing a large program.</p>
 
-<p>The <a href="wheel.zip">wheel.zip</a> archive contains several files.  Your
+<p>The <a href="wheel.zip">wheel.zip</a> archive contains several files. Your
 changes will be made to:</p>
 
 <ul>
@@ -117,11 +117,24 @@ project is worth 18 points.</p> -->
 
 <p>In the end, you will submit one project for both partners. The
 project is worth 20 points. 18 points are
-assigned for correctness, and 2 points for the overall <a
-  href="../../articles/composition.html">composition</a> of your program.</p>
+assigned based on correctness for your final submission, and 2 points are for the mid-project checkpoint.</p>
 
 <p>You will turn in the following files:</p>
 
+
+
+
+<h2 id="project-submission">Project Submission</h2>
+
+
+<ul>
+  <li><code>board.py</code></li>
+  <li><code>game.py</code></li>
+  <li><code>player.py</code></li>
+  <li><code>secret.py</code></li>
+  <li><code>wordset.py</code></li>
+  <li><code>computerTest.py</code></li>
+</ul>
 
 
 <p>You do not need to modify or turn in any other files to complete the
@@ -146,13 +159,15 @@ arguments).</p>
 
 <p>Make sure you have added your partner on OK before submitting the project.</p>
 
-<p><strong>The assignment is due on Wednesday, 05/01, at 9pm. We will have a mid-project checkpoint due on Friday, 04/19.</strong></p>
+<p><strong>The assignment is due on Wednesday, 05/01, at 9pm. We will have a mid-project checkpoint due on Friday, 04/19 which is worth 1 point.</strong></p>
 
 <ul>
-  <li>Part 1: Problems 0-2 are due on Friday, 04/19, at 9pm. Submit to okpy using python3 ok &mdash;submit.</li>
-  <li>The entire project (including Part 1) is due on Wednesday, 5/01, at 9pm. Submit to okpy using python3 ok &mdash;submit.
-  <strong>Extra Credit Opportunity:</strong> If you submit the entire project by Thursday, 11/15, you can earn one point of EC towards your project grade.</li>
+  <li>Complete Part 1: Problems 0-2 by Friday, 04/19, at 9pm for the mid-project checkpoint. Submit to okpy using <code>python3 ok &#x2d;&#x2d;submit</code></li>
+  <li>The entire project (including Part 1) is due on Wednesday, 5/01, at 9pm. Submit to okpy using <code>python3 ok &#x2d;&#x2d;submit</code></li>
 </ul>
+
+<p><strong>Extra Credit Opportunity:</strong> If you submit the entire project by Friday, 4/26, you can earn one point of EC towards your project grade.</p>
+
 
 
 <h2>Testing</h2>
@@ -225,13 +240,13 @@ will need to start unlocking from scratch.</p>
 
 
 <p>This project will give you a chance to work with classes as a means of
-composing large software out of well-designed components.  You get to build
+composing large software out of well-designed components. You get to build
 a computerized version of the popular American game show <em>Wheel of Fortune</em> using object oriented
-programming.  Although the whole project is not very large, we want to give
-you the feeling of working with classes at the larger scale.  The game
-is built from a collection of classes partitioned into several files.  The
+programming. Although the whole project is not very large, we want to give
+you the feeling of working with classes at the larger scale. The game
+is built from a collection of classes partitioned into several files. The
 idea is that you should not be looking inside a class when writing code
-that uses it.  You should only pay attention to the interface, i.e., the attributes
+that uses it. You should only pay attention to the interface, i.e., the attributes
 and methods defined on objects of the class and, to a lesser degree,
 the attributes and methods on the class itself.</p>
 
@@ -257,8 +272,8 @@ w
 &gt;&gt;&gt;</code></pre>
 
 <p>Of course, why should it be played that way? You might want to pick the word
-and have the computer do the guessing.  Ah, that would require some Data 8
-thinking.  What letter would be most likely to appear in the word, given all
+and have the computer do the guessing. Ah, that would require some Data 8
+thinking. What letter would be most likely to appear in the word, given all
 that you know so far?</p>
 
 <pre><code>&gt;&gt;&gt; inhuman()
@@ -336,6 +351,7 @@ Computer guesses:  o
 <p>And why should we settle for just a two-player game? Let's get all <em>Wheel of Fortune</em>
 and allow multiple guessers.</p>
 
+
 <h2 id="the-code">The Code</h2>
 
 
@@ -358,7 +374,7 @@ def human_plays():
     dictionary = Dictionary(&quot;assets/lincoln.txt&quot;)
     Player(dictionary)
     picker = ComputerPlayer()
-    guesser = HumanPlayer(&quot;guesser&quot;)
+    guesser = HumanPlayer(name=&quot;guesser&quot;)
     game = Game(picker, [guesser] )
     board =  game.play(True)
     print(&quot;Solved &quot;, board.word(),&quot; in &quot;,len(board.guesses()), &quot;guesses&quot;)
@@ -370,22 +386,22 @@ if __name__ == &quot;__main__&quot;:
 the words in it to build a set of words to be used for the game. (Here we are using
 Lincoln's Gettysburg address.)</p>
 
-<p><code>Player</code> is a base player class defines the interface used by all type of players.  In constructing it,
+<p><code>Player</code> is a base player class defines the interface used by all type of players. In constructing it,
 a common dictionary is made available to all the player objects that may be involved
 in the game. Two player classes are derived from <code>Player</code>; they are <code>HumanPlayer</code> and
-<code>ComputerPlayer</code>.  We will look at these in more detail below.  One player <em>picks</em> the
-word.  The other player (or players) take turns guessing.  Here, like a conventional computer
+<code>ComputerPlayer</code>. We will look at these in more detail below. One player <em>picks</em> the
+word. The other player (or players) take turns guessing. Here, like a conventional computer
 game, the <code>ComputerPlayer</code> object picks the word and the <code>HumanPlayer</code> object guesses - by
 allowing you to type to it.</p>
 
-<p>We build a <code>Game</code> with these players.  We then let the <code>Game.play</code> method
+<p>We build a <code>Game</code> with these players. We then let the <code>Game.play</code> method
 carryout the whole process - ask the <em>picker</em> player for the secret word, hide that, create
 a <code>Board</code>, cycle through the <em>guessers</em> letting them guess until they miss.</p>
 
 <p>When the game is all done, the <code>board</code> object is returned, conveying
 the entire history of play.</p>
 
-<p>These classes are defined in several small files.  We briefly describe the classes here.
+<p>These classes are defined in several small files. We briefly describe the classes here.
 You will implement most of them, testing as you go.</p>
 
 <p>To start a human player version of text-based game, run</p>
@@ -401,16 +417,16 @@ Problem 4.</p>
 
 
 <p>The <code>SecretWord</code> class represents the secret word that the picker has
-in mind and the guesser(s) need to guess.  It is implemented in <code>secret.py</code>.  It has four
-special methods and <code>match</code>.  Collectively, these provide the
-abstraction of hiding a secret word.  An object is constructed with
-the word hidden inside.  (You'll need to use an attribute for that.)
+in mind and the guesser(s) need to guess. It is implemented in <code>secret.py</code>. It has four
+special methods and <code>match</code>. Collectively, these provide the
+abstraction of hiding a secret word. An object is constructed with
+the word hidden inside. (You'll need to use an attribute for that.)
 The <code>__repr__</code> and <code>__str__</code> special methods are written for you (to
 suggest that the word is secret). The object can be asked for the
 length of the secret word (<code>len</code> of the object) and <code>match</code> can be
 given a character which it matches against the secret word and returns
-a list of indices of characters that match.  Notice that the doctest
-is on the class.  It shows how the methods work together. It does nor
+a list of indices of characters that match. Notice that the doctest
+is on the class. It shows how the methods work together. It does nor
 reveal the object attributes that might be used, nor the
 representation.</p>
 
@@ -419,18 +435,18 @@ representation.</p>
 
 
 <p>The <code>WordSet</code> class represents what the players keep in their heads - a bunch of words.
-It is implemented in the file <code>wordset.py</code>.  A WordSet is constructed
+It is implemented in the file <code>wordset.py</code>. A WordSet is constructed
 by providing it a text string or a list of words. In the first case, it splits the string
-into words.  In either case, it strips out the punctuation (take a look at <a href="https://docs.python.org/3.1/library/string.html"><code>string.punctuation</code></a> for a hint) and converts the word to lowercase.  (A function is provided in
+into words. In either case, it strips out the punctuation (take a look at <a href="https://docs.python.org/3.1/library/string.html"><code>string.punctuation</code></a> for a hint) and converts the word to lowercase. (A function is provided in
 <code>utils.py</code> to help with that.) Each word should appear only once in the <code>WordSet</code>, i.e.,
 eliminate the duplicates.</p>
 
 <p>The <code>words</code> method returns a sorted list of the words in the WordSet.
 This does not mean that they are represented internally as a sorted
-list, but that is certainly one option.  The <code>__contains__</code> special
-method tests whether a word is in the <code>WordSet</code>.  This allows the <code>in</code>
+list, but that is certainly one option. The <code>__contains__</code> special
+method tests whether a word is in the <code>WordSet</code>. This allows the <code>in</code>
 operator to be used in expressions with a <code>WordSet</code> as shown in the
-doctest.  You are to implement the three methods.  You can use
+doctest. You are to implement the three methods. You can use
 whatever data structure you like to store the words, but you might
 want to look at <code>set</code>.</p>
 
@@ -439,9 +455,9 @@ want to look at <code>set</code>.</p>
 
 
 <p>The <code>Dictionary</code> class represents the set of words that is being used
-in the game.  Only words in the dictionary can be picked.  It is also
-in <code>wordset.py</code>.  It inherits from <code>WordSet</code> but redefines the
-<code>__init__</code> method to obtain the words from a file.  We have
+in the game. Only words in the dictionary can be picked. It is also
+in <code>wordset.py</code>. It inherits from <code>WordSet</code> but redefines the
+<code>__init__</code> method to obtain the words from a file. We have
 implemented this for you in order to show the preferred method of
 opening and reading a tile.</p>
 
@@ -471,15 +487,15 @@ class.</p>
 <p>The <code>Board</code> class represents the board that holds the state of the game.
 Logically, it holds the sequence of spaces that represent the characters that have
 been guessed so far. It also keeps track of all the characters that have been
-guess so far.  When it is created it is provided with a <code>SecretWord</code> object that
-encapsulates the secret word.  It never peeks inside, but it holds on to it.
+guess so far. When it is created it is provided with a <code>SecretWord</code> object that
+encapsulates the secret word. It never peeks inside, but it holds on to it.
 The <code>Board</code> object provides a set of methods that allow players to get information
 about the board - the length of the word that is being guessed, the list of characters
 that have been guessed so far, with the unguessed positions represented by <code>&#x27;_&#x27;</code>,
 the guesses, hits, and misses so far.</p>
 
-<p>It also has methods that are used to play on the board.  The <code>guess</code> method is the
-main operation that moves the game forward.  When a player guesses a character, it
+<p>It also has methods that are used to play on the board. The <code>guess</code> method is the
+main operation that moves the game forward. When a player guesses a character, it
 is applied to the board using this method. The <code>done</code> method determines if the entire
 word has been guessed, i.e., the game is done.</p>
 
@@ -491,18 +507,17 @@ to the screen for the human user.</p>
 
 
 <p>The <code>Player</code> class is a base class that provides only an interface.
-It is in <code>player.py</code>.  This interface is used by all types of players.
-The init method receives a dictionary that is to be used by all
-players.  It uses this to set the <em>class attribute</em> all<em>words.</p>
+You can find it in <code>player.py</code>. This interface is used by all types of players.
+Every player takes in a dictionary which is uses to populate <code>possible_words</code>.</p>
 
 
 <h3 id="humanplayer">HumanPlayer</h3>
 
 
 <p>The <code>HumanPlayer</code> class inherits from <code>Player</code> and implements that
-interface.  It provides the interface to screen and keyboard to
+interface. It provides the interface to screen and keyboard to
 support the human player. We have provided this for you so that you do
-not need to worry about how to format the I/O.</p>
+not need to worry about how to format the I/O (input/output).</p>
 
 <pre><code>class HumanPlayer(Player):
     &quot;&quot;&quot;
@@ -538,14 +553,14 @@ not need to worry about how to format the I/O.</p>
         return word</code></pre>
 
 <p>The <code>pick_word</code> method asks the human for a word and makes sure that it is
-in the dictionary.  The <code>guess</code> method asks the human for a character and
+in the dictionary. The <code>guess</code> method asks the human for a character and
 makes sure that it is a valid guess.</p>
 
 
 <h3 id="computerplayer">ComputerPlayer</h3>
 
 
-<p>The <code>ComputerPlayer</code> class is the fun part.  It has the same methods as the
+<p>The <code>ComputerPlayer</code> class is the fun part. It has the same methods as the
 <code>HumanPlayer</code> but it has to do inference in the characters that have been
 guessed so far, looking at the dictionary, in order to make a good guess.
 You get to have fun with how it might pick words for you to guess.</p>
@@ -554,17 +569,17 @@ You get to have fun with how it might pick words for you to guess.</p>
 <h3 id="wordmunch">WordMunch</h3>
 
 
-<p>The <code>WordMunch</code> class is also in <code>wordset.py</code>.  This is designed to help your ComputerPlayer.
+<p>The <code>WordMunch</code> class is also in <code>wordset.py</code>. This is designed to help your ComputerPlayer.
 Think about how you are going to guess characters from looking at the board and looking
-at the dictionary.  What are the tricks that you use when you guess?  Generally you start with
+at the dictionary. What are the tricks that you use when you guess?  Generally you start with
 <code>e</code> because it is the most frequently used character in the English language.</p>
 
 <p><code>WordMunch</code> inherits from <code>WordSet</code> and is intended to hold smaller and smaller set of words, typically
 starting with the full dictionary, as the guesses narrow down the possible words that could
-be the secret word.  The
+be the secret word. The
 <code>frequency</code> method computes the number of times each lowercase character occurs in all the words
 contained in the WordSet. The <code>filter</code> method discards all the words that don't satisfy some
-predicate, as specified by the higher order function that is passed to it.  It applies the
+predicate, as specified by the higher order function that is passed to it. It applies the
 function to every word, keeps the ones that come out Truth-y and discards the others, thereby
 narrowing down the possibilities.</p>
 
@@ -572,11 +587,11 @@ narrowing down the possibilities.</p>
 <h3 id="game">Game</h3>
 
 
-<p>The <code>Game</code> class implements the taking turns among players.  It is in <code>game.py</code>.  The
-initialization receives the player objects - the picker and all the guessers.  The <code>play</code>
-method carries out the logic of the game.  It has the picker pick a word.  Makes a secret
-out of it.  Creates the initial board with this secret.  It then cycles through the guessers,
-giving each a chance to guess repeatedly until it misses.  The <code>winner</code> method returns
+<p>The <code>Game</code> class implements the taking turns among players. It is in <code>game.py</code>. The
+initialization receives the player objects - the picker and all the guessers. The <code>play</code>
+method carries out the logic of the game. It has the picker pick a word. Makes a secret
+out of it. Creates the initial board with this secret. It then cycles through the guessers,
+giving each a chance to guess repeatedly until it misses. The <code>winner</code> method returns
 the player that won the game after it is done.</p>
 
 
@@ -585,19 +600,19 @@ the player that won the game after it is done.</p>
 
 <p>Now that we have introduced you to the design of all the classes, it's time to
 get to work building the game. Before you begin (and in general with any project),
-make sure you take the time to **read through the code of the project and pay attention
-to the comments we included.** They are there for *your* benefit.</p>
+make sure you take the time to <strong>read through the code of the project and pay attention
+to the comments we included.</strong> They are there for <em>your</em> benefit.</p>
 
 
 <h3 id="problem-0-1-pts">Problem 0 (1 pts)</h3>
 
 
 <p>Answer the following questions with your partner after you have read
-the *entire* set <code>*.py</code> files.  If you cannot answer these questions,
+the <em>entire</em> set <code>*.py</code> files. If you cannot answer these questions,
 read the file again or ask a question on Piazza.</p>
 
 <ul>
-  <li>In <code>SecretWord</code>, you want the secret word to be private.  How do you
+  <li>In <code>SecretWord</code>, you want the secret word to be private. How do you
   name object attributes to indicate that it is private?</li>
   <li>What data structures could be used to hold the word set? What would make
   one choice better than another?</li>
@@ -613,19 +628,19 @@ read the file again or ask a question on Piazza.</p>
 <p>Put your answers in a text file titled <code>answers.txt</code> and be prepared to explain them to a TA at lab or during office hours.</p>
 
 
-<h3 id="problem-1-3-pts">Problem 1 (3 pts)</h3>
+<h3 id="problem-1-2-pts">Problem 1 (2 pts)</h3>
 
+
+<p><strong>Before you begin: take the time to actually read the entire spec. Programming as a data scientist, software engineer, researcher or essentially in any professional capacity requires a deep understanding of the problem at hand. You will usually produce something similar to the spec provided above in a file called <code>README.md</code>. Understanding how we are modeling the game will save you time in the long run. Trust us:)</strong></p>
 
 <p>Complete the implementation of the <code>__init__</code>, <code>__len__</code>, and <code>match</code> methods in
 the <code>SecretWord</code> class in file <code>secret.py</code>.</p>
 
 <p>Test your understanding with:</p>
 
-<pre><code>python3 ok &#x2d;q 01 &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q 01 &#x2d;u</code></pre>
 
-<p>Test your implementation before moving on:</p>
-
-<pre><code>python3 ok &#x2d;q 01 &#x2d;&#x2d;local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q 01</code></pre>
 
 
 <h3 id="problem-2-2-pt">Problem 2 (2 pt)</h3>
@@ -635,47 +650,44 @@ the <code>SecretWord</code> class in file <code>secret.py</code>.</p>
 
 <p>Test your understanding with:</p>
 
-<pre><code>python3 ok &#x2d;q 02 &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q 02 &#x2d;u</code></pre>
 
-<p>Test your implementation before moving on:</p>
-
-<pre><code>python3 ok &#x2d;q WordSet &#x2d;&#x2d;local</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q WordSet</code></pre>
 
 <p>Now that you have a <code>WordSet</code>, verify that you also have a working <code>Dictionary</code> that inherits from this. You didn't have to build the Dictionary, but you need to make sure that the one we provided works with your <code>WordSet</code>.</p>
 
 <p>Test our implementation before moving on:</p>
 
-<pre><code>python3 ok &#x2d;q Dictionary &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q Dictionary</code></pre>
 
 
 <h3 id="problem-3-3-pt">Problem 3 (3 pt)</h3>
 
 
-<p>Complete the implementation of <code>Board</code>.  Please note that this has several small methods that
-work together.  The doctest tests them in combination.  It does not depend on the representation
+<p>Complete the implementation of <code>Board</code>. Please note that this has several small methods that
+work together. The doctest tests them in combination. It does not depend on the representation
 that you choose to use for the board and for keeping track of the letters than have been
-guessed, hits, or misses.  You will need to decide on the representation. You will likely
+guessed, hits, or misses. You will need to decide on the representation. You will likely
 want to produce tests for your individual methods.</p>
 
 <p>Test your understanding with:</p>
 
-<pre><code>python3 ok &#x2d;q 03 &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q 03 &#x2d;u</code></pre>
 
-<p>Test your implementation before moving on:
-<p>Use OK to test your code:</p><pre><code>python3 ok -q Board></p</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Board</code></pre>
 
 
 <h3 id="problem-4-3-pt">Problem 4 (3 pt)</h3>
 
 
-<p>Complete the implementation of <code>Player</code>.  This is just the
+<p>Complete the implementation of <code>Player</code>. This is just the
 initialization method to set the class attribute.</p>
 
 <p>Test your implementation before moving on:</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q Player</code></pre>
 
-<p>Complete the implementation of the <code>pick_word</code> method of <code>ComputerPlayer</code>.  You don't
+<p>Complete the implementation of the <code>pick_word</code> method of <code>ComputerPlayer</code>. You don't
 need the (much bigger) guess method.</p>
 
 <p>Test your implementation before moving on. Since <code>ComputerPlayer.pick_word</code> needs
@@ -686,32 +698,33 @@ make sure it works. Hint: you will want to look at <code>random.sample</code>.</
 <p>Complete the implementation of the <code>Game</code> class in <code>game.py</code>.</p>
 
 <p>The init method is provided with a player object that is the picker
-and a list of players that are the guesses.  The game engine is the
-<code>play</code> method.  It gets the secret word from the picker, turns it into
+and a list of players that are the guesses. The game engine is the
+<code>play</code> method. It gets the secret word from the picker, turns it into
 a SecretWord object and creates the board with this secret. Then it
-cycles through the guessers until the game is done.  A guesser is
-presented with the board by invoking its <code>guess</code> method.  The
+cycles through the guessers until the game is done. A guesser is
+presented with the board by invoking its <code>guess</code> method. The
 resulting guessed character is the played onto the board with the
-board's <code>guess</code> method.  If the guess is successful, the player gets
-to keep playing.  When it missed, the next player gets a turn.
+board's <code>guess</code> method. If the guess is successful, the player gets
+to keep playing. When it missed, the next player gets a turn.
 Finally, the <code>winner</code> method can be invoked when the game is over to
 obtain the winning player.</p>
 
 <p>Testing the game is a little trickier, because it normally works with player object
-that take human input or have non-deterministic behavior.  We've provided
+that take human input or have non-deterministic behavior. We've provided
 dummy players that you can test your <code>Game</code> against these before you
 connect your <code>HumanPlayer</code> and picker-only version of <code>ComputerPlayer</code>.</p>
 
-<p>At this point you should have a complete human player game.  Run:</p>
+<p>At this point you should have a complete human player game. Run:</p>
 
 <pre><code>python3 human.py</code></pre>
 
-<p>When you get tired of Lincoln, go find a more interesting book to use for words.  The
+<p>When you get tired of Lincoln, go find a more interesting book to use for words. The
 bigger the book, the better chance you'll have against the machine. You can grab Shakespeare from
-the first data 8 lecture.  Or on Unix machines, including macs, you can use <code>/usr/share/dict/words</code>.
+the first data 8 lecture. Or on Unix machines, including macs, you can use <code>/usr/share/dict/words</code>.
 Have fun!</p>
 
-<p>Test your implementation before moving on:</p>
+<p>Test your implementation before moving on:
+The provided ok test is pretty basic, essentially only testing your pick<em>word method on a single value and only uses dummy players. Ensure that your code can run a full game with human player before moving on to Q5.</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q 04</code></pre>
 
@@ -719,7 +732,7 @@ Have fun!</p>
 <h3 id="problem-5-4-pt">Problem 5 (4 pt)</h3>
 
 
-<p>Now you get to turn the tables and build the computer guesser.  You will do
+<p>Now you get to turn the tables and build the computer guesser. You will do
 a sequence of implementations of the <code>guess</code> method in <code>ComputerPlayer</code>
 corresponding to increasing skill levels of the player. The first step is to use
 the dictionary in the board and WordMunch to get a set of words to work with in
@@ -739,16 +752,20 @@ in a predicate function that takes a word as an input.</p>
 
 <p>Test your understanding using:</p>
 
-<pre><code>python3 ok &#x2d;q 05 &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q 05 &#x2d;u</code></pre>
 
 <p>Hint: it may be easier to iterate through all of the letters of the alphabet instead of iterating through every letter of every word in your word set while you're building your dictionary. Take a look at the <a href="https://docs.python.org/3.1/library/string.html">string documentation page</a> for a value that might contain all lowercase letters.</p>
 
-<p>Test your implementation before moving on:</p>
-
 <p>Use OK to test your code:</p><pre><code>python3 ok -q 05</code></pre>
 
+<p>The doctests for this question simply run the unlock tests. Use <code>computerTest.py</code> to test your code more robustly.</p>
 
-<h3 id="problem-6-2-pt">Problem 6 (2 pt)</h3>
+<p>Hint: You should use <code>python &#x2d;i computerTest.py</code> to run the file. Implement the function to fill in the provided dictionaries to see how you match up with the staff solution. You should pass the first two statements after q5.</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q computer_plays</code></pre>
+
+
+<h3 id="problem-6-3-pt">Problem 6 (3 pt)</h3>
 
 
 <p>Level up your <code>ComputerPlayer</code> by using character frequency in the
@@ -759,14 +776,19 @@ these characters.</p>
 
 <p>Test your understanding using:</p>
 
-<pre><code>python3 ok &#x2d;q 06 &#x2d;u &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok &#x2d;q 06 &#x2d;u</code></pre>
 
-<p>Test your final implementation:
-<p>Use OK to test your code:</p><pre><code>python3 ok -q 06></p</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q 06</code></pre>
+
+<p>The doctests for this question simply run the unlock tests. Use <code>computerTest.py</code> to test your code more robustly.</p>
+
+<p>Hint: You should use <code>python &#x2d;i computerTest.py</code> to run the file. Implement the function to fill in the provided dictionaries to see how you match up with the staff solution. You should pass all three statements after q6.</p>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q computer_plays</code></pre>
 
 <p>Once you have completed all questions, you can run all the OK tests at once using the command below.</p>
 
-<pre><code>python3 ok &#x2d;&#x2d;local</code></pre>
+<pre><code>python3 ok</code></pre>
 
 <p><strong>Congratulations on finishing the project!</strong> See the <code>Project Submission</code> tab for submission instructions.</p>
 
@@ -775,18 +797,18 @@ these characters.</p>
 
 <p>If enjoyed this project and want to take it a step further, play around with the following extensions. These extra features are only for practice and will not be graded.
 <!-- ### Extra Credit (2 pts)
-You can choose one of the options below to receive 2 additional points for the project. The tasks below are fairly open-ended, we want you to get creative! If you choose to complete the extra credit, please submit a text file called <code>extra_credit.txt</code> to the <code>Wheel of Fortune (Extra Credit)</code> assignment on OK. Please make sure you submit to the extra credit assignment (not the <code>Wheel of Fortune</code> assignment) in order to get credit. This text file should contain a description of the code you wrote, sample output from the game (if that helps explain the improvements), and a list of the files where the extra credit code is located. Make sure to add your partner to the extra credit assignment as well.   
+You can choose one of the options below to receive 2 additional points for the project. The tasks below are fairly open-ended, we want you to get creative! If you choose to complete the extra credit, please submit a text file called <code>extra_credit.txt</code> to the <code>Wheel of Fortune (Extra Credit)</code> assignment on OK. Please make sure you submit to the extra credit assignment (not the <code>Wheel of Fortune</code> assignment) in order to get credit. This text file should contain a description of the code you wrote, sample output from the game (if that helps explain the improvements), and a list of the files where the extra credit code is located. Make sure to add your partner to the extra credit assignment as well.  
  --></p>
 
 <ul>
   <li>Implement a multiplayer version of computer player.</li>
   <li>Instead of character frequencies for all unused characters in the possible words,
-  look at character frequencies for the specific unguessed slots.  Build a frequency
+  look at character frequencies for the specific unguessed slots. Build a frequency
   per slot and use that in making the guess.</li>
   <li>While it might seem wise to make the most likely guess, a rather different choice is the guess that
-  will put you on the shortest path (fewest misses) to a unique determination.  Once you know the
-  word you should not miss at all.  This approach introduces a bit of a search tree.</li>
-  <li>Come up with better ways of guessing, such as looking at character combinations.  Show how
+  will put you on the shortest path (fewest misses) to a unique determination. Once you know the
+  word you should not miss at all. This approach introduces a bit of a search tree.</li>
+  <li>Come up with better ways of guessing, such as looking at character combinations. Show how
   much better these perform than simply filtering on length and match.</li>
 </ul>
 
@@ -795,6 +817,7 @@ You can choose one of the options below to receive 2 additional points for the p
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
+  <li><a href="#project-submission">Project Submission</a></li>
   <li><a href="#core-concepts">Core Concepts</a></li>
   <li><a href="#the-game">The Game</a></li>
   <li><a href="#the-code">The Code</a></li>
@@ -813,12 +836,12 @@ You can choose one of the options below to receive 2 additional points for the p
   <li><a href="#problems">Problems</a></li>
   <ul>
   <li><a href="#problem-0-1-pts">Problem 0 (1 pts)</a></li>
-  <li><a href="#problem-1-3-pts">Problem 1 (3 pts)</a></li>
+  <li><a href="#problem-1-2-pts">Problem 1 (2 pts)</a></li>
   <li><a href="#problem-2-2-pt">Problem 2 (2 pt)</a></li>
   <li><a href="#problem-3-3-pt">Problem 3 (3 pt)</a></li>
   <li><a href="#problem-4-3-pt">Problem 4 (3 pt)</a></li>
   <li><a href="#problem-5-4-pt">Problem 5 (4 pt)</a></li>
-  <li><a href="#problem-6-2-pt">Problem 6 (2 pt)</a></li>
+  <li><a href="#problem-6-3-pt">Problem 6 (3 pt)</a></li>
   <li><a href="#extra-practice">Extra Practice</a></li>
 </ul>
 
