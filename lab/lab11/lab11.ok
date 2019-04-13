@@ -1,0 +1,21 @@
+{
+    "name": "Lab 11",
+    "endpoint": "cal/cs88/sp19/lab11",
+    "src": [
+        "lab11.py"
+    ],
+    "tests": {
+        "tests/does_it_work.py": "ok_test",
+        "tests/restart.py": "ok_test",
+        "tests/generators.py": "ok_test",
+        "lab11.py": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
