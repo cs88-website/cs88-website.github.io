@@ -194,7 +194,7 @@ except StopIteration as e:
 
 <blockquote><p>Use OK to test your knowledge with the following conceptual questions:</p>
 
-<pre><code>python3 ok &#x2d;q does_it_work &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
+<pre><code>python3 ok &#x2d;q does_it_work &#x2d;u</code></pre></blockquote>
 
 <pre><code>class IteratorA:
     def __init__(self):
@@ -209,15 +209,7 @@ except StopIteration as e:
     def __iter__(self):
         return self</code></pre>
 
-
-    <button id='7' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 7">
-
 <p>No problem, this is a beautiful iterator.</p>
-
-</div>
 
 <pre><code>class IteratorB:
     def __init__(self):
@@ -226,17 +218,9 @@ except StopIteration as e:
     def __iter__(self):
         return self</code></pre>
 
-
-    <button id='8' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 8">
-
 <p>Oh no!  Where is <code>__next__</code>?  This fails to implement the iterator
 interface because calling <code>__iter__</code> doesn't return something that has
 a <code>__next__</code> method.</p>
-
-</div>
 
 <pre><code>class IteratorC:
     def __init__(self):
@@ -248,19 +232,11 @@ a <code>__next__</code> method.</p>
         self.start += 1
         return self.start</code></pre>
 
-
-    <button id='9' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 9">
-
 <p>This also fails to implement the iterator interface.  Without the
 <code>__iter__</code> method, the <code>for</code> loop will error.  The <code>for</code> loop needs to
 call <code>__iter__</code> first because some objects might not implement the
 <code>__next__</code> method themselves, but calling <code>__iter__</code> will return an
 object that does.</p>
-
-</div>
 
 <pre><code>class IteratorD:
     def __init__(self):
@@ -273,25 +249,17 @@ object that does.</p>
     def __iter__(self):
         return self</code></pre>
 
-
-    <button id='10' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 10">
-
 <p>This is technically an iterator, because it implements both <code>__iter__</code> and
 <code>__next__</code>. Notice that it's an infinite sequence!  Sequences like these are
 the reason iterators are useful.  Because iterators delay computation, we can
 use a finite amount of memory to represent an infinitely long sequence.</p>
-
-</div>
 
 <h3 class="question" id="q2">Question 2: Restart</h3>
 
 <blockquote><p>Use OK to test your knowledge with the following What would Python print
 questions:</p>
 
-<pre><code>python3 ok &#x2d;q restart &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
+<pre><code>python3 ok &#x2d;q restart &#x2d;u</code></pre></blockquote>
 
 <p>Try this!</p>
 
@@ -369,19 +337,6 @@ when iterated over.</p>
 </div>
 
 <pre><code>class Str:
-    &quot;&quot;&quot;
-    &gt;&gt;&gt; s = Str(&quot;hello&quot;)
-    &gt;&gt;&gt; for char in s:
-    ...     print(char)
-    ...
-    h
-    e
-    l
-    l
-    o
-    &gt;&gt;&gt; for char in s:    # a standard iterator does not restart
-    ...     print(char)
-    &quot;&quot;&quot;
 <div class="alt 2">    "*** YOUR CODE HERE ***"
 </div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x5f;&#x5f;&#x69;&#x6e;&#x69;&#x74;&#x5f;&#x5f;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2c;&#x20;&#x73;&#x74;&#x72;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x74;&#x72;&#x20;&#x3d;&#x20;&#x73;&#x74;&#x72;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x69;&#x20;&#x3d;&#x20;&#x2d;&#x31;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x5f;&#x5f;&#x69;&#x74;&#x65;&#x72;&#x5f;&#x5f;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#xa;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x5f;&#x5f;&#x6e;&#x65;&#x78;&#x74;&#x5f;&#x5f;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x69;&#x20;&#x3e;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x74;&#x72;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x53;&#x74;&#x6f;&#x70;&#x49;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x74;&#x72;&#x5b;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x69;&#x5d;</div></code></pre>
 
@@ -391,8 +346,9 @@ when iterated over.</p>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q Str</code></pre>
+<p>Test your code by either writing your own doc tests, or by running <code>python3 &#x2d;i lab11.py</code></p>
 
+<p>There is no doctest for this problem. Write your own! We will be grading you on our own hidden tests.</p>
 
 <h2 id="generators">Generators</h2>
 
@@ -503,18 +459,10 @@ for i in IterGen():
 
 <p>Why does this iterable work without defining a <code>__next__</code> method?</p>
 
-
-    <button id='11' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 11">
-
 <p>The <code>for</code> loop only expects the object returned by <code>__iter__</code> to have a
 <code>__next__</code> method. The <code>__iter__</code> method is a generator function because of the
 <code>yield</code> statement in the body. Therefore, when <code>__iter__</code> is called, it returns
 a generator object, which you can call <code>__next__</code> on.</p>
-
-</div>
 
 <h3 class="question" id="q4">Question 4: Countdown</h3>
 

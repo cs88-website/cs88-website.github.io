@@ -32,7 +32,7 @@ class Board:
     def __init__(self, secret):
         """Create an initial board with no guesses and a secret."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def __repr__(self):
@@ -44,34 +44,34 @@ class Board:
     def word_len(self):
         """Return the length of the secret word."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def word(self):
-        """Return the current state of guessing the word as a lsit of characters.
+        """Return the current state of guessing the word as a list of characters.
         Unguessed positions are represented by '_'
         Guessed positions hold the character.
         """
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def guesses(self):
         """Return a list of the characters guessed so far."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def hits(self):
         """Return a list of characters correctly guessed."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def misses(self):
         """Return a list of characters incorrectly guessed."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def guess(self, char):
@@ -80,13 +80,13 @@ class Board:
         If char does not appear in the word, this will be 0.
         """
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def done(self):
         """Determine if the game is done."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def display(self):

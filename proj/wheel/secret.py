@@ -8,28 +8,19 @@
 #   - match: returns a list of the indices of a characters in the secret word
 #
 class SecretWord:
-    """Encapsulate a secret word.
-
-    >>> s = SecretWord('whodoneit')
-    >>> len(s)
-    9
-    >>> s.match('o')
-    [2, 4]
-    >>> s.match('x')
-    []
-    >>> s
-    <secret word>
+    """
+    Encapsulate a secret word.
     """
     def __init__(self, word):
         """Construct a secret word."""
         # BEGIN Question 1
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END Question 1
 
     def __len__(self):
         """Length of the secret word."""
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def __repr__(self):
@@ -41,5 +32,5 @@ class SecretWord:
     def match(self, char):
         """Return a list of the indices where char appears in the secret word."""
         # BEGIN Question 1
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END Question 1

@@ -6,21 +6,36 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> game = Game(DummyPlayer("pick"), [ DummyPlayer("guess") ] )
-          >>> board = game.play(False)
-          >>> board.word()
-          b5b8c11feaa765c879e7b86f9175a902
-          # locked
-          >>> len(board.guesses())
-          a4f887a75756b32901b543f4e27e2426
-          # locked
+          >>> from secret import SecretWord
+          >>> b = Board(SecretWord("bookkeeper"))
+          >>> len(b)
+          10
+          >>> b.guess('o')
+          2
+          >>> b
+          < _ o o _ _ _ _ _ _ _ : o >
+          >>> b.done()
+          False
+          >>> b.guess('k')
+          2
+          >>> b
+          < _ o o k k _ _ _ _ _ : o,k >
+          >>> b.guess('j')
+          0
+          >>> b
+          < _ o o k k _ _ _ _ _ : o,k,j >
+          >>> b.word()
+          ['_', 'o', 'o', 'k', 'k', '_', '_', '_', '_', '_']
+          >>> b.guesses()
+          ['o', 'k', 'j']
           """,
           'hidden': False,
-          'locked': True
+          'locked': False
         }
       ],
       'scored': True,
       'setup': r"""
+      >>> from board import Board
       >>> from wordset import Dictionary
       >>> from player import Player, DummyPlayer
       >>> from game import Game

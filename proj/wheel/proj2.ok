@@ -12,15 +12,6 @@
   ],
   "tests": {
     "tests/0[1-6].py": "ok_test",
-    "utils.py:key_of_max": "doctest",
-    "secret.py:SecretWord": "doctest",
-    "wordset.py:WordSet": "doctest",
-    "wordset.py:Dictionary": "doctest",
-    "wordset.py:WordMunch": "doctest",
-    "board.py:Board": "doctest",
-    "player.py:Player": "doctest",
-    "player.py:ComputerPlayer": "doctest",
-    "game.py:Game": "doctest",
     "computerTest.py:computer_plays": "doctest"
   },
   "protocols": [

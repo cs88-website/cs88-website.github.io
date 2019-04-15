@@ -35,19 +35,6 @@ class IteratorRestart:
 
 # Q3
 class Str:
-    """
-    >>> s = Str("hello")
-    >>> for char in s:
-    ...     print(char)
-    ...
-    h
-    e
-    l
-    l
-    o
-    >>> for char in s:    # a standard iterator does not restart
-    ...     print(char)
-    """
     "*** YOUR CODE HERE ***"
 
 

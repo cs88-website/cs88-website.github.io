@@ -409,7 +409,7 @@
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="lab/lab10/">Lab 10: Exceptions, Classes, and Inheritance</a></td>
+            <td class='resource-name'><a href="lab/lab10/">Lab 10: Exceptions, Classes, and Inheritance</a> (Solutions)</td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
@@ -482,6 +482,12 @@
 
         <tr>
             <td class='resource-name'><a href="proj/maps/">Maps</a></td>
+            <td class='resource-type'>Project</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="proj/wheel/">Wheel</a></td>
             <td class='resource-type'>Project</td>
             <td class='resource-tags'></td>
         </tr>
@@ -816,7 +822,7 @@
 (<a href="assets/slides/09-Classes,_Inheritance,_Exceptions_1pp.pdf">1pp</a>) (<a href="assets/slides/09-Classes,_Inheritance,_Exceptions_6pps.pdf">6pps</a>) (ipynb)</td>
 <td><a href="http://composingprograms.com/pages/29-recursive-objects.html">2.9</a><br/>
 <a href="http://composingprograms.com/pages/33-exceptions.html">3.3</a></td>
-<td><a href="lab/lab10/">Lab 10: Exceptions, Classes, and Inheritance</a><br/>(due Sun 4/14)</td>
+<td><a href="lab/lab10/">Lab 10: Exceptions, Classes, and Inheritance</a><br/>(due Sun 4/14) (Solutions)</td>
 <td><a href="hw/hw10/">Homework 10</a><br/>(due Wed 4/17)</td>
 <td></td>
 </tr>
@@ -829,7 +835,7 @@
 <td><a href="http://composingprograms.com/pages/24-mutable-data.html">2.4</a></td>
 <td></td>
 <td></td>
-<td></td>
+<td><a href="proj/wheel/">Wheel</a><br/>(due Mon 5/6)</td>
 </tr>
 <tr>
 <td rowspan="1" class="weeknum even">14</td>
@@ -926,7 +932,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "1/27/19", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "1/21/19"}, {"due": "2/3/19", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "1/28/19"}, {"due": "2/10/19", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "2/4/19"}, {"due": "2/17/19", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "2/11/19"}, {"due": "2/24/19", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "2/18/19"}, {"due": "3/3/19", "link": "lab/lab05/", "name": "Lab 5: Recursion", "release": "2/25/19"}, {"due": "3/11/19", "link": "lab/lab06/", "name": "Lab 6: Midterm Review", "release": "3/4/19"}, {"due": "3/17/19", "link": "lab/lab07/", "name": "Lab 7: Project Work Session", "release": "3/11/19"}, {"due": "3/27/19", "link": "lab/lab08/", "name": "Lab 8: Mutation and Lambdas", "release": "3/18/19"}, {"due": "4/7/19", "link": "lab/lab09/", "name": "Lab 9: Object-Oriented Programming", "release": "4/1/19"}, {"due": "4/14/19", "link": "lab/lab10/", "name": "Lab 10: Exceptions, Classes, and Inheritance", "release": "4/8/19"}, {"due": "1/30/19", "link": "hw/hw00/", "name": "Homework 0", "release": "1/21/19"}, {"due": "2/6/19", "link": "hw/hw01/", "name": "Homework 1", "release": "1/28/19"}, {"due": "2/13/19", "link": "hw/hw02/", "name": "Homework 2", "release": "2/4/19"}, {"due": "2/20/19", "link": "hw/hw03/", "name": "Homework 3", "release": "2/11/19"}, {"due": "2/27/19", "link": "hw/hw04/", "name": "Homework 4", "release": "2/18/19"}, {"due": "3/6/19", "link": "hw/hw05/", "name": "Homework 5", "release": "2/25/19"}, {"due": "3/15/19", "link": "hw/hw06/", "name": "Homework 6", "release": "3/4/19"}, {"due": "3/20/19", "link": "hw/hw07/", "name": "Homework 7", "release": "3/11/19"}, {"due": "4/3/19", "link": "hw/hw08/", "name": "Homework 8", "release": "3/18/19"}, {"due": "4/10/19", "link": "hw/hw09/", "name": "Homework 9", "release": "4/1/19"}, {"due": "4/17/19", "link": "hw/hw10/", "name": "Homework 10", "release": "4/8/19"}, {"due": "3/23/19", "link": "proj/maps/", "name": "Maps", "release": "3/7/19"}];
+  var assignments = [{"due": "1/27/19", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "1/21/19"}, {"due": "2/3/19", "link": "lab/lab01/", "name": "Lab 1: Data Types, Expressions, Shell Command II", "release": "1/28/19"}, {"due": "2/10/19", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "2/4/19"}, {"due": "2/17/19", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "2/11/19"}, {"due": "2/24/19", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "2/18/19"}, {"due": "3/3/19", "link": "lab/lab05/", "name": "Lab 5: Recursion", "release": "2/25/19"}, {"due": "3/11/19", "link": "lab/lab06/", "name": "Lab 6: Midterm Review", "release": "3/4/19"}, {"due": "3/17/19", "link": "lab/lab07/", "name": "Lab 7: Project Work Session", "release": "3/11/19"}, {"due": "3/27/19", "link": "lab/lab08/", "name": "Lab 8: Mutation and Lambdas", "release": "3/18/19"}, {"due": "4/7/19", "link": "lab/lab09/", "name": "Lab 9: Object-Oriented Programming", "release": "4/1/19"}, {"due": "4/14/19", "link": "lab/lab10/", "name": "Lab 10: Exceptions, Classes, and Inheritance", "release": "4/8/19"}, {"due": "1/30/19", "link": "hw/hw00/", "name": "Homework 0", "release": "1/21/19"}, {"due": "2/6/19", "link": "hw/hw01/", "name": "Homework 1", "release": "1/28/19"}, {"due": "2/13/19", "link": "hw/hw02/", "name": "Homework 2", "release": "2/4/19"}, {"due": "2/20/19", "link": "hw/hw03/", "name": "Homework 3", "release": "2/11/19"}, {"due": "2/27/19", "link": "hw/hw04/", "name": "Homework 4", "release": "2/18/19"}, {"due": "3/6/19", "link": "hw/hw05/", "name": "Homework 5", "release": "2/25/19"}, {"due": "3/15/19", "link": "hw/hw06/", "name": "Homework 6", "release": "3/4/19"}, {"due": "3/20/19", "link": "hw/hw07/", "name": "Homework 7", "release": "3/11/19"}, {"due": "4/3/19", "link": "hw/hw08/", "name": "Homework 8", "release": "3/18/19"}, {"due": "4/10/19", "link": "hw/hw09/", "name": "Homework 9", "release": "4/1/19"}, {"due": "4/17/19", "link": "hw/hw10/", "name": "Homework 10", "release": "4/8/19"}, {"due": "3/23/19", "link": "proj/maps/", "name": "Maps", "release": "3/7/19"}, {"due": "5/6/19", "link": "proj/wheel/", "name": "Wheel", "release": "4/15/19"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {

@@ -56,7 +56,7 @@ class HumanPlayer(Player):
         super().__init__(name, dict)
 
     def guess(self, board):
-        """Asks the user to guess a character updates the board accordingly."""
+        """Asks the user to guess a character."""
 
         print(self.name, ", please enter your next guess.")
         guess = input()
@@ -80,55 +80,12 @@ class HumanPlayer(Player):
 class ComputerPlayer(Player):
     """
     Perform as a player - picking a word or guessing a character
-
-    >>> from wordset import WordSet
-    >>> from board import Board
-    >>> from secret import SecretWord
-    >>> c0 = ComputerPlayer(WordSet(['three', 'toooooo', 'ellen']))
-    >>> c1 = ComputerPlayer(WordSet(['three', 'toooooo', 'ellen']), 1)
-    >>> c2 = ComputerPlayer(WordSet(['three', 'toooooo', 'ellen']), 2)
-    >>> b0 = Board(SecretWord('three'))
-    >>> b1 = Board(SecretWord('three'))
-    >>> b2 = Board(SecretWord('three'))
-    >>> c0.guess(b0) # Case 1.1
-    'o'
-    >>> b0.guess(c0.guess(b0)) # Case 1.1
-    0
-    >>> c0.guess(b0) # Case 1.2
-    'e'
-    >>> b0.guess(c0.guess(b0)) # Case 1.2
-    2
-    >>> c0.guess(b0) # Case 1.3
-    'l'
-    >>> b0.guess(c0.guess(b0)) # Case 1.3
-    0
-    >>> c1.guess(b1) # Case 2.1
-    'e'
-    >>> b1.guess(c1.guess(b1)) # Case 2.1
-    2
-    >>> c1.guess(b1) # Case 2.2
-    'l'
-    >>> b1.guess(c1.guess(b1)) # Case 2.2
-    0
-    >>> c1.guess(b1) # Case 2.3
-    'h'
-    >>> b1.guess(c1.guess(b1)) # Case 2.3
-    1
-    >>> c2.guess(b2) # Case 3.1
-    'e'
-    >>> b2.guess(c2.guess(b2)) # Case 3.1
-    2
-    >>> c2.guess(b2) # Case 3.2
-    'h'
-    >>> b2.guess(c2.guess(b2)) # Case 3.2
-    1
-    >>> c2.guess(b2) # Case 3.3
-    'r'
-    >>> b2.guess(c2.guess(b2)) # Case 3.3
-    1
+    See the unlock test for examples
     """
     def __init__(self, dict=Dictionary('assets/lincoln.txt'), skill=0, name='Computer'):
         """Creates a player with the name, dict, and skill level"""
+        # Replace this when you get to question 5
+        super().__init__(name, dict)
         # BEGIN
         "*** YOUR CODE HERE ***"
         # END

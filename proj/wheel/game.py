@@ -2,7 +2,7 @@ from secret import SecretWord
 from board import Board
 
 class Game:
-    """Run an entire game. 
+    """Run an entire game.
 
     Initialization defines the player who pickers secret word and one or more guessers.
     play
@@ -11,31 +11,18 @@ class Game:
        - each guesser continues as long as they guess currect letters
        - returns final board
     winner returns the player who picked the last letter.
-
-    >>> from wordset import Dictionary
-    >>> from player import Player, DummyPlayer
-    >>> p = Player(Dictionary("assets/lincoln.txt"))
-    >>> game = Game(DummyPlayer("pick"), [ DummyPlayer("guess") ] )
-    >>> board = game.play(False)
-    >>> board.word()
-    ['s', 'c', 'o', 'r', 'e']
-    >>> len(board.guesses())
-    6
     """
     def __init__(self, picker, guessers):
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def play(self, verbose=True):
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
 
     def winner(self):
         # BEGIN
-        "*** REPLACE THIS LINE ***"
+        "*** YOUR CODE HERE ***"
         # END
-
-
-

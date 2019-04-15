@@ -14,6 +14,15 @@ test = {
         },
         {
           'code': r"""
+          >>> c = ComputerPlayer()
+          >>> c.pick_word()
+          'dead'
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
           >>> game = Game(DummyPlayer("pick"), [ DummyPlayer("guess") ] )
           >>> board = game.play(False)
           >>> board.word()
@@ -23,20 +32,11 @@ test = {
           """,
           'hidden': False,
           'locked': False
-        },
-        {
-          'code': r"""
-          >>> c = ComputerPlayer()
-          >>> c.pick_word()
-          'dead'
-          """,
-          'hidden': False,
-          'locked': False
         }
       ],
       'scored': True,
       'setup': r"""
-      >>> from Wordset import Dictionary
+      >>> from wordset import Dictionary
       >>> from player import Player, DummyPlayer, ComputerPlayer
       >>> from game import Game
       >>> p = Player("Fred", Dictionary('assets/lincoln.txt'))

@@ -6,7 +6,8 @@ def play_and_add(picker, guesser, d, verbose):
     """
     Runs a game with the picker and guesser and adds
     the word guessed in that game to the dictionary d.
-    HINT: Use add_board_result_to_d:)
+    HINT: Use add_board_result_to_d :)
+    HINT: See computer.py for an example of how to run a game.
     """
     # BEGIN
     "*** YOUR CODE HERE ***"
@@ -16,19 +17,25 @@ def add_board_result_to_d(board, d):
     """
     Adds the word guessed on the board to the dictionary d.
     """
-    assert board.is_done(), "Only add completed words to dictionary"
+    assert board.done(), "Only add completed words to dictionary"
     d["".join(board.word())] = len(board.guesses())
 
 def d_contained_in(d1, d2):
     assert d1 != {}, "D1 cannot be empty"
     for i in d1:
-        assert d1[i] == d2[i], "Mismatched value for key: " + str(i)
+        assert d1[i] <= d2[i], "Mismatched value for key {} v1:{} v2:{}".format(str(i), d1[i], d2[i])
 
 def computer_plays(a, b, verbose=False):
     """
     Runs computer guessers on the words in the range(a,b) in the Gettysburg
-    address dictionary. Prints out three dictionaries mapping words to the
-    number of guesses your player took.
+    address dictionary. This dictionary is what is used by default when creating
+    a computer player. Return three dictionaries mapping words to the number of
+    guesses your player took where g0 corresponds to your dictionary for skill
+    level 0, g1 --> skill level 1, g2 --> skill level 2. Start by implementing
+    `play_and_add`. After that the provided code will populate g0 correctly. Using
+    that as an example. fill in g1 and g2 to complete the test. The doctest below
+    compares your g0, g1, g2 to the staffs solution. If you match or beat our
+    guess rate, you will pass the test:)
 
     >>> g0, g1, g2 = computer_plays(0, 100)
     >>> d_contained_in(g0, staff_g0)
@@ -40,7 +47,9 @@ def computer_plays(a, b, verbose=False):
     g1 = {}
     g2 = {}
     for i in range(a, b):
+        # Changes the pick_word method, so we deterministically get the words in (a, b)
         picker.pick_word = lambda : picker.possible_words.words()[i]
+        # A skill level 0 guesser with the Gettysburg address dictionary
         guesser0 = ComputerPlayer(name="AI thing")
         play_and_add(picker, guesser0, g0, verbose)
         # BEGIN
