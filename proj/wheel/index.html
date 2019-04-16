@@ -613,7 +613,13 @@ read the file again or ask a question on Piazza.</p>
   <li>How does <code>Dictionary</code> invoke the initializer for its superclass?</li>
   <li>Do <code>Players</code> ever access the <code>SecretWord</code> object?  What does <code>Board</code>
   reveal about the secret word?</li>
-  <li>Where does a <code>Player</code> get it's possible words from?</li>
+  <li><p>Compare these two approaches for providing a set of possible words to players:</p>
+
+  <ul>
+    <li>Have each subclass of Player (ie. HumanPlayer, DummyPlayer, ComputerPlayer) take in a dictionary of words</li>
+    <li>Have a dictionary of words as a class attribute of Player.</li>
+  </ul></li>
+  <li>Which of the above approaches will be implemented in the project?</li>
   <li>Why does the <code>Player</code> base class define methods that don't do anything?</li>
 </ul>
 
