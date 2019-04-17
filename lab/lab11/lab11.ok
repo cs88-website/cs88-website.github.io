@@ -8,7 +8,10 @@
         "tests/does_it_work.py": "ok_test",
         "tests/restart.py": "ok_test",
         "tests/generators.py": "ok_test",
-        "lab11.py": "doctest"
+        "lab11.py:IteratorRestart": "doctest",
+        "lab11.py:countdown": "doctest",
+        "lab11.py:Countdown": "doctest",
+        "lab11.py:hailstone": "doctest"
     },
     "protocols": [
         "restore",
