@@ -604,15 +604,11 @@ the <em>entire</em> set <code>*.py</code> files. If you cannot answer these ques
 read the file again or ask a question on Piazza.</p>
 
 <ul>
-  <li>In <code>SecretWord</code>, you want the secret word to be private. How do you
-  name object attributes to indicate that it is private?</li>
-  <li>What data structures could be used to hold the word set? What would make
-  one choice better than another?</li>
-  <li>Why is it important that <code>WordSet.words</code> return a sorted list of words in
-  the word set, when all we use it for is to test if a word is <code>in</code> the WordSet?</li>
+  <li>In <code>SecretWord</code>, you want the secret word to be private. How do you name object attributes to indicate that it is private?</li>
+  <li>What data structures could be used to hold the word set? What would make one choice better than another?</li>
+  <li>Notice that <code>WordSet.words</code> should return a sorted list of words. How can we take advantage of this sorted property to better check if a word is <code>in</code> the WordSet.</li>
   <li>How does <code>Dictionary</code> invoke the initializer for its superclass?</li>
-  <li>Do <code>Players</code> ever access the <code>SecretWord</code> object?  What does <code>Board</code>
-  reveal about the secret word?</li>
+  <li>Do <code>Players</code> ever access the <code>SecretWord</code> object?  What does <code>Board</code> reveal about the secret word?</li>
   <li><p>Compare these two approaches for providing a set of possible words to players:</p>
 
   <ul>
