@@ -3,13 +3,8 @@ test = {
   'points': 0,
   'suites': [
     {
-      'type': 'sqlite',
-      'setup': """
-      sqlite> .read lab12.sql
-      """,
       'cases': [
         {
-          'locked': False,
           'code': r"""
           sqlite> SELECT * FROM obedience LIMIT 10;
           7|Option 2
@@ -23,8 +18,17 @@ test = {
           7|Option 1
           7|Option 3
           """,
-        },
+          'hidden': False,
+          'locked': False
+        }
       ],
-    },
+      'ordered': False,
+      'scored': True,
+      'setup': r"""
+      sqlite> .read lab12.sql
+      """,
+      'teardown': '',
+      'type': 'sqlite'
+    }
   ]
 }

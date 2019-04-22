@@ -2,7 +2,7 @@
     "name": "Lab 12",
     "endpoint": "cal/cs61a/sp19/lab12",
     "src": [
-        "lab12.sql",
+        "lab12.sql"
     ],
     "tests": {
         "tests/obedience.py": "ok_test",

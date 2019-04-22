@@ -27,6 +27,7 @@ test = {
           'locked': False
         }
       ],
+      'ordered': False,
       'scored': True,
       'setup': r"""
       sqlite> .read lab12.sql
