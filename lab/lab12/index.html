@@ -22,7 +22,7 @@
 <link rel="stylesheet" type="text/css" href="/assets/css/lab.css" />
 
 
-    <title>Lab 13: SQL | CS 88 Spring 2019</title>
+    <title>Lab 12: SQL | CS 88 Spring 2019</title>
 
   </head>
 
@@ -68,16 +68,16 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Lab 13</span>: SQL</h1>
+      <h1><span class="content-title-brand">Lab 12</span>: SQL</h1>
     </div>
 
-    <p><i>Due at 9:00pm on 12/6/2018.</i></p>
+    <p><i>Due at 9:00pm on 04/28/2019.</i></p>
 
 
 
 <h2 id='starter-files'>Starter Files</h2>
 
-<p>Download <a href="lab13.zip">lab13.zip</a>.
+<p>Download <a href="lab12.zip">lab12.zip</a>.
 Inside the archive, you will find starter files for the questions in this lab,
   along with a copy of the OK autograder.</p>
 
@@ -87,29 +87,118 @@ Inside the archive, you will find starter files for the questions in this lab,
 
 
 <ul>
-  <li>To receive credit for this lab, you must complete Questions 2, 3,
-  4, 5, and 6 in <a href="lab13.sql">lab13.sql</a> (NOT lab13.py) and submit through OK.</li>
-  <li>The rest are questions that are considered <strong>extra practice</strong>.
-  They can be found in the <a href="lab13_extra.sql">lab13_extra.sql</a> file. It is
-  recommended that you complete these problems on your own time.</li>
+  <li>To receive credit for this lab, you must complete Questions 2, 3, 4, 5, 6 and 7 in <a href="lab12.sql">lab12.sql</a> (NOT lab12.py) and submit through OK.</li>
 </ul>
 
 
     
 
 
-<h2 id="setup">Setup</h2>
+<h2 id="sqlite">SQLite</h2>
 
 
-<p>If you haven't set up SQLite on your computer yet, please refer to the second half of <a href="http://cs88-website.github.io/lab/lab12">Lab 12</a> for instructions on how to install and run the software needed to execute SQL files on your computer</p>
+<p>Follow the instruction below to get SQL set up on your computer.</p>
 
 
-<h2 id="getting-to-know-last-semester-s-students">Getting to Know Last Semester's Students</h2>
+<h3 id="setup">Setup</h3>
 
 
-<p>Last semester, Berkeley Computer Science students were asked to complete a brief
-online survey through Google Forms, which involved relatively random but fun
-questions. In this lab, we will interact with the results of the survey by
+<p>The simplest way to start using SQLite is to download a precompiled binary from the <a href="https://www.sqlite.org/download.html">SQLite website</a>. The latest version of SQLite at the time of writing is 3.24.0, but you can check for additional updates on the website.</p>
+
+
+<h4 id="windows">Windows</h4>
+
+
+<ol>
+  <li>Visit the download page linked above and navigate to the section Precompiled Binaries for Windows. Click on the link sqlite-tools-win32-x86-*.zip to download the binary.</li>
+  <li>Unzip the file. There should be a <code>sqlite3.exe</code> file in the directory after extraction.</li>
+  <li><p>Navigate to the folder containing the <code>sqlite3.exe</code> file and check that the version is at least 3.8.3:</p>
+
+<pre><code>$ cd path/to/sqlite
+$ ./sqlite3 &#x2d;&#x2d;version
+3.12.1 2016&#x2d;04&#x2d;08 15:09:49 fe7d3b75fe1bde41511b323925af8ae1b910bc4d</code></pre></li>
+</ol>
+
+
+<h4 id="macos-yosemite-10-10-or-newer">MacOS Yosemite (10.10) or newer</h4>
+
+<p>SQLite comes pre-installed. Check that you have a version that's greater than 3.8.3:</p>
+
+<pre><code>$ sqlite3
+SQLite version 3.8.10.2</code></pre>
+
+
+<h4 id="mac-os-x-mavericks-10-9-or-older">Mac OS X Mavericks (10.9) or older</h4>
+
+<p>SQLite comes pre-installed, but it is the wrong version.</p>
+
+<ol>
+  <li>Visit the download page linked above and navigate to the section Precompiled Binaries for Mac OS X (x86). Click on the link sqlite-tools-osx-x86-*.zip to download the binary.</li>
+  <li>Unzip the file. There should be a sqlite3 file in the directory after extraction.</li>
+  <li><p>Navigate to the folder containing the sqlite3 file and check that the version is at least 3.8.3:</p>
+
+<pre><code>$ cd path/to/sqlite
+$ ./sqlite3 &#x2d;&#x2d;version
+.12.1 2016&#x2d;04&#x2d;08 15:09:49 fe7d3b75fe1bde41511b323925af8ae1b910bc4d</code></pre></li>
+</ol>
+
+
+<h4 id="ubuntu">Ubuntu</h4>
+
+<p>The easiest way to use SQLite on Ubuntu is to install it straight from the native repositories (the version will be slightly behind the most recent release):</p>
+
+<pre><code>$ sudo apt install sqlite3
+$ sqlite3 &#x2d;&#x2d;version
+3.8.6 2014&#x2d;08&#x2d;15 11:46:33 9491ba7d738528f168657adb43a198238abde19e</code></pre>
+
+
+<h3 id="usage">Usage</h3>
+
+<p>You can start an interactive SQLite session in your Terminal or Git Bash with the following commands:</p>
+
+<ul>
+  <li><p>Ubuntu / Mac OS X (Yosemite or newer)</p>
+
+<pre><code>sqlite3</code></pre></li>
+  <li><p>Windows / Mac OS X (Mavericks or older)</p>
+
+<pre><code>./sqlite3</code></pre></li>
+</ul>
+
+<p>While the interpreter is running, you can type <code>.help</code> to see some of the commands you can run.</p>
+
+<p>To exit out of the SQLite intepreter, type <code>.exit</code> or <code>.quit</code> or press <code>Ctrl&#x2d;C</code>. Remember that if you see <code>...&gt;</code> after pressing return, you probably forgot a <code>;</code>.</p>
+
+<p>You can also run all the statements in a <code>.sql</code> file by doing the following:</p>
+
+<ol>
+  <li><p>Runs your code and then exits SQLite immediately afterwards.</p>
+
+  <ol>
+    <li><p>Ubuntu / Mac OS X (Yosemite or newer)</p>
+
+<pre><code>sqlite3 &lt; lab12.sql</code></pre></li>
+    <li><p>Windows / Mac OS X (Mavericks or older)</p>
+
+<pre><code>./sqlite3 &lt; lab12.sql</code></pre></li>
+  </ol></li>
+  <li><p>Runs your code and then opens an interactive SQLite session, which is similar to running Python code with the interactive -i flag.</p>
+
+  <ol>
+    <li><p>Ubuntu / Mac OS X (Yosemite or newer)</p>
+
+<pre><code>sqlite3 &#x2d;&#x2d;init lab12.sql</code></pre></li>
+    <li><p>Windows / Mac OS X (Mavericks or older)</p>
+
+<pre><code>./sqlite3 &#x2d;&#x2d;init lab12.sql</code></pre></li>
+  </ol></li>
+</ol>
+
+
+<h2 id="getting-to-know-your-classmates">Getting to Know Your Classmates</h2>
+
+
+<p>Last week, we asked you guys to take a survey. In this lab, we will interact with the results of the survey by
 using SQL queries to see if we can find interesting trends in the data.</p>
 
 <p>First, take a look at <code>data.sql</code> and examine the tables defined in it. Note
@@ -157,7 +246,7 @@ their structures. There are two tables you will be working with:</p>
     </tr>
     <tr>
       <td><code>denero</code></td>
-      <td>Choose your favorite photo of John Denero! (Options shown under Question 1)</td>
+      <td>Choose your favorite photo of Gerald Friedland! (Options shown under Question 1)</td>
     </tr>
     <tr>
       <td><code>smallest</code></td>
@@ -167,11 +256,10 @@ their structures. There are two tables you will be working with:</p>
 
 
   <br></li>
-  <li><code>checkboxes</code>: The results from the survey in which students could select more
-  than one option from the numbers listed, which ranged from 1 to 10 and included
-  2015, 9000, and 9001. Each row has a time (which is again a unique
-  identifier) and has the value <code>&#x27;True&#x27;</code> if the student selected the column or <code>&#x27;False&#x27;</code>
-  if the student did not.
+  <li><code>checkboxes</code>: Numbers randomly selected from 1 to 10 and included
+  2015, 9000, and 9001, matched to each student. Students may be matched to multiple numbers.
+  Each row has a time (which is again a unique identifier) and has the value 
+  <code>&#x27;True&#x27;</code> if the student is matched with that number or <code>&#x27;False&#x27;</code> if the student was not.
   The column names in this table are the following strings, referring to each possible
   number: <code>&#x27;0&#x27;</code>, <code>&#x27;1&#x27;</code>, <code>&#x27;2&#x27;</code>, <code>&#x27;4&#x27;</code>, <code>&#x27;5&#x27;</code>, <code>&#x27;6&#x27;</code>, <code>&#x27;7&#x27;</code>, <code>&#x27;8&#x27;</code>, <code>&#x27;9&#x27;</code>, <code>&#x27;10&#x27;</code>,
   <code>&#x27;2015&#x27;</code>, <code>&#x27;9000&#x27;</code>, <code>&#x27;9001&#x27;</code>.</li>
@@ -179,8 +267,8 @@ their structures. There are two tables you will be working with:</p>
 
 <p>A time in <code>students</code> matches up with a time in <code>checkboxes</code>. For
 example, the row with time "11/11/2015 9:54:03" in <code>students</code> matches up with
-the row with time "11/11/2015 9:54:03" in <code>checkboxes</code>. These entries come from
-the same Google form submission and thus belong to the same student. We used
+the row with time "11/11/2015 9:54:03" in <code>checkboxes</code>. We randomly choose from 1 to 10 
+and included 2015, 9000, and 9001 and matched it to each students. We used
 time to uniquely identify each student, rather than using their name or email.</p>
 
 <blockquote><p><em>Note</em>: If you are looking for your personal response within the data, you may
@@ -200,19 +288,19 @@ labs, you can test your solutions with OK. In addition, you can use either of
 the following commands. You may need to refer to the Usage section to find the
 appropriate command for your OS:</p>
 
-<pre><code>sqlite3 &lt; lab13.sql
-sqlite3 &#x2d;&#x2d;init lab13.sql</code></pre>
+<pre><code>sqlite3 &lt; lab12.sql
+sqlite3 &#x2d;&#x2d;init lab12.sql</code></pre>
 
 <h3 class="question" id="q1">Question 1: What Would SQL print?</h3>
 
 <p>First, load the tables into sqlite3. If you're on Windows or Mac OS X
 (Mavericks or older), use the following command:</p>
 
-<pre><code>$ ./sqlite3 &#x2d;&#x2d;init lab13.sql</code></pre>
+<pre><code>$ ./sqlite3 &#x2d;&#x2d;init lab12.sql</code></pre>
 
 <p>If you're on Ubuntu or Mac OS X (Yosemite or newer), use:</p>
 
-<pre><code>$ sqlite3 &#x2d;&#x2d;init lab13.sql</code></pre>
+<pre><code>$ sqlite3 &#x2d;&#x2d;init lab12.sql</code></pre>
 
 <p>Before we start, inspect the schema of the tables that we've created for you:</p>
 
@@ -248,34 +336,34 @@ sqlite&gt; SELECT song, pet FROM students WHERE color = &quot;blue&quot; AND dat
 
 <p>To warm-up, let's ask a simple question related to our data: Is there a
 correlation between whether students do as they're told and their
-favorite image of John DeNero?</p>
+favorite image of Gerald Friedland?</p>
 
-<p><img class="img-responsive center-block" src="https://inst.eecs.berkeley.edu/~cs61a/fa15/lab/lab12/assets/denero.png" alt="denero"></p>
+<p><img class="img-responsive center-block" src="assets/gerald.png" alt="gerald"></p>
 
 <p>Write a SQL query to create a table that contains the columns <code>seven</code> (this
-column representing "obedience") and <code>denero</code> (the image students selected)
+column representing "obedience") and <code>gerald</code> (the image students selected)
 from the <code>students</code> table.</p>
 
 <p>You should get the following output:</p>
 
 <pre><code>sqlite&gt; SELECT * FROM obedience LIMIT 10;
-7|Image 1
-7|Image 2
-Choose this option instead.|Image 2
-7|Image 5
-Choose this option instead.|Image 5
-7|Image 5
-7|Image 2
-7|Image 4
-I&#x27;m a rebel|Image 4
-YOLO!|Image 5</code></pre>
+7|Option 2
+Choose this option instead.|Option 3
+YOLO!|Option 3
+7|Option 4
+7|Option 5
+YOLO!|Option 3
+Choose this option instead.|Option 3
+Choose this option instead.|Option 3
+7|Option 1
+7|Option 3</code></pre>
 
 
 
 <pre><code>CREATE TABLE obedience as
 <div class="alt 1">  -- REPLACE THIS LINE
   SELECT &#x27;YOUR CODE HERE&#x27;;
-</div><div class="solution 1">&#x20;&#x20;&#x53;&#x45;&#x4c;&#x45;&#x43;&#x54;&#x20;&#x73;&#x65;&#x76;&#x65;&#x6e;&#x2c;&#x20;&#x64;&#x65;&#x6e;&#x65;&#x72;&#x6f;&#x20;&#x46;&#x52;&#x4f;&#x4d;&#x20;&#x73;&#x74;&#x75;&#x64;&#x65;&#x6e;&#x74;&#x73;&#x3b;</div></code></pre>
+</div><div class="solution 1">&#x20;&#x20;&#x53;&#x45;&#x4c;&#x45;&#x43;&#x54;&#x20;&#x73;&#x65;&#x76;&#x65;&#x6e;&#x2c;&#x20;&#x67;&#x65;&#x72;&#x61;&#x6c;&#x64;&#x20;&#x46;&#x52;&#x4f;&#x4d;&#x20;&#x73;&#x74;&#x75;&#x64;&#x65;&#x6e;&#x74;&#x73;&#x3b;</div></code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -284,13 +372,12 @@ YOLO!|Image 5</code></pre>
     
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q obedience</code></pre>
-
 <h3 class="question" id="q3">Question 3: Go Bears! (And Dogs?)</h3>
 
 <p>Now that we have learned how to select columns from a SQL table, let's filter the
 results to see some more interesting results!</p>
 
-<p>It turns out that Computer Science students have a lot of school spirit: the most popular favorite
+<p>It turns out that our students have a lot of school spirit: the most popular favorite
 color was <code>&#x27;blue&#x27;</code>. You would think that this school spirit would carry over to the
 pet answer, and everyone would want a pet bear! Unfortunately, this was not the case,
 and the majority of students opted to have a pet <code>&#x27;dog&#x27;</code> instead. That is the more
@@ -298,27 +385,14 @@ sensible choice, I suppose...</p>
 
 <p>Write a SQL query to create a table that contains both the column <code>color</code> and the
 column <code>pet</code>, using the keyword <code>WHERE</code> to restrict the answers to the most popular
-results of color being <code>&#x27;blue&#x27;</code> and pet being <code>&#x27;dog&#x27;</code>.</p>
+results of color being <code>&#x27;blue&#x27;</code> and pet being <code>&#x27;dog&#x27;</code>. Note that some people put different
+names for dogs&mdash;i.e. putting specific dogs or putting <code>&#x27;puppy&#x27;</code> instead of dog. Unfortunately,
+we would not be able to account for those cases. Something messy as data scientist you will have
+to deal with in collecting data.</p>
 
 <p>You should get the following output:</p>
 
 <pre><code>sqlite&gt; SELECT * FROM blue_dog;
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
-blue|dog
 blue|dog
 blue|dog
 blue|dog</code></pre>
@@ -343,10 +417,12 @@ blue|dog</code></pre>
 <p>Who successfully managed to guess the smallest unique integer value? Let's find
 out!</p>
 
+<p>To keep it simply, we limited the allowed inputs to be a positive number (greater than zero).</p>
+
 <p>Unfortunately we have not learned how to do aggregations, which can help us count
 the number of times a specific value was selected, in SQL just yet. As such, we
 can only hand inspect our data to determine it. However, an anonymous elf has
-informed us that the smallest unique value is greater than 6!</p>
+informed us that the smallest unique value is greater than 3!</p>
 
 <p>Write a SQL query with the columns <code>time</code> and <code>smallest</code> to try to determine what
 the smallest integer value is. In order to make it easier for us to inspect these
@@ -356,18 +432,18 @@ the first 20 values that are greater than the number 6.</p>
 <p>The first 5 lines of your output should look like this:</p>
 
 <pre><code>sqlite&gt; SELECT * FROM smallest_int LIMIT 5;
-11/11/2015 10:01:03|7
-11/11/2015 13:53:36|7
-11/11/2015 14:52:07|7
-11/11/2015 15:36:00|7
-11/11/2015 15:46:03|7</code></pre>
+4/17/2019 10:19:17|4
+4/19/2019 17:46:44|4
+4/20/2019 20:29:22|5
+4/16/2019 18:44:34|6
+4/17/2019 9:44:12|6</code></pre>
 
 
 
 <pre><code>CREATE TABLE smallest_int as
 <div class="alt 3">  -- REPLACE THIS LINE
   SELECT &#x27;YOUR CODE HERE&#x27;;
-</div><div class="solution 3">&#x20;&#x20;&#x53;&#x45;&#x4c;&#x45;&#x43;&#x54;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x2c;&#x20;&#x73;&#x6d;&#x61;&#x6c;&#x6c;&#x65;&#x73;&#x74;&#x20;&#x46;&#x52;&#x4f;&#x4d;&#x20;&#x73;&#x74;&#x75;&#x64;&#x65;&#x6e;&#x74;&#x73;&#x20;&#x57;&#x48;&#x45;&#x52;&#x45;&#x20;&#x73;&#x6d;&#x61;&#x6c;&#x6c;&#x65;&#x73;&#x74;&#x20;&#x3e;&#x20;&#x36;&#x20;&#x4f;&#x52;&#x44;&#x45;&#x52;&#x20;&#x42;&#x59;&#x20;&#x73;&#x6d;&#x61;&#x6c;&#x6c;&#x65;&#x73;&#x74;&#x20;&#x4c;&#x49;&#x4d;&#x49;&#x54;&#x20;&#x32;&#x30;&#x3b;</div></code></pre>
+</div><div class="solution 3">&#x20;&#x20;&#x53;&#x45;&#x4c;&#x45;&#x43;&#x54;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x2c;&#x20;&#x73;&#x6d;&#x61;&#x6c;&#x6c;&#x65;&#x73;&#x74;&#x20;&#x46;&#x52;&#x4f;&#x4d;&#x20;&#x73;&#x74;&#x75;&#x64;&#x65;&#x6e;&#x74;&#x73;&#x20;&#x57;&#x48;&#x45;&#x52;&#x45;&#x20;&#x73;&#x6d;&#x61;&#x6c;&#x6c;&#x65;&#x73;&#x74;&#x20;&#x3e;&#x20;&#x33;&#x20;&#x4f;&#x52;&#x44;&#x45;&#x52;&#x20;&#x42;&#x59;&#x20;&#x73;&#x6d;&#x61;&#x6c;&#x6c;&#x65;&#x73;&#x74;&#x20;&#x4c;&#x49;&#x4d;&#x49;&#x54;&#x20;&#x32;&#x30;&#x3b;</div></code></pre>
 
 
     <button id='3' class='toggleButton'>
@@ -382,7 +458,7 @@ the first 20 values that are greater than the number 6.</p>
 
 <p>To do this, try the following:</p>
 
-<pre><code>$ sqlite3 &#x2d;&#x2d;init lab13.sql
+<pre><code>$ sqlite3 &#x2d;&#x2d;init lab12.sql
 sqlite&gt; SELECT * FROM smallest_int; &#x2d;&#x2d; No LIMIT this time!</code></pre>
 
 
@@ -426,14 +502,14 @@ appearing in our output!</p>
 <h3 class="question" id="q5">Question 5: Sevens</h3>
 
 <p>Let's take a look at data from both of our tables, <code>students</code> and <code>checkboxes</code>,
-to find out if students that really like the number 7 also chose <code>&#x27;7&#x27;</code> for the
+to find out if students that got the number 7 assigned to them also chose <code>&#x27;7&#x27;</code> for the
 obedience question. Specifically, we want to look at the students that fulfill
 the below conditions and see if they also chose <code>&#x27;7&#x27;</code> in the question that asked
 students to choose the number 7 (column <code>seven</code> in <code>students</code>).</p>
 
 <ul>
   <li>reported that their favorite number (column <code>number</code> in <code>students</code>) was 7</li>
-  <li>have <code>&#x27;True&#x27;</code> in column <code>&#x27;7&#x27;</code> in <code>checkboxes</code>, meaning they checked the number <code>7</code> during the survey</li>
+  <li>have <code>&#x27;True&#x27;</code> in column <code>&#x27;7&#x27;</code> in <code>checkboxes</code>, meaning they got assignd the number <code>7</code>.</li>
 </ul>
 
 <p>In order to examine rows from both the <code>students</code> and the <code>checkboxes</code> table, we will
@@ -456,19 +532,6 @@ table and who checked the box for seven (column <code>&#x27;7&#x27;</code>) in t
 <p>You should get the following output:</p>
 
 <pre><code>sqlite&gt; SELECT * FROM sevens;
-7
-7
-7
-Choose this option instead.
-I do what I want.
-Choose this option instead.
-7
-YOLO!
-You are not the boss of me!
-Choose this option instead.
-7
-Choose this option instead.
-You are not the boss of me!
 7</code></pre>
 
 
@@ -488,7 +551,7 @@ You are not the boss of me!
 
 <h3 class="question" id="q6">Question 6: Matchmaker, Matchmaker</h3>
 
-<p>Did you study Computer Science with the hope of finding your soul mate? Well you're in luck!
+<p>Did you study Data Science with the hope of finding your soul mate? Well you're in luck!
 With all this data in hand, it's easy for us to find your perfect match. If two
 students want the same pet and have the same taste in music, they are clearly meant
 to be together! In order to provide some more information for the potential lovebirds
@@ -514,26 +577,21 @@ is a unique identifier) from your joined tables, in order to do the above correc
 <p>You should get the following output:</p>
 
 <pre><code>sqlite&gt; SELECT * FROM matchmaker LIMIT 20;
-dog|Shake It Off|blue|pink
-dog|Shake It Off|blue|blue
-dog|Shake It Off|blue|blue
-dog|Shake It Off|blue|red
-dog|Shake It Off|blue|orange
-dog|Shake It Off|blue|blue
-dog|Shake It Off|blue|blue
-dog|Shake It Off|blue|blue
-rabbit|Hello|turquoise|blue
-john denero|Hotline Bling|teal|orange
-john denero|Hotline Bling|teal|seafoam
-dragon|Sandstorm|dark blue|blue
-dragon|Sandstorm|dark blue|blu
-dog|Hotline Bling|grey|red
-dog|Hotline Bling|grey|green
-dog|Hello|green|green
-dog|Hello|green|white
-dog|Hello|green|blue
-dog|Hello|green|black
-dog|Hello|green|blue</code></pre>
+dog|&quot;I Want it That Way&quot;&quot; by Backstreet Boys|none|blue
+dog|&quot;I Want it That Way&quot;&quot; by Backstreet Boys|none|blue
+dog|&quot;Hello&quot; by Adele|green|pink
+dog|&quot;Hello&quot; by Adele|green|purple
+dog|&quot;I Want it That Way&quot;&quot; by Backstreet Boys|blue|blue
+dog|&quot;Thinking Out Loud&quot; by Ed Sheeran|don&#x27;t have one|black
+dog|&quot;Thinking Out Loud&quot; by Ed Sheeran|don&#x27;t have one|black
+owl|&quot;Hello&quot; by Adele|blue|blue
+dog|&quot;Hello&quot; by Adele|pink|purple
+dolphin|&quot;I Want it That Way&quot;&quot; by Backstreet Boys|green|blue
+cat|&quot;Hello&quot; by Adele|pink|blue
+dog|&quot;Hotline Bling&quot; by Drake|white|blue
+dog|&quot;Hotline Bling&quot; by Drake|white|black
+dog|&quot;Thinking Out Loud&quot; by Ed Sheeran|black|black
+dog|&quot;Hotline Bling&quot; by Drake|blue|black</code></pre>
 
 
 
@@ -549,15 +607,6 @@ dog|Hello|green|blue</code></pre>
     
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q matchmaker</code></pre>
-
-
-<h2 id="extra-questions">Extra Questions</h2>
-
-
-<p>The following questions are for <strong>extra practice</strong> &mdash; they can be found
-in the <a href="lab13_extra.sql">lab13_extra.sql</a> file. It is recommended that
-you complete these problems as well, but you do not need to turn them
-in for credit.</p>
 
 
 <h3 id="the-count-aggregate">The COUNT aggregate</h3>
@@ -610,16 +659,16 @@ say <code>COUNT(*)</code>.</p>
 <p>After you've defined your table, you should get something like:</p>
 
 <pre><code>sqlite&gt; SELECT * FROM smallest_int_count LIMIT 10;
-1|190
-2|18
-3|21
-4|7
-5|5
-6|7
-7|7
-8|2
-9|1
-10|3     </code></pre>
+1|34
+2|4
+3|7
+4|2
+5|1
+6|2
+7|5
+8|1
+10|1
+11|1    </code></pre>
 
 
 
@@ -636,7 +685,7 @@ say <code>COUNT(*)</code>.</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q smallest-int-count</code></pre>
 
-<p>It looks like the number <code>9</code> only had one person choose it! Were you the lucky student that put
+<p>It looks like the number <code>5</code> only had one person choose it! Were you the lucky student that put
 it down?</p>
 
 
@@ -645,8 +694,20 @@ it down?</p>
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
+  <li><a href="#sqlite">SQLite</a></li>
+  <ul>
   <li><a href="#setup">Setup</a></li>
-  <li><a href="#getting-to-know-last-semester-s-students">Getting to Know Last Semester's Students</a></li>
+  <ul>
+  <li><a href="#windows">Windows</a></li>
+  <li><a href="#macos-yosemite-10-10-or-newer">MacOS Yosemite (10.10) or newer</a></li>
+  <li><a href="#mac-os-x-mavericks-10-9-or-older">Mac OS X Mavericks (10.9) or older</a></li>
+  <li><a href="#ubuntu">Ubuntu</a></li>
+</ul>
+
+  <li><a href="#usage">Usage</a></li>
+</ul>
+
+  <li><a href="#getting-to-know-your-classmates">Getting to Know Your Classmates</a></li>
   <ul>
   <li><a href="#q1">Question 1: What Would SQL print?</a></li>
   <li><a href="#q2">Question 2: Obedience</a></li>
@@ -658,10 +719,6 @@ it down?</p>
   <ul>
   <li><a href="#q5">Question 5: Sevens</a></li>
   <li><a href="#q6">Question 6: Matchmaker, Matchmaker</a></li>
-</ul>
-
-  <li><a href="#extra-questions">Extra Questions</a></li>
-  <ul>
   <li><a href="#the-count-aggregate">The COUNT aggregate</a></li>
   <li><a href="#q7">Question 7: The Smallest Unique Integer (Part 2)</a></li>
 </ul>
@@ -684,7 +741,7 @@ it down?</p>
 <script src="//code.jquery.com/jquery-latest.js"></script>
 <!-- <script>
   $(function() {
-    if (new Date("12/7/2018") < new Date()) {
+    if (new Date("04/30/2019") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');

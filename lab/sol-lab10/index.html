@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science " />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Gerald Friedland, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+    <link rel="icon" href="/assets/images/favicon.ico">
+
+    <link rel="stylesheet" href="/assets/css/mono-blue.css">
+    <script src="/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/lab.css"/>
+
+
+    <title>Lab 10 Solutions | CS 88 Spring 2019</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/">Calendar</a></li>
+            <li><a href="/articles/resources.html">Resources</a></li>
+            <li><a href="/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/articles/about.html">Course Information</a></li>
+            <li><a href="/staff.html">Staff</a></li>
+            <!--- <li><a href="/tutoring.html">Tutoring</a></li> -->
+
+            <!-- <li><a href="/articles/using-ok.html">Using OK</a></li> -->
+<!--             <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Course Info <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/articles/about.html">Syllabus</a></li>
+                <li><a href="/staff.html">Staff</a></li>
+                <li><a href="/weekly.html">Weekly Schedule</a></li>
+                <li><a href="/extra.html">Extra Lectures</a></li>
+              </ul>
+            </li> -->
+
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 10</span> Solutions</h1>
+    </div>
+
+    <p><strong>Solutions:</strong> You can find the file with solutions for all
+questions <a href="lab10.">here</a>.</p>
+
+    
+
+
+<h2 id="introduction-to-exceptions">Introduction to Exceptions</h2>
+
+
+<p>Exceptions allow us to try a chunk of code, and then catch any errors
+that might come up. If we do catch an exception, we can run an
+alternative set of instructions. This construct is very useful in many
+situations.</p>
+
+<pre><code>try:
+    &lt;try suite&gt;
+except Exception as e:
+    &lt;except suite&gt;
+else:
+    &lt;else suite&gt;
+finally:
+    &lt;finally suite&gt;</code></pre>
+
+<p>Notice that we can catch the exception as <code>e</code>. This binds the name <code>e</code> to
+the exception object.  This can be helpful when we want to give extra
+information on what happened. For example, we can <code>print(e)</code> inside the
+except clause.</p>
+
+<p>Also, we have an optional else case. The else suite is executed if the
+<code>try</code> suite finishes without any exceptions.</p>
+
+<p>We also have an optional finally clause, which is always executed,
+whether or not an exception is thrown. We generally don't need to use
+the else and finally controls in this class.</p>
+
+<p>When we write exception statements, we generally don't just use the
+class Exception as above. Rather, we figure out the specific type of
+exception that we want to handle, such as <code>TypeError</code> or
+<code>ZeroDivisionError</code>. To figure out which type of exception you are trying
+to handle, you can type purposely wrong things into the interpreter
+(such as 'hi' + 5 or 1 / 0) and see what kind of exception Python spits
+out.</p>
+
+<h3 class="question" id="q1">Question 1: No KeyErrors Allowed</h3>
+
+<p>If we try to look up a key that does not exist in a dictionary, then
+Python will raise a <code>KeyError</code>. Write the function <code>avoid_keyerror</code> which 
+returns the value mapped to <code>key</code> in the <code>dictionary</code>. If <code>key</code> does
+not exist, print 'Avoid Exception' and map <code>key</code> to the string 'no value'.</p>
+
+
+
+<pre><code>def avoid_keyerror(dictionary, key):
+    &quot;&quot;&quot; Returns the value associated with key in dictionary. If key 
+    does not exist in the dictionary, print out &#x27;Avoid Exception&#x27; and
+    map it to the string &#x27;no value&#x27;.
+
+    &gt;&gt;&gt; d = {1: &#x27;one&#x27;, 3: &#x27;three&#x27;, 5: &#x27;five&#x27;}
+    &gt;&gt;&gt; avoid_keyerror(d, 3)
+    &#x27;three&#x27;
+    &gt;&gt;&gt; avoid_keyerror(d, 4)
+    Avoid Exception
+    &gt;&gt;&gt; d[4]
+    &#x27;no value&#x27;
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+    
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x41;&#x76;&#x6f;&#x69;&#x64;&#x20;&#x45;&#x78;&#x63;&#x65;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x22;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x27;&#x6e;&#x6f;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x27;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q avoid_keyerror</code></pre>
+
+<h3 class="question" id="q2">Question 2: Safe use of higher order functions</h3>
+
+<p>When writing higher order functions that take functions as arguments, there
+is always the possibility that the function that is passed in may have an
+error that results in an exception.  In this problem we will use exception
+handling to deal with that.  The function <code>safe_sum</code> is passed a function
+and a sequence; it is to return the sum of the results of applyng the function
+to the elements in the sequence.  However, for elements in the sequence where
+the function throws an exception, the <code>missing</code> value is added into the 
+partial sum.</p>
+
+<p>We have started the solution by writing a wrapper function that is used to
+catch the exception. Complete it.</p>
+
+
+
+<pre><code>def safe_sum(fun, seq, missing=0):
+    &quot;&quot;&quot;Return the sum of fun applied to elements in seq using missing as a replacement
+    for those elements on which fun throws an exception
+
+    &gt;&gt;&gt; safe_sum(lambda x: x, [5, &quot;terrible&quot;, 4, 3, &quot;two&quot;, 1])
+    13
+    &gt;&gt;&gt; safe_sum(lambda x: 1/x, [1, 2, 0, 3, None, &quot;bad&quot;])
+    1.8333333333333333
+    &quot;&quot;&quot;
+    def wrap(fun, x, summed):
+<div class="alt 2">        "*** YOUR CODE HERE ***"
+        
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x75;&#x6d;&#x6d;&#x65;&#x64;&#x20;&#x2b;&#x20;&#x66;&#x75;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x28;&#x5a;&#x65;&#x72;&#x6f;&#x44;&#x69;&#x76;&#x69;&#x73;&#x69;&#x6f;&#x6e;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x54;&#x79;&#x70;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x56;&#x61;&#x6c;&#x75;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;&#x20;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;&#x20;&#x2b;&#x20;&#x73;&#x75;&#x6d;&#x6d;&#x65;&#x64;</div>
+    psum = 0
+    for x in seq:
+        psum = wrap(fun, x, psum)
+    return psum</code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q safe_sum</code></pre>
+
+
+<h2 id="more-inheritance">More Inheritance</h2>
+
+
+<h3 class="question" id="q3">Question 3: Quidditch</h3>
+
+<p>It's time for the opening quidditch match of the season! We represent the various positions for players with the <code>Player</code> class and its subclasses. Every player begins with a <code>base_energy</code> level, but every position requires a different proportion of energy. Fill in the <code>energy</code> method for the <code>Beater</code>, <code>Chaser</code>, <code>Seeker</code>, and <code>Keeper</code> classes, according to their docstrings. In addition, fill in the <code>__init__</code> method for the <code>Chaser</code> class.</p>
+
+<div class="solution 3">
+
+<pre><code>class Player:
+    def __init__(self, name, base_energy):
+        &quot;&quot;&quot;
+        Players have a name, and begin with base_energy.
+        &quot;&quot;&quot;
+        self.name = name
+        self.base_energy = base_energy
+
+    def energy(self):
+        return self.base_energy</code></pre>
+
+</div>
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+
+
+<pre><code>class Beater(Player):
+    role = &quot;bludgers&quot;
+
+    def energy(self, time):
+        &quot;&quot;&quot;
+        Returns the amount of energy left after playing for time minutes. 
+        After playing for time minutes, Beaters lose their base energy level 
+        divided by the number of minutes. If time is 0, catch the ZeroDivisionError 
+        and print &quot;You can&#x27;t divide by zero!&quot; instead.
+        &gt;&gt;&gt; fred = Beater(&quot;Fred Weasley&quot;, 640)
+        &gt;&gt;&gt; fred.energy(40)
+        624.0
+        &gt;&gt;&gt; fred.energy(0)
+        You can&#x27;t divide by zero!
+        &quot;&quot;&quot;
+<div class="alt 4">        "*** YOUR CODE HERE ***"
+        
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2f;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x5a;&#x65;&#x72;&#x6f;&#x44;&#x69;&#x76;&#x69;&#x73;&#x69;&#x6f;&#x6e;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x9;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x59;&#x6f;&#x75;&#x20;&#x63;&#x61;&#x6e;&#x27;&#x74;&#x20;&#x64;&#x69;&#x76;&#x69;&#x64;&#x65;&#x20;&#x62;&#x79;&#x20;&#x7a;&#x65;&#x72;&#x6f;&#x21;&#x22;&#x29;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Beater.energy</code></pre>
+
+
+
+<pre><code>class Chaser(Player):
+    role = &quot;score&quot;
+    energy_expended = 20
+
+    def __init__(self, name, base_energy, goals):
+        &quot;&quot;&quot;
+        Chasers have a name, score goals, and begin with base_energy.
+        &quot;&quot;&quot;
+<div class="alt 5">        "*** YOUR CODE HERE ***"
+        
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x3d;&#x20;&#x67;&#x6f;&#x61;&#x6c;&#x73;</div>
+    def energy(self, time):
+        &quot;&quot;&quot;
+        Returns the amount of energy left after playing for time minutes. For every goal 
+        they score, they use energy_expended units of energy. In addition, they also use 
+        10% of energy_expended if the number of minutes they have played is a multiple of 9.
+        &gt;&gt;&gt; katie = Chaser(&quot;Katie Bell&quot;, 230, 2)
+        &gt;&gt;&gt; katie.energy(20)
+        190
+        &gt;&gt;&gt; ginny = Chaser(&quot;Ginny Weasley&quot;, 400, 3)
+        &gt;&gt;&gt; ginny.energy(45)
+        338.0
+        &quot;&quot;&quot;
+<div class="alt 5">        "*** YOUR CODE HERE ***"
+        
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x25;&#x20;&#x39;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x30;&#x2e;&#x31;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;</div></code></pre>
+
+
+    <button id='5' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Chaser.energy</code></pre>
+
+
+
+<pre><code>class Seeker(Player):
+    role = &quot;snitch&quot;
+    energy_expended = 5
+
+    def energy(self, time):
+        &quot;&quot;&quot;
+        Returns the amount of energy after time minutes. Seekers expend energy_expended 
+        units of their energy for every minute they have been playing.
+        &gt;&gt;&gt; harry = Seeker(&quot;Harry Potter&quot;, 700)
+        &gt;&gt;&gt; harry.energy(30)
+        550
+        &quot;&quot;&quot;
+<div class="alt 6">        "*** YOUR CODE HERE ***"
+        
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x2a;&#x20;&#x53;&#x65;&#x65;&#x6b;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;</div></code></pre>
+
+
+    <button id='6' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Seeker.energy</code></pre>
+
+
+
+<pre><code>class Keeper(Player):
+    role = &quot;guard&quot;
+    energy_expended = 50
+
+    def energy(self, time):
+        &quot;&quot;&quot;
+        Returns the amount of energy after time minutes. If less than 30 minutes have 
+        passed, then Keepers do not lose any energy. If 30 minutes or more have passed, 
+        then Keepers expend 80% of their energy_expended units for every full 15 
+        minutes that pass.
+        &gt;&gt;&gt; oliver = Keeper(&quot;Oliver Wood&quot;, 380)
+        &gt;&gt;&gt; oliver.energy(45)
+        260.0
+        &quot;&quot;&quot;
+<div class="alt 7">        "*** YOUR CODE HERE ***"
+        
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x3c;&#x20;&#x33;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x2f;&#x2f;&#x20;&#x31;&#x35;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x30;&#x2e;&#x38;&#x20;&#x2a;&#x20;&#x4b;&#x65;&#x65;&#x70;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;</div></code></pre>
+
+
+    <button id='7' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Keeper.energy</code></pre>
+
+<p>After you finish implementing the Players, run the following command in your terminal to play the game:</p>
+
+<pre><code>python3 &#x2d;i quidditch_game.py</code></pre>
+
+
+<h2 id="preparing-for-project-2-debugging">Preparing for Project 2: Debugging</h2>
+
+
+<h3 class="question" id="q4">Question 4: Werewolf</h3>
+
+<p>Now, you want to play a game, inspired by Werewolf, with a group of your friends. A <code>Player</code> can either be a <code>Werewolf</code>, or a <code>Villager</code>. In this game, you can have 4 or more players. The first 2 players are automatically designated to be Werewolves, while everyone else is assigned to be a Villager. One play of the game involves all of the players voting for a player who they believe to be a Werewolf; in this implementation, all players, except yourself, arbitrarily vote for themselves. At the end of each play, the player with the most votes is removed from the game. Each play of the game alternates between daytime and nighttime. If it is nighttime, only votes by werewolves count.</p>
+
+<p>The game ends when there are no werewolves left, which means the villagers won, or when there are more werewolves than villagers, which means the werewolves have won.</p>
+
+<p>However, there are bugs in the code for the game! Read through the code and fix all of the bugs so that the game can work properly. As hint, there are at least four bugs in the code! For this lab there is a <strong>hidden</strong> test. In other words, we will be running a test against your code that you don't have access to, so make sure to be thorough! You should not need to add any lines - only edit existing lines.</p>
+
+<pre><code>def get_most_common_element(lst):
+    return max(set(lst), key=lst.count)
+
+class Player:
+    def __init__(self, name):
+        self.name = name
+        self.active = True
+
+class Werewolf(Player):
+    def __init__(self, name):
+        Player.__init__(self, name)
+
+    def reveal_player_type(self):
+        print(&quot;You are a werewolf!&quot;)
+
+class Villager(Player):
+    def __init__(self, name):
+        Villager.__init__(self, name)    
+
+    def reveal_player_type(self):
+        print(&quot;You are a villager!&quot;)
+
+class Game:
+    def __init__(self, players, your_name):
+        &quot;&quot;&quot;
+        Sets the game up. players is a list of strings that are names of all 
+        of the players. your_name is a string and must be one of the players.
+        &gt;&gt;&gt; game = Game([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)
+        You are a werewolf!
+        &gt;&gt;&gt; game.your_name
+        &#x27;a&#x27;
+        &gt;&gt;&gt; game.play(&quot;b&quot;)
+        &#x27;Keep playing!&#x27;
+        &gt;&gt;&gt; len(game.werewolves)
+        1
+        &gt;&gt;&gt; len(game.villagers)
+        4
+        &gt;&gt;&gt; game.play(&quot;c&quot;)
+        &#x27;Keep playing!&#x27;
+        &gt;&gt;&gt; game.play(&quot;d&quot;)
+        &#x27;Keep playing!&#x27;
+        &gt;&gt;&gt; game.play(&quot;a&quot;)
+        &#x27;Villagers win!&#x27;
+        &gt;&gt;&gt; game.werewolves
+        []
+        &gt;&gt;&gt; len(game.villagers)
+        2
+        &quot;&quot;&quot;
+        if len(players) &lt; 4:
+            raise Exception(&quot;Not enough players!&quot;)
+        names = players[0:2]
+        self.your_name = your_name
+        self.werewolves = [Werewolf(self, w) for w in names]
+        self.villagers = [Villager(self, p) for p in players if p not in names]
+        self.name_to_player = {}
+
+        for werewolf in self.werewolves:
+            self.name_to_player[werewolf.name] = werewolf
+
+        for villager in self.villagers:
+            self.name_to_player[villager.name] = villager
+
+        player = self.name_to_player[your_name]
+        player.reveal_player_type()
+
+        self.state = &quot;night&quot;
+
+    def play(self, vote):
+        &quot;&quot;&quot;
+        While the game is still being played, make a move. vote is the player 
+        who you vote for, because you believe they are on the opposing team. 
+        You can continue playing until either the villagers or the werewolves win.
+        &quot;&quot;&quot;
+        self.make_move(vote)
+        if not self.check_if_end_of_game():
+            return &quot;Keep playing!&quot;
+        else:
+            if len(self.werewolves) == 0:
+                return &quot;Villagers win!&quot;
+            elif len(self.werewolves) &gt; len(self.villagers):
+                return &quot;Werewolves win!&quot;
+
+    def make_move(self, vote):
+        &quot;&quot;&quot;
+        Every player votes (players arbitrarily vote for themselves). Then, 
+        if the state of the game is day, remove the player with the most votes 
+        overall, and set the state to night. If the state of the game is night, 
+        remove the player with the most votes by werewolves, and set the state to day.
+        &quot;&quot;&quot;
+        votes = []
+        werewolf_votes = []
+
+        if self.state == &quot;night&quot;:
+            werewolf_votes.append(vote)
+        votes.append(vote)
+
+        for player in self.name_to_player:
+            if self.state == &quot;night&quot; and isinstance(player, Werewolf(name)):
+                werewolf_votes.append(player)
+            votes.append(player)
+
+        if self.state == &quot;day&quot;:
+            majority_vote = get_most_common_element(votes)
+            self.state = &quot;night&quot;
+        elif self.state == &quot;night&quot;:
+            majority_vote = get_most_common_element(werewolf_votes)
+            self.state = &quot;day&quot;
+
+        if majority_vote in self.name_to_player:
+            self.remove_player(majority_vote)
+        else:
+            raise Exception(&quot;Invalid player.&quot;)
+
+    def remove_player(player_to_remove):
+        &quot;&quot;&quot;
+        Set the player with the majority vote to inactive, and remove it from 
+        its respective list of players.
+        &quot;&quot;&quot;
+        player = self.name_to_player[player_to_remove]
+        self.active = False
+
+        if player in self.werewolves:
+            self.werewolves.remove(player)
+        elif player in self.villagers:
+            self.villagers.remove(player)
+        else:
+            print(&quot;Player already removed!&quot;)
+
+    def check_if_end_of_game(self):
+        &quot;&quot;&quot;
+        Returns True if the game is over, and False if it is not. The game is over when 
+        there are no werewolves remaining, or if there are more werewolves than villagers.
+        &quot;&quot;&quot;
+
+        if len(Game.werewolves) == 0:
+            return True
+        elif len(Game.werewolves) &gt; len(Game.villagers):
+            return True
+        else:
+            return False</code></pre>
+
+<p>Run the following command in your terminal to play around with your code:</p>
+
+<pre><code>python3 &#x2d;i lab10.py</code></pre>
+
+<p>After running the above command, enter the below line to actually start a game and play through the code that you've debugged. We highly recommend you do this a couple times to test your code and make sure it's bug free. If you need a refresher on the commands for interacting with the game, refer to the doctests for this question!</p>
+
+<pre><code>game = Game([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)</code></pre>
+
+<div class="solution 8">
+
+<pre><code>def get_most_common_element(lst):
+    return max(set(lst), key=lst.count)
+
+class Pl88yer:
+    def __init__(self, name):
+        self.name = name
+        self.active = True
+
+class Werewolf(Pl88yer):
+    def __init__(self, name):
+        Pl88yer.__init__(self, name)
+
+    def reveal_player_type(self):
+        print(&quot;You are a werewolf!&quot;)
+
+class Villager(Pl88yer):
+    def __init__(self, name):
+        Villager.__init__(self, name)    
+
+    def reveal_player_type(self):
+        print(&quot;You are a villager!&quot;)
+
+class Game:
+    def __init__(self, players, your_name):
+        &quot;&quot;&quot;
+        Sets the game up. players is a list of strings that are names of all 
+        of the players. your_name is a string and must be one of the players.
+        &gt;&gt;&gt; game = Game([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)
+        You are a werewolf!
+        &gt;&gt;&gt; game.your_name
+        &#x27;a&#x27;
+        &gt;&gt;&gt; game.play(&quot;b&quot;)
+        &#x27;Keep playing!&#x27;
+        &gt;&gt;&gt; len(game.werewolves)
+        1
+        &gt;&gt;&gt; len(game.villagers)
+        4
+        &gt;&gt;&gt; game.play(&quot;c&quot;)
+        &#x27;Keep playing!&#x27;
+        &gt;&gt;&gt; game.play(&quot;d&quot;)
+        &#x27;Keep playing!&#x27;
+        &gt;&gt;&gt; game.play(&quot;a&quot;)
+        &#x27;Villagers win!&#x27;
+        &gt;&gt;&gt; game.werewolves
+        []
+        &gt;&gt;&gt; len(game.villagers)
+        2
+        &quot;&quot;&quot;
+        if len(players) &lt; 4:
+            raise Exception(&quot;Not enough players!&quot;)
+        names = players[0:2]
+        self.your_name = your_name
+        self.werewolves = [Werewolf(self, w) for w in names]
+        self.villagers = [Villager(self, p) for p in players if p not in names]
+        self.name_to_player = {}
+
+        for werewolf in self.werewolves:
+            self.name_to_player[werewolf.name] = werewolf
+
+        for villager in self.villagers:
+            self.name_to_player[villager.name] = villager
+
+        player = self.name_to_player[your_name]
+        player.reveal_player_type()
+
+        self.state = &quot;night&quot;
+
+    def play(self, vote):
+        &quot;&quot;&quot;
+        While the game is still being played, make a move. vote is the player 
+        who you vote for, because you believe they are on the opposing team. 
+        You can continue playing until either the villagers or the werewolves win.
+        &quot;&quot;&quot;
+        self.make_move(vote)
+        if not self.check_if_end_of_game():
+            return &quot;Keep playing!&quot;
+        else:
+            if len(self.werewolves) == 0:
+                return &quot;Villagers win!&quot;
+            elif len(self.werewolves) &gt; len(self.villagers):
+                return &quot;Werewolves win!&quot;
+
+    def make_move(self, vote):
+        &quot;&quot;&quot;
+        Every player votes (players arbitrarily vote for themselves). Then, 
+        if the state of the game is day, remove the player with the most votes 
+        overall, and set the state to night. If the state of the game is night, 
+        remove the player with the most votes by werewolves, and set the state to day.
+        &quot;&quot;&quot;
+        votes = []
+        werewolf_votes = []
+
+        if self.state == &quot;night&quot;:
+            werewolf_votes.append(vote)
+        votes.append(vote)
+
+        for player in self.name_to_player:
+            if self.state == &quot;night&quot; and isinstance(player, Werewolf(name)):
+                werewolf_votes.append(player)
+            votes.append(player)
+
+        if self.state == &quot;day&quot;:
+            majority_vote = get_most_common_element(votes)
+            self.state = &quot;night&quot;
+        elif self.state == &quot;night&quot;:
+            majority_vote = get_most_common_element(werewolf_votes)
+            self.state = &quot;day&quot;
+
+        if majority_vote in self.name_to_player:
+            self.remove_player(majority_vote)
+        else:
+            raise Exception(&quot;Invalid player.&quot;)
+
+    def remove_player(player_to_remove):
+        &quot;&quot;&quot;
+        Set the player with the majority vote to inactive, and remove it from 
+        its respective list of players.
+        &quot;&quot;&quot;
+        player = self.name_to_player[player_to_remove]
+        self.active = False
+
+        if player in self.werewolves:
+            self.werewolves.remove(player)
+        elif player in self.villagers:
+            self.villagers.remove(player)
+        else:
+            print(&quot;Player already removed!&quot;)
+
+    def check_if_end_of_game(self):
+        &quot;&quot;&quot;
+        Returns True if the game is over, and False if it is not. The game is over when 
+        there are no werewolves remaining, or if there are more werewolves than villagers.
+        &quot;&quot;&quot;
+
+        if len(Game.werewolves) == 0:
+            return True
+        elif len(Game.werewolves) &gt; len(Game.villagers):
+            return True
+        else:
+            return False</code></pre>
+
+</div>
+    <button id='8' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>There are no OK tests for this question! However, it will still be graded as part of the lab, so be sure that your solution works before submitting!</p>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#introduction-to-exceptions">Introduction to Exceptions</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: No KeyErrors Allowed</a></li>
+  <li><a href="#q2">Question 2: Safe use of higher order functions</a></li>
+</ul>
+
+  <li><a href="#more-inheritance">More Inheritance</a></li>
+  <ul>
+  <li><a href="#q3">Question 3: Quidditch</a></li>
+</ul>
+
+  <li><a href="#preparing-for-project-2-debugging">Preparing for Project 2: Debugging</a></li>
+  <ul>
+  <li><a href="#q4">Question 4: Werewolf</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+  </body>
+  <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<script src="//code.jquery.com/jquery-latest.js"></script>
+<script>
+  $(function() {
+    if (new Date("4/15/2019") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script>
+</html>
