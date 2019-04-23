@@ -195,6 +195,125 @@ $ sqlite3 &#x2d;&#x2d;version
 </ol>
 
 
+<h2 id="sql-basics">SQL Basics</h2>
+
+
+
+<h3 id="creating-tables">Creating Tables</h3>
+
+
+<p>You can create SQL tables either from scratch or from existing tables.</p>
+
+<p>The following statement creates a table by specifying column names and values
+without referencing another table. Each <code>SELECT</code> clause specifies the values
+for one row, and <code>UNION</code> is used to join rows together. The <code>AS</code> clauses give a
+name to each column; it need not be repeated in subsequent rows after the
+first.</p>
+
+<pre><code>CREATE TABLE [table_name] AS
+  SELECT [val1] AS [column1], [val2] AS [column2], ... UNION
+  SELECT [val3]             , [val4]             , ... UNION
+  SELECT [val5]             , [val6]             , ...;</code></pre>
+
+<p>Let's say we want to make the following table called <code>big_game</code> which records
+the scores for the Big Game each year. This table has three columns:
+<code>berkeley</code>, <code>stanford</code>, and <code>year</code>.</p>
+
+<img class="img-responsive center-block" src="assets/big-game.png" width="300">
+
+<p>We could do so with the following <code>CREATE TABLE</code> statement:</p>
+
+<pre><code>CREATE TABLE big_game AS
+  SELECT 30 AS berkeley, 7 AS stanford, 2002 AS year UNION
+  SELECT 28,             16,            2003         UNION
+  SELECT 17,             38,            2014;</code></pre>
+
+
+<h3 id="selecting-from-tables">Selecting From Tables</h3>
+
+<p>More commonly, we will create new tables by selecting specific columns that we
+want from existing tables by using a <code>SELECT</code> statement as follows:</p>
+
+<pre><code>SELECT [columns] FROM [tables] WHERE [condition] ORDER BY [columns] LIMIT [limit];</code></pre>
+
+<p>Let's break down this statement:</p>
+
+<ul>
+  <li><code>SELECT [columns]</code> tells SQL that we want to include the given columns in our
+  output table; <code>[columns]</code> is a comma-separated list of column names, and <code>*</code>
+  can be used to select all columns</li>
+  <li><code>FROM [table]</code> tells SQL that the columns we want to select are from the
+  given table; see the <a href="">joins section</a> to see how to select
+  from multiple tables</li>
+  <li><code>WHERE [condition]</code> filters the output table by only including rows whose
+  values satisfy the given <code>[condition]</code>, a boolean expression</li>
+  <li><code>ORDER BY [columns]</code> orders the rows in the output table by the given
+  comma-separated list of columns</li>
+  <li><code>LIMIT [limit]</code> limits the number of rows in the output table by the integer
+  <code>[limit]</code></li>
+</ul>
+
+<blockquote><p><em>Note:</em> We capitalize SQL keywords purely because of style convention. It
+makes queries much easier to read, though they will still work if you don't
+capitalize keywords.</p></blockquote>
+
+<p>Here are some examples:</p>
+
+<p>Select all of Berkeley's scores from the <code>big_game</code> table, but only include
+scores from years past 2002:</p>
+
+<pre><code>sqlite&gt; SELECT berkeley FROM big_game WHERE year &gt; 2002;
+28
+17</code></pre>
+
+<p>Select the scores for both schools in years that Berkeley won:</p>
+
+<pre><code>sqlite&gt; SELECT berkeley, stanford FROM big_game WHERE berkeley &gt; stanford;
+30|7
+28|16</code></pre>
+
+<p>Select the years that Stanford scored more than 15 points:</p>
+
+<pre><code>sqlite&gt; SELECT year FROM big_game WHERE stanford &gt; 15;
+2003
+2014</code></pre>
+
+
+<h3 id="sql-operators">SQL operators</h3>
+
+
+<p>Expressions in the <code>SELECT</code>, <code>WHERE</code>, and <code>ORDER BY</code> clauses can contain
+one or more of the following operators:</p>
+
+<ul>
+  <li>comparison operators: <code>=</code>, <code>&gt;</code>, <code>&lt;</code>, <code>&lt;=</code>, <code>&gt;=</code>, <code>&lt;&gt;</code> or <code>!=</code> ("not equal")</li>
+  <li>boolean operators: <code>AND</code>, <code>OR</code></li>
+  <li>arithmetic operators: <code>+</code>, <code>&#x2d;</code>, <code>*</code>, <code>/</code></li>
+  <li>concatenation operator: <code>||</code></li>
+</ul>
+
+<p>Here are some examples:</p>
+
+<p>Output the ratio of Berkeley's score to Stanford's score each year:</p>
+
+<pre><code>sqlite&gt; select berkeley * 1.0 / stanford from big_game;
+0.447368421052632
+1.75
+4.28571428571429</code></pre>
+
+<p>Output the sum of scores in years where both teams scored over 10 points:</p>
+
+<pre><code>sqlite&gt; select berkeley + stanford from big_game where berkeley &gt; 10 and stanford &gt; 10;
+55
+44</code></pre>
+
+<p>Output a table with a single column and single row containing the value "hello
+world":</p>
+
+<pre><code>sqlite&gt; SELECT &quot;hello&quot; || &quot; &quot; || &quot;world&quot;;
+hello world</code></pre>
+
+
 <h2 id="getting-to-know-your-classmates">Getting to Know Your Classmates</h2>
 
 
@@ -245,7 +364,7 @@ their structures. There are two tables you will be working with:</p>
       <td>If you could have any animal in the world as a pet, what would it be?</td>
     </tr>
     <tr>
-      <td><code>denero</code></td>
+      <td><code>gerald</code></td>
       <td>Choose your favorite photo of Gerald Friedland! (Options shown under Question 1)</td>
     </tr>
     <tr>
@@ -705,6 +824,13 @@ it down?</p>
 </ul>
 
   <li><a href="#usage">Usage</a></li>
+</ul>
+
+  <li><a href="#sql-basics">SQL Basics</a></li>
+  <ul>
+  <li><a href="#creating-tables">Creating Tables</a></li>
+  <li><a href="#selecting-from-tables">Selecting From Tables</a></li>
+  <li><a href="#sql-operators">SQL operators</a></li>
 </ul>
 
   <li><a href="#getting-to-know-your-classmates">Getting to Know Your Classmates</a></li>
