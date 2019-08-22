@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science" />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Michael Ball, Jessica Gao, Andrew Tan, Amir Shahatit, John Yang, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/fa19/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/style.css">
+    <link rel="icon" href="/fa19/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/fa19/assets/css/mono-blue.css">
+
+    
+
+    <title>Emacs | CS 88 fa19</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section" aria-label="Toggle Nav Menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/fa19/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/fa19/">Calendar</a></li>
+            <li><a href="/fa19/articles/resources.html">Resources</a></li>
+            <li><a href="/fa19/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/fa19/articles/about.html">Course Information</a></li>
+            <li><a href="/fa19/staff.html">Staff</a></li>
+            <!--- <li><a href="/fa19/tutoring.html">Tutoring</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1>Emacs</h1>
+    </div>
+
+     <h2 id="meet-emacs">Meet Emacs!</h2>
+
+
+<p>Emacs is an open source text editor that has been described as "timeless and
+infinitely powerful." Even though Emacs was created in 1976 (!), it's still one
+of the most popular text editors around, mainly because of how easy it is to
+customize! You can make your Emacs look and behave exactly as you want it
+to. Between its popularity and extensibility, if you see a cool feature in
+another text editor that you want to <s>steal</s> emulate, someone in the Emacs
+community has probably already done the dirty work for you.</p>
+
+<p>Getting started is pretty easy in Emacs, although becoming a pro will take a bit
+more work. Today, we'll just be introducing you to the basics. By the end of
+this guide, you'll be able to open Emacs, create a new file called <code>greet.py</code>,
+write a function <code>greet</code>, and run it from your terminal.</p>
+
+
+<h2 id="getting-emacs-on-your-own-computer">Getting Emacs on your own computer</h2>
+
+
+<!-- TODO: verify that Windows installation actually works. -->
+
+<ul>
+  <li>Windows: Scroll to the bottom of the <a href="http://ftp.gnu.org/pub/gnu/emacs/windows/">Emacs website</a> and
+  download the file called "emacs-24.3-bin-i386.zip". Unzip the file,
+  and you should be able to run it right away.</li>
+  <li>MacOS: Good news! Emacs comes built-in &mdash; just type <code>emacs</code> into your
+  terminal.  It's pretty plain, so some people have created a nicer
+  version <a href="http://emacsformacosx.com/">here</a>. Click the huge download button and follow the
+  directions that pop up. After this, you should have Emacs in your
+  Applications folder. If you're having trouble, there's a more
+  detailed walkthrough on YouTube <a href="http://youtu.be/6tQx-J4nBSY">here</a>.</li>
+  <li>Ubuntu: The easiest way to install Emacs on Ubuntu is to type <code>sudo
+  apt&#x2d;get install emacs</code> into your terminal.</li>
+</ul>
+
+
+<h2 id="walkthrough">Example: <code>greet.py</code></h2>
+
+
+<p>Let's first create and navigate to a directory called <code>example</code>, using
+the UNIX commands you learned in <a href="../lab00/">Lab 0</a>:</p>
+
+<pre><code>mkdir ~/example
+cd ~/example</code></pre>
+
+<p>Let's try opening Emacs from the command line.</p>
+
+<pre><code>emacs &amp;</code></pre>
+
+<p>You need to add an ampersand (<code>&amp;</code>) after <code>emacs</code>, so that your terminal will
+still be responsive (as an exercise, try omitting the <code>&amp;</code> and press <code>Ctrl&#x2d;c</code> to
+regain control of your terminal). A window like this should open up:</p>
+
+<p><img class="img-responsive center-block" src="assets/emacs-splash.png" alt="emacs-splash"></p>
+
+
+<h3 id="opening-files">Opening files</h3>
+
+
+<p>To create a new file, you have two options.</p>
+
+<ul>
+  <li><p>Option 1: use the keyboard shortcut <code>C&#x2d;x C&#x2d;f</code>. That is:</p>
+
+  <ol>
+    <li>While holding down <code>Control</code> (Ctrl), hit the <code>x</code> key.</li>
+    <li>Release the <code>x</code> key.</li>
+    <li>While still holding <code>Control</code>, hit the <code>f</code> key.</li>
+  </ol>
+
+  <p>A prompt will appear in the bottom area. This region is called the
+  <em>minibuffer</em>. Type in <code>greet.py</code> and hit enter.</p></li>
+  <li><p>Option 2: go to the <code>File</code> menu and click on <code>Visit New File...</code></p>
+
+  <p><img class="img-responsive center-block" src="assets/emacs-menu-new-file.png" alt="emacs-menu-new-file"></p>
+
+  <p>Type <code>greet.py</code> into the minibuffer and hit enter.</p></li>
+</ul>
+
+<p>The Emacs window should turn into a blank page &mdash; you're looking at the newly
+created <code>greet.py</code> file! In the future, whenever you want to open Emacs to edit a
+file, you can type <code>emacs greet.py &amp;</code> into your terminal. If the file that you
+want to edit doesn't exist yet, Emacs will create it for you. If you already
+have Emacs open, you can just use the same <code>C&#x2d;x C&#x2d;f</code> shortcut.</p>
+
+
+<h3 id="editing-files">Editing files</h3>
+
+
+<p>Now, let's write a simple program that greets you by name. Don't worry if you
+don't understand the program yet! We'll learn what each of these pieces mean in
+more depth in the next few weeks.</p>
+
+<pre><code>def greet(name):
+    print(&#x27;Hey&#x27;, name, &#x27;, how are you doing today?&#x27;)
+    print(&#x27; &#x2d; Python&#x27;)</code></pre>
+
+<p>Emacs should now look something like this:</p>
+
+<p><img class="img-responsive center-block" src="assets/emacs-greet.png" alt="emacs-greet"></p>
+
+<p>You'll notice that certain words are colored differently, like <code>def</code> and
+<code>print</code>. Emacs looks at the <code>.py</code> at the end of the file name and knows that you
+want to write Python, so it will highlight special words for you. Syntax
+highlighting makes programs much easier to read!</p>
+
+
+<h3 id="saving-files">Saving files</h3>
+
+
+<p>To save your program, use the keyboard shortcut <code>C&#x2d;x C&#x2d;s</code> or navigate to the
+<code>File</code> menu and hit <code>Save</code>. You'll know it worked if Emacs tells you "Wrote
+/some/directories/greet.py" in the minibuffer.</p>
+
+<p>Now exit Emacs, either using the shortcut <code>C&#x2d;x C&#x2d;c</code> or finding <code>File &#x2d;&gt; Quit</code>
+on the menu.</p>
+
+
+<h3 id="running-python">Running Python</h3>
+
+
+<p>Let's actually make Python do some work! Make sure that you're in the <code>example</code>
+directory, which contains our <code>greet.py</code> file. Then, type this into your
+terminal.</p>
+
+<pre><code>python3 &#x2d;i greet.py</code></pre>
+
+<p>This command does the following:</p>
+
+<ol>
+  <li><code>python3</code> is the command that starts Python</li>
+  <li>The <code>&#x2d;i</code> is a <em>flag</em> that tells Python to start in <strong>interactive mode</strong>,
+  which allows you to type in Python commands from your terminal</li>
+  <li><code>greet.py</code> is the name of the Python file we want to load</li>
+</ol>
+
+<p>The three right angle brackets (<code>&gt;&gt;&gt;</code>) mean that you're inside the Python
+interpreter. Now, you can get Python to greet you:</p>
+
+<pre><code>greet(&#x27;Brian&#x27;)</code></pre>
+
+<p>Python will then print out</p>
+
+<pre><code>Hey Brian, how are you doing today?
+ &#x2d; Python</code></pre>
+
+<p>Of course, you probably want Python to greet you and not me. So if your name is
+John, you should also type:</p>
+
+<pre><code>greet(&#x27;John&#x27;)</code></pre>
+
+<p>and suddenly, Python knows how to greet you!</p>
+
+<pre><code>Hey John, how are you doing today?
+ &#x2d; Python</code></pre>
+
+<p>Congratulations, you've edited your first file! This process of editing a file
+and running it will feel more natural as the course progresses. To exit the
+Python interpreter, you can type in <code>exit()</code> or <code>quit()</code> into the interpreter or
+hit <code>C&#x2d;d</code>.</p>
+
+<p>Everything you've learned so far is enough to get you through 61A. To get the
+most out of using Emacs, though, you should become more proficient with Emacs'
+keyboard shortcuts.</p>
+
+
+<h2 id="keyboard-shortcuts-in-emacs">Keyboard Shortcuts in Emacs</h2>
+
+
+<p>If you ever get the chance to watch a pro use Emacs, you'll notice that she
+never uses the mouse &mdash; everything she does is via shortcuts. Emacs has a wide
+variety of shortcuts that will help you do pretty much anything.</p>
+
+<p>You might remember from above that <code>C&#x2d;x</code> means: while holding <code>Control</code>, press
+the <code>x</code> key. Similarly, <code>C&#x2d;s</code> means: while holding <code>Control</code>, press
+<code>s</code>. Together, the shortcut <code>C&#x2d;x C&#x2d;s</code> means to do <code>C&#x2d;x</code>, then <code>C&#x2d;s</code>.</p>
+
+
+<h3 id="the-meta-key">The <code>Meta</code> Key</h3>
+
+
+<!-- TODO: Cmd on Mac? -->
+
+<p>Some shortcuts involve the <code>Meta</code> key, like the shortcut to copy the highlighted
+region of text: <code>M&#x2d;w</code>. Most keyboards these days don't have an actual <code>Meta</code>
+key, so we use the <code>Alt</code> key instead. (If you're on a Mac, use <code>Cmd</code>.) To
+execute the copy command, hold <code>Alt</code> and press <code>w</code>.</p>
+
+
+<h3 id="m-x2d-x"><code>M&#x2d;x</code></h3>
+
+
+<p>One of the most common <code>Meta</code> key shortcuts is <code>M&#x2d;x</code>. If you hit <code>M&#x2d;x</code>, the
+minibuffer will prompt you for the name of a command. Try <code>M&#x2d;x doctor</code> or <code>M&#x2d;x
+snake</code>!</p>
+
+
+<h3 id="useful-shortcuts">Useful Shortcuts</h3>
+
+
+<p>As you've probably noticed, the shortcuts for Emacs are quite different from the
+ones that you're used to. You'll find that Emacs shortcuts are actually pretty
+common in the programming world. For example, try typing <code>python3 &#x2d;i greet.py</code>
+into your terminal, without hitting enter. What does <code>M&#x2d;b</code> do? It does the same
+thing as it does in Emacs, which is go <strong>b</strong>ackward by a word! Try <code>M&#x2d;f</code> too.</p>
+
+<p>If you'd like to enable things like <code>C&#x2d;c</code> and <code>C&#x2d;v</code> for copy and paste, you can
+turn on CUA keys by finding it in the <code>Options</code> menu. I'd recommend trying the
+Emacs way, though!</p>
+
+
+
+<table>
+  <tr>
+    <th>Shortcut</th>
+    <th>Description</th>
+  </tr>
+  <tr>
+    <td align="left"><code>C&#x2d;x C&#x2d;s</code></td>
+    <td align="left">Save your file</td>
+  </tr>
+  <tr>
+    <td align="left"><code>C&#x2d;x C&#x2d;f</code></td>
+    <td align="left">Open a file (or create a new file)</td>
+  </tr>
+  <tr>
+    <td align="left"><code>C&#x2d;/</code></td>
+    <td align="left">Undo</td>
+  </tr>
+  <tr>
+    <td align="left"><code>C&#x2d;w</code></td>
+    <td align="left">Cut the highlighted region of text</td>
+  </tr>
+  <tr>
+    <td align="left"><code>C&#x2d;y</code></td>
+    <td align="left">Paste text</td>
+  </tr>
+  <tr>
+    <td align="left"><code>M&#x2d;w</code></td>
+    <td align="left">Copy the highlighted region of text</td>
+  </tr>
+  <tr>
+    <td align="left"><code>C&#x2d;g</code></td>
+    <td align="left">Cancel a command</td>
+  </tr>
+  <tr>
+    <td align="left"><code>C&#x2d;x C&#x2d;c</code></td>
+    <td align="left">Exit emacs</td>
+  </tr>
+</table>
+
+
+
+
+<h2 id="emacs-help">Emacs Help</h2>
+
+
+<p>Emacs has a ton of informative "help" commands. You can get more information
+about any command or keyboard shortcut. The best part is that Emacs is
+<em>self-documenting</em> &mdash; there's no need to open up something else to get help,
+since it'll show up right inside Emacs!</p>
+
+<ul>
+  <li><code>C&#x2d;h t</code> will start up the Emacs tutorial. Going through this is <em>highly</em>
+  recommended, as it will help you become more proficient with the various
+  movement keyboard shortcuts. It's a bit long though, so you might not be able
+  to finish it in one sitting.</li>
+  <li><code>C&#x2d;h f</code> will prompt you for the name of a function and return its docstring.</li>
+  <li><code>C&#x2d;h k</code> will prompt you for a keyboard shortcut and return its doctsring.</li>
+</ul>
+
+
+<h2 id="not-convinced">Not Convinced?</h2>
+
+
+<blockquote><p>Emacs...will be there when the icecaps melt and the cities drown, when
+humanity destroys itself in fire and zombies, when the roaches finally achieve
+sentience, take over, and begin using computers themselves - at which point
+its various Ctrl-Meta key-chords will seem not merely satisfyingly ergonomic
+for the typical arthropod, but also direct evidence for the universe's
+Intelligent Design by some six-legged, multi-jointed God.  &mdash; <cite>Kieran Healy</cite></p></blockquote>
+
+<!-- DO NOT DELETE: hack for separate blockquotes -->
+
+<blockquote><p>Your very own Emacs legend is about to unfold! A world of dreams and
+adventures with Emacs awaits! Let's go!  &mdash; <cite>Samuel Oak</cite></p></blockquote>
+
+
+<h2 id="appendix-b-additional-emacs-resources">Appendix B: Additional Emacs Resources</h2>
+
+
+<ul>
+  <li><code>C&#x2d;h t</code>: it's good for you!</li>
+  <li>a more visual guide to emacs <a href="http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs-v2-Large.png">here</a>: feel free to skip step 0; step 4
+  (buffer &amp; window management) is one of Emacs' best features</li>
+  <li>a more visual guide to learning shortcuts <a href="http://sachachua.com/blog/wp-content/uploads/2013/08/20130830-Emacs-Newbie-How-to-Learn-Emacs-Keyboard-Shortcuts.png">here</a>, from the same
+  source as above</li>
+  <li>a comprehensive <em>advanced</em> beginner's guide <a href="http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/">here</a>: goes
+  over a lot of Emacs terminology, which is good but might be overwhelming.</li>
+  <li>your favorite search engine has the answers to almost any Emacs question you
+  have!</li>
+</ul>
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#meet-emacs">Meet Emacs!</a></li>
+  <li><a href="#getting-emacs-on-your-own-computer">Getting Emacs on your own computer</a></li>
+  <li><a href="#walkthrough">Example: <code>greet.py</code></a></li>
+  <ul>
+  <li><a href="#opening-files">Opening files</a></li>
+  <li><a href="#editing-files">Editing files</a></li>
+  <li><a href="#saving-files">Saving files</a></li>
+  <li><a href="#running-python">Running Python</a></li>
+</ul>
+
+  <li><a href="#keyboard-shortcuts-in-emacs">Keyboard Shortcuts in Emacs</a></li>
+  <ul>
+  <li><a href="#the-meta-key">The <code>Meta</code> Key</a></li>
+  <li><a href="#m-x2d-x"><code>M&#x2d;x</code></a></li>
+  <li><a href="#useful-shortcuts">Useful Shortcuts</a></li>
+</ul>
+
+  <li><a href="#emacs-help">Emacs Help</a></li>
+  <li><a href="#not-convinced">Not Convinced?</a></li>
+  <li><a href="#appendix-b-additional-emacs-resources">Appendix B: Additional Emacs Resources</a></li>
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/fa19/assets/js/bootstrap.min.js"></script>
+    <!-- TODO: Move to specific pages... -->
+    <script src="/fa19/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>
