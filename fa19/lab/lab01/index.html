@@ -53,7 +53,7 @@
       <h1><span class="content-title-brand">Lab 1</span>: Functions and Control</h1>
     </div>
 
-    <p><i>Due at 9:00pm on 09/10/2019.</i></p>
+    <p><i>Due at 11:59:59 pm on 09/10/2019.</i></p>
 
 
 <h2 id='starter-files'>Starter Files</h2>
@@ -118,23 +118,30 @@ If you want to learn more about other Python flags, take a look at the
 <h2 id="using-ok">Using OK</h2>
 
 
-<p>In CS 88, we use a program called OK for autograding labs, homeworks, and
-projects. You should have downloaded <a href="ok">ok</a> at the start of this lab in the
-zip file.
-You can use <a href="ok">ok</a> to run doctests for a specified function. For example,</p>
+<p>In 61A, we use a program called Ok for autograding labs, homeworks, and
+projects. You should have Ok in the starter files downloaded at the start of
+this lab. For more information on using Ok commands, learn more
+<a href="http://cs61a.org/articles/using-ok.html">here</a>. To use Ok to run doctests for a
+specified function, run the following command:</p>
 
-<pre><code>python3 ok &#x2d;q factors</code></pre>
+<pre><code>python3 ok &#x2d;q &lt;specified function&gt;</code></pre>
 
-<p>By default, only errors will show up. You can use the <code>&#x2d;v</code> option to
-show all tests, including successful ones:</p>
+<p>By default, only tests that did not pass will show up. You can use the <code>&#x2d;v</code>
+option to show all tests, including tests you have passed:</p>
 
 <pre><code>python3 ok &#x2d;v</code></pre>
+
+<p>You can also use the debug printing feature in OK by writing</p>
+
+<pre><code>print(&quot;DEBUG:&quot;, x)</code></pre>
 
 <p>Finally, when you have finished all the questions in
 <a href="lab01.py">lab01.py</a>, you must submit the assignment using the
 <code>&#x2d;&#x2d;submit</code> option:</p>
 
 <pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
+
+<p>For more Ok commands, visit <a href="https://cal-cs-61a-staff.github.io/ok-help/">here</a>.</p>
 
 </alwaystoggle>
 
@@ -305,7 +312,7 @@ expression, the function does <em>not</em> terminate immediately.</p>
 <pre><code>def what_prints():
     print(&#x27;Hello World!&#x27;)
     return &#x27;Exiting this function.&#x27;
-    print(&#x27;61A is awesome!&#x27;)
+    print(&#x27;CS 88 is awesome!&#x27;)
 
 &gt;&gt;&gt; what_prints()
 Hello World!
@@ -835,17 +842,15 @@ consecutive numbers, starting from <code>n</code> and working downwards.</p>
 
     &gt;&gt;&gt; falling(6, 3)  # 6 * 5 * 4
     120
-    &gt;&gt;&gt; falling(4, 0)
-    1
     &gt;&gt;&gt; falling(4, 3)  # 4 * 3 * 2
     24
     &gt;&gt;&gt; falling(4, 1)  # 4
     4
-    &gt;&gt;&gt; falling(4, 10)  # 4 * 3 * 2 * 1 # Only n times!!
-    24
+    &gt;&gt;&gt; falling(4, 0)
+    1
     &quot;&quot;&quot;
 <div class="alt 3">    "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6b;&#x20;&#x3e;&#x20;&#x6e;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6b;&#x20;&#x3d;&#x20;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x73;&#x74;&#x6f;&#x70;&#x20;&#x3d;&#x20;&#x31;&#x2c;&#x20;&#x6e;&#x2d;&#x6b;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6e;&#x20;&#x3e;&#x20;&#x73;&#x74;&#x6f;&#x70;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6e;&#x20;&#x3d;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2a;&#x6e;&#x2c;&#x20;&#x6e;&#x2d;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;</div></code></pre>
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x73;&#x74;&#x6f;&#x70;&#x20;&#x3d;&#x20;&#x31;&#x2c;&#x20;&#x6e;&#x2d;&#x6b;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6e;&#x20;&#x3e;&#x20;&#x73;&#x74;&#x6f;&#x70;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2c;&#x20;&#x6e;&#x20;&#x3d;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;&#x2a;&#x6e;&#x2c;&#x20;&#x6e;&#x2d;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x6f;&#x74;&#x61;&#x6c;</div></code></pre>
 
 
     <button id='3' class='toggleButton'>

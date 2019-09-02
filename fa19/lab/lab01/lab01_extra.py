@@ -7,14 +7,12 @@ def falling(n, k):
 
     >>> falling(6, 3)  # 6 * 5 * 4
     120
-    >>> falling(4, 0)
-    1
     >>> falling(4, 3)  # 4 * 3 * 2
     24
     >>> falling(4, 1)  # 4
     4
-    >>> falling(4, 10)  # 4 * 3 * 2 * 1 # Only n times!!
-    24
+    >>> falling(4, 0)
+    1
     """
     "*** YOUR CODE HERE ***"
 
