@@ -1,0 +1,23 @@
+{
+    "name": "Homework 1",
+    "endpoint": "cal/cs88/fa19/hw01",
+    "src": [
+        "hw01.py"
+    ],
+    "tests": {
+        "hw01.py:odd": "doctest",
+        "hw01.py:diff": "doctest",
+        "hw01.py:distance": "doctest",
+        "hw01.py:distance3d": "doctest",
+        "hw01.py:quadratic": "doctest",
+        "hw01.py:a_plus_abs_b": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
