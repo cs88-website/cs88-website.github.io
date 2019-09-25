@@ -1,0 +1,20 @@
+{
+    "name": "Homework 4",
+    "endpoint": "cal/cs88/fa19/hw04",
+    "src": [
+        "hw04.py"
+    ],
+    "tests": {
+        "hw04.py:arange": "doctest",
+        "hw04.py:buzzer": "doctest",
+        "hw04.py:count_cond": "doctest",
+        "hw04.py:match_and_apply": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
