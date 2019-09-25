@@ -402,50 +402,7 @@ or equal to <code>b</code>.</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q piecewise</code></pre>
 
-<h3 class="question" id="q4">Question 4: This Question is so Derivative</h3>
-
-<p>Define a function <code>make_derivative</code> that returns a function: the derivative of a
-function <code>f</code>. Assuming that <code>f</code> is a single-variable mathematical function, its
-derivative will also be a single-variable function. When called with a number
-<code>a</code>, the derivative will estimate the slope of <code>f</code> at point <code>(a, f(a))</code>.</p>
-
-<p>Recall that the formula for finding the derivative of <code>f</code> at point <code>a</code> is:</p>
-
-<p><img class="img-responsive center-block" src="assets/derivative.png" alt="Derivative"></p>
-
-<p>where <code>h</code> approaches 0. We will approximate the derivative by choosing a very
-small value for <code>h</code>. The closer <code>h</code> is to 0, the better the estimate of the
-derivative will be.</p>
-
-
-
-<pre><code>def make_derivative(f):
-    &quot;&quot;&quot;Returns a function that approximates the derivative of f.
-
-    Recall that f&#x27;(a) = (f(a + h) &#x2d; f(a)) / h as h approaches 0. We will
-    approximate the derivative by choosing a very small value for h.
-
-    &gt;&gt;&gt; def square(x): 
-    ...     # equivalent to: square = lambda x: x*x
-    ...     return x*x
-    &gt;&gt;&gt; derivative = make_derivative(square)
-    &gt;&gt;&gt; result = derivative(3)
-    &gt;&gt;&gt; round(result, 3) # approximately 2*3
-    6.0
-    &quot;&quot;&quot;
-    h=0.00001
-<div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x28;&#x66;&#x28;&#x78;&#x20;&#x2b;&#x20;&#x68;&#x29;&#x20;&#x2d;&#x20;&#x66;&#x28;&#x78;&#x29;&#x29;&#x20;&#x2f;&#x20;&#x68;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x65;&#x72;&#x69;&#x76;&#x61;&#x74;&#x69;&#x76;&#x65;</div></code></pre>
-
-
-    <button id='4' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q make_derivative</code></pre>
-
-<h3 class="question" id="q5">Question 5: Intersect</h3>
+<h3 class="question" id="q4">Question 4: Intersect</h3>
 
 <p>Two functions intersect at an argument <code>x</code> if they return equal values.
 Implement <code>intersects</code>, which takes a one-argument functions <code>f</code> and a value
@@ -476,12 +433,12 @@ Implement <code>intersects</code>, which takes a one-argument functions <code>f<
     &gt;&gt;&gt; at_one(triple)
     False
     &quot;&quot;&quot;
-<div class="alt 5">    "*** YOUR CODE HERE ***"
+<div class="alt 4">    "*** YOUR CODE HERE ***"
     
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x61;&#x74;&#x5f;&#x78;&#x28;&#x67;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x78;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x67;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x74;&#x5f;&#x78;</div></code></pre>
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x61;&#x74;&#x5f;&#x78;&#x28;&#x67;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x28;&#x78;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x67;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x74;&#x5f;&#x78;</div></code></pre>
 
 
-    <button id='5' class='toggleButton'>
+    <button id='4' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -516,8 +473,7 @@ Implement <code>intersects</code>, which takes a one-argument functions <code>f<
   <li><a href="#higher-order-functions">Higher Order Functions</a></li>
   <ul>
   <li><a href="#q3">Question 3: Piecewise</a></li>
-  <li><a href="#q4">Question 4: This Question is so Derivative</a></li>
-  <li><a href="#q5">Question 5: Intersect</a></li>
+  <li><a href="#q4">Question 4: Intersect</a></li>
 </ul>
 
 </ul>
