@@ -66,6 +66,17 @@ Inside the archive, you will find starter files for the questions in this lab,
 
 <p>By the end of this lab, you should have submitted the lab with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be graded. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
 
+
+<ul>
+  <li>To receive full credit for this lab, all questions must be attempted.</li>
+</ul>
+
+<p>When you are ready to submit, run <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
+
+<p>After submitting, <code>ok</code> will display a submission URL, with which you can view your submission on okpy.org.</p>
+
     
 
 
@@ -183,25 +194,25 @@ Python interpreter when executed:</p>
 
 
     <pre><code>&gt;&gt;&gt; lambda x: x  # A lambda expression with one parameter x
-<div class="alt 4">______</div><div class="solution 4">&#x3c;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x3c;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x3e;&#x20;&#x61;&#x74;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
+<div class="alt 5">______</div><div class="solution 5">&#x3c;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x3c;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x3e;&#x20;&#x61;&#x74;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
 &gt;&gt;&gt; a = lambda x: x  # Assigning the lambda function to the name a
 &gt;&gt;&gt; a(5)
-<div class="alt 4">______</div><div class="solution 4">&#x35;</div>
+<div class="alt 5">______</div><div class="solution 5">&#x35;</div>
 &gt;&gt;&gt; (lambda: 3)()  # Using a lambda expression as an operator in a call exp.
-<div class="alt 4">______</div><div class="solution 4">&#x33;</div>
+<div class="alt 5">______</div><div class="solution 5">&#x33;</div>
 &gt;&gt;&gt; b = lambda x: lambda: x  # Lambdas can return other lambdas!
 &gt;&gt;&gt; c = b(88)
 &gt;&gt;&gt; c
-<div class="alt 4">______</div><div class="solution 4">&#x3c;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x3c;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x3e;&#x20;&#x61;&#x74;&#x20;&#x2e;&#x2e;&#x2e;</div>
+<div class="alt 5">______</div><div class="solution 5">&#x3c;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x3c;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x3e;&#x20;&#x61;&#x74;&#x20;&#x2e;&#x2e;&#x2e;</div>
 &gt;&gt;&gt; c()
-<div class="alt 4">______</div><div class="solution 4">&#x38;&#x38;</div>
+<div class="alt 5">______</div><div class="solution 5">&#x38;&#x38;</div>
 &gt;&gt;&gt; d = lambda f: f(4)  # They can have functions as arguments as well.
 &gt;&gt;&gt; def square(x):
 ...     return x * x
 &gt;&gt;&gt; d(square)
-<div class="alt 4">______</div><div class="solution 4">&#x31;&#x36;</div></code></pre>
+<div class="alt 5">______</div><div class="solution 5">&#x31;&#x36;</div></code></pre>
 
-    <button id='4' class='toggleButton'>
+    <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -210,12 +221,12 @@ Python interpreter when executed:</p>
     <pre><code>&gt;&gt;&gt; z = 3
 &gt;&gt;&gt; e = lambda x: lambda y: lambda: x + y + z
 &gt;&gt;&gt; e(0)(1)()
-<div class="alt 5">______</div><div class="solution 5">&#x34;</div>
+<div class="alt 6">______</div><div class="solution 6">&#x34;</div>
 &gt;&gt;&gt; f = lambda z: x + z
 &gt;&gt;&gt; f(3)
-<div class="alt 5">______</div><div class="solution 5">&#x4e;&#x61;&#x6d;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x3a;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x27;&#x78;&#x27;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x64;&#x65;&#x66;&#x69;&#x6e;&#x65;&#x64;</div></code></pre>
+<div class="alt 6">______</div><div class="solution 6">&#x4e;&#x61;&#x6d;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x3a;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x27;&#x78;&#x27;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x64;&#x65;&#x66;&#x69;&#x6e;&#x65;&#x64;</div></code></pre>
 
-    <button id='5' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -227,9 +238,9 @@ Python interpreter when executed:</p>
 &gt;&gt;&gt; x += y
 &gt;&gt;&gt; y &#x2d;= z
 &gt;&gt;&gt; a(&#x27;lambdas are fun!&#x27;)
-<div class="alt 6">______</div><div class="solution 6">&#x35;</div></code></pre>
+<div class="alt 7">______</div><div class="solution 7">&#x35;</div></code></pre>
 
-    <button id='6' class='toggleButton'>
+    <button id='7' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -239,21 +250,21 @@ Python interpreter when executed:</p>
     <pre><code>&gt;&gt;&gt; higher_order_lambda = lambda f: lambda x: f(x)
 &gt;&gt;&gt; g = lambda x: x * x
 &gt;&gt;&gt; higher_order_lambda(2)(g)  # Which argument belongs to which function call?
-<div class="alt 7">______</div><div class="solution 7">&#x45;&#x72;&#x72;&#x6f;&#x72;</div>
+<div class="alt 8">______</div><div class="solution 8">&#x45;&#x72;&#x72;&#x6f;&#x72;</div>
 &gt;&gt;&gt; higher_order_lambda(g)(2)
-<div class="alt 7">______</div><div class="solution 7">&#x34;</div>
+<div class="alt 8">______</div><div class="solution 8">&#x34;</div>
 &gt;&gt;&gt; call_thrice = lambda f: lambda x: f(f(f(x)))
 &gt;&gt;&gt; call_thrice(lambda y: y + 1)(0)
-<div class="alt 7">______</div><div class="solution 7">&#x33;</div>
+<div class="alt 8">______</div><div class="solution 8">&#x33;</div>
 &gt;&gt;&gt; print_lambda = lambda z: print(z)  # When is the return expression of a lambda expression executed?
 &gt;&gt;&gt; print_lambda
-<div class="alt 7">______</div><div class="solution 7">&#x46;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;</div>
+<div class="alt 8">______</div><div class="solution 8">&#x46;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;</div>
 &gt;&gt;&gt; one_thousand = print_lambda(1000)
-<div class="alt 7">______</div><div class="solution 7">&#x31;&#x30;&#x30;&#x30;</div>
+<div class="alt 8">______</div><div class="solution 8">&#x31;&#x30;&#x30;&#x30;</div>
 &gt;&gt;&gt; one_thousand
-<div class="alt 7">______</div><div class="solution 7">&#x23;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x5f;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x65;&#x64;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x73;&#x6f;&#x20;&#x6e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x67;&#x65;&#x74;&#x73;&#x20;&#x64;&#x69;&#x73;&#x70;&#x6c;&#x61;&#x79;&#x65;&#x64;</div></code></pre>
+<div class="alt 8">______</div><div class="solution 8">&#x23;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x5f;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x65;&#x64;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#x2c;&#x20;&#x73;&#x6f;&#x20;&#x6e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x67;&#x65;&#x74;&#x73;&#x20;&#x64;&#x69;&#x73;&#x70;&#x6c;&#x61;&#x79;&#x65;&#x64;</div></code></pre>
 
-    <button id='7' class='toggleButton'>
+    <button id='8' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -262,42 +273,42 @@ Python interpreter when executed:</p>
 
     <pre><code>&gt;&gt;&gt; bar = lambda y: lambda x: pow(x, y)
 &gt;&gt;&gt; bar()(15)
-<div class="alt 8">______</div><div class="solution 8">&#x54;&#x79;&#x70;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x3a;&#x20;&#x3c;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x3e;&#x28;&#x29;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;&#x20;&#x31;&#x20;&#x72;&#x65;&#x71;&#x75;&#x69;&#x72;&#x65;&#x64;&#x20;&#x70;&#x6f;&#x73;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x6c;&#x20;&#x61;&#x72;&#x67;&#x75;&#x6d;&#x65;&#x6e;&#x74;&#x3a;&#x20;&#x27;&#x79;&#x27;</div>
+<div class="alt 9">______</div><div class="solution 9">&#x54;&#x79;&#x70;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x3a;&#x20;&#x3c;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x3e;&#x28;&#x29;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;&#x20;&#x31;&#x20;&#x72;&#x65;&#x71;&#x75;&#x69;&#x72;&#x65;&#x64;&#x20;&#x70;&#x6f;&#x73;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x6c;&#x20;&#x61;&#x72;&#x67;&#x75;&#x6d;&#x65;&#x6e;&#x74;&#x3a;&#x20;&#x27;&#x79;&#x27;</div>
 &gt;&gt;&gt; foo = lambda: 32
 &gt;&gt;&gt; foobar = lambda x, y: x // y
 &gt;&gt;&gt; a = lambda x: foobar(foo(), bar(4)(x))
 &gt;&gt;&gt; a(2)
-<div class="alt 8">______</div><div class="solution 8">&#x32;</div>
+<div class="alt 9">______</div><div class="solution 9">&#x32;</div>
 &gt;&gt;&gt; b = lambda x, y: print(&#x27;summer&#x27;)
-<div class="alt 8">______</div><div class="solution 8">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x67;&#x65;&#x74;&#x73;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x65;&#x64;&#x20;&#x62;&#x79;&#x20;&#x74;&#x68;&#x65;&#x20;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x70;&#x72;&#x65;&#x74;&#x65;&#x72;</div>
+<div class="alt 9">______</div><div class="solution 9">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x67;&#x65;&#x74;&#x73;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x65;&#x64;&#x20;&#x62;&#x79;&#x20;&#x74;&#x68;&#x65;&#x20;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x70;&#x72;&#x65;&#x74;&#x65;&#x72;</div>
 &gt;&gt;&gt; c = b(4, &#x27;dog&#x27;)
-<div class="alt 8">______</div><div class="solution 8">&#x73;&#x75;&#x6d;&#x6d;&#x65;&#x72;</div>
+<div class="alt 9">______</div><div class="solution 9">&#x73;&#x75;&#x6d;&#x6d;&#x65;&#x72;</div>
 &gt;&gt;&gt; print(c)
-<div class="alt 8">______</div><div class="solution 8">&#x4e;&#x6f;&#x6e;&#x65;</div></code></pre>
+<div class="alt 9">______</div><div class="solution 9">&#x4e;&#x6f;&#x6e;&#x65;</div></code></pre>
 
-    <button id='8' class='toggleButton'>
+    <button id='9' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
 
     <pre><code>&gt;&gt;&gt; a = lambda b: b * 2
-<div class="alt 9">______</div><div class="solution 9">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x67;&#x65;&#x74;&#x73;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x65;&#x64;&#x20;&#x62;&#x79;&#x20;&#x74;&#x68;&#x65;&#x20;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x70;&#x72;&#x65;&#x74;&#x65;&#x72;</div>
+<div class="alt 10">______</div><div class="solution 10">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x67;&#x65;&#x74;&#x73;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x65;&#x64;&#x20;&#x62;&#x79;&#x20;&#x74;&#x68;&#x65;&#x20;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x70;&#x72;&#x65;&#x74;&#x65;&#x72;</div>
 &gt;&gt;&gt; a
-<div class="alt 9">______</div><div class="solution 9">&#x46;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;</div>
+<div class="alt 10">______</div><div class="solution 10">&#x46;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;</div>
 &gt;&gt;&gt; a(a(a()))
-<div class="alt 9">______</div><div class="solution 9">&#x54;&#x79;&#x70;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x3a;&#x20;&#x3c;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x3e;&#x28;&#x29;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;&#x20;&#x31;&#x20;&#x72;&#x65;&#x71;&#x75;&#x69;&#x72;&#x65;&#x64;&#x20;&#x70;&#x6f;&#x73;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x6c;&#x20;&#x61;&#x72;&#x67;&#x75;&#x6d;&#x65;&#x6e;&#x74;&#x3a;&#x20;&#x27;&#x62;&#x27;</div>
+<div class="alt 10">______</div><div class="solution 10">&#x54;&#x79;&#x70;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x3a;&#x20;&#x3c;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x3e;&#x28;&#x29;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;&#x20;&#x31;&#x20;&#x72;&#x65;&#x71;&#x75;&#x69;&#x72;&#x65;&#x64;&#x20;&#x70;&#x6f;&#x73;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x6c;&#x20;&#x61;&#x72;&#x67;&#x75;&#x6d;&#x65;&#x6e;&#x74;&#x3a;&#x20;&#x27;&#x62;&#x27;</div>
 &gt;&gt;&gt; a(a(a(2)))
-<div class="alt 9">______</div><div class="solution 9">&#x31;&#x36;</div>
+<div class="alt 10">______</div><div class="solution 10">&#x31;&#x36;</div>
 &gt;&gt;&gt; def d():
 ...     print(None)
 ...     print(&#x27;whoo&#x27;)
 &gt;&gt;&gt; b = d()
-<div class="alt 9">______</div><div class="solution 9">&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x77;&#x68;&#x6f;&#x6f;</div>
+<div class="alt 10">______</div><div class="solution 10">&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x77;&#x68;&#x6f;&#x6f;</div>
 &gt;&gt;&gt; b
-<div class="alt 9">______</div><div class="solution 9">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x67;&#x65;&#x74;&#x73;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x65;&#x64;&#x20;&#x62;&#x79;&#x20;&#x74;&#x68;&#x65;&#x20;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x70;&#x72;&#x65;&#x74;&#x65;&#x72;</div></code></pre>
+<div class="alt 10">______</div><div class="solution 10">&#x23;&#x20;&#x4e;&#x6f;&#x74;&#x68;&#x69;&#x6e;&#x67;&#x20;&#x67;&#x65;&#x74;&#x73;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x65;&#x64;&#x20;&#x62;&#x79;&#x20;&#x74;&#x68;&#x65;&#x20;&#x69;&#x6e;&#x74;&#x65;&#x72;&#x70;&#x72;&#x65;&#x74;&#x65;&#x72;</div></code></pre>
 
-    <button id='9' class='toggleButton'>
+    <button id='10' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -323,13 +334,13 @@ is <code>&lt;function...&gt;</code>, <code>Error</code> if it errors, and <code>
 &gt;&gt;&gt; steven = lambda x: x
 &gt;&gt;&gt; stewart = even(steven)
 &gt;&gt;&gt; stewart
-<div class="alt 10">______</div><div class="solution 10">&#x3c;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
+<div class="alt 11">______</div><div class="solution 11">&#x3c;&#x66;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
 &gt;&gt;&gt; stewart(61)
-<div class="alt 10">______</div><div class="solution 10">&#x36;&#x31;</div>
+<div class="alt 11">______</div><div class="solution 11">&#x36;&#x31;</div>
 &gt;&gt;&gt; stewart(&#x2d;4)
-<div class="alt 10">______</div><div class="solution 10">&#x34;</div></code></pre>
+<div class="alt 11">______</div><div class="solution 11">&#x34;</div></code></pre>
 
-    <button id='10' class='toggleButton'>
+    <button id='11' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -342,29 +353,98 @@ is <code>&lt;function...&gt;</code>, <code>Error</code> if it errors, and <code>
 ...        return &#x27;cake&#x27;
 ...    return pie
 &gt;&gt;&gt; chocolate = cake()
-<div class="alt 11">______</div><div class="solution 11">&#x62;&#x65;&#x65;&#x74;&#x73;</div>
+<div class="alt 12">______</div><div class="solution 12">&#x62;&#x65;&#x65;&#x74;&#x73;</div>
 &gt;&gt;&gt; chocolate
-<div class="alt 11">______</div><div class="solution 11">&#x46;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;</div>
+<div class="alt 12">______</div><div class="solution 12">&#x46;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;</div>
 &gt;&gt;&gt; chocolate()
-<div class="alt 11">______</div><div class="solution 11">&#x73;&#x77;&#x65;&#x65;&#x74;&#x73;&#xa;&#x27;&#x63;&#x61;&#x6b;&#x65;&#x27;</div>
+<div class="alt 12">______</div><div class="solution 12">&#x73;&#x77;&#x65;&#x65;&#x74;&#x73;&#xa;&#x27;&#x63;&#x61;&#x6b;&#x65;&#x27;</div>
 &gt;&gt;&gt; more_chocolate, more_cake = chocolate(), cake
-<div class="alt 11">______</div><div class="solution 11">&#x73;&#x77;&#x65;&#x65;&#x74;&#x73;</div>
+<div class="alt 12">______</div><div class="solution 12">&#x73;&#x77;&#x65;&#x65;&#x74;&#x73;</div>
 &gt;&gt;&gt; more_chocolate
-<div class="alt 11">______</div><div class="solution 11">&#x27;&#x63;&#x61;&#x6b;&#x65;&#x27;</div>
+<div class="alt 12">______</div><div class="solution 12">&#x27;&#x63;&#x61;&#x6b;&#x65;&#x27;</div>
 &gt;&gt;&gt; def snake(x, y):
 ...    if cake == more_cake:
 ...        return lambda: x + y
 ...    else:
 ...        return x + y
 &gt;&gt;&gt; snake(10, 20)
-<div class="alt 11">______</div><div class="solution 11">&#x46;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;</div>
+<div class="alt 12">______</div><div class="solution 12">&#x46;&#x75;&#x6e;&#x63;&#x74;&#x69;&#x6f;&#x6e;</div>
 &gt;&gt;&gt; snake(10, 20)()
-<div class="alt 11">______</div><div class="solution 11">&#x33;&#x30;</div>
+<div class="alt 12">______</div><div class="solution 12">&#x33;&#x30;</div>
 &gt;&gt;&gt; cake = &#x27;cake&#x27;
 &gt;&gt;&gt; snake(10, 20)
-<div class="alt 11">______</div><div class="solution 11">&#x33;&#x30;</div></code></pre>
+<div class="alt 12">______</div><div class="solution 12">&#x33;&#x30;</div></code></pre>
 
-    <button id='11' class='toggleButton'>
+    <button id='12' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+
+<h2 id="environment-diagram-practice">Environment Diagram Practice</h2>
+
+
+<p>There is no submission for this component. However, we still encourage you to do these problems on paper to develop familiarity with Environment Diagrams, which <strong>will appear on the exam</strong>.</p>
+
+<h3 class="question" id="q3">Question 3: Make Adder</h3>
+
+<p>Draw the environment diagram for the following code:</p>
+
+<pre><code>n = 9
+def make_adder(n):
+    return lambda k: k + n
+add_ten = make_adder(n+1)
+result = add_ten(n)</code></pre>
+
+<p>There are 3 frames total (including the Global frame). In addition, consider
+the following questions:</p>
+
+<ol>
+  <li>In the Global frame, the name <code>add_ten</code> points to a function object. What is
+  the intrinsic name of that function object, and what frame is its parent?</li>
+  <li>In frame <code>f2</code>, what name is the frame labeled with (<code>add_ten</code> or &lambda;)?
+  Which frame is the parent of <code>f2</code>?</li>
+  <li>What value is the variable <code>result</code> bound to in the Global frame?</li>
+</ol>
+
+<div class="solution 1">
+
+<p>You can try out the environment diagram at <a href="http://tutor.cs61a.org">tutor.cs61a.org</a>.
+To see the environment diagram for this question, click <a href="https://goo.gl/axdNj5">here</a>.</p>
+
+<ol>
+  <li>The intrinsic name of the function object that <code>add_ten</code> points to is
+  &lambda; (specifically, the lambda whose parameter is <code>k</code>). The parent frame
+  of this lambda is <code>f1</code>.</li>
+  <li><code>f2</code> is labeled with the name &lambda; the parent frame of <code>f2</code> is <code>f1</code>,
+  since that is where &lambda; is defined.</li>
+  <li>The variable <code>result</code> is bound to 19.</li>
+</ol>
+
+</div>
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<h3 class="question" id="q4">Question 4: Lambda the Environment Diagram</h3>
+
+<p>Try drawing an environment diagram for the following code and predict what
+Python will output.</p>
+
+<p><strong>You do not need to submit or unlock this question through Ok.</strong>
+Instead, you can check your work with the <a href="http://tutor.cs61a.org">Online Python
+Tutor</a>, but try drawing it yourself first!</p>
+
+
+    <pre><code>&gt;&gt;&gt; a = lambda x: x * 2 + 1
+&gt;&gt;&gt; def b(b, x):
+...     return b(x + a(x))
+&gt;&gt;&gt; x = 3
+&gt;&gt;&gt; b(a, x)
+<div class="alt 13">______</div><div class="solution 13">&#x32;&#x31;&#x20;&#x23;&#x20;&#x49;&#x6e;&#x74;&#x65;&#x72;&#x61;&#x63;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#x3a;&#x20;&#x68;&#x74;&#x74;&#x70;&#x73;&#x3a;&#x2f;&#x2f;&#x67;&#x6f;&#x6f;&#x2e;&#x67;&#x6c;&#x2f;&#x4c;&#x75;&#x39;&#x39;&#x51;&#x52;</div></code></pre>
+
+    <button id='13' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -373,7 +453,7 @@ is <code>&lt;function...&gt;</code>, <code>Error</code> if it errors, and <code>
 <h2 id="lambda">Lambda</h2>
 
 
-<h3 class="question" id="q3">Question 3: Compose</h3>
+<h3 class="question" id="q5">Question 5: Compose</h3>
 
 <p>Write a function that takes in 2 single-argument functions, f and g, and returns another lambda function 
 that takes in a single argument x. The returned function should return the output of applying f(g(x)).</p>
@@ -401,19 +481,19 @@ that takes in a single argument x. The returned function should return the outpu
     &gt;&gt;&gt; b(2)
     160
     &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
+<div class="alt 2">    "*** YOUR CODE HERE ***"
     
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x66;&#x28;&#x67;&#x28;&#x78;&#x29;&#x29;</div></code></pre>
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x78;&#x3a;&#x20;&#x66;&#x28;&#x67;&#x28;&#x78;&#x29;&#x29;</div></code></pre>
 
 
-    <button id='1' class='toggleButton'>
+    <button id='2' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q compose</code></pre>
 
-<h3 class="question" id="q4">Question 4: Mul_by_num</h3>
+<h3 class="question" id="q6">Question 6: Mul_by_num</h3>
 
 <p>Using a <code>lambda</code> expression, complete the <code>mul_by_num</code> function. This
 function should take an argument and return a one argument function
@@ -433,12 +513,12 @@ body must be one line long:</p>
     &gt;&gt;&gt; y(&#x2d;4)
     &#x2d;8
     &quot;&quot;&quot;
-<div class="alt 2">    "*** YOUR CODE HERE ***"
+<div class="alt 3">    "*** YOUR CODE HERE ***"
     
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x6e;&#x75;&#x6d;&#x32;&#x3a;&#x20;&#x6e;&#x75;&#x6d;&#x20;&#x2a;&#x20;&#x6e;&#x75;&#x6d;&#x32;</div></code></pre>
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x61;&#x6d;&#x62;&#x64;&#x61;&#x20;&#x6e;&#x75;&#x6d;&#x32;&#x3a;&#x20;&#x6e;&#x75;&#x6d;&#x20;&#x2a;&#x20;&#x6e;&#x75;&#x6d;&#x32;</div></code></pre>
 
 
-    <button id='2' class='toggleButton'>
+    <button id='3' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -447,7 +527,7 @@ body must be one line long:</p>
 <h2 id="higher-order-functions">Higher Order Functions</h2>
 
 
-<h3 class="question" id="q5">Question 5: Funception</h3>
+<h3 class="question" id="q7">Question 7: Funception</h3>
 
 <p>Write a function (funception) that takes in another function <code>func_a</code> and a number <code>start</code> and returns a function (<code>func_b</code>) that will have one parameter to take in the stop value.
 <code>func_b</code> should take the following into consideration the following in order:</p>
@@ -483,12 +563,12 @@ body must be one line long:</p>
     &gt;&gt;&gt; func_b5(4)
     24
     &quot;&quot;&quot;
-<div class="alt 3">    "*** YOUR CODE HERE ***"
+<div class="alt 4">    "*** YOUR CODE HERE ***"
     
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x5f;&#x62;&#x28;&#x73;&#x74;&#x6f;&#x70;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x3d;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#x20;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#x20;&#x3c;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#x20;&#x3e;&#x20;&#x73;&#x74;&#x6f;&#x70;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x5f;&#x61;&#x28;&#x73;&#x74;&#x61;&#x72;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x20;&#x3c;&#x20;&#x73;&#x74;&#x6f;&#x70;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#x20;&#x2a;&#x3d;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x5f;&#x61;&#x28;&#x69;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x5f;&#x62;</div></code></pre>
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x5f;&#x62;&#x28;&#x73;&#x74;&#x6f;&#x70;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x3d;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#x20;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#x20;&#x3c;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#x20;&#x3e;&#x20;&#x73;&#x74;&#x6f;&#x70;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x5f;&#x61;&#x28;&#x73;&#x74;&#x61;&#x72;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x20;&#x3c;&#x20;&#x73;&#x74;&#x6f;&#x70;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#x20;&#x2a;&#x3d;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x5f;&#x61;&#x28;&#x69;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x70;&#x72;&#x6f;&#x64;&#x75;&#x63;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;&#x75;&#x6e;&#x63;&#x5f;&#x62;</div></code></pre>
 
 
-    <button id='3' class='toggleButton'>
+    <button id='4' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -513,15 +593,21 @@ body must be one line long:</p>
   <li><a href="#q2">Question 2: WWPD: Higher Order Functions</a></li>
 </ul>
 
+  <li><a href="#environment-diagram-practice">Environment Diagram Practice</a></li>
+  <ul>
+  <li><a href="#q3">Question 3: Make Adder</a></li>
+  <li><a href="#q4">Question 4: Lambda the Environment Diagram</a></li>
+</ul>
+
   <li><a href="#lambda">Lambda</a></li>
   <ul>
-  <li><a href="#q3">Question 3: Compose</a></li>
-  <li><a href="#q4">Question 4: Mul_by_num</a></li>
+  <li><a href="#q5">Question 5: Compose</a></li>
+  <li><a href="#q6">Question 6: Mul_by_num</a></li>
 </ul>
 
   <li><a href="#higher-order-functions">Higher Order Functions</a></li>
   <ul>
-  <li><a href="#q5">Question 5: Funception</a></li>
+  <li><a href="#q7">Question 7: Funception</a></li>
 </ul>
 
 </ul>
@@ -545,6 +631,21 @@ body must be one line long:</p>
   });
 </script>
 <!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
-<!--  -->
+<!-- <script>
+  $(function() {
+    if (new Date("10/18/2019") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script> -->
   </body>
 </html>
