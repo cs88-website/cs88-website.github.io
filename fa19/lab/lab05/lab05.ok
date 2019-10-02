@@ -1,0 +1,23 @@
+{
+    "name": "Lab 05",
+    "endpoint": "cal/cs88/fa19/lab05",
+    "src": [
+        "lab05.py",
+		"tests/lambda.py",
+		"test/hof.py"
+    ],
+    "tests": {
+	    "tests/lambda.py": "ok_test",	
+	    "tests/hof.py": "ok_test",
+        "lab05.py:compose": "doctest",
+        "lab05.py:mul_by_num": "doctest",
+        "lab05.py:funception": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
