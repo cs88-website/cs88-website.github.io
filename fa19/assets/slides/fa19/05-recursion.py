@@ -7,7 +7,7 @@
 # A new window opens, click in there once.
 # Press SPACE to redraw things
 # Press UP/DOWN to add or remove "VEE" from the list of functions
-# Press R to clear the screen
+# Press R to clear the screen (RESET)
 
 from turtle import *
 from math import sin, cos, tan, pi, sqrt
@@ -130,11 +130,7 @@ onkey(add_vee, 'Up')
 onkey(remove_vee, 'Down')
 listen()
 
-### This is what does the actual work when you run the program.
-# reset()
-# vee()
-
-# This runs the file when started.
+################ Do the work! This runs the file when started.
 if __name__ == '__main__':
     reset()
     vee()
@@ -153,6 +149,29 @@ def vee_hof():
 
     left(angle)
     draw_leg()
-    right(angle * 2) # face the direction where we strated, then to the right.
+    right(angle) # face the direction where we strated, then to the right.
+    right(angle)
     draw_leg()
     left(angle)
+
+def sum_of_sqaures_print(n):
+    print("Sum n: ", n)
+    if n < 1:
+        return 0
+    else:
+        squared = n**2
+        print ("N: {}, Squared: {}".format(n, squared))
+        return squared + sum_of_sqaure(n - 1)
+
+def sum_of_sqaures(n):
+    if n < 1:
+        return 0
+    else:
+        return n**2 + sum_of_sqaure(n - 1)
+
+def countdown(n):
+    if n == 0:
+        print('Blastoff!')
+    else:
+        print(n)
+        countdown(n - 1)
