@@ -1,0 +1,26 @@
+{
+    "name": "Homework 6",
+    "endpoint": "cal/cs88/fa19/hw06",
+    "src": [
+        "hw06.py"
+    ],
+    "tests": {
+        "hw06.py": "doctest",
+        "hw06_extra.py:decimal": "doctest",
+        "hw06_extra.py:binary": "doctest"
+    },
+    "default_tests": [
+        "filter",
+        "reduce",
+        "summation",
+        "count_digit",
+        "ten_pairs"
+    ],
+    "protocols": [
+        "restore",
+        "file_contents",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
