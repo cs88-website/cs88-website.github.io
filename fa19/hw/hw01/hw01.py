@@ -8,8 +8,7 @@ def odd(number):
     >>> odd(5)
     True
     """
-    return <REPLACE THIS>
-
+    "*** YOUR CODE HERE ***"
 
 
 from math import sqrt

@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science" />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Michael Ball, Amir Shahatit, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan, John Yang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/fa19/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/style.css">
+    <link rel="icon" href="/fa19/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/fa19/assets/css/mono-blue.css">
+
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/fa19/assets/css/lab.css" />
+
+
+    <title>Lab 6: Recursion and Midterm Review | CS 88 Fall 2019</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section" aria-label="Toggle Nav Menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/fa19/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/fa19/">Calendar</a></li>
+            <li><a href="/fa19/articles/resources.html">Resources</a></li>
+            <li><a href="/fa19/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/fa19/articles/about.html">Course Information</a></li>
+            <li><a href="/fa19/staff.html">Staff</a></li>
+            <!--- <li><a href="/fa19/tutoring.html">Tutoring</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 6</span>: Recursion and Midterm Review</h1>
+    </div>
+
+    <p><i>Due at 11:59:59 pm on 10/15/2019.</i></p>
+
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab06.zip">lab06.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the OK autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be graded. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
+
+
+
+<p>When you are ready to submit, run <code>ok</code> with the <code>&#x2d;&#x2d;submit</code> option:</p>
+
+<pre><code>python3 ok &#x2d;&#x2d;submit</code></pre>
+
+<p>After submitting, <code>ok</code> will display a submission URL, with which you can view your submission on okpy.org.</p>
+
+    
+
+
+<h2 id="recursion">Recursion</h2>
+
+
+<p>A recursive function is a function that calls itself in its body,
+either directly or indirectly. Recursive functions have three important
+components:</p>
+
+<ol>
+  <li>Base case(s), the simplest possible form of the problem you're trying to solve.</li>
+  <li>Consider a recursive call on a smaller argument.</li>
+  <li>Recursive case(s), where the function calls itself with a <em>simpler
+  argument</em> as part of the computation.</li>
+</ol>
+
+<p>Let's look at the canonical example, <code>factorial</code>:</p>
+
+<pre><code>def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n &#x2d; 1)</code></pre>
+
+<p>We know by its definition that <code>0!</code> is <code>1</code>. So we choose <code>n = 0</code> as our
+base case. The recursive step also follows from the definition of
+factorial, i.e.  <code>n! = n * (n&#x2d;1)!</code>.</p>
+
+<p>The next few questions in lab will have you writing recursive
+functions.  Here are some general tips:</p>
+
+<ul>
+  <li>Consider how you can solve the current problem using the solution to
+  a simpler version of the problem. Remember to <em>trust the recursion</em>:
+  assume that your solution to the simpler problem works correctly
+  without worrying about how.</li>
+  <li>Think about what the answer would be in the simplest possible
+  case(s). These will be your base cases - the stopping points for your
+  recursive calls. Make sure to consider the possibility that you're
+  missing base cases (this is a common way recursive solutions fail).</li>
+  <li>It may help to write the iterative version first.</li>
+</ul>
+
+<!-- <table class='table table-bordered'>
+
+<pre><code>&lt;tr&gt;
+    &lt;th&gt;Function Type:&lt;/th&gt;
+    &lt;th&gt;Recusive&lt;/th&gt;
+    &lt;th&gt;Iterative&lt;/th&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Function&lt;/td&gt;
+    &lt;td&gt;&lt;pre&gt; def factorial(n):
+    if n == 0:
+        return 1
+    return n * factorial(n &#x2d; 1)&lt;pre&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;pre&gt; def factorial(n):
+    total = 1
+    while n &gt; 0:
+        total *= n
+        n &#x2d;= 1
+    return total
+    &lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Ends calculations&lt;/td&gt;
+    &lt;td&gt;When it hits the base case&lt;/td&gt;
+    &lt;td&gt;When n !&gt; 0, it will end.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+    &lt;td&gt;Means of traversal&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;factorial(&lt;strong&gt;n &#x2d; 1&lt;/strong&gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;code&gt;&lt;strong&gt;n &#x2d;= 1&lt;/strong&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt; 
+&lt;/tr&gt;</code></pre>
+
+</table> -->
+
+
+<h2 id="required-questions">Required Questions</h2>
+
+
+<h3 class="question" id="q1">Question 1: A Bad List Flattener</h3>
+
+<p>There is something wrong with the following code! Figure out what is wrong with it, and then fix it to pass the doc string.</p>
+
+<p>Hint, your fix should be very minor! Do not rewrite the whole program.</p>
+
+<pre><code>def bad_list_flattener(lst1, lst2):
+    &quot;&quot;&quot;
+    Flattens both lst1 and lst2, and returns the 
+    concatenation of the two flattened lists. Flattening 
+    a list means to collapse the list into one 
+    dimension (like np.flatten).
+    &gt;&gt;&gt; girls = [[&#x27;Rachel&#x27;, &#x27;Green&#x27;], [&#x27;Phoebe&#x27;, &#x27;Buffay&#x27;]]
+    &gt;&gt;&gt; boys = [[&#x27;Ross&#x27;, &#x27;Geller&#x27;], [&#x27;Chandler&#x27;, &#x27;Bing&#x27;]]
+    &gt;&gt;&gt; bad_list_flattener(girls, boys)
+    [&#x27;Rachel&#x27;, &#x27;Green&#x27;, &#x27;Phoebe&#x27;, &#x27;Buffay&#x27;, &#x27;Ross&#x27;, &#x27;Geller&#x27;, &#x27;Chandler&#x27;, &#x27;Bing&#x27;]
+    &gt;&gt;&gt; cats = [[&#x27;Persian&#x27;], [&#x27;British&#x27;, &#x27;Shorthair&#x27;]]
+    &gt;&gt;&gt; dogs = [[&#x27;Golden&#x27;, &#x27;Retriever&#x27;]]
+    &gt;&gt;&gt; bad_list_flattener(dogs, cats)
+    [&#x27;Golden&#x27;, &#x27;Retriever&#x27;, &#x27;Persian&#x27;, &#x27;British&#x27;, &#x27;Shorthair&#x27;]
+    &quot;&quot;&quot;
+    newlist1 = []
+    newlist2 = []
+    for inner_lst in lst1:
+        for item in inner_lst:
+            newlist1 += item
+    for inner_lst in lst2:
+        for item in inner_lst:
+            newlist2 += item
+    return newlist1 + newlist2</code></pre>
+
+<div class="solution 1">
+
+<pre><code>def bad_list_flattener(lst1, lst2):
+    &quot;&quot;&quot;
+    Flattens both lst1 and lst2, and returns the 
+    concatenation of the two flattened lists. Flattening 
+    a list means to collapse the list into one 
+    dimension (like np.flatten).
+    &gt;&gt;&gt; girls = [[&#x27;Rachel&#x27;, &#x27;Green&#x27;], [&#x27;Phoebe&#x27;, &#x27;Buffay&#x27;]]
+    &gt;&gt;&gt; boys = [[&#x27;Ross&#x27;, &#x27;Geller&#x27;], [&#x27;Chandler&#x27;, &#x27;Bing&#x27;]]
+    &gt;&gt;&gt; bad_list_flattener(girls, boys)
+    [&#x27;Rachel&#x27;, &#x27;Green&#x27;, &#x27;Phoebe&#x27;, &#x27;Buffay&#x27;, &#x27;Ross&#x27;, &#x27;Geller&#x27;, &#x27;Chandler&#x27;, &#x27;Bing&#x27;]
+    &gt;&gt;&gt; cats = [[&#x27;Persian&#x27;], [&#x27;British&#x27;, &#x27;Shorthair&#x27;]]
+    &gt;&gt;&gt; dogs = [[&#x27;Golden&#x27;, &#x27;Retriever&#x27;]]
+    &gt;&gt;&gt; bad_list_flattener(dogs, cats)
+    [&#x27;Golden&#x27;, &#x27;Retriever&#x27;, &#x27;Persian&#x27;, &#x27;British&#x27;, &#x27;Shorthair&#x27;]
+    &quot;&quot;&quot;
+    newlist1 = []
+    newlist2 = []
+    for inner_lst in lst1:
+        for item in inner_lst:
+            newlist1 += item
+    for inner_lst in lst2:
+        for item in inner_lst:
+            newlist2 += item
+    return newlist1 + newlist2</code></pre>
+
+</div>
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q bad_list_flattener</code></pre>
+
+</question A Bad List Flattener>
+
+<h3 class="question" id="q2">Question 2: is_palindrome</h3>
+
+<p>Write a recursive solution for the function <code>is_palindrome</code> such that it takes in any list and returns True if that list is the same way going forwards and backwards.</p>
+
+
+
+<pre><code>def is_palindrome(lst):
+    &quot;&quot;&quot; Returns True if the list is a palindrome. A palindrome is a list 
+    that reads the same forwards as backwards
+    &gt;&gt;&gt; is_palindrome([1, 2, 3, 4, 5])
+    False
+    &gt;&gt;&gt; is_palindrome([&quot;p&quot;, &quot;a&quot;, &quot;l&quot;, &quot;i&quot;, &quot;n&quot;, &quot;d&quot;, &quot;r&quot;, &quot;o&quot;, &quot;m&quot;, &quot;e&quot;])
+    False
+    &gt;&gt;&gt; is_palindrome([True, False, True])
+    True
+    &gt;&gt;&gt; is_palindrome([])
+    True
+    &gt;&gt;&gt; is_palindrome([&quot;a&quot;, &quot;v&quot;, &quot;a&quot;])
+    True
+    &gt;&gt;&gt; is_palindrome([&quot;racecar&quot;, &quot;racecar&quot;])
+    True
+    &gt;&gt;&gt; is_palindrome([&quot;r&quot;, &quot;a&quot;, &quot;c&quot;, &quot;e&quot;, &quot;c&quot;, &quot;a&quot;, &quot;r&quot;])
+    True
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x20;&#x6f;&#x72;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x6c;&#x73;&#x74;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x20;&#x21;&#x3d;&#x20;&#x6c;&#x73;&#x74;&#x5b;&#x2d;&#x31;&#x5d;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x69;&#x73;&#x5f;&#x70;&#x61;&#x6c;&#x69;&#x6e;&#x64;&#x72;&#x6f;&#x6d;&#x65;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x2d;&#x31;&#x5d;&#x29;</div></code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q is_palindrome</code></pre>
+
+<h3 class="question" id="q3">Question 3: AB Plus C</h3>
+
+<p>Implement <code>ab_plus_c</code>, a function that takes arguments <code>a</code>, <code>b</code>, and
+<code>c</code> and computes <code>a * b + c</code>.  You can assume a and b are both nonnegative
+integers. However, you can't use the <code>*</code> operator. Try recursion!</p>
+
+
+
+<pre><code>def ab_plus_c(a, b, c):
+    &quot;&quot;&quot;Computes a * b + c.
+
+    &gt;&gt;&gt; ab_plus_c(2, 4, 3)  # 2 * 4 + 3
+    11
+    &gt;&gt;&gt; ab_plus_c(0, 3, 2)  # 0 * 3 + 2
+    2
+    &gt;&gt;&gt; ab_plus_c(3, 0, 2)  # 3 * 0 + 2
+    2
+    &quot;&quot;&quot;
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x62;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x63;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x61;&#x20;&#x2b;&#x20;&#x61;&#x62;&#x5f;&#x70;&#x6c;&#x75;&#x73;&#x5f;&#x63;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x20;&#x2d;&#x20;&#x31;&#x2c;&#x20;&#x63;&#x29;</div></code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q ab_plus_c</code></pre>
+
+<h3 class="question" id="q4">Question 4: GCD</h3>
+
+<p>The greatest common divisor of two positive integers <code>a</code> and <code>b</code> is the
+largest integer which evenly divides both numbers (with no remainder).
+Euclid, a Greek mathematician in 300 B.C., realized that the greatest
+common divisor of <code>a</code> and <code>b</code> is one of the following:</p>
+
+<ul>
+  <li>the smaller value if it evenly divides the larger value, OR</li>
+  <li>the greatest common divisor of the smaller value and the remainder of
+  the larger value divided by the smaller value</li>
+</ul>
+
+<p>In other words, if <code>a</code> is greater than <code>b</code> and <code>a</code> is not divisible by
+<code>b</code>, then</p>
+
+<pre><code>gcd(a, b) == gcd(b, a % b)</code></pre>
+
+<p>Write the <code>gcd</code> function recursively using Euclid's algorithm.</p>
+
+
+
+<pre><code>def gcd(a, b):
+    &quot;&quot;&quot;Returns the greatest common divisor of a and b.
+    Should be implemented using recursion.
+
+    &gt;&gt;&gt; gcd(34, 19)
+    1
+    &gt;&gt;&gt; gcd(39, 91)
+    13
+    &gt;&gt;&gt; gcd(20, 30)
+    10
+    &gt;&gt;&gt; gcd(40, 40)
+    40
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x61;&#x2c;&#x20;&#x62;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x29;&#x2c;&#x20;&#x6d;&#x69;&#x6e;&#x28;&#x61;&#x2c;&#x20;&#x62;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x61;&#x20;&#x25;&#x20;&#x62;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x62;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x67;&#x63;&#x64;&#x28;&#x62;&#x2c;&#x20;&#x61;&#x20;&#x25;&#x20;&#x62;&#x29;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q gcd</code></pre>
+
+<p>This is an example of the elegance that recursive solutions permit.  Here
+for comparison is an iterative solution.</p>
+
+<pre><code># Iterative solution, if you&#x27;re curious
+def gcd_iter(a, b):
+    &quot;&quot;&quot;Returns the greatest common divisor of a and b, using iteration.
+
+    &gt;&gt;&gt; gcd_iter(34, 19)
+    1
+    &gt;&gt;&gt; gcd_iter(39, 91)
+    13
+    &gt;&gt;&gt; gcd_iter(20, 30)
+    10
+    &gt;&gt;&gt; gcd_iter(40, 40)
+    40
+    &quot;&quot;&quot;
+    if a &lt; b:
+        a, b = b, a
+    while a &gt; b and not a % b == 0:
+        a, b = b, a % b
+    return b</code></pre>
+
+</question GCD>
+
+<h3 class="question" id="q5">Question 5: Adding matrices</h3>
+
+<p>To practice, write a function that adds two matrices together using
+list comprehensions. The function should take in two 2D lists of
+the same dimensions. Try to implement this in one line!</p>
+
+
+
+<pre><code>def add_matrices(x, y):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; matrix1 = [[1, 3],
+    ...            [2, 0]]
+    &gt;&gt;&gt; matrix2 = [[&#x2d;3, 0],
+    ...            [1, 2]]
+    &gt;&gt;&gt; add_matrices(matrix1, matrix2)
+    [[&#x2d;2, 3], [3, 2]]
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+    
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5b;&#x78;&#x5b;&#x69;&#x5d;&#x5b;&#x6a;&#x5d;&#x20;&#x2b;&#x20;&#x79;&#x5b;&#x69;&#x5d;&#x5b;&#x6a;&#x5d;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x6a;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x65;&#x6e;&#x28;&#x78;&#x5b;&#x30;&#x5d;&#x29;&#x29;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x6c;&#x65;&#x6e;&#x28;&#x78;&#x29;&#x29;&#x5d;</div></code></pre>
+
+
+    <button id='5' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q add_matrices</code></pre>
+
+<h3 class="question" id="q6">Question 6: Mul_by_num</h3>
+
+<p>Using higher order functions, complete the <code>mul_by_num</code> function. This
+function should take an argument and return a one argument function
+that multiplies any value passed to it by the original number.</p>
+
+
+
+<pre><code>def mul_by_num(num):
+    &quot;&quot;&quot;
+    Returns a function that takes one argument and returns num
+    times that argument.
+    &gt;&gt;&gt; x = mul_by_num(5)
+    &gt;&gt;&gt; y = mul_by_num(2)
+    &gt;&gt;&gt; x(3)
+    15
+    &gt;&gt;&gt; y(&#x2d;4)
+    &#x2d;8
+    &quot;&quot;&quot;
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+    
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x66;&#x28;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x75;&#x6d;&#x2a;&#x78;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x66;</div></code></pre>
+
+
+    <button id='6' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q mul_by_num</code></pre>
+
+<h3 class="question" id="q7">Question 7: Skip Add</h3>
+
+<p>Write a function <code>skip_add</code> that takes a single argument <code>n</code>
+and computes the sum of every other integer between 0 and <code>n</code> 
+starting from n. Assume <code>n</code> is non-negative.</p>
+
+
+
+<pre><code>def skip_add(n):
+    &quot;&quot;&quot; Takes a number x and returns x + x&#x2d;2 + x&#x2d;4 + x&#x2d;6 + ... + 0.
+
+    &gt;&gt;&gt; skip_add(5)  # 5 + 3 + 1 + 0
+    9
+    &gt;&gt;&gt; skip_add(10) # 10 + 8 + 6 + 4 + 2 + 0
+    30
+    &quot;&quot;&quot;
+<div class="alt 7">    "*** YOUR CODE HERE ***"
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3c;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x20;&#x2b;&#x20;&#x73;&#x6b;&#x69;&#x70;&#x5f;&#x61;&#x64;&#x64;&#x28;&#x6e;&#x20;&#x2d;&#x20;&#x32;&#x29;</div></code></pre>
+
+
+    <button id='7' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q skip_add</code></pre>
+
+
+<h2 id="extra-questions">Extra Questions</h2>
+
+
+<blockquote><p>Extra questions are not worth extra credit and are entirely optional. They are
+designed to challenge you to think creatively!</p></blockquote>
+
+<h3 class="question" id="q8">Question 8: Towers of Hanoi</h3>
+
+<p>A classic puzzle called the Towers of Hanoi is a game that consists of three
+rods, and a number of disks of different sizes which can slide onto any rod.
+The puzzle starts with <code>n</code> disks in a neat stack in ascending order of size on
+a <code>start</code> rod, the smallest at the top, forming a conical shape.</p>
+
+<p><img class="img-responsive center-block" src="assets/tower.jpg" alt="Towers of Hanoi"></p>
+
+<p>The objective of the puzzle is to move the entire stack to an <code>end</code> rod,
+obeying the following rules:</p>
+
+<ul>
+  <li>Only one disk may be moved at a time.</li>
+  <li>Each move consists of taking the top (smallest) disk from one of the rods and
+  sliding it onto another rod, on top of the other disks that may already be
+  present on that rod.</li>
+  <li>No disk may be placed on top of a smaller disk.</li>
+</ul>
+
+<p>Complete the definition of <code>move_stack</code>, which prints out the steps required to
+move <code>n</code> disks from the <code>start</code> rod to the <code>end</code> rod without violating the
+rules.</p>
+
+
+
+<pre><code>def print_move(origin, destination):
+    &quot;&quot;&quot;Print instructions to move a disk.&quot;&quot;&quot;
+    print(&quot;Move the top disk from rod&quot;, origin, &quot;to rod&quot;, destination)
+
+def move_stack(n, start, end):
+    &quot;&quot;&quot;Print the moves required to move n disks on the start pole to the end
+    pole without violating the rules of Towers of Hanoi.
+
+    n &#x2d;&#x2d; number of disks
+    start &#x2d;&#x2d; a pole position, either 1, 2, or 3
+    end &#x2d;&#x2d; a pole position, either 1, 2, or 3
+
+    There are exactly three poles, and start and end must be different. Assume
+    that the start pole has at least n disks of increasing size, and the end
+    pole is either empty or has a top disk larger than the top n start disks.
+
+    &gt;&gt;&gt; move_stack(1, 1, 3)
+    Move the top disk from rod 1 to rod 3
+    &gt;&gt;&gt; move_stack(2, 1, 3)
+    Move the top disk from rod 1 to rod 2
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 2 to rod 3
+    &gt;&gt;&gt; move_stack(3, 1, 3)
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 1 to rod 2
+    Move the top disk from rod 3 to rod 2
+    Move the top disk from rod 1 to rod 3
+    Move the top disk from rod 2 to rod 1
+    Move the top disk from rod 2 to rod 3
+    Move the top disk from rod 1 to rod 3
+    &quot;&quot;&quot;
+    assert 1 &lt;= start &lt;= 3 and 1 &lt;= end &lt;= 3 and start != end, &quot;Bad start/end&quot;
+<div class="alt 8">    "*** YOUR CODE HERE ***"
+</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x20;&#x3d;&#x3d;&#x20;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x5f;&#x6d;&#x6f;&#x76;&#x65;&#x28;&#x73;&#x74;&#x61;&#x72;&#x74;&#x2c;&#x20;&#x65;&#x6e;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x36;&#x20;&#x2d;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#x20;&#x2d;&#x20;&#x65;&#x6e;&#x64;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6f;&#x76;&#x65;&#x5f;&#x73;&#x74;&#x61;&#x63;&#x6b;&#x28;&#x6e;&#x2d;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x61;&#x72;&#x74;&#x2c;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x5f;&#x6d;&#x6f;&#x76;&#x65;&#x28;&#x73;&#x74;&#x61;&#x72;&#x74;&#x2c;&#x20;&#x65;&#x6e;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6d;&#x6f;&#x76;&#x65;&#x5f;&#x73;&#x74;&#x61;&#x63;&#x6b;&#x28;&#x6e;&#x2d;&#x31;&#x2c;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x2c;&#x20;&#x65;&#x6e;&#x64;&#x29;</div></code></pre>
+
+
+    <button id='8' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q move_stack</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#recursion">Recursion</a></li>
+  <li><a href="#required-questions">Required Questions</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: A Bad List Flattener</a></li>
+  <li><a href="#q2">Question 2: is_palindrome</a></li>
+  <li><a href="#q3">Question 3: AB Plus C</a></li>
+  <li><a href="#q4">Question 4: GCD</a></li>
+  <li><a href="#q5">Question 5: Adding matrices</a></li>
+  <li><a href="#q6">Question 6: Mul_by_num</a></li>
+  <li><a href="#q7">Question 7: Skip Add</a></li>
+</ul>
+
+  <li><a href="#extra-questions">Extra Questions</a></li>
+  <ul>
+  <li><a href="#q8">Question 8: Towers of Hanoi</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/fa19/assets/js/bootstrap.min.js"></script>
+    <!-- TODO: Move to specific pages... -->
+    <script src="/fa19/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
+<!-- <script>
+  $(function() {
+    if (new Date("10/16/2019") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script> -->
+  </body>
+</html>
