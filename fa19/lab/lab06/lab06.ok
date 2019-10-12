@@ -9,10 +9,10 @@
         "lab06.py:is_palindrome": "doctest",
         "lab06.py:ab_plus_c": "doctest",
         "lab06.py:gcd": "doctest",
-        "lab06.py:move_stack": "doctest",
         "lab06.py:skip_add": "doctest",
         "lab06.py:mul_by_num": "doctest",
-        "lab06.py:add_matrices": "doctest"
+        "lab06.py:add_matrices": "doctest",
+        "lab06.py:move_stack": "doctest"
     },
     "protocols": [
         "restore",
