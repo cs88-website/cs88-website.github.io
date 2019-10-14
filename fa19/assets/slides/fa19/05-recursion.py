@@ -89,11 +89,14 @@ def vee():
     left(angle)
     forward(size)
     shape = choice(draw_functions) # A random shape
+    print('Shape: ', shape)
     shape() # Call a HOF, with a size input
     backward(size)
     right(angle * 2) # turn where we strated, then to the right again.
     forward(size)
-    choice(draw_functions)() # We can also stack parens together
+    shape = choice(draw_functions) # () # We can also stack parens together
+    print('Shape: ', shape)
+    shape()
     backward(size)
     left(angle)
 

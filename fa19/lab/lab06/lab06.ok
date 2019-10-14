@@ -1,0 +1,25 @@
+{
+    "name": "Lab 6",
+    "endpoint": "cal/cs88/fa19/lab06",
+    "src": [
+        "lab06.py"
+    ],
+    "tests": {
+        "lab06.py:bad_list_flattener": "doctest",
+        "lab06.py:is_palindrome": "doctest",
+        "lab06.py:ab_plus_c": "doctest",
+        "lab06.py:gcd": "doctest",
+        "lab06.py:skip_add": "doctest",
+        "lab06.py:mul_by_num": "doctest",
+        "lab06.py:add_matrices": "doctest",
+        "lab06.py:move_stack": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
