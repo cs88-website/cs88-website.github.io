@@ -349,9 +349,7 @@ def gcd_iter(a, b):
     &gt;&gt;&gt; gcd_iter(40, 40)
     40
     &quot;&quot;&quot;
-    if a &lt; b:
-        a, b = b, a
-    while a &gt; b and not a % b == 0:
+    while a % b != 0:
         a, b = b, a % b
     return b</code></pre>
 
