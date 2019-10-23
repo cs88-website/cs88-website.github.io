@@ -1,6 +1,6 @@
 {
     "name": "Homework 7",
-    "endpoint": "cal/cs88/sp19/hw07",
+    "endpoint": "cal/cs88/fa19/hw07",
     "src": [
         "hw07.py"
     ],
