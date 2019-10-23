@@ -441,7 +441,13 @@
         </tr>
 
         <tr>
-            <td class='resource-name'><a href="lab/lab06/">Lab 6: Recursion and Midterm Review</a></td>
+            <td class='resource-name'><a href="lab/lab06/">Lab 6: Recursion and Midterm Review</a> (Solutions)</td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="lab/lab07/">Lab 7: ADTs and Project</a></td>
             <td class='resource-type'>Lab</td>
             <td class='resource-tags'></td>
         </tr>
@@ -479,6 +485,18 @@
         <tr>
             <td class='resource-name'><a href="hw/hw06/">Homework 6</a></td>
             <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="hw/hw07/">Homework 7</a></td>
+            <td class='resource-type'>Homework</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
+            <td class='resource-name'><a href="proj/maps/">Maps</a></td>
+            <td class='resource-type'>Project</td>
             <td class='resource-tags'></td>
         </tr>
 
@@ -748,7 +766,7 @@
 <br/>
 (<a href="assets/slides/fa19/05-Recursion_1pp.pdf">1pp</a>) (<a href="assets/slides/fa19/05-Recursion_6pps.pdf">6pps</a>) (<a href="assets/slides/fa19/05-Recursion.py">py</a>)</td>
 <td><a href="http://composingprograms.com/pages/17-recursive-functions.html">1.7</a></td>
-<td><a href="lab/lab06/">Lab 6: Recursion and Midterm Review</a><br/>(due Tue 10/22)</td>
+<td><a href="lab/lab06/">Lab 6: Recursion and Midterm Review</a><br/>(due Tue 10/22) (Solutions)</td>
 <td><a href="hw/hw06/">Homework 6</a><br/>(due Thu 10/24)</td>
 <td></td>
 </tr>
@@ -771,9 +789,9 @@
 (<a href="assets/slides/fa19/07-ADTs_1pp.pdf">1pp</a>) (<a href="assets/slides/fa19/07-ADTs_6pps.pdf">6pps</a>)</td>
 <td><a href="http://composingprograms.com/pages/25-object-oriented-programming.html">2.5</a><br/>
 <a href="http://composingprograms.com/pages/26-implementing-classes-and-objects.html">2.6</a></td>
-<td></td>
-<td></td>
-<td></td>
+<td><a href="lab/lab07/">Lab 7: ADTs and Project</a><br/>(due Tue 11/5)</td>
+<td><a href="hw/hw07/">Homework 7</a><br/>(due Thu 10/31)</td>
+<td><a href="proj/maps/">Maps</a><br/>(due Tue 11/5)</td>
 </tr>
 <tr>
 <td rowspan="1" class="weeknum even">10</td>
@@ -926,7 +944,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [{"due": "9/6/19", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/26/19"}, {"due": "9/10/19", "link": "lab/lab01/", "name": "Lab 1: Control and Functions", "release": "9/2/19"}, {"due": "9/17/19", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/9/19"}, {"due": "9/24/19", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/16/19"}, {"due": "10/1/19", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "9/23/19"}, {"due": "10/10/19", "link": "lab/lab05/", "name": "Lab 5: Lambdas and Environments", "release": "9/30/19"}, {"due": "10/22/19", "link": "lab/lab06/", "name": "Lab 6: Recursion and Midterm Review", "release": "10/7/19"}, {"due": "9/12/19", "link": "hw/hw01/", "name": "Homework 1", "release": "9/2/19"}, {"due": "9/19/19", "link": "hw/hw02/", "name": "Homework 2", "release": "9/9/19"}, {"due": "9/26/19", "link": "hw/hw03/", "name": "Homework 3", "release": "9/16/19"}, {"due": "10/3/19", "link": "hw/hw04/", "name": "Homework 4", "release": "9/23/19"}, {"due": "10/11/19", "link": "hw/hw05/", "name": "Homework 5", "release": "9/30/19"}, {"due": "10/24/19", "link": "hw/hw06/", "name": "Homework 6", "release": "10/7/19"}];
+  var assignments = [{"due": "9/6/19", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "8/26/19"}, {"due": "9/10/19", "link": "lab/lab01/", "name": "Lab 1: Control and Functions", "release": "9/2/19"}, {"due": "9/17/19", "link": "lab/lab02/", "name": "Lab 2: Functions and Editors", "release": "9/9/19"}, {"due": "9/24/19", "link": "lab/lab03/", "name": "Lab 3: List Comprehensions, Conditionals and Iteration", "release": "9/16/19"}, {"due": "10/1/19", "link": "lab/lab04/", "name": "Lab 4: Higher Order Functions", "release": "9/23/19"}, {"due": "10/10/19", "link": "lab/lab05/", "name": "Lab 5: Lambdas and Environments", "release": "9/30/19"}, {"due": "10/22/19", "link": "lab/lab06/", "name": "Lab 6: Recursion and Midterm Review", "release": "10/7/19"}, {"due": "11/5/19", "link": "lab/lab07/", "name": "Lab 7: ADTs and Project", "release": "10/21/19"}, {"due": "9/12/19", "link": "hw/hw01/", "name": "Homework 1", "release": "9/2/19"}, {"due": "9/19/19", "link": "hw/hw02/", "name": "Homework 2", "release": "9/9/19"}, {"due": "9/26/19", "link": "hw/hw03/", "name": "Homework 3", "release": "9/16/19"}, {"due": "10/3/19", "link": "hw/hw04/", "name": "Homework 4", "release": "9/23/19"}, {"due": "10/11/19", "link": "hw/hw05/", "name": "Homework 5", "release": "9/30/19"}, {"due": "10/24/19", "link": "hw/hw06/", "name": "Homework 6", "release": "10/7/19"}, {"due": "10/31/19", "link": "hw/hw07/", "name": "Homework 7", "release": "10/21/19"}, {"due": "11/5/19", "link": "proj/maps/", "name": "Maps", "release": "10/21/19"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {

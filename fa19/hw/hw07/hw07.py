@@ -3,9 +3,9 @@
 def flip_dict(dictionary):
     """Returns a flipped version of the original dictionary.
 
-    >>> TAs = {"2pm-4pm": "andrew", "12pm-2pm": "alex", "10am-12pm": "amir"}
+    >>> TAs = {"12pm-2pm": "brian", "10am-12pm": "sophia", "2pm-4pm": "alec"}
     >>> flip_dict(TAs)
-    {'amir': '10am-12pm', 'andrew': '2pm-4pm', 'alex': '12pm-2pm'}
+    {"alec": "2pm-4pm", "sophia": "10am-12pm", "brian": "12pm-2pm"}
     """
     "*** YOUR CODE HERE ***"
     
