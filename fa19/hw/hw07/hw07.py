@@ -4,8 +4,12 @@ def flip_dict(dictionary):
     """Returns a flipped version of the original dictionary.
 
     >>> TAs = {"12pm-2pm": "brian", "10am-12pm": "sophia", "2pm-4pm": "alec"}
-    >>> flip_dict(TAs)
-    {"alec": "2pm-4pm", "sophia": "10am-12pm", "brian": "12pm-2pm"}
+    >>> flipped_TAs = flip_dict(TAs)
+    >>> sorted_keys = sorted(flipped_TAs)
+    >>> sorted_keys
+    ['alec', 'brian', 'sophia']
+    >>> [flipped_TAs[i] for i in sorted_keys]
+    ['2pm-4pm', '12pm-2pm', '10am-12pm']
     """
     "*** YOUR CODE HERE ***"
     

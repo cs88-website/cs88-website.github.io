@@ -88,8 +88,12 @@
     &quot;&quot;&quot;Returns a flipped version of the original dictionary.
 
     &gt;&gt;&gt; TAs = {&quot;12pm&#x2d;2pm&quot;: &quot;brian&quot;, &quot;10am&#x2d;12pm&quot;: &quot;sophia&quot;, &quot;2pm&#x2d;4pm&quot;: &quot;alec&quot;}
-    &gt;&gt;&gt; flip_dict(TAs)
-    {&quot;alec&quot;: &quot;2pm&#x2d;4pm&quot;, &quot;sophia&quot;: &quot;10am&#x2d;12pm&quot;, &quot;brian&quot;: &quot;12pm&#x2d;2pm&quot;}
+    &gt;&gt;&gt; flipped_TAs = flip_dict(TAs)
+    &gt;&gt;&gt; sorted_keys = sorted(flipped_TAs)
+    &gt;&gt;&gt; sorted_keys
+    [&#x27;alec&#x27;, &#x27;brian&#x27;, &#x27;sophia&#x27;]
+    &gt;&gt;&gt; [flipped_TAs[i] for i in sorted_keys]
+    [&#x27;2pm&#x2d;4pm&#x27;, &#x27;12pm&#x2d;2pm&#x27;, &#x27;10am&#x2d;12pm&#x27;]
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"
     </code></pre>
