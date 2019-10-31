@@ -1,46 +1,23 @@
-## Review on Dictionary
-
-def merge_dict(d1, d2):
-    """Returns a dictionary with two dictionaries merged together. You can assume that the same keys appear in both dictionaries. 
-
-    >>> data8 = {"midterms":1, "projects":3}
-    >>> data100 = {"midterms":2, "projects":3}
-    >>> combined = merge_dict(data8, data100)
-    >>> combined
-    {'midterms': 3, 'projects': 6}
+# Mutation Mystery
+def deep_copy(lst):
+    """Returns a new list that is a deep copy of lst.
+    >>> x = [[0, 'a'],  [1, 'b'], [2, 'c']]
+    >>> y = deep_copy(x)
+    >>> y[0][1] = 'z'
+    >>> y
+    [[0, 'z'], [1, 'b'], [2, 'c']]
+    >>> x
+    [[0, 'a'], [1, 'b'], [2, 'c']]
+    >>> x = [[0, 'a'],  [1, 'b'], [2, 'c']]
+    >>> z = deep_copy(x)
+    >>> z[0][1] = 'z'
+    >>> z
+    [[0, 'z'], [1, 'b'], [2, 'c']]
+    >>> x       #x should not change
+    [[0, 'a'], [1, 'b'], [2, 'c']]
     """
     "*** YOUR CODE HERE ***"
-    
 
-# Mutation
-
-def merge_dict_mutate(d1, d2):
-    """Write a function that merge the second dictionary into the first dictionary. You can assume 
-    that the same keys appear in both dictionaries. 
-
-    >>> bank = {"Annie":1000, "David":500}
-    >>> new_deposits = {"Annie":700, "David":800}
-    >>> merge_dict_mutate(bank, new_deposits)
-    >>> bank
-    {'Annie': 1700, 'David': 1300}
-    """
-    "*** YOUR CODE HERE ***"
-    "SOLUTION HERE"
-
-def list_combine(lst):
-    """Write a function that combines all the items in the list into one item and put it as the only item in the list. 
-
-    >>> pokemon = [4, 5, 3, 2, 1, 6]
-    >>> list_combine(pokemon)
-    >>> pokemon
-    [21]
-    >>> alphabet = ["a", "b", "c", "d", "e"]
-    >>> list_combine(alphabet)
-    >>> alphabet
-    ['abcde']
-    """
-    "*** YOUR CODE HERE ***"
-    
 
 def dict_cycle(dictionary):
     """Write a function that cycles each of the key-value pair such that the key becomes the last
@@ -48,11 +25,83 @@ def dict_cycle(dictionary):
 
     >>> hamster = {"a":["b","c","d"], "w":["x","y","z"]}
     >>> dict_cycle(hamster)
-    >>> hamster
-    {'b': ['c', 'd', 'a'], 'x': ['y', 'z', 'w']}
+    >>> sorted(hamster.items()) # items return list of tuples that are key value pairs
+    [('b', ['c', 'd', 'a']), ('x', ['y', 'z', 'w'])] 
     """
     "*** YOUR CODE HERE ***"
     
+
+
+# Reverse
+def todo():
+    """Returns add and reverse, which add to and reverse the list
+    >>> add, get_list, reverse = todo()
+    >>> add("clean")
+    >>> add("homework")
+    >>> add("cook")
+    >>> add("sleep")
+    >>> get_list()
+    ['clean', 'homework', 'cook', 'sleep']
+    >>> reverse()
+    >>> get_list()
+    ['sleep', 'cook', 'homework', 'clean']
+    >>> add("wake up")
+    >>> get_list()
+    ['sleep', 'cook', 'homework', 'clean', 'wake up']
+    >>> reverse()
+    >>> get_list()
+    ['wake up', 'clean', 'homework', 'cook', 'sleep']
+    """
+    lst = []
+    def get_list():
+        return lst
+    def add(item):
+        lst.append(item)
+    def reverse():
+        "*** YOUR CODE HERE ***"
+        
+    return add, get_list, reverse
+    
+
+
+# Mailbox
+
+def mailbox():
+    """
+    >>> get_mail, deliver_mail = mailbox()
+    >>> get_mail("Sophia")
+    >>> deliver_mail("Sophia", ["postcard"])
+    >>> get_mail("Sophia")
+    ['postcard']
+    >>> get_mail("Sophia")
+    >>> deliver_mail("Lyric", ["paycheck", "ads"])
+    >>> get_mail("Lyric")
+    ['paycheck', 'ads']
+    >>> deliver_mail("Lyric", ["bills"])
+    >>> get_mail("Lyric")
+    ['bills']
+    >>> deliver_mail("Julia", ["survey"])
+    >>> get_mail("Julia")
+    ['survey']
+    >>> get_mail("Julia")
+    >>> get_mail("Amir")
+    >>> deliver_mail("Amir", ["postcard", "paycheck"])
+    >>> deliver_mail("Amir", ["ads"])
+    >>> get_mail("Amir")
+    ['postcard', 'paycheck', 'ads']
+    """
+    mailbox = {}
+    def get_mail(name):
+        "*** YOUR CODE HERE ***"
+        
+    def deliver_mail(name, mail):
+        "*** YOUR CODE HERE ***"
+        
+    return get_mail, deliver_mail
+
+
+
+# Optional
 
 def make_gym(a, b, c, d):
     """Returns a pokemon gym (represented by list) of the four pokemons a, b, c, d."""
@@ -77,8 +126,7 @@ def make_pokemon_set():
     ['charizard', 'celebi', 'raichu', 'raticate']
 
     """
-    
-    pokemons = {"charmander":"charmeleon",
+    pokemon_set = {"charmander":"charmeleon",
             "charmeleon":"charizard",
             "squirtle":"wartortle",
             "wartortle":"blastoise",
@@ -86,37 +134,16 @@ def make_pokemon_set():
             "sandshrew":"sandslash"}
 
     def add(pokemon, evolution):
-        _add_pokemon(pokemons, pokemon, evolution)
+        "*** YOUR CODE HERE ***"
+        
 
     def evolve(pokemon):
-        return _evolve(pokemons, pokemon)
+        "*** YOUR CODE HERE ***"
+        
 
     def evolve_all(gym):
-        _evolve_all(pokemons, gym)
+        "*** YOUR CODE HERE ***"
+        
 
     return {"add":add, "evolve":evolve, "evolve_all":evolve_all}
-
-def _add_pokemon(pokemon_set, pokemon, evolution):
-    """Takes in a pokemon and the form it evolves to and adds it to the pokemon
-    dictionary set. 
-    """
-    "*** YOUR CODE HERE ***"
-    
-
-def _evolve(pokemon_set, pokemon):
-    """Takes in a pokemon and returns its final evolved form. Use the pokemon_set to check for 
-    what the pokemon should evolve to. If the pokemon is not in the pokemon set, keeps its 
-    status as is. 
-
-    """
-    "*** YOUR CODE HERE ***"
-    
-
-def _evolve_all(pokemon_set, gym):
-    """Takes in a gym and evolve all the pokemons in the gym. You should be modifying the gym,
-    not returning a new gym. Use the evolve function you've defined above!
-
-    """
-    "*** YOUR CODE HERE ***"
-    
 

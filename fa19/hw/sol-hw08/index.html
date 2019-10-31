@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="/fa19/assets/css/mono-blue.css">
 
     <link rel="stylesheet" type="text/css" href="/fa19/assets/css/resource.css" />
-<link rel="stylesheet" type="text/css" href="/fa19/assets/css/hw.css"/>
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
 
 
-    <title>Homework 8 | CS 88 Fall 2019</title>
+    <title>Homework 8 Solutions | CS 88 Fall 2019</title>
 
   </head>
 
@@ -50,24 +50,11 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Homework 8</span></h1>
+      <h1><span class="content-title-brand">Homework 8</span> Solutions</h1>
     </div>
 
-    <p><i>Due at 11:59:59 pm on Thursday, 11/07/2019.</i></p>
-
-<h2>Instructions</h2>
-
-<p>Download <a href="hw08.zip"> hw08.zip</a>.
-    Inside the archive, you will find starter files for the questions in this homework,
-    along with a copy of the OK autograder.</p>
-
-<p><strong>Submission:</strong> When you are done, submit with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be scored. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
-
-<p><strong>Readings:</strong> This homework relies on following references:</p>
-
-<ul>
-  <li><a href="http://www.composingprograms.com/pages/24-mutable-data.html">Section 2.4</a></li>
-</ul>
+    <p><strong>Solutions:</strong> You can find the file with solutions for all
+questions <a href="hw08.py">here</a>.</p>
 
     
 
@@ -152,7 +139,7 @@ article, you need to write your own function!</p>
     &gt;&gt;&gt; x       #x should not change
     [[0, &#x27;a&#x27;], [1, &#x27;b&#x27;], [2, &#x27;c&#x27;]]
     &quot;&quot;&quot;
-    "*** YOUR CODE HERE ***"</code></pre>
+<span class="sol-highlight">    return [elem if not isinstance(elem, list) else deep_copy(elem) for elem in lst]</span></code></pre>
 
 </solution>
 
@@ -215,8 +202,10 @@ example with <code>y</code> and <code>z</code>.</p></blockquote>
     &gt;&gt;&gt; hamster
     {&#x27;b&#x27;: [&#x27;c&#x27;, &#x27;d&#x27;, &#x27;a&#x27;], &#x27;x&#x27;: [&#x27;y&#x27;, &#x27;z&#x27;, &#x27;w&#x27;]}
     &quot;&quot;&quot;
-    "*** YOUR CODE HERE ***"
-    </code></pre>
+<span class="sol-highlight">    keys = list(dictionary.keys())
+    for key in keys:
+        val = dictionary.pop(key)
+        dictionary[val[0]] = val[1:] + [key]</span></code></pre>
 
 </solution>
 
@@ -261,8 +250,40 @@ function should utilize mutability.</p></blockquote>
     def add(item):
         lst.append(item)
     def reverse():
-        "*** YOUR CODE HERE ***"
-        
+<span class="sol-highlight">        # iterative solution
+        midpoint = len(lst) // 2
+        last = len(lst) &#x2d; 1
+        for i in range(midpoint):
+            lst[i], lst[last &#x2d; i] = lst[last &#x2d; i], lst[i]
+    # Recursive solution
+    def reverse(lst):
+        &quot;&quot;&quot;Reverses lst using mutation.
+        &gt;&gt;&gt; original_list = [5, &#x2d;1, 29, 0]
+        &gt;&gt;&gt; reverse(original_list)
+        &gt;&gt;&gt; original_list
+        [0, 29, &#x2d;1, 5]
+        &quot;&quot;&quot;
+        if len(lst) &gt; 1:
+            temp = lst.pop()
+            reverse(lst)
+            lst.insert(0, temp)
+
+    # Alternative recursive solution
+    def reverse(lst):
+        &quot;&quot;&quot;Reverses lst using mutation.
+        &gt;&gt;&gt; original_list = [5, &#x2d;1, 29, 0]
+        &gt;&gt;&gt; reverse(original_list)
+        &gt;&gt;&gt; original_list
+        [0, 29, &#x2d;1, 5]
+        &quot;&quot;&quot;
+        midpoint = len(lst) // 2
+        last = len(lst) &#x2d; 1
+        def helper(i):
+            if i == midpoint:
+                return
+            lst[i], lst[last &#x2d; i] = lst[last &#x2d; i], lst[i]
+            helper(i + 1)
+        helper(0)</span>
     return add, get_list, reverse</code></pre>
 
 </solution>
@@ -328,11 +349,16 @@ Julia
     &quot;&quot;&quot;
     mailbox = {}
     def get_mail(name):
-        "*** YOUR CODE HERE ***"
-        
+<span class="sol-highlight">        if len(mailbox) == 0 or name not in mailbox or mailbox[name] == None:
+            mailbox[name] = mail
+        else:
+            mailbox[name] += mail</span>
     def deliver_mail(name, mail):
-        "*** YOUR CODE HERE ***"
-        
+<span class="sol-highlight">        if len(mailbox) == 0 or name not in mailbox or mailbox[name] == None:
+            return None
+        mail = mailbox[name]
+        mailbox[name] = None
+        return mail</span>
     return get_mail, deliver_mail</code></pre>
 
 </solution>
@@ -381,16 +407,17 @@ def make_pokemon_set():
             &quot;sandshrew&quot;:&quot;sandslash&quot;}
 
     def add(pokemon, evolution):
-        "*** YOUR CODE HERE ***"
-        
+<span class="sol-highlight">        pokemon_set[pokemon] = evolution</span>
 
     def evolve(pokemon):
-        "*** YOUR CODE HERE ***"
-        
+<span class="sol-highlight">        if pokemon not in pokemon_set:
+            return pokemon
+        else:
+            return _evolve(pokemon_set, pokemon_set[pokemon])</span>
 
     def evolve_all(gym):
-        "*** YOUR CODE HERE ***"
-        
+<span class="sol-highlight">        for i in range(gym_size(gym)):
+            gym[i] = _evolve(pokemon_set, gym[i])</span>
 
     return {&quot;add&quot;:add, &quot;evolve&quot;:evolve, &quot;evolve_all&quot;:evolve_all}</code></pre>
 

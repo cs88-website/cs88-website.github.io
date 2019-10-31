@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science" />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Michael Ball, Amir Shahatit, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan, John Yang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/fa19/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/style.css">
+    <link rel="icon" href="/fa19/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/fa19/assets/css/mono-blue.css">
+
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="../../assets/css/hw.css"/>
+
+
+    <title>Homework 7 Solutions | CS 88 Fall 2019</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section" aria-label="Toggle Nav Menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/fa19/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/fa19/">Calendar</a></li>
+            <li><a href="/fa19/articles/resources.html">Resources</a></li>
+            <li><a href="/fa19/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/fa19/articles/about.html">Course Information</a></li>
+            <li><a href="/fa19/staff.html">Staff</a></li>
+            <!--- <li><a href="/fa19/tutoring.html">Tutoring</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Homework 7</span> Solutions</h1>
+    </div>
+
+    <p><strong>Solutions:</strong> You can find the file with solutions for all
+questions <a href="hw07.py">here</a>.</p>
+
+    
+
+
+<h2 id="dictionaries">Dictionaries</h2>
+
+
+<h3 class="question" id="q1">Question 1: Flip Dictionary</h3>
+
+<p>Implement the function <code>flip_dict</code> which takes in a dictionary and returns a similar dictionary where the values have become the keys and the keys have become the values.</p>
+
+<p>In this problem, you can assume that each key value pair is unique, and no key or value will be repeated or used more than once.</p>
+
+<solution>
+
+<pre><code>def flip_dict(dictionary):
+    &quot;&quot;&quot;Returns a flipped version of the original dictionary.
+
+    &gt;&gt;&gt; TAs = {&quot;12pm&#x2d;2pm&quot;: &quot;brian&quot;, &quot;10am&#x2d;12pm&quot;: &quot;sophia&quot;, &quot;2pm&#x2d;4pm&quot;: &quot;alec&quot;}
+    &gt;&gt;&gt; flipped_TAs = flip_dict(TAs)
+    &gt;&gt;&gt; sorted_keys = sorted(flipped_TAs)
+    &gt;&gt;&gt; sorted_keys
+    [&#x27;alec&#x27;, &#x27;brian&#x27;, &#x27;sophia&#x27;]
+    &gt;&gt;&gt; [flipped_TAs[i] for i in sorted_keys]
+    [&#x27;2pm&#x2d;4pm&#x27;, &#x27;12pm&#x2d;2pm&#x27;, &#x27;10am&#x2d;12pm&#x27;]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    result_dict = {}
+    for key in dictionary:
+        value = dictionary[key]
+        result_dict[value] = key
+    return result_dict</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q flip_dict</code></pre>
+
+<h3 class="question" id="q2">Question 2: Merge Dictionaries</h3>
+
+<p>Implement the function <code>merge_dict</code>. The <code>merge_dict</code> function merges two dictionaries with the same keys together.</p>
+
+<solution>
+
+<pre><code>def merge_dict(d1, d2):
+    &quot;&quot;&quot;Returns a dictionary with two dictionaries merged together. You can assume that the same keys appear in both dictionaries. 
+
+    &gt;&gt;&gt; data8 = {&quot;midterms&quot;:1, &quot;projects&quot;:3}
+    &gt;&gt;&gt; data100 = {&quot;midterms&quot;:2, &quot;projects&quot;:3}
+    &gt;&gt;&gt; combined = merge_dict(data8, data100)
+    &gt;&gt;&gt; combined
+    {&#x27;midterms&#x27;: 3, &#x27;projects&#x27;: 6}
+    &quot;&quot;&quot;
+<span class="sol-highlight">    result_dict = {}
+    for work in d1:
+        result_dict[work] = d1[work] + d2[work]
+    return result_dict</span></code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q merge_dict</code></pre>
+
+
+<h2 id="dice-rolling">Dice Rolling</h2>
+
+
+<p><strong>Introduction.</strong> Alex and Srinath are playing a dice game. This dice game is special in that players choose the range of one of their dice, as well as one of their opponents. Unfortunately, both Alex and Srinath forgot to bring dice to their game - all they have is their laptop, and they need you to build an abstract object to simulate a die. Given the smallest and largest values of the die, you can construct the die using the dice constructor.</p>
+
+<h3 class="question" id="q3">Question 3</h3>
+
+<p>In order to create the dice object, create a list of all the values that the dice can take on.</p>
+
+<pre><code>import random
+random.seed(42)
+
+def dice(a, b):
+    &quot;&quot;&quot;Construct a die that is a list from a to b inclusive.
+    &gt;&gt;&gt; dice(1, 6)
+    [1, 2, 3, 4, 5, 6]
+    &gt;&gt;&gt; dice(3, 5)
+    [3, 4, 5]
+    &gt;&gt;&gt; dice(5, 5)
+    [5]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    return [i for i in range(a, b+1)]</span>
+
+def smallest(die):
+    &quot;&quot;&quot;Return the lowest value die can take on.&quot;&quot;&quot;
+    return min(die)
+
+def largest(die):
+    &quot;&quot;&quot;Return the largest value die can take on.&quot;&quot;&quot;
+    return max(die)
+
+def str_dice(die):
+    &quot;&quot;&quot;Return a string representation of die.
+
+    &gt;&gt;&gt; str_dice(dice(1, 6))
+    &#x27;die takes on values from 1 to 6&#x27;
+    &quot;&quot;&quot;
+    return &#x27;die takes on values from {0} to {1}&#x27;.format(smallest(die), largest(die))</code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q dice</code></pre>
+
+<h3 class="question" id="q4">Question 4</h3>
+
+<p>Die rolls are inherently random - before rolling, we do not know what value the die will take on. We need to implement this feature in order to play the game. Python has a nice library that allows us to generate random numbers. You can read more about it <a href="https://docs.python.org/3/library/random.html">here</a>. We will be specifically using <code>random.choice(seq)</code>, which generates a random integer from a nonempty sequence <code>seq</code>.</p>
+
+<pre><code>def roll_dice(die, x):
+    &quot;&quot;&quot;Roll the die x times and return an array of the rolled values.
+    &gt;&gt;&gt; roll_dice(dice(5, 5), 4)
+    [5, 5, 5, 5]
+    &gt;&gt;&gt; max(roll_dice(dice(1, 6), 100))
+    6
+    &gt;&gt;&gt; min(roll_dice(dice(1, 6), 100))
+    1
+    &gt;&gt;&gt; x = sum(roll_dice(dice(1, 6), 100))/100 # Finds the mean of 100 dice rolls
+    &gt;&gt;&gt; 3 &lt;= x &lt;= 4 # Checks if the mean is between 3 and 4
+    True
+   &quot;&quot;&quot;
+<span class="sol-highlight">    return [random.choice(die) for _ in range(x)]</span></code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q roll_dice</code></pre>
+
+<h3 class="question" id="q5">Question 5</h3>
+
+<p>Rolling a six is unfortunate in this game. Neither player wants a 6, yet they cannot avoid it. Figure out how many rolls it takes until a player rolls a 6 with a certain die.</p>
+
+<pre><code>def rolls_until_six(die):
+    &quot;&quot;&quot;Roll the die until you get a 6 and return the number of rolls it took to do so. 
+    If six is not a the possible values to roll, return a string saying &#x27;6 is not a possible value of this die&#x27;
+    &gt;&gt;&gt; rolls_until_six(dice(1, 5))
+    &#x27;6 is not a possible value of this die&#x27;
+    &gt;&gt;&gt; rolls_until_six(dice(6, 6)) # Takes one roll to get 6
+    1
+    &gt;&gt;&gt; x = sum([rolls_until_six(dice(1, 6)) for _ in range(100)])/100 # Repeat 100 times and average
+    &gt;&gt;&gt; 5 &lt;= x &lt;= 7 # Check that it takes between 5 and 7 rolls overall on average
+    True
+    &quot;&quot;&quot;
+<span class="sol-highlight">    if not smallest(die) &lt;= 6 &lt;= largest(die):
+        return &#x27;6 is not a possible value of this die&#x27;
+    count = 1
+    while random.choice(die) != 6:
+        count += 1
+    return count</span></code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q rolls_until_six</code></pre>
+
+<h3 class="question" id="q6">Question 6</h3>
+
+<p>The game has a new complication - instead of rolling a single die at a time, players are required to roll multiple dice at a time. Players start off with 2 dice in a cup, but they can add more.</p>
+
+<pre><code>def cup(die1, die2):
+    &quot;&quot;&quot;Construct a cup that contains die1 and die2.
+    &gt;&gt;&gt; cup(dice(1, 1), dice(1, 2))
+    [[1], [1, 2]]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    return [die1, die2]</span></code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q cup</code></pre>
+
+<h3 class="question" id="q7">Question 7</h3>
+
+<p>Add a die to your cup implementation!</p>
+
+<pre><code>def add_to_cup(cup, die):
+    &quot;&quot;&quot;Add die to cup.
+    &gt;&gt;&gt; cup1 = cup(dice(1, 1), dice(1, 2))
+    &gt;&gt;&gt; add_to_cup(cup1, dice(1, 3))
+    [[1], [1, 2], [1, 2, 3]]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    cup += [die]
+    return cup</span></code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q add_to_cup</code></pre>
+
+<h3 class="question" id="q8">Question 8</h3>
+
+<p>When you roll a cup, you roll each dice in the cup once, then return an array of the rolled values.</p>
+
+<pre><code>def roll_cup(cup):
+    &quot;&quot;&quot;Roll every die in the cup and return an array of the rolled values.
+    &gt;&gt;&gt; roll_cup(cup(dice(1, 1), dice(2, 2)))
+    [1, 2]
+    &quot;&quot;&quot;
+<span class="sol-highlight">    return [random.choice(die) for die in cup]</span></code></pre>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q roll_cup</code></pre>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#dictionaries">Dictionaries</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: Flip Dictionary</a></li>
+  <li><a href="#q2">Question 2: Merge Dictionaries</a></li>
+</ul>
+
+  <li><a href="#dice-rolling">Dice Rolling</a></li>
+  <ul>
+  <li><a href="#q3">Question 3</a></li>
+  <li><a href="#q4">Question 4</a></li>
+  <li><a href="#q5">Question 5</a></li>
+  <li><a href="#q6">Question 6</a></li>
+  <li><a href="#q7">Question 7</a></li>
+  <li><a href="#q8">Question 8</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/fa19/assets/js/bootstrap.min.js"></script>
+    <!-- TODO: Move to specific pages... -->
+    <script src="/fa19/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>
