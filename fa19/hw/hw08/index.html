@@ -212,8 +212,8 @@ example with <code>y</code> and <code>z</code>.</p></blockquote>
 
     &gt;&gt;&gt; hamster = {&quot;a&quot;:[&quot;b&quot;,&quot;c&quot;,&quot;d&quot;], &quot;w&quot;:[&quot;x&quot;,&quot;y&quot;,&quot;z&quot;]}
     &gt;&gt;&gt; dict_cycle(hamster)
-    &gt;&gt;&gt; hamster
-    {&#x27;b&#x27;: [&#x27;c&#x27;, &#x27;d&#x27;, &#x27;a&#x27;], &#x27;x&#x27;: [&#x27;y&#x27;, &#x27;z&#x27;, &#x27;w&#x27;]}
+    &gt;&gt;&gt; sorted(hamster.items()) # items return list of tuples that are key value pairs
+    [(&#x27;b&#x27;, [&#x27;c&#x27;, &#x27;d&#x27;, &#x27;a&#x27;]), (&#x27;x&#x27;, [&#x27;y&#x27;, &#x27;z&#x27;, &#x27;w&#x27;])] 
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"
     </code></pre>
@@ -373,7 +373,7 @@ def make_pokemon_set():
     [&#x27;charizard&#x27;, &#x27;celebi&#x27;, &#x27;raichu&#x27;, &#x27;raticate&#x27;]
 
     &quot;&quot;&quot;
-    pokemons = {&quot;charmander&quot;:&quot;charmeleon&quot;,
+    pokemon_set = {&quot;charmander&quot;:&quot;charmeleon&quot;,
             &quot;charmeleon&quot;:&quot;charizard&quot;,
             &quot;squirtle&quot;:&quot;wartortle&quot;,
             &quot;wartortle&quot;:&quot;blastoise&quot;,
