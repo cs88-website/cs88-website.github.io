@@ -26,7 +26,7 @@ def dict_cycle(dictionary):
     >>> hamster = {"a":["b","c","d"], "w":["x","y","z"]}
     >>> dict_cycle(hamster)
     >>> sorted(hamster.items()) # items return list of tuples that are key value pairs
-    [('b', ['c', 'd', 'a']), ('x', ['y', 'z', 'w'])] 
+    [('b', ['c', 'd', 'a']), ('x', ['y', 'z', 'w'])]
     """
     "*** YOUR CODE HERE ***"
     
