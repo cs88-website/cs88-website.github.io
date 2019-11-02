@@ -13,6 +13,12 @@
         "hw08.py:mailbox": "doctest",
         "hw08.py:make_pokemon_set": "doctest"
     },
+    "default_tests": [
+        "deep_copy",
+        "dict_cycle",
+        "todo",
+        "mailbox"
+    ],
     "protocols": [
         "restore",
         "file_contents",

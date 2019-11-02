@@ -271,7 +271,7 @@ function should utilize mutability.</p></blockquote>
 
 <h3 class="question" id="q4">Question 4: Mailbox</h3>
 
-<p>Mutation is crucial for ADTs. Recall the bank account example given in lecture. The bank account ADT can be deposited to and withdrawn from. When we deposit or withdraw, we want to change the state of the bank account so that the withdrawal or deposit will be reflected next time we access it.</p>
+<p>Mutation is crucial for ADTs.</p>
 
 <p>Below, we can see the power of mutability which allows us to change the name and amount of money in <code>account_1</code>.</p>
 
@@ -288,17 +288,13 @@ Julia
 &gt;&gt;&gt; get_account_savings(account_1)
 20</code></pre>
 
-<p>During the mini-lecture, we introduced the new concept of a constructor returning the very functions we want to run on the object! This kind of abstraction is very common in the programming world.</p>
-
 <p>Let's apply this concept to a new ADT: a mailbox. The mail box's internal representation is a dictionary that holds key value pairs corresponding to a person, and a list of their mail. Below is an example of a TA mailbox.</p>
 
 <pre><code>{&quot;Sophia&quot;:[&quot;receipt&quot;, &quot;worksheets&quot;], &quot;Lyric&quot;:[&quot;worksheets&quot;, &quot;form&quot;, &quot;bills&quot;], &quot;Andrew&quot;:[&quot;paycheck&quot;], &quot;Julia&quot;:None, &quot;John&quot;:None, &quot;Amir&quot;:None}</code></pre>
 
-<p>The <code>get_mail(name)</code> function, given a mailbox, should return the mail corresponding to the name argument given. The postman can also put in mail by using the <code>deliver_mail(name, mail)</code> function. You may have noticed that the function names are a bit strange: they each have an underscore in the beginning. We use this kind of syntax when a function is "hidden", meaning they are hidden to the outside. Remember, our goal is for the <code>mailbox</code> constructor to return all functions that the mailbox uses.</p>
+<p>The <code>get_mail(name)</code> function, given a mailbox, should return the mail corresponding to the name argument given. The postman can also put in mail by using the <code>deliver_mail(name, mail)</code> function.</p>
 
 <p>Please provide implementations for these functions. Make sure to mutate the dictionary! (You can assume mail will always be in a list.)</p>
-
-<p>After doing that, implement the constructor so that it returns <code>get_mail</code> and <code>deliver_mail</code> such that when called, they will perform the function on the original mailbox.</p>
 
 <solution>
 
