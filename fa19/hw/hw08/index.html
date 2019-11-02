@@ -294,11 +294,11 @@ Julia
 
 <pre><code>{&quot;Sophia&quot;:[&quot;receipt&quot;, &quot;worksheets&quot;], &quot;Lyric&quot;:[&quot;worksheets&quot;, &quot;form&quot;, &quot;bills&quot;], &quot;Andrew&quot;:[&quot;paycheck&quot;], &quot;Julia&quot;:None, &quot;John&quot;:None, &quot;Amir&quot;:None}</code></pre>
 
-<p>The <code>_get_mail(mailbox, name)</code> function, given a mailbox, should return the mail corresponding to the name argument given. The postman can also put in mail by using the <code>_deliver_mail(mailbox, name, mail)</code> function. You may have noticed that the function names are a bit strange: they each have an underscore in the beginning. We use this kind of syntax when a function is "hidden", meaning they are hidden to the outside. Remember, our goal is for the <code>mailbox</code> constructor to return all functions that the mailbox uses.</p>
+<p>The <code>get_mail(name)</code> function, given a mailbox, should return the mail corresponding to the name argument given. The postman can also put in mail by using the <code>deliver_mail(name, mail)</code> function. You may have noticed that the function names are a bit strange: they each have an underscore in the beginning. We use this kind of syntax when a function is "hidden", meaning they are hidden to the outside. Remember, our goal is for the <code>mailbox</code> constructor to return all functions that the mailbox uses.</p>
 
 <p>Please provide implementations for these functions. Make sure to mutate the dictionary! (You can assume mail will always be in a list.)</p>
 
-<p>After doing that, implement the constructor so that it returns <code>get_mail</code> and <code>deliver_mail</code> such that when called, they will perform the function on the original mailbox. <strong>Hint: use _get_mail and _deliver_mail</strong></p>
+<p>After doing that, implement the constructor so that it returns <code>get_mail</code> and <code>deliver_mail</code> such that when called, they will perform the function on the original mailbox.</p>
 
 <solution>
 
