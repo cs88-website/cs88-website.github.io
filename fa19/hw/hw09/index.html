@@ -53,7 +53,7 @@
       <h1><span class="content-title-brand">Homework 9</span></h1>
     </div>
 
-    <p><i>Due at 11:59:59 pm on 11:59pm on Thursday, 11/14/2019.</i></p>
+    <p><i>Due at 11:59:59 pm on Thursday, 11/14/2019.</i></p>
 
 <h2>Instructions</h2>
 
@@ -251,60 +251,7 @@
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q Arr88.apply</code></pre>
 
-<h3 class="question" id="q3">Question 3: Checking account</h3>
-
-<p>We'd like to be able to cash checks, so let's add a <code>deposit_check</code>
-method to our <code>CheckingAccount</code> class. It will take a <code>Check</code> object
-as an argument, and check to see if the <code>payable_to</code> attribute matches
-the <code>CheckingAccount</code>'s holder. If so, it marks the <code>Check</code> as
-deposited, and adds the amount specified to the <code>CheckingAccount</code>'s
-total.</p>
-
-<p>Write an appropriate <code>Check</code> class, and add the <code>deposit_check</code> method
-to the <code>CheckingAccount</code> class. Make sure not to copy and paste code!
-Use inheritance whenever possible.</p>
-
-<p>See the doctests for examples of how this code should work.</p>
-
-<solution>
-
-<pre><code>class CheckingAccount(Account):
-    &quot;&quot;&quot;A bank account that charges for withdrawals.
-
-    &gt;&gt;&gt; check = Check(&quot;Steven&quot;, 42)  # 42 dollars, payable to Steven
-    &gt;&gt;&gt; steven_account = CheckingAccount(&quot;Steven&quot;)
-    &gt;&gt;&gt; eric_account = CheckingAccount(&quot;Eric&quot;)
-    &gt;&gt;&gt; eric_account.deposit_check(check)  # trying to steal steven&#x27;s money
-    The police have been notified.
-    &gt;&gt;&gt; eric_account.balance
-    0
-    &gt;&gt;&gt; check.deposited
-    False
-    &gt;&gt;&gt; steven_account.balance
-    0
-    &gt;&gt;&gt; steven_account.deposit_check(check)
-    42
-    &gt;&gt;&gt; check.deposited
-    True
-    &gt;&gt;&gt; steven_account.deposit_check(check)  # can&#x27;t cash check twice
-    The police have been notified.
-    &quot;&quot;&quot;
-    withdraw_fee = 1
-    interest = 0.01
-
-    def withdraw(self, amount):
-        return Account.withdraw(self, amount + self.withdraw_fee)
-
-
-
-class Check(object):
-    "*** YOUR CODE HERE ***"</code></pre>
-
-</solution>
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q CheckingAccount</code></pre>
-
-<h3 class="question" id="q4">Question 4: Vending Machine</h3>
+<h3 class="question" id="q3">Question 3: Vending Machine</h3>
 
 <p>Create a class called <code>VendingMachine</code> that represents a vending
 machine for some product. A <code>VendingMachine</code> object returns strings
@@ -317,6 +264,14 @@ describing its interactions.  See the doctest below for examples:</p>
 <p><code>deposit</code> should add money to the balance and return the current balance, unless the stock is zero, then it should inform the user the stock is zero and return the money.</p>
 
 <p><code>vend</code> should either tell you how much more money needs to be deposited to buy a product, or sell you a product and return the change, or let you know the machine is out of stock.</p>
+
+<p>Make sure your outputs match the doctest exactly!</p>
+
+<p>Hint: <code>.format()</code> can help you format your strings. Here's an example:</p>
+
+<pre><code>&gt;&gt;&gt; name = &quot;Alex&quot;
+&gt;&gt;&gt; &#x27;My name is {}&#x27;.format(name)
+&#x27;My name is Alex&#x27;</code></pre>
 
 <solution>
 
@@ -365,8 +320,7 @@ describing its interactions.  See the doctest below for examples:</p>
       <ul>
   <li><a href="#q1">Question 1: Account</a></li>
   <li><a href="#q2">Question 2: Arr88</a></li>
-  <li><a href="#q3">Question 3: Checking account</a></li>
-  <li><a href="#q4">Question 4: Vending Machine</a></li>
+  <li><a href="#q3">Question 3: Vending Machine</a></li>
 </ul>
 
     </nav>

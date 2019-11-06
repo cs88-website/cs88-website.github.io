@@ -49,6 +49,7 @@ class Account(object):
 #### Arr88 ####
 ###############
 
+
 class Arr88():
     """
     Arr88 is an object similar to Data 8 numpy arrays.
@@ -160,44 +161,6 @@ class Arr88():
         
 
 
-
-
-##########################
-#### Checking Account ####
-##########################
-
-
-class CheckingAccount(Account):
-    """A bank account that charges for withdrawals.
-
-    >>> check = Check("Steven", 42)  # 42 dollars, payable to Steven
-    >>> steven_account = CheckingAccount("Steven")
-    >>> eric_account = CheckingAccount("Eric")
-    >>> eric_account.deposit_check(check)  # trying to steal steven's money
-    The police have been notified.
-    >>> eric_account.balance
-    0
-    >>> check.deposited
-    False
-    >>> steven_account.balance
-    0
-    >>> steven_account.deposit_check(check)
-    42
-    >>> check.deposited
-    True
-    >>> steven_account.deposit_check(check)  # can't cash check twice
-    The police have been notified.
-    """
-    withdraw_fee = 1
-    interest = 0.01
-
-    def withdraw(self, amount):
-        return Account.withdraw(self, amount + self.withdraw_fee)
-
-
-
-class Check(object):
-    "*** YOUR CODE HERE ***"
 
 
 #########################

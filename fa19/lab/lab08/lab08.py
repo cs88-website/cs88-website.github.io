@@ -1,139 +1,239 @@
-# Lambda
-def compose(f, g):
-    """Write a function that takes in 2 single-argument functions, f and g, and returns another lambda function 
-    that takes in a single argument x. The returned function should return the output of applying f(g(x)). 
-    Hint: The staff solution is only 1 line!
+# Inheritance with cats!
 
-    Return the composition function which given x, computes f(g(x)). 
+"""
+Here's the animal/pet classes!
+"""
+# <include prob/topics/oop/animal.py>
+#
+# #Implement q1 Here!
+#
+# <include prob/topics/oop/easy/cat.py>
+class Keyboard:
+    """A Keyboard takes in an arbitrary amount of buttons, and has a
+    dictionary of positions as keys, and Buttons as values.
 
-    >>> add_two = lambda x: x + 2  		# adds 2 to x
-    >>> square = lambda x: x ** 2 		# squares x
-    >>> a = compose(square, add_two) 	# (x + 2 ) ^ 2
-    >>> a(5) 
-    49
-    >>> mul_ten = lambda x: x * 10 		# multiplies 10 with x
-    >>> b = compose(mul_ten, a) 		# ((x + 2 ) ^ 2) * 10
-    >>> b(5)
-    490
-    >>> b(2)
-    160
+    >>> b1 = Button(0, "H")
+    >>> b2 = Button(1, "I")
+    >>> k = Keyboard(b1, b2)
+    >>> k.buttons[0].key
+    'H'
+    >>> k.press(1)
+    'I'
+    >>> k.typing([0, 1])
+    'HI'
+    >>> k.typing([1, 0])
+    'IH'
+    >>> b1.pressed
+    2
+    >>> b2.pressed
+    3
     """
-    "*** YOUR CODE HERE ***"
-    
 
-def lambda_curry2(func):
+    def __init__(self, *args):
+        "*** YOUR CODE HERE ***"
+
+    def press(self, info):
+        """Takes in a position of the button pressed, and
+        returns that button's output"""
+        "*** YOUR CODE HERE ***"
+
+    def typing(self, typing_input):
+        """Takes in a list of positions of buttons pressed, and
+        returns the total output"""
+        "*** YOUR CODE HERE ***"
+
+class Button:
+    def __init__(self, pos, key):
+        self.pos = pos
+        self.key = key
+        self.pressed = 0
+
+
+# T88ble
+
+simple_table_rows = [['chocolate',2], ['vanilla', 1]]
+simple_table_labels = ['Flavor', 'Price']
+longer_table_rows = [[1990, 1, 1.5, 12, 7], [2000, 2, 2.5, 25, 10], [2010, 5, 4, 70, 36]]
+longer_table_labels = ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+
+class T88ble():
     """
-    Returns a Curried version of a two argument function func.
-    >>> from operator import add
-    >>> x = lambda_curry2(add)
-    >>> y = x(3)
-    >>> y(5)
-    8
+    T88ble is an object similar to the Data 8 Table object.
+    Here the internal representation is a list of rows.
     """
-    "*** YOUR CODE HERE ***"
-    
+    def __init__(self, rows=[], labels=[]):
+        self.rows = rows
+        self.column_labels = labels
+    #DO NOT CHANGE THE __repr__ functions
+    def __repr__(self):
+        result = ""
+        result += str(self.column_labels) + "\n"
+        for row in self.rows:
+            result += str(row) + "\n"
+        return result
+    def num_rows(self):
+        """
+        Compute the number of rows in a table.
 
-
-# Map
-def map(fn, lst):
-    """Maps fn onto lst using mutation.
-    >>> original_list = [5, -1, 2, 0]
-    >>> map(lambda x: x * x, original_list)
-    >>> original_list
-    [25, 1, 4, 0]
-    """
-    "*** YOUR CODE HERE ***"
-
-
-# Reverse
-def todo():
-    """Returns add and reverse, which add to and reverse the list
-    >>> add, get_list, reverse = todo()
-    >>> add("clean")
-    >>> add("homework")
-    >>> add("cook")
-    >>> add("sleep")
-    >>> get_list()
-    ['clean', 'homework', 'cook', 'sleep']
-    >>> reverse()
-    >>> get_list()
-    ['sleep', 'cook', 'homework', 'clean']
-    >>> add("wake up")
-    >>> get_list()
-    ['sleep', 'cook', 'homework', 'clean', 'wake up']
-    >>> reverse()
-    >>> get_list()
-    ['wake up', 'clean', 'homework', 'cook', 'sleep']
-    """
-    lst = []
-    def get_list():
-        return lst
-    def add(item):
-        lst.append(item)
-    def reverse():
+        >>> simple_table = T88ble(simple_table_rows, simple_table_labels)
+        >>> simple_table.num_rows()
+        2
+        >>> longer_table = T88ble(longer_table_rows, longer_table_labels)
+        >>> longer_table.num_rows()
+        3
+        """
         "*** YOUR CODE HERE ***"
         
-    return add, get_list, reverse
-    
+
+    def num_cols(self):
+        """
+        Compute the number of cols in a table.
+
+        >>> simple_table = T88ble(simple_table_rows, simple_table_labels)
+        >>> simple_table.num_cols()
+        2
+        >>> longer_table = T88ble(longer_table_rows, longer_table_labels)
+        >>> longer_table.num_cols()
+        5
+        """
+        "*** YOUR CODE HERE ***"
+        
+
+    def labels(self):
+        """
+        Lists the column labels in a table.
+
+        >>> simple_table = T88ble(simple_table_rows, simple_table_labels)
+        >>> simple_table.labels()
+        ['Flavor', 'Price']
+        >>> longer_table = T88ble(longer_table_rows, longer_table_labels)
+        >>> longer_table.labels()
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+        """
+        "*** YOUR CODE HERE ***"
+        
+
+    def column(self, label):
+        """
+        Returns the values of the column represented by label.
+
+        >>> simple_table = T88ble(simple_table_rows, simple_table_labels)
+        >>> simple_table.column("Flavor")
+        ['chocolate', 'vanilla']
+        >>> longer_table = T88ble(longer_table_rows, longer_table_labels)
+        >>> longer_table.column("Eggs price")
+        [1.5, 2.5, 4]
+        >>> longer_table
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
+        """
+        "*** YOUR CODE HERE ***"
+        
+
+    def with_column(self, label, values):
+        """
+        Returns a new table with an additional or replaced column.
+        label is a string for the name of a column, values is an list
+
+        >>> longer_table = T88ble(longer_table_rows, longer_table_labels)
+        >>> longer_table.with_column('Inflation rate', [i for i in range(longer_table.num_rows())])
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day', 'Inflation rate']
+        [1990, 1, 1.5, 12, 7, 0]
+        [2000, 2, 2.5, 25, 10, 1]
+        [2010, 5, 4, 70, 36, 2]
+        >>> longer_table
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
+        """
+        "*** YOUR CODE HERE ***"
+        
+
+    def select(self, labels):
+        """
+        Create a copy of a table with only some of the columns,
+        reffered to by the list of labels.
+
+        >>> simple_table = T88ble(simple_table_rows, simple_table_labels)
+        >>> simple_table.select(["Flavor"])
+        ['Flavor']
+        ['chocolate']
+        ['vanilla']
+        >>> simple_table
+        ['Flavor', 'Price']
+        ['chocolate', 2]
+        ['vanilla', 1]
+
+        >>> longer_table = T88ble(longer_table_rows, longer_table_labels)
+        >>> longer_table.select(['Year', 'Average tank of gas'])
+        ['Year', 'Average tank of gas']
+        [1990, 12]
+        [2000, 25]
+        [2010, 70]
+        >>> longer_table
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
+        """
+        "*** YOUR CODE HERE ***"
+        
 
 
-# Mailbox
+    def sort(self, label, descending=True):
+        """
+        Create a copy of a table sorted by the values in a column.
+        Defaults to ascending order unless descending = True is included.
 
-def mailbox():
-    """
-    >>> get_mail, deliver_mail = mailbox()
-    >>> get_mail("Sophia")
-    >>> deliver_mail("Sophia", ["postcard"])
-    >>> get_mail("Sophia")
-    ['postcard']
-    >>> get_mail("Sophia")
-    >>> deliver_mail("Lyric", ["paycheck", "ads"])
-    >>> get_mail("Lyric")
-    ['paycheck', 'ads']
-    >>> deliver_mail("Lyric", ["bills"])
-    >>> get_mail("Lyric")
-    ['bills']
-    >>> deliver_mail("Julia", ["survey"])
-    >>> get_mail("Julia")
-    ['survey']
-    >>> get_mail("Julia")
-    >>> get_mail("Amir")
-    >>> deliver_mail("Amir", ["postcard", "paycheck"])
-    >>> deliver_mail("Amir", ["ads"])
-    >>> get_mail("Amir")
-    ['postcard', 'paycheck', 'ads']
-    """
-    "*** YOUR CODE HERE ***"
-    
-    return get_mail, deliver_mail
+        >>> longer_table = T88ble(longer_table_rows, longer_table_labels)
+        >>> longer_table.sort("Year")
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+        [2010, 5, 4, 70, 36]
+        [2000, 2, 2.5, 25, 10]
+        [1990, 1, 1.5, 12, 7]
+        >>> longer_table
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
 
-def _deliver_mail(mailbox, name, mail):
-    "*** YOUR CODE HERE ***"
-    
+        >>> simple_table = T88ble(simple_table_rows, simple_table_labels)
+        >>> simple_table.sort("Price", descending=False)
+        ['Flavor', 'Price']
+        ['vanilla', 1]
+        ['chocolate', 2]
+        >>> simple_table
+        ['Flavor', 'Price']
+        ['chocolate', 2]
+        ['vanilla', 1]
 
-def _get_mail(mailbox, name):
-    "*** YOUR CODE HERE ***"
-    
+        """
+        "*** YOUR CODE HERE ***"
+        
 
 
+    def where(self, label, filter_fn):
+        """
+        Create a copy of a table with only the rows that match a filter function.
 
-# Mutation Mystery
-def deep_copy(lst):
-    """Returns a new list that is a deep copy of lst.
-    >>> x = [[0, 'a'],  [1, 'b'], [2, 'c']]
-    >>> y = deep_copy(x)
-    >>> y[0][1] = 'z'
-    >>> y
-    [[0, 'z'], [1, 'b'], [2, 'c']]
-    >>> x
-    [[0, 'a'], [1, 'b'], [2, 'c']]
-    >>> x = [[0, 'a'],  [1, 'b'], [2, 'c']]
-    >>> z = deep_copy(x)
-    >>> z[0][1] = 'z'
-    >>> z
-    [[0, 'z'], [1, 'b'], [2, 'c']]
-    >>> x       #x should not change
-    [[0, 'a'], [1, 'b'], [2, 'c']]
-    """
-    "*** YOUR CODE HERE ***"
+        >>> def above(x):
+        ...     return lambda y: y > x
+        ...
+        >>> longer_table = T88ble(longer_table_rows, longer_table_labels)
+        >>> longer_table.where('Eggs price', above(2))
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
+        >>> longer_table
+        ['Year', 'Bread price', 'Eggs price', 'Average tank of gas', 'Rent per day']
+        [1990, 1, 1.5, 12, 7]
+        [2000, 2, 2.5, 25, 10]
+        [2010, 5, 4, 70, 36]
+        """
+        "*** YOUR CODE HERE ***"
+        
+
 
