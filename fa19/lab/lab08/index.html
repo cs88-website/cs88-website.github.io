@@ -121,17 +121,17 @@ a <code>Car</code> class:</p>
   <li><p><strong>instance</strong>: a particular occurrence of a class. In Python, we
   create instances of a class like this:</p>
 
-<pre><code>&gt;&gt;&gt; my_car = Car(&#x27;red&#x27;)</code></pre>
+<pre><code>&gt;&gt;&gt; my_car = Car(&#x27;Tesla&#x27;, &#x27;Model S&#x27;)</code></pre>
 
   <p><code>my_car</code> is an instance of the <code>Car</code> class.</p></li>
   <li><p><strong>attribute</strong> or <strong>field</strong>: a variable that belongs to the class.
   Think of an attribute as a quality of the object: cars have <em>wheels</em>
-  and <em>color</em>, so we have given our <code>Car</code> class <code>self.wheels</code> and
-  <code>self.color</code> attributes. We can access attributes using <strong>dot
+  and <em>size</em>, so we have given our <code>Car</code> class <code>self.wheels</code> and
+  <code>self.size</code> attributes. We can access attributes using <strong>dot
   notation</strong>:</p>
 
-<pre><code>&gt;&gt;&gt; my_car.color
-&#x27;red&#x27;
+<pre><code>&gt;&gt;&gt; my_car.size
+&#x27;Tiny&#x27;
 &gt;&gt;&gt; my_car.wheels
 4</code></pre></li>
   <li><p><strong>method</strong>: Methods are just like normal functions, except that they
@@ -140,26 +140,29 @@ a <code>Car</code> class:</p>
   given our <code>Car</code> class the methods <code>drive</code> and <code>pop_tire</code>. We call
   methods using <strong>dot notation</strong>:</p>
 
-<pre><code>&gt;&gt;&gt; my_car = Car(&#x27;red&#x27;)
+<pre><code>&gt;&gt;&gt; my_car = Car(&#x27;Tesla&#x27;, &#x27;Model S&#x27;)
 &gt;&gt;&gt; my_car.drive()
-&#x27;red car goes vroom!&#x27;</code></pre></li>
+&#x27;Tesla Model S goes vroom!&#x27;</code></pre></li>
   <li><p><strong>constructor</strong>: As with data abstraction, constructors describe how
   to build an instance of the class. Most classes have a constructor.
   In Python, the constructor of the class defined as <code>__init__</code>.  For
   example, here is the <code>Car</code> class's constructor:</p>
 
-<pre><code>def __init__(self, color):
-    self.wheels = Car.num_wheels
-    self.color = color</code></pre>
+<pre><code>def __init__(self, make, model):
+        self.make = make
+        self.model = model
+        self.color = &#x27;No color yet. You need to paint me.&#x27;
+        self.wheels = Car.num_wheels
+        self.gas = Car.gas</code></pre>
 
-  <p>The constructor takes in one argument, <code>color</code>. As you can see, the
-  constructor also creates the <code>self.wheels</code> and <code>self.color</code> attributes.</p></li>
+  <p>The constructor takes in two arguments, <code>make</code> and <code>model</code>. As you can see, the
+  constructor also creates the <code>self.color</code>, <code>self.wheels</code> and <code>self.gas</code> attributes.</p></li>
   <li><p><code>self</code>: in Python, <code>self</code> is the first parameter for many methods
   (in this class, we will only use methods whose first parameter is
   <code>self</code>). When a method is called, <code>self</code> is bound to an instance of
   the class. For example:</p>
 
-<pre><code>&gt;&gt;&gt; my_car = Car(&#x27;red&#x27;)
+<pre><code>&gt;&gt;&gt; my_car = Car(&#x27;Tesla&#x27;, &#x27;Model S&#x27;)
 &gt;&gt;&gt; my_car.drive()</code></pre>
 
   <p>Notice that the <code>drive</code> method takes in <code>self</code> as an argument, but it
