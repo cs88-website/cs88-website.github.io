@@ -1,0 +1,20 @@
+{
+    "name": "Homework 10",
+    "endpoint": "cal/cs88/fa19/hw10",
+    "src": [
+        "hw10.py"
+    ],
+    "tests": {
+        "hw10.py:cumulative_sum": "doctest",
+        "hw10.py:add_d_leaves": "doctest",
+        "hw10.py:deep_map": "doctest",
+        "hw10.py:every_other": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup"
+    ]
+}
