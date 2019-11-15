@@ -53,7 +53,7 @@
       <h1><span class="content-title-brand">Lab 9</span>: Recursive Objects</h1>
     </div>
 
-    <p><i>Due at 11:59:59 pm on 10/15/2020.</i></p>
+    <p><i>Due at 11:59:59 pm on 11/19/2019.</i></p>
 
 
 <h2 id='starter-files'>Starter Files</h2>
@@ -68,9 +68,9 @@ Inside the archive, you will find starter files for the questions in this lab,
 
 
 <ul>
-  <li>To receive credit for this lab, you must complete Questions 1, 2, 3, and 4 in
+  <li>To receive credit for this lab, you must complete Questions 1, 2, 3, 4, and 5 in
   <a href="lab09.py">lab09.py</a> and submit through OK.</li>
-  <li>Questions 5 through 10 are <em>extra practice</em>. They can be found in the
+  <li>Questions 6 and 7 are <em>extra practice</em>. They can be found in the
   <a href="lab09_extra.py">lab09_extra.py</a> file. It is recommended that you complete
   these problems on your own time for extra practice.</li>
 </ul>
@@ -160,7 +160,31 @@ diagram for the linked list on a piece of paper.</p></blockquote>
     </button>
     
 
-<h3 class="question" id="q2">Question 2: Insert</h3>
+<h3 class="question" id="q2">Question 2: List to Link</h3>
+
+<p>Write a function <code>list_to_link</code> that converts a Python list to a <code>Link</code>.</p>
+
+
+
+<pre><code>def list_to_link(lst):
+    &quot;&quot;&quot;Takes a Python list and returns a Link with the same elements.
+
+    &gt;&gt;&gt; link = list_to_link([1, 2, 3])
+    &gt;&gt;&gt; print_link(link)
+    &lt;1 2 3&gt;
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x2c;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x5d;&#x29;&#x29;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q list_to_link</code></pre>
+
+<h3 class="question" id="q3">Question 3: Insert</h3>
 
 <p>Implement a function <code>insert</code> that takes a <code>Link</code>, a <code>value</code>, and an
 <code>index</code>, and inserts the <code>value</code> into the <code>Link</code> at the given <code>index</code>.
@@ -188,11 +212,11 @@ return anything &mdash; <code>insert</code> should mutate the linked list.</p>
     &gt;&gt;&gt; insert(link, 4, 5)
     IndexError
     &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x73;&#x65;&#x72;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x2d;&#x20;&#x31;&#x29;&#xa;&#xa;&#x23;&#x20;&#x69;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x69;&#x6e;&#x73;&#x65;&#x72;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3e;&#x20;&#x30;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x2d;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;</div></code></pre>
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x73;&#x65;&#x72;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x2d;&#x20;&#x31;&#x29;&#xa;&#xa;&#x23;&#x20;&#x69;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x69;&#x6e;&#x73;&#x65;&#x72;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3e;&#x20;&#x30;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x2d;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;</div></code></pre>
 
 
-    <button id='1' class='toggleButton'>
+    <button id='2' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -222,7 +246,7 @@ return anything &mdash; <code>insert</code> should mutate the linked list.</p>
     def is_leaf(self):
         return not self.branches</code></pre>
 
-<h3 class="question" id="q3">Question 3: WWPP: Trees</h3>
+<h3 class="question" id="q4">Question 4: WWPP: Trees</h3>
 
 <blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
 questions:</p>
@@ -259,7 +283,7 @@ answer is <code>&lt;function ...&gt;</code> and <code>Error</code> if it errors.
     </button>
     
 
-<h3 class="question" id="q4">Question 4: Same Shape</h3>
+<h3 class="question" id="q5">Question 5: Same Shape</h3>
 
 <p>Write a function <code>same_shape</code> that returns <code>True</code> if two <code>Tree</code>s have the same
 shape. Two trees have the same shape if they have the same number of children
@@ -284,16 +308,113 @@ and each of their children have the same shape.</p>
     &gt;&gt;&gt; same_shape(t, s)
     False
     &quot;&quot;&quot;
-<div class="alt 2">    "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x74;&#x31;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x74;&#x32;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x5c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x61;&#x6c;&#x6c;&#x28;&#x73;&#x61;&#x6d;&#x65;&#x5f;&#x73;&#x68;&#x61;&#x70;&#x65;&#x28;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x32;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x32;&#x20;&#x69;&#x6e;&#x20;&#x7a;&#x69;&#x70;&#x28;&#x74;&#x31;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x2c;&#x20;&#x74;&#x32;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x29;</div></code></pre>
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x74;&#x31;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x74;&#x32;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x5c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x61;&#x6c;&#x6c;&#x28;&#x73;&#x61;&#x6d;&#x65;&#x5f;&#x73;&#x68;&#x61;&#x70;&#x65;&#x28;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x32;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x32;&#x20;&#x69;&#x6e;&#x20;&#x7a;&#x69;&#x70;&#x28;&#x74;&#x31;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x2c;&#x20;&#x74;&#x32;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x29;</div></code></pre>
 
 
-    <button id='2' class='toggleButton'>
+    <button id='3' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q same_shape</code></pre>
+
+<h3 class="question" id="q6">Question 6: 23andTree</h3>
+
+<p>Write a function <code>computeAncesTree</code> that fills in the ethnic breakdown of everyone in your <code>Family</code>.
+<code>Person</code>'s have a name and an ethnicity. An <code>ethnicity</code> is a dictionary mapping ethnicities to their percentages for that person.
+<br/>
+A <code>Family</code> contains a list of parents. Parents are <code>People</code>. A child's ethnic breakdown should be half of each of the ethnicities in each of their parents. <code>Children</code> is a dictionary mapping each child to the <code>Family</code> they are the parent of. A leaf <code>Family</code> is a single parent with no children. To begin, you can only assume that the <code>ethnicity</code> of the root of your <code>Family</code> is filled in.</p>
+
+
+
+<pre><code>class Person:
+    def __init__(self, name, ethnicity={}):
+        self.name = name
+        assert type(ethnicity == dict)
+        for i in ethnicity.values():
+            assert type(i) == float
+        self.ethnicity = ethnicity
+
+    def __repr__(self):
+        return self.name
+
+class Family:
+    def __init__(self, parents, children={}):
+        # Leaf families have one parent and no children
+        self.parents = parents
+        self.children = children
+        self.computed = False
+        if not self.is_leaf():
+            for p in parents:
+                assert isinstance(p, Person)
+            for child, tree in children.items():
+                assert isinstance(child, Person)
+                assert isinstance(tree, Family)
+
+    def __repr__(self):
+        if self.is_leaf():
+            return self.parents.name
+        else:
+            children_str = &#x27;, &#x27; + repr(self.children)
+        return &#x27;Parents:{} Children:{})&#x27;.format([i.name for i in self.parents], children_str)
+
+    def is_leaf(self):
+        return self.children == {}
+
+    def get_ethnicities(self):
+        return [parent.ethnicity for parent in self.parents]
+
+def computeAncesTree(t):
+    &quot;&quot;&quot;
+    Fill in the ethnicities of all descendants.
+    &gt;&gt;&gt; gma1 = Person(&quot;Farah&quot;, {&quot;Moroccan&quot;: 100.0})
+    &gt;&gt;&gt; gpa1 = Person(&quot;Lorenzo&quot;, {&quot;Italian&quot; : 100.0})
+    &gt;&gt;&gt; gpa2 = Person(&quot;Hai&quot;, {&quot;Chinese&quot;:100.0})
+    &gt;&gt;&gt; gma2 = Person(&quot;Gazala&quot;, {&quot;Indian&quot;:100.0})
+    &gt;&gt;&gt; papa1 = Person(&quot;Amjad&quot;) #  Son of Farah and Lorenzo
+    &gt;&gt;&gt; papa2 = Person(&quot;Arjun&quot;) # Son of Hai and Gazala
+    &gt;&gt;&gt; mama1 = Person(&quot;Anabella&quot;) # Daughter of Farah and Lorenzo
+    &gt;&gt;&gt; mama2 = Person(&quot;Biyu&quot;) # Daughter of Hai and Gazala
+    &gt;&gt;&gt; c1 = Person(&quot;Dipika&quot;) # Daughter of Arjun and Anabella
+    &gt;&gt;&gt; c2 = Person(&quot;Cosimo&quot;) # Son of Arjun and Anabella
+    &gt;&gt;&gt; c3 = Person(&quot;Jin&quot;) # Son of Amjad and Biyu
+    &gt;&gt;&gt; c4 = Person(&quot;Malika&quot;) # Daughter of Amjad and Biyu
+    &gt;&gt;&gt; leaves = [Family([c]) for c in [c1, c2, c3, c4]]
+    &gt;&gt;&gt; fam1 = Family([papa2, mama1], {c1:leaves[0], c2:leaves[1]})
+    &gt;&gt;&gt; fam2 = Family([papa1, mama2], {c3:leaves[2], c4:leaves[3]})
+    &gt;&gt;&gt; t1 = Family([gpa1, gma1], {papa1:fam2, mama1:fam1})
+    &gt;&gt;&gt; t2 = Family([gpa2, gma2], {papa2:fam1, mama2:fam2})
+    &gt;&gt;&gt; computeAncesTree(t1)
+    &gt;&gt;&gt; papa1.ethnicity == mama1.ethnicity
+    True
+    &gt;&gt;&gt; c1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity
+    True
+    &gt;&gt;&gt; computeAncesTree(t2)
+    &gt;&gt;&gt; papa2.ethnicity == mama2.ethnicity
+    True
+    &gt;&gt;&gt; eth = {a:25.0 for a in [&quot;Moroccan&quot;, &quot;Italian&quot;, &quot;Chinese&quot;, &quot;Indian&quot;]}
+    &gt;&gt;&gt; c1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity == eth
+    True
+    &gt;&gt;&gt; sidepa = Person(&quot;Kahlil Gibran&quot;, {&quot;Lebanese&quot;:75.0, &quot;Moroccan&quot;:25.0})
+    &gt;&gt;&gt; secret = Person(&quot;نبي&quot;)
+    &gt;&gt;&gt; secretFam = Family([secret])
+    &gt;&gt;&gt; t3 = Family([sidepa, gma1], {secret:secretFam})
+    &gt;&gt;&gt; computeAncesTree(t3)
+    &gt;&gt;&gt; eth2 = {&quot;Lebanese&quot;:37.5, &quot;Moroccan&quot;:62.5}
+    &gt;&gt;&gt; secret.ethnicity == eth2
+    True
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x7b;&#x7d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x67;&#x65;&#x74;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x69;&#x65;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x74;&#x68;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x2e;&#x69;&#x74;&#x65;&#x6d;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x74;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x5b;&#x65;&#x74;&#x68;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x2f;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x5b;&#x65;&#x74;&#x68;&#x5d;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x2f;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x2e;&#x6b;&#x65;&#x79;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x2e;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x2e;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x6f;&#x6d;&#x70;&#x75;&#x74;&#x65;&#x41;&#x6e;&#x63;&#x65;&#x73;&#x54;&#x72;&#x65;&#x65;&#x28;&#x63;&#x29;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q computeAncesTree</code></pre>
 
 
 <h2 id="extra-questions">Extra Questions</h2>
@@ -303,31 +424,7 @@ and each of their children have the same shape.</p>
 in the the <a href="lab09_extra.py">lab09_extra.py</a> file. It is recommended
 that you complete these problems on your own time.</p></blockquote>
 
-<h3 class="question" id="q5">Question 5: List to Link</h3>
-
-<p>Write a function <code>list_to_link</code> that converts a Python list to a <code>Link</code>.</p>
-
-
-
-<pre><code>def list_to_link(lst):
-    &quot;&quot;&quot;Takes a Python list and returns a Link with the same elements.
-
-    &gt;&gt;&gt; link = list_to_link([1, 2, 3])
-    &gt;&gt;&gt; print_link(link)
-    &lt;1 2 3&gt;
-    &quot;&quot;&quot;
-<div class="alt 3">    "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x2c;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x5d;&#x29;&#x29;</div></code></pre>
-
-
-    <button id='3' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q list_to_link</code></pre>
-
-<h3 class="question" id="q6">Question 6: Link to List</h3>
+<h3 class="question" id="q7">Question 7: Link to List</h3>
 
 <p>Write a function <code>link_to_list</code> that converts a given <code>Link</code> to a
 Python list.</p>
@@ -343,39 +440,8 @@ Python list.</p>
     &gt;&gt;&gt; link_to_list(Link.empty)
     []
     &quot;&quot;&quot;
-<div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x23;&#x20;&#x52;&#x65;&#x63;&#x75;&#x72;&#x73;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5d;&#x20;&#x2b;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#xa;&#x23;&#x20;&#x49;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2e;&#x61;&#x70;&#x70;&#x65;&#x6e;&#x64;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
-
-
-    <button id='4' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q link_to_list</code></pre>
-
-<h3 class="question" id="q7">Question 7: Reverse</h3>
-
-<p>Implement <code>reverse</code>, which takes a linked list <code>link</code> and returns a linked list
-containing the elements of <code>link</code> in reverse order. The original <code>link</code> should be
-unchanged.</p>
-
-
-
-<pre><code>def reverse(link):
-    &quot;&quot;&quot;Returns a Link that is the reverse of the original.
-
-    &gt;&gt;&gt; print_link(reverse(Link(1)))
-    &lt;1&gt;
-    &gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; new = reverse(link)
-    &gt;&gt;&gt; print_link(new)
-    &lt;3 2 1&gt;
-    &gt;&gt;&gt; print_link(link)
-    &lt;1 2 3&gt;
-    &quot;&quot;&quot;
 <div class="alt 5">    "*** YOUR CODE HERE ***"
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6e;&#x65;&#x77;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#xa;&#xa;&#x23;&#x20;&#x52;&#x65;&#x63;&#x75;&#x72;&#x73;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x64;&#x65;&#x66;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x5f;&#x74;&#x6f;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x74;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x5f;&#x74;&#x6f;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x74;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x76;&#x65;&#x72;&#x73;&#x65;&#x5f;&#x74;&#x6f;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x29;</div></code></pre>
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x23;&#x20;&#x52;&#x65;&#x63;&#x75;&#x72;&#x73;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5d;&#x20;&#x2b;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#xa;&#x23;&#x20;&#x49;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2e;&#x61;&#x70;&#x70;&#x65;&#x6e;&#x64;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
 
 
     <button id='5' class='toggleButton'>
@@ -383,7 +449,7 @@ unchanged.</p>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q reverse</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q link_to_list</code></pre>
 
 <h3 class="question" id="q8">Question 8: Cycles</h3>
 
@@ -525,20 +591,20 @@ different data structures.</p>
   <li><a href="#linked-lists">Linked Lists</a></li>
   <ul>
   <li><a href="#q1">Question 1: WWPP: Linked Lists</a></li>
-  <li><a href="#q2">Question 2: Insert</a></li>
+  <li><a href="#q2">Question 2: List to Link</a></li>
+  <li><a href="#q3">Question 3: Insert</a></li>
 </ul>
 
   <li><a href="#trees">Trees</a></li>
   <ul>
-  <li><a href="#q3">Question 3: WWPP: Trees</a></li>
-  <li><a href="#q4">Question 4: Same Shape</a></li>
+  <li><a href="#q4">Question 4: WWPP: Trees</a></li>
+  <li><a href="#q5">Question 5: Same Shape</a></li>
+  <li><a href="#q6">Question 6: 23andTree</a></li>
 </ul>
 
   <li><a href="#extra-questions">Extra Questions</a></li>
   <ul>
-  <li><a href="#q5">Question 5: List to Link</a></li>
-  <li><a href="#q6">Question 6: Link to List</a></li>
-  <li><a href="#q7">Question 7: Reverse</a></li>
+  <li><a href="#q7">Question 7: Link to List</a></li>
   <li><a href="#q8">Question 8: Cycles</a></li>
   <li><a href="#motivation">Motivation</a></li>
 </ul>
@@ -566,7 +632,7 @@ different data structures.</p>
 <!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
 <!-- <script>
   $(function() {
-    if (new Date("10/16/2020") < new Date()) {
+    if (new Date("11/20/2019") < new Date()) {
       $('.toggleButton').css('display', 'inline-block');
       $('.toggleButton').click(function() {
         var solution_id = $(this).attr('id');

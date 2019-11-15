@@ -9,6 +9,11 @@ def link_to_list(link):
     >>> link_to_list(Link.empty)
     []
     """
+    result = []
+    while link is not Link.empty:
+        result.append(link.first)
+        link = link.rest
+    return result
 
 # Q7
 def has_cycle(link):
@@ -25,3 +30,11 @@ def has_cycle(link):
     >>> has_cycle(u)
     False
     """
+    # BEGIN SOLUTION
+    lists = set()
+    while link is not Link.empty:
+        if link in lists:
+            return True
+        lists.add(link)
+        link = link.rest
+    return False

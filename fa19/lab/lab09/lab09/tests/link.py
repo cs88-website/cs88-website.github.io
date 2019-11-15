@@ -3,7 +3,6 @@ test = {
   'points': 0,
   'suites': [
     {
-      'type': 'wwpp',
       'cases': [
         {
           'code': r"""
@@ -34,8 +33,11 @@ test = {
           >>> print_link(link2) # Look at print_link in lab07.py
           <1 2 3 4>
           """,
-        },
-      ]
+          'hidden': False
+        }
+      ],
+      'scored': False,
+      'type': 'wwpp'
     }
   ]
 }
