@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science" />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Michael Ball, Amir Shahatit, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan, John Yang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/fa19/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/style.css">
+    <link rel="icon" href="/fa19/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/fa19/assets/css/mono-blue.css">
+
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/resource.css" />
+<link href="/fa19/assets/css/project.css" rel="stylesheet" type="text/css">
+
+    <title>Project 3: Ants Vs. SomeBees | CS 88 Fall 2019</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section" aria-label="Toggle Nav Menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/fa19/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/fa19/">Calendar</a></li>
+            <li><a href="/fa19/articles/resources.html">Resources</a></li>
+            <li><a href="/fa19/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/fa19/articles/about.html">Course Information</a></li>
+            <li><a href="/fa19/staff.html">Staff</a></li>
+            <!--- <li><a href="/fa19/tutoring.html">Tutoring</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Project 3</span>: Ants Vs. SomeBees</h1>
+    </div>
+
+    <div id="haiku">
+  
+
+<p><img class="img-responsive center-block" src="assets/splash.png" alt="Ants vs. Somebees"></p>
+
+<blockquote><cite>
+  The bees are coming!<br>
+  Create a better soldier<br>
+  With inherit-ants.
+</cite></blockquote>
+
+</div>
+
+    <h2>Introduction</h2>
+
+
+<p>In this project, you will create a <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Tower_defense">tower defense</a> game called Ants Vs.
+SomeBees.  As the ant queen, you populate your colony with the bravest ants you
+can muster.  Your ants must protect their queen from the evil bees that invade
+your territory. Irritate the bees enough by throwing leaves at them, and they
+will be vanquished.  Fail to pester the airborne intruders adequately, and your
+queen will succumb to the bees' wrath.  This game is inspired by PopCap Games'
+<a href="http://www.popcap.com/plants-vs-zombies-1">Plants Vs. Zombies</a>.</p>
+
+<p>This project combines functional and object-oriented programming paradigms,
+focusing on the material from <a href="http://composingprograms.com/pages/25-object-oriented-programming.html">Chapter 2.5</a> of Composing Programs. The
+project also involves understanding, extending, and testing a large program.</p>
+
+<p>The <a href="ants.zip">ants.zip</a> archive contains several files, but all of your
+changes will be made to <code>ants.py</code>.</p>
+
+<ul>
+  <li><code>ants.py</code>: The game logic of Ants Vs. SomeBees</li>
+  <li><code>ants_gui.py</code>: The original GUI for Ants Vs. SomeBees</li>
+  <li><code>gui.py</code>: An new GUI for Ants Vs. SomeBees</li>
+  <li><code>graphics.py</code>: Utilities for displaying simple two-dimensional animations</li>
+  <li><code>state.py</code>: Abstraction for gamestate for <code>gui.py</code></li>
+  <li><code>utils.py</code>: Some functions to facilitate the game interface</li>
+  <li><code>ucb.py</code>: Utility functions for CS 61A</li>
+  <li><code>assets</code>: A directory of images and files used by <code>gui.py</code></li>
+  <li><code>img</code>: A directory of images used by ants_gui.py</li>
+  <li><code>ok</code>: The autograder</li>
+  <li><code>proj3.ok</code>: The <code>ok</code> configuration file</li>
+  <li><code>tests</code>: A directory of tests used by <code>ok</code></li>
+</ul>
+
+<p>Certain questions are designated for each partner and are appropriate as solo
+questions, in case you choose to divide up the work. Any question not marked as
+<code>A</code> or <code>B</code> should be solved together with your partner. Both partners should
+read, think about, and understand the solution to all questions. Feel free to
+help each other on the solo questions. If you choose to work on the whole
+project alone, you must complete all questions yourself.</p>
+
+
+
+<p>You can obtain all the files needed for this project by downloading this <a href="ants.zip">zip archive</a>.</p>
+
+<h2>Logistics</h2>
+
+<p>This is a 10-day project. You may work with one other
+partner.  You should not share your code with students who are not your
+partner or copy from anyone else's solutions.</p>
+
+<!-- <p>In the end, you will submit one project for both partners. The
+project is worth 23 points.</p> -->
+
+<p>In the end, you will submit one project for both partners. The
+project is worth 25 points. 23 points are
+assigned based on correctness for your final submission, and 2 points are for the mid-project checkpoint.</p>
+
+<p>You will turn in the following files:</p>
+
+
+<ul>
+  <li><code>ants.py</code></li>
+</ul>
+
+
+<p>You do not need to modify or turn in any other files to complete the
+project. To submit the project, run the following command:</p>
+
+<pre><code>python3 ok --submit</code></pre>
+
+<p>You will be able to view your submissions on the <a
+  href="https://okpy.org/">Ok dashboard</a>.</p>
+
+<p>For the functions that we ask you to complete, there may be some
+initial code that we provide. If you would rather not use that code,
+feel free to delete it and start from scratch. You may also add new
+function definitions as you see fit.</p>
+
+<p>However, please do <b>not</b> modify any other functions.  Doing so may
+result in your code failing our autograder tests. Also, please do not
+change any function signatures (names, argument order, or number of
+arguments).</p>
+
+
+
+<h2>Testing</h2>
+
+<p>Throughout this project, you should be testing the correctness of your
+code.  It is good practice to test often, so that it is easy to isolate
+any problems.</p>
+
+<p>We have provided an <b>autograder</b> called <code>ok</code> to help you with
+testing your code and tracking your progress.</p>
+<!-- The first time you run
+the autograder, you will be asked to <b>log in with your OK account using your web browser</b>. Please do so. Each time you run
+<code>ok</code>, it will back up your work and progress on our
+servers.</p> -->
+
+<p>The primary purpose of <code>ok</code> is to test your implementations, but there
+is a catch. At first, the test cases are <i>locked</i>. To unlock tests,
+run the following command from your terminal:</p>
+
+<pre><code>python3 ok -u</code></pre>
+
+<p>This command will start an interactive prompt that looks like:</p>
+
+<pre>
+=====================================================================
+Assignment: Ants Vs. SomeBees
+OK, version ...
+=====================================================================
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unlocking tests
+
+At each "? ", type what you would expect the output to be.
+Type exit() to quit
+
+---------------------------------------------------------------------
+Question 0 &gt; Suite 1 &gt; Case 1
+(cases remaining: 1)
+
+&gt;&gt;&gt; Code here
+?
+</pre>
+
+<p>At the <code>?</code>, you can type what you expect the output to be.
+If you are correct, then this test case will be available the next time
+you run the autograder.</p>
+
+<p>The idea is to understand <i>conceptually</i> what your program should do
+first, before you start writing any code.</p>
+
+<p>Once you have unlocked some tests and written some code, you can check
+the correctness of your program using the tests that you have
+unlocked:</p>
+
+<pre>python3 ok</pre>
+
+<p>Most of the time, you will want to focus on a particular question.
+Use the <code>-q</code> option as directed in the problems below.</p>
+
+<p>The <code>tests</code> folder is used to store autograder tests, so make sure
+<b>not to modify it</b>. You may lose all your unlocking progress if you
+do. If you need to get a fresh copy, you can download the
+<a href="ants.zip">zip archive</a> and copy it over, but you
+will need to start unlocking from scratch.</p>
+
+
+
+
+<h2 id="core-concepts">Core Concepts</h2>
+
+
+<p>A game of Ants Vs. SomeBees consists of a series of turns.  In each
+turn, new bees may enter the ant colony.  Then, new ants are placed.
+Finally, all insects (ants, then bees) take individual actions: bees
+sting ants, and ants throw leaves at bees.  The game ends either when a
+bee reaches the ant queen (you lose), or the entire bee flotilla has
+been vanquished (you win).</p>
+
+<p><strong>The Colony</strong>.  The colony consists of several places that are chained
+together.  The <code>exit</code> of each <code>Place</code> leads to another <code>Place</code>.</p>
+
+<p><strong>Placing Ants</strong>.  There are two constraints that limit ant production.
+Placing an ant uses up some amount of the colony's food, a different
+amount for each type of ant.  Also, only one ant can occupy each
+<code>Place</code>.</p>
+
+<p><strong>Bees</strong>.  When it is time to act, a bee either moves to the <code>exit</code> of
+its current <code>Place</code> if no ant blocks its path, or stings an ant that
+blocks its path.</p>
+
+<p><strong>Ants</strong>.  Each type of ant takes a different action and requires a
+different amount of food to place.  The two most basic ant types are
+the <code>HarvesterAnt</code>, which adds one food to the colony during each turn,
+and the <code>ThrowerAnt</code>, which throws a leaf at a bee each turn.</p>
+
+
+<h2 id="the-code">The Code</h2>
+
+
+<p>Most concepts in the game have a corresponding class that encapsulates
+the logic for that concept.  For instance, a <code>Place</code> in the colony
+holds insects and connects to other places.  A <code>Bee</code> stings ants and
+advances through exits.</p>
+
+<p>The game can be run in two modes: as a text-based game or using a
+graphical user interface (GUI).  The game logic is the same in either
+case, but the GUI enforces a turn time limit that makes playing the
+game more exciting.  The text-based interface is provided for debugging
+and development.</p>
+
+<p>The files are separated according to these two modes.  <code>ants.py</code> knows
+nothing of graphics or turn time limits.</p>
+
+<p>To start a text-based game, run</p>
+
+<pre><code>python3 ants.py</code></pre>
+
+<p>To start a graphical game, run</p>
+
+<pre><code>python3 ants_gui.py</code></pre>
+
+<p>When you start the graphical version, a new window should appear:</p>
+
+<center>
+  <img class="img-responsive center-block" src="img/gui_explanation.png" style="border: 1px solid #000;"/>
+</center>
+
+<p>In the starter implementation, you have unlimited food and your ants
+only throw leaves at bees in their current <code>Place</code>.  Try playing the game
+anyway!  You'll need to place a lot of <code>ThrowerAnt</code>s (the second type)
+in order to keep the bees from reaching your queen.</p>
+
+<p>The game has several options that you will use throughout the project,
+which you can view with <code>&#x2d;&#x2d;help</code>.</p>
+
+<pre><code>usage: ants.py [&#x2d;h] [&#x2d;d DIFFICULTY] [&#x2d;w] [&#x2d;&#x2d;food FOOD]
+
+Play Ants vs. SomeBees
+
+optional arguments:
+  &#x2d;h, &#x2d;&#x2d;help     show this help message and exit
+  &#x2d;d DIFFICULTY  sets difficulty of game (easy/medium/hard/insane)
+  &#x2d;w, &#x2d;&#x2d;water    loads a full layout with water
+  &#x2d;&#x2d;food FOOD    number of food to start with when testing</code></pre>
+
+<p>You can also try our experimental new graphics!</p>
+
+<pre><code>python3 gui.py</code></pre>
+
+
+<h2 id="phase-1">Phase 1</h2>
+
+
+
+<h3 id="problem-0-0-pts">Problem 0 (0 pts)</h3>
+
+
+<p>Answer the following questions with your partner after you have read
+the <em>entire</em> <code>ants.py</code> file.  If you cannot answer these questions,
+read the file again or ask a question on Piazza.</p>
+
+<ol>
+  <li>What is the significance of an insect's <code>armor</code> attribute?  What
+  happens when <code>armor</code> reaches 0?</li>
+  <li>What are all of the attributes of the <code>Ant</code> class?</li>
+  <li>Is the <code>armor</code> attribute of the <code>Ant</code> class an instance attribute or
+  class attribute?</li>
+  <li>Is the <code>damage</code> attribute of the Ant class an instance attribute or
+  class attribute?</li>
+  <li>Which class do both <code>Ant</code> and <code>Bee</code> inherit from?</li>
+  <li>What attribute(s) do <code>Ant</code> and <code>Bee</code> inherit from their base class?</li>
+</ol>
+
+<p>You can test your understanding by running</p>
+
+<pre><code>python3 ok &#x2d;q 00 &#x2d;u</code></pre>
+
+
+<h3 id="problem-1-2-pts">Problem 1 (2 pts)</h3>
+
+
+<p>Add food costs and implement harvesters.  Currently, there is no cost
+for deploying any type of <code>Ant</code>, and so there is no challenge to the
+game. You'll notice that <code>Ant</code> starts out with a base <code>food_cost</code> of
+zero. Override this value in each of the subclasses listed below with
+the correct costs.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_harvester.gif" /> <br> <code>HarvesterAnt</code></td>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_thrower.gif" /> <br> <code>ThrowerAnt</code></td>
+    <td>4</td>
+    <td>1</td>
+  </td>
+</table>
+
+<p>Now there's no way to gather more food!  To fix this issue, implement
+the <code>HarvesterAnt</code> class.  A <code>HarvesterAnt</code> is a type of <code>Ant</code> that
+adds one food to the <code>colony.food</code> total as its <code>action</code>.</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 01 &#x2d;u
+python3 ok &#x2d;q 01</code></pre>
+
+<p>Try playing the game again (<code>python3 ants_gui.py</code>).  Once you have placed a
+<code>HarvesterAnt</code>, you should accumulate food each turn.  Vanquishing the bees
+using the default game setup is now possible.</p>
+
+
+<h3 id="problem-2-2-pt">Problem 2 (2 pt)</h3>
+
+
+<p>Add code to the <code>Place</code> constructor that tracks entrances.  Right now,
+a <code>Place</code> keeps track only of its <code>exit</code>.  We would like a <code>Place</code> to
+keep track of its entrance as well.  A <code>Place</code> needs to track only one
+<code>entrance</code>.</p>
+
+<p>However, simply passing an entrance to a <code>Place</code> constructor will be
+problematic; we would need to have both the exit and the entrance before
+creating a <code>Place</code>! (It's a <a href="https://secure.wikimedia.org/wikipedia/en/wiki/Chicken_or_the_egg">chicken or the
+egg</a>
+problem.) To get around this problem, we will keep track of entrances
+in the following way instead.  The <code>Place</code> constructor should specify
+that:</p>
+
+<ul>
+  <li>A newly created <code>Place</code> always starts with its <code>entrance</code> as <code>None</code>.</li>
+  <li>If the <code>Place</code> has an <code>exit</code>, then the <code>exit</code>'s <code>entrance</code> is set to
+  that <code>Place</code>.</li>
+</ul>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 02 &#x2d;u
+python3 ok &#x2d;q 02</code></pre>
+
+
+<h2 id="phase-2-water-and-fire-partner-a">Phase 2: Water and Fire (Partner A)</h2>
+
+
+
+<h3 id="problem-3a-2-pts">Problem 3A (2 pts)</h3>
+
+
+<p>Add water to the colony.  Currently there are only two types of places,
+the <code>Hive</code> and a basic <code>Place</code>.  To make things more interesting, we're
+going to create a new type of <code>Place</code> called <code>Water</code>.</p>
+
+<p>Only an ant that is <code>watersafe</code> can be deployed to a <code>Water</code> place.  In
+order to determine whether an <code>Insect</code> is <code>watersafe</code>, add a new
+attribute to the <code>Insect</code> class named <code>watersafe</code> that is <code>False</code> by
+default.  Since bees can fly, make their <code>watersafe</code> attribute <code>True</code>,
+overriding the default.</p>
+
+<p>Now, implement the <code>add_insect</code> method for <code>Water</code>.  First call
+<code>Place.add_insect</code> to add the insect, regardless of whether it is
+watersafe. Then, if the insect is not watersafe, reduce the insect's
+armor to 0 by invoking <code>reduce_armor</code>. Try not to copy and paste code.
+Instead, use methods that have already been defined and make use of
+inheritance to reuse the functionality of the <code>Place</code> class.</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 03A &#x2d;u
+python3 ok &#x2d;q 03A</code></pre>
+
+<p>Once you've finished this problem, play a game that includes water.  To
+access the <code>wet_layout</code> that includes water, add the <code>&#x2d;&#x2d;water</code> option
+(or <code>&#x2d;w</code> for short) when you start the game.</p>
+
+<pre><code>python3 ants_gui.py &#x2d;&#x2d;water</code></pre>
+
+
+<h3 id="problem-4a-3-pts">Problem 4A (3 pts)</h3>
+
+
+<p>Implement the <code>FireAnt</code>.  A <code>FireAnt</code> has a special <code>reduce_armor</code>
+method: when the <code>FireAnt</code>'s armor reaches zero or lower, it will
+reduce the armor of <em>all</em> <code>Bee</code>s in the same <code>Place</code> as the <code>FireAnt</code>
+by its <code>damage</code> attribute (defaults to <code>3</code>).</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_fire.gif" /> <br> <code>FireAnt</code></td>
+    <td>6</td>
+    <td>1</td>
+  </td>
+</table>
+
+<blockquote><p><em>Hint:</em> Damaging a bee may cause it to be removed from its place. If you
+iterate over a list, but change the contents of that list at the same time,
+you may not visit all the elements.  As the <a href="https://docs.python.org/3/tutorial/controlflow.html#for-statements">Python
+tutorial</a>
+suggests, "If you need to modify the sequence you are iterating over while
+inside the loop (for example to duplicate selected items), it is recommended
+that you first make a copy." You can copy a list by calling the <code>list</code>
+constructor or slicing the list from the beginning to the end.</p></blockquote>
+
+<p>Once you've finished implementing the <code>FireAnt</code>, give it a class
+attribute <code>implemented</code> with the value <code>True</code>.  This attribute tells
+the game that you've added a new type of <code>Ant</code>.</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 04A &#x2d;u
+python3 ok &#x2d;q 04A</code></pre>
+
+<p>After implementing <code>FireAnt</code>, be sure to test your program by playing a game or
+two!  A <code>FireAnt</code> should destroy all co-located Bees when it is stung.  To
+start a game with ten food (for easy testing):</p>
+
+<pre><code>python3 ants_gui.py &#x2d;&#x2d;food 10</code></pre>
+
+
+<h2 id="phase-2-extended-range-partner-b">Phase 2: Extended Range (Partner B)</h2>
+
+
+
+<h3 id="problem-3b-2-pts">Problem 3B (2 pts)</h3>
+
+
+<p>Implement the <code>nearest_bee</code> method for the <code>ThrowerAnt</code> class.  In
+order for a <code>ThrowerAnt</code> to attack, it must know which bee it should
+hit.  The provided implementation will only hit bees in the same
+<code>Place</code>.  Your job is to fix it so that a <code>ThrowerAnt</code> will <code>throw_at</code>
+the nearest bee in front of it that is not still in the <code>Hive</code>.</p>
+
+<p>The <code>nearest_bee</code> method returns a random <code>Bee</code> from the nearest place that
+contains bees. Places are inspected in order by following their <code>entrance</code>
+attributes.</p>
+
+<ul>
+  <li>Start from the current <code>Place</code> of the <code>ThrowerAnt</code>.</li>
+  <li>For each place, return a random bee if there is any, or consider the
+  next place that is stored as the current place's <code>entrance</code>.</li>
+</ul>
+
+<blockquote><p><em>Hint</em>: The <code>random_or_none</code> function provided in <code>ants.py</code> returns a random
+element of a sequence.</p></blockquote>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 03B &#x2d;u
+python3 ok &#x2d;q 03B</code></pre>
+
+<p>After implementing <code>nearest_bee</code>, a <code>ThrowerAnt</code> should be able to
+<code>throw_at</code> a <code>Bee</code> in front of it that is not still in the <code>Hive</code>.
+Make sure that your ants do the right thing! To start a game with ten
+food (for easy testing):</p>
+
+<pre><code>python3 ants_gui.py &#x2d;&#x2d;food 10</code></pre>
+
+
+<h3 id="problem-4b-3-pts">Problem 4B (3 pts)</h3>
+
+
+<p>Now that the <code>ThrowerAnt</code> has been completed, implement two subclasses
+of <code>ThrowerAnt</code>.</p>
+
+<ul>
+  <li>The <code>LongThrower</code> can only <code>throw_at</code> a <code>Bee</code> that is found after
+  following at least 5 <code>entrance</code> transitions.  So the <code>LongThrower</code>
+  can't hit <code>Bee</code>s that are in the same <code>Place</code> as it or the first 4
+  <code>Place</code>s in front of it. If there are two <code>Bees</code>, one too close to
+  the <code>LongThrower</code> and the other within its range, the <code>LongThrower</code>
+  should throw past the closer <code>Bee</code>, instead targeting the farther
+  one, which is within its range.</li>
+  <li>The <code>ShortThrower</code> can only <code>throw_at</code> a <code>Bee</code> that is found after
+  following at most 3 <code>entrance</code> transitions.  So the <code>ShortThrower</code>
+  can only hit <code>Bee</code>s in the same <code>Place</code> as it and 3 <code>Place</code>s in front
+  of it.</li>
+</ul>
+
+<p>Neither of these specialized throwers can <code>throw_at</code> a <code>Bee</code> that is
+exactly 4 <code>Place</code>s away.  Placing a single one of these (and no other
+ants) should never win a default game.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_shortthrower.gif" /> <br>
+      <code>ShortThrower</code></td>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_longthrower.gif" /> <br> <code>LongThrower</code></td>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+</table>
+
+<p>A good way to approach the implementation to <code>ShortThrower</code> and <code>LongThrower</code>
+is to have it inherit the <code>nearest_bee</code> method from the base <code>ThrowerAnt</code>
+class. The logic of chosing which bee a thrower ant will attack is essentially
+the same, except the <code>ShortThrower</code> and <code>LongThrower</code> ants have maximum and
+minimum ranges, respectively.</p>
+
+<p>To implement these behaviors, you may need to modify the <code>nearest_bee</code> method
+to reference <code>min_range</code> and <code>max_range</code> attributes, and only return a bee that
+is in range.</p>
+
+<p>The <code>ThrowerAnt</code> has no minimum or maximum range, so make sure that its
+<code>min_range</code> and <code>max_range</code> attributes should reflect that.  Then, implement
+the subclasses <code>LongThrower</code> and <code>ShortThrower</code> with appropriately constrained
+ranges and correct food costs.</p>
+
+<p>Don't forget to set the <code>implemented</code> class attribute of <code>LongThrower</code> and
+<code>ShortThrower</code> to <code>True</code>.</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 04B &#x2d;u
+python3 ok &#x2d;q 04B</code></pre>
+
+
+<h2 id="phase-3-seen-and-unseen-partner-a">Phase 3: Seen and Unseen (Partner A)</h2>
+
+
+<p>With your Phase 2 ants, try <code>python3 ants_gui.py &#x2d;d easy</code> to play against a
+full swarm of bees in a multi-tunnel layout and try <code>&#x2d;d normal</code>, <code>&#x2d;d hard</code>, or
+<code>&#x2d;d insane</code> if you want a real challenge!  If the bees are too numerous to
+vanquish, you might need to create some new ants.</p>
+
+
+<h3 id="problem-5a-2-pt">Problem 5A (2 pt)</h3>
+
+
+<p>We are going to add some protection to our glorious <code>AntColony</code> by implementing
+the <code>WallAnt</code>, which is an ant that does nothing each turn.  A <code>WallAnt</code> is
+useful because it has a large <code>armor</code> value.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_wall.gif" /> <br> <code>WallAnt</code></td>
+    <td>4</td>
+    <td>4</td>
+  </td>
+</table>
+
+<p>Unlike with previous ants, we have not provided you with a class header.
+Implement the <code>WallAnt</code> class from scratch. Give it a class attribute <code>name</code>
+with the value <code>&#x27;Wall&#x27;</code> (so that the graphics work) and a class attribute
+<code>implemented</code> with the value <code>True</code> (so that you can use it in a game).</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 05A &#x2d;u
+python3 ok &#x2d;q 05A</code></pre>
+
+
+<h3 id="problem-6a-3-pts">Problem 6A (3 pts)</h3>
+
+
+<p>Implement the <code>NinjaAnt</code>, which damages all <code>Bee</code>s that pass by, but can never
+be stung.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_ninja.gif" /> <br> <code>NinjaAnt</code></td>
+    <td>6</td>
+    <td>1</td>
+  </td>
+</table>
+
+<p>A <code>NinjaAnt</code> does not block the path of a <code>Bee</code> that flies by.  To implement
+this behavior, first modify the <code>Ant</code> class to include a new class attribute
+<code>blocks_path</code> that is <code>True</code> by default.  Set the value of <code>blocks_path</code> to
+<code>False</code> in the <code>NinjaAnt</code> class.</p>
+
+<p>Second, modify the <code>Bee</code>'s method <code>blocked</code> to return <code>False</code> if either
+there is no <code>Ant</code> in the <code>Bee</code>'s <code>place</code> or if there is an <code>Ant</code>, but
+its <code>blocks_path</code> attribute is <code>False</code>.  Now <code>Bee</code>s will just fly past
+<code>NinjaAnt</code>s.</p>
+
+<p>Finally, we want to make the <code>NinjaAnt</code> damage all <code>Bee</code>'s that fly past.
+Implement the <code>action</code> method in <code>NinjaAnt</code> to reduce the armor of all <code>Bee</code>s
+in the same <code>place</code> as the <code>NinjaAnt</code> by its <code>damage</code> attribute. Similar to
+the <code>FireAnt</code>, you must iterate over a list of bees that may change.</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 06A &#x2d;u
+python3 ok &#x2d;q 06A</code></pre>
+
+<p>For a challenge, try to win a game using only <code>HarvesterAnt</code>
+and <code>NinjaAnt</code>.</p>
+
+
+<h2 id="phase-3-by-land-and-sea-partner-b">Phase 3: By Land and Sea (Partner B)</h2>
+
+
+
+<h3 id="problem-5b-2-pt">Problem 5B (2 pt)</h3>
+
+
+<p>Currently there are no ants that can be placed on <code>Water</code>.  Implement
+the <code>ScubaThrower</code>, which is a subclass of <code>ThrowerAnt</code> that is more
+costly and <code>watersafe</code>, but otherwise identical to its base class.
+A <code>ScubaThrower</code> should not lose its armor when placed in <code>Water</code>.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_scuba.gif" /> <br> <code>ScubaThrower</code></td>
+    <td>5</td>
+    <td>1</td>
+  </tr>
+</table>
+
+<p>Unlike with previous ants, we have not provided you with a class header.
+Implement the <code>ScubaThrower</code> class from scratch. Give it a class attribute
+<code>name</code> with the value <code>&#x27;Scuba&#x27;</code> (so that the graphics work) and a class
+attribute <code>implemented</code> with the value <code>True</code> (so that you can use it in a
+game).</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 05B &#x2d;u
+python3 ok &#x2d;q 05B</code></pre>
+
+
+<h3 id="problem-6b-3-pts">Problem 6B (3 pts)</h3>
+
+
+<p>We will now implement the new offensive unit called the <code>HungryAnt</code>, which will
+select a random <code>Bee</code> from its <code>place</code> and eat it whole.  After
+eating a <code>Bee</code>, it must spend 3 turns digesting before eating again.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_hungry.gif" /> <br> <code>HungryAnt</code></td>
+    <td>4</td>
+    <td>1</td>
+  </td>
+</table>
+
+<p>Give <code>HungryAnt</code> a <code>time_to_digest</code> class attribute that holds the number of
+turns that it takes a <code>HungryAnt</code> to digest (default to 3).  Also, give each
+<code>HungryAnt</code> an instance attribute <code>digesting</code> that counts the number of turns
+it has left to digest (default is 0, since it hasn't eaten anything at the
+beginning).</p>
+
+<p>Implement the <code>action</code> method of the <code>HungryAnt</code> to check if it's digesting; if
+so, decrement its <code>digesting</code> counter.  Otherwise, eat a random <code>Bee</code> in its
+<code>place</code> by reducing the <code>Bee</code>'s armor to 0 and restart the <code>digesting</code> timer.</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 06B &#x2d;u
+python3 ok &#x2d;q 06B</code></pre>
+
+
+<h2 id="phase-4">Phase 4</h2>
+
+
+
+<h3 id="problem-7-4-pts">Problem 7 (4 pts)</h3>
+
+
+<p>Right now, our ants are quite frail. We'd like to provide a way to help them
+last longer against the onslaught of the bees. Enter the <code>BodyguardAnt</code>.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_weeds.gif" /> <br> <code>BodyguardAnt</code></td>
+    <td>4</td>
+    <td>2</td>
+  </tr>
+</table>
+
+<p>A <code>BodyguardAnt</code> differs from a normal ant because it is a <code>container</code>; it can
+contain another ant and protect it, all in one <code>Place</code>. When a <code>Bee</code> stings the
+ant in a <code>Place</code> where one ant contains another, only the container is
+damanged. The ant inside the container can still perform its original action.
+If the container perishes, the contained ant still remains in the place (and
+can then be damaged).</p>
+
+<p>Each <code>BodyguardAnt</code> has an instance attribute <code>ant</code> that stores the ant it
+contains. It initially starts off as <code>None</code>, to indicate that no ant is being
+protected. The <code>contain_ant</code> method takes an <code>Ant</code> argument and sets the
+bodyguard's <code>ant</code> instance attribute.</p>
+
+<p>You will need to make modifications throughout your program so that a container
+and its contained ant can both occupy the place at the same time (a maximum of
+two ants per place), but only if exactly one is a <code>container</code>.</p>
+
+<ol>
+  <li>Add an <code>Ant.container</code> class attribute that indicates whether a
+  subclass of <code>Ant</code> is a container.  For all <code>Ant</code>
+  instances, except for <code>BodyguardAnt</code> instances, <code>container</code> should be
+  <code>False</code>.  The <code>BodyguardAnt.container</code> attribute should be <code>True</code>.</li>
+  <li><p>Add a method <code>Ant.can_contain</code> that takes the <code>other</code> ant as an
+  argument and returns <code>True</code> when:</p>
+
+  <ul>
+    <li>This ant is a container.</li>
+    <li>This ant does not already contain another ant.</li>
+    <li>The other ant is not a container.</li>
+  </ul></li>
+  <li><p>Modify <code>Place.add_insect</code> to allow a container and a non-container ant
+  to occupy the same place according to the following rules:</p>
+
+  <ul>
+    <li>If the <code>ant</code> currently occupying a <code>Place</code> can contain the <code>insect</code>
+    (an <code>Ant</code>) passed to <code>add_insect</code>, then it does.</li>
+    <li>If the <code>insect</code> (an <code>Ant</code>) passed to <code>add_insect</code> can contain the
+    <code>ant</code> currently occupying a <code>Place</code>, then it does. Also,
+    set the <code>Place</code>'s <code>ant</code> to be the container insect.</li>
+    <li>If neither <code>Ant</code> can contain the other, raise the same
+    <code>AssertionError</code> as before.</li>
+  </ul></li>
+</ol>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 07 &#x2d;u
+python3 ok &#x2d;q 07</code></pre>
+
+
+<h3 id="problem-8-1-pts">Problem 8 (1 pts)</h3>
+
+
+<p>The <code>BodyguardAnt</code> provides great defense, but they say the best defense is a
+good offense.  The <code>TankAnt</code> is a container that protects an ant in its place
+and also deals 1 damage to all bees in its place each turn.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_weeds.gif" /> <br> <code>TankAnt</code></td>
+    <td>6</td>
+    <td>2</td>
+  </tr>
+</table>
+
+<p>You should not need to modify any code outside of the <code>TankAnt</code> class. If you
+find yourself needing to make changes elsewhere, look for a way to write your
+code for the previous question such that it applies not just to <code>BodyguardAnt</code>
+and <code>TankAnt</code> objects, but to <code>container</code> ants in general.</p>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 08 &#x2d;u
+python3 ok &#x2d;q 08</code></pre>
+
+
+<h3 id="problem-9-4-pts">Problem 9 (4 pts)</h3>
+
+
+<p>Implement the <code>QueenAnt</code>. The queen is a waterproof <code>ScubaThrower</code> that
+inspires her fellow ants through her bravery. The QueenAnt doubles the damage
+of all the ants behind her each time she performs an action. Once an ant's
+damage has been doubled, it is <em>not</em> doubled again on subsequent turns.</p>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_queen.gif" /> <br> <code>QueenAnt</code></td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+</table>
+
+<p>However, with great power comes great responsibility.  The <code>QueenAnt</code> is
+governed by three special rules:</p>
+
+<ol>
+  <li>If the queen ever has its armor reduced to 0, the bees win. The bees also
+  still win if any bee reaches the end of a tunnel.</li>
+  <li>There can be only one true queen. Any queen instantiated beyond the first
+  one is an impostor, and should have its armor reduced to 0 upon taking its
+  first action, without doubling any ant's damage or throwing anything. If an
+  impostor dies, the game should still continue as normal.</li>
+  <li>The true (first) queen cannot be removed. Attempts to remove the queen
+  should have no effect (but should not cause an error). You will need to
+  modify the <code>remove_insect</code> method of <code>Place</code> to enforce this condition.</li>
+</ol>
+
+<p>Some suggestions:</p>
+
+<ul>
+  <li>Call <code>bees_win()</code> to signal to the simulator that the game is over.</li>
+  <li>You can find each <code>Place</code> in a tunnel behind the <code>QueenAnt</code> by starting at
+  the ant's <code>place.exit</code> and then repeatedly following its <code>exit</code>.</li>
+  <li>To detect whether a <code>Place</code> is at the end of a tunnel, check whether
+  its <code>exit</code> is <code>None</code>.</li>
+  <li>To make sure that you don't double the damage of the same ant twice,
+  maintain a list of all the ants that have been doubled.</li>
+</ul>
+
+<p>Test your implementation before moving on:</p>
+
+<pre><code>python3 ok &#x2d;q 09 &#x2d;u
+python3 ok &#x2d;q 09</code></pre>
+
+
+<h3 id="extra-credit-2-pts">Extra Credit (2 pts)</h3>
+
+
+<p>Implement two final thrower ants that do no damage, but instead replace
+the <code>action</code> method of a <code>Bee</code> instance that they <code>throw_at</code> with a new
+method that alters the <code>Bee</code>'s behavior for some duration.</p>
+
+<p>We will be implementing two new ants that subclass <code>ThrowerAnt</code>.</p>
+
+<ul>
+  <li><code>SlowThrower</code> applies a slow effect for 3 turns.</li>
+  <li><code>StunThrower</code> applies a stun effect for 1 turn.</li>
+</ul>
+
+<table class="ant">
+  <tr>
+    <td><b>Class</b></td>
+    <td><b>Food</b></td>
+    <td><b>Armor</b></td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_freeze.gif" /> <br> <code>SlowThrower</code></td>
+    <td>4</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><img class="img-responsive center-block" src="img/ant_stun.gif" /> <br> <code>StunThrower</code></td>
+    <td>6</td>
+    <td>1</td>
+  </tr>
+</table>
+
+<p>In order to complete the implementations of these two ants, you will
+need to set their class attributes appropriately and implement the
+following three functions:</p>
+
+<ol>
+  <li><code>make_slow</code> takes an <code>action</code> method and returns a new <code>action</code>
+  method which performs the original action on turns where
+  <code>colony.time</code> is even and does nothing on other turns.</li>
+  <li><code>make_stun</code> takes an <code>action</code> method and returns a new <code>action</code>
+  method which does nothing.</li>
+  <li><code>apply_effect</code> takes an <code>effect</code> (either <code>make_slow</code> or
+  <code>make_stun</code>), a <code>bee</code>, and a <code>duration</code>.  It then replaces the bee's
+  action with a new action method that will call the affected action
+  for <code>duration</code> turns and then will go back to calling the original
+  action every turn.</li>
+</ol>
+
+<p>You can run some provided tests, but they are not exhaustive:</p>
+
+<pre><code>python3 ok &#x2d;q EC &#x2d;u
+python3 ok &#x2d;q EC</code></pre>
+
+<p>Make sure to test your code!  Your code should be able to apply
+multiple effects on a target; each new effect applies to the current
+(possibly affected) action method of the bee.</p>
+
+<p><strong>You are now done with the project!</strong>  If you haven't yet, you should try
+playing the game! There are two GUIs that you can use. The first is an older,
+but tried-and-true interface that we have been using over the past few years.
+The command to run it is:</p>
+
+<pre><code>python3 ants_gui.py [&#x2d;h] [&#x2d;d DIFFICULTY] [&#x2d;w] [&#x2d;&#x2d;food FOOD]</code></pre>
+
+<p>We've also been developing a new browser GUI that we're looking to phase in.
+It's still in development, but we will continuously push updates to it, which
+it will automatically download when it runs. The command to run it is:</p>
+
+<pre><code>python3 gui.py [&#x2d;h] [&#x2d;d DIFFICULTY] [&#x2d;w] [&#x2d;&#x2d;food FOOD]</code></pre>
+
+<p><strong>Acknowledgments:</strong> Tom Magrino and Eric Tzeng developed this project
+with John DeNero.  Jessica Wan contributed the orignal artwork. Joy Jeng and
+Mark Miyashita invented the queen ant. Many others have contributed to
+the project as well!</p>
+
+<p>Colin Schoen developed the new browser GUI. The beautiful new artwork was drawn
+by the efforts of Alana Tran, Andrew Huang, Emilee Chen, Jessie Salas, Jingyi
+Li, Katherine Xu, Meena Vempaty, Michelle Chang, and Ryan Davis.</p>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#core-concepts">Core Concepts</a></li>
+  <li><a href="#the-code">The Code</a></li>
+  <li><a href="#phase-1">Phase 1</a></li>
+  <ul>
+  <li><a href="#problem-0-0-pts">Problem 0 (0 pts)</a></li>
+  <li><a href="#problem-1-2-pts">Problem 1 (2 pts)</a></li>
+  <li><a href="#problem-2-2-pt">Problem 2 (2 pt)</a></li>
+</ul>
+
+  <li><a href="#phase-2-water-and-fire-partner-a">Phase 2: Water and Fire (Partner A)</a></li>
+  <ul>
+  <li><a href="#problem-3a-2-pts">Problem 3A (2 pts)</a></li>
+  <li><a href="#problem-4a-3-pts">Problem 4A (3 pts)</a></li>
+</ul>
+
+  <li><a href="#phase-2-extended-range-partner-b">Phase 2: Extended Range (Partner B)</a></li>
+  <ul>
+  <li><a href="#problem-3b-2-pts">Problem 3B (2 pts)</a></li>
+  <li><a href="#problem-4b-3-pts">Problem 4B (3 pts)</a></li>
+</ul>
+
+  <li><a href="#phase-3-seen-and-unseen-partner-a">Phase 3: Seen and Unseen (Partner A)</a></li>
+  <ul>
+  <li><a href="#problem-5a-2-pt">Problem 5A (2 pt)</a></li>
+  <li><a href="#problem-6a-3-pts">Problem 6A (3 pts)</a></li>
+</ul>
+
+  <li><a href="#phase-3-by-land-and-sea-partner-b">Phase 3: By Land and Sea (Partner B)</a></li>
+  <ul>
+  <li><a href="#problem-5b-2-pt">Problem 5B (2 pt)</a></li>
+  <li><a href="#problem-6b-3-pts">Problem 6B (3 pts)</a></li>
+</ul>
+
+  <li><a href="#phase-4">Phase 4</a></li>
+  <ul>
+  <li><a href="#problem-7-4-pts">Problem 7 (4 pts)</a></li>
+  <li><a href="#problem-8-1-pts">Problem 8 (1 pts)</a></li>
+  <li><a href="#problem-9-4-pts">Problem 9 (4 pts)</a></li>
+  <li><a href="#extra-credit-2-pts">Extra Credit (2 pts)</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/fa19/assets/js/bootstrap.min.js"></script>
+    <!-- TODO: Move to specific pages... -->
+    <script src="/fa19/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>
