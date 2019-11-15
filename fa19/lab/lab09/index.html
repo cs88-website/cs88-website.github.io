@@ -89,20 +89,20 @@ and the rest of the linked list.</p>
     &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
     &gt;&gt;&gt; s
     Link(1, Link(2, Link(3)))
-    &gt;&gt;&gt; len(s)
-    3
-    &gt;&gt;&gt; s[2]
-    3
-    &gt;&gt;&gt; s = Link.empty
-    &gt;&gt;&gt; len(s)
-    0
     &quot;&quot;&quot;
     empty = ()
 
     def __init__(self, first, rest=empty):
         assert rest is Link.empty or isinstance(rest, Link)
         self.first = first
-        self.rest = rest</code></pre>
+        self.rest = rest
+
+    def __repr__(self):
+        if self.rest is not Link.empty:
+            rest_str = &#x27;, &#x27; + repr(self.rest)
+        else:
+            rest_str = &#x27;&#x27;
+        return &#x27;Link({0}{1})&#x27;.format(repr(self.first), rest_str)</code></pre>
 
 <p>To check if a <code>Link</code> is empty, compare it against the class attribute
 <code>Link.empty</code>. For example, the below function prints out whether or not the link it is handed is empty:</p>
@@ -124,11 +124,11 @@ questions:</p>
 
 <pre><code>python3 ok &#x2d;q link &#x2d;u</code></pre>
 
-<p>If you get stuck, try loading lab07.py into an interpreter or drawing out the
+<p>If you get stuck, try loading lab09.py into an interpreter or drawing out the
 diagram for the linked list on a piece of paper.</p></blockquote>
 
 
-    <pre><code>&gt;&gt;&gt; from lab07 import *
+    <pre><code>&gt;&gt;&gt; from lab09 import *
 &gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
 &gt;&gt;&gt; link.first
 <div class="alt 8">______</div><div class="solution 8">&#x31;</div>
@@ -152,7 +152,7 @@ diagram for the linked list on a piece of paper.</p></blockquote>
 <div class="alt 8">______</div><div class="solution 8">&#x31;</div>
 &gt;&gt;&gt; link2.rest.first
 <div class="alt 8">______</div><div class="solution 8">&#x32;</div>
-&gt;&gt;&gt; print_link(link2) # Look at print_link in lab07.py
+&gt;&gt;&gt; print_link(link2) # Look at print_link in lab09.py
 <div class="alt 8">______</div><div class="solution 8">&#x3c;&#x31;&#x20;&#x32;&#x20;&#x33;&#x20;&#x34;&#x3e;</div></code></pre>
 
     <button id='8' class='toggleButton'>
