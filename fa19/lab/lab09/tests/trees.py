@@ -3,32 +3,43 @@ test = {
   'points': 0,
   'suites': [
     {
-      'type': 'wwpp',
       'cases': [
         {
-          'code': """
+          'code': r"""
           >>> t = Tree(1, Tree(2))
-          Error
+          feef61c63dd96e13f9fae6fd28442b2b
+          # locked
           >>> t = Tree(1, [Tree(2)])
           >>> t.entry
-          1
+          7cd20da6435c318b417f99ab831ac85e
+          # locked
           >>> t.branches[0]
-          Tree(2)
+          6e3e150dcaf43b1aee92209a3f22f19f
+          # locked
           >>> t.branches[0].entry
-          2
+          32cd207d18df99546ca7a56bc36ed715
+          # locked
           >>> t.entry = t.branches[0].entry
           >>> t
-          Tree(2, [Tree(2)])
+          f331eaca6e463d6c1142a1cd9f252566
+          # locked
           >>> t.branches.append(Tree(4, [Tree(8)]))
           >>> len(t.branches)
-          2
+          32cd207d18df99546ca7a56bc36ed715
+          # locked
           >>> t.branches[0]
-          Tree(2)
+          6e3e150dcaf43b1aee92209a3f22f19f
+          # locked
           >>> t.branches[1]
-          Tree(4, [Tree(8)])
+          7120759eec12bcbd774a96e9ae93b1e9
+          # locked
           """,
-        },
-      ]
+          'hidden': False,
+          'locked': True
+        }
+      ],
+      'scored': False,
+      'type': 'wwpp'
     }
   ]
 }
