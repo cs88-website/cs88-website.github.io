@@ -331,7 +331,7 @@ A <code>Family</code> contains a list of parents. Parents are <code>People</code
 <pre><code>class Person:
     def __init__(self, name, ethnicity={}):
         self.name = name
-        assert type(ethnicity == dict)
+        assert type(ethnicity) == dict
         for i in ethnicity.values():
             assert type(i) == float
         self.ethnicity = ethnicity
@@ -344,7 +344,6 @@ class Family:
         # Leaf families have one parent and no children
         self.parents = parents
         self.children = children
-        self.computed = False
         if not self.is_leaf():
             for p in parents:
                 assert isinstance(p, Person)
@@ -354,7 +353,7 @@ class Family:
 
     def __repr__(self):
         if self.is_leaf():
-            return self.parents.name
+            return self.parents[0].name
         else:
             children_str = &#x27;, &#x27; + repr(self.children)
         return &#x27;Parents:{} Children:{})&#x27;.format([i.name for i in self.parents], children_str)
