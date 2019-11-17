@@ -85,7 +85,7 @@ body {
     margin-top: 40px;
     margin-bottom: 70px;
 }
-.hive-td, .places-td {
+.beehive-td, .places-td {
     cursor: pointer;
     border: 1px solid #4a474a;
 }
@@ -94,6 +94,13 @@ body {
     height: 64px;
 }
 .active-ant {
+    position: absolute;
+    width: 64px;
+    height: 64px;
+}
+
+.contained-ant{
+    position: absolute;
     width: 64px;
     height: 64px;
 }

@@ -5,117 +5,98 @@ test = {
     {
       'cases': [
         {
-          'code': r"""
-          >>> # QueenAnt Placement
-          >>> queen = ants.QueenAnt()
-          >>> impostor = ants.QueenAnt()
-          >>> front_ant, back_ant = ants.ThrowerAnt(), ants.ThrowerAnt()
-          >>> tunnel = [colony.places['tunnel_0_{0}'.format(i)]
-          ...         for i in range(9)]
-          >>> tunnel[1].add_insect(back_ant)
-          >>> tunnel[7].add_insect(front_ant)
-          >>> tunnel[4].add_insect(impostor)
-          >>> impostor.action(colony)
-          >>> impostor.armor            # Impostors must die!
-          73b94a1326ae2e803c3421016112207b
-          # locked
-          >>> tunnel[4].ant is None
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
-          >>> back_ant.damage           # Ants should not be buffed
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
-          >>> front_ant.damage
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
-          >>> tunnel[4].add_insect(queen)
-          >>> queen.action(colony)
-          >>> queen.armor               # Long live the Queen!
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
-          >>> back_ant.damage           # Ants behind queen should be buffed
-          20d533d3e06345c8bd7072212867f2d1
-          # locked
-          >>> front_ant.damage
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
-          """,
+          'answer': 'c9e4559526ed96dcae3a8a67e48f2539',
+          'choices': [
+            'The Ant instance that is in the same place as itself',
+            'The Ant instance in the place closest to its own place',
+            'A random Ant instance in the colony',
+            'All the Ant instances in the colony'
+          ],
           'hidden': False,
-          'locked': True
+          'locked': True,
+          'question': 'Which Ant does a BodyguardAnt guard?'
         },
         {
-          'code': r"""
-          >>> # QueenAnt Removal
-          >>> queen = ants.QueenAnt()
-          >>> impostor = ants.QueenAnt()
-          >>> place = colony.places['tunnel_0_2']
-          >>> place.add_insect(impostor)
-          >>> place.remove_insect(impostor)
-          >>> place.ant is None         # Impostors can be removed
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
-          >>> place.add_insect(queen)
-          >>> place.remove_insect(queen)
-          >>> place.ant is queen        # True queen cannot be removed
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
-          """,
+          'answer': '16b5cea05c2948209add7a1f2a69d64d',
+          'choices': [
+            'By hiding the ant from Bees and allowing it to perform its original action',
+            'By attacking Bees that try to attack it',
+            "By increasing the ant's armor",
+            'By allowing Bees to pass without attacking'
+          ],
           'hidden': False,
-          'locked': True
+          'locked': True,
+          'question': 'How does a BodyguardAnt guard its ant?'
         },
         {
-          'code': r"""
-          >>> # QueenAnt knows how to swim
-          >>> queen = ants.QueenAnt()
-          >>> water = ants.Water('Water')
-          >>> water.add_insect(queen)
-          >>> queen.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
-          """,
+          'answer': 'e5029f38ae9a6b212c532cf07d08d994',
+          'choices': [
+            "In the BodyguardAnt's contained_ant instance attribute",
+            "In the BodyguardAnt's contained_ant class attribute",
+            "In its place's ant instance attribute",
+            "Nowhere, a BodyguardAnt has no knowledge of the ant that it's protecting"
+          ],
           'hidden': False,
-          'locked': True
+          'locked': True,
+          'question': 'Where is the ant contained by a BodyguardAnt stored?'
         },
         {
+          'answer': '9fd9ef6ab35f8b2049907fc9f070c72d',
+          'choices': [
+            'is_container is False for every Ant subclass except BodyguardAnt',
+            'is_container is True for every Ant subclass except BodyguardAnt',
+            'is_container is True for all Ants',
+            'is_container is False for all Ants'
+          ],
+          'hidden': False,
+          'locked': True,
+          'question': 'What is the value of the container attribute for each Ant subclass?'
+        },
+        {
+          'answer': '7a81f10493cb9dd2a778afa061e3edd5',
+          'choices': [
+            r"""
+            When exactly one of the Ant instances is a container and the
+            container ant does not already contain another ant
+            """,
+            'When exactly one of the Ant instances is a container',
+            'When both Ant instances are containers',
+            'There can never be two Ant instances in the same place'
+          ],
+          'hidden': False,
+          'locked': True,
+          'question': 'When can a second Ant be added to a place that already contains an Ant?'
+        },
+        {
+          'answer': '15da5c3b3f44c437c3da5155a6d0c267',
+          'choices': [
+            'The container Ant',
+            'The Ant being contained',
+            'A list containing both Ants',
+            'Whichever Ant was placed there first'
+          ],
+          'hidden': False,
+          'locked': True,
+          'question': r"""
+          If two Ants occupy the same Place, what is stored in that place's ant
+          instance attribute?
+          """
+        }
+      ],
+      'scored': False,
+      'type': 'concept'
+    },
+    {
+      'cases': [
+        {
           'code': r"""
-          >>> # Testing damage multiplier
-          >>> queen_tunnel, side_tunnel = [[colony.places['tunnel_{0}_{1}'.format(i, j)]
-          ...         for j in range(9)] for i in range(2)]
-          >>> queen = ants.QueenAnt()
-          >>> back = ants.ThrowerAnt()
-          >>> front = ants.ThrowerAnt()
-          >>> guard = ants.BodyguardAnt()
-          >>> guarded = ants.ThrowerAnt()
-          >>> side = ants.ThrowerAnt()
-          >>> bee = ants.Bee(10)
-          >>> side_bee = ants.Bee(10)
-          >>> queen_tunnel[0].add_insect(back)
-          >>> queen_tunnel[1].add_insect(guard)
-          >>> queen_tunnel[1].add_insect(guarded)
-          >>> queen_tunnel[2].add_insect(queen)
-          >>> queen_tunnel[3].add_insect(front)
-          >>> side_tunnel[0].add_insect(side)
-          >>> queen_tunnel[4].add_insect(bee)
-          >>> side_tunnel[4].add_insect(side_bee)
-          >>> queen.action(colony)
-          >>> bee.armor
-          8b5f7651e8464d241749041812e40bfa
-          # locked
-          >>> back.action(colony)
-          >>> bee.armor
-          7cd035adf49fc93a635b4e8bb2e28bd4
-          # locked
-          >>> front.action(colony)
-          >>> bee.armor
-          50ae32be3e31df6c59633df7fdfb3a72
-          # locked
-          >>> guard.action(colony)
-          >>> bee.armor
+          >>> # Testing BodyguardAnt parameters
+          >>> bodyguard = BodyguardAnt()
+          >>> BodyguardAnt.food_cost
           c9452203eb0b0f0bd2454586a6c2fc5c
           # locked
-          >>> side.action(colony)
-          >>> side_bee.armor
-          8b5f7651e8464d241749041812e40bfa
+          >>> bodyguard.armor
+          20d533d3e06345c8bd7072212867f2d1
           # locked
           """,
           'hidden': False,
@@ -124,13 +105,7 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      >>> import ants, importlib
-      >>> importlib.reload(ants)
-      >>> hive = ants.Hive(ants.AssaultPlan())
-      >>> dimensions = (2, 9)
-      >>> colony = ants.AntColony(None, hive, ants.ant_types(),
-      ...         ants.dry_layout, dimensions)
-      >>> ants.bees_win = lambda: None
+      >>> from ants import *
       """,
       'teardown': '',
       'type': 'doctest'
@@ -139,162 +114,193 @@ test = {
       'cases': [
         {
           'code': r"""
-          >>> # Testing game over
-          >>> queen = ants.QueenAnt()
-          >>> impostor = ants.QueenAnt()
-          >>> tunnel = [colony.places['tunnel_0_{0}'.format(i)]
-          ...         for i in range(9)]
-          >>> tunnel[4].add_insect(queen)
-          >>> tunnel[6].add_insect(impostor)
-          >>> bee = ants.Bee(3)
-          >>> tunnel[6].add_insect(bee)     # Bee in place with impostor
-          >>> bee.action(colony)            # Game should not end
-          
-          >>> bee.move_to(tunnel[4])        # Bee moved to place with true queen
-          >>> bee.action(colony)            # Game should end
-          BeesWinException
+          >>> bodyguard = BodyguardAnt()
+          >>> bodyguard.action(colony) # Action without contained ant should not error
           """,
           'hidden': False,
           'locked': False
         },
         {
           'code': r"""
-          >>> # Testing if queen will not crash with no one to buff
-          >>> queen = ants.QueenAnt()
-          >>> colony.places['tunnel_0_2'].add_insect(queen)
-          >>> queen.action(colony)
-          >>> # Attack a bee
-          >>> bee = ants.Bee(3)
-          >>> colony.places['tunnel_0_4'].add_insect(bee)
-          >>> queen.action(colony)
-          >>> bee.armor # Queen should still hit the bee
-          2
+          >>> # Testing bodyguard performs thrower's action
+          >>> bodyguard = BodyguardAnt()
+          >>> thrower = ThrowerAnt()
+          >>> bee = Bee(2)
+          >>> # Place bodyguard before thrower
+          >>> colony.places["tunnel_0_0"].add_insect(bodyguard)
+          >>> colony.places["tunnel_0_0"].add_insect(thrower)
+          >>> colony.places["tunnel_0_3"].add_insect(bee)
+          >>> bodyguard.action(colony)
+          >>> bee.armor
+          1
           """,
           'hidden': False,
           'locked': False
         },
         {
           'code': r"""
-          >>> # Testing QueenAnt action method
-          >>> queen = ants.QueenAnt()
-          >>> impostor = ants.QueenAnt()
-          >>> bee = ants.Bee(10)
-          >>> ant = ants.ThrowerAnt()
-          >>> colony.places['tunnel_0_0'].add_insect(ant)
-          >>> colony.places['tunnel_0_1'].add_insect(queen)
-          >>> colony.places['tunnel_0_2'].add_insect(impostor)
-          >>> colony.places['tunnel_0_4'].add_insect(bee)
-          
-          >>> impostor.action(colony)
-          >>> bee.armor   # Impostor should not damage bee
-          10
-          >>> ant.damage  # Impostor should not double damage
+          >>> # Testing bodyguard performs thrower's action
+          >>> bodyguard = BodyguardAnt()
+          >>> thrower = ThrowerAnt()
+          >>> bee = Bee(2)
+          >>> # Place thrower before bodyguard
+          >>> colony.places["tunnel_0_0"].add_insect(thrower)
+          >>> colony.places["tunnel_0_0"].add_insect(bodyguard)
+          >>> colony.places["tunnel_0_3"].add_insect(bee)
+          >>> bodyguard.action(colony)
+          >>> bee.armor
           1
-          
-          >>> queen.action(colony)
-          >>> bee.armor   # Queen should damage bee
-          9
-          >>> ant.damage  # Queen should double damage
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> # Testing removing a bodyguard doesn't remove contained ant
+          >>> place = colony.places['tunnel_0_0']
+          >>> bodyguard = BodyguardAnt()
+          >>> test_ant = Ant(1)
+          >>> # add bodyguard first
+          >>> place.add_insect(bodyguard)
+          >>> place.add_insect(test_ant)
+          >>> colony.remove_ant('tunnel_0_0')
+          >>> place.ant is test_ant
+          True
+          >>> bodyguard.place is None
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> # Testing removing a bodyguard doesn't remove contained ant
+          >>> place = colony.places['tunnel_0_0']
+          >>> bodyguard = BodyguardAnt()
+          >>> test_ant = Ant(1)
+          >>> # add ant first
+          >>> place.add_insect(test_ant)
+          >>> place.add_insect(bodyguard)
+          >>> colony.remove_ant('tunnel_0_0')
+          >>> place.ant is test_ant
+          True
+          >>> bodyguard.place is None
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> # Testing bodyguarded ant keeps instance attributes
+          >>> test_ant = Ant()
+          >>> def new_action(colony):
+          ...     test_ant.armor += 9000
+          >>> test_ant.action = new_action
+          >>> place = colony.places['tunnel_0_0']
+          >>> bodyguard = BodyguardAnt()
+          >>> place.add_insect(test_ant)
+          >>> place.add_insect(bodyguard)
+          >>> place.ant.action(colony)
+          >>> place.ant.contained_ant.armor
+          9001
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> # Testing container can contain a special non-container bodyguard
+          >>> bodyguard = BodyguardAnt()
+          >>> mod_guard = BodyguardAnt()
+          >>> mod_guard.is_container = False
+          >>> bodyguard.can_contain(mod_guard)
+          True
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> # Testing single BodyguardAnt cannot hold two other ants
+          >>> bodyguard = BodyguardAnt()
+          >>> first_ant = ThrowerAnt()
+          >>> place = colony.places['tunnel_0_0']
+          >>> place.add_insect(bodyguard)
+          >>> place.add_insect(first_ant)
+          >>> second_ant = ThrowerAnt()
+          >>> place.add_insect(second_ant)
+          Traceback (most recent call last):
+          ...
+          AssertionError: Two ants in tunnel_0_0
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> # Testing BodyguardAnt cannot hold another BodyguardAnt
+          >>> bodyguard1 = BodyguardAnt()
+          >>> bodyguard2 = BodyguardAnt()
+          >>> place = colony.places['tunnel_0_0']
+          >>> place.add_insect(bodyguard1)
+          >>> place.add_insect(bodyguard2)
+          Traceback (most recent call last):
+          ...
+          AssertionError: Two ants in tunnel_0_0
+          """,
+          'hidden': False,
+          'locked': False
+        },
+        {
+          'code': r"""
+          >>> # Testing BodyguardAnt takes all the damage
+          >>> thrower = ThrowerAnt()
+          >>> bodyguard = BodyguardAnt()
+          >>> bee = Bee(1)
+          >>> place = colony.places['tunnel_0_0']
+          >>> place.add_insect(thrower)
+          >>> place.add_insect(bodyguard)
+          >>> place.add_insect(bee)
+          >>> bodyguard.armor
           2
-          >>> ant.action(colony)
-          >>> bee.armor   # If failed, ThrowerAnt has incorrect damage
-          7
-          
-          >>> queen.armor   # Long live the Queen
-          1
-          >>> impostor.armor  # Short-lived impostor
+          >>> bee.action(colony)
+          >>> (bodyguard.armor, thrower.armor)
+          (1, 1)
+          >>> bee.action(colony)
+          >>> (bodyguard.armor, thrower.armor)
+          (0, 1)
+          >>> bodyguard.place is None
+          True
+          >>> place.ant is thrower
+          True
+          >>> bee.action(colony)
+          >>> thrower.armor
           0
+          >>> place.ant is None
+          True
           """,
           'hidden': False,
           'locked': False
         },
         {
           'code': r"""
-          >>> # Extensive damage doubling tests
-          >>> queen_tunnel, side_tunnel = [[colony.places['tunnel_{0}_{1}'.format(i, j)]
-          ...         for j in range(9)] for i in range(2)]
-          >>> queen = ants.QueenAnt()
-          >>> queen_tunnel[7].add_insect(queen)
-          >>> # Turn 0
-          >>> thrower = ants.ThrowerAnt()
-          >>> fire = ants.FireAnt()
-          >>> ninja = ants.NinjaAnt()
-          >>> side = ants.ThrowerAnt()
-          >>> front = ants.NinjaAnt()
-          >>> queen_tunnel[0].add_insect(thrower)
-          >>> queen_tunnel[1].add_insect(fire)
-          >>> queen_tunnel[2].add_insect(ninja)
-          >>> queen_tunnel[8].add_insect(front)
-          >>> side_tunnel[0].add_insect(side)
-          >>> buffed_ants = [thrower, fire, ninja]
-          >>> old_dmgs = [ant.damage for ant in buffed_ants]
-          >>> queen.action(colony)
-          >>> for ant, dmg in zip(buffed_ants, old_dmgs):
-          ...     assert ant.damage == dmg * 2,\
-          ...         "{0}'s damage is {1}, but should be {2}".format(ant, ant.damage, dmg * 2)
-          >>> for ant in [side, front]:
-          ...     assert ant.damage == dmg,\
-          ...         "{0}'s damage is {1}, but should be {2}".format(ant, ant.damage, dmg)
-          >>> assert queen.damage == 1,\
-          ...     'QueenAnt damage was modified to {0}'.format(ant.damage)
-          >>> # Turn 1
-          >>> tank = ants.TankAnt()
-          >>> guard = ants.BodyguardAnt()
-          >>> queen_tank = ants.TankAnt()
-          >>> queen_tunnel[6].add_insect(tank)          # Not protecting an ant
-          >>> queen_tunnel[1].add_insect(guard)         # Guarding FireAnt
-          >>> queen_tunnel[7].add_insect(queen_tank)    # Guarding QueenAnt
-          >>> buffed_ants.extend([tank, guard])
-          >>> old_dmgs.extend([ant.damage for ant in [tank, guard, queen_tank]])
-          >>> queen.action(colony)
-          >>> for ant, dmg in zip(buffed_ants, old_dmgs):
-          ...     assert ant.damage == dmg * 2,\
-          ...         "{0}'s damage is {1}, but should be {2}".format(ant, ant.damage, dmg * 2)
-          >>> # Turn 2
-          >>> thrower1 = ants.ThrowerAnt()
-          >>> thrower2 = ants.ThrowerAnt()
-          >>> queen_tunnel[6].add_insect(thrower1)      # Add thrower1 in TankAnt
-          >>> queen_tunnel[5].add_insect(thrower2)
-          >>> buffed_ants.extend([thrower1, thrower2])
-          >>> old_dmgs.extend([ant.damage for ant in [thrower1, thrower2]])
-          >>> queen.action(colony)
-          >>> for ant, dmg in zip(buffed_ants, old_dmgs):
-          ...     assert ant.damage == dmg * 2,\
-          ...         "{0}'s damage is {1}, but should be {2}".format(ant, ant.damage, dmg * 2)
-          >>> # Turn 3
-          >>> tank.reduce_armor(tank.armor)             # Expose thrower1
-          >>> queen.action(colony)
-          >>> for ant, dmg in zip(buffed_ants, old_dmgs):
-          ...     assert ant.damage == dmg * 2,\
-          ...         "{0}'s damage is {1}, but should be {2}".format(ant, ant.damage, dmg * 2)
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> # Adding/Removing QueenAnt with Container
-          >>> queen = ants.QueenAnt()
-          >>> impostor = ants.QueenAnt()
-          >>> container = ants.TankAnt()
-          >>> colony.places['tunnel_0_3'].add_insect(container)
-          >>> colony.places['tunnel_0_3'].add_insect(impostor)
-          >>> impostor.action(colony)
-          >>> colony.places['tunnel_0_3'].ant is container
-          True
-          >>> container.place is colony.places['tunnel_0_3']
-          True
-          >>> container.ant is None
-          True
-          >>> impostor.place is None
-          True
-          >>> colony.places['tunnel_0_3'].add_insect(queen)
-          >>> colony.places['tunnel_0_3'].remove_insect(queen)
-          >>> container.ant is queen
-          True
-          >>> queen.place is colony.places['tunnel_0_3']
-          True
-          >>> queen.action(colony)
+          >>> # test proper call to death callback
+          >>> original_death_callback = Insect.death_callback
+          >>> Insect.death_callback = lambda x: print("insect died")
+          >>> place = colony.places["tunnel_0_0"]
+          >>> bee = Bee(3)
+          >>> bodyguard = BodyguardAnt()
+          >>> ant = ThrowerAnt()
+          >>> place.add_insect(bee)
+          >>> place.add_insect(ant)
+          >>> place.add_insect(bodyguard)
+          >>> bee.action(colony)
+          >>> bee.action(colony)
+          insect died
+          >>> bee.action(colony) # if you fail this test you probably didn't correctly call Ant.reduce_armor or Insect.reduce_armor
+          insect died
+          >>> Insect.death_callback = original_death_callback
           """,
           'hidden': False,
           'locked': False
@@ -302,12 +308,10 @@ test = {
       ],
       'scored': True,
       'setup': r"""
-      >>> import ants, importlib
-      >>> importlib.reload(ants)
-      >>> hive = ants.Hive(ants.AssaultPlan())
-      >>> dimensions = (2, 9)
-      >>> colony = ants.AntColony(None, hive, ants.ant_types(),
-      ...         ants.dry_layout, dimensions)
+      >>> from ants import *
+      >>> beehive, layout = Hive(AssaultPlan()), dry_layout
+      >>> colony = AntColony(None, beehive, ant_types(), layout, (1, 9))
+      >>> #
       """,
       'teardown': '',
       'type': 'doctest'

@@ -8,13 +8,13 @@ import os
 import shutil
 import zipfile
 import threading
+import importlib
 from time import sleep
 from ucb import *
 
-VERSION = 1.1
+VERSION = 1.2
 ASSETS_DIR = "assets/"
 INSECT_DIR = "insects/"
-LEAVES_DIR = "leaves/"
 STRATEGY_SECONDS = 3
 INSECT_FILES = {
        'Worker': ASSETS_DIR + INSECT_DIR +  "ant_harvester.gif",
@@ -26,7 +26,8 @@ INSECT_FILES = {
        'Bodyguard': ASSETS_DIR + INSECT_DIR +  "ant_bodyguard.gif",
        'Hungry': ASSETS_DIR + INSECT_DIR +  "ant_hungry.gif",
        'Slow': ASSETS_DIR + INSECT_DIR +  "ant_slow.gif",
-       'Stun': ASSETS_DIR + INSECT_DIR +  "ant_stun.gif",
+       'Scary': ASSETS_DIR + INSECT_DIR +  "ant_scary.gif",
+       'Laser': ASSETS_DIR + INSECT_DIR +  "ant_laser.gif",
        'Ninja': ASSETS_DIR + INSECT_DIR +  "ant_ninja.gif",
        'Wall': ASSETS_DIR + INSECT_DIR +  "ant_wall.gif",
        'Scuba': ASSETS_DIR + INSECT_DIR +  "ant_scuba.gif",
@@ -35,24 +36,17 @@ INSECT_FILES = {
        'Bee': ASSETS_DIR + INSECT_DIR +  "bee.gif",
        'Remover': ASSETS_DIR + INSECT_DIR + "remove.png",
 }
-LEAF_FILES = {
-        'Thrower': ASSETS_DIR + LEAVES_DIR + 'Leaf_Normal.gif',
-        'Short': ASSETS_DIR + LEAVES_DIR + 'Leaf_Normal.gif',
-        'Long': ASSETS_DIR + LEAVES_DIR + 'Leaf_Normal.gif',
-        'Slow': ASSETS_DIR + LEAVES_DIR + 'Leaf_Normal2.gif',
-        'Stun': ASSETS_DIR + LEAVES_DIR + 'Leaf_Normal.gif',
-        'Scuba': ASSETS_DIR + LEAVES_DIR + 'Leaf_Water.gif',
-        'Queen': ASSETS_DIR + LEAVES_DIR + 'Leaf_Normal.gif',
-        'Laser': ASSETS_DIR + LEAVES_DIR + 'Leaf_Normal.gif'
-        }
 
 class GUI:
     """Browser based GUI that communicates with Python game engine"""
 
     def __init__(self):
         self.active = True
-        self.state = state.State()
+        self.cleanState()
+
+    def cleanState(self):
         self.initialized = False
+        self.state = state.State()
         self.gameOver = False
         self.colony = None
         self.currentBeeId = 0
@@ -64,20 +58,22 @@ class GUI:
         self.insectToId = {}
         self.beeToId = {}
         self.beeLocations = {}
-        self.throwAt = {}
 
     def makeHooks(self):
-        ants.Insect.reduce_armor = utils.class_method_wrapper(ants.Insect.reduce_armor, post=dead_insects)
-        ants.AntColony.remove_ant = utils.class_method_wrapper(ants.AntColony.remove_ant, post=removed_ant)
-    
+        ants.Insect.death_callback = dead_insect
+
 
     def newGameThread(self):
         print("Trying to start new game")
+        self.cleanState() # resets GUI state
+        importlib.reload(ants) # resets ants, e.g. with newly implemented Ants
+        self.makeHooks()
+
         self.winner = ants.start_with_strategy(gui.args, gui.strategy)
         self.gameOver = True
         self.saveState("winner", self.winner)
         self.saveState("gameOver", self.gameOver)
-        self.killGUI()
+        # self.killGUI()
         update()
 
     def killGUI(self):
@@ -91,7 +87,6 @@ class GUI:
         self.active = False
 
     def initialize_colony_graphics(self, colony):
-
         self.colony = colony
         self.ant_type_selected = -1
         self.saveState("strategyTime", STRATEGY_SECONDS)
@@ -133,26 +128,11 @@ class GUI:
             self.initialize_colony_graphics(colony)
         elapsed = 0 #Physical time elapsed this turn
         self.saveState("time", int(elapsed))
-        #Clear out our throw at dictionary at the beginning of each turn
-        self.throwAt = {}
         while elapsed < STRATEGY_SECONDS:
             self.saveState("time", colony.time)
             self._update_control_panel(colony)
-            sleep(0.25) 
+            sleep(0.25)
             elapsed += 0.25
-        #Check to see if we need to throw any leaves at the end of the turn
-        self.throwLeaves(colony)
-
-    def throwLeaves(self, colony):
-        has_ant = lambda a: hasattr(a, 'ant') and a.ant
-        for ant in colony.ants + [a.ant for a in colony.ants if has_ant(a)]:
-            if ant.name in LEAF_FILES:
-                bee = ant.nearest_bee(colony.hive)
-                if bee is not None:
-                    self.throwAt[self.insectToId[ant]] = self.beeToId[bee] 
-        self.saveState("throwAt", self.throwAt)
-
-    
 
     def get_place_row(self, name):
         return name.split("_")[1]
@@ -175,25 +155,23 @@ class GUI:
                 rows += 1
             if not pRow in self.places:
                 self.places[pRow] = {}
-            self.places[pRow][pCol] = { "name": name, "type": "tunnel", "water": 0, "insects": {} } 
+            self.places[pRow][pCol] = { "name": name, "type": "tunnel", "water": 0, "insects": {} }
             if "water" in name:
                 self.places[pRow][pCol]["water"] = 1
             self.images[name] = dict()
         #Add the Hive
-        self.places[colony.hive.name] = { "name": name, "type": "hive", "water": 0, "insects": {} }
-        self.places[colony.hive.name]["insects"] = []
-        for bee in colony.hive.bees:
-            self.places[colony.hive.name]["insects"].append({"id": self.currentBeeId, "type": "bee"})
+        self.places[colony.beehive.name] = { "name": name, "type": "beehive", "water": 0, "insects": {} }
+        self.places[colony.beehive.name]["insects"] = []
+        for bee in colony.beehive.bees:
+            self.places[colony.beehive.name]["insects"].append({"id": self.currentBeeId, "type": "bee"})
             self.beeToId[bee] = self.currentBeeId
             self.currentBeeId += 1
         self.saveState("rows", rows)
         self.saveState("places", self.places);
-    
+
 
     def update_food(self):
         self.saveState("food", self.colony.food)
-
-
 
     def _update_control_panel(self, colony):
         """Reflect the game state in the play area."""
@@ -211,7 +189,19 @@ class GUI:
                     #Add this ant to our internal list of insects
                     self.insects.append(self.insectToId[place.ant])
                 #Ok there is an ant that needs to be drawn here
-                self.places[pRow][pCol]["insects"] = {"id": self.insectToId[place.ant],"type": place.ant.name, "img": self.get_insect_img_file(place.ant.name)}
+                self.places[pRow][pCol]["insects"] = {
+                        "id": self.insectToId[place.ant],
+                        "type": place.ant.name,
+                        "img": self.get_insect_img_file(place.ant.name)
+                        }
+                # Check if it's a container ant
+                if hasattr(place.ant, "is_container"):
+                    self.places[pRow][pCol]["insects"]["container"] = place.ant.is_container
+                    if place.ant.is_container and place.ant.contained_ant:
+                        self.places[pRow][pCol]["insects"]["contains"] = {
+                                "type": place.ant.contained_ant.name,
+                                "img": self.get_insect_img_file(place.ant.contained_ant.name)
+                                }
             else:
                 self.places[pRow][pCol]["insects"] = {}
             #Loop through our bees
@@ -255,7 +245,7 @@ class HttpHandler(http.server.SimpleHTTPRequestHandler):
         #I hate this console output so simply do nothing.
         return
     def cgiFieldStorageToDict(self, fieldStorage):
-        """ Get a plain dictionary rather than the '.value' system used by the 
+        """ Get a plain dictionary rather than the '.value' system used by the
            cgi module's native fieldStorage class. """
         params = {}
         for key in fieldStorage.keys():
@@ -269,7 +259,7 @@ class HttpHandler(http.server.SimpleHTTPRequestHandler):
                 '/ajax/start/game': gui.startGame,
                 '/ajax/exit': gui.exit,
                 '/ajax/deploy/ant': gui.deployAnt,
-                }.get(path) 
+                }.get(path)
         if not action:
             #We could not find a valid route
             return
@@ -288,22 +278,14 @@ class HttpHandler(http.server.SimpleHTTPRequestHandler):
             response = json.dumps(response)
             self.wfile.write(response.encode('ascii'))
 
-def dead_insects(self, rv, *args):
-    if self.armor <= 0 and self:
-        print('{0} ran out of armor and expired'.format(self))
-        if self in gui.insectToId:
-            gui.deadinsects.append(gui.insectToId[self])
-            gui.saveState("deadinsects", gui.deadinsects)
-        elif self in gui.beeToId:
-            gui.deadbees.append(gui.beeToId[self])
-            gui.saveState("deadbees", gui.deadbees)
-def removed_ant(self, rv, *args):
-    r = gui.get_place_row(args[0])
-    c = gui.get_place_column(args[0])
-    if c in gui.places[r]:
-        if "id" in gui.places[r][c]["insects"]:
-            gui.deadinsects.append(gui.places[r][c]["insects"]["id"])
-            gui.saveState("deadinsects", gui.deadinsects)
+def dead_insect(ant):
+    print('{0} ran out of armor and expired'.format(ant))
+    if ant in gui.insectToId:
+        gui.deadinsects.append(gui.insectToId[ant])
+        gui.saveState("deadinsects", gui.deadinsects)
+    elif ant in gui.beeToId:
+        gui.deadbees.append(gui.beeToId[ant])
+        gui.saveState("deadbees", gui.deadbees)
 
 def update():
     request = urllib.request.Request("https://api.github.com/repos/colinschoen/Ants-Web-Viewer/releases/latest")
@@ -325,7 +307,6 @@ def update():
 
 def get_update(url, version):
     request = urllib.request.Request(url)
-    data = None
     print("Downloading new version...")
     try:
         response = urllib.request.urlopen(request)
@@ -375,14 +356,22 @@ def run(*args):
     #Start webserver
     import socketserver
     import webbrowser
+    import sys
     PORT = 8000
     global gui
     gui = GUI()
-    gui.makeHooks()
     gui.args = args
     #Basic HTTP Handler
     #Handler = http.server.SimpleHTTPRequestHandler
-    httpd = CustomThreadingTCPServer(("", PORT), HttpHandler)
+    for PORT in range(8000, 8100):
+        try:
+            httpd = CustomThreadingTCPServer(("", PORT), HttpHandler)
+            break
+        except:
+            pass
+    else:
+        print("Could not start webserver: all ports in range 8000-8099 are taken")
+        sys.exit(1)
     print("Web Server started @ localhost:" + str(PORT))
     def start_http():
         while gui.active:
@@ -394,4 +383,3 @@ def run(*args):
     except Exception:
         print("Unable to automatically open web browser.")
         print("Point your browser to http://localhost:" + str(PORT) + '/gui.html')
-

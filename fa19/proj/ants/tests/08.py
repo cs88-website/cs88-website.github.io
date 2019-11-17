@@ -5,86 +5,74 @@ test = {
     {
       'cases': [
         {
-          'code': r"""
-          >>> # Testing TankAnt parameters
-          >>> TankAnt.food_cost
-          50ae32be3e31df6c59633df7fdfb3a72
-          # locked
-          >>> TankAnt.damage
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
-          >>> TankAnt.container
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
-          >>> tank = TankAnt()
-          >>> tank.armor
-          20d533d3e06345c8bd7072212867f2d1
-          # locked
-          """,
+          'answer': '64cb170acd2b167609e6df7dd048fd96',
+          'choices': [
+            'Ant',
+            'ThrowerAnt',
+            'NinjaAnt',
+            'The WallAnt class does not inherit from any class'
+          ],
           'hidden': False,
-          'locked': True
+          'locked': True,
+          'question': 'What class does WallAnt inherit from?'
         },
         {
-          'code': r"""
-          >>> # Testing TankAnt action
-          >>> tank = TankAnt()
-          >>> place = colony.places['tunnel_0_1']
-          >>> place.add_insect(tank)
-          >>> for _ in range(3):
-          ...     place.add_insect(Bee(3))
-          >>> tank.action(colony)
-          >>> [bee.armor for bee in place.bees]
-          1e9fbe7eba1518501fb016aa5a4a1650
-          # locked
-          """,
+          'answer': '342b4efa1ef6de0defc39dc4fbf1ebf1',
+          'choices': [
+            'A WallAnt takes no action each turn',
+            'A WallAnt increases its own armor by 1 each turn',
+            'A WallAnt reduces its own armor by 1 each turn',
+            'A WallAnt attacks all the Bees in its place each turn'
+          ],
           'hidden': False,
-          'locked': True
+          'locked': True,
+          'question': "What is a WallAnt's action?"
         },
         {
-          'code': r"""
-          >>> # Testing TankAnt container methods
-          >>> tank = TankAnt()
-          >>> thrower = ThrowerAnt()
-          >>> place = colony.places['tunnel_0_1']
-          >>> place.add_insect(thrower)
-          >>> place.add_insect(tank)
-          >>> place.ant is tank
-          c7a88a0ffd3aef026b98eef6e7557da3
-          # locked
-          >>> bee = Bee(3)
-          >>> place.add_insect(bee)
-          >>> tank.action(colony)   # Both ants attack bee
-          >>> bee.armor
-          d89cf7c79d5a479b0f636734143ed5e6
-          # locked
-          """,
+          'answer': '50be1539e31a90ea01dbc6bf87f83b9f',
+          'choices': [
+            'Ant subclasses inherit the action method from the Insect class',
+            'Ant subclasses inherit the action method from the Ant class',
+            'Ant subclasses do not inherit the action method from any class'
+          ],
           'hidden': False,
-          'locked': True
+          'locked': True,
+          'question': 'Where do Ant subclasses inherit the action method from?'
+        },
+        {
+          'answer': 'c3962b43bab9946b4984107f5e53e9e7',
+          'choices': [
+            'Nothing',
+            'Throw a leaf at the nearest Bee',
+            'Move to the next place',
+            'Reduce the armor of all Bees in its place'
+          ],
+          'hidden': False,
+          'locked': True,
+          'question': r"""
+          If a subclass of Ant does not override the action method, what is the
+          default action?
+          """
         }
       ],
-      'scored': True,
-      'setup': r"""
-      >>> from ants import *
-      >>> hive, layout = Hive(make_test_assault_plan()), dry_layout
-      >>> dimensions = (1, 9)
-      >>> colony = AntColony(None, hive, ant_types(), layout, dimensions)
-      """,
-      'teardown': '',
-      'type': 'doctest'
+      'scored': False,
+      'type': 'concept'
     },
     {
       'cases': [
         {
           'code': r"""
-          >>> # Testing TankAnt action
-          >>> tank = TankAnt()
-          >>> place = colony.places['tunnel_0_1']
-          >>> place.add_insect(tank)
-          >>> for _ in range(3):
-          ...     place.add_insect(Bee(1))
-          >>> tank.action(colony)
-          >>> len(place.bees)
-          73b94a1326ae2e803c3421016112207b
+          >>> # Testing WallAnt parameters
+          >>> wall = WallAnt()
+          >>> wall.armor
+          c9452203eb0b0f0bd2454586a6c2fc5c
+          # locked
+          >>> # `armor` should not be a class attribute
+          >>> not hasattr(WallAnt, 'armor')
+          c7a88a0ffd3aef026b98eef6e7557da3
+          # locked
+          >>> WallAnt.food_cost
+          c9452203eb0b0f0bd2454586a6c2fc5c
           # locked
           """,
           'hidden': False,
@@ -92,81 +80,25 @@ test = {
         },
         {
           'code': r"""
-          >>> # Placement of ants
-          >>> tank0 = TankAnt()
-          >>> tank1 = TankAnt()
-          >>> harvester0 = HarvesterAnt()
-          >>> harvester1 = HarvesterAnt()
-          >>> place0 = colony.places['tunnel_0_0']
-          >>> place1 = colony.places['tunnel_0_1']
-          >>> # Add tank before harvester
-          >>> place0.add_insect(tank0)
-          >>> place0.add_insect(harvester0)
-          >>> colony.food = 0
-          >>> tank0.action(colony)
-          >>> colony.food
+          >>> # Testing WallAnt holds strong
+          >>> beehive, layout = Hive(AssaultPlan()), dry_layout
+          >>> colony = AntColony(None, beehive, ant_types(), layout, (1, 9))
+          >>> place = colony.places['tunnel_0_4']
+          >>> wall = WallAnt()
+          >>> bee = Bee(1000)
+          >>> place.add_insect(wall)
+          >>> place.add_insect(bee)
+          >>> for i in range(3):
+          ...     bee.action(colony)
+          ...     wall.action(colony)   # WallAnt does nothing
+          >>> wall.armor
           1
-          >>> for ant in [TankAnt(), HarvesterAnt()]:
-          ...     try:
-          ...         place0.add_insect(ant)
-          ...     except AssertionError:
-          ...         assert place0.ant is tank0,\
-          ...                 'Tank was kicked out by {0}'.format(ant)
-          ...         assert tank0.ant is harvester0,\
-          ...                 'Contained ant was kicked out by {0}'.format(ant)
-          ...         continue
-          ...     assert False, 'No AssertionError raised when adding {0}'.format(ant)
-          >>> # Add harvester before tank
-          >>> place1.add_insect(harvester1)
-          >>> place1.add_insect(tank1)
-          >>> tank1.action(colony)
-          >>> colony.food
-          2
-          >>> for ant in [TankAnt(), HarvesterAnt()]:
-          ...     try:
-          ...         place1.add_insect(ant)
-          ...     except AssertionError:
-          ...         assert place1.ant is tank1,\
-          ...                 'Tank was kicked out by {0}'.format(ant)
-          ...         assert tank1.ant is harvester1,\
-          ...                 'Contained ant was kicked out by {0}'.format(ant)
-          ...         continue
-          ...     assert False, 'No AssertionError raised when adding {0}'.format(ant)
-          >>> tank0.reduce_armor(tank0.armor)
-          >>> place0.ant is harvester0
+          >>> bee.armor
+          1000
+          >>> wall.place is place
           True
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> # Removing ants
-          >>> tank = TankAnt()
-          >>> test_ant = Ant()
-          >>> place = Place('Test')
-          >>> place.add_insect(tank)
-          >>> place.add_insect(test_ant)
-          >>> place.remove_insect(test_ant)
-          >>> tank.ant is None
+          >>> bee.place is place
           True
-          >>> test_ant.place is None
-          True
-          >>> place.remove_insect(tank)
-          >>> place.ant is None
-          True
-          >>> tank.place is None
-          True
-          """,
-          'hidden': False,
-          'locked': False
-        },
-        {
-          'code': r"""
-          >>> tank = TankAnt()
-          >>> place = Place('Test')
-          >>> place.add_insect(tank)
-          >>> tank.action(colony) # Action without contained ant should not error
           """,
           'hidden': False,
           'locked': False
@@ -175,9 +107,6 @@ test = {
       'scored': True,
       'setup': r"""
       >>> from ants import *
-      >>> hive, layout = Hive(make_test_assault_plan()), dry_layout
-      >>> dimensions = (1, 9)
-      >>> colony = AntColony(None, hive, ant_types(), layout, dimensions)
       """,
       'teardown': '',
       'type': 'doctest'

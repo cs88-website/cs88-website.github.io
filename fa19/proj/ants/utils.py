@@ -59,9 +59,9 @@ def print_thrower_target(self, rv, *args):
     """Prints the target of a ThrowerAnt, if the ThrowerAnt found a target.
 
     >>> from ants import *
-    >>> hive = Hive(AssaultPlan())
+    >>> beehive = Hive(AssaultPlan())
     >>> dimensions = (1, 9)
-    >>> colony = AntColony(None, hive, ant_types(), dry_layout, dimensions)
+    >>> colony = AntColony(None, beehive, ant_types(), dry_layout, dimensions)
     >>> ThrowerAnt.nearest_bee = class_method_wrapper(ThrowerAnt.nearest_bee,
     ...         post=print_thrower_target)
     >>> thrower = ThrowerAnt()

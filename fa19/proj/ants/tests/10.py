@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': 'A TankAnt does damage to all Bees in its place each turn',
+          'answer': 'df9239b5516819d074706715cb1822fe',
           'choices': [
             'A TankAnt does damage to all Bees in its place each turn',
             'A TankAnt has greater armor than a BodyguardAnt',
@@ -13,6 +13,7 @@ test = {
             'A TankAnt increases the damage of the ant it contains'
           ],
           'hidden': False,
+          'locked': True,
           'question': r"""
           Besides costing more to deploy, what is the only difference between a
           TankAnt and a BodyguardAnt?
@@ -28,16 +29,21 @@ test = {
           'code': r"""
           >>> # Testing TankAnt parameters
           >>> TankAnt.food_cost
-          6
+          50ae32be3e31df6c59633df7fdfb3a72
+          # locked
           >>> TankAnt.damage
-          1
+          d89cf7c79d5a479b0f636734143ed5e6
+          # locked
           >>> TankAnt.is_container
-          True
+          c7a88a0ffd3aef026b98eef6e7557da3
+          # locked
           >>> tank = TankAnt()
           >>> tank.armor
-          2
+          20d533d3e06345c8bd7072212867f2d1
+          # locked
           """,
-          'hidden': False
+          'hidden': False,
+          'locked': True
         },
         {
           'code': r"""
@@ -121,7 +127,7 @@ test = {
           """,
           'hidden': False,
           'locked': False
-          },
+        },
         {
           'code': r"""
           >>> # Placement of ants

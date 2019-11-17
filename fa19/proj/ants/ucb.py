@@ -1,5 +1,7 @@
 """The UCB module contains functions specific to 61A projects at UC Berkeley."""
 
+from __future__ import print_function
+
 import code
 import functools
 import inspect
@@ -55,8 +57,7 @@ def trace(fn):
 
 def log(message):
     """Print an indented message (used with trace)."""
-    message = str(message)
-    print(_PREFIX + re.sub('\n', '\n' + _PREFIX, message))
+    print(_PREFIX + re.sub('\n', '\n' + _PREFIX, str(message)))
 
 
 def log_current_line():

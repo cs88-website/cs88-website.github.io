@@ -5,10 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': r"""
-          If the insect is not watersafe, its armor is reduced to 0. Otherwise,
-          nothing happens.
-          """,
+          'answer': '9bc4c1f8c64f8980fa7a81c950465b76',
           'choices': [
             r"""
             If the insect is not watersafe, its armor is reduced to 0.
@@ -19,10 +16,11 @@ test = {
             'The insect goes for a swim.'
           ],
           'hidden': False,
+          'locked': True,
           'question': 'What happens when an insect is added to a Water Place?'
         },
         {
-          'answer': 'class, all ants of a subclass should either be watersafe or not',
+          'answer': '2e6b10035e4097a1b15121e4b5b75e12',
           'choices': [
             'class, all ants of a subclass should either be watersafe or not',
             'class, all ants should be watersafe',
@@ -30,10 +28,11 @@ test = {
             'instance, the is_watersafe attribute depends on the given place of an ant'
           ],
           'hidden': False,
+          'locked': True,
           'question': 'What type of attribute should "is_watersafe" be?'
         },
         {
-          'answer': 'reduce_armor, in the Insect class',
+          'answer': '127cd87858e6c0a9f29f199fb2e2be0a',
           'choices': [
             'reduce_armor, in the Insect class',
             'remove_insect, in the Place class',
@@ -41,6 +40,7 @@ test = {
             'remove_ant, in the AntColony class'
           ],
           'hidden': False,
+          'locked': True,
           'question': r"""
           What method deals damage to an Insect and removes it from its place
           if its armor reaches 0?
@@ -138,7 +138,7 @@ test = {
           >>> # Testing water inheritance
           >>> def new_add_insect(self, insect):
           ...     raise NotImplementedError()
-
+          
           >>> Place.add_insect = new_add_insect
           >>> test_bee = Bee(1)
           >>> test_water = Water('Water Test4')

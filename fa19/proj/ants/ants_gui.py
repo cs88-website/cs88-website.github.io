@@ -15,7 +15,7 @@ The GUI layout itself is divided into a control panel that lists all
 implemented ants and a play area populated with places.
 
 The Hive is handled as a special case so that the player can visually inspect
-how many bees remain in the hive.
+how many bees remain in the beehive.
 """
 
 import ants
@@ -37,8 +37,9 @@ INSECT_FILES = {'Worker': 'img/ant_harvester.gif',
                 'Bodyguard': 'img/ant_weeds.gif',
                 'Hungry': 'img/ant_hungry.gif',
                 'Slow': 'img/ant_freeze.gif',
-                'Stun': 'img/ant_stun.gif',
+                'Scary': 'img/ant_scary.gif',
                 'Ninja': 'img/ant_ninja.gif',
+                'Laser': 'img/ant_laser.gif',
                 'Wall': 'img/ant_wall.gif',
                 'Scuba': 'img/ant_scuba.gif',
                 'Queen': 'img/ant_queen.gif',
@@ -69,7 +70,7 @@ LEAF_COLORS = {'Thrower': 'ForestGreen',
                'Short': 'Green',
                'Long': 'DarkGreen',
                'Slow': 'LightBlue',
-               'Stun': 'Red',
+               'Scary': 'Red',
                'Scuba': 'Blue',
                'Queen': 'Purple',
                'Laser': 'Blue'}
@@ -158,12 +159,12 @@ class AntsGUI:
             place_pos = shift_point(place_pos, (width + PLACE_MARGIN, 0))
 
         # Hive
-        self.images[colony.hive.name] = dict()
-        self.place_points[colony.hive.name] = (place_pos[0] + width,
+        self.images[colony.beehive.name] = dict()
+        self.place_points[colony.beehive.name] = (place_pos[0] + width,
                                                HIVE_HEIGHT)
         self.laser_end = (BEE_IMAGE_WIDTH + 2 * PLACE_PADDING[0]) * len(colony.places)
-        for bee in colony.hive.bees:
-            self._draw_insect(bee, colony.hive.name, True)
+        for bee in colony.beehive.bees:
+            self._draw_insect(bee, colony.beehive.name, True)
 
     def add_click_rect(self, pos, width, height, on_click, color='White'):
         """Construct a rectangle that can be clicked."""
@@ -229,10 +230,10 @@ class AntsGUI:
 
             # Add/move missing insects
             if place.ant is not None:
-                if hasattr(place.ant, 'container') and place.ant.container \
-                    and place.ant.ant and place.ant.ant not in current:
+                if hasattr(place.ant, 'is_container') and place.ant.is_container \
+                    and place.ant.contained_ant and place.ant.contained_ant not in current:
                     container = self.images[name][place.ant]
-                    self._draw_insect(place.ant.ant, name, behind=container)
+                    self._draw_insect(place.ant.contained_ant, name, behind=container)
                 if place.ant not in current:
                     self._draw_insect(place.ant, name)
             for bee in place.bees:
@@ -247,9 +248,9 @@ class AntsGUI:
 
             # Remove expired insects
             valid_insects = set(place.bees + [place.ant])
-            if place.ant is not None and hasattr(place.ant, 'container') and \
-                place.ant.container:
-                valid_insects.add(place.ant.ant)
+            if place.ant is not None and hasattr(place.ant, 'is_container') and \
+                place.ant.is_container:
+                valid_insects.add(place.ant.contained_ant)
             for insect in current - valid_insects:
                 if not place.exit or insect not in self.images[place.exit.name]:
                     image = self.images[name].pop(insect)
@@ -267,7 +268,7 @@ class AntsGUI:
 
     def _throw(self, ant, colony):
         """Animate a leaf thrown at a Bee."""
-        bee = ant.nearest_bee(colony.hive)  # nearest_bee logic from ants.py
+        bee = ant.nearest_bee(colony.beehive)  # nearest_bee logic from ants.py
         if bee:
             start = shift_point(self.place_points[ant.place.name], LEAF_START_OFFSET)
             end = shift_point(self.place_points[bee.place.name], LEAF_END_OFFSET)

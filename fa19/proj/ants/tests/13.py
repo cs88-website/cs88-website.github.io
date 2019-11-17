@@ -5,7 +5,7 @@ test = {
     {
       'cases': [
         {
-          'answer': 'ScubaThrower',
+          'answer': '80f6dfebbb21c78163b8aa9dc8abbe28',
           'choices': [
             'ScubaThrower',
             'Ant',
@@ -13,10 +13,11 @@ test = {
             'AntColony'
           ],
           'hidden': False,
+          'locked': True,
           'question': 'What class does QueenAnt inherit from?'
         },
         {
-          'answer': 'The first QueenAnt that is instantiated',
+          'answer': 'ec203a8bd48f4369ee6fc9a03ffdbfcc',
           'choices': [
             'The first QueenAnt that is instantiated',
             'The second QueenAnt that is instantiated',
@@ -24,10 +25,11 @@ test = {
             'All QueenAnt instances are true QueenAnts'
           ],
           'hidden': False,
+          'locked': True,
           'question': 'Which QueenAnt instance is the true QueenAnt?'
         },
         {
-          'answer': 'Its armor is reduced to 0 upon taking its first action',
+          'answer': '5b60299a3505c6a816e3f5d6d44fa408',
           'choices': [
             'Its armor is reduced to 0 upon taking its first action',
             'Nothing, the game ends',
@@ -35,16 +37,14 @@ test = {
             'It doubles the damage of all the ants behind it'
           ],
           'hidden': False,
+          'locked': True,
           'question': r"""
           What happens to any QueenAnt instance that is instantiated after the
           first one?
           """
         },
         {
-          'answer': r"""
-          Attacks the nearest bee and doubles the damage of all the ants behind
-          her (that haven't already been doubled)
-          """,
+          'answer': '7f1e876193ad01466bb1f843c9a17b72',
           'choices': [
             r"""
             Attacks the nearest bee and doubles the damage of all the ants
@@ -64,10 +64,11 @@ test = {
             """
           ],
           'hidden': False,
+          'locked': True,
           'question': 'What does the true QueenAnt do each turn?'
         },
         {
-          'answer': 'If a Bee reaches the end of a tunnel or the true QueenAnt dies',
+          'answer': 'a753f5e0cf5cd82c878a589f863e2e48',
           'choices': [
             'If a Bee reaches the end of a tunnel or the true QueenAnt dies',
             'If there are no ants left in the colony',
@@ -75,6 +76,7 @@ test = {
             'If a Bee attacks the true QueenAnt'
           ],
           'hidden': False,
+          'locked': True,
           'question': 'Under what circumstances do Bees win the game?'
         }
       ],
@@ -87,12 +89,15 @@ test = {
           'code': r"""
           >>> # Testing QueenAnt parameters
           >>> QueenAnt.food_cost
-          7
+          7cd035adf49fc93a635b4e8bb2e28bd4
+          # locked
           >>> queen = QueenAnt()
           >>> queen.armor
-          1
+          d89cf7c79d5a479b0f636734143ed5e6
+          # locked
           """,
-          'hidden': False
+          'hidden': False,
+          'locked': True
         }
       ],
       'scored': True,
@@ -237,7 +242,7 @@ test = {
           >>> bee = ants.Bee(3)
           >>> tunnel[6].add_insect(bee)     # Bee in place with impostor
           >>> bee.action(colony)            # Game should not end
-
+          
           >>> bee.move_to(tunnel[4])        # Bee moved to place with true queen
           >>> bee.action(colony)            # Game should end
           BeesWinException
@@ -272,13 +277,13 @@ test = {
           >>> colony.places['tunnel_0_1'].add_insect(queen)
           >>> colony.places['tunnel_0_2'].add_insect(impostor)
           >>> colony.places['tunnel_0_4'].add_insect(bee)
-
+          
           >>> impostor.action(colony)
           >>> bee.armor   # Impostor should not damage bee
           10
           >>> ant.damage  # Impostor should not double damage
           1
-
+          
           >>> queen.action(colony)
           >>> bee.armor   # Queen should damage bee
           9
@@ -287,7 +292,7 @@ test = {
           >>> ant.action(colony)
           >>> bee.armor   # If failed, ThrowerAnt has incorrect damage
           7
-
+          
           >>> queen.armor   # Long live the Queen
           1
           >>> impostor.armor  # Short-lived impostor
