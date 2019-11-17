@@ -75,83 +75,47 @@
 <h2 id="more-practice-with-trees">More Practice with Trees!</h2>
 
 
-<h3 class="question" id="q1">Question 1: Cumulative Sum</h3>
+<h3 class="question" id="q1">Question 1: Leaves</h3>
 
-<p>Write a function <code>cumulative_sum</code> that returns a new <code>Tree</code>, where each entry is the sum of all entries in the corresponding subtree of the old <code>Tree</code>.</p>
+<p>Write a function <code>leaves</code> that returns a list of all the entries of the leaf
+nodes of a <code>Tree</code>.</p>
 
 <solution>
 
-<pre><code>def cumulative_sum(t):
-    &quot;&quot;&quot;Return a new Tree, where each entry is the sum of all entries in the
-    corresponding subtree of t.
+<pre><code>def leaves(t):
+    &quot;&quot;&quot;Returns a list of all the entries of the leaf nodes of the Tree t.
+
+    &gt;&gt;&gt; leaves(Tree(1))
+    [1]
+    &gt;&gt;&gt; leaves(Tree(1, [Tree(2, [Tree(3)]), Tree(4)]))
+    [3, 4]
+    &quot;&quot;&quot;
+    "*** YOUR CODE HERE ***"</code></pre>
+
+</solution>
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q leaves</code></pre>
+
+<h3 class="question" id="q2">Question 2: Square Tree</h3>
+
+<p>Write a function <code>square_tree</code> that mutates a <code>Tree</code> with numerical entries so
+that each entry is squared.</p>
+
+<solution>
+
+<pre><code>def square_tree(t):
+    &quot;&quot;&quot;Mutates a Tree t by squaring all its elements.
 
     &gt;&gt;&gt; t = Tree(1, [Tree(3, [Tree(5)]), Tree(7)])
-    &gt;&gt;&gt; cumulative = cumulative_sum(t)
+    &gt;&gt;&gt; square_tree(t)
     &gt;&gt;&gt; t
-    Tree(1, [Tree(3, [Tree(5)]), Tree(7)])
-    &gt;&gt;&gt; cumulative
-    Tree(16, [Tree(8, [Tree(5)]), Tree(7)])
-    &gt;&gt;&gt; cumulative_sum(Tree(1))
-    Tree(1)
+    Tree(1, [Tree(9, [Tree(25)]), Tree(49)])
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"</code></pre>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q cumulative_sum</code></pre>
-
-<h3 class="question" id="q2">Question 2: Add Leaves</h3>
-
-<p>Implement <code>add_d_leaves</code>, a function that takes in a <code>Tree</code> instance <code>t</code> and
-mutates it so that at each depth <code>d</code> in the tree, <code>d</code> leaves with labels <code>v</code>
-are added to each node at that depth. For example, we want to add 1 leaf with
-<code>v</code> in it to each node at depth 1, 2 leaves to each node at depth 2, and so on.</p>
-
-<p>Recall that the depth of a node is the number of edges from that node to the
-root, so the depth of the root is 0. The leaves should be added to the end of
-the list of branches.</p>
-
-<solution>
-
-<pre><code>def add_d_leaves(t, v):
-    &quot;&quot;&quot;Add d leaves containing v to each node at every depth d.
-
-    &gt;&gt;&gt; t1 = Tree(1, [Tree(3)])
-    &gt;&gt;&gt; add_d_leaves(t1, 4)
-    &gt;&gt;&gt; t1
-    Tree(1, [Tree(3, [Tree(4)])])
-    &gt;&gt;&gt; t2 = Tree(2, [Tree(5), Tree(6)])
-    &gt;&gt;&gt; t3 = Tree(3, [t1, Tree(0), t2])
-    &gt;&gt;&gt; add_d_leaves(t3, 10)
-    &gt;&gt;&gt; print(t3)
-    3
-      1
-        3
-          4
-            10
-            10
-            10
-          10
-          10
-        10
-      0
-        10
-      2
-        5
-          10
-          10
-        6
-          10
-          10
-        10
-    &quot;&quot;&quot;
-    "*** YOUR CODE HERE ***"</code></pre>
-
-</solution>
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q add_d_leaves</code></pre>
-
-</p>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q square-tree</code></pre>
 
 
 <h2 id="more-practice-with-linked-lists">More Practice with Linked Lists!</h2>
@@ -189,49 +153,31 @@ element within <code>link</code> or any <code>Link</code> instance contained in 
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q deep_map</code></pre>
 
-<h3 class="question" id="q4">Question 4: Every Other</h3>
+<h3 class="question" id="q4">Question 4: Reverse</h3>
 
-<p>Implement <code>every_other</code>, which takes a linked list <code>s</code>. It mutates <code>s</code> such
-that all of the odd-indexed elements (using 0-based indexing) are removed from
-the list. For example:</p>
-
-<pre><code>&gt;&gt;&gt; s = Link(&#x27;a&#x27;, Link(&#x27;b&#x27;, Link(&#x27;c&#x27;, Link(&#x27;d&#x27;))))
-&gt;&gt;&gt; every_other(s)
-&gt;&gt;&gt; s.first
-&#x27;a&#x27;
-&gt;&gt;&gt; s.rest.first
-&#x27;c&#x27;
-&gt;&gt;&gt; s.rest.rest is Link.empty
-True</code></pre>
-
-<p>If <code>s</code> contains fewer than two elements, <code>s</code> remains unchanged.</p>
-
-<blockquote><p>Do not return anything! <code>every_other</code> should mutate the original list.</p></blockquote>
+<p>Implement <code>reverse</code>, which takes a linked list <code>link</code> and returns a linked list
+containing the elements of <code>link</code> in reverse order. The original <code>link</code> should be
+unchanged.</p>
 
 <solution>
 
-<pre><code>def every_other(s):
-    &quot;&quot;&quot;Mutates a linked list so that all the odd&#x2d;indiced elements are removed
-    (using 0&#x2d;based indexing).
+<pre><code>def reverse(link):
+    &quot;&quot;&quot;Returns a Link that is the reverse of the original.
 
-    &gt;&gt;&gt; s = Link(1, Link(2, Link(3, Link(4))))
-    &gt;&gt;&gt; every_other(s)
-    &gt;&gt;&gt; s
-    Link(1, Link(3))
-    &gt;&gt;&gt; odd_length = Link(5, Link(3, Link(1)))
-    &gt;&gt;&gt; every_other(odd_length)
-    &gt;&gt;&gt; odd_length
-    Link(5, Link(1))
-    &gt;&gt;&gt; singleton = Link(4)
-    &gt;&gt;&gt; every_other(singleton)
-    &gt;&gt;&gt; singleton
-    Link(4)
+    &gt;&gt;&gt; print_link(reverse(Link(1)))
+    &lt;1&gt;
+    &gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; new = reverse(link)
+    &gt;&gt;&gt; print_link(new)
+    &lt;3 2 1&gt;
+    &gt;&gt;&gt; print_link(link)
+    &lt;1 2 3&gt;
     &quot;&quot;&quot;
     "*** YOUR CODE HERE ***"</code></pre>
 
 </solution>
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q every_other</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q reverse</code></pre>
 
 
   </div>
@@ -241,14 +187,14 @@ True</code></pre>
       <ul>
   <li><a href="#more-practice-with-trees">More Practice with Trees!</a></li>
   <ul>
-  <li><a href="#q1">Question 1: Cumulative Sum</a></li>
-  <li><a href="#q2">Question 2: Add Leaves</a></li>
+  <li><a href="#q1">Question 1: Leaves</a></li>
+  <li><a href="#q2">Question 2: Square Tree</a></li>
 </ul>
 
   <li><a href="#more-practice-with-linked-lists">More Practice with Linked Lists!</a></li>
   <ul>
   <li><a href="#q3">Question 3: Deep Map</a></li>
-  <li><a href="#q4">Question 4: Every Other</a></li>
+  <li><a href="#q4">Question 4: Reverse</a></li>
 </ul>
 
 </ul>

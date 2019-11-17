@@ -5,10 +5,10 @@
         "hw10.py"
     ],
     "tests": {
-        "hw10.py:cumulative_sum": "doctest",
-        "hw10.py:add_d_leaves": "doctest",
+        "hw10.py:leaves": "doctest",
+        "hw10.py:square_tree": "doctest",
         "hw10.py:deep_map": "doctest",
-        "hw10.py:every_other": "doctest"
+        "hw10.py:reverse": "doctest"
     },
     "protocols": [
         "restore",
