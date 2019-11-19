@@ -1,4 +1,4 @@
-from lab09 import Link
+from lab07 import Link
 from time import time
 from random import randint
 import argparse

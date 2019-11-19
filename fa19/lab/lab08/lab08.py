@@ -38,7 +38,7 @@ class Keyboard:
         "*** YOUR CODE HERE ***"
 
     def typing(self, typing_input):
-        """Takes in a list of positions of buttons pressed, and
+        """Takes in a list of buttons to be pressed, and
         returns the total output"""
         "*** YOUR CODE HERE ***"
 

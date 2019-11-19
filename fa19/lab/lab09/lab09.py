@@ -6,13 +6,6 @@ class Link:
     >>> s = Link(1, Link(2, Link(3)))
     >>> s
     Link(1, Link(2, Link(3)))
-    >>> len(s)
-    3
-    >>> s[2]
-    3
-    >>> s = Link.empty
-    >>> len(s)
-    0
     """
     empty = ()
 
@@ -27,32 +20,6 @@ class Link:
         else:
             rest_str = ''
         return 'Link({0}{1})'.format(repr(self.first), rest_str)
-
-    def __len__(self):
-        """ Return the number of items in the linked list.
-
-        >>> s = Link(1, Link(2, Link(3)))
-        >>> len(s)
-        3
-        >>> s = Link.empty
-        >>> len(s)
-        0
-        """
-        return 1 + len(self.rest)
-
-    def __getitem__(self, i):
-        """Returning the element found at index i.
-
-        >>> s = Link(1, Link(2, Link(3)))
-        >>> s[1]
-        2
-        >>> s[2]
-        3
-        """
-        if i == 0:
-            return self.first
-        else:
-            return self.rest[i-1]
 
 def print_link(link):
     """Print elements of a linked list link.
@@ -98,6 +65,17 @@ class Tree:
 
 
 # Q2
+def list_to_link(lst):
+    """Takes a Python list and returns a Link with the same elements.
+
+    >>> link = list_to_link([1, 2, 3])
+    >>> print_link(link)
+    <1 2 3>
+    """
+    "*** YOUR CODE HERE ***"
+
+
+# Q3
 def insert(link, value, index):
     """Insert a value into a Link at the given index.
 
@@ -116,7 +94,7 @@ def insert(link, value, index):
     "*** YOUR CODE HERE ***"
 
 
-# Q4
+# Q5
 def same_shape(t1, t2):
     """Returns whether two Trees t1, t2 have the same shape. Two trees have the
     same shape if they have the same number of branches and each of their
@@ -137,22 +115,11 @@ def same_shape(t1, t2):
     "*** YOUR CODE HERE ***"
 
 
-# Q5
-def list_to_link(lst):
-    """Takes a Python list and returns a Link with the same elements.
-
-    >>> link = list_to_link([1, 2, 3])
-    >>> print_link(link)
-    <1 2 3>
-    """
-    "*** YOUR CODE HERE ***"
-
-
 # Q6
 class Person:
     def __init__(self, name, ethnicity={}):
         self.name = name
-        assert type(ethnicity == dict)
+        assert type(ethnicity) == dict
         for i in ethnicity.values():
             assert type(i) == float
         self.ethnicity = ethnicity
@@ -165,7 +132,6 @@ class Family:
         # Leaf families have one parent and no children
         self.parents = parents
         self.children = children
-        self.computed = False
         if not self.is_leaf():
             for p in parents:
                 assert isinstance(p, Person)
@@ -175,7 +141,7 @@ class Family:
 
     def __repr__(self):
         if self.is_leaf():
-            return self.parents.name
+            return self.parents[0].name
         else:
             children_str = ', ' + repr(self.children)
         return 'Parents:{} Children:{})'.format([i.name for i in self.parents], children_str)

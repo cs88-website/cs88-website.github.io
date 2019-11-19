@@ -1,0 +1,20 @@
+{
+    "name": "Lab 2",
+    "endpoint": "cal/cs88/fa19/lab02",
+    "src": [
+        "lab02.py"
+    ],
+    "tests": {
+        "lab02.py:a_or_c": "doctest",
+        "lab02.py:abs_value_equal": "doctest",
+        "lab02.py:mirror": "doctest",
+        "lab02.py:min": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "backup"
+    ]
+}
