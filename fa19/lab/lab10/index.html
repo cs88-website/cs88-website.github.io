@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="/fa19/assets/css/lab.css" />
 
 
-    <title>Lab 10: Exceptions, Classes, and Inheritance | CS 88 Fall 2019</title>
+    <title>Lab 10: Classes, Inheritance, and Debugging | CS 88 Fall 2019</title>
 
   </head>
 
@@ -50,7 +50,7 @@
       <div class='row'>
   <div class='col-md-9'>
     <div class='page-header'>
-      <h1><span class="content-title-brand">Lab 10</span>: Exceptions, Classes, and Inheritance</h1>
+      <h1><span class="content-title-brand">Lab 10</span>: Classes, Inheritance, and Debugging</h1>
     </div>
 
     <p><i>Due at 11:59:59 pm on Thursday, 11/26/2019.</i></p>
@@ -74,68 +74,83 @@ Inside the archive, you will find starter files for the questions in this lab,
     
 
 
-<h2 id="introduction-to-exceptions">Introduction to Exceptions</h2>
+<h2 id="inheritance">Inheritance</h2>
 
 
-<p>Exceptions allow us to try a chunk of code, and then catch any errors
-that might come up. If we do catch an exception, we can run an
-alternative set of instructions. This construct is very useful in many
-situations.</p>
+<p>Let's implement a game called Election. In this game, two players compete to try
+and earn the most votes. Both players start with 0 votes and 100 popularity.</p>
 
-<pre><code>try:
-    &lt;try suite&gt;
-except Exception as e:
-    &lt;except suite&gt;
-else:
-    &lt;else suite&gt;
-finally:
-    &lt;finally suite&gt;</code></pre>
+<p>The two players alternate turns, and the first player starts. Each turn, the
+current player chooses an action. There are two types of actions:</p>
 
-<p>Notice that we can catch the exception as <code>e</code>. This binds the name <code>e</code> to
-the exception object.  This can be helpful when we want to give extra
-information on what happened. For example, we can <code>print(e)</code> inside the
-except clause.</p>
+<ul>
+  <li>The player can debate, and either gain or lose 50 popularity. If the player
+  has popularity <code>p1</code> and the other player has popularity <code>p2</code>, then the
+  probability that the player gains 50 popularity is <code>max(0.1, p1 / (p1 + p2))</code>
+  Note that the <code>max</code> causes the probability to never be lower than 0.1.</li>
+  <li>The player can give a speech. If the player has popularity <code>p1</code> and the other
+  player has popularity <code>p2</code>, then the player gains <code>p1 // 10</code> votes and
+  popularity and the other player loses <code>p2 // 10</code> popularity.</li>
+</ul>
 
-<p>Also, we have an optional else case. The else suite is executed if the
-<code>try</code> suite finishes without any exceptions.</p>
+<p>The game ends when a player reaches 50 votes, or after a total of 10 turns have
+been played (each player has taken 5 turns). Whoever has more votes at the end
+of the game is the winner!</p>
 
-<p>We also have an optional finally clause, which is always executed,
-whether or not an exception is thrown. We generally don't need to use
-the else and finally controls in this class.</p>
+<h3 class="question" id="q1">Question 1: Player</h3>
 
-<p>When we write exception statements, we generally don't just use the
-class Exception as above. Rather, we figure out the specific type of
-exception that we want to handle, such as <code>TypeError</code> or
-<code>ZeroDivisionError</code>. To figure out which type of exception you are trying
-to handle, you can type purposely wrong things into the interpreter
-(such as 'hi' + 5 or 1 / 0) and see what kind of exception Python spits
-out.</p>
+<p>First, let's implement the <code>Player</code> class. Fill in the <code>debate</code> and <code>speech</code>
+methods, that take in another <code>Player</code> <code>other</code>, and implement the correct
+behavior as detailed above. Here are two additional things to keep in mind:</p>
 
-<h3 class="question" id="q1">Question 1: No KeyErrors Allowed</h3>
-
-<p>If we try to look up a key that does not exist in a dictionary, then
-Python will raise a <code>KeyError</code>. Write the function <code>avoid_keyerror</code> which 
-returns the value mapped to <code>key</code> in the <code>dictionary</code>. If <code>key</code> does
-not exist, print 'Avoid Exception' and map <code>key</code> to the string 'no value'.</p>
+<ul>
+  <li>In the <code>debate</code> method, you should call the provided <code>random</code> function, which
+  returns a random float between 0 and 1. The player should gain 50 popularity if
+  the random number is smaller than the probability described above, and lose 50
+  popularity otherwise.</li>
+  <li>Neither players' votes or popularity should ever become negative. If this
+  happens, set it equal to 0 instead.</li>
+</ul>
 
 
 
-<pre><code>def avoid_keyerror(dictionary, key):
-    &quot;&quot;&quot; Returns the value associated with key in dictionary. If key 
-    does not exist in the dictionary, print out &#x27;Avoid Exception&#x27; and
-    map it to the string &#x27;no value&#x27;.
-
-    &gt;&gt;&gt; d = {1: &#x27;one&#x27;, 3: &#x27;three&#x27;, 5: &#x27;five&#x27;}
-    &gt;&gt;&gt; avoid_keyerror(d, 3)
-    &#x27;three&#x27;
-    &gt;&gt;&gt; avoid_keyerror(d, 4)
-    Avoid Exception
-    &gt;&gt;&gt; d[4]
-    &#x27;no value&#x27;
+<pre><code>### Phase 1: The Player Class
+class Player:
     &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
-    
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x41;&#x76;&#x6f;&#x69;&#x64;&#x20;&#x45;&#x78;&#x63;&#x65;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x22;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x27;&#x6e;&#x6f;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x27;</div></code></pre>
+    &gt;&gt;&gt; random = make_test_random()
+    &gt;&gt;&gt; p1 = Player(&#x27;Hill&#x27;)
+    &gt;&gt;&gt; p2 = Player(&#x27;Don&#x27;)
+    &gt;&gt;&gt; p1.popularity
+    100
+    &gt;&gt;&gt; p1.debate(p2)  # random() should return 0.0
+    &gt;&gt;&gt; p1.popularity
+    150
+    &gt;&gt;&gt; p2.popularity
+    100
+    &gt;&gt;&gt; p2.votes
+    0
+    &gt;&gt;&gt; p2.speech(p1)
+    &gt;&gt;&gt; p2.votes
+    10
+    &gt;&gt;&gt; p2.popularity
+    110
+    &gt;&gt;&gt; p1.popularity
+    135
+
+<div class="solution 1">&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x23;&#x20;&#x41;&#x64;&#x64;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x6c;&#x20;&#x63;&#x6f;&#x72;&#x72;&#x65;&#x63;&#x74;&#x6e;&#x65;&#x73;&#x73;&#x20;&#x74;&#x65;&#x73;&#x74;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x31;&#x2e;&#x73;&#x70;&#x65;&#x65;&#x63;&#x68;&#x28;&#x70;&#x32;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x31;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x31;&#x33;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x31;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x31;&#x34;&#x38;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x32;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x31;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x32;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x39;&#x39;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x5f;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x34;&#x29;&#x3a;&#x20;&#x20;&#x23;&#x20;&#x30;&#x2e;&#x31;&#x2c;&#x20;&#x30;&#x2e;&#x32;&#x2c;&#x20;&#x30;&#x2e;&#x33;&#x2c;&#x20;&#x30;&#x2e;&#x34;&#xa;&#x20;&#x20;&#x20;&#x20;&#x2e;&#x2e;&#x2e;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x31;&#x2e;&#x64;&#x65;&#x62;&#x61;&#x74;&#x65;&#x28;&#x70;&#x32;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x32;&#x2e;&#x64;&#x65;&#x62;&#x61;&#x74;&#x65;&#x28;&#x70;&#x31;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x32;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x34;&#x39;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x32;&#x2e;&#x64;&#x65;&#x62;&#x61;&#x74;&#x65;&#x28;&#x70;&#x31;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x32;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x30;&#xa;</div>    &quot;&quot;&quot;
+    def __init__(self, name):
+        self.name = name
+        self.votes = 0
+        self.popularity = 100
+
+    def debate(self, other):
+<div class="alt 1">        "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x6f;&#x62;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x30;&#x2e;&#x31;&#x2c;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2f;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2b;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x29;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x72;&#x61;&#x6e;&#x64;&#x6f;&#x6d;&#x28;&#x29;&#x20;&#x3c;&#x20;&#x70;&#x72;&#x6f;&#x62;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2b;&#x3d;&#x20;&#x35;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x30;&#x2c;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2d;&#x20;&#x35;&#x30;&#x29;</div>
+    def speech(self, other):
+<div class="alt 1">        "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#x20;&#x2b;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2f;&#x2f;&#x20;&#x31;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2b;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2f;&#x2f;&#x20;&#x31;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2d;&#x3d;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2f;&#x2f;&#x20;&#x31;&#x30;</div>
+    def choose(self, other):
+        return self.speech</code></pre>
 
 
     <button id='1' class='toggleButton'>
@@ -143,41 +158,49 @@ not exist, print 'Avoid Exception' and map <code>key</code> to the string 'no va
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q avoid_keyerror</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Player</code></pre>
 
-<h3 class="question" id="q2">Question 2: Safe use of higher order functions</h3>
+<h3 class="question" id="q2">Question 2: Game</h3>
 
-<p>When writing higher order functions that take functions as arguments, there
-is always the possibility that the function that is passed in may have an
-error that results in an exception.  In this problem we will use exception
-handling to deal with that.  The function <code>safe_sum</code> is passed a function
-and a sequence; it is to return the sum of the results of applyng the function
-to the elements in the sequence.  However, for elements in the sequence where
-the function throws an exception, the <code>missing</code> value is added into the 
-partial sum.</p>
+<p>Now, implement the <code>Game</code> class. Fill in the <code>play</code> method, which should
+alternate between the two players, starting with <code>p1</code>, and have each player take
+one turn at a time. The <code>choose</code> method in the <code>Player</code> class returns the
+method, either <code>debate</code> or <code>speech</code>, that should be called to perform the
+action.</p>
 
-<p>We have started the solution by writing a wrapper function that is used to
-catch the exception. Complete it.</p>
+<p>In addition, fill in the <code>winner</code> property method, which should return the
+player with more votes, or <code>None</code> if the players are tied.</p>
 
 
 
-<pre><code>def safe_sum(fun, seq, missing=0):
-    &quot;&quot;&quot;Return the sum of fun applied to elements in seq using missing as a replacement
-    for those elements on which fun throws an exception
-
-    &gt;&gt;&gt; safe_sum(lambda x: x, [5, &quot;terrible&quot;, 4, 3, &quot;two&quot;, 1])
-    13
-    &gt;&gt;&gt; safe_sum(lambda x: 1/x, [1, 2, 0, 3, None, &quot;bad&quot;])
-    1.8333333333333333
+<pre><code>### Phase 2: The Game Class
+class Game:
     &quot;&quot;&quot;
-    def wrap(fun, x, summed):
+    &gt;&gt;&gt; p1, p2 = Player(&#x27;Hill&#x27;), Player(&#x27;Don&#x27;)
+    &gt;&gt;&gt; g = Game(p1, p2)
+    &gt;&gt;&gt; winner = g.play()
+    &gt;&gt;&gt; p1 is winner
+    True
+
+<div class="solution 2">&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x23;&#x20;&#x41;&#x64;&#x64;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x6c;&#x20;&#x63;&#x6f;&#x72;&#x72;&#x65;&#x63;&#x74;&#x6e;&#x65;&#x73;&#x73;&#x20;&#x74;&#x65;&#x73;&#x74;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x77;&#x69;&#x6e;&#x6e;&#x65;&#x72;&#x20;&#x69;&#x73;&#x20;&#x67;&#x2e;&#x77;&#x69;&#x6e;&#x6e;&#x65;&#x72;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x67;&#x2e;&#x74;&#x75;&#x72;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x31;&#x30;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x31;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x70;&#x32;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x67;&#x2e;&#x77;&#x69;&#x6e;&#x6e;&#x65;&#x72;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x4e;&#x6f;&#x6e;&#x65;&#xa;</div>    &quot;&quot;&quot;
+    def __init__(self, player1, player2):
+        self.p1 = player1
+        self.p2 = player2
+        self.turn = 0
+
+    def play(self):
+        while not self.game_over:
+<div class="alt 2">            "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x25;&#x20;&#x32;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x75;&#x72;&#x72;&#x2c;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x31;&#x2c;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x75;&#x72;&#x72;&#x2c;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x32;&#x2c;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x75;&#x72;&#x72;&#x2e;&#x63;&#x68;&#x6f;&#x6f;&#x73;&#x65;&#x28;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x29;&#x28;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x2b;&#x3d;&#x20;&#x31;</div>        return self.winner
+
+    @property
+    def game_over(self):
+        return max(self.p1.votes, self.p2.votes) &gt;= 50 or self.turn &gt;= 10
+
+    @property
+    def winner(self):
 <div class="alt 2">        "*** YOUR CODE HERE ***"
-        
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x75;&#x6d;&#x6d;&#x65;&#x64;&#x20;&#x2b;&#x20;&#x66;&#x75;&#x6e;&#x28;&#x78;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x28;&#x5a;&#x65;&#x72;&#x6f;&#x44;&#x69;&#x76;&#x69;&#x73;&#x69;&#x6f;&#x6e;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x54;&#x79;&#x70;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x2c;&#x20;&#x56;&#x61;&#x6c;&#x75;&#x65;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x29;&#x20;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6d;&#x69;&#x73;&#x73;&#x69;&#x6e;&#x67;&#x20;&#x2b;&#x20;&#x73;&#x75;&#x6d;&#x6d;&#x65;&#x64;</div>
-    psum = 0
-    for x in seq:
-        psum = wrap(fun, x, psum)
-    return psum</code></pre>
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x31;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#x20;&#x3e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x32;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x32;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#x20;&#x3e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x31;&#x2e;&#x76;&#x6f;&#x74;&#x65;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4e;&#x6f;&#x6e;&#x65;</div></code></pre>
 
 
     <button id='2' class='toggleButton'>
@@ -185,17 +208,66 @@ catch the exception. Complete it.</p>
     </button>
     
 
-<p>Use OK to test your code:</p><pre><code>python3 ok -q safe_sum</code></pre>
+<p>Use OK to test your code:</p><pre><code>python3 ok -q Game</code></pre>
+
+<h3 class="question" id="q3">Question 3: New Players</h3>
+
+<p>The <code>choose</code> method in the <code>Player</code> class is boring, because it always returns
+the <code>speech</code> method. Let's implement two new classes that inherit from <code>Player</code>,
+but have more interesting <code>choose</code> methods.</p>
+
+<p>Implement the <code>choose</code> method in the <code>AggressivePlayer</code> class, which returns the
+<code>debate</code> method if the player's popularity is less than or equal to <code>other</code>'s
+popularity, and <code>speech</code> otherwise. Also implement the <code>choose</code> method in the
+<code>CautiousPlayer</code> class, which returns the <code>debate</code> method if the player's
+popularity is 0, and <code>speech</code> otherwise.</p>
 
 
-<h2 id="more-inheritance">More Inheritance</h2>
+
+<pre><code>### Phase 3: New Players
+class AggressivePlayer(Player):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; random = make_test_random()
+    &gt;&gt;&gt; p1, p2 = AggressivePlayer(&#x27;Don&#x27;), Player(&#x27;Hill&#x27;)
+    &gt;&gt;&gt; g = Game(p1, p2)
+    &gt;&gt;&gt; winner = g.play()
+    &gt;&gt;&gt; p1 is winner
+    True
+
+<div class="solution 3">&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x23;&#x20;&#x41;&#x64;&#x64;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x6c;&#x20;&#x63;&#x6f;&#x72;&#x72;&#x65;&#x63;&#x74;&#x6e;&#x65;&#x73;&#x73;&#x20;&#x74;&#x65;&#x73;&#x74;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x31;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x70;&#x32;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x31;&#x2e;&#x63;&#x68;&#x6f;&#x6f;&#x73;&#x65;&#x28;&#x70;&#x32;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x70;&#x31;&#x2e;&#x64;&#x65;&#x62;&#x61;&#x74;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x31;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x2b;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x31;&#x2e;&#x63;&#x68;&#x6f;&#x6f;&#x73;&#x65;&#x28;&#x70;&#x32;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x70;&#x31;&#x2e;&#x64;&#x65;&#x62;&#x61;&#x74;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x32;&#x2e;&#x63;&#x68;&#x6f;&#x6f;&#x73;&#x65;&#x28;&#x70;&#x31;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x70;&#x32;&#x2e;&#x73;&#x70;&#x65;&#x65;&#x63;&#x68;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;</div>    &quot;&quot;&quot;
+    def choose(self, other):
+<div class="alt 3">        "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x3c;&#x3d;&#x20;&#x6f;&#x74;&#x68;&#x65;&#x72;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x64;&#x65;&#x62;&#x61;&#x74;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x70;&#x65;&#x65;&#x63;&#x68;</div>
+class CautiousPlayer(Player):
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; random = make_test_random()
+    &gt;&gt;&gt; p1, p2 = CautiousPlayer(&#x27;Hill&#x27;), AggressivePlayer(&#x27;Don&#x27;)
+    &gt;&gt;&gt; p1.popularity = 0
+    &gt;&gt;&gt; p1.choose(p2) == p1.debate
+    True
+    &gt;&gt;&gt; p1.popularity = 1
+    &gt;&gt;&gt; p1.choose(p2) == p1.debate
+    False
+
+<div class="solution 3">&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x23;&#x20;&#x41;&#x64;&#x64;&#x69;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x6c;&#x20;&#x63;&#x6f;&#x72;&#x72;&#x65;&#x63;&#x74;&#x6e;&#x65;&#x73;&#x73;&#x20;&#x74;&#x65;&#x73;&#x74;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x3e;&#x3e;&#x3e;&#x20;&#x70;&#x32;&#x2e;&#x63;&#x68;&#x6f;&#x6f;&#x73;&#x65;&#x28;&#x70;&#x31;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x70;&#x32;&#x2e;&#x73;&#x70;&#x65;&#x65;&#x63;&#x68;&#xa;&#x20;&#x20;&#x20;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;</div>    &quot;&quot;&quot;
+    def choose(self, other):
+<div class="alt 3">        "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x70;&#x6f;&#x70;&#x75;&#x6c;&#x61;&#x72;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x64;&#x65;&#x62;&#x61;&#x74;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x70;&#x65;&#x65;&#x63;&#x68;</div></code></pre>
 
 
-<h3 class="question" id="q3">Question 3: Quidditch</h3>
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q AggressivePlayer
+python3 ok -q CautiousPlayer</code></pre>
+
+<h3 class="question" id="q4">Question 4: Quidditch</h3>
 
 <p>It's time for the opening quidditch match of the season! We represent the various positions for players with the <code>Player</code> class and its subclasses. Every player begins with a <code>base_energy</code> level, but every position requires a different proportion of energy. Fill in the <code>energy</code> method for the <code>Beater</code>, <code>Chaser</code>, <code>Seeker</code>, and <code>Keeper</code> classes, according to their docstrings. In addition, fill in the <code>__init__</code> method for the <code>Chaser</code> class.</p>
 
-<div class="solution 3">
+<div class="solution 4">
 
 <pre><code>class Player:
     def __init__(self, name, base_energy):
@@ -209,7 +281,7 @@ catch the exception. Complete it.</p>
         return self.base_energy</code></pre>
 
 </div>
-    <button id='3' class='toggleButton'>
+    <button id='4' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -231,12 +303,12 @@ catch the exception. Complete it.</p>
         &gt;&gt;&gt; fred.energy(0)
         You can&#x27;t divide by zero!
         &quot;&quot;&quot;
-<div class="alt 4">        "*** YOUR CODE HERE ***"
+<div class="alt 5">        "*** YOUR CODE HERE ***"
         
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2f;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x5a;&#x65;&#x72;&#x6f;&#x44;&#x69;&#x76;&#x69;&#x73;&#x69;&#x6f;&#x6e;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x9;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x59;&#x6f;&#x75;&#x20;&#x63;&#x61;&#x6e;&#x27;&#x74;&#x20;&#x64;&#x69;&#x76;&#x69;&#x64;&#x65;&#x20;&#x62;&#x79;&#x20;&#x7a;&#x65;&#x72;&#x6f;&#x21;&#x22;&#x29;</div></code></pre>
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x9;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2f;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x5a;&#x65;&#x72;&#x6f;&#x44;&#x69;&#x76;&#x69;&#x73;&#x69;&#x6f;&#x6e;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x9;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x59;&#x6f;&#x75;&#x20;&#x63;&#x61;&#x6e;&#x27;&#x74;&#x20;&#x64;&#x69;&#x76;&#x69;&#x64;&#x65;&#x20;&#x62;&#x79;&#x20;&#x7a;&#x65;&#x72;&#x6f;&#x21;&#x22;&#x29;</div></code></pre>
 
 
-    <button id='4' class='toggleButton'>
+    <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -253,9 +325,9 @@ catch the exception. Complete it.</p>
         &quot;&quot;&quot;
         Chasers have a name, score goals, and begin with base_energy.
         &quot;&quot;&quot;
-<div class="alt 5">        "*** YOUR CODE HERE ***"
+<div class="alt 6">        "*** YOUR CODE HERE ***"
         
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x3d;&#x20;&#x67;&#x6f;&#x61;&#x6c;&#x73;</div>
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x3d;&#x20;&#x67;&#x6f;&#x61;&#x6c;&#x73;</div>
     def energy(self, time):
         &quot;&quot;&quot;
         Returns the amount of energy left after playing for time minutes. For every goal 
@@ -268,12 +340,12 @@ catch the exception. Complete it.</p>
         &gt;&gt;&gt; ginny.energy(45)
         338.0
         &quot;&quot;&quot;
-<div class="alt 5">        "*** YOUR CODE HERE ***"
+<div class="alt 6">        "*** YOUR CODE HERE ***"
         
-</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x25;&#x20;&#x39;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x30;&#x2e;&#x31;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;</div></code></pre>
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x25;&#x20;&#x39;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x30;&#x2e;&#x31;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x67;&#x6f;&#x61;&#x6c;&#x73;&#x20;&#x2a;&#x20;&#x43;&#x68;&#x61;&#x73;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;</div></code></pre>
 
 
-    <button id='5' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -294,12 +366,12 @@ catch the exception. Complete it.</p>
         &gt;&gt;&gt; harry.energy(30)
         550
         &quot;&quot;&quot;
-<div class="alt 6">        "*** YOUR CODE HERE ***"
+<div class="alt 7">        "*** YOUR CODE HERE ***"
         
-</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x2a;&#x20;&#x53;&#x65;&#x65;&#x6b;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;</div></code></pre>
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x2a;&#x20;&#x53;&#x65;&#x65;&#x6b;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;</div></code></pre>
 
 
-    <button id='6' class='toggleButton'>
+    <button id='7' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -322,12 +394,12 @@ catch the exception. Complete it.</p>
         &gt;&gt;&gt; oliver.energy(45)
         260.0
         &quot;&quot;&quot;
-<div class="alt 7">        "*** YOUR CODE HERE ***"
+<div class="alt 8">        "*** YOUR CODE HERE ***"
         
-</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x3c;&#x20;&#x33;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x2f;&#x2f;&#x20;&#x31;&#x35;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x30;&#x2e;&#x38;&#x20;&#x2a;&#x20;&#x4b;&#x65;&#x65;&#x70;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;</div></code></pre>
+</div><div class="solution 8">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x3c;&#x20;&#x33;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x62;&#x61;&#x73;&#x65;&#x5f;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x69;&#x20;&#x69;&#x6e;&#x20;&#x72;&#x61;&#x6e;&#x67;&#x65;&#x28;&#x74;&#x69;&#x6d;&#x65;&#x20;&#x2f;&#x2f;&#x20;&#x31;&#x35;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x3d;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x20;&#x2d;&#x20;&#x28;&#x30;&#x2e;&#x38;&#x20;&#x2a;&#x20;&#x4b;&#x65;&#x65;&#x70;&#x65;&#x72;&#x2e;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;&#x5f;&#x65;&#x78;&#x70;&#x65;&#x6e;&#x64;&#x65;&#x64;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x65;&#x6e;&#x65;&#x72;&#x67;&#x79;</div></code></pre>
 
 
-    <button id='7' class='toggleButton'>
+    <button id='8' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -342,7 +414,7 @@ catch the exception. Complete it.</p>
 <h2 id="preparing-for-project-2-debugging">Preparing for Project 2: Debugging</h2>
 
 
-<h3 class="question" id="q4">Question 4: Werewolf</h3>
+<h3 class="question" id="q5">Question 5: Werewolf</h3>
 
 <p>Now, you want to play a game, inspired by Werewolf, with a group of your friends. A <code>Player</code> can either be a <code>Werewolf</code>, or a <code>Villager</code>. In this game, you can have 4 or more players. The first 2 players are automatically designated to be Werewolves, while everyone else is assigned to be a Villager. One play of the game involves all of the players voting for a player who they believe to be a Werewolf; in this implementation, all players, except yourself, arbitrarily vote for themselves. At the end of each play, the player with the most votes is removed from the game. Each play of the game alternates between daytime and nighttime. If it is nighttime, only votes by werewolves count.</p>
 
@@ -499,7 +571,7 @@ class Game:
 
 <pre><code>game = Game([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)</code></pre>
 
-<div class="solution 8">
+<div class="solution 9">
 
 <pre><code>def get_most_common_element(lst):
     return max(set(lst), key=lst.count)
@@ -643,7 +715,7 @@ class Game:
             return False</code></pre>
 
 </div>
-    <button id='8' class='toggleButton'>
+    <button id='9' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -656,20 +728,17 @@ class Game:
   <div class='col-md-3'>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
-  <li><a href="#introduction-to-exceptions">Introduction to Exceptions</a></li>
+  <li><a href="#inheritance">Inheritance</a></li>
   <ul>
-  <li><a href="#q1">Question 1: No KeyErrors Allowed</a></li>
-  <li><a href="#q2">Question 2: Safe use of higher order functions</a></li>
-</ul>
-
-  <li><a href="#more-inheritance">More Inheritance</a></li>
-  <ul>
-  <li><a href="#q3">Question 3: Quidditch</a></li>
+  <li><a href="#q1">Question 1: Player</a></li>
+  <li><a href="#q2">Question 2: Game</a></li>
+  <li><a href="#q3">Question 3: New Players</a></li>
+  <li><a href="#q4">Question 4: Quidditch</a></li>
 </ul>
 
   <li><a href="#preparing-for-project-2-debugging">Preparing for Project 2: Debugging</a></li>
   <ul>
-  <li><a href="#q4">Question 4: Werewolf</a></li>
+  <li><a href="#q5">Question 5: Werewolf</a></li>
 </ul>
 
 </ul>

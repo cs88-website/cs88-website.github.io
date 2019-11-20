@@ -1,41 +1,124 @@
-# Avoid Key Error
+# Election
 
-def avoid_keyerror(dictionary, key):
-    """ Returns the value associated with key in dictionary. If key 
-    does not exist in the dictionary, print out 'Avoid Exception' and
-    map it to the string 'no value'.
+def make_test_random():
+    """A deterministic random function that cycles between
+    [0.0, 0.1, 0.2, ..., 0.9] for testing purposes.
 
-    >>> d = {1: 'one', 3: 'three', 5: 'five'}
-    >>> avoid_keyerror(d, 3)
-    'three'
-    >>> avoid_keyerror(d, 4)
-    Avoid Exception
-    >>> d[4]
-    'no value'
+    >>> random = make_test_random()
+    >>> random()
+    0.0
+    >>> random()
+    0.1
+    >>> random2 = make_test_random()
+    >>> random2()
+    0.0
     """
-    "*** YOUR CODE HERE ***"
-    
+    rands = [x / 10 for x in range(10)]
+    def random():
+        rand = rands[0]
+        rands.append(rands.pop(0))
+        return rand
+    return random
 
+random = make_test_random()
 
-# Safe Sum
-
-def safe_sum(fun, seq, missing=0):
-    """Return the sum of fun applied to elements in seq using missing as a replacement
-    for those elements on which fun throws an exception
-
-    >>> safe_sum(lambda x: x, [5, "terrible", 4, 3, "two", 1])
-    13
-    >>> safe_sum(lambda x: 1/x, [1, 2, 0, 3, None, "bad"])
-    1.8333333333333333
+### Phase 1: The Player Class
+class Player:
     """
-    def wrap(fun, x, summed):
+    >>> random = make_test_random()
+    >>> p1 = Player('Hill')
+    >>> p2 = Player('Don')
+    >>> p1.popularity
+    100
+    >>> p1.debate(p2)  # random() should return 0.0
+    >>> p1.popularity
+    150
+    >>> p2.popularity
+    100
+    >>> p2.votes
+    0
+    >>> p2.speech(p1)
+    >>> p2.votes
+    10
+    >>> p2.popularity
+    110
+    >>> p1.popularity
+    135
+
+    """
+    def __init__(self, name):
+        self.name = name
+        self.votes = 0
+        self.popularity = 100
+
+    def debate(self, other):
         "*** YOUR CODE HERE ***"
-        
 
-    psum = 0
-    for x in seq:
-        psum = wrap(fun, x, psum)
-    return psum
+    def speech(self, other):
+        "*** YOUR CODE HERE ***"
+
+    def choose(self, other):
+        return self.speech
+
+
+### Phase 2: The Game Class
+class Game:
+    """
+    >>> p1, p2 = Player('Hill'), Player('Don')
+    >>> g = Game(p1, p2)
+    >>> winner = g.play()
+    >>> p1 is winner
+    True
+
+    """
+    def __init__(self, player1, player2):
+        self.p1 = player1
+        self.p2 = player2
+        self.turn = 0
+
+    def play(self):
+        while not self.game_over:
+            "*** YOUR CODE HERE ***"
+        return self.winner
+
+    @property
+    def game_over(self):
+        return max(self.p1.votes, self.p2.votes) >= 50 or self.turn >= 10
+
+    @property
+    def winner(self):
+        "*** YOUR CODE HERE ***"
+
+
+### Phase 3: New Players
+class AggressivePlayer(Player):
+    """
+    >>> random = make_test_random()
+    >>> p1, p2 = AggressivePlayer('Don'), Player('Hill')
+    >>> g = Game(p1, p2)
+    >>> winner = g.play()
+    >>> p1 is winner
+    True
+
+    """
+    def choose(self, other):
+        "*** YOUR CODE HERE ***"
+
+class CautiousPlayer(Player):
+    """
+    >>> random = make_test_random()
+    >>> p1, p2 = CautiousPlayer('Hill'), AggressivePlayer('Don')
+    >>> p1.popularity = 0
+    >>> p1.choose(p2) == p1.debate
+    True
+    >>> p1.popularity = 1
+    >>> p1.choose(p2) == p1.debate
+    False
+
+    """
+    def choose(self, other):
+        "*** YOUR CODE HERE ***"
+
 
 
 # Quidditch
