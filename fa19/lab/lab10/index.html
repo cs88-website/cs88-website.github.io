@@ -110,6 +110,7 @@ behavior as detailed above. Here are two additional things to keep in mind:</p>
   popularity otherwise.</li>
   <li>Neither players' votes or popularity should ever become negative. If this
   happens, set it equal to 0 instead.</li>
+  <li>This problem has additional hidden doc tests that will test full correctness.</li>
 </ul>
 
 
@@ -169,7 +170,8 @@ method, either <code>debate</code> or <code>speech</code>, that should be called
 action.</p>
 
 <p>In addition, fill in the <code>winner</code> property method, which should return the
-player with more votes, or <code>None</code> if the players are tied.</p>
+player with more votes, or <code>None</code> if the players are tied.
+This problem has additional hidden doc tests that will test full correctness.</p>
 
 
 
@@ -220,7 +222,8 @@ but have more interesting <code>choose</code> methods.</p>
 <code>debate</code> method if the player's popularity is less than or equal to <code>other</code>'s
 popularity, and <code>speech</code> otherwise. Also implement the <code>choose</code> method in the
 <code>CautiousPlayer</code> class, which returns the <code>debate</code> method if the player's
-popularity is 0, and <code>speech</code> otherwise.</p>
+popularity is 0, and <code>speech</code> otherwise.
+This problem has additional hidden doc tests that will test full correctness.</p>
 
 
 
@@ -265,7 +268,7 @@ python3 ok -q CautiousPlayer</code></pre>
 
 <h3 class="question" id="q4">Question 4: Quidditch</h3>
 
-<p>It's time for the opening quidditch match of the season! We represent the various positions for players with the <code>Player</code> class and its subclasses. Every player begins with a <code>base_energy</code> level, but every position requires a different proportion of energy. Fill in the <code>energy</code> method for the <code>Beater</code>, <code>Chaser</code>, <code>Seeker</code>, and <code>Keeper</code> classes, according to their docstrings. In addition, fill in the <code>__init__</code> method for the <code>Chaser</code> class.</p>
+<p>It's time for the opening quidditch match of the season! We represent the various positions for players with the <code>QuidditchPlayer</code> class and its subclasses. Every player begins with a <code>base_energy</code> level, but every position requires a different proportion of energy. Fill in the <code>energy</code> method for the <code>Beater</code>, <code>Chaser</code>, <code>Seeker</code>, and <code>Keeper</code> classes, according to their docstrings. In addition, fill in the <code>__init__</code> method for the <code>Chaser</code> class.</p>
 
 <div class="solution 4">
 
@@ -288,7 +291,7 @@ python3 ok -q CautiousPlayer</code></pre>
 
 
 
-<pre><code>class Beater(Player):
+<pre><code>class Beater(QuidditchPlayer):
     role = &quot;bludgers&quot;
 
     def energy(self, time):
@@ -317,7 +320,7 @@ python3 ok -q CautiousPlayer</code></pre>
 
 
 
-<pre><code>class Chaser(Player):
+<pre><code>class Chaser(QuidditchPlayer):
     role = &quot;score&quot;
     energy_expended = 20
 
@@ -354,7 +357,7 @@ python3 ok -q CautiousPlayer</code></pre>
 
 
 
-<pre><code>class Seeker(Player):
+<pre><code>class Seeker(QuidditchPlayer):
     role = &quot;snitch&quot;
     energy_expended = 5
 
@@ -380,7 +383,7 @@ python3 ok -q CautiousPlayer</code></pre>
 
 
 
-<pre><code>class Keeper(Player):
+<pre><code>class Keeper(QuidditchPlayer):
     role = &quot;guard&quot;
     energy_expended = 50
 
@@ -406,7 +409,7 @@ python3 ok -q CautiousPlayer</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q Keeper.energy</code></pre>
 
-<p>After you finish implementing the Players, run the following command in your terminal to play the game:</p>
+<p>After you finish implementing the QuidditchPlayers, run the following command in your terminal to play the game:</p>
 
 <pre><code>python3 &#x2d;i quidditch_game.py</code></pre>
 
@@ -416,7 +419,7 @@ python3 ok -q CautiousPlayer</code></pre>
 
 <h3 class="question" id="q5">Question 5: Werewolf</h3>
 
-<p>Now, you want to play a game, inspired by Werewolf, with a group of your friends. A <code>Player</code> can either be a <code>Werewolf</code>, or a <code>Villager</code>. In this game, you can have 4 or more players. The first 2 players are automatically designated to be Werewolves, while everyone else is assigned to be a Villager. One play of the game involves all of the players voting for a player who they believe to be a Werewolf; in this implementation, all players, except yourself, arbitrarily vote for themselves. At the end of each play, the player with the most votes is removed from the game. Each play of the game alternates between daytime and nighttime. If it is nighttime, only votes by werewolves count.</p>
+<p>Now, you want to play a game, inspired by Werewolf, with a group of your friends. A <code>Pl88yer</code> can either be a <code>Werewolf</code>, or a <code>Villager</code>. In this game, you can have 4 or more players. The first 2 players are automatically designated to be Werewolves, while everyone else is assigned to be a Villager. One play of the game involves all of the players voting for a player who they believe to be a Werewolf; in this implementation, all players, except yourself, arbitrarily vote for themselves. At the end of each play, the player with the most votes is removed from the game. Each play of the game alternates between daytime and nighttime. If it is nighttime, only votes by werewolves count.</p>
 
 <p>The game ends when there are no werewolves left, which means the villagers won, or when there are more werewolves than villagers, which means the werewolves have won.</p>
 
@@ -425,31 +428,31 @@ python3 ok -q CautiousPlayer</code></pre>
 <pre><code>def get_most_common_element(lst):
     return max(set(lst), key=lst.count)
 
-class Player:
+class Pl88yer:
     def __init__(self, name):
         self.name = name
         self.active = True
 
-class Werewolf(Player):
+class Werewolf(Pl88yer):
     def __init__(self, name):
-        Player.__init__(self, name)
+        Pl88yer.__init__(self, name)
 
     def reveal_player_type(self):
         print(&quot;You are a werewolf!&quot;)
 
-class Villager(Player):
+class Villager(Pl88yer):
     def __init__(self, name):
         Villager.__init__(self, name)    
 
     def reveal_player_type(self):
         print(&quot;You are a villager!&quot;)
 
-class Game:
+class WerewolfGame:
     def __init__(self, players, your_name):
         &quot;&quot;&quot;
         Sets the game up. players is a list of strings that are names of all 
         of the players. your_name is a string and must be one of the players.
-        &gt;&gt;&gt; game = Game([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)
+        &gt;&gt;&gt; game = WerewolfGame([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)
         You are a werewolf!
         &gt;&gt;&gt; game.your_name
         &#x27;a&#x27;
@@ -556,9 +559,9 @@ class Game:
         there are no werewolves remaining, or if there are more werewolves than villagers.
         &quot;&quot;&quot;
 
-        if len(Game.werewolves) == 0:
+        if len(WerewolfGame.werewolves) == 0:
             return True
-        elif len(Game.werewolves) &gt; len(Game.villagers):
+        elif len(WerewolfGame.werewolves) &gt; len(WerewolfGame.villagers):
             return True
         else:
             return False</code></pre>
@@ -569,7 +572,7 @@ class Game:
 
 <p>After running the above command, enter the below line to actually start a game and play through the code that you've debugged. We highly recommend you do this a couple times to test your code and make sure it's bug free. If you need a refresher on the commands for interacting with the game, refer to the doctests for this question!</p>
 
-<pre><code>game = Game([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)</code></pre>
+<pre><code>game = WerewolfGame([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)</code></pre>
 
 <div class="solution 9">
 
@@ -595,12 +598,12 @@ class Villager(Pl88yer):
     def reveal_player_type(self):
         print(&quot;You are a villager!&quot;)
 
-class Game:
+class WerewolfGame:
     def __init__(self, players, your_name):
         &quot;&quot;&quot;
         Sets the game up. players is a list of strings that are names of all 
         of the players. your_name is a string and must be one of the players.
-        &gt;&gt;&gt; game = Game([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)
+        &gt;&gt;&gt; game = WerewolfGame([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;, &quot;d&quot;, &quot;e&quot;, &quot;f&quot;], &quot;a&quot;)
         You are a werewolf!
         &gt;&gt;&gt; game.your_name
         &#x27;a&#x27;
@@ -707,9 +710,9 @@ class Game:
         there are no werewolves remaining, or if there are more werewolves than villagers.
         &quot;&quot;&quot;
 
-        if len(Game.werewolves) == 0:
+        if len(WerewolfGame.werewolves) == 0:
             return True
-        elif len(Game.werewolves) &gt; len(Game.villagers):
+        elif len(WerewolfGame.werewolves) &gt; len(WerewolfGame.villagers):
             return True
         else:
             return False</code></pre>

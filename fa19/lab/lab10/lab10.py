@@ -123,10 +123,10 @@ class CautiousPlayer(Player):
 
 # Quidditch
 
-class Player:
+class QuidditchPlayer:
     def __init__(self, name, base_energy):
         """
-        Players have a name, and begin with base_energy.
+        QuidditchPlayers have a name, and begin with base_energy.
         """
         self.name = name
         self.base_energy = base_energy
@@ -134,7 +134,7 @@ class Player:
     def energy(self):
         return self.base_energy
 
-class Beater(Player):
+class Beater(QuidditchPlayer):
     role = "bludgers"
 
     def energy(self, time):
@@ -152,7 +152,7 @@ class Beater(Player):
         "*** YOUR CODE HERE ***"
         
 
-class Chaser(Player):
+class Chaser(QuidditchPlayer):
     role = "score"
     energy_expended = 20
     
@@ -178,7 +178,7 @@ class Chaser(Player):
         "*** YOUR CODE HERE ***"
         
 
-class Seeker(Player):
+class Seeker(QuidditchPlayer):
     role = "snitch"
     energy_expended = 5
 
@@ -193,7 +193,7 @@ class Seeker(Player):
         "*** YOUR CODE HERE ***"
         
 
-class Keeper(Player):
+class Keeper(QuidditchPlayer):
     role = "guard"
     energy_expended = 50
 
@@ -236,12 +236,12 @@ class Villager(Pl88yer):
     def reveal_player_type(self):
         print("You are a villager!")
 
-class Game:
+class WerewolfGame:
     def __init__(self, players, your_name):
         """
         Sets the game up. players is a list of strings that are names of all 
         of the players. your_name is a string and must be one of the players.
-        >>> game = Game(["a", "b", "c", "d", "e", "f"], "a")
+        >>> game = WerewolfGame(["a", "b", "c", "d", "e", "f"], "a")
         You are a werewolf!
         >>> game.your_name
         'a'
@@ -348,9 +348,9 @@ class Game:
         there are no werewolves remaining, or if there are more werewolves than villagers.
         """
 
-        if len(Game.werewolves) == 0:
+        if len(WerewolfGame.werewolves) == 0:
             return True
-        elif len(Game.werewolves) > len(Game.villagers):
+        elif len(WerewolfGame.werewolves) > len(WerewolfGame.villagers):
             return True
         else:
             return False
