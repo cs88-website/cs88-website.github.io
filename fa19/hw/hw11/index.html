@@ -251,80 +251,10 @@ class ZeroDivisionError(Error):
 <p>Use OK to test your code:</p><pre><code>python3 ok -q SyntaxError</code></pre>
 <p>Use OK to test your code:</p><pre><code>python3 ok -q ZeroDivisionError</code></pre>
 
-<h3 class="question" id="q4">Question 4: Mint</h3>
+<h3 class="question" id="q4">Question 4: Project</h3>
 
-<p>Complete the <code>Mint</code> and <code>Coin</code> classes so that the coins created by a mint have
-the correct year and worth.</p>
+<p>Nothing to submit for this question, just a reminder to work on your <a href="https://cs88-website.github.io/fa19/proj/ants/">project</a>! Good luck!</p>
 
-<ul>
-  <li>Each <code>Mint</code> instance has a <code>year</code> stamp. The <code>update</code> method sets the
-  <code>year</code> stamp to the <code>current_year</code> class attribute of the <code>Mint</code> class.</li>
-  <li>The <code>create</code> method takes a subclass of <code>Coin</code> and returns an instance of
-  that class stamped with the <code>mint</code>'s year (which may be different from
-  <code>Mint.current_year</code> if it has not been updated.)</li>
-  <li>A <code>Coin</code>'s <code>worth</code> method returns the <code>cents</code> value of the coin plus one
-  extra cent for each year of age beyond 50. A coin's age can be determined
-  by subtracting the coin's year from the <code>current_year</code> class attribute of
-  the <code>Mint</code> class.</li>
-</ul>
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q Mint</code></pre>
-
-<pre><code>class Mint:
-    &quot;&quot;&quot;A mint creates coins by stamping on years.
-
-    The update method sets the mint&#x27;s stamp to Mint.current_year.
-
-    &gt;&gt;&gt; mint = Mint()
-    &gt;&gt;&gt; mint.year
-    2015
-    &gt;&gt;&gt; dime = mint.create(Dime)
-    &gt;&gt;&gt; dime.year
-    2015
-    &gt;&gt;&gt; Mint.current_year = 2100  # Time passes
-    &gt;&gt;&gt; nickel = mint.create(Nickel)
-    &gt;&gt;&gt; nickel.year     # The mint has not updated its stamp yet
-    2015
-    &gt;&gt;&gt; nickel.worth()  # 5 cents + (85 &#x2d; 50 years)
-    40
-    &gt;&gt;&gt; mint.update()   # The mint&#x27;s year is updated to 2100
-    &gt;&gt;&gt; Mint.current_year = 2175     # More time passes
-    &gt;&gt;&gt; mint.create(Dime).worth()    # 10 cents + (75 &#x2d; 50 years)
-    35
-    &gt;&gt;&gt; Mint().create(Dime).worth()  # A new mint has the current year
-    10
-    &gt;&gt;&gt; dime.worth()     # 10 cents + (160 &#x2d; 50 years)
-    120
-    &gt;&gt;&gt; Dime.cents = 20  # Upgrade all dimes!
-    &gt;&gt;&gt; dime.worth()     # 20 cents + (160 &#x2d; 50 years)
-    130
-
-
-    &quot;&quot;&quot;
-    current_year = 2015
-
-    def __init__(self):
-        self.update()
-
-    def create(self, kind):
-        "*** YOUR CODE HERE ***"
-
-    def update(self):
-        "*** YOUR CODE HERE ***"
-
-class Coin:
-    def __init__(self, year):
-        self.year = year
-
-    def worth(self):
-        &quot;The worth is a coin&#x27;s face value + 1 cent for each year over age 50.&quot;
-        "*** YOUR CODE HERE ***"
-
-class Nickel(Coin):
-    cents = 5
-
-class Dime(Coin):
-    cents = 10</code></pre>
 
   </div>
 
@@ -334,7 +264,7 @@ class Dime(Coin):
   <li><a href="#q1">Question 1: Account</a></li>
   <li><a href="#q2">Question 2: Checking account</a></li>
   <li><a href="#q3">Question 3: Errors</a></li>
-  <li><a href="#q4">Question 4: Mint</a></li>
+  <li><a href="#q4">Question 4: Project</a></li>
 </ul>
 
     </nav>

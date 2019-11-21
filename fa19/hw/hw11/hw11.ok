@@ -1,15 +1,15 @@
 {
     "name": "Homework 11",
-    "endpoint": "cal/cs88/sp19/hw11",
+    "endpoint": "cal/cs88/fa19/hw11",
     "src": [
         "hw11.py"
     ],
     "tests": {
-        "hw11.py:scale": "doctest",
-        "hw11.py:merge": "doctest",
-        "hw11.py:remainders_generator": "doctest",
-        "hw11.py:is_prime": "doctest",
-        "hw11.py:primes": "doctest"
+        "hw11.py:Account": "doctest",
+        "hw11.py:CheckingAccount": "doctest",
+        "hw11.py:Error": "doctest",
+        "hw11.py:SyntaxError": "doctest",
+        "hw11.py:ZeroDivisionError": "doctest"
     },
     "protocols": [
         "restore",
