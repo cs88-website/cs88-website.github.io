@@ -148,24 +148,19 @@ checks to see if each doctest input (e.g. <code>foo(4)</code>) is the same as th
 specified output (e.g. <code>4</code>). If it isn't, a message will tell you
 which doctests you failed.</p>
 
-<p>The command line tool has a <code>&#x2d;v</code> option that stands for "verbose."</p>
+<p>The command line tool has a <code>&#x2d;v</code> option that stands for <em>verbose</em>.</p>
 
 <pre><code>python3 &#x2d;m doctest file.py &#x2d;v</code></pre>
 
 <p>In addition to telling you which doctests you failed, it will also
-tell you which doctests passed. I personally find that information
-unnecessary, so I usually leave <code>&#x2d;v</code> out.</p>
+tell you which doctests passed.</p>
 
-<p>Usually, we will provide doctests for you in the starter files.
-<strong>Always run these doctests</strong>. Submitting an assignment without
-running doctests even once is practically throwing points away.</p>
-
-<p>Also, <strong>do not manually type in doctests into the interpreter</strong>. The
-whole point of writing doctests is so you don't have to do that.
-Manually typing in doctests requires you to (1) open up a Python
-shell, (2) type in every doctest, (3) manually check if the output
-matches the doctest, (4) repeat. Running doctests from the command
-line requires you to (1) type in a single line, and (2) that's it!</p>
+<p>Usually, we will provide doctests for you in the starter files. You
+can add more tests by following the same format. It is often helpful
+to write additional tests to uncover more details about the shape of
+the inputs and the expected outputs of the problem, in addition to
+heling with the implementation of the program itself. A little time
+spent upfront writing tests can save a lot of time down the line.</p>
 
 
 <h3 id="writing-your-own-tests">Writing your own tests</h3>
@@ -174,12 +169,6 @@ line requires you to (1) type in a single line, and (2) that's it!</p>
 <p>In addition to doctests, you can write your own tests. There are two
 ways to do this: (1) write additional doctests, or (2) write testing
 functions.</p>
-
-<p>Writing your own tests is good practice for the future.  Remember,
-before the project deadlines, our autograder only runs sanity tests &mdash;
-a subset of all the tests we will eventually run.  In other words,
-<strong>passing the autograder does not mean you get full credit</strong>. As such,
-it is a very good idea to write your own test cases.</p>
 
 <p>To write more doctests, simply follow the style of existing doctests.
 You can also write your own functions (much like the <code>take_turn_test</code>
