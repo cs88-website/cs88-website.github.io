@@ -199,8 +199,8 @@ example with <code>y</code> and <code>z</code>.</p></blockquote>
 
     &gt;&gt;&gt; hamster = {&quot;a&quot;:[&quot;b&quot;,&quot;c&quot;,&quot;d&quot;], &quot;w&quot;:[&quot;x&quot;,&quot;y&quot;,&quot;z&quot;]}
     &gt;&gt;&gt; dict_cycle(hamster)
-    &gt;&gt;&gt; hamster
-    {&#x27;b&#x27;: [&#x27;c&#x27;, &#x27;d&#x27;, &#x27;a&#x27;], &#x27;x&#x27;: [&#x27;y&#x27;, &#x27;z&#x27;, &#x27;w&#x27;]}
+    &gt;&gt;&gt; sorted(hamster.items()) # items return list of tuples that are key value pairs
+    [(&#x27;b&#x27;, [&#x27;c&#x27;, &#x27;d&#x27;, &#x27;a&#x27;]), (&#x27;x&#x27;, [&#x27;y&#x27;, &#x27;z&#x27;, &#x27;w&#x27;])]
     &quot;&quot;&quot;
 <span class="sol-highlight">    keys = list(dictionary.keys())
     for key in keys:
@@ -292,7 +292,7 @@ function should utilize mutability.</p></blockquote>
 
 <h3 class="question" id="q4">Question 4: Mailbox</h3>
 
-<p>Mutation is crucial for ADTs. Recall the bank account example given in lecture. The bank account ADT can be deposited to and withdrawn from. When we deposit or withdraw, we want to change the state of the bank account so that the withdrawal or deposit will be reflected next time we access it.</p>
+<p>Mutation is crucial for ADTs.</p>
 
 <p>Below, we can see the power of mutability which allows us to change the name and amount of money in <code>account_1</code>.</p>
 
@@ -309,17 +309,13 @@ Julia
 &gt;&gt;&gt; get_account_savings(account_1)
 20</code></pre>
 
-<p>During the mini-lecture, we introduced the new concept of a constructor returning the very functions we want to run on the object! This kind of abstraction is very common in the programming world.</p>
-
 <p>Let's apply this concept to a new ADT: a mailbox. The mail box's internal representation is a dictionary that holds key value pairs corresponding to a person, and a list of their mail. Below is an example of a TA mailbox.</p>
 
 <pre><code>{&quot;Sophia&quot;:[&quot;receipt&quot;, &quot;worksheets&quot;], &quot;Lyric&quot;:[&quot;worksheets&quot;, &quot;form&quot;, &quot;bills&quot;], &quot;Andrew&quot;:[&quot;paycheck&quot;], &quot;Julia&quot;:None, &quot;John&quot;:None, &quot;Amir&quot;:None}</code></pre>
 
-<p>The <code>_get_mail(mailbox, name)</code> function, given a mailbox, should return the mail corresponding to the name argument given. The postman can also put in mail by using the <code>_deliver_mail(mailbox, name, mail)</code> function. You may have noticed that the function names are a bit strange: they each have an underscore in the beginning. We use this kind of syntax when a function is "hidden", meaning they are hidden to the outside. Remember, our goal is for the <code>mailbox</code> constructor to return all functions that the mailbox uses.</p>
+<p>The <code>get_mail(name)</code> function, given a mailbox, should return the mail corresponding to the name argument given. The postman can also put in mail by using the <code>deliver_mail(name, mail)</code> function.</p>
 
 <p>Please provide implementations for these functions. Make sure to mutate the dictionary! (You can assume mail will always be in a list.)</p>
-
-<p>After doing that, implement the constructor so that it returns <code>get_mail</code> and <code>deliver_mail</code> such that when called, they will perform the function on the original mailbox. <strong>Hint: use _get_mail and _deliver_mail</strong></p>
 
 <solution>
 
@@ -350,15 +346,15 @@ Julia
     mailbox = {}
     def get_mail(name):
 <span class="sol-highlight">        if len(mailbox) == 0 or name not in mailbox or mailbox[name] == None:
-            mailbox[name] = mail
-        else:
-            mailbox[name] += mail</span>
-    def deliver_mail(name, mail):
-<span class="sol-highlight">        if len(mailbox) == 0 or name not in mailbox or mailbox[name] == None:
             return None
         mail = mailbox[name]
         mailbox[name] = None
         return mail</span>
+    def deliver_mail(name, mail):
+<span class="sol-highlight">        if len(mailbox) == 0 or name not in mailbox or mailbox[name] == None:
+            mailbox[name] = mail
+        else:
+            mailbox[name] += mail</span>
     return get_mail, deliver_mail</code></pre>
 
 </solution>
@@ -399,7 +395,7 @@ def make_pokemon_set():
     [&#x27;charizard&#x27;, &#x27;celebi&#x27;, &#x27;raichu&#x27;, &#x27;raticate&#x27;]
 
     &quot;&quot;&quot;
-    pokemons = {&quot;charmander&quot;:&quot;charmeleon&quot;,
+    pokemon_set = {&quot;charmander&quot;:&quot;charmeleon&quot;,
             &quot;charmeleon&quot;:&quot;charizard&quot;,
             &quot;squirtle&quot;:&quot;wartortle&quot;,
             &quot;wartortle&quot;:&quot;blastoise&quot;,
@@ -413,11 +409,11 @@ def make_pokemon_set():
 <span class="sol-highlight">        if pokemon not in pokemon_set:
             return pokemon
         else:
-            return _evolve(pokemon_set, pokemon_set[pokemon])</span>
+            return evolve(pokemon_set[pokemon])</span>
 
     def evolve_all(gym):
 <span class="sol-highlight">        for i in range(gym_size(gym)):
-            gym[i] = _evolve(pokemon_set, gym[i])</span>
+            gym[i] = evolve(gym[i])</span>
 
     return {&quot;add&quot;:add, &quot;evolve&quot;:evolve, &quot;evolve_all&quot;:evolve_all}</code></pre>
 
