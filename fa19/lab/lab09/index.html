@@ -321,91 +321,69 @@ and each of their children have the same shape.</p>
 
 <h3 class="question" id="q6">Question 6: 23andTree</h3>
 
-<p>Write a function <code>computeAncesTree</code> that fills in the ethnic breakdown of everyone in your <code>Family</code>.
-<code>Person</code>'s have a name and an ethnicity. An <code>ethnicity</code> is a dictionary mapping ethnicities to their percentages for that person.
+<p>Write a function <code>computeAncesTree</code> that fills in the ethnic breakdown of everyone in your <code>FamilyTree</code>.
+<code>FamilyTree</code>s have a name and an ethnicity. An <code>ethnicity</code> is a dictionary mapping ethnicities to their percentages for that person.
 <br/>
-A <code>Family</code> contains a list of parents. Parents are <code>People</code>. A child's ethnic breakdown should be half of each of the ethnicities in each of their parents. <code>Children</code> is a dictionary mapping each child to the <code>Family</code> they are the parent of. A leaf <code>Family</code> is a single parent with no children. To begin, you can only assume that the <code>ethnicity</code> of the root of your <code>Family</code> is filled in.</p>
+A <code>FamilyTree</code> contains a list of parents. Parents are also <code>FamilyTree</code>s. A child's ethnic breakdown should be half of each of the ethnicities in each of their parents. A leaf <code>FamilyTree</code> is a tree with no parents. To begin, you can only assume that the <code>ethnicity</code> of the leafs of your <code>FamilyTree</code> are filled in.</p>
 
 
 
-<pre><code>class Person:
-    def __init__(self, name, ethnicity={}):
+<pre><code>class FamilyTree:
+    def __init__(self, name, ethnicity, parents=[]):
+        # Leaf FamilyTrees have no parents
         self.name = name
-        assert type(ethnicity) == dict
-        for i in ethnicity.values():
-            assert type(i) == float
         self.ethnicity = ethnicity
-
-    def __repr__(self):
-        return self.name
-
-class Family:
-    def __init__(self, parents, children={}):
-        # Leaf families have one parent and no children
         self.parents = parents
-        self.children = children
         if not self.is_leaf():
             for p in parents:
-                assert isinstance(p, Person)
-            for child, tree in children.items():
-                assert isinstance(child, Person)
-                assert isinstance(tree, Family)
+                assert isinstance(p, FamilyTree)
 
     def __repr__(self):
         if self.is_leaf():
-            return self.parents[0].name
-        else:
-            children_str = &#x27;, &#x27; + repr(self.children)
-        return &#x27;Parents:{} Children:{})&#x27;.format([i.name for i in self.parents], children_str)
+            return self.name
+        return &#x27;{} child of {}&#x27;.format(self.name, repr(self.parents))
 
     def is_leaf(self):
-        return self.children == {}
-
-    def get_ethnicities(self):
-        return [parent.ethnicity for parent in self.parents]
+        return len(self.parents) == 0
 
 def computeAncesTree(t):
     &quot;&quot;&quot;
-    Fill in the ethnicities of all descendants.
-    &gt;&gt;&gt; gma1 = Person(&quot;Farah&quot;, {&quot;Moroccan&quot;: 100.0})
-    &gt;&gt;&gt; gpa1 = Person(&quot;Lorenzo&quot;, {&quot;Italian&quot; : 100.0})
-    &gt;&gt;&gt; gpa2 = Person(&quot;Hai&quot;, {&quot;Chinese&quot;:100.0})
-    &gt;&gt;&gt; gma2 = Person(&quot;Gazala&quot;, {&quot;Indian&quot;:100.0})
-    &gt;&gt;&gt; papa1 = Person(&quot;Amjad&quot;) #  Son of Farah and Lorenzo
-    &gt;&gt;&gt; papa2 = Person(&quot;Arjun&quot;) # Son of Hai and Gazala
-    &gt;&gt;&gt; mama1 = Person(&quot;Anabella&quot;) # Daughter of Farah and Lorenzo
-    &gt;&gt;&gt; mama2 = Person(&quot;Biyu&quot;) # Daughter of Hai and Gazala
-    &gt;&gt;&gt; c1 = Person(&quot;Dipika&quot;) # Daughter of Arjun and Anabella
-    &gt;&gt;&gt; c2 = Person(&quot;Cosimo&quot;) # Son of Arjun and Anabella
-    &gt;&gt;&gt; c3 = Person(&quot;Jin&quot;) # Son of Amjad and Biyu
-    &gt;&gt;&gt; c4 = Person(&quot;Malika&quot;) # Daughter of Amjad and Biyu
-    &gt;&gt;&gt; leaves = [Family([c]) for c in [c1, c2, c3, c4]]
-    &gt;&gt;&gt; fam1 = Family([papa2, mama1], {c1:leaves[0], c2:leaves[1]})
-    &gt;&gt;&gt; fam2 = Family([papa1, mama2], {c3:leaves[2], c4:leaves[3]})
-    &gt;&gt;&gt; t1 = Family([gpa1, gma1], {papa1:fam2, mama1:fam1})
-    &gt;&gt;&gt; t2 = Family([gpa2, gma2], {papa2:fam1, mama2:fam2})
-    &gt;&gt;&gt; computeAncesTree(t1)
+    Fill in the ethnicities of all parents.
+    &gt;&gt;&gt; gma1 = FamilyTree(&quot;Farah&quot;, {&quot;Moroccan&quot;: 100.0})
+    &gt;&gt;&gt; gpa1 = FamilyTree(&quot;Lorenzo&quot;, {&quot;Italian&quot; : 100.0})
+    &gt;&gt;&gt; gpa2 = FamilyTree(&quot;Hai&quot;, {&quot;Chinese&quot;:100.0})
+    &gt;&gt;&gt; gma2 = FamilyTree(&quot;Gazala&quot;, {&quot;Indian&quot;:100.0})
+    &gt;&gt;&gt; papa1 = FamilyTree(&quot;Amjad&quot;, {}, [gma1, gpa1]) #  Son of Farah and Lorenzo
+    &gt;&gt;&gt; papa2 = FamilyTree(&quot;Arjun&quot;, {}, [gma2, gpa2]) # Son of Hai and Gazala
+    &gt;&gt;&gt; mama1 = FamilyTree(&quot;Anabella&quot;, {}, [gma1, gpa1]) # Daughter of Farah and Lorenzo
+    &gt;&gt;&gt; mama2 = FamilyTree(&quot;Biyu&quot;, {}, [gma2, gpa2]) # Daughter of Hai and Gazala
+    &gt;&gt;&gt; c1 = FamilyTree(&quot;Dipika&quot;, {}, [mama1, papa2]) # Daughter of Arjun and Anabella
+    &gt;&gt;&gt; c2 = FamilyTree(&quot;Cosimo&quot;, {}, [mama1, papa2]) # Son of Arjun and Anabella
+    &gt;&gt;&gt; c3 = FamilyTree(&quot;Jin&quot;, {}, [mama2, papa1]) # Son of Amjad and Biyu
+    &gt;&gt;&gt; c4 = FamilyTree(&quot;Malika&quot;, {}, [mama2, papa1]) # Daughter of Amjad and Biyu
+    &gt;&gt;&gt; eth = {a:25.0 for a in [&quot;Moroccan&quot;, &quot;Italian&quot;, &quot;Chinese&quot;, &quot;Indian&quot;]}
+    &gt;&gt;&gt; computeAncesTree(c1) == eth
+    True
+    &gt;&gt;&gt; mama1.ethnicity[&quot;Moroccan&quot;] == 50.0 and mama1.ethnicity[&quot;Italian&quot;] == 50.0
+    True
+    &gt;&gt;&gt; papa2.ethnicity[&quot;Indian&quot;] == 50.0 and papa2.ethnicity[&quot;Chinese&quot;] == 50.0
+    True
+    &gt;&gt;&gt; mama2.ethnicity == papa1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity
+    True
+    &gt;&gt;&gt; computeAncesTree(c2) == computeAncesTree(c3) == computeAncesTree(c4) == eth
+    True
     &gt;&gt;&gt; papa1.ethnicity == mama1.ethnicity
     True
-    &gt;&gt;&gt; c1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity
-    True
-    &gt;&gt;&gt; computeAncesTree(t2)
     &gt;&gt;&gt; papa2.ethnicity == mama2.ethnicity
     True
-    &gt;&gt;&gt; eth = {a:25.0 for a in [&quot;Moroccan&quot;, &quot;Italian&quot;, &quot;Chinese&quot;, &quot;Indian&quot;]}
-    &gt;&gt;&gt; c1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity == eth
-    True
-    &gt;&gt;&gt; sidepa = Person(&quot;Kahlil Gibran&quot;, {&quot;Lebanese&quot;:75.0, &quot;Moroccan&quot;:25.0})
-    &gt;&gt;&gt; secret = Person(&quot;نبي&quot;)
-    &gt;&gt;&gt; secretFam = Family([secret])
-    &gt;&gt;&gt; t3 = Family([sidepa, gma1], {secret:secretFam})
-    &gt;&gt;&gt; computeAncesTree(t3)
+    &gt;&gt;&gt; sidepa = FamilyTree(&quot;Kahlil Gibran&quot;, {&quot;Lebanese&quot;:75.0, &quot;Moroccan&quot;:25.0})
+    &gt;&gt;&gt; secret = FamilyTree(&quot;The Prophet&quot;, {}, [gma1, sidepa])
     &gt;&gt;&gt; eth2 = {&quot;Lebanese&quot;:37.5, &quot;Moroccan&quot;:62.5}
-    &gt;&gt;&gt; secret.ethnicity == eth2
+    &gt;&gt;&gt; computeAncesTree(secret) == eth2
     True
     &quot;&quot;&quot;
 <div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x7b;&#x7d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x67;&#x65;&#x74;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x69;&#x65;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x74;&#x68;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x2e;&#x69;&#x74;&#x65;&#x6d;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x74;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x5b;&#x65;&#x74;&#x68;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x2f;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x5b;&#x65;&#x74;&#x68;&#x5d;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x2f;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x2e;&#x6b;&#x65;&#x79;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x2e;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x63;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x72;&#x65;&#x6e;&#x2e;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x63;&#x6f;&#x6d;&#x70;&#x75;&#x74;&#x65;&#x41;&#x6e;&#x63;&#x65;&#x73;&#x54;&#x72;&#x65;&#x65;&#x28;&#x63;&#x29;</div></code></pre>
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x2e;&#x69;&#x73;&#x5f;&#x6c;&#x65;&#x61;&#x66;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x2e;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x69;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x63;&#x6f;&#x6d;&#x70;&#x75;&#x74;&#x65;&#x41;&#x6e;&#x63;&#x65;&#x73;&#x54;&#x72;&#x65;&#x65;&#x28;&#x70;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x70;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x7b;&#x7d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x69;&#x6e;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x69;&#x65;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x74;&#x68;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x2e;&#x69;&#x74;&#x65;&#x6d;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x74;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x5b;&#x65;&#x74;&#x68;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x2f;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x5b;&#x65;&#x74;&#x68;&#x5d;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x2f;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x2e;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x2e;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;</div></code></pre>
 
 
     <button id='4' class='toggleButton'>

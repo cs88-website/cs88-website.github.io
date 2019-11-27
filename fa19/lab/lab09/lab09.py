@@ -116,81 +116,59 @@ def same_shape(t1, t2):
 
 
 # Q6
-class Person:
-    def __init__(self, name, ethnicity={}):
+class FamilyTree:
+    def __init__(self, name, ethnicity, parents=[]):
+        # Leaf FamilyTrees have no parents
         self.name = name
-        assert type(ethnicity) == dict
-        for i in ethnicity.values():
-            assert type(i) == float
         self.ethnicity = ethnicity
-
-    def __repr__(self):
-        return self.name
-
-class Family:
-    def __init__(self, parents, children={}):
-        # Leaf families have one parent and no children
         self.parents = parents
-        self.children = children
         if not self.is_leaf():
             for p in parents:
-                assert isinstance(p, Person)
-            for child, tree in children.items():
-                assert isinstance(child, Person)
-                assert isinstance(tree, Family)
+                assert isinstance(p, FamilyTree)
 
     def __repr__(self):
         if self.is_leaf():
-            return self.parents[0].name
-        else:
-            children_str = ', ' + repr(self.children)
-        return 'Parents:{} Children:{})'.format([i.name for i in self.parents], children_str)
+            return self.name
+        return '{} child of {}'.format(self.name, repr(self.parents))
 
     def is_leaf(self):
-        return self.children == {}
-
-    def get_ethnicities(self):
-        return [parent.ethnicity for parent in self.parents]
+        return len(self.parents) == 0
 
 
 def computeAncesTree(t):
     """
-    Fill in the ethnicities of all descendants.
-    >>> gma1 = Person("Farah", {"Moroccan": 100.0})
-    >>> gpa1 = Person("Lorenzo", {"Italian" : 100.0})
-    >>> gpa2 = Person("Hai", {"Chinese":100.0})
-    >>> gma2 = Person("Gazala", {"Indian":100.0})
-    >>> papa1 = Person("Amjad") #  Son of Farah and Lorenzo
-    >>> papa2 = Person("Arjun") # Son of Hai and Gazala
-    >>> mama1 = Person("Anabella") # Daughter of Farah and Lorenzo
-    >>> mama2 = Person("Biyu") # Daughter of Hai and Gazala
-    >>> c1 = Person("Dipika") # Daughter of Arjun and Anabella
-    >>> c2 = Person("Cosimo") # Son of Arjun and Anabella
-    >>> c3 = Person("Jin") # Son of Amjad and Biyu
-    >>> c4 = Person("Malika") # Daughter of Amjad and Biyu
-    >>> leaves = [Family([c]) for c in [c1, c2, c3, c4]]
-    >>> fam1 = Family([papa2, mama1], {c1:leaves[0], c2:leaves[1]})
-    >>> fam2 = Family([papa1, mama2], {c3:leaves[2], c4:leaves[3]})
-    >>> t1 = Family([gpa1, gma1], {papa1:fam2, mama1:fam1})
-    >>> t2 = Family([gpa2, gma2], {papa2:fam1, mama2:fam2})
-    >>> computeAncesTree(t1)
+    Fill in the ethnicities of all parents.
+    >>> gma1 = FamilyTree("Farah", {"Moroccan": 100.0})
+    >>> gpa1 = FamilyTree("Lorenzo", {"Italian" : 100.0})
+    >>> gpa2 = FamilyTree("Hai", {"Chinese":100.0})
+    >>> gma2 = FamilyTree("Gazala", {"Indian":100.0})
+    >>> papa1 = FamilyTree("Amjad", {}, [gma1, gpa1]) #  Son of Farah and Lorenzo
+    >>> papa2 = FamilyTree("Arjun", {}, [gma2, gpa2]) # Son of Hai and Gazala
+    >>> mama1 = FamilyTree("Anabella", {}, [gma1, gpa1]) # Daughter of Farah and Lorenzo
+    >>> mama2 = FamilyTree("Biyu", {}, [gma2, gpa2]) # Daughter of Hai and Gazala
+    >>> c1 = FamilyTree("Dipika", {}, [mama1, papa2]) # Daughter of Arjun and Anabella
+    >>> c2 = FamilyTree("Cosimo", {}, [mama1, papa2]) # Son of Arjun and Anabella
+    >>> c3 = FamilyTree("Jin", {}, [mama2, papa1]) # Son of Amjad and Biyu
+    >>> c4 = FamilyTree("Malika", {}, [mama2, papa1]) # Daughter of Amjad and Biyu
+    >>> eth = {a:25.0 for a in ["Moroccan", "Italian", "Chinese", "Indian"]}
+    >>> computeAncesTree(c1) == eth
+    True
+    >>> mama1.ethnicity["Moroccan"] == 50.0 and mama1.ethnicity["Italian"] == 50.0
+    True
+    >>> papa2.ethnicity["Indian"] == 50.0 and papa2.ethnicity["Chinese"] == 50.0
+    True
+    >>> mama2.ethnicity == papa1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity
+    True
+    >>> computeAncesTree(c2) == computeAncesTree(c3) == computeAncesTree(c4) == eth
+    True
     >>> papa1.ethnicity == mama1.ethnicity
     True
-    >>> c1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity
-    True
-    >>> computeAncesTree(t2)
     >>> papa2.ethnicity == mama2.ethnicity
     True
-    >>> eth = {a:25.0 for a in ["Moroccan", "Italian", "Chinese", "Indian"]}
-    >>> c1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity == eth
-    True
-    >>> sidepa = Person("Kahlil Gibran", {"Lebanese":75.0, "Moroccan":25.0})
-    >>> secret = Person("نبي")
-    >>> secretFam = Family([secret])
-    >>> t3 = Family([sidepa, gma1], {secret:secretFam})
-    >>> computeAncesTree(t3)
+    >>> sidepa = FamilyTree("Kahlil Gibran", {"Lebanese":75.0, "Moroccan":25.0})
+    >>> secret = FamilyTree("The Prophet", {}, [gma1, sidepa])
     >>> eth2 = {"Lebanese":37.5, "Moroccan":62.5}
-    >>> secret.ethnicity == eth2
+    >>> computeAncesTree(secret) == eth2
     True
     """
     "*** YOUR CODE HERE ***"
