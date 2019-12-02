@@ -1,0 +1,22 @@
+{
+    "name": "Homework 11",
+    "endpoint": "cal/cs88/fa19/hw11",
+    "src": [
+        "hw11.py"
+    ],
+    "tests": {
+        "hw11.py:Account": "doctest",
+        "hw11.py:CheckingAccount": "doctest",
+        "hw11.py:Error": "doctest",
+        "hw11.py:SyntaxError": "doctest",
+        "hw11.py:ZeroDivisionError": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "analytics",
+        "grading",
+        "backup",
+        "unlock"
+    ]
+}

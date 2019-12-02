@@ -1,0 +1,25 @@
+{
+    "name": "Lab 10",
+    "endpoint": "cal/cs88/fa19/lab10",
+    "src": [
+        "lab10.py"
+    ],
+    "tests": {
+        "lab10.py:Player": "doctest",
+        "lab10.py:Game": "doctest",
+        "lab10.py:AggressivePlayer": "doctest",
+        "lab10.py:CautiousPlayer": "doctest",
+        "lab10.py:Beater.energy": "doctest",
+        "lab10.py:Chaser.energy": "doctest",
+        "lab10.py:Seeker.energy": "doctest",
+        "lab10.py:Keeper.energy": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science" />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Michael Ball, Amir Shahatit, Alex Kassil, Lyric Yu, Julia Yu, Srinath Goli, Sophia Qin, Brian Mi, Alec Kan, John Yang" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/fa19/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/style.css">
+    <link rel="icon" href="/fa19/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/fa19/assets/css/mono-blue.css">
+
+    <link rel="stylesheet" type="text/css" href="/fa19/assets/css/resource.css" />
+<link rel="stylesheet" type="text/css" href="/fa19/assets/css/lab.css" />
+
+
+    <title>Lab 9: Recursive Objects | CS 88 Fall 2019</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section" aria-label="Toggle Nav Menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/fa19/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/fa19/">Calendar</a></li>
+            <li><a href="/fa19/articles/resources.html">Resources</a></li>
+            <li><a href="/fa19/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/fa19/articles/about.html">Course Information</a></li>
+            <li><a href="/fa19/staff.html">Staff</a></li>
+            <!--- <li><a href="/fa19/tutoring.html">Tutoring</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1><span class="content-title-brand">Lab 9</span>: Recursive Objects</h1>
+    </div>
+
+    <p><i>Due at 11:59:59 pm on 11/21/2019.</i></p>
+
+
+<h2 id='starter-files'>Starter Files</h2>
+
+<p>Download <a href="lab09.zip">lab09.zip</a>.
+Inside the archive, you will find starter files for the questions in this lab,
+  along with a copy of the OK autograder.</p>
+
+<h2 id='submission'>Submission</h2>
+
+<p>By the end of this lab, you should have submitted the lab with <code>python3 ok --submit</code>. You may submit more than once before the deadline; only the final submission will be graded. Check that you have successfully submitted your code on <a href="https://okpy.org">okpy.org</a>. See <a href="https://cs61a.org/articles/using-ok.html">this article</a> for more instructions on okpy and submitting assignments.</p>
+
+
+<ul>
+  <li>To receive credit for this lab, you must complete Questions 1, 2, 3, 4, 5, and 6 in
+  <a href="lab09.py">lab09.py</a> and submit through OK.</li>
+  <li>Questions 7 and 8 are <em>extra practice</em>. They can be found in the
+  <a href="lab09_extra.py">lab09_extra.py</a> file. It is recommended that you complete
+  these problems on your own time for extra practice.</li>
+</ul>
+
+    
+
+
+<h2 id="linked-lists">Linked Lists</h2>
+
+
+<p>A linked list is either an empty linked list (<code>Link.empty</code>) <strong>or</strong> a first value
+and the rest of the linked list.</p>
+
+<pre><code>class Link:
+    &quot;&quot;&quot;
+    &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; s
+    Link(1, Link(2, Link(3)))
+    &quot;&quot;&quot;
+    empty = ()
+
+    def __init__(self, first, rest=empty):
+        assert rest is Link.empty or isinstance(rest, Link)
+        self.first = first
+        self.rest = rest
+
+    def __repr__(self):
+        if self.rest is not Link.empty:
+            rest_str = &#x27;, &#x27; + repr(self.rest)
+        else:
+            rest_str = &#x27;&#x27;
+        return &#x27;Link({0}{1})&#x27;.format(repr(self.first), rest_str)</code></pre>
+
+<p>To check if a <code>Link</code> is empty, compare it against the class attribute
+<code>Link.empty</code>. For example, the below function prints out whether or not the link it is handed is empty:</p>
+
+<pre><code>def test_empty(link):
+    if link is Link.empty:
+        print(&#x27;This linked list is empty!&#x27;)
+    else:
+        print(&#x27;This linked list is not empty!&#x27;)</code></pre>
+
+<blockquote><p>Note: Linked lists are recursive data structures! A linked list contains the
+first element of the list (<code>first</code>) and a reference to another linked list
+(<code>rest</code>) which contains the rest of the values in the list.</p></blockquote>
+
+<h3 class="question" id="q1">Question 1: WWPP: Linked Lists</h3>
+
+<blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
+questions:</p>
+
+<pre><code>python3 ok &#x2d;q link &#x2d;u</code></pre>
+
+<p>If you get stuck, try loading lab09.py into an interpreter or drawing out the
+diagram for the linked list on a piece of paper.</p></blockquote>
+
+
+    <pre><code>&gt;&gt;&gt; from lab09 import *
+&gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
+&gt;&gt;&gt; link.first
+<div class="alt 8">______</div><div class="solution 8">&#x31;</div>
+&gt;&gt;&gt; link.rest.first
+<div class="alt 8">______</div><div class="solution 8">&#x32;</div>
+&gt;&gt;&gt; link.rest.rest.rest is Link.empty
+<div class="alt 8">______</div><div class="solution 8">&#x54;&#x72;&#x75;&#x65;</div>
+&gt;&gt;&gt; link.first = 9001
+&gt;&gt;&gt; link.first
+<div class="alt 8">______</div><div class="solution 8">&#x39;&#x30;&#x30;&#x31;</div>
+&gt;&gt;&gt; link.rest = link.rest.rest
+&gt;&gt;&gt; link.rest.first
+<div class="alt 8">______</div><div class="solution 8">&#x33;</div>
+&gt;&gt;&gt; link = Link(1)
+&gt;&gt;&gt; link.rest = link
+&gt;&gt;&gt; link.rest.rest.rest.rest.first
+<div class="alt 8">______</div><div class="solution 8">&#x31;</div>
+&gt;&gt;&gt; link = Link(2, Link(3, Link(4)))
+&gt;&gt;&gt; link2 = Link(1, link)
+&gt;&gt;&gt; link2.first
+<div class="alt 8">______</div><div class="solution 8">&#x31;</div>
+&gt;&gt;&gt; link2.rest.first
+<div class="alt 8">______</div><div class="solution 8">&#x32;</div>
+&gt;&gt;&gt; print_link(link2) # Look at print_link in lab09.py
+<div class="alt 8">______</div><div class="solution 8">&#x3c;&#x31;&#x20;&#x32;&#x20;&#x33;&#x20;&#x34;&#x3e;</div></code></pre>
+
+    <button id='8' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<h3 class="question" id="q2">Question 2: List to Link</h3>
+
+<p>Write a function <code>list_to_link</code> that converts a Python list to a <code>Link</code>.</p>
+
+
+
+<pre><code>def list_to_link(lst):
+    &quot;&quot;&quot;Takes a Python list and returns a Link with the same elements.
+
+    &gt;&gt;&gt; link = list_to_link([1, 2, 3])
+    &gt;&gt;&gt; print_link(link)
+    &lt;1 2 3&gt;
+    &quot;&quot;&quot;
+<div class="alt 1">    "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x6c;&#x73;&#x74;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x30;&#x5d;&#x2c;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x73;&#x74;&#x5b;&#x31;&#x3a;&#x5d;&#x29;&#x29;</div></code></pre>
+
+
+    <button id='1' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q list_to_link</code></pre>
+
+<h3 class="question" id="q3">Question 3: Insert</h3>
+
+<p>Implement a function <code>insert</code> that takes a <code>Link</code>, a <code>value</code>, and an
+<code>index</code>, and inserts the <code>value</code> into the <code>Link</code> at the given <code>index</code>.
+You can assume the linked list already has at least one element. Do not
+return anything &mdash; <code>insert</code> should mutate the linked list.</p>
+
+<blockquote><p><strong>Note</strong>: If the index is out of bounds, you can raise an <code>IndexError</code> with:</p>
+
+<pre><code>raise IndexError</code></pre></blockquote>
+
+
+
+<pre><code>def insert(link, value, index):
+    &quot;&quot;&quot;Insert a value into a Link at the given index.
+
+    &gt;&gt;&gt; link = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; print_link(link)
+    &lt;1 2 3&gt;
+    &gt;&gt;&gt; insert(link, 9001, 0)
+    &gt;&gt;&gt; print_link(link)
+    &lt;9001 1 2 3&gt;
+    &gt;&gt;&gt; insert(link, 100, 2)
+    &gt;&gt;&gt; print_link(link)
+    &lt;9001 1 100 2 3&gt;
+    &gt;&gt;&gt; insert(link, 4, 5)
+    IndexError
+    &quot;&quot;&quot;
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x73;&#x65;&#x72;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x2d;&#x20;&#x31;&#x29;&#xa;&#xa;&#x23;&#x20;&#x69;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x69;&#x6e;&#x73;&#x65;&#x72;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x2c;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3e;&#x20;&#x30;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x2d;&#x3d;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x6e;&#x64;&#x65;&#x78;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x61;&#x69;&#x73;&#x65;&#x20;&#x49;&#x6e;&#x64;&#x65;&#x78;&#x45;&#x72;&#x72;&#x6f;&#x72;</div></code></pre>
+
+
+    <button id='2' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q insert</code></pre>
+
+
+<h2 id="trees">Trees</h2>
+
+
+<p>As we saw in lecture, we can also represent trees as objects.</p>
+
+<pre><code>class Tree:
+    def __init__(self, entry, branches=()):
+        self.entry = entry
+        for branch in branches:
+            assert isinstance(branch, Tree)
+        self.branches = list(branches)
+
+    def __repr__(self):
+        if self.branches:
+            branches_str = &#x27;, &#x27; + repr(self.branches)
+        else:
+            branches_str = &#x27;&#x27;
+        return &#x27;Tree({0}{1})&#x27;.format(self.entry, branches_str)
+
+    def is_leaf(self):
+        return not self.branches</code></pre>
+
+<h3 class="question" id="q4">Question 4: WWPP: Trees</h3>
+
+<blockquote><p>Use OK to test your knowledge with the following "What Would Python Print?"
+questions:</p>
+
+<pre><code>python3 ok &#x2d;q trees &#x2d;u</code></pre>
+
+<p><em>Hint</em>: Remember for all WWPP questions, enter <code>Function</code> if you believe the
+answer is <code>&lt;function ...&gt;</code> and <code>Error</code> if it errors.</p></blockquote>
+
+
+    <pre><code>&gt;&gt;&gt; from lab09 import *
+&gt;&gt;&gt; t = Tree(1, Tree(2))
+<div class="alt 9">______</div><div class="solution 9">&#x45;&#x72;&#x72;&#x6f;&#x72;</div>
+&gt;&gt;&gt; t = Tree(1, [Tree(2)])
+&gt;&gt;&gt; t.entry
+<div class="alt 9">______</div><div class="solution 9">&#x31;</div>
+&gt;&gt;&gt; t.branches[0]
+<div class="alt 9">______</div><div class="solution 9">&#x54;&#x72;&#x65;&#x65;&#x28;&#x32;&#x29;</div>
+&gt;&gt;&gt; t.branches[0].entry
+<div class="alt 9">______</div><div class="solution 9">&#x32;</div>
+&gt;&gt;&gt; t.entry = t.branches[0].entry
+&gt;&gt;&gt; t
+<div class="alt 9">______</div><div class="solution 9">&#x54;&#x72;&#x65;&#x65;&#x28;&#x32;&#x2c;&#x20;&#x5b;&#x54;&#x72;&#x65;&#x65;&#x28;&#x32;&#x29;&#x5d;&#x29;</div>
+&gt;&gt;&gt; t.branches.append(Tree(4, [Tree(8)]))
+&gt;&gt;&gt; len(t.branches)
+<div class="alt 9">______</div><div class="solution 9">&#x32;</div>
+&gt;&gt;&gt; t.branches[0]
+<div class="alt 9">______</div><div class="solution 9">&#x54;&#x72;&#x65;&#x65;&#x28;&#x32;&#x29;</div>
+&gt;&gt;&gt; t.branches[1]
+<div class="alt 9">______</div><div class="solution 9">&#x54;&#x72;&#x65;&#x65;&#x28;&#x34;&#x2c;&#x20;&#x5b;&#x54;&#x72;&#x65;&#x65;&#x28;&#x38;&#x29;&#x5d;&#x29;</div></code></pre>
+
+    <button id='9' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<h3 class="question" id="q5">Question 5: Same Shape</h3>
+
+<p>Write a function <code>same_shape</code> that returns <code>True</code> if two <code>Tree</code>s have the same
+shape. Two trees have the same shape if they have the same number of children
+and each of their children have the same shape.</p>
+
+
+
+<pre><code>def same_shape(t1, t2):
+    &quot;&quot;&quot;Returns whether two Trees t1, t2 have the same shape. Two trees have the
+    same shape if they have the same number of branches and each of their
+    children have the same shape.
+
+    &gt;&gt;&gt; t, s = Tree(1), Tree(3)
+    &gt;&gt;&gt; same_shape(t, t)
+    True
+    &gt;&gt;&gt; same_shape(t, s)
+    True
+    &gt;&gt;&gt; t = Tree(1, [Tree(2), Tree(3)])
+    &gt;&gt;&gt; same_shape(t, s)
+    False
+    &gt;&gt;&gt; s = Tree(4, [Tree(7)])
+    &gt;&gt;&gt; same_shape(t, s)
+    False
+    &quot;&quot;&quot;
+<div class="alt 3">    "*** YOUR CODE HERE ***"
+</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x74;&#x31;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x20;&#x3d;&#x3d;&#x20;&#x6c;&#x65;&#x6e;&#x28;&#x74;&#x32;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x5c;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x61;&#x6c;&#x6c;&#x28;&#x73;&#x61;&#x6d;&#x65;&#x5f;&#x73;&#x68;&#x61;&#x70;&#x65;&#x28;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x32;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x73;&#x74;&#x31;&#x2c;&#x20;&#x73;&#x74;&#x32;&#x20;&#x69;&#x6e;&#x20;&#x7a;&#x69;&#x70;&#x28;&#x74;&#x31;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x2c;&#x20;&#x74;&#x32;&#x2e;&#x62;&#x72;&#x61;&#x6e;&#x63;&#x68;&#x65;&#x73;&#x29;&#x29;</div></code></pre>
+
+
+    <button id='3' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q same_shape</code></pre>
+
+<h3 class="question" id="q6">Question 6: 23andTree</h3>
+
+<p>Write a function <code>computeAncesTree</code> that fills in the ethnic breakdown of everyone in your <code>FamilyTree</code>.
+<code>FamilyTree</code>s have a name and an ethnicity. An <code>ethnicity</code> is a dictionary mapping ethnicities to their percentages for that person.
+<br/>
+A <code>FamilyTree</code> contains a list of parents. Parents are also <code>FamilyTree</code>s. A child's ethnic breakdown should be half of each of the ethnicities in each of their parents. A leaf <code>FamilyTree</code> is a tree with no parents. To begin, you can only assume that the <code>ethnicity</code> of the leafs of your <code>FamilyTree</code> are filled in.</p>
+
+
+
+<pre><code>class FamilyTree:
+    def __init__(self, name, ethnicity, parents=[]):
+        # Leaf FamilyTrees have no parents
+        self.name = name
+        self.ethnicity = ethnicity
+        self.parents = parents
+        if not self.is_leaf():
+            for p in parents:
+                assert isinstance(p, FamilyTree)
+
+    def __repr__(self):
+        if self.is_leaf():
+            return self.name
+        return &#x27;{} child of {}&#x27;.format(self.name, repr(self.parents))
+
+    def is_leaf(self):
+        return len(self.parents) == 0
+
+def computeAncesTree(t):
+    &quot;&quot;&quot;
+    Fill in the ethnicities of all parents.
+    &gt;&gt;&gt; gma1 = FamilyTree(&quot;Farah&quot;, {&quot;Moroccan&quot;: 100.0})
+    &gt;&gt;&gt; gpa1 = FamilyTree(&quot;Lorenzo&quot;, {&quot;Italian&quot; : 100.0})
+    &gt;&gt;&gt; gpa2 = FamilyTree(&quot;Hai&quot;, {&quot;Chinese&quot;:100.0})
+    &gt;&gt;&gt; gma2 = FamilyTree(&quot;Gazala&quot;, {&quot;Indian&quot;:100.0})
+    &gt;&gt;&gt; papa1 = FamilyTree(&quot;Amjad&quot;, {}, [gma1, gpa1]) #  Son of Farah and Lorenzo
+    &gt;&gt;&gt; papa2 = FamilyTree(&quot;Arjun&quot;, {}, [gma2, gpa2]) # Son of Hai and Gazala
+    &gt;&gt;&gt; mama1 = FamilyTree(&quot;Anabella&quot;, {}, [gma1, gpa1]) # Daughter of Farah and Lorenzo
+    &gt;&gt;&gt; mama2 = FamilyTree(&quot;Biyu&quot;, {}, [gma2, gpa2]) # Daughter of Hai and Gazala
+    &gt;&gt;&gt; c1 = FamilyTree(&quot;Dipika&quot;, {}, [mama1, papa2]) # Daughter of Arjun and Anabella
+    &gt;&gt;&gt; c2 = FamilyTree(&quot;Cosimo&quot;, {}, [mama1, papa2]) # Son of Arjun and Anabella
+    &gt;&gt;&gt; c3 = FamilyTree(&quot;Jin&quot;, {}, [mama2, papa1]) # Son of Amjad and Biyu
+    &gt;&gt;&gt; c4 = FamilyTree(&quot;Malika&quot;, {}, [mama2, papa1]) # Daughter of Amjad and Biyu
+    &gt;&gt;&gt; eth = {a:25.0 for a in [&quot;Moroccan&quot;, &quot;Italian&quot;, &quot;Chinese&quot;, &quot;Indian&quot;]}
+    &gt;&gt;&gt; computeAncesTree(c1) == eth
+    True
+    &gt;&gt;&gt; mama1.ethnicity[&quot;Moroccan&quot;] == 50.0 and mama1.ethnicity[&quot;Italian&quot;] == 50.0
+    True
+    &gt;&gt;&gt; papa2.ethnicity[&quot;Indian&quot;] == 50.0 and papa2.ethnicity[&quot;Chinese&quot;] == 50.0
+    True
+    &gt;&gt;&gt; mama2.ethnicity == papa1.ethnicity == c2.ethnicity == c3.ethnicity == c4.ethnicity
+    True
+    &gt;&gt;&gt; computeAncesTree(c2) == computeAncesTree(c3) == computeAncesTree(c4) == eth
+    True
+    &gt;&gt;&gt; papa1.ethnicity == mama1.ethnicity
+    True
+    &gt;&gt;&gt; papa2.ethnicity == mama2.ethnicity
+    True
+    &gt;&gt;&gt; sidepa = FamilyTree(&quot;Kahlil Gibran&quot;, {&quot;Lebanese&quot;:75.0, &quot;Moroccan&quot;:25.0})
+    &gt;&gt;&gt; secret = FamilyTree(&quot;The Prophet&quot;, {}, [gma1, sidepa])
+    &gt;&gt;&gt; eth2 = {&quot;Lebanese&quot;:37.5, &quot;Moroccan&quot;:62.5}
+    &gt;&gt;&gt; computeAncesTree(secret) == eth2
+    True
+    &quot;&quot;&quot;
+<div class="alt 4">    "*** YOUR CODE HERE ***"
+</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x74;&#x2e;&#x69;&#x73;&#x5f;&#x6c;&#x65;&#x61;&#x66;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x2e;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x69;&#x65;&#x73;&#x20;&#x3d;&#x20;&#x5b;&#x63;&#x6f;&#x6d;&#x70;&#x75;&#x74;&#x65;&#x41;&#x6e;&#x63;&#x65;&#x73;&#x54;&#x72;&#x65;&#x65;&#x28;&#x70;&#x29;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x70;&#x20;&#x69;&#x6e;&#x20;&#x74;&#x2e;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x7b;&#x7d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x69;&#x6e;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x69;&#x65;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x74;&#x68;&#x2c;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x69;&#x6e;&#x20;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x2e;&#x69;&#x74;&#x65;&#x6d;&#x73;&#x28;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x65;&#x74;&#x68;&#x20;&#x69;&#x6e;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x5b;&#x65;&#x74;&#x68;&#x5d;&#x20;&#x2b;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x2f;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x5b;&#x65;&#x74;&#x68;&#x5d;&#x20;&#x3d;&#x20;&#x76;&#x61;&#x6c;&#x20;&#x2f;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x74;&#x2e;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#x20;&#x3d;&#x20;&#x6e;&#x65;&#x77;&#x5f;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x74;&#x2e;&#x65;&#x74;&#x68;&#x6e;&#x69;&#x63;&#x69;&#x74;&#x79;</div></code></pre>
+
+
+    <button id='4' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q computeAncesTree</code></pre>
+
+
+<h2 id="extra-questions">Extra Questions</h2>
+
+
+<blockquote><p>The following questions are for <strong>extra practice</strong> &mdash; they can be found
+in the the <a href="lab09_extra.py">lab09_extra.py</a> file. It is recommended
+that you complete these problems on your own time.</p></blockquote>
+
+<h3 class="question" id="q7">Question 7: Link to List</h3>
+
+<p>Write a function <code>link_to_list</code> that converts a given <code>Link</code> to a
+Python list.</p>
+
+
+
+<pre><code>def link_to_list(link):
+    &quot;&quot;&quot;Takes a Link and returns a Python list with the same elements.
+
+    &gt;&gt;&gt; link = Link(1, Link(2, Link(3, Link(4))))
+    &gt;&gt;&gt; link_to_list(link)
+    [1, 2, 3, 4]
+    &gt;&gt;&gt; link_to_list(Link.empty)
+    []
+    &quot;&quot;&quot;
+<div class="alt 5">    "*** YOUR CODE HERE ***"
+</div><div class="solution 5">&#x20;&#x20;&#x20;&#x20;&#x23;&#x20;&#x52;&#x65;&#x63;&#x75;&#x72;&#x73;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x5b;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x5d;&#x20;&#x2b;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x29;&#xa;&#xa;&#x23;&#x20;&#x49;&#x74;&#x65;&#x72;&#x61;&#x74;&#x69;&#x76;&#x65;&#x20;&#x73;&#x6f;&#x6c;&#x75;&#x74;&#x69;&#x6f;&#x6e;&#xa;&#x64;&#x65;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x5f;&#x74;&#x6f;&#x5f;&#x6c;&#x69;&#x73;&#x74;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x29;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x20;&#x3d;&#x20;&#x5b;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;&#x2e;&#x61;&#x70;&#x70;&#x65;&#x6e;&#x64;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x66;&#x69;&#x72;&#x73;&#x74;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x72;&#x65;&#x73;&#x75;&#x6c;&#x74;</div></code></pre>
+
+
+    <button id='5' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q link_to_list</code></pre>
+
+<h3 class="question" id="q8">Question 8: Cycles</h3>
+
+<p>The <code>Link</code> class can represent lists with cycles.  That is, a list may
+contain itself as a sublist.</p>
+
+<pre><code>&gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
+&gt;&gt;&gt; s.rest.rest.rest = s
+&gt;&gt;&gt; s.rest.rest.rest.rest.rest.first
+3</code></pre>
+
+<p>Implement <code>has_cycle</code> that returns whether its argument, a <code>Link</code>
+instance, contains a cycle.</p>
+
+<blockquote><p><em>Hint</em>: Iterate through the linked list and try keeping track of which <code>Link</code>
+objects you've already seen.</p></blockquote>
+
+
+
+<pre><code>def has_cycle(link):
+    &quot;&quot;&quot;Return whether link contains a cycle.
+
+    &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; s.rest.rest.rest = s
+    &gt;&gt;&gt; has_cycle(s)
+    True
+    &gt;&gt;&gt; t = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; has_cycle(t)
+    False
+    &gt;&gt;&gt; u = Link(2, Link(2, Link(2)))
+    &gt;&gt;&gt; has_cycle(u)
+    False
+    &quot;&quot;&quot;
+<div class="alt 6">    "*** YOUR CODE HERE ***"
+</div><div class="solution 6">&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x20;&#x3d;&#x20;&#x73;&#x65;&#x74;&#x28;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x6e;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x73;&#x74;&#x73;&#x2e;&#x61;&#x64;&#x64;&#x28;&#x6c;&#x69;&#x6e;&#x6b;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;</div></code></pre>
+
+
+    <button id='6' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q has_cycle</code></pre>
+
+<p><strong>Extra for experts</strong>: Implement <code>has_cycle</code> with only <a href="http://composingprograms.com/pages/28-efficiency.html#growth-categories">constant space</a>. (If
+you followed the hint above, you will use linear space.) The solution is short
+(less than 20 lines of code), but requires a clever idea. Try to discover the
+solution yourself before asking around:</p>
+
+
+
+<pre><code>def has_cycle_constant(link):
+    &quot;&quot;&quot;Return whether link contains a cycle.
+
+    &gt;&gt;&gt; s = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; s.rest.rest.rest = s
+    &gt;&gt;&gt; has_cycle_constant(s)
+    True
+    &gt;&gt;&gt; t = Link(1, Link(2, Link(3)))
+    &gt;&gt;&gt; has_cycle_constant(t)
+    False
+    &quot;&quot;&quot;
+<div class="alt 7">    "*** YOUR CODE HERE ***"
+</div><div class="solution 7">&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x20;&#x69;&#x73;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x2c;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2c;&#x20;&#x6c;&#x69;&#x6e;&#x6b;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x69;&#x73;&#x20;&#x6e;&#x6f;&#x74;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x66;&#x61;&#x73;&#x74;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x3d;&#x20;&#x4c;&#x69;&#x6e;&#x6b;&#x2e;&#x65;&#x6d;&#x70;&#x74;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x69;&#x66;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x3d;&#x3d;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x20;&#x6f;&#x72;&#x20;&#x66;&#x61;&#x73;&#x74;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x20;&#x3d;&#x3d;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x54;&#x72;&#x75;&#x65;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x2c;&#x20;&#x66;&#x61;&#x73;&#x74;&#x20;&#x3d;&#x20;&#x73;&#x6c;&#x6f;&#x77;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2c;&#x20;&#x66;&#x61;&#x73;&#x74;&#x2e;&#x72;&#x65;&#x73;&#x74;&#x2e;&#x72;&#x65;&#x73;&#x74;&#xa;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x46;&#x61;&#x6c;&#x73;&#x65;</div></code></pre>
+
+
+    <button id='7' class='toggleButton'>
+    Toggle Solution<noscript> (enable JavaScript)</noscript>
+    </button>
+    
+
+<p>Use OK to test your code:</p><pre><code>python3 ok -q has_cycle_constant</code></pre>
+
+
+<h3 id="motivation">Motivation</h3>
+
+
+<p>Since you are already familiar with Python's built-in lists, you might be
+wondering why we are teaching you another list representation. There are
+historical reasons, along with practical reasons. Later in the term, you'll be
+programming in Scheme, which is a programming language that uses linked lists
+for almost everything. But let's not worry about that for now. The real reason,
+is that certain operations are faster with linked lists.</p>
+
+<p>Python's built-in list is like a sequence of containers with indices on them:</p>
+
+<p><img class="img-responsive center-block" src="assets/arraylist.png" alt="arraylist"></p>
+
+<p>Linked lists are a list of items pointing to their neighbors. Notice that
+there's no explicit index for each item.</p>
+
+<p><img class="img-responsive center-block" src="assets/linkedlist.png" alt="linkedlist"></p>
+
+<p>Suppose we want to add an item at the head of the list.</p>
+
+<ul>
+  <li>With Python's built-in list, if you want to put an item into the container
+  labeled with index 0, you must move <strong>all the items</strong> in the list into
+  its neighbor containers to make room for the first item;</li>
+</ul>
+
+<p><img class="img-responsive center-block" src="assets/arraylist_insert.png" alt="arraylist"></p>
+
+<ul>
+  <li>With a linked list, you tell Python that the neighbor of the new item is the
+  old beginning of the list.</li>
+</ul>
+
+<p><img class="img-responsive center-block" src="assets/linkedlist_insert.png" alt="arraylist"></p>
+
+<p>To test this, in your terminal, enter the following command: <code>python3 timing.py
+insert 100000</code>, which inserts 100,000 items into the beginning of both a linked
+list and a Python built-in list to compare the speed.</p>
+
+<p>Now, say we want the item at index 3.</p>
+
+<ul>
+  <li>In the built-in list, you can simply grab the item from the container
+  with 3 labeled on it;</li>
+  <li>In the linked list, you need to start at the first item, and go to
+  its neighbor's neighbor's neighbor to finally reach the item at index
+  3.</li>
+</ul>
+
+<p>To test this, enter the following command in your terminal: <code>python3 timing.py
+index 10000</code>. This program compares the speed of randomly accessing 10,000 items from both a linked list and a
+built-in Python list (each with length 10,000).</p>
+
+<p>You'll learn more about orders of growth this week, which will provide
+mathematical rigor when comparing the runtime of the same operations with
+different data structures.</p>
+
+
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#linked-lists">Linked Lists</a></li>
+  <ul>
+  <li><a href="#q1">Question 1: WWPP: Linked Lists</a></li>
+  <li><a href="#q2">Question 2: List to Link</a></li>
+  <li><a href="#q3">Question 3: Insert</a></li>
+</ul>
+
+  <li><a href="#trees">Trees</a></li>
+  <ul>
+  <li><a href="#q4">Question 4: WWPP: Trees</a></li>
+  <li><a href="#q5">Question 5: Same Shape</a></li>
+  <li><a href="#q6">Question 6: 23andTree</a></li>
+</ul>
+
+  <li><a href="#extra-questions">Extra Questions</a></li>
+  <ul>
+  <li><a href="#q7">Question 7: Link to List</a></li>
+  <li><a href="#q8">Question 8: Cycles</a></li>
+  <li><a href="#motivation">Motivation</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/fa19/assets/js/bootstrap.min.js"></script>
+    <!-- TODO: Move to specific pages... -->
+    <script src="/fa19/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+<!-- <script src="//code.jquery.com/jquery-latest.js"></script> -->
+<!-- <script>
+  $(function() {
+    if (new Date("11/22/2019") < new Date()) {
+      $('.toggleButton').css('display', 'inline-block');
+      $('.toggleButton').click(function() {
+        var solution_id = $(this).attr('id');
+        $('div.' + solution_id).slideToggle(600);
+      });
+    }
+    // Always display these toggle buttons
+    $('.toggleButtonShow').click(function() {
+      var solution_id = $(this).attr('id');
+      $('div.' + solution_id).slideToggle(600);
+    });
+  });
+</script> -->
+  </body>
+</html>

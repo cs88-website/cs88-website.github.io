@@ -1,0 +1,28 @@
+{
+    "name": "Lab 8",
+    "endpoint": "cal/cs88/fa19/lab08",
+    "src": [
+        "lab08.py"
+    ],
+    "tests": {
+        "lab08.py:Keyboard": "doctest",
+        "tests/car.py": "ok_test",
+        "lab08.py:T88ble.num_rows": "doctest",
+        "lab08.py:T88ble.num_cols": "doctest",
+        "lab08.py:T88ble.labels": "doctest",
+        "lab08.py:T88ble.column": "doctest",
+        "lab08.py:T88ble.with_column": "doctest",
+        "lab08.py:T88ble.select": "doctest",
+        "lab08.py:T88ble.sort": "doctest",
+        "lab08.py:T88ble.where": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup",
+        "scoring"
+    ]
+}

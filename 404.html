@@ -1,0 +1,120 @@
+<html lang="en">
+<head>
+  <title>CS88 | 404 </title>
+  <link rel="stylesheet" href="/fa19/assets/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/fa19/assets/css/style.css">
+  <link rel="stylesheet" href="/fa19/assets/css/mono-blue.css">
+</head>
+<body>
+    <div class="container-responsive">
+    <ol class="breadcrumb">
+      <li><a href="/fa19/"><span class="glyphicon glyphicon-home"></span></a></li>
+    </ol>
+    <hr>
+    <h1 class="title"></h1>
+    <br>
+    <div class="table-responsive">
+      <table id="bs-table" class="table table-striped">
+        <thead>
+          <tr>
+            <th class="col-lg-8 text-left" data-sort="string">Name</th>
+            <th class="col-lg-2 text-right" data-sort="int">Size</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
+  
+  <script src="https://cs10.org/assets/directory-concat.js"></script>
+  <script type="text/javascript">
+  var ignore_list = [ 'index.html', 'Icon', 'index.php', '.gitattributes', '.gitignore',
+                      '.gitmodules', '.htaccess', 'robots.txt', 'assets',
+                      '_layouts', '_includes', 'README.md', '_config.yml'];
+    var GH_ORG    = 'cs88', // or username
+        REPO      = 'cs88-website.github.io', // location.pathname.split('/')[1], // sp15
+        baseRepo  = '',
+        isSubmodule = false;
+    // Support for git submodules.
+    if (location.pathname.indexOf('/resources/') !== -1) {
+      baseRepo = REPO;
+      isSubmodule = true;
+      REPO = 'resources';
+    }
+    var gh_base  = 'https://api.github.com/repos/',
+        gh_url   = gh_base + GH_ORG + '/' + REPO + '/' + 'contents/',
+        path     = location.pathname.split(REPO)[1].slice(1, -1),
+        callback = '?callback=buildTable',
+        full_url = gh_url + path + callback;
+    function headerPath() {
+      var path = location.pathname.split('/');
+      document.title = 'CS88 Files in: ' + decodeURIComponent(location.pathname);
+      $('h1.title').html(document.title)
+      var parentDir = '/' + REPO;
+      if (isSubmodule) {
+        parentDir = '/' + baseRepo;
+      }
+      path.forEach(function(dir) {
+        // Exclude the path to this folder unless it's a submodule
+        // baseRepo is the same as REPO for a submodule
+        if (dir && (dir !== REPO || isSubmodule) && dir !== baseRepo) {
+          var a  = $('<a>').attr({'href': parentDir + '/' + dir }).html(decodeURIComponent(dir));
+          $('.breadcrumb').append($('<li>').html(a));
+          parentDir += '/' + dir;
+        }
+      });
+    }
+    function calculateSize(size) {
+        labels = ['YB', 'ZB', 'EB', 'PB', 'TB', 'GB', 'MB', 'KB', 'bytes'];
+        total = labels.length;
+        while(total-- && size > 1024) size /= 1024;
+        return Math.round(size, 2) + labels[total];
+    }
+    function buildTable(items) {
+      var body = $('<tbody>');
+      items.data.forEach(function(item) {
+        if (ignore_list.indexOf(item.name) === -1) {
+          body.append(buildRow(item));
+        }
+        return true;
+      });
+      $('#bs-table').append(body);
+    }
+    function buildRow(item) {
+      var row   = $('<tr>');
+      var link  = $('<td>');
+      var size  = $('<td>');
+      var isDir = item.type === 'dir';
+      var glyph = 'file';
+      var url   = '/' + REPO + '/' + item.path;
+      var disp  = calculateSize(item.size);
+      if (isSubmodule) {
+        url = '/' + baseRepo + '/' + url;
+      }
+      if (isDir) {
+        url += '/';
+        glyph = 'folder-close';
+        disp = '—';
+      }
+      link.attr({'data-sort-value': item.name.toLowerCase(), 'class': 'text-left'});
+      var span = $('<span>').attr({ 'class': 'glyphicon glyphicon-' + glyph });
+      var text = $('<strong>').html(item.name);
+      var a    = $('<a>').attr({'href': url}).html(text);
+      span.append('   '); // hack until I fix CSS.
+      span.append(a);
+      size.attr({'data-sort-value': item.size, 'class':'text-right' }).html(disp);
+      link.append(span);
+      row.append(link);
+      row.append(size);
+      return row;
+    }
+    $(document).ready(function() {
+      headerPath();
+      $.ajax({
+        url: full_url,
+        cache: false
+      });
+      $("#bs-table").stupidsort();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+    "name": "Lab 9",
+    "endpoint": "cal/cs88/fa19/lab09",
+    "src": [
+        "lab09.py",
+        "lab09_extra.py"
+    ],
+    "tests": {
+        "tests/link.py": "ok_test",
+        "lab09.py:Link": "doctest",
+        "lab09.py:list_to_link": "doctest",
+        "lab09.py:insert": "doctest",
+        "tests/trees.py": "ok_test",
+        "lab09.py:same_shape": "doctest",
+        "lab09.py:computeAncesTree" : "doctest",
+        "lab09_extra.py:link_to_list": "doctest",
+        "lab09_extra.py:has_cycle": "doctest"
+    },
+    "protocols": [
+        "restore",
+        "file_contents",
+        "unlock",
+        "grading",
+        "analytics",
+        "backup"
+    ]
+}
