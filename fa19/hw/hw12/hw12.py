@@ -1,4 +1,3 @@
-# Probably a die-re situation
 
 class IteratorRestart:
     """

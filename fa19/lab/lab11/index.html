@@ -106,40 +106,6 @@ to handle, you can type purposely wrong things into the interpreter
 (such as 'hi' + 5 or 1 / 0) and see what kind of exception Python spits
 out.</p>
 
-<h3 class="question" id="q1">Question 1: No KeyErrors Allowed</h3>
-
-<p>If we try to look up a key that does not exist in a dictionary, then
-Python will raise a <code>KeyError</code>. Write the function <code>avoid_keyerror</code> which 
-returns the value mapped to <code>key</code> in the <code>dictionary</code>. If <code>key</code> does
-not exist, print 'Avoid Exception' and map <code>key</code> to the string 'no value'.</p>
-
-
-
-<pre><code>def avoid_keyerror(dictionary, key):
-    &quot;&quot;&quot; Returns the value associated with key in dictionary. If key 
-    does not exist in the dictionary, print out &#x27;Avoid Exception&#x27; and
-    map it to the string &#x27;no value&#x27;.
-
-    &gt;&gt;&gt; d = {1: &#x27;one&#x27;, 3: &#x27;three&#x27;, 5: &#x27;five&#x27;}
-    &gt;&gt;&gt; avoid_keyerror(d, 3)
-    &#x27;three&#x27;
-    &gt;&gt;&gt; avoid_keyerror(d, 4)
-    Avoid Exception
-    &gt;&gt;&gt; d[4]
-    &#x27;no value&#x27;
-    &quot;&quot;&quot;
-<div class="alt 1">    "*** YOUR CODE HERE ***"
-    
-</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x74;&#x72;&#x79;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#xa;&#x20;&#x20;&#x20;&#x20;&#x65;&#x78;&#x63;&#x65;&#x70;&#x74;&#x20;&#x4b;&#x65;&#x79;&#x45;&#x72;&#x72;&#x6f;&#x72;&#x20;&#x61;&#x73;&#x20;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x70;&#x72;&#x69;&#x6e;&#x74;&#x28;&#x22;&#x41;&#x76;&#x6f;&#x69;&#x64;&#x20;&#x45;&#x78;&#x63;&#x65;&#x70;&#x74;&#x69;&#x6f;&#x6e;&#x22;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x64;&#x69;&#x63;&#x74;&#x69;&#x6f;&#x6e;&#x61;&#x72;&#x79;&#x5b;&#x6b;&#x65;&#x79;&#x5d;&#x20;&#x3d;&#x20;&#x27;&#x6e;&#x6f;&#x20;&#x76;&#x61;&#x6c;&#x75;&#x65;&#x27;</div></code></pre>
-
-
-    <button id='1' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q avoid_keyerror</code></pre>
-
 
 <h2 id="iterators">Iterators</h2>
 
@@ -234,7 +200,7 @@ try:
 except StopIteration as e:
     pass</code></pre>
 
-<h3 class="question" id="q2">Question 2</h3>
+<h3 class="question" id="q1">Question 1</h3>
 
 <p>Implement an iterator class called <code>ScaleIterator</code> that scales elements in an
 iterable <code>s</code> by a number <code>k</code>.</p>
@@ -253,17 +219,17 @@ iterable <code>s</code> by a number <code>k</code>.</p>
     [2, 4, 6, 8, 10]
     &quot;&quot;&quot;
     def __init__(self, s, k):
-<div class="alt 2">        "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x20;&#x3d;&#x20;&#x69;&#x74;&#x65;&#x72;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6b;&#x20;&#x3d;&#x20;&#x6b;</div>
+<div class="alt 1">        "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x20;&#x3d;&#x20;&#x69;&#x74;&#x65;&#x72;&#x28;&#x73;&#x29;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6b;&#x20;&#x3d;&#x20;&#x6b;</div>
     def __iter__(self):
         return self
 
     def __next__(self):
-<div class="alt 2">        "*** YOUR CODE HERE ***"
-</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x78;&#x74;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x29;&#x20;&#x2a;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6b;</div></code></pre>
+<div class="alt 1">        "*** YOUR CODE HERE ***"
+</div><div class="solution 1">&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x72;&#x65;&#x74;&#x75;&#x72;&#x6e;&#x20;&#x6e;&#x65;&#x78;&#x74;&#x28;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x73;&#x29;&#x20;&#x2a;&#x20;&#x73;&#x65;&#x6c;&#x66;&#x2e;&#x6b;</div></code></pre>
 
 
-    <button id='2' class='toggleButton'>
+    <button id='1' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -344,17 +310,17 @@ questions:</p>
 
     <pre><code>&gt;&gt;&gt; g = generator()
 &gt;&gt;&gt; g # what type of object is this?
-<div class="alt 9">______</div><div class="solution 9">&#x3c;&#x67;&#x65;&#x6e;&#x65;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x20;&#x6f;&#x62;&#x6a;&#x65;&#x63;&#x74;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
+<div class="alt 7">______</div><div class="solution 7">&#x3c;&#x67;&#x65;&#x6e;&#x65;&#x72;&#x61;&#x74;&#x6f;&#x72;&#x20;&#x6f;&#x62;&#x6a;&#x65;&#x63;&#x74;&#x20;&#x2e;&#x2e;&#x2e;&#x3e;</div>
 &gt;&gt;&gt; g == iter(g) # equivalent of g.__iter__()
-<div class="alt 9">______</div><div class="solution 9">&#x54;&#x72;&#x75;&#x65;</div>
+<div class="alt 7">______</div><div class="solution 7">&#x54;&#x72;&#x75;&#x65;</div>
 &gt;&gt;&gt; next(g) # equivalent of g.__next__()
-<div class="alt 9">______</div><div class="solution 9">&#x53;&#x74;&#x61;&#x72;&#x74;&#x69;&#x6e;&#x67;&#x20;&#x68;&#x65;&#x72;&#x65;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x30;</div>
+<div class="alt 7">______</div><div class="solution 7">&#x53;&#x74;&#x61;&#x72;&#x74;&#x69;&#x6e;&#x67;&#x20;&#x68;&#x65;&#x72;&#x65;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x30;</div>
 &gt;&gt;&gt; next(g)
-<div class="alt 9">______</div><div class="solution 9">&#x41;&#x66;&#x74;&#x65;&#x72;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x31;</div>
+<div class="alt 7">______</div><div class="solution 7">&#x41;&#x66;&#x74;&#x65;&#x72;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x31;</div>
 &gt;&gt;&gt; next(g)
-<div class="alt 9">______</div><div class="solution 9">&#x41;&#x66;&#x74;&#x65;&#x72;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x32;</div></code></pre>
+<div class="alt 7">______</div><div class="solution 7">&#x41;&#x66;&#x74;&#x65;&#x72;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x42;&#x65;&#x66;&#x6f;&#x72;&#x65;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#xa;&#x32;</div></code></pre>
 
-    <button id='9' class='toggleButton'>
+    <button id='7' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -385,7 +351,7 @@ for i in IterGen():
 <code>yield</code> statement in the body. Therefore, when <code>__iter__</code> is called, it returns
 a generator object, which you can call <code>__next__</code> on.</p>
 
-<h3 class="question" id="q3">Question 3: Scale</h3>
+<h3 class="question" id="q2">Question 2: Scale</h3>
 
 <p>Implement the generator function <code>scale(s, k)</code>, which yields elements of the
 given iterable <code>s</code>, scaled by <code>k</code>.</p>
@@ -405,55 +371,16 @@ given iterable <code>s</code>, scaled by <code>k</code>.</p>
     &gt;&gt;&gt; [next(m) for _ in range(5)]
     [2, 4, 6, 8, 10]
     &quot;&quot;&quot;
-<div class="alt 3">    "*** YOUR CODE HERE ***"
-</div><div class="solution 3">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x2a;&#x20;&#x6b;</div></code></pre>
+<div class="alt 2">    "*** YOUR CODE HERE ***"
+</div><div class="solution 2">&#x20;&#x20;&#x20;&#x20;&#x66;&#x6f;&#x72;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x69;&#x6e;&#x20;&#x73;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x65;&#x6c;&#x65;&#x6d;&#x20;&#x2a;&#x20;&#x6b;</div></code></pre>
 
 
-    <button id='3' class='toggleButton'>
+    <button id='2' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q scale</code></pre>
-
-<h3 class="question" id="q4">Question 4: Hailstone</h3>
-
-<p>Write a generator that outputs the hailstone sequence from Lab 01.</p>
-
-<p>Here's a quick remainder of how the hailstone sequence is defined:</p>
-
-<ol>
-  <li>Pick a positive integer <code>n</code> as the start.</li>
-  <li>If <code>n</code> is even, divide it by 2.</li>
-  <li>If <code>n</code> is odd, multiply it by 3 and add 1.</li>
-  <li>Continue this process until <code>n</code> is 1.</li>
-</ol>
-
-
-
-<pre><code>def hailstone(n):
-    &quot;&quot;&quot;
-    &gt;&gt;&gt; for num in hailstone(10):
-    ...     print(num)
-    ...
-    10
-    5
-    16
-    8
-    4
-    2
-    1
-    &quot;&quot;&quot;
-<div class="alt 4">    "*** YOUR CODE HERE ***"
-</div><div class="solution 4">&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x3d;&#x20;&#x6e;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x69;&#x6c;&#x65;&#x20;&#x69;&#x20;&#x3e;&#x20;&#x31;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x69;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x66;&#x20;&#x69;&#x20;&#x25;&#x20;&#x32;&#x20;&#x3d;&#x3d;&#x20;&#x30;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x2f;&#x2f;&#x3d;&#x20;&#x32;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x65;&#x6c;&#x73;&#x65;&#x3a;&#xa;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x20;&#x69;&#x20;&#x3d;&#x20;&#x69;&#x20;&#x2a;&#x20;&#x33;&#x20;&#x2b;&#x20;&#x31;&#xa;&#x20;&#x20;&#x20;&#x20;&#x79;&#x69;&#x65;&#x6c;&#x64;&#x20;&#x69;</div></code></pre>
-
-
-    <button id='4' class='toggleButton'>
-    Toggle Solution<noscript> (enable JavaScript)</noscript>
-    </button>
-    
-
-<p>Use OK to test your code:</p><pre><code>python3 ok -q hailstone</code></pre>
 
 
 <h2 id="sql">SQL</h2>
@@ -723,7 +650,7 @@ with h, you should write:</p>
 <p>In the following questions, update <code>lab11.sql</code> with your
 solution.</p>
 
-<h3 class="question" id="q5">Question 5</h3>
+<h3 class="question" id="q3">Question 3</h3>
 Some people just love little dogs.  Create a <code>short_dogs</code> table with
 three columns, <code>name</code>, <code>fur</code>, and <code>size</code>, containing the dogs of
 height < 40 cm.
@@ -732,11 +659,11 @@ height < 40 cm.
 
 <pre><code>&#x2d;&#x2d; All short dogs
 create table short_dogs as
-<div class="alt 5">-- REPLACE THIS LINE
-</div><div class="solution 5">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x66;&#x75;&#x72;&#x2c;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x61;&#x73;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x20;&#x34;&#x30;&#x3b;</div></code></pre>
+<div class="alt 3">-- REPLACE THIS LINE
+</div><div class="solution 3">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x66;&#x75;&#x72;&#x2c;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x61;&#x73;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x20;&#x34;&#x30;&#x3b;</div></code></pre>
 
 
-    <button id='5' class='toggleButton'>
+    <button id='3' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -754,7 +681,7 @@ select name from short_dogs;
 
 <pre><code>python3 ok &#x2d;q short &#x2d;&#x2d;local</code></pre>
 
-<h3 class="question" id="q6">Question 6</h3>
+<h3 class="question" id="q4">Question 4</h3>
 The Fédération Cynologique Internationale classifies a standard poodle as over
 45 cm and up to 60 cm. The <code>sizes</code> table describes this and other such
 classifications, where a dog must be over the <code>min</code> and less than or equal to
@@ -767,11 +694,11 @@ another for its <code>size</code>.</p>
 
 <pre><code>&#x2d;&#x2d; The size of each dog
 create table size_of_dogs as
-<div class="alt 6">-- REPLACE THIS LINE
-</div><div class="solution 6">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3e;&#x20;&#x6d;&#x69;&#x6e;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x3b;</div></code></pre>
+<div class="alt 4">-- REPLACE THIS LINE
+</div><div class="solution 4">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x2c;&#x20;&#x73;&#x69;&#x7a;&#x65;&#x73;&#xa;&#x20;&#x20;&#x20;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3e;&#x20;&#x6d;&#x69;&#x6e;&#x20;&#x61;&#x6e;&#x64;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x20;&#x3c;&#x3d;&#x20;&#x6d;&#x61;&#x78;&#x3b;</div></code></pre>
 
 
-    <button id='6' class='toggleButton'>
+    <button id='4' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -789,7 +716,7 @@ select name from size_of_dogs where size=&quot;toy&quot; or size=&quot;mini&quot
 
 <pre><code>python3 ok &#x2d;q small &#x2d;&#x2d;local</code></pre>
 
-<h3 class="question" id="q7">Question 7</h3>
+<h3 class="question" id="q5">Question 5</h3>
 Create a table <code>by_height</code> that has a column of the names of all dogs that have
 a <code>parent</code>, ordered by the height of the parent from tallest parent to shortest
 parent.
@@ -798,11 +725,11 @@ parent.
 
 <pre><code>&#x2d;&#x2d; All dogs with parents ordered by decreasing height of their parent
 create table by_height as
-<div class="alt 7">-- REPLACE THIS LINE
-</div><div class="solution 7">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x2c;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x20;&#x6f;&#x72;&#x64;&#x65;&#x72;&#x20;&#x62;&#x79;&#x20;&#x2d;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x3b;</div></code></pre>
+<div class="alt 5">-- REPLACE THIS LINE
+</div><div class="solution 5">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x63;&#x68;&#x69;&#x6c;&#x64;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x73;&#x2c;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x77;&#x68;&#x65;&#x72;&#x65;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x3d;&#x20;&#x70;&#x61;&#x72;&#x65;&#x6e;&#x74;&#x20;&#x6f;&#x72;&#x64;&#x65;&#x72;&#x20;&#x62;&#x79;&#x20;&#x2d;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x3b;</div></code></pre>
 
 
-    <button id='7' class='toggleButton'>
+    <button id='5' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -828,7 +755,7 @@ select * from by_height;
 
 <pre><code>python3 ok &#x2d;q parent_height &#x2d;&#x2d;local</code></pre>
 
-<h3 class="question" id="q8">Question 8</h3>
+<h3 class="question" id="q6">Question 6</h3>
 
 <p>Create a table <code>tallest</code> that includes the <code>height</code> and <code>name</code> of every dog
 that shares the 10's digit of its <code>height</code> with at least one other dog and has
@@ -840,11 +767,11 @@ the highest 1's digit of all dogs that have the same 10's digit.</p>
 &#x2d;&#x2d; with at least one other dog and has the highest 1&#x27;s digit of all dogs 
 &#x2d;&#x2d; that have the same 10&#x27;s digit
 create table tallest as
-<div class="alt 8">-- REPLACE THIS LINE
-</div><div class="solution 8">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x29;&#x2c;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x67;&#x72;&#x6f;&#x75;&#x70;&#x20;&#x62;&#x79;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2f;&#x31;&#x30;&#x20;&#x68;&#x61;&#x76;&#x69;&#x6e;&#x67;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x28;&#x2a;&#x29;&#x20;&#x3e;&#x20;&#x31;&#x3b;</div></code></pre>
+<div class="alt 6">-- REPLACE THIS LINE
+</div><div class="solution 6">&#x20;&#x20;&#x73;&#x65;&#x6c;&#x65;&#x63;&#x74;&#x20;&#x6d;&#x61;&#x78;&#x28;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x29;&#x2c;&#x20;&#x6e;&#x61;&#x6d;&#x65;&#x20;&#x66;&#x72;&#x6f;&#x6d;&#x20;&#x64;&#x6f;&#x67;&#x73;&#x20;&#x67;&#x72;&#x6f;&#x75;&#x70;&#x20;&#x62;&#x79;&#x20;&#x68;&#x65;&#x69;&#x67;&#x68;&#x74;&#x2f;&#x31;&#x30;&#x20;&#x68;&#x61;&#x76;&#x69;&#x6e;&#x67;&#x20;&#x63;&#x6f;&#x75;&#x6e;&#x74;&#x28;&#x2a;&#x29;&#x20;&#x3e;&#x20;&#x31;&#x3b;</div></code></pre>
 
 
-    <button id='8' class='toggleButton'>
+    <button id='6' class='toggleButton'>
     Toggle Solution<noscript> (enable JavaScript)</noscript>
     </button>
     
@@ -870,19 +797,14 @@ is not included because there are no other 50-something dogs.</p>
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
   <li><a href="#exceptions">Exceptions</a></li>
-  <ul>
-  <li><a href="#q1">Question 1: No KeyErrors Allowed</a></li>
-</ul>
-
   <li><a href="#iterators">Iterators</a></li>
   <ul>
-  <li><a href="#q2">Question 2</a></li>
+  <li><a href="#q1">Question 1</a></li>
 </ul>
 
   <li><a href="#generators">Generators</a></li>
   <ul>
-  <li><a href="#q3">Question 3: Scale</a></li>
-  <li><a href="#q4">Question 4: Hailstone</a></li>
+  <li><a href="#q2">Question 2: Scale</a></li>
 </ul>
 
   <li><a href="#sql">SQL</a></li>
@@ -901,10 +823,10 @@ is not included because there are no other 50-something dogs.</p>
   <li><a href="#selecting-from-tables">Selecting From Tables</a></li>
   <li><a href="#sql-operators">SQL operators</a></li>
   <li><a href="#data">Data</a></li>
+  <li><a href="#q3">Question 3</a></li>
+  <li><a href="#q4">Question 4</a></li>
   <li><a href="#q5">Question 5</a></li>
   <li><a href="#q6">Question 6</a></li>
-  <li><a href="#q7">Question 7</a></li>
-  <li><a href="#q8">Question 8</a></li>
 </ul>
 
 </ul>

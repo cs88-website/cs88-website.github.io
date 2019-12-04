@@ -23,7 +23,6 @@ create table sizes as
   select "medium",      35,        45        union
   select "standard",    45,        60;
 
-
 -- Comment out the unfinished questions while you
 -- are working so as to avoid errors in the tests.
 

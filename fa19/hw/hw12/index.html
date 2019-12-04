@@ -53,7 +53,7 @@
       <h1><span class="content-title-brand">Homework 12</span></h1>
     </div>
 
-    <p><i>Due at 11:59:59 pm on 05/01/2019.</i></p>
+    <p><i>Due at 11:59:59 pm on 12/12/2019.</i></p>
 
 <h2>Instructions</h2>
 
@@ -74,119 +74,6 @@
 
 <h2 id="iterators">Iterators</h2>
 
-
-<p>Remember the <code>for</code> loop?  (We really hope so.)  The object the <code>for</code> loop
-iterates over must be an iterable! An <strong>iterable</strong> is a way of representing
-explicit sequences (like lists or strings) as well as <em>implicit</em> sequences (like
-the natural numbers <code>1, 2, 3, ...</code>).</p>
-
-<pre><code>for elem in iterable:
-    # do something</code></pre>
-
-<p><code>for</code> loops only work with iterables. This means the object you want to use a
-<code>for</code> loop on must implement the <strong>iterable interface</strong>.  To implement the
-iterable interface, an object must define an <code>__iter__</code> method that returns an
-object that implements the <strong>iterator interface</strong>.  To implement the iterator
-interface, an object must define a <code>__next__</code> method to compute and return the
-next element in the sequence. If the iterator exhausts the sequence, it raises
-<code>StopIteration</code> to send a signal to indicate that it reaches the end.</p>
-
-<p>An iterable object can create an arbitrary amount of iterator objects. In
-addition, the iterators are independent of each other; in other words they can
-have a different position in the sequence.</p>
-
-<p>Here is a table summarizing the required methods of the <em>iterable</em> and 
-<em>iterator</em> interfaces/protocols. Python also has more
-<a href="https://docs.python.org/3/library/stdtypes.html#typeiter">documentation</a>
-about <a href="https://docs.python.org/3/glossary.html#term-iterator">iterator</a> types.</p>
-
-<div class = "table-responsive">
-  <table class='table table-bordered'>
-    <tr>
-      <th>Iterable</th>
-      <th>Iterator</th>
-    </tr>
-    <tr>
-      <td><code>__iter__</code>: return a new iterator</td>
-      <td><code>__iter__</code>: must return itself</td>
-    </tr>
-    <tr>
-      <td align="center"></td>
-      <td><code>__next__</code>: return the next element,
-      or raise <code>StopIteration</code></td>
-    </tr>
-  </table>
-</div>
-
-<p>In Python, an iterator must also be an iterable. In other words, it must have a
-<code>__iter__</code> method that returns itself (with the current state unaltered).</p>
-
-<p><strong>Analogy</strong>: an iterable is like a book (one can flip through the
-pages) and an iterator is a bookmark (saves the position and can locate
-the next page).  Calling <code>__iter__</code> on a book gives you a new bookmark
-independent of other bookmarks, but calling <code>__iter__</code> on a bookmark
-gives you the bookmark itself, without changing its position at all.</p>
-
-<p>Here is an example of a class definition for an object that implements
-the iterator interface:</p>
-
-<pre><code>class AnIterator:
-    def __init__(self):
-        self.current = 0
-
-    def __next__(self):
-        if self.current &gt; 5:
-            raise StopIteration
-        self.current += 1
-        return self.current
-
-    def __iter__(self):
-        return self</code></pre>
-
-<p>Let's go ahead and try out our new toy.</p>
-
-<pre><code>&gt;&gt;&gt; for num in AnIterator():
-...     print(num)
-1
-2
-3
-4
-5
-6</code></pre>
-
-<p>This is somewhat equivalent to running:</p>
-
-<pre><code>t = AnIterator()
-t = iter(t) # iter(t) is the same as t.__iter__()
-try:
-    while True:
-        # next(t) is the same as t.__next__()
-        print(next(t))
-except StopIteration as e:
-    pass</code></pre>
-
-<h3 class="question" id="q1">Question 1: Restart</h3>
-
-<blockquote><p>Use OK to test your knowledge with the following What would Python print
-questions:</p>
-
-<pre><code>python3 ok &#x2d;q restart &#x2d;u</code></pre></blockquote>
-
-<p>Try this!</p>
-
-<pre><code>&gt;&gt;&gt; iterator = IteratorA()
-&gt;&gt;&gt; [num for num in iterator]</code></pre>
-
-<p>Then again:</p>
-
-<pre><code>&gt;&gt;&gt; [num for num in iterator]</code></pre>
-
-<p>This happens because the instance variables are not reset
-each time a <code>for</code> loop is started. Therefore, when a <code>StopIteration</code>
-exception is raised at the end of the first for loop it certainly
-will be raised immediately at the beginning of the second.
-With that in mind, try writing an iterator that "restarts" every time
-it is run through a <code>for</code> loop.</p>
 
 <solution>
 
@@ -227,122 +114,7 @@ it is run through a <code>for</code> loop.</p>
 <h2 id="generators">Generators</h2>
 
 
-<p>A generator function returns a special type of <strong>iterator</strong> called
-a <strong>generator</strong> object. Such functions can be written using a <code>yield</code>
-statement:</p>
-
-<pre><code>def &lt;generator_fn_name&gt;():
-    &lt;somevariable&gt; = &lt;something&gt;
-    while &lt;predicate&gt;:
-        yield &lt;something&gt;
-        &lt;increment somevariable&gt;</code></pre>
-
-<p>Calling a generator function (a function with a yield statement in it)
-makes it return a generator object rather than executing the body of
-the function.</p>
-
-<p>The reason we say a generator object is  a special type of <strong>iterator</strong>
-is that it has all the properties of an iterator, meaning that:</p>
-
-<ul>
-  <li>Calling the <code>__iter__</code> method makes a generator object return
-  itself without modifying its current state.</li>
-  <li>Calling the <code>__next__</code> method makes a generator object compute and
-  return the next object in its sequence. If the sequence is
-  exhausted, <code>StopIteration</code> is raised.</li>
-  <li>Typically, a generator should not restart unless it's defined that way. But
-  calling the generator function returns a brand new generator object (like
-  calling <code>__iter__</code> on an iterable object).</li>
-</ul>
-
-<p>However, they do have some fundamental differences:</p>
-
-<ul>
-  <li>An iterator is a class with <code>__next__</code> and <code>__iter__</code> explicitly defined, but
-  a generator can be written as a mere function with a <code>yield</code> in it.</li>
-  <li><code>__iter__</code> in an iterator uses <code>return</code>, but a generator uses <code>yield</code>.</li>
-  <li><p>A generator "remembers" its state for the next <code>__next__</code> call. Therefore, the
-  first <code>__next__</code> call works like this:</p>
-
-  <ol>
-    <li>Enter the function, run until the line with <code>yield</code>.</li>
-    <li>Return the value in the <code>yield</code> statement, but remember the state of the
-    function for future <code>__next__</code> calls.</li>
-  </ol>
-
-  <p>And subsequent <code>__next__</code> calls work like this:</p>
-
-  <ol>
-    <li>Re-enter the function, start at <strong>the line after <code>yield</code></strong>, and run until
-    the next <code>yield</code> statement.</li>
-    <li>Return the value in the <code>yield</code> statement, but remember the state of the
-    function for future <code>__next__</code> calls.</li>
-  </ol></li>
-</ul>
-
-<blockquote><p>Use OK to test your knowledge with the following What would Python print
-questions:</p>
-
-<pre><code>python3 ok &#x2d;q generators &#x2d;u &#x2d;&#x2d;local</code></pre></blockquote>
-
-<pre><code>def generator():
-    print(&quot;Starting here&quot;)
-    i = 0
-    while i &lt; 6:
-        print(&quot;Before yield&quot;)
-        yield i
-        print(&quot;After yield&quot;)
-        i += 1</code></pre>
-
-<prompt>
-
-<pre><code>&gt;&gt;&gt; g = generator()
-&gt;&gt;&gt; g # what type of object is this?
-&lt;generator object ...&gt;
-&gt;&gt;&gt; g == iter(g) # equivalent of g.__iter__()
-True
-&gt;&gt;&gt; next(g) # equivalent of g.__next__()
-Starting here
-Before yield
-0
-&gt;&gt;&gt; next(g)
-After yield
-Before yield
-1
-&gt;&gt;&gt; next(g)
-After yield
-Before yield
-2</code></pre>
-
-</prompt>
-
-<p>Trace through the code and make sure you know where and why each
-statement is printed.</p>
-
-<p>You might have noticed from the Iterators section that <code>IteratorB</code>, which didn't
-define a <code>__next__</code> method, failed to run in the <code>for</code> loop.  However, this is
-not always the case.</p>
-
-<pre><code>class IterGen:
-    def __init__(self):
-        self.start = 5
-
-    def __iter__(self):
-        while self.start &lt; 10:
-            self.start += 1
-            yield self.start
-
-for i in IterGen():
-    print(i)</code></pre>
-
-<p>Why does this iterable work without defining a <code>__next__</code> method?</p>
-
-<p>The <code>for</code> loop only expects the object returned by <code>__iter__</code> to have a
-<code>__next__</code> method. The <code>__iter__</code> method is a generator function because of the
-<code>yield</code> statement in the body. Therefore, when <code>__iter__</code> is called, it returns
-a generator object, which you can call <code>__next__</code> on.</p>
-
-<h3 class="question" id="q2">Question 2: Merge</h3>
+<h3 class="question" id="q1">Question 1: Merge</h3>
 
 <p>Implement <code>merge(s0, s1)</code>, which takes two iterables <code>s0</code> and <code>s1</code> whose
 elements are ordered. <code>merge</code> yields elements from <code>s0</code> and <code>s1</code> in sorted
@@ -421,7 +193,7 @@ appropriate command for your OS:</p>
 <pre><code>sqlite3 &lt; hw12.sql
 sqlite3 &#x2d;&#x2d;init hw12.sql</code></pre>
 
-<h3 class="question" id="q3">Question 3: What Would SQL print?</h3>
+<h3 class="question" id="q2">Question 2: What Would SQL print?</h3>
 
 <p>First, load the tables into sqlite3. If you're on Windows or Mac OS X
 (Mavericks or older), use the following command:</p>
@@ -460,7 +232,7 @@ selects the name and composer of all tracks longer than 3 minutes on the album w
 
 </prompt>
 
-<h3 class="question" id="q4">Question 4: Get rid of the fluff!</h3>
+<h3 class="question" id="q3">Question 3: Get rid of the fluff!</h3>
 
 <p>Write a SQL query to create a table that contains just the <code>name</code> and <code>unitPrice</code>
 of each track in the <code>tracks</code> table.</p>
@@ -488,7 +260,7 @@ C.O.D.|0.99</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q pricing</code></pre>
 
-<h3 class="question" id="q5">Question 5: Long songs...</h3>
+<h3 class="question" id="q4">Question 4: Long songs...</h3>
 
 <p>Now that we have learned how to select columns from a SQL table, let's filter the
 results to see some more interesting results!</p>
@@ -519,7 +291,7 @@ Snoopy&#x27;s search&#x2d;Red baron</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q long</code></pre>
 
-<h3 class="question" id="q6">Question 6: Biggest Song</h3>
+<h3 class="question" id="q5">Question 5: Biggest Song</h3>
 
 <p>Which song takes up the most space (as a file)? Let's find out! (Incidentally
 this is also the longest song in our database.)</p>
@@ -580,7 +352,7 @@ it desires: <code>a.Berkeley &#x2d; b.Berkeley</code> and <code>a.Stanford &#x2d
 from the rows <code>WHERE a.Year &gt; b.Year</code>. This prevents duplicate results from
 appearing in our output!</p>
 
-<h3 class="question" id="q7">Question 7: Long songs on albums</h3>
+<h3 class="question" id="q6">Question 6: Long songs on albums</h3>
 
 <p>We know which songs are long, but now we want to know which albums have long
 songs on them!</p>
@@ -651,7 +423,7 @@ we then can see the greatest <code>milliseconds</code> for any track for a given
 
 <blockquote><p>When using an aggregate function in your <code>SELECT</code> statement, any other columns in the <code>SELECT</code> statement <em>must</em> be in the <code>GROUP BY</code> statement!</p></blockquote>
 
-<h3 class="question" id="q8">Question 8: Number of songs on each album</h3>
+<h3 class="question" id="q7">Question 7: Number of songs on each album</h3>
 
 <p>Write a SQL query to create a table that contains the <code>albumId</code> and number of songs
 on the album with that albumId. HINT: Remember that <code>count(*)</code> will count the
@@ -680,7 +452,7 @@ number of rows in each group of a <code>GROUP BY</code> statement.</p>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q track_count</code></pre>
 
-<h3 class="question" id="q9">Question 9: Counting albums</h3>
+<h3 class="question" id="q8">Question 8: Counting albums</h3>
 
 <p>So far, we haven't yet considered the <code>artists</code> table. What if we want to know
 how many albums each artist has released?</p>
@@ -710,7 +482,7 @@ Aerosmith|1</code></pre>
 
 <p>Use OK to test your code:</p><pre><code>python3 ok -q album_count</code></pre>
 
-<h3 class="question" id="q10">Question 10: Busiest artists</h3>
+<h3 class="question" id="q9">Question 9: Busiest artists</h3>
 
 <p>How many songs have each artist produced? Write a SQL query to create a table
 containing artists' names and the number of tracks that they're produced
@@ -757,34 +529,30 @@ SELECT count(*) FROM artists, albums, tracks;
     <nav class='hidden-print hidden-sm hidden-xs sidebar'>
       <ul>
   <li><a href="#iterators">Iterators</a></li>
-  <ul>
-  <li><a href="#q1">Question 1: Restart</a></li>
-</ul>
-
   <li><a href="#generators">Generators</a></li>
   <ul>
-  <li><a href="#q2">Question 2: Merge</a></li>
+  <li><a href="#q1">Question 1: Merge</a></li>
 </ul>
 
   <li><a href="#sql">SQL</a></li>
   <li><a href="#working-with-the-chinook-dataset">Working with the Chinook Dataset</a></li>
   <ul>
-  <li><a href="#q3">Question 3: What Would SQL print?</a></li>
-  <li><a href="#q4">Question 4: Get rid of the fluff!</a></li>
-  <li><a href="#q5">Question 5: Long songs...</a></li>
-  <li><a href="#q6">Question 6: Biggest Song</a></li>
+  <li><a href="#q2">Question 2: What Would SQL print?</a></li>
+  <li><a href="#q3">Question 3: Get rid of the fluff!</a></li>
+  <li><a href="#q4">Question 4: Long songs...</a></li>
+  <li><a href="#q5">Question 5: Biggest Song</a></li>
 </ul>
 
   <li><a href="#joins">Joins</a></li>
   <ul>
-  <li><a href="#q7">Question 7: Long songs on albums</a></li>
+  <li><a href="#q6">Question 6: Long songs on albums</a></li>
 </ul>
 
   <li><a href="#aggregate-functions">Aggregate Functions</a></li>
   <ul>
-  <li><a href="#q8">Question 8: Number of songs on each album</a></li>
-  <li><a href="#q9">Question 9: Counting albums</a></li>
-  <li><a href="#q10">Question 10: Busiest artists</a></li>
+  <li><a href="#q7">Question 7: Number of songs on each album</a></li>
+  <li><a href="#q8">Question 8: Counting albums</a></li>
+  <li><a href="#q9">Question 9: Busiest artists</a></li>
 </ul>
 
 </ul>

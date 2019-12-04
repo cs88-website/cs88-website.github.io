@@ -3,13 +3,8 @@ test = {
   'points': 1,
   'suites': [
     {
-      'type': 'sqlite',
-      'setup': """
-      sqlite> .read lab09.sql
-      """,
       'cases': [
         {
-          'locked': False,
           'code': r"""
           sqlite> SELECT name, size FROM short_dogs;
           abraham|26
@@ -18,8 +13,17 @@ test = {
           grover|28
           herbert|31
           """,
-        },
+          'hidden': False,
+          'locked': False
+        }
       ],
-    },
+      'ordered': False,
+      'scored': True,
+      'setup': r"""
+      sqlite> .read lab11.sql
+      """,
+      'teardown': '',
+      'type': 'sqlite'
+    }
   ]
 }

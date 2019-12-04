@@ -2,9 +2,12 @@
     "name": "Homework 12",
     "endpoint": "cal/cs88/sp19/hw12",
     "src": [
+        "hw12.py",
         "hw12.sql"
     ],
     "tests": {
+        "hw12.py:IteratorRestart": "doctest",
+        "hw12.py:merge": "doctest",
         "tests/pricing.py": "ok_test",
         "tests/long.py": "ok_test",
         "tests/largest.py": "ok_test",

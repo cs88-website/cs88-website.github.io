@@ -6,10 +6,9 @@
         "lab11.sql"
     ],
     "tests": {
-        "lab11.py:avoid_keyerror": "doctest",
+        "tests/generators.py": "ok_test",
         "lab11.py:ScaleIterator": "doctest",
         "lab11.py:scale": "doctest",
-        "lab11.py:hailstone": "doctest",
         "tests/short.py": "ok_test",
         "tests/small.py": "ok_test",
         "tests/parent_height.py": "ok_test",
