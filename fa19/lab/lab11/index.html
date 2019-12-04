@@ -720,69 +720,6 @@ with h, you should write:</p>
 <p>The former query would still be correct if the name <code>grover</code> were changed to
 <code>hoover</code> or a row was added with the name <code>harry</code>.</p>
 
-<h3 id="get-started-with-sqlite">Get started with sqlite</h3>
-
-
-<p>Following the instructions in the <em>usage</em> section
-above, start up <code>sqlite3</code> initializing it with <code>lab07.sql</code>. Try
-out <code>.help</code> and then <code>.tables</code> and <code>.schema parents</code>.  These <code>.</code>
-commands are particular to <code>.sqlite</code>; they are not part of SQL.
-Try out some <code>SQL</code> statements.</p>
-
-<p>How do you get the whole parents table? Give it a try.</p>
-
-
-    <button id='10' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 10">
-
-<pre><code>select * from parents;</code></pre>
-
-</div>
-
-<p>Looking at the data, which dogs are children of "abraham" ?</p>
-
-
-    <button id='11' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 11">
-
-<pre><code>&quot;barack&quot; and &quot;clinton&quot;</code></pre>
-
-</div>
-
-<p>Write a SQL statement to get the children of the dog "abraham".</p>
-
-
-    <button id='12' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 12">
-
-<pre><code>select child from parents where parent = &quot;abraham&quot;;</code></pre>
-
-</div>
-
-<p>Write a SQL statement to select the parents of curly-furred dogs.</p>
-
-
-    <button id='13' class='toggleButtonShow'>
-    Toggle Explanation<noscript> (enable JavaScript)</noscript>
-    </button>
-    <div class="solution 13">
-
-<pre><code>select parent from parents, dogs
-   where child = name and fur = &quot;curly&quot;;</code></pre>
-
-</div>
-
-<p>Try it out.  Did you get:</p>
-
-<pre><code>eisenhower
-delano</code></pre>
-
 <p>In the following questions, update <code>lab11.sql</code> with your
 solution.</p>
 
@@ -964,7 +901,6 @@ is not included because there are no other 50-something dogs.</p>
   <li><a href="#selecting-from-tables">Selecting From Tables</a></li>
   <li><a href="#sql-operators">SQL operators</a></li>
   <li><a href="#data">Data</a></li>
-  <li><a href="#get-started-with-sqlite">Get started with sqlite</a></li>
   <li><a href="#q5">Question 5</a></li>
   <li><a href="#q6">Question 6</a></li>
   <li><a href="#q7">Question 7</a></li>
