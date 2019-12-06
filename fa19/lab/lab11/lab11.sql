@@ -29,15 +29,18 @@ create table sizes as
 -- All short dogs
 create table short_dogs as
 -- REPLACE THIS LINE
+select "REPLACE THIS LINE WITH YOUR SOLUTION";
 
 -- The size of each dog
 create table size_of_dogs as
 -- REPLACE THIS LINE
+select "REPLACE THIS LINE WITH YOUR SOLUTION";
 
 
 -- All dogs with parents ordered by decreasing height of their parent
 create table by_height as
 -- REPLACE THIS LINE
+select "REPLACE THIS LINE WITH YOUR SOLUTION";
 
 
 -- Height and name of every dog that shares height 10's digit  
@@ -45,4 +48,5 @@ create table by_height as
 -- that have the same 10's digit
 create table tallest as
 -- REPLACE THIS LINE
+select "REPLACE THIS LINE WITH YOUR SOLUTION";
 
