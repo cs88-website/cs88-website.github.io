@@ -139,6 +139,12 @@
         </tr>
 
         <tr>
+            <td class='resource-name'><a href="lab/lab00/">Lab 0: Community and Setup</a></td>
+            <td class='resource-type'>Lab</td>
+            <td class='resource-tags'></td>
+        </tr>
+
+        <tr>
             <td class='resource-name'><a href="articles/about.html">Syllabus</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'></td>
@@ -187,13 +193,13 @@
         </tr>
 
         <tr>
-            <td class='resource-name'>Weekly Schedule</td>
+            <td class='resource-name'><a href="weekly-schedule.html">Weekly Schedule</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'></td>
         </tr>
 
         <tr>
-            <td class='resource-name'>Staff</td>
+            <td class='resource-name'><a href="staff.html">Staff</a></td>
             <td class='resource-type'>Article</td>
             <td class='resource-tags'></td>
         </tr>
@@ -343,6 +349,15 @@
 </tr>
 <tr>
 <td rowspan="1" class="weeknum even">2</td>
+<td>Mon 1/27</td>
+<td></td>
+<td></td>
+<td><a href="lab/lab00/">Lab 0: Community and Setup</a><br/>(due Thu 2/6)</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td rowspan="1" class="weeknum odd">3</td>
 <td>Mon 2/17</td>
 <td>No Lecture: President's Day</td>
 <td></td>
@@ -417,7 +432,7 @@ $(document).ready(function() {
   }
 
   // Assignment quick list
-  var assignments = [];
+  var assignments = [{"due": "2/6/20", "link": "lab/lab00/", "name": "Lab 0: Community and Setup", "release": "1/27/20"}];
 
   $(document).ready(function() {
     $("#resources-search-box").keyup(function() {
