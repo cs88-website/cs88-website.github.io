@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content ="CS88: Computational Structures in Data Science" />
+    <meta name="keywords" content ="CS88, Computer Science, Data Science, Programming, Berkeley, EECS" />
+    <meta name="author" content ="Michael Ball, Gerald Friedland, Alex Kassil, Srinath Goli, Julia Yu, Sophia Qin, Brian Mi, Alec Kan, Vandana Ganesh, Cameron Malloy, Sherya Kannan" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width">
+
+    <link rel="stylesheet" href="/sp20/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/sp20/assets/css/style.css">
+    <link rel="icon" href="/sp20/assets/images/favicon.ico">
+    <link rel="stylesheet" href="/sp20/assets/css/mono-blue.css">
+
+    
+
+    <title>Style Guide | CS 88 Spring 2020</title>
+
+  </head>
+
+  <body id="index" class="home">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-section" aria-label="Toggle Nav Menu" aria-expanded="false">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/sp20/">CS 88</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-section">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/sp20/">Calendar</a></li>
+            <li><a href="/sp20/articles/resources.html">Resources</a></li>
+            <li><a href="/sp20/weekly-schedule.html">Weekly Schedule</a></li>
+            <li><a href="/sp20/articles/about.html">Course Information</a></li>
+            <li><a href="/sp20/staff.html">Staff</a></li>
+            <!--- <li><a href="/sp20/tutoring.html">Tutoring</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div id="content" class="container">
+      <div class='row'>
+  <div class='col-md-9'>
+    <div class='page-header'>
+      <h1>Style Guide</h1>
+    </div>
+
+     <h2 id="introduction">Introduction</h2>
+
+
+<p>In 61A, each project has a composition score, worth 3 points, that is
+graded on the <em>style</em> of your code. This document provides some
+guidelines.</p>
+
+<p>After your code works, you should strive to do the following things:</p>
+
+<ol>
+  <li>Make your code <strong>easier to read</strong></li>
+  <li>Make your code <strong>concise</strong></li>
+  <li>Make your code <strong>efficient</strong> (optional for this class)</li>
+</ol>
+
+<p>Sometimes these goals conflict with each other, and <strong>sometimes there
+are exceptions to the rules</strong>. Whatever you do, you should always try
+to make your code easy to read &mdash; use your judgement.</p>
+
+<p>Some of these guidelines have one or more of the following marks:</p>
+
+<ul>
+  <li><N>: a "non-essential" guideline; these guidelines are not necessary
+  for this class, but are generally good practice</li>
+  <li><P>: a Python-specific guideline; these are "Pythonic" style
+  conventions that don't necessarily apply to other languages</li>
+</ul>
+
+<p>Finally, here is a link to to
+<a href="http://www.python.org/dev/peps/pep-0008/">PEP-8</a>, the official Python
+style guide.</p>
+
+
+<h2 id="names-and-variables">Names and variables</h2>
+
+
+
+<h3 id="meaningful-names">Meaningful names</h3>
+
+
+<p>Variable and function names should be <em>self-descriptive</em>:</p>
+
+<bad>
+
+<pre><code>a, b, m = 100, 0, 0
+thing = &#x27;hello world&#x27;
+stuff = lambda x: x % 2</code></pre>
+
+</bad>
+
+<good>
+
+<pre><code>goal, score, opp_score = 100, 0, 0
+greeting = &#x27;hello world&#x27;
+is_even = lambda x: x % 2</code></pre>
+
+</good>
+
+
+<h3 id="indices-and-mathematical-symbols">Indices and mathematical symbols</h3>
+
+
+<p>Using one-letter names and abbreviations is okay for indices,
+mathematical symbols, or if it is obvious what the variables are
+referring to.</p>
+
+<good>
+
+<pre><code>i = 0         # a counter for a loop
+x, y = 0, 0   # x and y coordinates
+p, q = 5, 17  # mathematical names in the context of the question</code></pre>
+
+</good>
+
+<p>In general, <code>i</code>, <code>j</code>, and <code>k</code> are the most common indices used.</p>
+
+
+<h3 id="o-and-l">'o' and 'l'</h3>
+
+
+<p>Do not use the letters 'o' and 'l' by themselves as names:</p>
+
+<bad>
+
+<pre><code>o = O + 4     # letter &#x27;O&#x27; or number 0?
+l = l + 5     # letter &#x27;l&#x27; or number 1?</code></pre>
+
+</bad>
+
+
+<h3 id="unnecessary-variables">Unnecessary variables</h3>
+
+
+<p>Don't create unnecessary variables. For example,</p>
+
+<bad>
+
+<pre><code>result = answer(argument)
+return result</code></pre>
+
+</bad>
+
+<good>
+
+<pre><code>return answer(argument)</code></pre>
+
+</good>
+
+<p>However, if it is unclear what your code is referring to, or if the
+expression is too long, you <em>should</em> create a variable:</p>
+
+<bad>
+
+<pre><code>do_something(lambda x: x % 49 == 0, (total + 1) // 7)</code></pre>
+
+</bad>
+
+<good>
+
+<pre><code>divisible_49 = lambda x: x % 49 == 0
+score = (total + 1) // 7
+do_somethig(divisible_49, score)</code></pre>
+
+</good>
+
+
+<h3 id="profanity">Profanity</h3>
+
+
+<p>Don't leave profanity in your code. Even if you're really frustrated.</p>
+
+<bad>
+
+<pre><code>eff_this_class = 666</code></pre>
+
+</bad>
+
+
+<h3 id="naming-convention">Naming convention:</h3>
+
+
+<N><P>: Use <code>lower_case_and_underscores</code> for variables and functions:
+
+<bad>
+
+<pre><code>TotalScore = 0
+finalScore = 1
+
+def Mean_Strategy(score, opp):
+    ...</code></pre>
+
+</bad>
+
+<good>
+
+<pre><code>total_score = 0
+final_score = 1
+
+def mean_strategy(score, opp):
+    ...</code></pre>
+
+</good>
+
+<p>On the other hand, use <code>CamelCase</code> for classes:</p>
+
+<bad>
+
+<pre><code>class example_class:
+    ...</code></pre>
+
+</bad>
+
+<good>
+
+<pre><code>class ExampleClass:
+    ...</code></pre>
+
+</good>
+
+
+<h2 id="spacing-and-indentation">Spacing and Indentation</h2>
+
+
+<p>Whitespace style might seem superfluous, but using whitespace in
+certain places (and omitting it in others) will often make it easier
+to read code. In addition, since Python code depends on whitespace
+(e.g. indentation), it requires some extra attention.</p>
+
+
+<h3 id="spaces-vs-tabs">Spaces vs. tabs</h3>
+
+
+<p>Use spaces, not tabs for indentation. Our starter code always uses 4
+spaces instead of tabs. If you use both spaces and tabs, Python will
+raise an <code>IndentationError</code>.</p>
+
+
+<h3 id="indent-size">Indent size</h3>
+
+
+<P>: Use 4 spaces to denote an indent. Technically, Python allows you
+to use any number of spaces as long as you are consistent across an
+indentation level. The conventional style is to use 4 spaces.
+
+
+<h3 id="line-length">Line Length</h3>
+
+
+<p>Keep lines under 80 characters long. Other conventions use 70 or 72
+characters, but 80 is usually the upper limit.</p>
+
+
+<h3 id="double-spacing">Double-spacing</h3>
+
+
+<p>Don't double-space code. That is, do <em>not</em> insert a blank line in
+between lines of code. Personally, I find that harder to read.</p>
+
+
+<h3 id="spaces-with-operators">Spaces with operators</h3>
+
+
+<N>: Use spaces between <code>+</code> and <code>&#x2d;</code>. Depending on how illegible
+expressions get, you can use your own judgement for <code>*</code>, <code>/</code>, and <code>**</code>
+(as long as it's easy to read at a glance, it's fine).
+
+<bad>
+
+<pre><code>x=a+b*c*(a**2)/c&#x2d;4</code></pre>
+
+</bad>
+
+<good>
+
+<pre><code>x = a + b*c*(a**2) / c &#x2d; 4</code></pre>
+
+</good>
+
+
+<h3 id="spacing-lists">Spacing lists</h3>
+
+
+<N>: When using tuples, lists, or function operands, leave one space
+after each comma <code>,</code>:
+
+<bad>
+
+<pre><code>tup = (x,x/2,x/3,x/4)</code></pre>
+
+</bad>
+
+<good>
+
+<pre><code>tup = (x, x/2, x/3, x/4)</code></pre>
+
+</good>
+
+
+<h3 id="line-wrapping">Line wrapping</h3>
+
+
+<N><P>: If a line gets too long, you have two options. If you are
+using parentheses or braces with multiple elements, you can continue
+them onto the next line:
+
+<good>
+
+<pre><code>def func(a, b, c, d, e, f,
+         g, h, i):
+    # body
+
+tup = (1, 2, 3, 4, 5,
+       6, 7, 8)
+names = (&#x27;alice&#x27;,
+         &#x27;bob&#x27;,
+         &#x27;eve&#x27;)</code></pre>
+
+</good>
+
+<p>Notice that the subsequent lines line up with the <em>start</em> of the
+sequence. If the above rule does not apply, you can use Python's <code>\</code>
+operator:</p>
+
+<good>
+
+<pre><code>total = this_is(a, very, lengthy) + line + of_code \
+            + so_it &#x2d; should(be, separated) \
+            + onto(multiple, lines)</code></pre>
+
+</good>
+
+<p><em>Where</em> you put the <code>\</code> in relation to binary operators (e.g.
+<code>hi \ + bye</code>  versus <code>hi + \ bye</code>) will vary from person to person
+&mdash; for our class, it doesn't matter.</p>
+
+
+<h3 id="blank-lines">Blank lines</h3>
+
+
+<N><P>: Leave a blank line between the end of a function or class and
+the next line:
+
+<good>
+
+<pre><code>def example():
+    return &#x27;stuff&#x27;
+
+x = example() # notice the space above</code></pre>
+
+</good>
+
+
+<h3 id="trailing-whitespace">Trailing whitespace</h3>
+
+
+<N>: Don't leave whitespace at the end of a line.
+
+
+<h2 id="repetition">Repetition</h2>
+
+
+<p>In general, <strong>don't repeat yourself</strong> (DRY). It wastes space and can
+be computationally inefficient.</p>
+
+
+<h3 id="complex-expressions">Complex expressions</h3>
+
+
+<p>Do not repeat complex expressions:</p>
+
+<bad>
+
+<pre><code>if a + b &#x2d; 3 * h / 2 % 47 == 4:
+    total += a + b &#x2d; 3 * h / 2 % 47
+    return total</code></pre>
+
+</bad>
+
+<p>Instead, store the expression in a variable:</p>
+
+<good>
+
+<pre><code>turn_score = a + b &#x2d; 3 * h / 2 % 47
+if turn_score == 4:
+    total += turn_score
+    return total</code></pre>
+
+</good>
+
+<p>This will also make your code more readable.</p>
+
+
+<h3 id="computation-heavy-function-calls">Computation-heavy function calls</h3>
+
+
+<p>Don't repeat computationally-heavy function calls:</p>
+
+<bad>
+
+<pre><code>if takes_one_minute_to_run(x) != ():
+    first = takes_one_minute_to_run(x)[0]
+    second = takes_one_minute_to_run(x)[1]
+    third = takes_one_minute_to_run(x)[2]</code></pre>
+
+</bad>
+
+<p>Instead, store the expression in a variable:</p>
+
+<good>
+
+<pre><code>result = takes_one_minute_to_run(x)
+if result != ():
+    first = result[0]
+    second = result[1]
+    third = result[2]</code></pre>
+
+</good>
+
+
+<h3 id="if-else-conditions">if/else conditions</h3>
+
+
+<p>DON'T have the same code in both the <code>if</code> and the <code>else</code> clause of a
+conditional:</p>
+
+<bad>
+
+<pre><code>if pred:            # bad!
+    print(&#x27;stuff&#x27;)
+    x += 1
+    return x
+else:
+    x += 1
+    return x</code></pre>
+
+</bad>
+
+<p>Instead, pull the line(s) out of the conditional:</p>
+
+<good>
+
+<pre><code>if pred:            # good!
+    print(&#x27;stuff&#x27;)
+x += 1
+return x</code></pre>
+
+</good>
+
+
+<h2 id="comments">Comments</h2>
+
+
+<p>Recall that Python comments begin with the <code>#</code> sign. Keep in mind that
+the triple-quotes are technically strings, not comments. Comments can
+be helpful for explaining ambiguous code, but there are some
+guidelines for when to use them.</p>
+
+
+<h3 id="docstrings">Docstrings</h3>
+
+
+<P>: Put docstrings only at the top of functions. Docstrings are
+denoted by triple-quotes at the beginning of a function or class:
+
+<good>
+
+<pre><code>def average(fn, samples):
+    &quot;&quot;&quot;Calls a 0&#x2d;argument function SAMPLES times, and takes
+    the average of the outcome.
+    &quot;&quot;&quot;</code></pre>
+
+</good>
+
+<p>You should not put docstrings in the middle of the function &mdash; only
+put them at the beginning.</p>
+
+
+<h3 id="remove-commented-out-code">Remove commented-out code</h3>
+
+
+<p>Remove commented-out code from final version. You can comment lines
+out when you are debugging. When you are turning in your project, take
+all commented lines out (including <code>TODO</code>s) &mdash; this makes it easier
+for readers to read your code.</p>
+
+
+<h3 id="unnecessary-comments">Unnecessary comments</h3>
+
+
+<p>Don't write unnecessary comments. For example, the following is bad:</p>
+
+<bad>
+
+<pre><code>def example(y):
+    x += 1            # increments x by 1
+    return square(x)  # returns the square of x</code></pre>
+
+</bad>
+
+<p>Your actual code should be <em>self-documenting</em> &mdash; try to make it as
+obvious as possible what you are doing without resorting to
+comments. Only use comments if something is not obvious or needs to
+be explicitly emphasized</p>
+
+
+<h2 id="control-structures">Control Structures</h2>
+
+
+
+<h3 id="boolean-comparisons">Boolean comparisons</h3>
+
+
+<p>Don't compare a boolean variable to <code>True</code> or <code>False</code>:</p>
+
+<bad>
+
+<pre><code>if pred == True:   # bad!
+    ...
+if pred == False:  # bad!
+    ...</code></pre>
+
+</bad>
+
+<p>Instead, do this:</p>
+
+<good>
+
+<pre><code>if pred:           # good!
+    ...
+if not pred:       # good!
+    ...</code></pre>
+
+</good>
+
+
+<h3 id="redundant-if-else">Redundant if/else</h3>
+
+
+<p>Don't do this:</p>
+
+<bad>
+
+<pre><code>if pred:            # bad!
+    return True
+else:
+    return False</code></pre>
+
+</bad>
+
+<p>Instead, do this:</p>
+
+<good>
+
+<pre><code>return pred         # good!</code></pre>
+
+</good>
+
+
+<h3 id="similar-if-else-suites">Similar if/else suites</h3>
+
+
+<p>(related to the previous:) Don't do this:</p>
+
+<bad>
+
+<pre><code>if num != 49:
+    total += example(4, 5, True)
+else:
+    total += example(4, 5, False)</code></pre>
+
+</bad>
+
+<p>In the example above, the only thing that changes between the
+conditionals is the boolean at the end. Instead, do this:</p>
+
+<good>
+
+<pre><code>total += example(4, 5, num != 49)</code></pre>
+
+</good>
+
+
+<h3 id="while-vs-if">while vs. if</h3>
+
+
+<p>Don't use a <code>while</code> loop when you should use an <code>if</code>:</p>
+
+<bad>
+
+<pre><code>while pred:
+    x += 1
+    return x</code></pre>
+
+</bad>
+
+<p>Instead, use an <code>if</code></p>
+
+<good>
+
+<pre><code>if pred:
+    x += 1
+    return x</code></pre>
+
+</good>
+
+
+<h3 id="parentheses">Parentheses</h3>
+
+
+<P>: Don't use parentheses with conditional statements:
+
+<bad>
+
+<pre><code>if (x == 4):
+    ...
+elif (x == 5):
+    ...
+while (x &lt; 10):
+    ...</code></pre>
+
+</bad>
+
+<p>Parentheses are not necessary in Python conditionals (they are in
+other languages though).</p>
+
+
+<h2 id="miscellaneous">Miscellaneous</h2>
+
+
+
+<h3 id="semicolons">Semicolons</h3>
+
+
+<P>: Do not use semicolons. This is not C/C++/Java/etc.
+
+
+<h3 id="checking-none">Checking <code>None</code></h3>
+
+
+<P>: Use <code>is</code> and <code>is not</code> for <code>None</code>, not <code>==</code> and <code>!=</code>.
+
+
+<h3 id="implicit-false">Implicit <code>False</code></h3>
+
+
+<P>: Use the "implicit" <code>False</code> value when possible. Examples include
+empty containers like <code>[]</code>, <code>()</code>, <code>{}</code>, <code>set()</code>.
+
+<good>
+
+<pre><code>if lst:       # if lst is not empty
+    ...
+if not tup:   # if tup is empty
+    ...</code></pre>
+
+</good>
+
+
+<h3 id="generator-expressions">Generator expressions</h3>
+
+
+<P>: Generator expressions are okay for simple expressions. This
+includes list comprehensions, dictionary comprehensions, set
+comprehensions, etc.  Generator expressions are neat ways to concisely
+create lists. Simple ones are fine:
+
+<good>
+
+<pre><code>ex = [x*x for x in range(10)]
+L = [pair[0] + pair[1]
+     for pair in pairs
+     if len(pair) == 2]</code></pre>
+
+</good>
+
+<p>However, complex generator expressions are very hard to read, even
+illegible. As such, do not use generator expressions for complex
+expressions.</p>
+
+<bad>
+
+<pre><code>L = [x + y + z for x in nums if x &gt; 10 for y in nums2 for z in nums3 if y &gt; z]</code></pre>
+
+</bad>
+
+<p>Use your best judgement.</p>
+  </div>
+
+  <div class='col-md-3'>
+    <nav class='hidden-print hidden-sm hidden-xs sidebar'>
+      <ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#names-and-variables">Names and variables</a></li>
+  <ul>
+  <li><a href="#meaningful-names">Meaningful names</a></li>
+  <li><a href="#indices-and-mathematical-symbols">Indices and mathematical symbols</a></li>
+  <li><a href="#o-and-l">'o' and 'l'</a></li>
+  <li><a href="#unnecessary-variables">Unnecessary variables</a></li>
+  <li><a href="#profanity">Profanity</a></li>
+  <li><a href="#naming-convention">Naming convention:</a></li>
+</ul>
+
+  <li><a href="#spacing-and-indentation">Spacing and Indentation</a></li>
+  <ul>
+  <li><a href="#spaces-vs-tabs">Spaces vs. tabs</a></li>
+  <li><a href="#indent-size">Indent size</a></li>
+  <li><a href="#line-length">Line Length</a></li>
+  <li><a href="#double-spacing">Double-spacing</a></li>
+  <li><a href="#spaces-with-operators">Spaces with operators</a></li>
+  <li><a href="#spacing-lists">Spacing lists</a></li>
+  <li><a href="#line-wrapping">Line wrapping</a></li>
+  <li><a href="#blank-lines">Blank lines</a></li>
+  <li><a href="#trailing-whitespace">Trailing whitespace</a></li>
+</ul>
+
+  <li><a href="#repetition">Repetition</a></li>
+  <ul>
+  <li><a href="#complex-expressions">Complex expressions</a></li>
+  <li><a href="#computation-heavy-function-calls">Computation-heavy function calls</a></li>
+  <li><a href="#if-else-conditions">if/else conditions</a></li>
+</ul>
+
+  <li><a href="#comments">Comments</a></li>
+  <ul>
+  <li><a href="#docstrings">Docstrings</a></li>
+  <li><a href="#remove-commented-out-code">Remove commented-out code</a></li>
+  <li><a href="#unnecessary-comments">Unnecessary comments</a></li>
+</ul>
+
+  <li><a href="#control-structures">Control Structures</a></li>
+  <ul>
+  <li><a href="#boolean-comparisons">Boolean comparisons</a></li>
+  <li><a href="#redundant-if-else">Redundant if/else</a></li>
+  <li><a href="#similar-if-else-suites">Similar if/else suites</a></li>
+  <li><a href="#while-vs-if">while vs. if</a></li>
+  <li><a href="#parentheses">Parentheses</a></li>
+</ul>
+
+  <li><a href="#miscellaneous">Miscellaneous</a></li>
+  <ul>
+  <li><a href="#semicolons">Semicolons</a></li>
+  <li><a href="#checking-none">Checking <code>None</code></a></li>
+  <li><a href="#implicit-false">Implicit <code>False</code></a></li>
+  <li><a href="#generator-expressions">Generator expressions</a></li>
+</ul>
+
+</ul>
+
+    </nav>
+  </div>
+
+</div>
+    </div>
+    <script src="//cdn.jsdelivr.net/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/sp20/assets/js/bootstrap.min.js"></script>
+    <!-- TODO: Move to specific pages... -->
+    <script src="/sp20/assets/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script>
+  $('.sidebar ul').addClass('nav nav-stacked');
+  $('body').scrollspy({
+    target: '.sidebar',
+    offset: 40
+  });
+</script>
+
+  </body>
+</html>
