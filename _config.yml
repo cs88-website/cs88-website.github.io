@@ -1,0 +1,31 @@
+# _config.yml
+
+# Site settings
+title: C88C Website
+# description: A website for CS88 course
+baseurl: "" # The subpath of your site, e.g. /blog
+url: "https://c88c.org" # The base hostname & protocol for your site
+
+# TODO: we should read this setting in create_redirects and index.html
+current_semester: 'sp24'
+
+# Build settings
+# theme: minima # The theme for your site
+plugins:
+  - jekyll-redirect-from
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+# Exclude files/folders from the build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - README.md
+  - LICENSE.txt
+  - script
