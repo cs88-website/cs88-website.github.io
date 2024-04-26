@@ -1,3 +1,5 @@
+CURRENT_SEMESTER = 'sp24'
+
 def write_template(type, num)
   titles = {
     'lab' => 'Lab',
@@ -6,11 +8,11 @@ def write_template(type, num)
   }
   padded_num = num.to_s.rjust(2, "0")
   puts "#{type} #{num} #{padded_num}"
-  redirect_file = type == 'disc' ? "disc#{padded_num}.pdf" : ""
+  destination = type == 'disc' ? "disc#{padded_num}.pdf" : "#{type}#{padded_num}/"
   template = <<~YAML
   ---
   title: #{titles[type]} #{num}
-  redirect_to: https://c88c.org/sp24/#{type}/#{type}#{padded_num}/#{redirect_file}
+  redirect_to: https://c88c.org/#{CURRENT_SEMESTER}/#{type}/#{destination}
   permalink: /#{type}/#{type}#{padded_num}/
   ---
   YAML
