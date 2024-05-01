@@ -1,7 +1,6 @@
 # DATA C88C Webaite
 
 ## [https://c88c.org](https://c88c.org)
-## [~https://cs88.org~](https://cs88.org)
 
 This site exists _solely_ to redirect to the current semester's site, or pages.
 It may contain redirects for as many "generic" assignments, resources, etc. as necessary.
