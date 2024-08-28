@@ -1,4 +1,4 @@
-CURRENT_SEMESTER = 'su24'
+CURRENT_SEMESTER = 'fa24'
 
 def write_template(type, num)
   titles = {

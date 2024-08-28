@@ -7,7 +7,7 @@ baseurl: "" # The subpath of your site, e.g. /blog
 url: "https://c88c.org" # The base hostname & protocol for your site
 
 # TODO: we should read this setting in create_redirects and index.html
-current_semester: 'su24'
+current_semester: 'fa24'
 
 # Build settings
 # theme: minima # The theme for your site
