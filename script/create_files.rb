@@ -16,8 +16,21 @@ def write_template(type, num)
   permalink: /#{type}/#{type}#{padded_num}/
   ---
   YAML
+  File.open("pages/#{name}.html", 'w') { |file| file.write(template) }
+end
+
+def write_proj(name)
+  # puts "#{type} #{num} #{padded_num}"
+  template = <<~YAML
+  ---
+  title: #{name.capitalize} Project
+  redirect_to: https://c88c.org/#{CURRENT_SEMESTER}/proj/#{name}/
+  permalink: /proj/#{name}/
+  ---
+  YAML
   File.open("pages/#{type}#{padded_num}.html", 'w') { |file| file.write(template) }
 end
+
 
 assignments = ['lab', 'hw', 'disc']
 assignments.each do |type|
