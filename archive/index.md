@@ -5,8 +5,8 @@ permalink: /archive/
 
 # C88C Website Archive
 
-<!-- * [Fall 2025 Website](/fa25/) -->
-<!-- * [Summer 2025 Website](/su25/) -->
+* [Fall 2025 Website](/fa25/)
+* [Summer 2025 Website](/su25/)
 * [Spring 2025 Website](/sp25/)
 * [Fall 2024 Website](/fa24/)
 * [Summer 2024 Website](/su24/)
