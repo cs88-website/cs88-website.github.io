@@ -3,7 +3,13 @@ title: C88C Website Archive
 permalink: /archive/
 ---
 
+# Current Website
+* [Spring 2026](/sp26/)
+
+
 # C88C Website Archive
+
+Archived semesters are _not_ updated, and meant to serve only as a historical reference. 
 
 * [Fall 2025 Website](/fa25/)
 * [Summer 2025 Website](/su25/)
