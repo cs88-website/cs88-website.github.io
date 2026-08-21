@@ -1,0 +1,29 @@
+<!doctype html>
+<!-- Served by GitHub Pages for any path the org site doesn't have.
+     Assignment paths /hw/... /lab/... /disc/... and /proj/... go to
+       the equivalent page for the current semester.
+     Paths under a live semester site (/fa26/...) never reach this file.
+     GitHub routes them to that project site and its own 404 page. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data C88C</title>
+  <script>
+    (function () {
+      var CURRENT = "fa26";  // update each semester
+      var path = location.pathname;
+
+      // Forward assignment links to the current semester.
+      if (/^\/(hw|lab|disc|proj)(\/|$)/.test(path)) {
+        location.replace("/" + CURRENT + path + location.search + location.hash);
+      }
+    })();
+  </script>
+</head>
+<body>
+  <h1>Page not found</h1>
+  <p>There is no page at this address. Try the current semester&rsquo;s site at
+  <a href="/fa26/">c88c.org/fa26</a>.</p>
+</body>
+</html>
